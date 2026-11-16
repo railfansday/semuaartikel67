@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Granite 4.1 LLMs: How They’re Built</title>
+    <meta name="description" content="An in-depth technical walkthrough of data engineering, pre-training, supervised fine-tuning, and reinforcement learning behind the Granite 4.1 LLMs. Indust">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-granite-41-llms-how-theyre-built-11093.html">
+    <meta property="og:title" content="Tech Report: Granite 4.1 LLMs: How They’re Built">
+    <meta property="og:description" content="An in-depth technical walkthrough of data engineering, pre-training, supervised fine-tuning, and reinforcement learning behind the Granite 4.1 LLMs. Indust">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ibm-granite/granite-4-1.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-granite-41-llms-how-theyre-built-11093.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Granite 4.1 LLMs: How They’re Built", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ibm-granite/granite-4-1.png"], "datePublished": "2026-04-29T15:01:48", "dateModified": "2026-11-16T21:07:46.456836", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-granite-41-llms-how-theyre-built-11093.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Granite 4.1 LLMs: How They’re Built</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 29 Apr 2026 &bull; ⏱️ 9 min read (1712 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>An in-depth technical walkthrough of data engineering, pre-training, supervised fine-tuning, and reinforcement learning behind the Granite 4.1 LLMs.</li><li style='margin-bottom:6px;'>Industry observers note that TL;DR — Granite 4.1 is a family of dense, decoder‑only LLMs (3B, 8B, and 30B) trained on ~15T tokens using a multi‑stage pre‑training pipeline, including long‑context extension of up to 512K tokens.</li><li style='margin-bottom:6px;'>In a recent development, building high‑quality small language models goes beyond simply scaling compute—it requires rigorous data curation throughout training.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11093"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11093"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11093"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Granite 4.1 LLMs: How They’re Built" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ibm-granite/granite-4-1.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11093">An in-depth technical walkthrough of data engineering, pre-training, supervised fine-tuning, and reinforcement learning behind the Granite 4.1 LLMs.</p>
+<p>Industry observers note that TL;DR — Granite 4.1 is a family of dense, decoder‑only LLMs (3B, 8B, and 30B) trained on ~15T tokens using a multi‑stage pre‑training pipeline, including long‑context extension of up to 512K tokens. The models are further refined with supervised fine‑tuning on ~4.1M high‑quality curated samples and reinforcement learning via on‑policy GRPO with DAPO loss (Yu et al., 2025). Notably, the 8B instruct model matches or surpasses the previous Granite 4.0‑H‑Small (32B‑A9B MoE) despite using a simpler dense architecture with fewer parameters. All Granite 4.1 models are released under the Apache 2.0 license.</p>
+<p>In a recent development, building high‑quality small language models goes beyond simply scaling compute—it requires rigorous data curation throughout training. For Granite 4.1, we prioritized data quality over quantity, progressively refining the data mixture across five pre‑training stages. We further curated supervised fine‑tuning data using an LLM‑as‑Judge framework and applied a multi‑stage reinforcement learning pipeline to systematically strengthen performance in math, coding, instruction following, and general chat.</p>
+<p>Industry observers note that granite 4.1 models use a decoder-only dense transformer architecture. The core design choices include Grouped Query Attention (GQA), Rotary Position Embeddings (RoPE), SwiGLU activations, RMSNorm, and shared input/output embeddings.</p>
+<p>All three model sizes share the same training pipeline and data strategy, differing only in architecture dimensions.</p>
+<p>Granite 4.1 is trained from scratch on approximately 15 trillion tokens using a five‑phase training strategy. Phases 1–2 focus on foundational pre‑training, phases 3–4 perform mid‑training with progressively higher‑quality data annealing, and phase 5 introduces long‑context training, extending the context window to 512K tokens. Each phase employs a distinct data mixture and learning‑rate schedule, gradually shifting from broad web‑scale data to more curated, domain‑specific content.</p>
+<p>Figure 2: The five-phase pre-training pipeline. Phases 1–2 are pre-training, Phases 3–4 are mid-training (high-quality data annealing), and Phase 5 is long context training (LCE).</p>
+<p>The first phase establishes broad language understanding using a general mixture of training data with a power learning rate schedule and warmup.</p>
+<p>Phase 2 sharply increases the proportion of code and mathematical data, pivoting toward stronger reasoning capabilities while still maintaining general language coverage.</p>
+<p>Phase 3 transitions into mid-training with a more balanced, high-quality mixture and an exponential decay learning rate schedule. This is where we start blending in chain-of-thought and synthetic instruction data.</p>
+<p>The fourth phase continues mid-training with a linear learning rate decay to zero, focusing the model on the highest-quality data available.</p>
+<p>Sources indicate that figure 3: How the data mix evolves across the pre-training phases. Notice the progressive shift from web-heavy (Phase 1) to quality-heavy with instruction and reasoning data (Phases 3–4).</p>
+<p>The fifth and final phase also part of of mid-training extends the context window from 4K to 512K through a staged long-context extension process:.</p>
+<p>The LCE phase uses an exponential learning rate schedule starting at 1e-4 and decaying to 0. To ensure the model natively handles long sequences without degrading short-context performance, we do a model merge after each LCE stage. RULER benchmark of base models:.</p>
+<p>According to recent reports, supervised fine‑tuning (SFT) is what turns the base model into a reliable instruction‑following assistant, making data quality critically important—since even a small number of incorrect or hallucinated samples can instill undesirable behaviors. To address this, we apply a rigorous LLM‑as‑Judge framework alongside rule‑based filtering to curate high-quality samples. Together, the pipeline automatically assess each sample against structural, semantic, and behavioral criteria, fixing complications when possible and filtering out samples that fail to meet our quality standards.</p>
+<p>Figure 4: The SFT data quality pipeline. Raw conversation data passes through an LLM-as-Judge with a multi-dimensional rubric, producing accept/borderline/reject verdicts. Hard-reject defects (hallucination, false premise, incorrect computation) trigger automatic rejection regardless of score.</p>
+<p>Industry observers note that our rigorous LLM‑as‑Judge framework evaluates only assistant responses, treating system prompts, user inputs, retrieved documents, and tool outputs strictly as contextual information. This ensures that the judge assesses what the model states, rather than what it was asked to do. In RAG settings, responses that are not grounded in the retrieved context are flagged as hallucinations, while tool‑use outputs are validated against the set of allowed tools and their parameter schemas.</p>
+<p>In a recent development, we employ specialized judge prompts tailored to different SFT data types, including multi‑turn dialogue, RAG‑augmented responses, tool‑calling interactions, and multilingual conversations. Each response is scored across six weighted dimensions—instruction following, correctness, completeness, conciseness, naturalness, and calibration (with optional critical‑thinking checks). Samples are accepted, flagged as borderline, or rejected based on deterministic score thresholds, with hard‑reject rules overriding scores for severe defects such as hallucinations, false premises, or incorrect computations.</p>
+<p>To complement semantic evaluation, we apply a deterministic rule‑based pipeline that enforces structural integrity through text normalization, truncation and length filtering, schema validation, and leakage detection. A final global deduplication step ensures dataset‑wide uniqueness. All filtering and correction actions are fully auditable.</p>
+<p>After passing through the LLM-as-Judge, rule-based filtering, and global deduplication pipeline, we fine-tune base models on these approximately 4.1 million high-quality samples. The following details apply to all three model variants:.</p>
+<p>After SFT, we apply a multi-stage reinforcement learning pipeline to further improve the model's capabilities across specific domains. Rather than a single RL pass, we run multiple targeted RL stages, each optimizing for different capabilities.</p>
+<p id="sec-mid-11093">Recent findings suggest that we use On-policy GRPO (Group Relative Policy Optimization) (Shao et al., 2024) with DAPO (Decoupled Clip and Dynamic sAmpling Policy Optimization) loss (Yu et al., 2025) which provides more stable training signals compared to standard GRPO. However, due to computationally intensive nature of dynamic sampling, we switch it off during our training runs.</p>
+<p>According to recent reports, figure 10 depicts our Reinforcement Learning pipeline for training Granite 4.1 models. Through extensive experimentation with a variety of reinforcement learning recipes, we found that this sequence of steps minimizes catastrophic forgetting while simultaneously maximizing performance across multiple domains.</p>
+<p>Figure 10: The Granite 4.1 reinforcement learning pipeline consisting of four sequential stages: Multi-domain RL, RLHF, Identity and Knowledge-calibration RL, and Math RL.</p>
+<p>According to recent reports, in this stage, the model is trained jointly on a unified mixture of data drawn from multiple domains. Every gradient enhancement therefore reflects the full diversity of tasks, which prevents catastrophic forgetting, boosts overall benchmark performance, and minimizes regressions on any individual task.</p>
+<p>The different domains covered in this stage include:.</p>
+<p>During this stage, we trained the models on 45,504 unique prompts (averaged across all Granite 4.1 models) and found that a learning rate of 5e‑7 with a KL‑loss coefficient ($\beta$) of 0.05 performed best for multi‑domain reinforcement learning.</p>
+<p>To further improve the model's helpfulness and chat ability, we train our model on generic-chat prompts using a multilingual scalar reward model. With this stage, we observed an average improvement of ~18.9 points (averaged across the three Granite 4.1 models) in Alpaca-Eval compared to the SFT checkpoints.</p>
+<p>To mitigate policy drift from its previously learned knowledge, we use a conservative learning rate of 3e-7 and higher KL-loss coeff $\beta$ of 0.09 in this stage. We use an average of 17,920 unique prompts in this RLHF stage.</p>
+<p>According to recent reports, in this stage, we train the model for a few steps (~40 training steps) on identity and knowledge calibration prompts. We observed that this small training stage significantly improves the model's self-identification capabilities.</p>
+<p>Similar to the RLHF stage, we used a learning rate of 3e-7 and KL-loss coeff $\beta$ of 0.09, and we use 1728 unique prompts in this stage.</p>
+<p>Recent findings suggest that during our RL training, we found that the RLHF stage causes a drop in math benchmark scores (e.g., in GSM8K, DeepMind-Math). The Math RL stage enables the model to recover from this drop and surpasses the original SFT performance on math benchmarks: ~3.8 points on average for GSM8K, and ~23.48 points on average for DeepMind-Math. We use an average of 13,504 unique prompts in this stage and similar to the multi-domain RL stage, we used a learning rate of 5e-7 and KL-loss coeff $\beta$ of 0.05.</p>
+<p>Supported languages: English, German, Spanish, French, Japanese, Portuguese, Arabic, Czech, Italian, Korean, Dutch, and Chinese.</p>
+<p>It has been revealed that granite 4.1 delivers competitive instruction‑following and tool‑calling capabilities without relying on long chains of thought. By avoiding extended reasoning traces, it provides predictable latency, stable token usage, and lower operational cost. This makes Granite 4.1 a production‑ready, open‑source choice for enterprise workloads where efficiency, reliability, and cost control are critical.</p>
+<p>A striking result: the Granite 4.1-8B dense model consistently matches or outperforms the previous-generation Granite 4.0-H-Small, a 32B-parameter Mixture-of-Experts model with 9B active parameters.</p>
+<p>Sources indicate that figure 13: Granite 4.1-8B (dark blue) vs. Granite 4.0-H-Small 32B-A9B (light blue) across benchmarks. The 8B dense model matches or exceeds the larger MoE model on IFEval, AlpacaEval, MMLU-Pro, BBH, GSM8K, DeepMind-Math, Evalplus, ArenaHard, BFCL V3 and MBPP(+).</p>
+<p>Figure 14: Comparison across the Granite 4.1 family — 30B, 8B, and 3B models. Scores scale predictably with model size, with the 30B model leading across all benchmarks.</p>
+<p>We also released fp8 quantized variants of the Granite 4.1 models, optimized for inference with vLLM. The precision is reduced from 16‑bit to 8‑bit, resulting in approximately a 50% reduction in both disk footprint and GPU memory usage. Quantization is applied only to the weights and activations of linear operators within the transformer blocks using LLM Compressor, while all other layers are preserved at their original precision.</p>
+<p>We trained the Granite 4.1 Language Models on an NVIDIA GB200 NVL72 cluster hosted on CoreWeave:.</p>
+<p>This infrastructure provides the scalable, high-bandwidth interconnect needed for efficient distributed training at the token volumes required (15T+ tokens across pre-training alone).</p>
+<p>Industry observers note that granite 4.1 models are available under the Apache 2.0 license. Here's how to get started with the 30B instruct model wiht tool calling example:.</p>
+<p id="sec-end-11093">Granite 4.1 marks a significant step forward for high‑quality, open‑source language models. By prioritizing data quality and rigor at every stage—from pre‑training curation to supervised fine‑tuning and multi‑stage reinforcement learning—we deliver a substantially improved post‑training pipeline. The result is stronger instruction following, tool use, and conversational performance, showing that carefully trained dense 8B models can rival much larger MoE architectures. We’re excited to see how the community adopts and builds on these models.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ibm-granite/granite-4-1" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="granite-42-llms-how-theyre-built-10820.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10820. Granite 4.2 LLMs: How They're Built
+        </a>
+        
+        <a href="tech-report-making-llms-lighter-with-autogptq-and-transformers-11991.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11991. Tech Report: Making LLMs lighter with AutoGPTQ and transformers
+        </a>
+        
+        <a href="tech-report-jupyter-agents-training-llms-to-reason-with-notebooks-11534.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11534. Tech Report: Jupyter Agents: training LLMs to reason with notebooks
+        </a>
+        
+        <a href="tech-report-granite-40-3b-vision-compact-multimodal-intelligence--11178.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11178. Tech Report: Granite 4.0 3B Vision: Compact Multimodal Intelligence for Enterprise Documents
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

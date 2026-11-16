@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: funkycache: a Python library to cache functions in SQLite</title>
+    <meta name="description" content="In a recent development, six months ago, I wrote an SQLite-backed cache to speed up the build system for this site. A static site generator is an ideal can">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-funkycache-a-python-library-to-cache-functions-in-s-10943.html">
+    <meta property="og:title" content="Industry News: funkycache: a Python library to cache functions in SQLite">
+    <meta property="og:description" content="In a recent development, six months ago, I wrote an SQLite-backed cache to speed up the build system for this site. A static site generator is an ideal can">
+    <meta property="og:image" content="https://alexwlchan.net/images/cards/2026/funkycache.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-funkycache-a-python-library-to-cache-functions-in-s-10943.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: funkycache: a Python library to cache functions in SQLite", "image": ["https://alexwlchan.net/images/cards/2026/funkycache.png"], "datePublished": "2026-11-16T13:15:54", "dateModified": "2026-11-16T21:07:36.401407", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-funkycache-a-python-library-to-cache-functions-in-s-10943.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: funkycache: a Python library to cache functions in SQLite</h1>
+        <div class="meta-line">🌐 Source: <strong>Alexwlchan</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 8 min read (1603 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, six months ago, I wrote an SQLite-backed cache to speed up the build system for this site.</li><li style='margin-bottom:6px;'>It has been revealed that that first cache was fairly basic.</li><li style='margin-bottom:6px;'>This highlighted the value of a cache, but it provided cache storage, not cache logic.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-10943"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-10943"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-10943"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: funkycache: a Python library to cache functions in SQLite" loading="lazy" src="https://alexwlchan.net/images/cards/2026/funkycache.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-10943">In a recent development, six months ago, I wrote an SQLite-backed cache to speed up the build system for this site. A static site generator is an ideal candidate for caching, because there are lots of steps that have deterministic behaviour and no side effects. On a site with hundreds of pages, even a few milliseconds per step adds up to a meaningful improvement.</p>
+<p>It has been revealed that that first cache was fairly basic. It supported getting and setting strings, with a namespace for different functions, and not much else:.</p>
+<p>This highlighted the value of a cache, but it provided cache storage, not cache logic. If I wanted to cache a function, I had to write per-function logic for saving values to the cache and retrieving them later. A lot of that code was tricky to test, and broken in subtle ways. I was so unsure of this code that I deleted the cache whenever I built the site for publication.</p>
+<p>It has been revealed that I wanted something better, so last week I wrote funkycache, a newly introduced library that encapsulates all of my caching logic, and is much easier to use and test. It can store arbitrary Python objects as both inputs and outputs, and the interface is much simpler for the caller.</p>
+<p>To cache a function, you create a FunkyCache instance and add a decorator to your function:.</p>
+<p>Industry observers note that this is modelled after functools.cache in the standard library. The output of the expensive function is written to an SQLite database, so it’s available after the Python process exits.</p>
+<p>The cache tries to be smart about invalidations. If the source file containing expensive_function changes, the cache for that function is invalidated and will be rebuilt on the next call.</p>
+<p>You can also specify a dependency on other files and static values, changes to which will also trigger a cache invalidation:.</p>
+<p>When writing funkycache, I wanted to spend a week thinking hard about caching logic, test it thoroughly, then not think about it again for months. You should be able to use funkycache without understanding how it works – but if you’d like to, that’s what I’ll explain in the rest of this post.</p>
+<p>If you’d like to try it yourself, funkycache is on PyPI, and the source code is on this website.</p>
+<p>According to recent reports, the cache is meant for functions which always produce the same output for a given input, so the inputs are the cache key. When we decorate a function, we can see the arguments passed on each call:.</p>
+<p>This doesn’t account for different styles of calling the same function – for example, positional versus keyword arguments, or omitting or overriding default arguments.</p>
+<p>To get a complete, consistent set of arguments, I use the inspect module:.</p>
+<p>This gives me a Python dictionary of the complete set of arguments to the function, which is the same regardless of the calling style.</p>
+<p>According to recent reports, python dictionaries aren’t hashable, so they can’t be used as the keys in dictionaries, nor can they be used as keys in SQLite databases. We need to serialise them as a string or byte sequence.</p>
+<p>I considered two options for this serialisation: pickle and JSON. In my limited testing, JSON was faster than pickle, so that’s what I chose. Using JSON also gave me more flexibility for speeding up the serialisation.</p>
+<p>My initial serialisation was a naive json.dumps call, with a couple of options to ensure consistent ordering and handle types that the standard library doesn’t know how to encode:.</p>
+<p>According to recent reports, when I started using funkycache, this encoding step quickly emerged as the slowest part, so I started “reducing” the arguments to make this step faster. This reduction included:.</p>
+<p>Recent findings suggest that these are all lossy transformations, but that’s fine for a cache key – we never need to retrieve the original value. It’s theoretically possible for different values to get a colliding hash key, but at my scale it’s unlikely. (A clean build of my site only uses 32,000 keys.).</p>
+<p>In a recent development, the functions in my static site generator are processing things like the content of articles, so individual function arguments might be kilobytes in size. You can use multi-kilobytes keys with SQLite, but you probably shouldn’t – you take a performance hit for larger keys.</p>
+<p>Industry observers note that I wrote a small benchmark to compare three approaches: storing the JSON-encoded arguments directly, hashing them with MD5, and hashing them with XXH64. The results are a wash for small key sizes, but for larger keys XXH64 is significantly faster, and MD5 is slower than storing the keys directly in SQLite:.</p>
+<p>Based on this benchmark, funkycache hashes the JSON cache key with XXH64 before inserting it into SQLite.</p>
+<p id="sec-mid-10943">Industry observers note that the xxHash class of hashing algorithms was a pleasant discovery for me during this project. They are explicitly designed to be fast, not cryptographically secure. Previously I’d used MD5 for this purpose, because it’s widely available and I conflated “weak” with “fast”. Actually running a benchmark revealed my mistake.</p>
+<p>Recent findings suggest that serialising cache keys can be a one-way operation, but cached values need to be retrievable. For this, I’m using the inspect module to get the return type from the cached function, then handing the serialisation to Pydantic.</p>
+<p>I use type hints and type annotations for all of my Python, so this information is guaranteed to be present. This wouldn’t work with untyped Python, but it’s good enough for me.</p>
+<p>The alternative is using pickle, which can store arbitrary Python objects. I wouldn’t have to worry about the security risks because I’d only ever be pickling and unpickling trusted data, but I continued with JSON because I’m already using it for cache keys, and it’s easier to debug.</p>
+<p>One of the functions I wanted to cache is a lazy generator, which was a little trickier.</p>
+<p>Using functools.cache will cache the generator object, so every call gets the same generator instance, and they all step together. This strikes me as potentially confusing:.</p>
+<p>Sources indicate that funkycache takes a different approach: it materialises the generator into a list, and stores that list. When it’s retrieved, the list is converted back into a generator by wrapping it with iter.</p>
+<p>It has been revealed that to protect against unbounded memory use from a large or infinite generator, there’s a soft memory budget. If the materialised list exceeds this budget, I stop gathering the output in the list and don’t save anything to the cache. The list and any subsequently generated items are passed directly from the original function to the caller.</p>
+<p>Some of the functions in my static site generator depend on the contents of template files. When those files change, I want to invalidate the cache and rebuild the pages that use those templates.</p>
+<p>When you register a function with funkycache, you can specify a list of files or folders that it depends on:.</p>
+<p>funkycache will read the contents of each of those files, and include them in the cache key. When a file changes, it re-evaluates the list of files and decides whether to keep or invalidate the cache.</p>
+<p>In a recent development, I decided not to put any file change tracking in funkycache itself. I already have code for that, and I wanted to keep this project small and focused.</p>
+<p>A function’s cache can also be based on static values. I use this to include the version of key libraries, so the cache gets invalidated when I update the library. Here’s a short example:.</p>
+<p>This project started because I was thinking about reactive programming.</p>
+<p>Reactive programming is a bit like using a spreadsheet. You have input cells where you enter data, and other cells that read that data and automatically enhancement when the inputs change. Those cells can be inputs to other cells, and so on.</p>
+<p>In a recent development, imagine building a static site: your Markdown files act as input cells, and your rendered HTML pages are the dependent cells. Your tasks form a directed acyclic graph (DAG), and updates propagate through the graph.</p>
+<p>For example, in the diagram above, when article1.md changes, the system knows it needs to rebuild article1.html and ripples that update to list_of_articles.html. But because there’s been no change in their inputs, the tasks to render articles 2 and 3 don’t run at all.</p>
+<p>When done correctly, this can be a very efficient style of programming, because steps only ever run if there’s been a change in their inputs.</p>
+<p>Sources indicate that there are tools that will do this for you, like Apache Airflow, but I wanted to build my own. My website is a sandbox where I like building things myself as a learning exercise, rather than using somebody else’s library.</p>
+<p>I spent several weeks trying to design an API, but I couldn’t come up with something satisfactory. However, I experimented with a decorator-based API, and that led me to build funkycache, which delivers a lot of the benefits with less fo the complexity.</p>
+<p>Recent findings suggest that building my website with a warm cache now takes about half a second, and a significant chunk of that time is spent traversing the file system for Markdown files. I have ideas for speeding up that step as well, but that’s a task for another day.</p>
+<p id="sec-end-10943">Sources indicate that funkycache is only a few hundred lines of code, including tests. If this problem sounds interesting, I encourage you to read it, even if it’s not a library you expect to use.</p>
+<p style="margin-top: 25px;">
+<a href="https://alexwlchan.net/2026/funkycache/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="fastrtc-the-real-time-communication-library-for-python-11683.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11683. FastRTC: The Real-Time Communication Library for Python
+        </a>
+        
+        <a href="industry-news-beyond-book-displays-how-to-build-lasting-support-f-7809.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #7809. Industry News: Beyond book displays: How to build lasting support for your school library
+        </a>
+        
+        <a href="industry-news-block-sparse-matrices-for-smaller-and-faster-langua-12261.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12261. Industry News: Block Sparse Matrices for Smaller and Faster Language Models
+        </a>
+        
+        <a href="industry-news-sentence-transformers-in-the-hugging-face-hub-12240.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12240. Industry News: Sentence Transformers in the Hugging Face Hub
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

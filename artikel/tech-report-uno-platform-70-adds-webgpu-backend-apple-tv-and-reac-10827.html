@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Uno Platform 7.0 Adds WebGPU Backend, Apple TV and Reactor Support, and Retires Native Rendering</title>
+    <meta name="description" content="InfoQ Homepage News Uno Platform 7.0 Adds WebGPU Backend, Apple TV and Reactor Support, and Retires Native Rendering. Nov 16, 2026 3 min read. According to">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-uno-platform-70-adds-webgpu-backend-apple-tv-and-reac-10827.html">
+    <meta property="og:title" content="Tech Report: Uno Platform 7.0 Adds WebGPU Backend, Apple TV and Reactor Support, and Retires Native Rendering">
+    <meta property="og:description" content="InfoQ Homepage News Uno Platform 7.0 Adds WebGPU Backend, Apple TV and Reactor Support, and Retires Native Rendering. Nov 16, 2026 3 min read. According to">
+    <meta property="og:image" content="https://res.infoq.com/news/2026/11/Uno-Platform-6-7-targets/en/headerimage/header-1794254225395.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-uno-platform-70-adds-webgpu-backend-apple-tv-and-reac-10827.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Uno Platform 7.0 Adds WebGPU Backend, Apple TV and Reactor Support, and Retires Native Rendering", "image": ["https://res.infoq.com/news/2026/11/Uno-Platform-6-7-targets/en/headerimage/header-1794254225395.jpg"], "datePublished": "2026-11-16T09:00:00", "dateModified": "2026-11-16T21:07:28.969605", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-uno-platform-70-adds-webgpu-backend-apple-tv-and-reac-10827.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Gadgets</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Uno Platform 7.0 Adds WebGPU Backend, Apple TV and Reactor Support, and Retires Native Rendering</h1>
+        <div class="meta-line">🌐 Source: <strong>Infoq</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 3 min read (652 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>InfoQ Homepage
+News
+Uno Platform 7.0 Adds WebGPU Backend, Apple TV and Reactor Support, and Retires Native Rendering.</li><li style='margin-bottom:6px;'>Nov 16, 2026
+								
+								
+								
+									
+									3
+									min read.</li><li style='margin-bottom:6px;'>According to recent reports, the Uno Platform team released Uno Platform 7.0, which unifies rendering on SkiaSharp 4 with an experimental WebGPU backend, adds Apple TV as a target platform and supports .NET 11 from day zero.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-10827"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-10827"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-10827"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Uno Platform 7.0 Adds WebGPU Backend, Apple TV and Reactor Support, and Retires Native Rendering" loading="lazy" src="https://res.infoq.com/news/2026/11/Uno-Platform-6-7-targets/en/headerimage/header-1794254225395.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-10827">InfoQ Homepage
+News
+Uno Platform 7.0 Adds WebGPU Backend, Apple TV and Reactor Support, and Retires Native Rendering.</p>
+<p>Nov 16, 2026
+								
+								
+								
+									
+									3
+									min read.</p>
+<p>According to recent reports, the Uno Platform team released Uno Platform 7.0, which unifies rendering on SkiaSharp 4 with an experimental WebGPU backend, adds Apple TV as a target platform and supports .NET 11 from day zero. The release also brings third-party .NET MAUI controls and Microsoft.UI.Reactor library to every target, and removes native rendering and Mac Catalyst.</p>
+<p>Recent findings suggest that uno Platform is an open-source framework for building .NET applications with C# and WinUI XAML for Windows, Android, iOS, macOS, Linux and WebAssembly. The team describes 7.0 as its largest release, with 5,219 commits and 704 closed concerns since 6.7. According to the team’s benchmarks, 7.0 is about 2x faster at the median and 5x smaller than 6.7, with some operations, such as brush creation, up to 38x faster. These figures come from the vendor and the workloads were not published in detail.</p>
+<p>All targets now render through one pluggable pipeline. SkiaSharp 4 is the default, and Uno Platform is a co-maintainer of the library alongside the .NET team at Microsoft. On Android, Windows and Linux, Skia now renders through Vulkan by default. The WebGPU backend, available on all desktop, mobile and WebAssembly targets, is enabled by adding WebGpu to UnoFeatures and registering the backend on the host builder. It uses wgpu-native outside the browser and the browser’s own WebGPU support on WebAssembly. The team measured up to a 50% frame-rate improvement depending on the scene, and indicates a WebGPU-only app drops about 6 MB of uncompressed native code from WebAssembly builds. A newly introduced WebGpuCanvasElement lets applications glitch their own WebGPU commands inside the UI.</p>
+<p>Industry observers note that through .NET MAUI Embedding, controls from vendors such as Syncfusion, Telerik, Infragistics, DevExpress and Esri previously ran only on iOS, Android, macOS and Windows. They now work on every Uno Platform target, including the web and Linux. In the other direction, existing .NET MAUI apps can reach the browser and Linux through Uno Platform’s .NET MAUI handlers.</p>
+<p id="sec-mid-10827">According to recent reports, microsoft.UI.Reactor, Microsoft’s declarative C# framework for WinUI with hooks such as UseState and no XAML, now runs on desktop, browser, Android and iOS. It is enabled with the Reactor UnoFeature, is in preview, and can coexist with existing XAML pages in the same visual tree. Apple TV support is added through the net10.0-tvos target framework, targets tvOS 15 and later, renders through Metal and uses the Siri Remote for focus navigation. .NET 11 is supported on every head, for example through dotnet newly introduced unoapp -tfm net11.0, while .NET 10 remains the long-term support option.</p>
+<p>RichTextBlock and RichEditBox are now available on every platform, closing an concern opened in 2018. WinUI alignment continues with ItemsRepeater and ItemsView ported from current WinUI sources, LinedFlowLayout, the TitleBar control, multiple windows on iPad and Lottie rendering through Composition. Smaller additions include built-in input validation through INotifyDataErrorInfo, TalkBack, VoiceOver and AT-SPI screen-reader support, and the uno-devserver app command for launching and inspecting running apps from scripts and CI.</p>
+<p>Industry observers note that most apps upgrade by changing the Uno.Sdk version in global.json, following the migration guide. The team released Uno Platform Studio 3.3 alongside it.</p>
+<p>In a recent development, the release follows Uno Platform 6.7 in September, which added Android TV, Android Auto and Wear OS targets, semantic styles shared by the Material and Simple themes, and damage-region repainting on Skia renderers. It also removed the WPF targets.</p>
+<p>It has been revealed that december 15–16, 2026. Examine how senior practitioners run agents, evals, model serving, and AI-assisted engineering in production, including what failed and what changed. Register Now.</p>
+<p id="sec-end-10827">Industry observers note that A round-up of last week’s content on InfoQ sent out every Tuesday. Join a community of over 250,000 senior developers. View an example.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.infoq.com/news/2026/11/Uno-Platform-6-7-targets/?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=global" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="transformersjs-v3-webgpu-support-new-models-tasks-and-more-11764.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11764. Transformers.js v3: WebGPU Support, New Models & Tasks, and More…
+        </a>
+        
+        <a href="native-speed-vllm-transformers-modeling-backend-10944.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10944. Native-speed vLLM transformers modeling backend
+        </a>
+        
+        <a href="tech-report-how-to-use-apples-fm-cli-to-run-on-device-llms-from-p-10761.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10761. Tech Report: How to Use Apple's fm CLI to Run On-Device LLMs From Python
+        </a>
+        
+        <a href="industry-news-bitovi-backend-platform-developer-consultant-tempor-8425.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #8425. Industry News: Bitovi: Backend / Platform Developer Consultant (Temporal & Kubernetes)
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

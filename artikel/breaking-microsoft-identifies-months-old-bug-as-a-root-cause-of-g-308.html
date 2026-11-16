@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Microsoft identifies months-old bug as a root cause of global outage</title>
+    <meta name="description" content="Report identifies three factors that led to blackout: a bug, malfunctioning internal connections and server capacity. Microsoft has identified the root cau">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-microsoft-identifies-months-old-bug-as-a-root-cause-of-g-308.html">
+    <meta property="og:title" content="Breaking: Microsoft identifies months-old bug as a root cause of global outage">
+    <meta property="og:description" content="Report identifies three factors that led to blackout: a bug, malfunctioning internal connections and server capacity. Microsoft has identified the root cau">
+    <meta property="og:image" content="https://i.guim.co.uk/img/media/a40cf590042829e0e6891a61505aced8281edac7/333_0_3333_2668/master/3333.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=618c546c41ffc648bf7ef196f3a498d7">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-microsoft-identifies-months-old-bug-as-a-root-cause-of-g-308.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Microsoft identifies months-old bug as a root cause of global outage", "image": ["https://i.guim.co.uk/img/media/a40cf590042829e0e6891a61505aced8281edac7/333_0_3333_2668/master/3333.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=618c546c41ffc648bf7ef196f3a498d7"], "datePublished": "2026-11-16T20:54:40.000Z", "dateModified": "2026-11-16T20:56:37.333664", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-microsoft-identifies-months-old-bug-as-a-root-cause-of-g-308.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Microsoft identifies months-old bug as a root cause of global outage</h1>
+        <div class="meta-line">🌐 Source: <strong>Theguardian</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 3 min read (546 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Report identifies three factors that led to blackout: a bug, malfunctioning internal connections and server capacity.</li><li style='margin-bottom:6px;'>Microsoft has identified the root causes of the global outage that crippled Outlook, Exchange and a host of other vital office software last week.</li><li style='margin-bottom:6px;'>Industry observers note that the office software giant issued an initial report on Monday that identified three factors that led to the 24-hour blackout of its services: a months-old bug, malfunctioning internal connections , and server capacity.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-308"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-308"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-308"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Microsoft identifies months-old bug as a root cause of global outage" loading="lazy" src="https://i.guim.co.uk/img/media/a40cf590042829e0e6891a61505aced8281edac7/333_0_3333_2668/master/3333.jpg?width=1200&amp;height=630&amp;quality=85&amp;auto=format&amp;fit=crop&amp;precrop=40:21,offset-x50,offset-y0&amp;overlay-align=bottom%2Cleft&amp;overlay-width=100p&amp;overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&amp;enable=upscale&amp;s=618c546c41ffc648bf7ef196f3a498d7" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-308">Report identifies three factors that led to blackout: a bug, malfunctioning internal connections and server capacity.</p>
+<p>Microsoft has identified the root causes of the global outage that crippled Outlook, Exchange and a host of other vital office software last week.</p>
+<p>Industry observers note that the office software giant issued an initial report on Monday that identified three factors that led to the 24-hour blackout of its services: a months-old bug, malfunctioning internal connections , and server capacity. Each of these factors may have easily been resolved on their own, but, when taken together, they led to a major outage that was harder to mitigate, Microsoft executives mentioned.</p>
+<p>According to recent reports, the disruption began Thursday with US users reporting interrupted access to their Outlook email accounts. As it continued into the next day, millions of people worldwide said they could not access their email in any capacity as well as other Office 365 services. Jails could not release prisoners, hospitals turned to paper records, schools lost contact with parents, and police departments could not receive crime reports. Microsoft said it had resolved the issue and restored service by Saturday, also issuing an apology. The firm did not attribute the blackout to a cybersecurity breach.</p>
+<p>In a post on X on Monday, Charles Lamanna, the executive vice-president of Copilot, Agents, and Platform at Microsoft, said there was a latent bug or defect from July that caused Microsoft’s servers to “become overwhelmed and unresponsive”.</p>
+<p>Lamanna wrote that the company typically has two available networking gateways, or entry and exit points that connect separate systems and allow data to pass between them. However, one of them was not working for Microsoft Teams which overwhelmed the primary gateway. Subsequently, over 14% of the company’s server capacity was also not working due to an unrelated problem from the previous day.</p>
+<p id="sec-mid-308">“Taken together, the increased load and the reduced server capacity, caused the network gateway to encounter the latent bug from July,” Lamanna wrote. “This caused requests to build up until servers ultimately stopped responding. This occurred during the peak window of traffic in the United States.”.</p>
+<p>The company also had trouble mitigating the bug because it originated months before, Lamanna said, so it would not be easy as rolling back a recent change to undo the defect.</p>
+<p>“Recovery took longer than usual because as servers returned to service, they were immediately overwhelmed by waiting traffic and became unresponsive again,” he wrote. “Our normally automated recovery processes were not designed to restore service from this broad unresponsive state. Additionally, since the main code defect was a latent bug from several months previous, our normal rollback, flighting, and feature flags were unable to promptly revert the change.”.</p>
+<p>The firm prepares to publish a final report which will include more information, he remarked.</p>
+<p>Analysts say Microsoft’s global outage highlights the need for companies to examine how much they rely on a single operating system.</p>
+<p id="sec-end-308">Recent findings suggest that “This is a prime example of the importance of not only cyber resilience, but business resilience,” said Matt Hull, vice-president of cyber intelligence and response at NCC Group. “Reports that hospitals, schools and other essential services are affected demonstrate the wide impact that a system outage can have, regardless of the cause.”.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.theguardian.com/technology/2026/nov/16/microsoft-global-outage-cause" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-microsoft-says-months-old-bug-caused-global-microsoft-36-10614.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10614. Breaking: Microsoft says months-old bug caused global Microsoft 365 outage
+        </a>
+        
+        <a href="latest-update-what-went-wrong-with-outlook-microsoft-blames-thund-6034.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #6034. Latest Update: What went wrong with Outlook: Microsoft blames ‘thundering herds’ and a bug unnoticed for months
+        </a>
+        
+        <a href="microsoft-confirms-global-outage-resolved-rules-out-cyberattack-5761.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #5761. Microsoft confirms global outage resolved, rules out cyberattack
+        </a>
+        
+        <a href="tech-report-microsoft-deeply-apologizes-for-global-service-outage-4633.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #4633. Tech Report: Microsoft ‘deeply’ apologizes for global service outage, claims no AI or hackers are to blame
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecom-RLVE: Adaptive Verifiable Environments for E-Commerce Conversational Agents</title>
+    <meta name="description" content="Industry observers note that TL;DR — We extend the RLVE framework from single-turn reasoning puzzles to multi-turn, tool-augmented e-commerce conversations">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/ecom-rlve-adaptive-verifiable-environments-for-e-commerce-convers-11128.html">
+    <meta property="og:title" content="Ecom-RLVE: Adaptive Verifiable Environments for E-Commerce Conversational Agents">
+    <meta property="og:description" content="Industry observers note that TL;DR — We extend the RLVE framework from single-turn reasoning puzzles to multi-turn, tool-augmented e-commerce conversations">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/ecom-rlve/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/ecom-rlve-adaptive-verifiable-environments-for-e-commerce-convers-11128.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Ecom-RLVE: Adaptive Verifiable Environments for E-Commerce Conversational Agents", "image": ["https://huggingface.co/blog/assets/ecom-rlve/thumbnail.png"], "datePublished": "2026-04-16T00:00:00", "dateModified": "2026-11-16T21:07:48.365272", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/ecom-rlve-adaptive-verifiable-environments-for-e-commerce-convers-11128.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Ecom-RLVE: Adaptive Verifiable Environments for E-Commerce Conversational Agents</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 16 Apr 2026 &bull; ⏱️ 7 min read (1364 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that TL;DR — We extend the RLVE framework from single-turn reasoning puzzles to multi-turn, tool-augmented e-commerce conversations.</li><li style='margin-bottom:6px;'>This project originated in the Pytorch OpenEnv Hackathon and is still evolving, follow us for updates 🔥.</li><li style='margin-bottom:6px;'>Large language models can hold fluent conversations, yet deploying them as shopping assistants reveals a persistent gap: fluency ≠ task completion.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11128"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11128"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11128"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Ecom-RLVE: Adaptive Verifiable Environments for E-Commerce Conversational Agents" loading="lazy" src="https://huggingface.co/blog/assets/ecom-rlve/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11128">Industry observers note that TL;DR — We extend the RLVE framework from single-turn reasoning puzzles to multi-turn, tool-augmented e-commerce conversations. EcomRLVE-GYM provides 8 verifiable environments — product discovery, substitution, cart building, returns, order tracking, policy QA, bundle planning, and multi-intent journeys — each with procedural problem generation, a 12-axis difficulty curriculum, and algorithmically verifiable rewards. We train a Qwen 3 8B model with DAPO over 300 steps and present early results demonstrating that environment scaling and adaptive difficulty transfer to agentic, real-world task completion.</p>
+<p>This project originated in the Pytorch OpenEnv Hackathon and is still evolving, follow us for updates 🔥.</p>
+<p>Large language models can hold fluent conversations, yet deploying them as shopping assistants reveals a persistent gap: fluency ≠ task completion. A customer who asks "find me a USB-C charger under $25 that ships in two days" needs an agent that invokes the right catalog search, filters on three hard constraints, avoids hallucinating product IDs it never retrieved, and handles follow-ups when the top result goes out of stock.</p>
+<p>Supervised fine-tuning can teach surface-level tool use from demonstrations, but it cannot scale to the combinatorial space of constraint configurations, partial-information dialogues, and multi-step transactional workflows that real e-commerce demands.</p>
+<p>According to recent reports, reinforcement learning with verifiable rewards (RLVR) offers an alternative: the agent optimises for outcomes — did the products satisfy the constraints? Was the cart correct? Was the return initiated for the right order line? The challenge is constructing reward functions that are both verifiable (no LLM-as-a-judge subjectivity) and adaptive (difficulty that grows with the policy's capability).</p>
+<p>RLVE-Gym provides 400 environments for sorting, multiplication, Sudoku, and other algorithmic-reasoning tasks; however, those are all single-turn, text-in / text-out puzzles — extending to agentic domains was left as future work.</p>
+<p>EcomRLVE-GYM fills that gap: we stay in the verifiable regime (e-commerce outcomes can be checked algorithmically) while extending to multi-turn, tool-augmented, agentic conversations — environments where the agent must act (call tools, modify world state) rather than merely reason (produce a text answer) and compensates for the deficiency of the search system.</p>
+<p>EcomRLVE-GYM transforms customer-service outcomes structurally verifiable:.</p>
+<p>According to recent reports, every signal above can be evaluated by a program with access to the hidden ground-truth goal. No human annotation or LLM-as-a-judge is needed.</p>
+<p>According to recent reports, before we explain the framework, here is what a single EcomRLVE episode looks like at difficulty d = 4. The environment generates a hidden goal, a simulated user opens the chat, and the agent must use tools to satisfy the request. Every action is verified algorithmically — no LLM judge required.</p>
+<p>In a recent development, the reward is fully computed by code: F1 over (product, variant, qty) tuples, an efficiency bonus for finishing in fewer turns, and a hallucination check that every recommended product ID was actually retrieved. If the agent had picked the Lightning variant instead of USB-C, the simulated user would have corrected it mid-dialogue — and the F1 would have dropped.</p>
+<p>Each environment covers a distinct real-world shopping scenario. The agent must complete the task using tools (catalog search, cart operations, order lookups, policy queries) and is scored by a program — not a human or another LLM.</p>
+<p>Every environment uses the same three-part reward signal:.</p>
+<p>Invalid outputs (malformed JSON, illegal tool calls) trigger an immediate failure score, creating a strong incentive for well-formed responses from step one.</p>
+<p>Industry observers note that A single difficulty number d controls 12 independent aspects of a task simultaneously. This is key because e-commerce conversations are hard in many different ways at once — not just along one dimension.</p>
+<p>Here are four representative difficulty axes:.</p>
+<p>The other eight axes cover turn budget, input noise (typos, slang), context switches, retrieval depth, order-history size, policy complexity, and tool budget. The full breakdown is in the technical report.</p>
+<p>Adaptive scheduling. Each environment tracks the agent's success rate independently and only advances to harder problems once the agent is passing the current level reliably. This keeps every environment training at the agent's capability frontier — avoiding both "too easy to learn from" and "too hard to make progress on".</p>
+<p>Cart building is a good showcase because it requires the full search → inspect → clarify → act loop, has a binary ground truth, and introduces a challenge absent from most recommendation benchmarks: variant selection.</p>
+<p>To succeed, the agent must develop five distinct skills:.</p>
+<p>The agent uses six tools to accomplish this:.</p>
+<p>The generator samples 1–5 target products (scaling in difficulty with d), each potentially requiring a specific variant (USB-C vs Lightning, Matte vs Glossy) and a quantity &gt; 1. The agent must:.</p>
+<p id="sec-mid-11128">In a recent development, real product catalogs have sparse variant data — many products have none, and those that do typically vary only by colour or size. To create a richer discrimination task, we synthesize variants at episode initialization:.</p>
+<p>At d = 0 the agent adds a single product with no variant complexity — learning the basic catalog.search → cart.add workflow. At d = 6 it juggles 3 items, nearly all requiring a specific variant, with half needing qty &gt; 1.</p>
+<p>The cart must be exactly right — correct product, correct variant, correct quantity. Partial credit is given for partially correct carts, but a perfect score requires every item to match. If the agent adds the wrong variant, the simulated user corrects it mid-dialogue ("that's the Lightning version, but I need USB-C"), giving the agent a chance to self-correct before the episode ends.</p>
+<p>Two real E_CART episodes from a Qwen 3 8B agent. Same environment, same agent — difficulty alone changes the game.</p>
+<p>At d=1 the agent solves the task in 3 clean turns. At d=8 it spirals — picking Bamboo instead of Charcoal, XL instead of XS, never fixing the air fryer despite two user corrections, then hallucinating that the variant doesn't exist. This is exactly the kind of multi-step error cascade that the difficulty curriculum surfaces, and that adaptive training should teach the agent to recover from.</p>
+<p>A verifiable environment needs a user simulator that behaves realistically. We use Qwen3.5 (9.7B) to generate natural, varied user messages rather than canned templates — covering everything from typo-filled requests to mid-conversation topic switches.</p>
+<p>Two design choices matter for training quality:.</p>
+<p>Industry observers note that preferences match stated constraints. Each simulated user has a hidden set of preferences (price sensitivity, brand loyalty, shipping speed, etc.). These are deliberately biased toward whatever constraints the user communicated — so if the user mentioned "under $25", the reward function actually cares about price. Without this, an agent could be penalised for correctly following the user's instructions.</p>
+<p>Recent findings suggest that strategic omission. The LLM deliberately withholds some constraints from the opening message to force the agent to ask clarifying questions. The system tracks exactly what was and wasn't mentioned, so the agent is never penalised for information it was never given.</p>
+<p>Following RLVE's methodology, we define nested environment collections:.</p>
+<p>We hypothesise — consistent with RLVE's findings — that C8 agents outperform single-environment specialists, even on the specialist's own task.</p>
+<p>We trained Qwen 3 8B with DAPO on C1 (Cart Building) for 300 steps as an initial viability study.</p>
+<p>We saw progressive growth in difficulty reached, confirming that adaptive scheduling produces a steady learning signal rather than the saturation (static-low) or starvation (static-high) patterns predicted by the RLVE paper.</p>
+<p>It has been revealed that run a live episode directly in your browser using the embedded demo below. Here is how to get started:.</p>
+<p>The environments, verifiers, and training configs are all open-source:.</p>
+<p>The 2M-product catalog is on the Hub:.</p>
+<p>Zeng, Z., Ivison, H., Wang, Y., et al. (2025). RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive Verifiable Environments. ICML 2025. arXiv:2511.07317.</p>
+<p>It has been revealed that yu, Q., Zhang, Z., Zhu, R., et al. (2025). DAPO: An Open-Source LLM Reinforcement Learning System at Scale. arXiv:2503.14476.</p>
+<p>Shao, Z., Wang, P., Zhu, Q., et al. (2024). DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models. arXiv:2402.03300.</p>
+<p>DeepSeek-AI. (2025). DeepSeek-R1: Incentivizing Reasoning in LLMs through Reinforcement Learning. Nature.</p>
+<p>Meta AI. (2024). Llama 3.1: A Foundation Model for General Intelligence. llama.meta.com.</p>
+<p id="sec-end-11128">Qwen Team. (2025). Qwen3 Technical Report. arXiv:2505.09388.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ecom-rlve" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="openenv-in-practice-evaluating-tool-using-agents-in-real-world-en-11274.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11274. OpenEnv in Practice: Evaluating Tool-Using Agents in Real-World Environments
+        </a>
+        
+        <a href="building-conversational-commerce-with-multi-agent-swarms-on-gcp-a-11146.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11146. Building Conversational Commerce with Multi-Agent Swarms on GCP: A Working Prototype
+        </a>
+        
+        <a href="breaking-introducing-snowball-fight-our-first-ml-agents-environme-12221.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12221. Breaking: Introducing Snowball Fight ☃️, our first ML-Agents environment
+        </a>
+        
+        <a href="breaking-introducing-ai-vs-ai-a-deep-reinforcement-learning-multi-12085.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12085. Breaking: Introducing ⚔️ AI vs. AI ⚔️ a deep reinforcement learning multi-agents competition system
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

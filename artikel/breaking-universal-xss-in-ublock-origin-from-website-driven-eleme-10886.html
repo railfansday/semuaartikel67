@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Universal XSS in uBlock Origin from website-driven element picker</title>
+    <meta name="description" content="It has been revealed that earlier this month I found a one-click universal XSS matter with uBlock Origin (the MV2 Firefox version, although a similar but l">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-universal-xss-in-ublock-origin-from-website-driven-eleme-10886.html">
+    <meta property="og:title" content="Breaking: Universal XSS in uBlock Origin from website-driven element picker">
+    <meta property="og:description" content="It has been revealed that earlier this month I found a one-click universal XSS matter with uBlock Origin (the MV2 Firefox version, although a similar but l">
+    <meta property="og:image" content="https://iter.ca//ubo-epicker.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-universal-xss-in-ublock-origin-from-website-driven-eleme-10886.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Universal XSS in uBlock Origin from website-driven element picker", "image": ["https://iter.ca//ubo-epicker.png"], "datePublished": "2026-11-16T05:12:27", "dateModified": "2026-11-16T21:07:32.645456", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-universal-xss-in-ublock-origin-from-website-driven-eleme-10886.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Universal XSS in uBlock Origin from website-driven element picker</h1>
+        <div class="meta-line">🌐 Source: <strong>Iter</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 4 min read (762 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that earlier this month I found a one-click universal XSS matter with uBlock Origin (the MV2 Firefox version, although a similar but less problematic issue also affected the MV3 version, uBO Lite), where a malicious website could trick the extension into adding arbitrary trusted filters.</li><li style='margin-bottom:6px;'>GPT-5.6 Sol did most of the hard work of finding the issue.</li><li style='margin-bottom:6px;'>uBlock Origin has an element picker that you can pull up by right-clicking on the page.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-10886"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-10886"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-10886"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Universal XSS in uBlock Origin from website-driven element picker" loading="lazy" src="https://iter.ca//ubo-epicker.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-10886">It has been revealed that earlier this month I found a one-click universal XSS matter with uBlock Origin (the MV2 Firefox version, although a similar but less problematic issue also affected the MV3 version, uBO Lite), where a malicious website could trick the extension into adding arbitrary trusted filters. Trusted filters can inject JavaScript code into pages, and so the malicious website could create a trusted filter on another website and run arbitrary JS in the context of any site. This issue is fixed now; you can read the GitHub advisory for some more details.</p>
+<p>GPT-5.6 Sol did most of the hard work of finding the issue. I figured there might be some kind of UXSS from filter injection, so I asked it to take a look, and it found the issue. I then checked and verified the issue it proposed. I wrote all of the prose in this post myself; Claude wrote most of the code for the PoC.</p>
+<p>uBlock Origin has an element picker that you can pull up by right-clicking on the page. You can use this to create a filter rule to block an element on the page without leaving the page.</p>
+<p>According to recent reports, the element picker is implemented by injecting an iframe to a URL like moz-extension://76b2331a-894c-4d25-8b89-fcce37e79cc4/web_accessible_resources/epicker-ui.html. That page can talk to the extension background script and tell it to add filters.</p>
+<p>On Firefox, the only information we needed to figure out was the extension internal UUID which is random per-installation.</p>
+<p>On the default setup uBO has a lootdest.*##+js(no-fetch-if, adsbygoogle, war:googlesyndication_adsbygoogle.js) filter rule (from uAssets), which hooks fetch. From inside the fetch hook, it makes an XHR request to moz-extension:///web_accessible_resources/googlesyndication_adsbygoogle.js and returns the response from that as the fetch body, instead of actually making the request. The filter rule is intended to replace a network request for JS from an ad server with a dummy script that has the correct API but doesn’t do anything.</p>
+<p>But the attacker website can itself hook the XHR made from inside the no-fetch-if hook to extract the random extension UUID.</p>
+<p>Then the attacker website can run fetch('/adsbygoogle.js').catch(() =&gt; {}); to trigger the filter, and make their hooked XHR run. Note that there are several ways that the extension internal UUID could be leaked; it’s not just this one filter rule.</p>
+<p id="sec-mid-10886">Then you can use that to iframe the element picker. Given an iframe element in the page, you just set its src to `moz-extension://${origin}/web_accessible_resources/epicker-ui.html`.</p>
+<p>Now we can drive the element picker. We can create a MessageChannel and do iframe.contentWindow.postMessage({ what: 'epickerStart' }, '*', [ch.port2]); to send it to the picker iframe. Then we talk to it: it sends us a start message, we send it a showDialog message with a filter and a resultsetDetails message1 to enable the create button and set opt.</p>
+<p>Normally the picker restricts what filters you can enter, and doesn’t let you add scriptlet filters. But there’s a trick we can do to add arbitrary filters. There’s an opt field we set in the second message which is normally the type of network request to match (like image), and gets appended to the filter with a $ if set, like $image. But since we control it, we can put a newline in it and make it "image\ngoogle.com##+js(trusted-rpnt, script, ...)" to inject an arbitrary trusted filter that injects a script.2.</p>
+<p>This is where the main problem is - the element picker shouldn’t accept messages from the attacker. One of the fixes was having a secret password that the real element picker gets from the content script, that the element picker sends in the initial postMessage.</p>
+<p>I didn’t bother actually implementing this, but malicious websites could overlay stuff on top of the embedded element picker or make it invisible by setting the iframe opacity to 0. So as long as the website can get the user to click on the page, it can add arbitrary trusted filters for arbitrary domains.</p>
+<p>Filters added by the element picker are always treated as trusted (at least until a recompile), which is why it can add a trusted filter. If the user later changes their custom filters it would cause a recompile, clearing the filter trust. But in practice the attacker could just immediately open the victim webpage, so this doesn’t help much.</p>
+<p>According to recent reports, originally I sent that message in reply to a dialogSetFilter message from the picker, but it turns out you can just send it right away instead of waiting to reply. ↩︎.</p>
+<p id="sec-end-10886">Assuming the shown filter is a network filter. ↩︎.</p>
+<p style="margin-top: 25px;">
+<a href="https://iter.ca/post/ubo-uxss/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="universal-image-segmentation-with-mask2former-and-oneformer-12094.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12094. Universal Image Segmentation with Mask2Former and OneFormer
+        </a>
+        
+        <a href="industry-news-universal-assisted-generation-faster-decoding-with--11756.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11756. Industry News: Universal Assisted Generation: Faster Decoding with Any Assistant Model
+        </a>
+        
+        <a href="the-hidden-problems-behind-website-to-crm-integrations-and-how-to-11749.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11749. The Hidden Problems Behind Website-to-CRM Integrations (and How to Prevent Them)
+        </a>
+        
+        <a href="falcon-edge-a-series-of-powerful-universal-fine-tunable-158bit-la-11630.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11630. Falcon-Edge: A series of powerful, universal, fine-tunable 1.58bit language models.
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

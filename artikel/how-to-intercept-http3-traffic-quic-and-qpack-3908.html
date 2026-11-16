@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Intercept HTTP/3 Traffic: QUIC and Qpack</title>
+    <meta name="description" content="It has been revealed that short answer: HTTP/3 does not go through an HTTP proxy, because it runs over QUIC, and QUIC runs over UDP. Most HTTP proxies, suc">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-to-intercept-http3-traffic-quic-and-qpack-3908.html">
+    <meta property="og:title" content="How to Intercept HTTP/3 Traffic: QUIC and Qpack">
+    <meta property="og:description" content="It has been revealed that short answer: HTTP/3 does not go through an HTTP proxy, because it runs over QUIC, and QUIC runs over UDP. Most HTTP proxies, suc">
+    <meta property="og:image" content="https://interceptsuite.com/img/blog/intercept-http3-quic-qpack-banner.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-to-intercept-http3-traffic-quic-and-qpack-3908.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How to Intercept HTTP/3 Traffic: QUIC and Qpack", "image": ["https://interceptsuite.com/img/blog/intercept-http3-quic-qpack-banner.jpg"], "datePublished": "2026-10-25", "dateModified": "2026-11-16T21:00:39.800304", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-to-intercept-http3-traffic-quic-and-qpack-3908.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How to Intercept HTTP/3 Traffic: QUIC and Qpack</h1>
+        <div class="meta-line">🌐 Source: <strong>Interceptsuite</strong> &bull; 📅 25 Oct 2026 &bull; ⏱️ 13 min read (2537 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that short answer: HTTP/3 does not go through an HTTP proxy, because it runs over QUIC, and QUIC runs over UDP.</li><li style='margin-bottom:6px;'>It has been revealed that in this post we intercept real HTTP/3 traffic from curl and from Microsoft Edge.</li><li style='margin-bottom:6px;'>Recent findings suggest that this post uses InterceptSuite, so you should know what it is and what it is not.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-3908"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-3908"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-3908"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How to Intercept HTTP/3 Traffic: QUIC and Qpack" loading="lazy" src="https://interceptsuite.com/img/blog/intercept-http3-quic-qpack-banner.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-3908">It has been revealed that short answer: HTTP/3 does not go through an HTTP proxy, because it runs over QUIC, and QUIC runs over UDP. Most HTTP proxies, such as Burp Suite, are built on HTTP over TCP, so they never see it. To intercept HTTP/3 you need a proxy that can relay UDP and can act as a man in the middle for QUIC. After that, the work is about streams and header compression: the request is not text any more, it is bytes on a QUIC stream, compressed with QPACK.</p>
+<p>It has been revealed that in this post we intercept real HTTP/3 traffic from curl and from Microsoft Edge. Then we use a small lab server to look at every byte, so the QUIC and QPACK parts are easy to follow.</p>
+<p>Recent findings suggest that this post uses InterceptSuite, so you should know what it is and what it is not. It is not built for HTTP. It is built for raw network traffic: TCP, TLS, UDP, DTLS and QUIC. Because it can intercept UDP and QUIC, it can handle HTTP/3 too. But it does not come with an HTTP parser, and that is also true for HTTP/3. The core shows raw bytes.</p>
+<p>To read and edit those bytes as HTTP, InterceptSuite has an extension API, and there is an official, open source HTTP/3 extension that decodes the QUIC stream and QPACK headers into text. You can read the code, change it, or send a fix. The decoding in the screenshots below comes from that extension, not from the core.</p>
+<p>If you have only used HTTP/1.1 or HTTP/2, three things are different.</p>
+<p>According to recent reports, 1. It runs on QUIC, not TCP. HTTP/3 (RFC 9114) is HTTP carried over QUIC (RFC 9000). QUIC packets travel inside UDP datagrams. TLS 1.3 is part of the QUIC handshake (RFC 9001), so there is no separate "TCP then TLS" step.</p>
+<p>In a recent development, 2. The client has to learn that the server speaks HTTP/3. The ALPN name for HTTP/3 is h3. A server can advertise it with an Alt-Svc response header, and a DNS HTTPS record can advertise it too (RFC 9460). So a browser often makes its first request over TCP, then moves to QUIC.</p>
+<p>According to recent reports, 3. Everything is a stream. A QUIC connection carries many streams. The two lowest bits of a stream ID tell you what it is (RFC 9000, section 2.1):.</p>
+<p>In a recent development, in HTTP/3, every client-started two-way stream is one request and its response (stream 0, 4, 8 and so on). The one-way streams are for housekeeping: a control stream, and two QPACK streams. Their type is the first byte on the stream: 0x00 control, 0x02 QPACK encoder, 0x03 QPACK decoder (RFC 9114, section 6.2 and RFC 9204, section 4.2).</p>
+<p>It has been revealed that one more detail that matters for interception. The first packets of a QUIC connection (the Initial packets) are protected with keys that anyone can calculate from the connection ID, so they have no real secrecy (RFC 9001, section 5). That is why a passive observer can still see things like the server name in the handshake. Everything after the handshake is encrypted with keys from the TLS 1.3 exchange. You cannot read it without being one of the two ends. A proxy that wants to read HTTP/3 has to be one of the two ends.</p>
+<p>Recent findings suggest that HTTP proxies use CONNECT to open a tunnel. In HTTP/3, CONNECT still builds a tunnel to a TCP connection (RFC 9114, section 4.4). To tunnel UDP over HTTP there is a different method, CONNECT-UDP (RFC 9298), and most tools and apps do not use it.</p>
+<p>According to recent reports, SOCKS5 can relay UDP. The command is UDP ASSOCIATE (RFC 1928). But many clients never use it. For example, the Chromium network docs say that in Chrome, SOCKSv5 is only used to proxy TCP-based requests and cannot relay UDP (Chromium proxy docs). So pointing a browser at a SOCKS5 proxy does not send its QUIC traffic through that proxy, and you are not testing the QUIC path.</p>
+<p>That leaves two practical ways to get QUIC traffic into a proxy:.</p>
+<p>For how this compares with mitmproxy, see the QUIC interception post.</p>
+<p>Open Proxy, then Redirect, click Add, type the program name (for example curl.exe), leave the action on Proxy, and save. Then click Start Redirect. The status line says Redirecting through the proxy at 127.0.0.1:4444, and the program's TCP and UDP traffic goes through InterceptSuite without changing any setting in the program.</p>
+<p>A rule can also limit the destination hosts and ports. The first matching rule decides, and programs that match no rule are left alone. Remember to trust the InterceptSuite CA on the machine, as in the quick start.</p>
+<p>According to recent reports, curl is a good first test because it is simple and does exactly what you tell it. It needs a build with HTTP/3 support. This example runs on Windows. The curl that ships with Windows (8.21.0 here) does not support HTTP/3: curl -V does not list HTTP3 in its features. So we installed a second curl build that does:.</p>
+<p>In a recent development, the new build (8.23.0) lists HTTP3, ngtcp2 and nghttp3 in curl -V. Check yours the same way before you test, and make sure the new curl is the one that runs (open a new terminal after the install).</p>
+<p>--http3-only makes curl use HTTP/3 and nothing else, so it cannot quietly fall back to TCP. With the Redirect rule on, curl worked without any proxy option and its output revealed HTTP/3 200. No -k was needed, because curl used the Windows trust store, where the InterceptSuite CA is installed.</p>
+<p>In Proxy History the connection appeared as QUIC with host cloudflare-quic.com and ALPN h3:.</p>
+<p>The first client packet (46 bytes) is the request. With the HTTP/3 tab it reads like this:.</p>
+<p>Now turn Intercept ON, run curl again, and change the request while it is held. Replace user-agent: curl/8.23.0 with user-agent: edited-by-proxy and press Forward:.</p>
+<p>Sources indicate that the test site prints back what it saw. The first run says uag=curl/8.23.0. The run with the edit says:.</p>
+<p>So the server got the edited header, and curl never knew. The response is readable too:.</p>
+<p>Look at curl's SETTINGS frame, from the client:.</p>
+<p>Recent findings suggest that QPACK_MAX_TABLE_CAPACITY: 0 means curl does not use the QPACK dynamic table at all. That is why every curl request is easy to read and edit. We will see the opposite case later.</p>
+<p>Browsers are harder, for two reasons.</p>
+<p>The fix is to start the browser with three flags:.</p>
+<p>In a recent development, is the base64 SHA-256 of the CA's public key. You calculate it from your own CA file:.</p>
+<p>Sources indicate that edge reveals a bar saying the flag is unsupported. That is expected, and it is why you should use a test profile and not your daily one. Close all Edge windows before you start it, or the flags are ignored.</p>
+<p>It has been revealed that with the Redirect rule for msedge.exe on, open https://cloudflare-quic.com/. The page indicates "your browser used HTTP/3":.</p>
+<p>Recent findings suggest that in InterceptSuite the same visit was a QUIC connection with ALPN h3. The request from Edge, decoded by the extension:.</p>
+<p>And the response, with the alt-svc: h3=":443" header the site uses to advertise HTTP/3:.</p>
+<p>In a recent development, the response body here is content-encoding: gzip. The extension decompresses it for display, so the body shows as HTML.</p>
+<p>Edge's SETTINGS are very different from curl's:.</p>
+<p>Edge offers a 64 KB dynamic table and up to 100 blocked streams, so after the first request, Edge can send headers as table references. The QPACK section below explains what that means for reading and editing.</p>
+<p>UDP ASSOCIATE works in two parts.</p>
+<p>The header, from RFC 1928 section 7:.</p>
+<p>The association lives as long as the TCP connection that asked for it. If that TCP connection closes, the UDP association ends (RFC 1928, section 6). This is easy to forget when you write your own client.</p>
+<p id="sec-mid-3908">Industry observers note that interceptSuite listens on 127.0.0.1:4444 for SOCKS5 over TCP and 127.0.0.1:4445 for the UDP relay (see the quick start). The reply to UDP ASSOCIATE points to 127.0.0.1:4445.</p>
+<p>Real servers make it hard to see what is going on, so here is a small lab. Both sides use Python and aioquic.</p>
+<p>According to recent reports, the lab client skips certificate checks. That is fine for a lab. A real app must trust the proxy's CA certificate, or it will close the connection when it sees the forged certificate. See Install the CA certificate for that step.</p>
+<p>The lab client sent one request:.</p>
+<p>Here is Proxy History after the client connected, sent requests, and closed.</p>
+<p>According to recent reports, the host column reveals h3.lab.test. That is the server name from the TLS handshake. The ALPN column shows h3. The Protocol column notes QUIC.</p>
+<p>The thing most people do not expect is the number of rows. One request gave 10 entries, not 2. Each row is a chunk of data from one QUIC stream, in the order the proxy saw it. The small ones are all HTTP/3 housekeeping:.</p>
+<p>The client's control stream is three bytes longer than the server's: 0D 01 08 at the end, which is a MAX_PUSH_ID frame.</p>
+<p>Industry observers note that filtering helps a lot here. The filter box understands things like connection_id == 3 and size &gt; 100. The available fields are src_ip, dst_ip, port, direction, protocol, size, modified, connection_id, type, data, host and alpn.</p>
+<p>With the HTTP/3 extension loaded, the control stream entry is shown as text:.</p>
+<p>The 50 00 part is a QUIC variable-length integer. The first two bits (01) say it uses two bytes, and the value is 0x1000, which is 4096. This one matters later, because QPACK's dynamic table is off by default. Both QPACK settings default to zero (RFC 9204, section 5). This server turned it on and allowed 16 blocked streams.</p>
+<p>Recent findings suggest that now the request itself. This is the raw view of the held request packet:.</p>
+<p>Recent findings suggest that you can see the body (user=alice&amp;pw=hunter2), because the body is not compressed. The headers are unreadable. This is QPACK. It is HPACK's cousin for HTTP/3 (RFC 9204), and it does three things:.</p>
+<p>Sources indicate that the HTTP/3 extension from the Extension repository decodes all of this into text. Open the HTTP/3 tab on the same packet:.</p>
+<p>The core of InterceptSuite highlights HTTP/3 as raw bytes. The decoded view comes from this extension. The extension is a normal Python file, and you can read it. Its _decode function parses the QUIC variable-length integers, the HTTP/3 frames, then the QPACK block with the static table and Huffman decoder.</p>
+<p>Turn Intercept ON. By default it holds client-to-server packets. There is also an Intercept response option for the other direction.</p>
+<p>When the client sends its request, the request packet is held and the queue claims 1 packet(s) waiting. Change two things in the HTTP/3 tab: the x-demo header and the body.</p>
+<p>Then press Forward. The server printed this:.</p>
+<p>So the server received the edited request. The client got a normal 200 answer from the server, and its own copy of the request was never changed.</p>
+<p>In Proxy History, the row shows Modified: Yes, and the viewer can show the Original and Edited versions:.</p>
+<p>Two practical points from doing this:.</p>
+<p>Recent findings suggest that the extension does not patch the old bytes. It builds a latest HEADERS frame. From the source, the rules are:.</p>
+<p>This is the part that needs care. So far everything decoded nicely. Now send more requests on the same connection (same headers, different path) and look again.</p>
+<p>The sizes tell the story. Requests 1 and 2 were 122 bytes each. Request 3 was 13 bytes. And at some point, a 114-byte entry demonstrated up on the client's QPACK encoder stream.</p>
+<p>Here are the 13 bytes of request 3, the way they were on the wire:.</p>
+<p>According to recent reports, where are the entries? In the 114-byte entry on the encoder stream. Its first bytes are C0 88 9D 95 E8 1C 6B A4 A8 4F, which is "insert :authority, with a Huffman-coded value" (the value decodes to h3.lab.test). The client sent the long header values once, and every later request only sends numbers. This is a good design. It is also what makes interception harder.</p>
+<p>Look at what the HTTP/3 tab reveals for request 3:.</p>
+<p>According to recent reports, the server's response did the same thing. After a few responses, its header block started using the dynamic table, and the HTTP/3 tab demonstrates the body but only placeholders for two of the headers:.</p>
+<p>There is one more thing to see here. In the capture, the 13-byte request (row 30) arrived before the 114-byte encoder stream entry (row 31). That is allowed by design. QPACK lets a request stream wait ("block") until the inserts it needs have arrived. The server confirmed it could keep up to 16 blocked streams (the QPACK_BLOCKED_STREAMS setting we saw above). Later a single byte 88 comes back from the server on its decoder stream. That is a Section Acknowledgment for stream 8, which was the third request: the decoder tells the encoder it processed a header block that needed the table (RFC 9204, section 4.4.1).</p>
+<p>So two things follow for a tester:.</p>
+<p>Right-click a row in Proxy History and choose Send to Replay.</p>
+<p>According to recent reports, the session opens with the details filled in: host, port, protocol QUIC, ALPN h3, Newly introduced bidirectional stream, and End stream (FIN) ticked. HTTP/3 request streams are client-started two-way streams, so that is the correct choice. The FIN flag matters because the lab server only answers after it sees the end of the request.</p>
+<p>In the lab the host name h3.lab.test is only a name in the TLS handshake and does not resolve, so change the host to 127.0.0.1. In the HTTP/3 tab, change the path to /admin and x-demo to replayed, then press Send.</p>
+<p>The conversation shows what happened on the wire:.</p>
+<p>The server printed GET /admin x-demo= replayed, and the response JSON highlights "path": "/admin" and "x_demo": "replayed".</p>
+<p>If the edited text leaves a broken header block, Replay sends only a few bytes (25 here) and the server closes the connection:.</p>
+<p>Sources indicate that 0x106 is H3_FRAME_ERROR. RFC 9114 notes that if a stream ends and the last frame on it is cut short, the receiver must treat it as a connection error of this type (RFC 9114, section 7.1). In plain words: the frame header promised more bytes than the stream delivered. If you hand-craft HTTP/3 bytes in the Raw or Hex tab, this is the error you will meet first. It means your frame length does not match your data.</p>
+<p>You can find the current list in the protocol compatibility matrix.</p>
+<p>Related reading: Replay documentation, Proxy History documentation, the HTTP/3 extension source, and Intercepting QUIC and HTTP/3 when mitmproxy isn't enough.</p>
+<p id="sec-end-3908">You can try all of this on your own server with the 7-day trial. Only test servers you own or are allowed to test.</p>
+<p style="margin-top: 25px;">
+<a href="https://interceptsuite.com/blog/intercept-http3-traffic-quic-qpack-explained/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-how-i-get-free-traffic-from-chatgpt-in-2025-aio-vs-seo-10495.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10495. Breaking: How I Get Free Traffic from ChatGPT in 2025 (AIO vs SEO)
+        </a>
+        
+        <a href="how-does-google-maps-know-theres-traffic-before-you-hit-it-8512.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #8512. How Does Google Maps Know There’s Traffic Before You Hit It?
+        </a>
+        
+        <a href="industry-news-as-duffy-seeks-air-traffic-control-upgrades-democra-8421.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #8421. Industry News: As Duffy seeks air traffic control upgrades, Democrats point to unspent funds
+        </a>
+        
+        <a href="google-will-now-tell-you-exactly-how-much-its-saving-you-on-inval-8242.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #8242. Google Will Now Tell You Exactly How Much It’s Saving You On Invalid Traffic
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

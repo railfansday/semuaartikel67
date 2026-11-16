@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where did the ACK go?</title>
+    <meta name="description" content="I know the title is a bit clickbaity but it works for this post :P This is probably going to be a LONG one. I spent almost 3-4 days debugging and fighting ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/where-did-the-ack-go-10950.html">
+    <meta property="og:title" content="Where did the ACK go?">
+    <meta property="og:description" content="I know the title is a bit clickbaity but it works for this post :P This is probably going to be a LONG one. I spent almost 3-4 days debugging and fighting ">
+    <meta property="og:image" content="https://s3.yashgarg.dev/posts/where-did-the-ack-go/cover.webp">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/where-did-the-ack-go-10950.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Where did the ACK go?", "image": ["https://s3.yashgarg.dev/posts/where-did-the-ack-go/cover.webp"], "datePublished": "2026-11-16T19:19:20", "dateModified": "2026-11-16T21:07:36.805636", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/where-did-the-ack-go-10950.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Where did the ACK go?</h1>
+        <div class="meta-line">🌐 Source: <strong>Yashgarg</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 13 min read (2695 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>I know the title is a bit clickbaity but it works for this post :P This is probably going to be a LONG one.</li><li style='margin-bottom:6px;'>Bear with me as I try to explain all the complicated abbreviations that you might come across ð­â #.</li><li style='margin-bottom:6px;'>Recent findings suggest that some context as to what exactly I decided to do?</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-10950"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-10950"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-10950"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Where did the ACK go?" loading="lazy" src="https://s3.yashgarg.dev/posts/where-did-the-ack-go/cover.webp" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-10950">I know the title is a bit clickbaity but it works for this post :P This is probably going to be a LONG one. I spent almost 3-4 days debugging and fighting on this and this is gonna be a proper log of what all I did. Fair warning though, I did exhaust my Cursor, OpenCode, and Claude limits debugging this one.â #.</p>
+<p>Bear with me as I try to explain all the complicated abbreviations that you might come across ð­â #.</p>
+<p>Recent findings suggest that some context as to what exactly I decided to do? My ISP, Jio provides a landline number with their Fiber connections and ever since Iâve removed their ONT box and replaced with my own Router, this did not really work and stayed broken.â #.</p>
+<p>While I was at home this month, a friend told me multiple times to extract those credentials from their box and set it up like heâs done.â #.</p>
+<p>Thatâs what this whole thing is about.â #.</p>
+<p>Before going into all the technicalities, Iâd like to explain the readers on how do calls over internet travel? Itâs pretty straightforward (well, not really). Thereâs a protocol known as the Session Initiation Protocol (SIP) which was introduced in 1999 (crazy!).â #.</p>
+<p>It has been revealed that but how does it work? Letâs look at this sequence diagram:â #.</p>
+<p>Looks pretty simple right? But SIP only handles the signaling, the âletâs have a callâ part. The actual audio is described separately using SDP (Session Description Protocol), which gets sent inside the SIP messages. Itâs basically a note that states âsend audio here, in this formatâ:â #.</p>
+<p>This becomes important later when calls start failing with âinvalid SDP offer or answerâ.â #.</p>
+<p>Now onto the actual process. First thing I needed was the SIP credentials stored on the ONT by Jio.â #.</p>
+<p>It has been revealed that I already had telnet access on the box since I enabled that earlier, theyâve since patched it in newer firmwareâs! One of the reasons I donât connect it to the Internet.â #.</p>
+<p>ð Note: One key thing to note here is, it needs to be connected to internet at least once so it can get SIP credentials from their servers and store it on the disk!</p>
+<p>Sources indicate that what I wanted was basically a dump of the whole filesystem and somehow copying it back to my Mac (without internet). Luckily for this, I found that they use lighttpd for their admin interface which is great!â #.</p>
+<p>I connected to the WiFi exposed by the ONT and ran these commands:â #.</p>
+<p>Then, I could just simply do a curl request for the archive:â #.</p>
+<p>The actual credentials were in a file called FixedVoiceCcsXML.dat under /flash/juice and it looked something like:â #.</p>
+<p>The key parts here are the Realm,UserName and UserPwd as you wouldâve guessed and, Voila ðâ #.</p>
+<p>Another term that might feel complicated, PBX also known as Private Branch Exchange. Iâll be using Asterisk for my setup.â #.</p>
+<p>Remember how the ONT was handling both, the internet, and landline? When I swapped it out, the internet kept working but the landline died. Nothing was talking to Jioâs voice servers anymore. Asterisk takes over that job.â #.</p>
+<p>Recent findings suggest that it sits in the middle: on one side, my phone apps (Linphone on iOS, Zoiper on Mac) connect to it like itâs the carrier. On the other side, it connects to Jioâs IMS network and pretends to be a phone. When I make a call, it bridges the two.â #.</p>
+<p>Sources indicate that solid lines are signaling, dashed lines are audio. They travel separately, which matters a lot later.â #.</p>
+<p>I use NixOS for my servers so Iâll be going through how I set it up on that, though itâs not that different if one is setting it up separately as well!â #.</p>
+<p>The Asterisk service is enabled with a custom overlay that swaps the default package for asterisk-with-jio â a patched build that includes the three extra modules we need (more on those later).â #.</p>
+<p>The sensitive config files (pjsip.conf, extensions.conf) are kept encrypted via SOPS and written directly to /etc/asterisk/ at activation.â #.</p>
+<p>Asterisk has quite a few config files and hereâs what I ended up with:â #.</p>
+<p>modules.conf â disables the old chan_sip and requires the three Jio-specific modules to be present at startup:â #.</p>
+<p>rtp.conf â sets the local UDP port range for audio:â #.</p>
+<p>The firewall opens exactly those same ports:â #.</p>
+<p>pjsip.conf â this is where most of the actual SIP configuration lives. It has two sides, the Jio-facing trunk and the local phone apps.â #.</p>
+<p>First thing I noticed I had to set was the user_agent â weâre spoofing the routerâs user agent so Jio thinks weâre a real CPE device:â #.</p>
+<p>For transports, I used UDP and TCP for local apps and ended up using TLS over IPv6:â #.</p>
+<p>The Jio trunk endpoint ended up looking like this:â #.</p>
+<p>And for Linphone and Zoiper on the local side:â #.</p>
+<p>pjsip_jio.conf â some Jio-specific registration fields that come from the ONT dump11 access_network tells the IMS what access type youâre connecting from (GPON = fiber). instance_id is a unique device identifier that comes from the ONTâs config â Jio uses it to identify your device during registration. :â #.</p>
+<p>extensions.conf â the dialplan, which tells Asterisk what to do with calls.â #.</p>
+<p>For inbound calls from Jio, I wanted it to ring all my registered apps:â #.</p>
+<p>For outbound I added some number normalization so I could dial in any format and itâd work:â #.</p>
+<p>Jio also needs a P-Asserted-Identity header on every outgoing call, so I added a small handler for that:â #.</p>
+<p>Before I even got to the interesting stuff, I managed to shoot myself in the foot a few times.â #.</p>
+<p>I had my dialplan set up like this initially:â #.</p>
+<p id="sec-mid-10950">In a recent development, what I didnât realise is that Asterisk treats the first argument as an endpoint name, not a SIP URI. My endpoint was named jiofiber, so every outbound call just failed with âendpoint not foundâ. Took me quite a while to figure out that the correct way is:â #.</p>
+<p>This one was annoying. Every time Linphone restarts on iOS it registers a fresh contact, but the old one doesnât go away. So when an inbound call came in, Asterisk tried to ring all of them at the same time including the dead ones from previous sessions. The dead contact would fail immediately and bring the whole call down with a 503. Adding these two lines fixed it:â #.</p>
+<p>It has been revealed that so I could make calls and they would connect, but there was no audio on either side. The issue was that just opening port 5060 for SIP is not enough. The actual audio travels over RTP on a completely separate range of UDP ports, 52000-52200 in my case as configured in rtp.conf. I had not opened those on my MikroTik router.â #.</p>
+<p>I had to add two IPv6 forward rules on the MikroTik to let SIP and RTP through from the WAN interface to the server:â #.</p>
+<p>Recent findings suggest that there was also an IPv6 issue where my server has multiple IPv6 addresses and Asterisk was advertising one in the SDP but the actual RTP socket was binding to a different one. I had to be explicit about which address to use:â #.</p>
+<p>Industry observers note that media_address alone only sets what gets advertised in SDP, it doesnât actually bind the socket. bind_rtp_to_media_address = yes is what makes the packets go out from the right address.â #.</p>
+<p>Every time I restarted Asterisk during debugging it would fire a fresh REGISTER. I was restarting a lot. At some point Jioâs registrar started responding with 401 Unauthorized with stale=true on every attempt and the registration just stayed stuck in Rejected.â #.</p>
+<p>Recent findings suggest that my first thought was that Jio had blocked the line or the credentials were wrong. But stale=true on a 401 just means the nonce expired, itâs a normal challenge telling you to retry with a fresh one. Itâs not a ban.â #.</p>
+<p>What was actually happening is that with max_retries = 10 and retry_interval = 60, Asterisk was sending up to ten authenticated REGISTERs per minute. Each one triggered another auth attempt. Jioâs rate limiter blocked further attempts and the lockout kept extending because Asterisk kept retrying.â #.</p>
+<p>To confirm the credentials were actually correct I manually recomputed the Digest response from scratch and it matched byte for byte what Asterisk was sending:â #.</p>
+<p>Recent findings suggest that the credential was fine, I was just hammering the registrar too fast. The fix was to back off:â #.</p>
+<p>Once the lockout expired and Asterisk fired one clean authenticated REGISTER, it went straight to Registered.â #.</p>
+<p>This is the one the title is about. And it happened twice.â #.</p>
+<p>The first time, I noticed inbound calls were dying at exactly 32 seconds and set timers=no on the trunk endpoint. That removes the session timer requirement from the 200 OK and it seemed to stop the drops, so I moved on. That was a mistake because it wasnât actually the cause.â #.</p>
+<p>Later, the same 32-second symptom came back and this time I had to actually understand it. Inbound calls were going through the full signaling flow, Jio would send the INVITE, Asterisk would send back a 200 OK, and then nothing. No ACK ever came from Jio. Asterisk would retransmit the 200 OK eleven times, Timer H22 64 Ã T1 (500ms) = 32 seconds. SIP uses this to give up waiting for an ACK after sending a final response. would fire, and Asterisk would hang up the call with cause=408.â #.</p>
+<p>Industry observers note that to make sure this wasnât a network problem I ran a packet capture on all IPv6 traffic on the server. It showed that Jioâs P-CSCF was receiving every byte of the 200 OK, TCP was acknowledging it, but Jio was sending absolutely nothing back. No ACK, no CANCEL, no ICMPv6 error. The problem was inside Jioâs SBC, not in the network path.â #.</p>
+<p>I went through six hypotheses one by one:â #.</p>
+<p>Every fix was correct on its own terms but none of them moved the specific symptom. The unfiltered packet capture was the most useful tool here because it eliminated every reachability hypothesis and proved the silence was coming from inside Jioâs SBC. I never fully resolved this one at the time.â #.</p>
+<p>This was the most frustrating part. Some calls to some numbers would just fail every time. Both Linphone and Zoiper, so it wasnât the app. The failing sequence looked like this:â #.</p>
+<p>Recent findings suggest that the 183 would come back with a Contact header containing rn and npdi parameters44 rn is a routing number used after a port. npdi means a portability lookup was done â it can appear even for non-ported numbers. and an identifier pointing to an Alcatel-Lucent 5060 MGC. These are MNP markers, they show up when a number has been ported to another carrier.â #.</p>
+<p>In a recent development, so the initial hypothesis was that these were ported numbers and the carrierâs routing database was broken for them. It looked very convincing. Roughly one out of fifteen attempts would go through on a visibly different route without those markers, and the rest would die with 487 / P-14018.â #.</p>
+<p>I went too far and called it a carrier-only problem. That was wrong.â #.</p>
+<p>Over two days I tried a lot of things. Hereâs a short summary of that:â #.</p>
+<p>Sources indicate that the PCMU attempt was especially good at producing false hope. I called my mom, she picked up, I could hear her. Then the next attempt failed with the same error on a marked route. The first call had just taken a different path.â #.</p>
+<p>Sources indicate that at some point I found sivatheja10/jiofiber-bridge which had a full DIRECT_IMS implementation for Jio. This was much more useful than a random config snippet because it was an actual working client implementation I could compare against. It offered PCMU, AMR and AMR-WB to the carrier, handled Jio-specific registration quirks, and had its own transport and signaling choices.â #.</p>
+<p>In a recent development, I also found a fix in another project, gsm-sip-bridge, where the exact same P-14018 error text had appeared but the cause was completely different. That project was treating a 200 OK for PRACK as though it were a 200 OK for INVITE and sending a premature ACK. Our traces didnât show that mistake at all, but it completely overruled the idea that P-14018 uniquely meant an MNP database problem. The same error text but a totally different bug!â #.</p>
+<p>The rule I should have applied earlier: compare the exact transaction, not just the error string.â #.</p>
+<p>Rather than replace the production setup I put a temporary bridge behind a *88 dial prefix. So dialing *88 9876543210 would route through the bridge to Jio instead of going through native Asterisk directly. This let me test a completely different SIP implementation against the same carrier path without touching the working setup.â #.</p>
+<p>Industry observers note that the bridge was built from the jiofiber-bridge code and handled two SIP legs with its own signaling behavior. I paused the production Asterisk registration while testing so there wouldnât be two things registering at the same time.â #.</p>
+<p>According to recent reports, the result was pretty clear. A PCMU-only call to a number with rn and npdi markers in the Contact went all the way through, then 180 Ringing, then 200 OK, then two-way audio. The same kind of marked route that had been rejecting everything from native Asterisk.â #.</p>
+<p>This broke the âcarrier-only problemâ conclusion completely. The endpoint implementation was what mattered, not just the codec or the destination.â #.</p>
+<p>I also tested an AMR-only offer through the bridge. It got reliable progress and ringing, then I cancelled it to avoid making yet another call to my mom. So AMR at least got past the early rejection point, but I didnât let it complete.â #.</p>
+<p>After the bridge experiment I wanted a proper solution instead of keeping a temporary bridge running forever. The bridge worked but it wasnât something I could maintain long term and it wasnât packaged for NixOS.â #.</p>
+<p>Recent findings suggest that stock Asterisk 22 has no AMR support at all. allow = amr in the config does nothing if the codec module isnât there. I needed three things:â #.</p>
+<p>I started from traud/asterisk-amr for the codec work and built on top of it. The result is asterisk-jio, packaged as a Nix flake that builds against stock Asterisk 22.11.0 headers. The NixOS overlay we saw earlier swaps the default Asterisk package for asterisk-with-jio which includes all three modules.â #.</p>
+<p>Recent findings suggest that after deploying and restarting the service, everything worked! Outbound calls, inbound calls, MNP numbers that were failing before! Yay ð¥³â #.</p>
+<p>If you want to try this yourself, the asterisk-jio repo has build instructions and the config structure we went through here should get you most of the way there. Youâll need your own credentials from the ONT dump and your own realm and proxy addresses.â #.</p>
+<p>access_network tells the IMS what access type youâre connecting from (GPON = fiber). instance_id is a unique device identifier that comes from the ONTâs config â Jio uses it to identify your device during registration. â©.</p>
+<p>64 Ã T1 (500ms) = 32 seconds. SIP uses this to give up waiting for an ACK after sending a final response. â©.</p>
+<p>Sources indicate that rewrite_contact rewrites Record-Route headers with the observed source IP and port. Jioâs Record-Route had no port, but we were echoing it back with :34588 â the ephemeral source port of the P-CSCFâs TCP connection, which is not a listener. Jio was routing its ACK to an unreachable socket. â©.</p>
+<p id="sec-end-10950">rn is a routing number used after a port. npdi means a portability lookup was done â it can appear even for non-ported numbers. â©.</p>
+<p style="margin-top: 25px;">
+<a href="https://yashgarg.dev/posts/where-did-the-ack-go/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="lucid-ceo-admits-it-did-not-even-know-where-cars-were-and-lost-or-5337.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #5337. Lucid CEO admits it ‘did not even know where cars were’ and lost orders
+        </a>
+        
+        <a href="australia-did-it-end-of-the-world-railway-defense-business-review-4843.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #4843. Australia Did It: End-of-the-World Railway Defense Business Review - Delivering Where It Matters
+        </a>
+        
+        <a href="there-were-47-graphics-chip-makers-in-1998-where-did-they-all-go-4644.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #4644. There were 47 graphics chip makers in 1998. Where did they all go?
+        </a>
+        
+        <a href="tech-report-coding-agent-horror-stories-the-cve-that-did-not-exis-11026.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11026. Tech Report: Coding Agent Horror Stories: The CVE That Did Not Exist
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

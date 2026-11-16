@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimodal Embedding & Reranker Models with Sentence Transformers</title>
+    <meta name="description" content="Sentence Transformers is a Python library for using and training embedding and reranker models for applications like retrieval augmented generation, semant">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/multimodal-embedding-reranker-models-with-sentence-transformers-11154.html">
+    <meta property="og:title" content="Multimodal Embedding & Reranker Models with Sentence Transformers">
+    <meta property="og:description" content="Sentence Transformers is a Python library for using and training embedding and reranker models for applications like retrieval augmented generation, semant">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/train-sentence-transformers/st-hf-thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/multimodal-embedding-reranker-models-with-sentence-transformers-11154.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Multimodal Embedding & Reranker Models with Sentence Transformers", "image": ["https://huggingface.co/blog/assets/train-sentence-transformers/st-hf-thumbnail.png"], "datePublished": "2026-04-09T00:00:00", "dateModified": "2026-11-16T21:07:49.905056", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/multimodal-embedding-reranker-models-with-sentence-transformers-11154.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Multimodal Embedding & Reranker Models with Sentence Transformers</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 09 Apr 2026 &bull; ⏱️ 6 min read (1226 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sentence Transformers is a Python library for using and training embedding and reranker models for applications like retrieval augmented generation, semantic search, and more.</li><li style='margin-bottom:6px;'>Multimodal embedding models map inputs from different modalities into a shared embedding space, while multimodal reranker models score the relevance of mixed-modality pairs.</li><li style='margin-bottom:6px;'>If you want to train your own multimodal models, check out the companion blogpost: Training and Finetuning Multimodal Embedding & Reranker Models with Sentence Transformers.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11154"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11154"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11154"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Multimodal Embedding &amp; Reranker Models with Sentence Transformers" loading="lazy" src="https://huggingface.co/blog/assets/train-sentence-transformers/st-hf-thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11154">Sentence Transformers is a Python library for using and training embedding and reranker models for applications like retrieval augmented generation, semantic search, and more. With the v5.4 upgrade, you can now encode and compare texts, images, audio, and videos using the same familiar API. In this blogpost, I'll show you how to use these latest multimodal capabilities for both embedding and reranking.</p>
+<p>Multimodal embedding models map inputs from different modalities into a shared embedding space, while multimodal reranker models score the relevance of mixed-modality pairs. This opens up use cases like visual document retrieval, cross-modal search, and multimodal RAG pipelines.</p>
+<p>If you want to train your own multimodal models, check out the companion blogpost: Training and Finetuning Multimodal Embedding &amp; Reranker Models with Sentence Transformers.</p>
+<p>Traditional embedding models convert text into fixed-size vectors. Multimodal embedding models extend this by mapping inputs from different modalities (text, images, audio, or video) into a shared embedding space. This means you can compare a text query against image documents (or vice versa) using the same similarity functions you're already familiar with.</p>
+<p>Similarly, traditional reranker (Cross Encoder) models compute relevance scores between pairs of texts. Multimodal rerankers can score pairs where one or both elements are images, combined text-image documents, or other modalities.</p>
+<p>For example, you can compare a text query against image documents, find video clips matching a description, or build RAG pipelines that work across modalities.</p>
+<p>Multimodal models require some extra dependencies. Install the extras for the modalities you need (see Installation for more details):.</p>
+<p>According to recent reports, VLM-based models like Qwen3-VL-2B require a GPU with at least ~8 GB of VRAM. For the 8B variants, expect ~20 GB. If you don't have a local GPU, consider using a cloud GPU service or Google Colab. On CPU, these models will be extremely slow; text-only or CLIP models are better suited for CPU inference.</p>
+<p>Loading a multimodal embedding model works exactly like loading a text-only model:.</p>
+<p>It has been revealed that some models might require a revision argument for now if the integration pull requests for the model is still pending. Once they're merged, you'll be able to load them without specifying a revision, like above.</p>
+<p>It has been revealed that the model automatically detects which modalities it supports, so there's nothing extra to configure. See Processor and Model kwargs if you want to control things like image resolution or model precision.</p>
+<p>Industry observers note that with a multimodal model loaded, model.encode() accepts images alongside text. Images can be provided as URLs, local file paths, or PIL Image objects (see Supported Input Types for all accepted formats):.</p>
+<p>You can compute similarities between text embeddings and image embeddings, since the model maps both into the same space:.</p>
+<p>As expected, "A green car parked in front of a yellow building" is most similar to the car image (0.51), and "A bee on a pink flower" is most similar to the bee image (0.67). The hard negatives ("A red car driving on a highway", "A wasp on a wooden table") correctly receive lower scores.</p>
+<p>It has been revealed that you might notice that even the best matching scores (0.51, 0.67) aren't very close to 1.0. This is due to the modality gap: embeddings from different modalities tend to cluster in separate regions of the space. Cross-modal similarities are typically lower than within-modal ones (e.g., text-to-text), but the relative ordering is preserved, so retrieval still works well.</p>
+<p>For retrieval tasks, encode_query() and encode_document() are the recommended methods. Many retrieval models prepend different instruction prompts depending on whether the input is a query or a document, similar to how chat models might apply different system prompts depending on the goal. Model authors can specify their prompts in the model config, and encode_query() / encode_document() automatically load and apply the correct one:.</p>
+<p>Under the hood, both are thin wrappers around encode(), they just handle prompt selection for you. Here's what cross-modal retrieval looks like:.</p>
+<p>Sources indicate that these methods accept the same input types as encode() (images, URLs, multimodal dicts, etc.) and pass through the same parameters. For models without specialized query/document prompts, they behave identically to encode().</p>
+<p>Multimodal reranker (CrossEncoder) models score the relevance between pairs of inputs, where each element can be text, an image, audio, video, or a combination. They tend to outperform embedding models in terms of quality, but are slower since they process each pair individually. The currently available pretrained multimodal rerankers focus on text and image inputs, but the architecture supports any modality that the underlying model can handle.</p>
+<p>The rank() method scores and ranks a list of documents against a query, supporting mixed modalities:.</p>
+<p id="sec-mid-11154">The reranker correctly identifies the car image (document 0) as the most relevant result, followed by the combined text+image document about a car in a European city (document 3). The bee image (document 1) scores lowest. Keep in mind that the modality gap can influence absolute scores: text-image pair scores may occupy a different range than text-text or image-image pair scores.</p>
+<p>You can also check which modalities a reranker supports using modalities and supports(), just like with embedding models:.</p>
+<p>You can also use predict() to get raw relevance scores for specific pairs of inputs:.</p>
+<p>A common pattern is to use an embedding model for fast initial retrieval, then refine the top results with a reranker:.</p>
+<p>Sources indicate that since the corpus embeddings are pre-computed, the initial retrieval is fast even over millions of documents. The reranker then provides more accurate scoring over the smaller candidate set.</p>
+<p>Recent findings suggest that multimodal models accept a variety of input formats. Here's a summary of what you can pass to model.encode():.</p>
+<p>You can check which modalities a model supports using the modalities property and supports() method:.</p>
+<p>The "message" modality indicates that the model accepts chat-style message inputs with interleaved content. In practice, you rarely need to use this directly. When you pass strings, URLs, or multimodal dicts, the model converts them to the appropriate message format internally. Sentence Transformers supports two message formats:.</p>
+<p>The format is auto-detected from the model's chat template.</p>
+<p>Since all inputs get converted into the same message format internally, you can mix input types in a single encode() call:.</p>
+<p>If a model doesn't follow either format and you need full control, you can pass raw message dicts with role and content keys directly:.</p>
+<p>This bypasses the automatic format conversion and passes the messages directly to the processor's apply_chat_template().</p>
+<p>In a recent development, you may want to control image resolution bounds or model precision. Use processor_kwargs and model_kwargs when loading the model:.</p>
+<p>See the SentenceTransformer API Reference documentation for more details on these kwargs.</p>
+<p>Recent findings suggest that in Sentence Transformers v5.4, tokenizer_kwargs has been renamed to processor_kwargs to reflect that multimodal models use processors rather than just tokenizers. The old name is still accepted but deprecated.</p>
+<p>Here are the multimodal models supported in v5.4, also available in the v5.4 integrations collection:.</p>
+<p>The older CLIP models continue to be supported:.</p>
+<p>These simple CLIP models still work well on lower-resource hardware.</p>
+<p>To learn how to finetune these multimodal models on your own data, see the companion blogpost: Training and Finetuning Multimodal Embedding &amp; Reranker Models with Sentence Transformers.</p>
+<p>The training companion to this post and adjacent Sentence Transformers guides:.</p>
+<p id="sec-end-11154">It has been revealed that cool Intro to multimodality in sentenceTransforners! Thanks!</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/multimodal-sentence-transformers" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="training-and-finetuning-multimodal-embedding-reranker-models-with-11136.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11136. Training and Finetuning Multimodal Embedding & Reranker Models with Sentence Transformers
+        </a>
+        
+        <a href="latest-update-training-and-finetuning-embedding-models-with-sente-11848.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11848. Latest Update: Training and Finetuning Embedding Models with Sentence Transformers
+        </a>
+        
+        <a href="train-400x-faster-static-embedding-models-with-sentence-transform-11718.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11718. Train 400x faster Static Embedding Models with Sentence Transformers
+        </a>
+        
+        <a href="training-and-finetuning-reranker-models-with-sentence-transformer-11666.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11666. Training and Finetuning Reranker Models with Sentence Transformers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

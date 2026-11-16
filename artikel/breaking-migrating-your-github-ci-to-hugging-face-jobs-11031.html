@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Migrating Your GitHub CI to Hugging Face Jobs</title>
+    <meta name="description" content="Sources indicate that if you have a GitHub repository and you have GitHub Actions enabled, you probably use GitHub-hosted runners for CI. That is the defau">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-migrating-your-github-ci-to-hugging-face-jobs-11031.html">
+    <meta property="og:title" content="Breaking: Migrating Your GitHub CI to Hugging Face Jobs">
+    <meta property="og:description" content="Sources indicate that if you have a GitHub repository and you have GitHub Actions enabled, you probably use GitHub-hosted runners for CI. That is the defau">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/github-ci-hf-jobs/thumbnail.gif">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-migrating-your-github-ci-to-hugging-face-jobs-11031.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Migrating Your GitHub CI to Hugging Face Jobs", "image": ["https://huggingface.co/blog/assets/github-ci-hf-jobs/thumbnail.gif"], "datePublished": "2026-06-09T00:00:00", "dateModified": "2026-11-16T21:07:41.723161", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-migrating-your-github-ci-to-hugging-face-jobs-11031.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Migrating Your GitHub CI to Hugging Face Jobs</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 09 Jun 2026 &bull; ⏱️ 6 min read (1299 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that if you have a GitHub repository and you have GitHub Actions enabled, you probably use GitHub-hosted runners for CI.</li><li style='margin-bottom:6px;'>According to recent reports, that default is convenient, but it also has limits.</li><li style='margin-bottom:6px;'>So built an alternative: keep GitHub Actions in charge of CI, but run the jobs on Hugging Face Jobs.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11031"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11031"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11031"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Migrating Your GitHub CI to Hugging Face Jobs" loading="lazy" src="https://huggingface.co/blog/assets/github-ci-hf-jobs/thumbnail.gif" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11031">Sources indicate that if you have a GitHub repository and you have GitHub Actions enabled, you probably use GitHub-hosted runners for CI. That is the default for many projects because it is simple: add a workflow, write runs-on: ubuntu-latest, and GitHub gives you a machine.</p>
+<p>According to recent reports, that default is convenient, but it also has limits. GitHub Actions can be slow or down for maintenance, the hosted machines are generic, and GPU access is not something most open-source projects can just turn on. For Trackio, those limits started to matter. We wanted both reliable CPU CI for basic unit tests and frontend checks, but also GPU CI for tests that need to run on actual CUDA hardware.</p>
+<p>So built an alternative: keep GitHub Actions in charge of CI, but run the jobs on Hugging Face Jobs.</p>
+<p>The result: Trackio's CI now runs on Hugging Face Jobs and streams back real-time logs, cutting our CI time for CPU jobs by about 30% and enabling a whole new test suite that runs on GPU machines!</p>
+<p>Recent findings suggest that in this article, we explain step-by-step how to recreate the same setup for your GitHub repo. If you are using an agent, you can point it to this article, since we provide CLI instructions alongside browser-based instructions for us humans.</p>
+<p>Let's start with a quick intro to Hugging Face Jobs!</p>
+<p>Hugging Face Jobs lets you run commands or scripts on Hugging Face's serverless infrastructure with almost any hardware flavor. A Job is essentially:.</p>
+<p>That makes Jobs a natural fit for CI. CI jobs are already command-driven, already run in clean environments, and often benefit from choosing exactly the right hardware. For ML libraries, the GPU case is especially compelling: you can run a test suite on real GPU hardware without maintaining your own always-on runner.</p>
+<p>The key step is connecting GitHub Actions to HF Jobs, which we describe below.</p>
+<p>For this setup, we created huggingface/jobs-actions, a small bridge that turns a GitHub Actions job into an ephemeral self-hosted runner running inside an HF Job.</p>
+<p>The complete flow looks like this:.</p>
+<p>In a recent development, from GitHub's point of view, this is just a self-hosted runner. From Hugging Face's point of view, it is just a Job that launches a container to run the workflow steps from the repo’s GitHub Actions.</p>
+<p>In a recent development, the first thing you need is the dispatcher. This is a small Docker Space that receives GitHub workflow_job webhook events and launches HF Jobs in response.</p>
+<p>Recent findings suggest that create this first because the GitHub App needs a webhook URL, and that URL comes from the Space. This Space should be under your own namespace or under a Hugging Face org that you have write access to.</p>
+<p>Go to huggingface/jobs-actions-dispatcher and click Duplicate this Space.</p>
+<p>Use cpu-upgrade for real CI so the dispatcher stays available for GitHub webhooks. cpu-basic is fine for testing and will probably work, but it can sleep after inactivity; if GitHub's webhook arrives while it is waking up, the workflow may stay queued forever.</p>
+<p>After it builds, open the duplicated Space. You will see a section that says "Required Space secrets," which you can ignore for now. The landing page should display the GitHub App webhook URL you need in the next step. It will look like this:.</p>
+<p>If you'd prefer to set up the dispatcher Space with an agent or use a CLI workflow:.</p>
+<p>Industry observers note that next, create and install the GitHub App from the dispatcher Space itself. This App needs permission to listen for queued workflow jobs and create ephemeral self-hosted runner registration tokens.</p>
+<p>Open your duplicated dispatcher Space:.</p>
+<p>In the setup form, enter the GitHub repo whose CI should run on HF Jobs:.</p>
+<p>Then click the button to create the GitHub App. GitHub will ask you to choose a name for the App; the name can be anything, as long as it is available in your GitHub account or org. After you submit, the final screen tells you exactly how to upload the App credentials to the dispatcher Space with the hf CLI.</p>
+<p>It has been revealed that key note: you will need to provide an Hugging Face token that has permissions to launch Jobs, corresponding to your personal account or an org under which Jobs should be charged. This token should be saved as the HF_TOKEN secret in your dispatcher Space.</p>
+<p>Finally, you will install the App on the same GitHub repo you entered in the Space. In the Trackio setup, we installed it on gradio-app/trackio.</p>
+<p id="sec-mid-11031">The GitHub App manifest flow is still browser-based, but an agent can follow the same Space-driven path:.</p>
+<p>Paste $GITHUB_REPO into the Space, click the GitHub App creation button, choose any available App name, and follow the generated GitHub instructions.</p>
+<p>After the App exists, install it on your repo from the App settings page. For a GitHub org, the installation settings are under:.</p>
+<p>It has been revealed that at this point, the dispatcher Space should be configured. The GitHub App setup flow generated the commands that upload the App credentials, webhook secret, and Hugging Face token to the Space.</p>
+<p>Recent findings suggest that by default, HF Jobs are introduced under the same namespace as the dispatcher Space. Optionally, set HF_NAMESPACE as a Space variable if you want to bill jobs to a different Hugging Face user or org:.</p>
+<p>The token you set in Step 2 should correspond to this namespace.</p>
+<p>According to recent reports, the actual workflow change is small. Instead of:.</p>
+<p>use one of the labels handled by the dispatcher:.</p>
+<p>For GPU tests, use a GPU label:.</p>
+<p>For any GitHub Action you'd like to run on HF Jobs, this 1-line change is all you need!</p>
+<p>To add a minimal smoke-test workflow from the CLI:.</p>
+<p>You should be able to see logs just like a regular GitHub Action—for example, in this Trackio PR #565.</p>
+<p>Note on choosing the right Docker image.</p>
+<p>According to recent reports, our first CPU setup used ubuntu:22.04 and installed missing system packages during every run. That worked, but it was slower than it needed to be. GitHub's ubuntu-latest image includes a lot of developer tooling by default; a bare Ubuntu image does not.</p>
+<p>According to recent reports, for Trackio, the UI tests need Playwright browsers, Node, ffmpeg, sqlite, git, and normal Linux build dependencies. Hugging Face Jobs supports using any Docker image, so we switched to the Microsoft Playwright image, which worked well:.</p>
+<p>Here are the numbers from the Trackio CI:.</p>
+<p>The biggest win was GPU CI. The Trackio GPU check ran on HF Jobs and passed in 45s, costing less than a cent at the t4-small rate for that duration.</p>
+<p>The CPU result was also encouraging. With the right image, the Linux test job was faster than the GitHub-hosted baseline. That suggests HF Jobs can be a practical CI backend, especially for ML projects that need custom images or accelerators.</p>
+<p>Logs were another pleasant surprise. GitHub Actions logs are useful, but the web UI can be heavy for large logs. HF Jobs logs are easy to fetch from the CLI:.</p>
+<p>Finally, although we didn't need them for Trackio's CI, HF Jobs also supports mounting volumes, which can be very helpful if you need to load datasets or models from Hugging Face promptly as part of your CI.</p>
+<p>Hopefully, this gives you all you need to try HF Jobs for running your GitHub Actions!</p>
+<p>GitHub CI is limitless and free. In Huggingface now I can't even run more 3 CPU spaces.</p>
+<p>Hi @k-l-lambda  what error do you see when try to run more than 3 CPU Spaces? Can you share a bit more about your CI setup?</p>
+<p id="sec-end-11031">Please feel free to drop a comment if you need any help migrating your CI!</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/github-ci-hf-jobs" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-train-ai-models-with-unsloth-and-hugging-face-jobs--11253.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11253. Latest Update: Train AI models with Unsloth and Hugging Face Jobs for FREE
+        </a>
+        
+        <a href="how-hugging-face-inference-endpoints-jobs-and-buckets-power-searc-10830.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10830. How Hugging Face Inference Endpoints, Jobs, and Buckets Power Search on Papers with Code
+        </a>
+        
+        <a href="faster-tensorflow-models-in-hugging-face-transformers-12254.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12254. Faster TensorFlow models in Hugging Face Transformers
+        </a>
+        
+        <a href="latest-update-hugging-face-on-pytorch-xla-tpus-12253.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12253. Latest Update: Hugging Face on PyTorch / XLA TPUs
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

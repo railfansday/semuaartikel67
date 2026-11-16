@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to build scalable web apps with OpenAI's Privacy Filter</title>
+    <meta name="description" content="It has been revealed that openAI released Privacy Filter on the Hub this week: an open-source personally-identifiable information (PII) detector that label">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-to-build-scalable-web-apps-with-openais-privacy-filter-11107.html">
+    <meta property="og:title" content="How to build scalable web apps with OpenAI's Privacy Filter">
+    <meta property="og:description" content="It has been revealed that openAI released Privacy Filter on the Hub this week: an open-source personally-identifiable information (PII) detector that label">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/openai-privacy-filter-web-apps/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-to-build-scalable-web-apps-with-openais-privacy-filter-11107.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How to build scalable web apps with OpenAI's Privacy Filter", "image": ["https://huggingface.co/blog/assets/openai-privacy-filter-web-apps/thumbnail.png"], "datePublished": "2026-04-27T00:00:00", "dateModified": "2026-11-16T21:07:47.214936", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-to-build-scalable-web-apps-with-openais-privacy-filter-11107.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How to build scalable web apps with OpenAI's Privacy Filter</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 27 Apr 2026 &bull; ⏱️ 5 min read (1042 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that openAI released Privacy Filter on the Hub this week: an open-source personally-identifiable information (PII) detector that labels text across eight categories in a single forward pass over a 128k context.</li><li style='margin-bottom:6px;'>Industry observers note that all three are built on gradio.Server, which lets you pair custom HTML/JS frontends with Gradio's queueing, ZeroGPU allocation, and gradio_client SDK.</li><li style='margin-bottom:6px;'>Privacy Filter is a 1.5B-parameter model with 50M active parameters, permissively licensed under Apache 2.0.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11107"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11107"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11107"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How to build scalable web apps with OpenAI's Privacy Filter" loading="lazy" src="https://huggingface.co/blog/assets/openai-privacy-filter-web-apps/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11107">It has been revealed that openAI released Privacy Filter on the Hub this week: an open-source personally-identifiable information (PII) detector that labels text across eight categories in a single forward pass over a 128k context. Model card. We spent a few hours building with it and landed on three apps that each reveals a different slice of what it can do.</p>
+<p>Industry observers note that all three are built on gradio.Server, which lets you pair custom HTML/JS frontends with Gradio's queueing, ZeroGPU allocation, and gradio_client SDK. In all these apps, gradio.Server plays the same backend role, and that consistency is exactly what makes it really powerful.</p>
+<p>Privacy Filter is a 1.5B-parameter model with 50M active parameters, permissively licensed under Apache 2.0. PII categories are private_person, private_address, private_email, private_phone, private_url, private_date, account_number, secret. Context is 128,000 tokens. Achieves state-of-the-art performance on the PII-Masking-300k benchmark. Full numbers and methodology are in the official release blog.</p>
+<p>Try it at ysharma/OPF-Document-PII-Explorer.</p>
+<p>User problem. You want to read a PII-heavy document (a contract, a resume, an exported chat log) with every detected span highlighted by category, a filter in the sidebar, and a summary dashboard up top. The reading experience should feel like a normal document, not a form.</p>
+<p>What Privacy Filter does here. The whole file goes through in a single 128k-context forward pass, so there's no chunking, no stitching, and span offsets line up directly with the rendered text. BIOES decoding keeps span boundaries clean through long ambiguous runs.</p>
+<p>What gr.Server does here. You could wire this up in Blocks with gr.HighlightedText and a sidebar, and it would work. The reading experience we wanted (serif body, category filters that toggle CSS classes client-side instead of re-running the model, a summary dashboard that doesn't force a page re-render) was easier to hand-author than to compose. gr.Server lets us serve the reader view as a single HTML file and expose the model behind one queued endpoint:.</p>
+<p>Note the decorator: @server.api(name="analyze_document"), not a plain @server.post. That's the piece that plugs the handler into Gradio's queue, so concurrent uploads are serialized, @spaces.GPU composes correctly on ZeroGPU, and the same endpoint is reachable from both the browser and gradio_client with no duplicated code. The browser calls it with the Gradio JS client:.</p>
+<p>Try it at ysharma/OPF-Image-Anonymizer.</p>
+<p>User problem. You want to share an image or any screenshot (a Slack thread, a receipt, a Stripe dashboard) with black bars over the PII. You want to toggle bars on and off, drag them to reposition, or draw one by hand for anything the model missed, then export the result.</p>
+<p>What Privacy Filter does here. Tesseract runs OCR and returns per-word bounding boxes. The backend reconstructs the full text with a char-offset to box map, then runs Privacy Filter once over the whole text. Detected character spans are looked up against the word map and joined into pixel rectangles per line.</p>
+<p>What gr.Server does here. gr.ImageEditor supports layered annotation and is a reasonable starting point for image redaction. The workflow we wanted (per-bar category metadata, toggle all bars in a category at once, client-side PNG export at natural resolution with no server round-trip) was cleaner to build on a custom  frontend. gr.Server hands back pixel rectangles from one queued endpoint and lets the canvas own everything else:.</p>
+<p id="sec-mid-11107">Sources indicate that the frontend invokes it with client.predict("/anonymize_screenshot", { image: handle_file(file) }), the same pattern as above. Toggles, drags, latest-bar drawing, and PNG export all happen in the browser; edits never round-trip to the server.</p>
+<p>Try it at ysharma/OPF-SmartRedact-Paste.</p>
+<p>Sources indicate that user problem. You want a pastebin that redacts before sharing. You paste a log line, an email, a support ticket. You get two URLs back. The public one serves the redacted version with , ,  placeholders, following the redaction convention from the official blog examples. The private one is gated by a token you keep and reveals the original with spans highlighted.</p>
+<p>Sources indicate that what Privacy Filter does here. Swap each detected span with a  placeholder on the stored paste. That's the entire redaction step. Multilingual text (Spanish, French, Chinese, Hindi, and others in the model-card examples) routes through the same call with no change.</p>
+<p>What gr.Server does here. This app needs two distinct GET routes for the same paste ID, one public and one token-gated, and the URL shape matters because the reveal URL is the thing you keep. gr.Server works here because it's a FastAPI app underneath — which is also why @server.api and plain @server.get can sit side by side in the same process. Note: this can also be built with gr.Blocks() by mounting custom routes with FastAPI  :.</p>
+<p>A daemon thread evicts expired pastes every 30 seconds. The whole service, including storage, is about 200 lines of application code because everything lives in one process.</p>
+<p>The split across all three apps is the same — anything that touches the model goes through @server.api, everything else stays on plain FastAPI routes:.</p>
+<p>@server.api gives you Gradio's queue (serialized requests, correct @spaces.GPU composition on ZeroGPU, progress events) and it's what the browser hits through @gradio/client. The same endpoint is also what gradio_client users hit from Python — one function, two SDKs, no duplicated code. Plain @server.get/@server.post are reserved for the static surfaces: HTML pages, file lookups, cheap dict reads. That's the rule of thumb from the gradio.Server intro post, and it's what makes these three apps feel consistent even though their UIs are very different.</p>
+<p>Drop in a resume, a screenshot of a Slack thread, a log line with a token in it. The fun part is seeing what Privacy Filter catches (and occasionally misses) on text you actually care about.</p>
+<p>Nice demos — the 8-category Privacy Filter taxonomy is a strong EN consumer/sanitization baseline for pastebins and screenshots.</p>
+<p>One gap I keep hitting for clinical notes outside EN: taxonomy coverage ≠ “run the same 8 labels on another language/domain.” Locale clinical text needs entity classes and distractors that the EN consumer schema doesn’t encode; otherwise you measure a different product than the one you deploy. Synthetic labeled notes help for that coverage test before anyone claims compliance.</p>
+<p id="sec-end-11107">Curious whether you’ve tried feeding clinical-style notes (even synthetic) through the same 8 labels and where the misses concentrate.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/openai-privacy-filter-web-apps" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-why-your-ai-agent-cant-read-the-web-and-how-to-buil-11645.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11645. Industry News: Why Your AI Agent Can't Read the Web (and How to Build a Fetch Layer That Can)
+        </a>
+        
+        <a href="build-generative-ui-apps-with-a2ui-copilotkit-agents-11081.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11081. Build Generative UI Apps with A2UI & CopilotKit Agents
+        </a>
+        
+        <a href="how-to-build-a-unified-lead-tracking-pipeline-for-web-forms-and-p-11053.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11053. How to Build a Unified Lead Tracking Pipeline for Web Forms and Phone Calls
+        </a>
+        
+        <a href="latest-update-canadas-latest-childrens-privacy-code-sets-ground-r-8925.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #8925. Latest Update: Canada’s Latest Children’s Privacy Code Sets Ground Rules For Apps
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

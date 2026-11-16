@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Running an AI Agent on a Local LLM: What I Measured on One GPU</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. It has been revealed that weekly. Free. One click to leave. 7 Day Free ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-running-an-ai-agent-on-a-local-llm-what-i-measured-on-11104.html">
+    <meta property="og:title" content="Tech Report: Running an AI Agent on a Local LLM: What I Measured on One GPU">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. It has been revealed that weekly. Free. One click to leave. 7 Day Free ">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_cover_2e992995c4.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-running-an-ai-agent-on-a-local-llm-what-i-measured-on-11104.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Running an AI Agent on a Local LLM: What I Measured on One GPU", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_cover_2e992995c4.jpg"], "datePublished": "2026-11-13T18:03:55", "dateModified": "2026-11-16T21:07:47.025301", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-running-an-ai-agent-on-a-local-llm-what-i-measured-on-11104.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Running an AI Agent on a Local LLM: What I Measured on One GPU</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 13 Nov 2026 &bull; ⏱️ 6 min read (1123 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>Recent findings suggest that running an AI agent on your own GPU sounds simple: point it at Ollama and stop paying per token.</li><li style='margin-bottom:6px;'>The numbers were not what I expected, though.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11104"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11104"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11104"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Running an AI Agent on a Local LLM: What I Measured on One GPU" loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_cover_2e992995c4.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11104">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>It has been revealed that weekly. Free. One click to leave.</p>
+<p>7 Day Free Trial. Cancel Anytime.</p>
+<p>Recent findings suggest that running an AI agent on your own GPU sounds simple: point it at Ollama and stop paying per token. I set up OpenClaw, an open-source AI assistant, with a 9B model in Ollama on one RTX 3090 and connected it to Discord. Then I read the Ollama log for every request.</p>
+<p>The agent worked. The numbers were not what I expected, though. A one-line question turned into a prompt of more than 18,000 tokens, the first reply took over a minute, and the small model sometimes guessed instead of using its tools.</p>
+<p>This article covers what I measured and what each number means if you plan to run an agent on local hardware.</p>
+<p>OpenClaw ran in Docker and reached Ollama on the host at http://host.docker.internal:11434. Discord was the chat interface, and OpenClaw's web panel showed the sessions and context use.</p>
+<p>Recent findings suggest that this article is about the results, not the installation. The full step-by-step setup is in a separate guide to running OpenClaw in Docker with Ollama and Discord. That guide covers the Compose file, the Discord bot and how to keep the ports off your network.</p>
+<p>All timings below come from the Ollama log on the test machine. Ollama loaded the model with a 32,768-token context.</p>
+<p>My first message in Discord was short: "Which model are you running on, and what is 17 * 23?" The bot answered correctly: it ran on ollama/qwen3.5:9b, and 17 × 23 is 391.</p>
+<p>It has been revealed that the Ollama log demonstrated what that question cost. The model processed 18,415 prompt tokens and generated 33 tokens.</p>
+<p>According to recent reports, the extra tokens come from the agent itself. With every request, OpenClaw sends:.</p>
+<p>On the RTX 3090, reading that prompt took 10 seconds at 1,838 tokens per second. A slower GPU, or a CPU, needs much longer to read the same prompt.</p>
+<p>Prompt tokens per model call, from the Ollama log. Only the first message had to process the whole prompt.</p>
+<p>Recent findings suggest that openClaw counts tokens with its own estimate, which was higher than the Ollama count. The gateway log estimated the prompt at 24,608 tokens, against a prompt budget of 24,576 tokens for this model. By OpenClaw's own count, the base prompt alone used up the budget before any conversation history.</p>
+<p>The web panel highlighted a similar figure: 68 to 69 percent of the context window was in use for the Discord sessions after only a few messages.</p>
+<p>The first message arrived while the model was not loaded in GPU memory. That reply took 1 min 10 s:.</p>
+<p>The next requests were much faster:.</p>
+<p>Reply times on the test machine. Loading the model took most of the first reply.</p>
+<p>Sources indicate that the speed-up comes from prompt caching. The system prompt, tool definitions and workspace files at the start of the prompt stay the same between requests. Ollama kept that part cached and processed only the upcoming tokens. The model wrote at 91 to 96 tokens per second in every test.</p>
+<p>In a recent development, ollama's documentation says models stay in memory for 5 minutes by default before they are unloaded. After that, the next message pays the load time again. You can change this with the OLLAMA_KEEP_ALIVE environment variable on the Ollama server, or with the keep_alive parameter per request. A negative value, such as -1, keeps the model loaded. I did not change this setting in the test.</p>
+<p id="sec-mid-11104">If you run Ollama in Docker, pass the variable with -e OLLAMA_KEEP_ALIVE=-1 or in the environment: section of your Compose file.</p>
+<p>Two things used the GPU besides my chat messages.</p>
+<p>It has been revealed that A heartbeat. OpenClaw's web panel listed one scheduled automation, heartbeat-main, which runs every 30 minutes. The agent wakes on that schedule, so the model gets called even when nobody chats. With Ollama's 5-minute default, the model is unloaded between heartbeats unless someone chatted recently, so a heartbeat most likely starts with a model load. I did not measure this.</p>
+<p>Sources indicate that an embedding model. During the first message, OpenClaw also called Ollama's /api/embed endpoint twice to index its memory. It used qwen3-embedding:4b, which was already installed on the Ollama server. I did not set OpenClaw to use that model; it picked it on its own.</p>
+<p>The two models took this much GPU memory:.</p>
+<p>That is 11.4 GB for the models alone, almost half of the RTX 3090's 24 GB.</p>
+<p>The rest of the stack was light:.</p>
+<p>What this means for you: proposal GPU memory for the chat model, the embedding model and the context, not the chat model alone. If the GPU also runs other models, the heartbeat can compete with them.</p>
+<p>Sources indicate that the first two tests in Discord: a question, then a file written with a tool. The user name is blurred.</p>
+<p>The mistakes showed up when the model had to check something:.</p>
+<p>In a recent development, after the restart, the bot claimed it had lost the earlier session. When asked to use its read tool, it read the file correctly.</p>
+<p>Sources indicate that the fix for the first problem was simple. When I wrote "use your read tool to open homelab-test.md", the model opened the file and listed all three points correctly. Naming the tool made it check instead of guess.</p>
+<p>The model listed four files and missed the test file and a folder, because it answered from its prompt.</p>
+<p>Based on this test, a local 9B model on one consumer GPU works for:.</p>
+<p>If you need better answers, OpenClaw also works with hosted models, but then your prompts leave your machine.</p>
+<p>In this test, qwen3.5:9b used 6.3 GB and the qwen3-embedding:4b memory model used 5.1 GB. Together the two models needed 11.4 GB.</p>
+<p>The model had to load into GPU memory first, which took 59 seconds of the 70-second reply. Ollama keeps a model loaded for 5 minutes by default, and the OLLAMA_KEEP_ALIVE setting changes that.</p>
+<p>Every request includes OpenClaw's system prompt, its tool definitions and its workspace files. A one-line question became an 18,415-token prompt in this test.</p>
+<p>Yes. A heartbeat automation runs every 30 minutes and calls the model even when nobody sends a message.</p>
+<p>Sources indicate that it handled questions, arithmetic and file creation correctly in this test. It sometimes answered from its prompt instead of using its tools. When it wrongly mentioned its memory was lost, asking it to use its read tool made it check the file and answer correctly.</p>
+<p id="sec-end-11104">7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/running-an-ai-agent-on-a-local-llm-what-i-measured-on-one-gpu/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-self-hosted-langsmith-alternatives-4-tools-tested-on--11552.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11552. Tech Report: Self-Hosted LangSmith Alternatives: 4 Tools Tested on One TypeScript Agent
+        </a>
+        
+        <a href="tech-report-running-privacy-preserving-inferences-on-hugging-face-11879.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11879. Tech Report: Running Privacy-Preserving Inferences on Hugging Face Endpoints
+        </a>
+        
+        <a href="tech-report-the-open-arabic-llm-leaderboard-2-11697.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11697. Tech Report: The Open Arabic LLM Leaderboard 2
+        </a>
+        
+        <a href="tech-report-trace-evaluate-your-agent-with-arize-phoenix-11681.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11681. Tech Report: Trace & Evaluate your Agent with Arize Phoenix
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

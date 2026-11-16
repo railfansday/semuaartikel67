@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Introducing the Microsoft Copilot harness in Foundry Agent Service</title>
+    <meta name="description" content="A model can reason about a task. Completing that task takes more: the right context, tools, execution environment, and controls, and an agent loop that bri">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-introducing-the-microsoft-copilot-harness-in-foundry-age-11634.html">
+    <meta property="og:title" content="Breaking: Introducing the Microsoft Copilot harness in Foundry Agent Service">
+    <meta property="og:description" content="A model can reason about a task. Completing that task takes more: the right context, tools, execution environment, and controls, and an agent loop that bri">
+    <meta property="og:image" content="https://devblogs.microsoft.com/foundry/wp-content/uploads/sites/89/2026/10/Microsoft-Copilot-harness-DevBlog-header-4-1.webp">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-introducing-the-microsoft-copilot-harness-in-foundry-age-11634.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Introducing the Microsoft Copilot harness in Foundry Agent Service", "image": ["https://devblogs.microsoft.com/foundry/wp-content/uploads/sites/89/2026/10/Microsoft-Copilot-harness-DevBlog-header-4-1.webp"], "datePublished": "2026-10-28T16:45:06+00:00", "dateModified": "2026-11-16T21:08:17.161195", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-introducing-the-microsoft-copilot-harness-in-foundry-age-11634.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Introducing the Microsoft Copilot harness in Foundry Agent Service</h1>
+        <div class="meta-line">🌐 Source: <strong>Microsoft</strong> &bull; 📅 28 Oct 2026 &bull; ⏱️ 5 min read (954 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Completing that task takes more: the right context, tools, execution environment, and controls, and an agent loop that brings them together.</li><li style='margin-bottom:6px;'>Microsoft’s unified harness strategy brings a shared execution foundation across our agent experiences while preserving customer choice.</li><li style='margin-bottom:6px;'>According to recent reports, today, we’re introducing the Microsoft Copilot harness in Foundry Agent Service in public preview.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11634"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11634"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11634"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Introducing the Microsoft Copilot harness in Foundry Agent Service" loading="lazy" src="https://devblogs.microsoft.com/foundry/wp-content/uploads/sites/89/2026/10/Microsoft-Copilot-harness-DevBlog-header-4-1.webp" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11634">A model can reason about a task. Completing that task takes more: the right context, tools, execution environment, and controls, and an agent loop that brings them together.</p>
+<p>Microsoft’s unified harness strategy brings a shared execution foundation across our agent experiences while preserving customer choice. In Microsoft Foundry, that means you can choose a supported model and decide how much of the agent stack to build yourself, without having to assemble every layer around it.</p>
+<p>According to recent reports, today, we’re introducing the Microsoft Copilot harness in Foundry Agent Service in public preview. It gives developers a fully managed way to build agents that reason, use tools, and complete complex, long-running tasks. It’s our opinionated approach to helping agents complete complex work. We’re also announcing general availability of long-running resilience for hosted agents. Together, these capabilities help developers build more reliable agents for complex, long-running workflows.</p>
+<p>Many teams building agents end up implementing the same execution machinery: coordinating model and tool calls, maintaining working context, managing files, and deciding how to continue when a task requires more than one step. That work matters, but it isn’t usually what differentiates your application.</p>
+<p>The Copilot harness gives you a managed execution system for agents you define declaratively in Foundry Agent Service. Microsoft runs the agent loop and sandbox; you bring the knowledge, procedures, and tools that make the agent yours.</p>
+<p>The public preview brings together four building blocks:.</p>
+<p>The harness manages working context as tasks develop and coordinates model and tool steps toward a requested outcome, within configured limits and policy boundaries. You choose a supported Foundry model without having to rewrite the orchestration around it.</p>
+<p>That lets your team focus on improving the agent’s expertise and evaluating its results.</p>
+<p>Industry observers note that “With the Microsoft Copilot harness in Foundry Agent Service, we had a solution running in less than a week, allowing us to focus on design and capabilities instead of the infrastructure underneath it. That speed will help us bring our vision of AI that runs within and alongside our products to market faster.”.</p>
+<p>— Chris Evans, Chief Technology Officer, Confluence Technologies.</p>
+<p>According to recent reports, “The Microsoft Copilot harness in Foundry Agent Service gives Fashable a powerful foundation for turning complex sourcing processes into governed, measurable agent workflows. We see the opportunity to generate complete tech packs from our knowledge and templates, while extending our A2A sourcing network beyond digitally connected suppliers through email and voice. Most importantly, we can equip brand and manufacturer agents with deeper knowledge and fresh capabilities to work across sourcing and negotiation without automating away accountability: agents can discover, engage and calculate, while commercially binding decisions remain under human control.”.</p>
+<p>— Orlando Ribas Fernandes, CEO, Fashable.</p>
+<p>Consider an agent that researches a topic, analyzes supporting data, and produces an evidence-backed brief. The same pattern can support market research, operational analysis, or an internal planning workflow: instructions define the outcome, skills define the method, and tools provide access to evidence.</p>
+<p>Here’s a compact example using the preview Azure Developer CLI (azd) surface.</p>
+<p id="sec-mid-11634">First, put a reusable procedure in skills/research-brief/SKILL.md:.</p>
+<p>Then describe the skill and agent in azure.yaml:.</p>
+<p>Set the referenced environment values, then deploy and invoke:.</p>
+<p>azd is one authoring option. You can also start in the Foundry portal or use Foundry Toolkit for Visual Studio Code. In the GitHub Copilot app, the Microsoft Foundry plugin and Microsoft Foundry Skill provide a conversational path to creating and managing prompt agents.</p>
+<p>Sources indicate that these options let you build on a managed harness. When your application needs a different framework or its own execution logic, hosted agents give you another path.</p>
+<p>Hosted agents in Foundry Agent Service let you bring your own framework, agent loop, middleware, dependencies, and runtime behavior while Foundry manages hosting. Long-running resilience for hosted agents is generally available this week, helping agents recover from interruptions during work that takes hours or days.</p>
+<p>Foundry detects interruptions and restarts the work with its original input. Your code saves progress and intermediate results so the agent can pick up where it left off. If the agent updates another system, your workflow also needs to prevent duplicate actions when work restarts.</p>
+<p>Industry observers note that for example, an agent analyzing a large dataset can save completed stages and resume from the last checkpoint. If it also creates a report in another system, it should check whether the report already exists before creating it again.</p>
+<p>Foundry provides the recovery foundation; your application determines what to save and how to resume. Conversation history alone isn’t enough to restore work in progress.</p>
+<p>It has been revealed that these workflows have different requirements, and there isn’t one right level of abstraction for every agent. Foundry Agent Service lets you choose where to invest your engineering effort:.</p>
+<p>Start with the level that fits your application’s requirements, rather than taking ownership of infrastructure you don’t need to differentiate.</p>
+<p>It has been revealed that during this preview, select the Microsoft Copilot harness when creating the agent. Existing agents are unchanged, switching the harness after creation isn’t supported yet, and Foundry manages the execution environment’s CPU, memory, and idle settings.</p>
+<p>You can start in the Microsoft Foundry portal or use azd to keep the agent definition alongside the rest of your application.</p>
+<p id="sec-end-11634">It has been revealed that pricing: Billing for the Copilot harness in Foundry Agent Service begins December 1, 2026, with consumption-based pricing. Harness runtime usage is free before December 1; model inference and separately billed tools and connected services remain subject to their applicable charges. Starting December 1, sandbox compute and memory are billed at USD $0.0994 per vCPU-hour and $0.0118 per GiB-hour, respectively. Prices may vary by region and agreement.</p>
+<p style="margin-top: 25px;">
+<a href="https://devblogs.microsoft.com/foundry/microsoft-copilot-harness-in-foundry/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="introducing-training-cluster-as-a-service-a-latest-collaboration--11611.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11611. Introducing Training Cluster as a Service - a latest collaboration with NVIDIA
+        </a>
+        
+        <a href="building-the-open-agent-ecosystem-together-introducing-openenv-11471.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11471. Building the Open Agent Ecosystem Together: Introducing OpenEnv
+        </a>
+        
+        <a href="harness-scaffold-and-the-ai-agent-terms-worth-getting-right-11061.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11061. Harness, Scaffold, and the AI Agent Terms Worth Getting Right
+        </a>
+        
+        <a href="building-the-next-generation-of-multimodal-ai-experiences-with-fa-10951.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10951. Building the next generation of multimodal AI experiences with fal in Microsoft Foundry
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

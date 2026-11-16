@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A New Framework for Evaluating Voice Agents (EVA)</title>
+    <meta name="description" content="Recent findings suggest that conversational voice agents present a distinct evaluation challenge: they must simultaneously satisfy two objectives — accurac">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/a-new-framework-for-evaluating-voice-agents-eva-11193.html">
+    <meta property="og:title" content="A New Framework for Evaluating Voice Agents (EVA)">
+    <meta property="og:description" content="Recent findings suggest that conversational voice agents present a distinct evaluation challenge: they must simultaneously satisfy two objectives — accurac">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow-AI/eva.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/a-new-framework-for-evaluating-voice-agents-eva-11193.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "A New Framework for Evaluating Voice Agents (EVA)", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow-AI/eva.png"], "datePublished": "2026-03-24T02:01:52", "dateModified": "2026-11-16T21:07:52.276211", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/a-new-framework-for-evaluating-voice-agents-eva-11193.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>A New Framework for Evaluating Voice Agents (EVA)</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 24 Mar 2026 &bull; ⏱️ 9 min read (1728 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that conversational voice agents present a distinct evaluation challenge: they must simultaneously satisfy two objectives — accuracy (completing the user's task correctly and faithfully) and conversational experience (doing so naturally, concisely, and in a way appropriate for spoken interaction).</li><li style='margin-bottom:6px;'>Sources indicate that we introduce EVA, an end-to-end evaluation framework for conversational voice agents that evaluates complete, multi-turn spoken conversations using a realistic bot-to-bot architecture.</li><li style='margin-bottom:6px;'>We also provide benchmark results for 20 cascade and audio-native systems, such as speech-to-speech (S2S) models and Large Audio Language Models (LALMs).</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11193"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11193"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11193"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="A New Framework for Evaluating Voice Agents (EVA)" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow-AI/eva.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11193">Recent findings suggest that conversational voice agents present a distinct evaluation challenge: they must simultaneously satisfy two objectives — accuracy (completing the user's task correctly and faithfully) and conversational experience (doing so naturally, concisely, and in a way appropriate for spoken interaction). These objectives are deeply intertwined: mishearing a confirmation code renders perfect LLM reasoning meaningless, a wall of options overwhelms a caller who can't skim spoken output, and delayed responses can pass every accuracy check while remaining unusable in practice. Existing frameworks treat these as separate concerns — evaluating task success or conversational dynamics, but not both.</p>
+<p>Sources indicate that we introduce EVA, an end-to-end evaluation framework for conversational voice agents that evaluates complete, multi-turn spoken conversations using a realistic bot-to-bot architecture. EVA produces two high-level scores, EVA-A (Accuracy) and EVA-X (Experience), and is designed to surface failures along each dimension. EVA is the first to jointly score task success and conversational experience. We release EVA with an initial airline dataset of 50 scenarios covering flight rebooking, cancellation handling, vouchers, and more — the first in a planned series of domains.</p>
+<p>We also provide benchmark results for 20 cascade and audio-native systems, such as speech-to-speech (S2S) models and Large Audio Language Models (LALMs). Our biggest finding is that there is a consistent Accuracy-Experience tradeoff; agents that perform well on task completion tend to deliver worse user experiences, and vice versa.</p>
+<p>It has been revealed that the field right now lacks a framework that evaluates the full quality of voice agent interactions, as most existing efforts assess individual components in isolation. For example, AudioBench, SD-Eval, VoxEval, Kimi-Audio-Evalkit, VoiceBench and VoxDialogue evaluate core speech understanding capabilities for Speech-to-Text (STT) — transcription, paralinguistics, acoustic cues — but remain confined to single-turn, non-interactive settings. On the other hand, EmergentTTS-Eval and SHEET assess perceived speech quality using subjective listening tests (e.g., Mean Opinion Score). Beyond speech perception, FD-Bench, Talking Turns, Full-Duplex-Bench provide deeper analyses of conversational dynamics — interruptions, backchanneling, turn-taking — yet evaluate these in isolation from task-oriented tool use, leaving the relationship between dialogue quality and agentic capability unexamined. More recent efforts, notably VoiceAgentBench and CAVA, take steps towards evaluating the agentic capabilities of commercial voice agent systems, including tool-calling and complex instruction-following. However, these voice-agentic capabilities are not evaluated within complete conversational workflows that voice agents must navigate in practice: from initial user request through multi-step tool orchestration to final task resolution.</p>
+<p>Industry observers note that the lack of frameworks that jointly capture accuracy and experience underscores the need for a framework that treats voice agent quality as an integrated whole. This means evaluating not only whether the task succeeded, but whether the agent communicated accurately, concisely, and naturally throughout, and surfacing how these dimensions trade off against one another in realistic deployment conditions.</p>
+<p>End-to-end evaluation reveals interaction dynamics that are not apparent at the component level: whether the agent interrupts customers during natural pauses in speech, whether it recovers smoothly when a user corrects a transcription error, or whether high latency disrupts the conversational flow enough to prompt users to repeat themselves or abandon the task entirely.</p>
+<p>EVA simulates multi-turn spoken conversations over live audio in which the agent must invoke appropriate tools, adhere to task-specific policies, and reach a deterministically verifiable end state. EVA evaluates voice agents using a bot-to-bot audio architecture composed of five core components:.</p>
+<p>Recent findings suggest that user Simulator — A conversational AI configured with a specific goal and persona that plays the role of a caller. It operates in audio using high-quality Text-to-Speech (TTS) models, ensuring the evaluation captures representative speech-understanding challenges in natural-sounding conversational speech and realistic turn-taking dynamics.</p>
+<p>Voice Agent — The voice agent being evaluated, built with Pipecat, an open-source Python framework for real-time voice applications. EVA supports both cascade architectures (STT → LLM → TTS) and audio-native models (S2S or LALM → TTS).</p>
+<p>Sources indicate that tool Executor — The engine that provides deterministic, reproducible tool responses via custom Python functions. It dynamically queries and modifies a predefined per-scenario database.</p>
+<p>Recent findings suggest that validators — A set of validation metrics that check that conversations are complete and that the user faithfully reproduced the intended behavior and speech, with no human annotation required. Any conversation that fails in this validation step is regenerated, ensuring that only valid, correctly executed conversations enter evaluation. This stands in contrast to approaches that rely on post-hoc human labeling to identify simulator errors.</p>
+<p>Metrics Suite — A suite of metrics evaluates the voice agent using the conversation recording, transcript, and tool call logs.</p>
+<p>Each test case (scenario) in our framework is an evaluation record, structured to make tests reproducible:.</p>
+<p>Recent findings suggest that we release EVA with a synthetic airline dataset of 50 scenarios and 15 tools, spanning IRROPS rebooking, voluntary itinerary changes, cancellations, same-day standby, and compensation vouchers. Scenarios are designed to test temporal reasoning, policy-following, constraint satisfaction, and named-entity handling.</p>
+<p id="sec-mid-11193">Recent findings suggest that EVA evaluates voice agents across two fundamental dimensions, EVA-A for accuracy, and EVA-X for experience. EVA also includes a set of diagnostic metrics. Unlike the primary metrics, these are not used directly to compare or rank models — rather, they offer granular insight into why a model scores the way it does, helping identify and understand specific failure modes (e.g., ASR, speech synthesis, etc.). We report  pass@k (the probability that at least one of k runs succeeds) and pass^k (the probability that all k runs succeed) across three trials per scenario (k = 3), capturing both peak performance and behavioral consistency.</p>
+<p>EVA uses two evaluation methods: deterministic code-based metrics, which compute scores directly from structured data and are fast; and LLM-as-Judge metrics, which use Large Language Models (LLMs) to assess qualitative aspects of the conversation, or Large Audio Language Models (LALM) to evaluate speech directly. Each judge-based metric uses the model that performs best on a curated evaluation dataset for that specific metric.</p>
+<p>It has been revealed that task completion alone is a necessary but insufficient measure of accuracy. An agent can reach the correct end state while fabricating a policy detail, misreading a confirmation code aloud, or hallucinating a flight number mid-conversation. These failures are invisible to a binary pass/fail check but directly harm customers. EVA-A therefore measures three dimensions of accuracy:.</p>
+<p>According to recent reports, turn-taking timing matters, but it tells only part of the story. An agent can have perfect timing while overwhelming a caller with a wall of spoken options they cannot skim, or repeatedly asking for information already given. These failures degrade the experience without ever involving a mistimed response. EVA-X therefore measures three dimensions of experience:.</p>
+<p>In a recent development, we evaluated 20 systems — proprietary and open-source, cascade and audio-native — and find a consistent accuracy-experience tradeoff: agents that perform well on task completion tend to deliver worse user experiences, and vice versa — a tradeoff invisible to benchmarks that score only task completion. No single configuration dominates both axes, confirming that accuracy and experience must be measured jointly.</p>
+<p>Industry observers note that additionally, we identified named entity transcription as a dominant failure mode. A single misheard character can cascade into an authentication failure and a full conversation breakdown. Also, multi-step workflows break agents in predictable ways. Rebooking a flight while preserving ancillary services — seats, baggage — is the dominant complexity breaker across all configurations. Finally, we observed that additional calibration is needed for real-world use cases. The gap between pass@3 and pass^3 is substantial across all configurations. Even agents that can complete a task often cannot do so consistently, which is critical for real-world success.</p>
+<p>EVA is designed to provide rigorous, end-to-end evaluation of conversational voice agents, but several limitations are key to acknowledge, across the framework, data, and metrics dimensions:.</p>
+<p>According to recent reports, metrics — LLM-as-judge models carry inherent biases and may favor certain response styles independent of quality, with additional risk of systematic bias when the evaluated and judge models share a provider. While we validate our judges against labeled datasets and report accuracy measurements on our website, these alignment scores do not eliminate systematic bias entirely. Additionally, task completion is measured as binary, which does not capture partial credits and may understate the relative quality of systems that fail gracefully versus catastrophically.</p>
+<p>Simulation — The current release covers 50 English-language scenarios in a single domain (airline); results may not generalize to other domains, languages, or accents. Also, the user simulator may not perfectly replicate real caller behavior (e.g., disfluencies, hesitations, emotions) or guarantee full policy adherence.</p>
+<p>According to recent reports, framework — The user simulator relies on a single commercial provider whose voice characteristics may systematically favor certain ASR systems, and the bot-to-bot pipeline — including audio format conversions and real-time audio interfaces — may not fully represent production deployments. Also, full reproduction requires commercial API access, and latency measurements will vary across providers and infrastructure.</p>
+<p>On the evaluation side, we plan to add prosodic quality assessment (pronunciation, rhythm, expressiveness) — currently an open problem after finding very low alignment between LALM-as-Judge and human judgments. We also plan robustness testing under noisy conditions, diverse accents, multilingual users, and varied speaker behaviors, alongside affect-aware evaluation of how agents respond to user distress. In terms of data, we are developing additional domain datasets — each with distinct policy structures, named entity profiles, and conversational dynamics — and more complex scenarios involving compound requests, multi-step follow-ups, and longer conversational memory. On the tooling front, we will release a results and error analysis application that automatically identifies errors per metric and model, surfaces representative examples for exploration, and generates structured summaries of each model’s strengths and weaknesses. Finally, we intend to expand the leaderboard continuously to provide an up-to-date assessment of voice agent capabilities across the field.</p>
+<p>View  more details about limitations and our upcoming roadmap here.</p>
+<p>Core contributors include Tara Bogavelli, Gabrielle Gauthier Melançon, Katrina Stankiewicz, Oluwanifemi Bamgbose, Hoang Nguyen, Raghav Mehndiratta, and Hari Subramani.</p>
+<p id="sec-end-11193">We also thank Lindsay Brin, Akshay Kalkunte, Joseph Marinier, Jishnu Nair, and Aman Tiwari for their careful data review and thoughtful contributions to the framework, and Fanny Riols, Anil Madamala, Sridhar Nemala, and Srinivas Sunkara for their management, leadership, and support throughout. We also extend our thanks to the PAVA and CLAE ServiceNow teams, whose prior work on evaluations and voice agents provided valuable inspiration for this project.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ServiceNow-AI/eva" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="back-to-the-future-evaluating-ai-agents-on-predicting-future-even-11582.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11582. Back to The Future: Evaluating AI Agents on Predicting Future Events
+        </a>
+        
+        <a href="openenv-in-practice-evaluating-tool-using-agents-in-real-world-en-11274.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11274. OpenEnv in Practice: Evaluating Tool-Using Agents in Real-World Environments
+        </a>
+        
+        <a href="scarfbench-benchmarking-ai-agents-for-enterprise-java-framework-m-10976.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10976. ScarfBench: Benchmarking AI Agents for Enterprise Java Framework Migration
+        </a>
+        
+        <a href="build-low-latency-multilingual-voice-agents-open-weights-full-dep-10877.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10877. Build Low-Latency Multilingual Voice Agents: Open Weights & Full Deployment Control with NVIDIA Magpie TTS
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

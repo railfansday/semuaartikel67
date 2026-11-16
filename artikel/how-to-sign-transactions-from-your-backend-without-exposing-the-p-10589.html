@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to sign transactions from your backend without exposing the private key</title>
+    <meta name="description" content="Keep the private key out of your backend entirely. Put it in a signer your backend calls, and put the rule that decides each signature next to the key inst">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-to-sign-transactions-from-your-backend-without-exposing-the-p-10589.html">
+    <meta property="og:title" content="How to sign transactions from your backend without exposing the private key">
+    <meta property="og:description" content="Keep the private key out of your backend entirely. Put it in a signer your backend calls, and put the rule that decides each signature next to the key inst">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fstorage.ghost.io%2Fc%2F3b%2F31%2F3b319065-dea8-422b-a5be-1991c8a61fd0%2Fcontent%2Fimages%2F2026%2F09%2Flitbanner--1-.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-to-sign-transactions-from-your-backend-without-exposing-the-p-10589.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How to sign transactions from your backend without exposing the private key", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fstorage.ghost.io%2Fc%2F3b%2F31%2F3b319065-dea8-422b-a5be-1991c8a61fd0%2Fcontent%2Fimages%2F2026%2F09%2Flitbanner--1-.png"], "datePublished": "2026-11-16T21:01:38", "dateModified": "2026-11-16T21:07:17.470855", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-to-sign-transactions-from-your-backend-without-exposing-the-p-10589.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How to sign transactions from your backend without exposing the private key</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 3 min read (609 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Keep the private key out of your backend entirely.</li><li style='margin-bottom:6px;'>The way most people start is with a private key in an environment variable and a script that signs locally.</li><li style='margin-bottom:6px;'>They differ in what stands between a compromised backend and a signature.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-10589"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-10589"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-10589"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How to sign transactions from your backend without exposing the private key" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fstorage.ghost.io%2Fc%2F3b%2F31%2F3b319065-dea8-422b-a5be-1991c8a61fd0%2Fcontent%2Fimages%2F2026%2F09%2Flitbanner--1-.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-10589">Keep the private key out of your backend entirely. Put it in a signer your backend calls, and put the rule that decides each signature next to the key instead of in your server. On Lit Protocol the key lives inside a secure enclave, and the rule is a Lit Action, a JavaScript function that runs in that enclave before every signature. Your backend gets an API key that can only request signatures. If someone breaks into your backend, they can ask for signatures that pass your rule, and that is all they can do.</p>
+<p>The way most people start is with a private key in an environment variable and a script that signs locally. I understand why. It works and it is fast to set up. The problem is that anything with access to that process can read the key. And there is nothing between the script's logic and the signature, so a bug in the strategy becomes a signed transaction.</p>
+<p>There are four common designs. They differ in what stands between a compromised backend and a signature.</p>
+<p>The first is a cloud KMS like AWS KMS. The key stays in the HSM and your backend asks it to sign a hash. Nothing stands between your backend and a signature except IAM permissions. The KMS does not know what a blockchain transaction is.</p>
+<p>The second is a hosted signer with a policy engine. The provider holds the key and checks your allowlists and caps before signing. The rule can see the transaction fields. It cannot see your ledger, a price, or whether a deposit landed on another chain.</p>
+<p>Recent findings suggest that the third is a rule written as code that runs inside the enclave with the key. The rule can fetch whatever it needs. This is how Lit works.</p>
+<p>The fourth is a smart account with modules. A Safe or an ERC-4337 account enforces the rule on-chain. This is fully public, but it costs gas per operation, it only works on EVM chains, and the rule can only use data that is already on-chain.</p>
+<p id="sec-mid-10589">This Lit Action signs a settlement only after it confirms the deposit on the source chain.</p>
+<p>Your backend calls it like this, using the execute-only key.</p>
+<p>Sources indicate that when the request comes in, the enclave hashes the code and checks that your API key is allowed to run that hash against that wallet. Then it runs the function and returns the signed transaction. Lit's code never sends the key out of the enclave, and only the actions in the wallet's group can use it.</p>
+<p>It has been revealed that it cannot create a wallet, add a rule, or change a group. Those actions need your account key. If you use ChainSecured mode, they need a transaction from the wallet that owns your account on Base. Keep both of those away from your production servers.</p>
+<p>Give each service its own execute-only key, scoped to one group. Put the amount cap and the destination check in the signer's rule, not just in your own code. Test revoking a key before you launch, and notice that the wallet address does not change when you do. Keep the wallet's balance at a working level. A rule stops signatures that break the rule. It cannot undo a mistake that the rule allowed.</p>
+<p>According to recent reports, to create an account, go to the Lit dashboard and click Create an account. The API reference is at developer.litprotocol.com/management/api_direct.</p>
+<p id="sec-end-10589">Sources indicate that this is part 3 of a five-part series on building with Lit. Part 4 is about adding wallets to your app with an API.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/litprotocol/how-to-sign-transactions-from-your-backend-without-exposing-the-private-key-5eal" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="efficient-table-pre-training-without-real-data-an-introduction-to-12177.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12177. Efficient Table Pre-training without Real Data: An Introduction to TAPEX
+        </a>
+        
+        <a href="breaking-introducing-the-private-hub-a-new-way-to-build-with-mach-12153.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12153. Breaking: Introducing the Private Hub: A New Way to Build With Machine Learning
+        </a>
+        
+        <a href="setfit-efficient-few-shot-learning-without-prompts-12135.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12135. SetFit: Efficient Few-Shot Learning Without Prompts
+        </a>
+        
+        <a href="building-location-aware-interfaces-without-mixing-up-language-cur-11917.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11917. Building Location-Aware Interfaces Without Mixing Up Language, Currency, and Region
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

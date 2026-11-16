@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeRobot v0.5.0: Scaling Every Dimension</title>
+    <meta name="description" content="With over 200 merged PRs and over 50 new contributors since v0.4.0, LeRobot v0.5.0 is our biggest release yet — expanding in every direction at once. More ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/lerobot-v050-scaling-every-dimension-11226.html">
+    <meta property="og:title" content="LeRobot v0.5.0: Scaling Every Dimension">
+    <meta property="og:description" content="With over 200 merged PRs and over 50 new contributors since v0.4.0, LeRobot v0.5.0 is our biggest release yet — expanding in every direction at once. More ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/lerobot-release-v050/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/lerobot-v050-scaling-every-dimension-11226.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "LeRobot v0.5.0: Scaling Every Dimension", "image": ["https://huggingface.co/blog/assets/lerobot-release-v050/thumbnail.png"], "datePublished": "2026-03-09T00:00:00", "dateModified": "2026-11-16T21:07:54.155693", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/lerobot-v050-scaling-every-dimension-11226.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>LeRobot v0.5.0: Scaling Every Dimension</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 09 Mar 2026 &bull; ⏱️ 5 min read (1086 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>With over 200 merged PRs and over 50 new contributors since v0.4.0, LeRobot v0.5.0 is our biggest release yet — expanding in every direction at once.</li><li style='margin-bottom:6px;'>Recent findings suggest that leRobot v0.5.0 adds full Unitree G1 humanoid support (whole-body control models), latest policies –including Pi0-FAST autoregressive VLAs and Real-Time Chunking for responsive inference–, and streaming video encoding that eliminates wait times between recording episodes.</li><li style='margin-bottom:6px;'>LeRobot v0.5.0 dramatically expands the roster of supported hardware — from arms and mobile robots to a full humanoid.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11226"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11226"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11226"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="LeRobot v0.5.0: Scaling Every Dimension" loading="lazy" src="https://huggingface.co/blog/assets/lerobot-release-v050/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11226">With over 200 merged PRs and over 50 new contributors since v0.4.0, LeRobot v0.5.0 is our biggest release yet — expanding in every direction at once. More robots (including our first humanoid), more policies (including the comeback of autoregressive VLAs), faster datasets, simulation environments you can load straight from the Hub, and a modernized codebase running on Python 3.12 and Transformers v5. Whether you're training policies in simulation or deploying them on real hardware, v0.5.0 has something for you.</p>
+<p>Recent findings suggest that leRobot v0.5.0 adds full Unitree G1 humanoid support (whole-body control models), latest policies –including Pi0-FAST autoregressive VLAs and Real-Time Chunking for responsive inference–, and streaming video encoding that eliminates wait times between recording episodes. The release also introduces EnvHub for loading simulation environments from the Hugging Face Hub, NVIDIA IsaacLab-Arena integration, and a major codebase modernization with Python 3.12+, Transformers v5, and third-party policy plugins.</p>
+<p>LeRobot v0.5.0 dramatically expands the roster of supported hardware — from arms and mobile robots to a full humanoid.</p>
+<p>Industry observers note that the biggest hardware addition in this release: full Unitree G1 humanoid support. This is LeRobot's first humanoid integration, and it's comprehensive:.</p>
+<p>The G1 integration represents a major step toward general-purpose robotics within LeRobot — moving beyond tabletop arms into full-body embodied AI. Try it out yourself by following the documentation.</p>
+<p>In a recent development, we've added support for the OpenArm robot and its companion OpenArm Mini teleoperator. OpenArm is a capable robot arm with full LeRobot integration, and the Mini serves as its natural teleoperation device. Both support bi-manual configurations, enabling dual-arm setups for more complex manipulation tasks. Check it out in the documentation.</p>
+<p>The hardware ecosystem keeps growing:.</p>
+<p>New motor controller support via CAN (Controller Area Network) bus opens the door to higher-performance actuators:.</p>
+<p>These additions mean LeRobot can now drive a wider variety of professional-grade actuators beyond the existing Dynamixel and Feetech ecosystem.</p>
+<p>This release brings six new policies and techniques into LeRobot, pushing the boundaries of what's possible with open-source robot learning.</p>
+<p>Pi0-FAST brings autoregressive Vision-Language-Action models to LeRobot with FAST (Frequency-space Action Sequence Tokenization). Unlike the flow-matching approach of Pi0, Pi0-FAST uses an autoregressive action expert (based on Gemma 300M) that generates discretized action tokens, enabling:.</p>
+<p>Real-Time Chunking is an inference-time technique from Physical Intelligence that makes flow-matching policies dramatically more responsive. Instead of waiting for a full action chunk to finish before replanning, RTC continuously blends fresh predictions with in-progress actions, producing smoother and more reactive behavior.</p>
+<p>RTC is not a standalone policy — it's an enhancement that plugs into existing flow-matching policies (Pi0 family, SmolVLA &amp; Diffusion). Configure it via --policy.rtc_config.enabled=true.</p>
+<p>This is a game-changer for real-world deployment where latency matters. Read the original paper for the technical details and our documentation.</p>
+<p>Wall-X is a newly introduced VLA policy built on Qwen2.5-VL with flow-matching action prediction. It combines the strong vision-language understanding of Qwen2.5-VL with a flow-matching head for cross-embodiment robotic control.</p>
+<p>Sources indicate that X-VLA brings a Florence2-based VLA to LeRobot. Built on Microsoft's Florence-2 vision-language model, X-VLA offers an alternative backbone for VLA policies, expanding the diversity of foundation models available for robot learning. Check out the training guide for setup instructions and the base model.</p>
+<p id="sec-mid-11226">In a recent development, SARM (Stage-Aware Reward Modeling) tackles one of the hardest problems in robot learning: long-horizon tasks. Instead of using a single global linear progress signal over the whole episode, it models progress in a stage-aware manner by predicting both the task stage and the progress within that stage. This makes it much easier to train policies for complex, multi-step manipulation tasks. Start experimenting with it by following the documentation.</p>
+<p>According to recent reports, you can now fine-tune large VLAs using LoRA (and other PEFT methods) without modifying the core training pipeline. PEFT configuration lives at the policy level, making it straightforward to adapt massive foundation models to your specific robot and task with a fraction of the compute. Learn more reading the documentation.</p>
+<p>The dataset pipeline gets major performance improvements in this release, making both data collection and training significantly faster.</p>
+<p>Previously, recording a dataset meant waiting after each episode for video encoding to finish. No more. With streaming video encoding, frames are encoded in real-time as they're captured — meaning zero wait time between episodes. Just finish one episode and immediately start the next.</p>
+<p>Streaming encoding also supports hardware encoder auto-detection, so if your system has a GPU-accelerated video encoder, LeRobot will use it automatically:.</p>
+<p>According to recent reports, streaming encoding performance can vary significantly depending on your hardware and recording setup (number of cameras, resolution, etc.). Make sure to review the streaming video encoding documentation before enabling it.</p>
+<p>Under the hood, we've fixed key data access bottlenecks and overhauled image processing:.</p>
+<p>The dataset editing toolkit continues to grow:.</p>
+<p>EnvHub is a fresh way to use simulation environments in LeRobot: load them directly from the Hugging Face Hub. Instead of installing environment packages locally and wiring up registration, you can now point LeRobot at a Hub repository and it handles everything — downloading the environment code, registering it with Gymnasium, and making it available for training and evaluation.</p>
+<p>Hub environments use HubEnvConfig, which downloads and executes remote make_env functions:.</p>
+<p>This lowers the barrier for sharing custom simulation environments with the community. Package your environment, push it to the Hub, and anyone can train on it. Check out the documentation to learn more. Here's an example to get started: LeIsaac x LeRobot EnvHub tutorial.</p>
+<p>We've integrated NVIDIA IsaacLab-Arena, bringing GPU-accelerated simulation to LeRobot. IsaacLab-Arena provides a collection of manipulation tasks running on NVIDIA's Isaac Sim, offering massively parallel environment instances for fast reinforcement learning. The integration includes dedicated pre/post-processing steps and full compatibility with LeRobot's training pipeline. Check out the documentation.</p>
+<p>This release modernizes the codebase:.</p>
+<p>Beyond these headline features, v0.5.0 includes hundreds of bug fixes, documentation improvements, CI/CD enhancements, and quality-of-life improvements across the entire codebase. From better type checking to more robust test infrastructure, we're investing in the foundations that make LeRobot reliable and maintainable as it scales.</p>
+<p>According to recent reports, we want to extend a huge thank you to everyone in the community — contributors, consumers, and collaborators alike — for helping LeRobot grow into what it is today. Every bug report, PR, and discussion makes this project better.</p>
+<p>Stay tuned for more to come 🤗 Get started here! – The LeRobot team ❤️.</p>
+<p id="sec-end-11226">Sources indicate that there's a big surprise coming just right around the corner, stay tuned! 👕.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/lerobot-release-v050" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="scaling-up-bert-inference-on-cpu-part-1-12243.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12243. Scaling-up BERT Inference on CPU (Part 1)
+        </a>
+        
+        <a href="scaling-up-bert-like-model-inference-on-modern-cpu-part-2-12226.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12226. Scaling up BERT-like model Inference on modern CPU  - Part 2
+        </a>
+        
+        <a href="rocket-money-x-hugging-face-scaling-volatile-ml-models-in-product-11977.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11977. Rocket Money x Hugging Face: Scaling Volatile ML Models in Production​
+        </a>
+        
+        <a href="scaling-robotics-datasets-with-video-encoding-11793.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11793. Scaling robotics datasets with video encoding
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

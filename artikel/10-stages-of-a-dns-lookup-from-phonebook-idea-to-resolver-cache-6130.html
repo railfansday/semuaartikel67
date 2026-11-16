@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 stages of a DNS lookup, from phonebook idea to resolver cache</title>
+    <meta name="description" content="Ten stages of a DNS lookup, from the phonebook idea to resolver caches, and how the 2025 AWS outage highlights where each can stall. Every app login, bank ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/10-stages-of-a-dns-lookup-from-phonebook-idea-to-resolver-cache-6130.html">
+    <meta property="og:title" content="10 stages of a DNS lookup, from phonebook idea to resolver cache">
+    <meta property="og:description" content="Ten stages of a DNS lookup, from the phonebook idea to resolver caches, and how the 2025 AWS outage highlights where each can stall. Every app login, bank ">
+    <meta property="og:image" content="https://qz.com/cdn-cgi/image/width=1200,quality=85,format=auto/https://assets.qz.com/media/quartz-run-2626-hero-0-20314-300x201.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/10-stages-of-a-dns-lookup-from-phonebook-idea-to-resolver-cache-6130.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "10 stages of a DNS lookup, from phonebook idea to resolver cache", "image": ["https://qz.com/cdn-cgi/image/width=1200,quality=85,format=auto/https://assets.qz.com/media/quartz-run-2626-hero-0-20314-300x201.jpg"], "datePublished": "2026-11-16T19:43:40.432Z", "dateModified": "2026-11-16T21:02:13.618438", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/10-stages-of-a-dns-lookup-from-phonebook-idea-to-resolver-cache-6130.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>10 stages of a DNS lookup, from phonebook idea to resolver cache</h1>
+        <div class="meta-line">🌐 Source: <strong>Qz</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 18 min read (3644 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Ten stages of a DNS lookup, from the phonebook idea to resolver caches, and how the 2025 AWS outage highlights where each can stall.</li><li style='margin-bottom:6px;'>Every app login, bank transfer and video call starts with a step the user never sees, in which a computer turns a name into an address it can reach.</li><li style='margin-bottom:6px;'>The reliance on a few operators reaches all the way to the top of the system.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-6130"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-6130"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-6130"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="10 stages of a DNS lookup, from phonebook idea to resolver cache" loading="lazy" src="https://qz.com/cdn-cgi/image/width=1200,quality=85,format=auto/https://assets.qz.com/media/quartz-run-2626-hero-0-20314-300x201.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-6130">Ten stages of a DNS lookup, from the phonebook idea to resolver caches, and how the 2025 AWS outage highlights where each can stall.</p>
+<p>Every app login, bank transfer and video call starts with a step the user never sees, in which a computer turns a name into an address it can reach. When that step failed in October 2025, an outage in Amazon $AMZN Web Services' US-East-1 region affected DNS resolution, according to Enterprise Times. Lloyds Bank, Bank of Scotland, Vodafone, BT and HMRC, Britain's tax agency, were among the British organizations affected, ABC News reports, and consumers of Robinhood, Snapchat and Roblox $RBLX lost service at the same time. A bank, a phone manufacturer, a tax office, a trading app and a video game share almost nothing except the lookup they all rely on. "Almost everything in AWS [and the internet in general] depends on DNS," Ryan Ko, director of the University of Queensland's Cyber Research Centre, said, as reported by ABC News. The Domain Name System, the internet's address book, is a single point of failure that most people don't know exists, so when people can't reach it, they experience the failure as an outage of everything at once.</p>
+<p>The reliance on a few operators reaches all the way to the top of the system. The root of DNS, the top layer of the address book, is run by twelve entities, according to APNIC. That leaves very few organizations in control of the layer that every fresh lookup ultimately depends on. Engineers treat that concentration as a design problem rather than bad luck. ABC News reports that Junade Ali, a U.K. software engineer and fellow at the Institution of Engineering and Technology, sees the outage as a warning against relying on one region of one cloud company and as a reason to design essential services to withstand failure. The engineers who built DNS handled its enormous load by passing requests between layers of servers and storing answers close to users. Whether a site becomes unreachable, stays unreachable after a fix or recovers for one user at a time depends on which of those layers fails.</p>
+<p>Cloudflare set out to explain, step by step, how the domain names people type become the addresses their browsers need. It covered the cache inside a user's browser, the resolver that takes a user's request and the servers at the root of the system. Each stage of that process exists to make browsing faster or cheaper to run. Each stage is also a place where a lookup can stall, return an outdated answer or hide an outage, and the slides that follow examine every stage both ways.</p>
+<p>People find things online by name, but the machines that serve websites can be reached only by number, so a translation has to happen before any page can load. Cloudflare describes DNS as the system for converting the names people use into the addresses browsers need. Every other step of a visit waits on that conversion. On the machine side, an address takes a form such as 192.168.1.1, a string of digits no one would want to memorize for every site they use. A phonebook works the same way: nobody memorizes it, everybody needs it, and nobody thinks about it while it works.</p>
+<p>According to recent reports, lookups happen constantly and out of sight. Every page load, app refresh and background sync needs either a fresh translation or a stored one, and the phonebook is consulted without anyone asking for it. F-root, one part of the system's top layer, is responsible for billions of requests a day, according to Cloudflare. At that volume, looking up addresses is ordinary background traffic rather than an occasional event. A service used that often and that quietly becomes invisible to the people who rely on it, and when it stumbles, they have no way to tell what has actually failed.</p>
+<p>Without the phonebook, every number still works but nobody can find it. In Virginia alone, Amazon $AMZN runs well over 100 data centers, according to figures from The Associated Press reported by ABC News, yet all of them together counted for little when the directory broke down during the October 2025 Amazon Web Services outage. "So even though the servers were up, many systems couldn't find their way there," Ryan Ko, director of the University of Queensland's Cyber Research Centre, said, as reported by ABC News. The outage was not a malicious attack, according to AWS statements reported by ABC News. The directory went down without any intruder involved, which means a fault inside the system can be enough to cut customers off.</p>
+<p>To a user, a missing phonebook entry looks the same as a dead site, and a fault in one quiet translation step can look like the whole internet has gone dark.</p>
+<p>A web address seems like something a browser simply knows, but finding the number behind it takes several machines working in sequence. Loading a webpage involves four different DNS servers, according to Cloudflare. Each of the four does a separate job: the recursor takes the question to a root server, then to a top-level domain, or TLD, server and finally to the site's authoritative nameserver. Splitting the work this way keeps lookups fast because no single machine has to know everything. The cost is that the answer depends on every one of those handoffs succeeding.</p>
+<p>The recursor works on the user's behalf, much as a librarian takes a visitor's question and goes looking for the book so the visitor doesn't have to search the shelves. The root nameserver plays the part of the library's index. It can't supply the address, but it points the recursor toward the right section. The TLD server covers one section of names, all of which share the same final label, such as the "com" in example.com. It sends the recursor on toward the specific site. With each stop, the search narrows from every name on the internet to a single domain in just a few moves.</p>
+<p>Only the authoritative nameserver holds the site's actual address, the way one particular dictionary sits on one rack in the library. That server returns the IP address to the recursor, which carries it back to the browser. The lookup is finished only when the answer has made that return trip, not at the moment the right server finds it. The other three servers give directions rather than answers, so none of them can stand in for the one that holds the address.</p>
+<p>When a site's name won't turn into an address, the trouble could lie at any of these four stops.</p>
+<p>Industry observers note that A DNS lookup begins and ends on two separate machines, and the organization that runs the first one is usually not the website a person is trying to reach. Every query starts at a recursive resolver and ends at an authoritative server, which holds the site's records, according to Cloudflare. Comcast $CMCSA, an internet provider, operates recursive resolvers, and so do public services including Google $GOOGL DNS and OpenDNS. When a page won't load, the fault may lie with one of those companies rather than with the site. They are separate businesses from the sites whose addresses they look up, so a site that seems to be down may have done nothing wrong.</p>
+<p>The two ends carry different responsibilities, so one can fail while the other keeps working. During the AWS outage, the recursive layer went offline, according to Enterprise Times. Every lookup begins at that layer, and many queries could not start at all. "Authoritative DNS defines the truth; recursive DNS delivers it," Deepika Chauhan, a product leader at DigiCert, told Enterprise Times. A website can therefore appear dead even when its own records are correct and its own servers are healthy. People see an outage of the site, but the failure sits in the layer in front of it.</p>
+<p>In a recent development, because the two ends fail separately, site owners and users have to build backup at each one. A site owner who spreads a domain's records across several providers protects the end that holds the correct answer. That step does nothing for a user whose resolver has stopped responding. A user who switches to a second resolver gains nothing if the site's own authoritative servers are down.</p>
+<p>The resolver that a person's internet provider or device chose for them often decides whether the internet works for that person on a given day.</p>
+<p>It has been revealed that when a person types the name of a site their computer hasn't visited recently, no server along the way hands back an address until the very end of the search. An uncached lookup runs through eight steps, according to Cloudflare, and each step narrows the search without finishing it. The resolver's first request goes to a root nameserver, which holds directions toward the right part of the address book but no site's address. The next stop is the server for a top-level domain such as .com, where the resolver learns which server handles the site's domain but still not the site's address. The domain's own nameserver is the last server queried and the only one in the chain that holds the address. Every stop before it supplies directions rather than an answer, so a lookup that feels instant is really a sequence that can stall at any point. The resolver returns the address to the browser at the eighth step, and until then the browser has nothing it can use.</p>
+<p>Industry observers note that the website itself waits on that lookup, because the browser requests the page only after all eight DNS steps are done. A lookup that never finishes stops a visit before any part of the site loads. AWS pointed to a problem in this part of the process during its October 2025 outage. "Based on our investigation, the concern appears to be related to DNS resolution of the DynamoDB API endpoint in US-EAST-1," AWS noted in an enhancement on its service support website, as reported by ABC News. Other AWS services in the same region were affected as well. A fault in the lookup steps for a single endpoint was enough to cause trouble well beyond that one service.</p>
+<p>Sources indicate that when the eight steps work, nobody notices them. When the final answer doesn't come back, the browser has no partial result to show, only an address it never received and a page it never requested.</p>
+<p>Industry observers note that every lookup that a browser can't answer from its own memory goes to one machine before it goes anywhere else. Cloudflare identifies the DNS resolver as the point where that search begins. The browser doesn't search the internet for an address on its own. It sends the request to the resolver and waits for a reply. If the resolver is slow or unreachable, the reader is stuck before any root, top-level-domain or authoritative server has received the question. A reader's resolver may belong to the company that sells them internet service, such as Comcast $CMCSA, or to a free public option such as Google $GOOGL DNS or OpenDNS. Whichever one handles a reader's requests stands in front of every uncached lookup that person makes, on every site they try to visit.</p>
+<p id="sec-mid-6130">Industry observers note that the word "recursive" names two different things in DNS, and keeping them apart reveals where the effort lands. A recursive query is the request that a reader's device sends. The recursive resolver is the machine that receives that request and carries out the search. The device asks one time and expects a finished answer in return, and all the trips to other servers happen at the resolver. This distinction changes how a stalled lookup should be read. The device's part of the job ends once it sends the question. The resolver is the part that every uncached request depends on, so a problem there stops lookups for everyone who uses it.</p>
+<p>When the resolver already holds an answer, a reader's lookup can end there without reaching any other server.</p>
+<p>Industry observers note that A DNS lookup is a set of questions, and the way each question is phrased decides which machine does the work. Splitting the job among three kinds of query, recursive, iterative and non-recursive, shortens the distance a lookup has to cover, according to Cloudflare. The speed comes from that division of labor rather than from any single fast server. Each kind of query hands off a different share of the job. A recursive query demands a finished answer, an iterative query lets a server point somewhere else, and a non-recursive query goes to a server that already has the record. For the phone or laptop a person is using, the arrangement is simple: the device sends one recursive query and waits for the resolver to handle every other step.</p>
+<p>Recent findings suggest that handing off the whole job has a cost when no answer can be found. A device that asks recursively waits for one of two results, the record or an error, and it gets the error whenever the resolver cannot find the record. The resolver is the only server the device ever contacts. All the work done further along the chain reaches the person at the keyboard as that single reply.</p>
+<p>Behind the resolver, most questions are passed along rather than answered. In an iterative query, a server that lacks the record replies with a referral to a lower-level authoritative server. Each referral moves the question one level further down, and a lookup built from referrals passes through several servers before any of them supplies the record. The fastest answers skip that chain altogether. In a non-recursive query, the server already holds the record, either because it is the authority for that domain or because it kept a copy in its cache. Some of the quickest answers therefore come from stored copies rather than from the server that owns the record.</p>
+<p>Those stored copies, which answer without consulting anyone else, are the next part of the system.</p>
+<p>It has been revealed that most lookups never make the full trip through the address book, because an answer that someone already fetched is kept and used again. Holding that answer close to the user means faster load times, according to Cloudflare. A person sees the page sooner when no distant server has to be consulted first. The larger payoff is on the server side. Providers that keep copies on their own servers avoid extra bandwidth use and spare the servers higher up from answering the same question again and again. Caching is part of how operators keep the address book running under heavy demand, and the system as a whole depends on answers being reused.</p>
+<p>A stored answer can't be trusted forever. If copies never expired, a site that moved to a new address would stay unreachable for anyone still holding the old one. Every cached record carries a time-to-live, or TTL, and each cache keeps the record only for that period. Users see a change made at the source only after their copy expires and a fresh lookup takes place. That expiry is the central trade-off of caching. A longer TTL saves more trips up the chain, but it also keeps an old answer in use longer, whether the change upstream is a move, a failure or a fix.</p>
+<p>Stored answers can also keep a repaired service out of reach for some people after the fix. A person who can't load a site that has been declared fixed may be getting a stale copy, which goes away when its TTL runs out or when someone empties the cache.</p>
+<p>The stored copies that make lookups quick can also be part of why people regain access one by one after an outage, rather than all at once.</p>
+<p>In a recent development, the quickest DNS lookup is one that never leaves the user's own computer. When a person returns to a site, the answer can come from the browser itself, because the browser's cache is checked before any other storage, according to Cloudflare. The National Weather Service reports that a DNS cache holds the IP addresses of recently viewed webservers. For a site someone has visited recently, the address may already be stored in the browser. On those visits, no resolver, root server or nameserver further up the chain has to be asked anything, and the page can load without waiting on outside servers.</p>
+<p>A saved address is accurate only as long as the site stays where it was. If a website moves to a upcoming server location, a stale entry in the cache can leave that site unreachable, according to the National Weather Service. Every DNS cache, the browser's included, keeps an answer for its time-to-live, and the user stays cut off from the moved site until that timer runs out or the cache is cleared. The correct address exists further up the chain, but the user's machine checks the copy closest to the user first.</p>
+<p>It has been revealed that clearing the saved copies solves the problem, but some instructions for doing so leave the browser out. The National Weather Service explains how to flush the DNS cache on old operating systems, and its instructions do not mention caches inside browsers. A user who follows those steps works on the operating system's cache, the next local layer after the browser, and gets no direction at all for the browser's own copy, which is the first one checked.</p>
+<p>The cache closest to the user saves the most time, yet those instructions give users no help clearing it.</p>
+<p>When a browser has no stored address for a site, the computer still has one more place to check before the question is sent to the network. The operating system keeps its own cache of DNS records. Cloudflare explains that this cache is the second and last local stop before a query is sent off the machine. The browser's cache is checked first and the operating system's cache next. Only when neither holds the record is the question handed to the stub resolver. A match in the operating system's cache means no outside server is consulted at all, which makes this cache the last answer a device can supply for itself. The stub resolver is the device's exit point for a lookup, not another place to find the answer.</p>
+<p>It has been revealed that the stub resolver marks a line of control. Every check before it happens on hardware the user owns, and every check after it happens on servers someone else operates. The shortcuts that let a lookup skip large parts of the address book happen at the internet provider's resolver, after the stub resolver, and not inside the operating system. A user's computer can answer a lookup from its own cache or pass the question along, and it can do nothing more. Once the question has gone out, the speed of the answer depends on what the provider's resolver has stored. By that point both of the computer's own caches have already been checked, and the machine has no other local stop left to try.</p>
+<p>For a typical user, the operating system's cache is the last point where the answer still depends on their own computer.</p>
+<p>A resolver doesn't climb the whole chain for every lookup. It starts at the highest point its memory can't already answer. When the resolver run by an internet provider already holds records for a domain's nameservers or its top-level domain, it can skip the root and TLD servers, according to Cloudflare. Those are the most distant stops in the chain. In the best case, a resolver holds a site's nameserver records but not its address, so it asks those authoritative nameservers directly and the lookup shrinks to its final exchange. Much of the speed a user feels when a page loads comes from what the resolver already remembers, not from how quickly the servers it asks can respond.</p>
+<p>Skipping the root also keeps the top layer of the address book from being flooded, but that protection has limits. Resolvers contact the root servers only when they hold nothing pointing to a TLD, yet requests to the root rose 40% over 2023 and 2024, according to APNIC. Caching has not capped the load at the top of the system. About half of all requests to the root come back saying no such name exists, and ordinary stored records help only with lookups for real names. Geoff Huston, an author at the APNIC Blog, describes the technique that lets resolvers reuse a "no such name" answer as a short-term response to the root's growth rather than a long-term one. The rising load supports his view.</p>
+<p>Stored answers also explain why trouble at the top of the chain would not reach users all at once. A resolver that holds TLD records doesn't need the root server at all. If the servers above it stopped answering, its lookups would keep working until those entries expired. "The light of the DNS would slowly fade to black bit by bit as these cached entries time out and are removed," Huston mentioned. That gradual fade buys time, but it doesn't provide safety, because the missing layer highlights once the stored entries run out. Huston suggests that resolvers keep the entire root zone on hand. On March 14, 2025, that file measured 2.2 Mbytes, according to APNIC. A resolver holding it would never have to send a request to the root servers, and an outage there would become a much smaller risk.</p>
+<p id="sec-end-6130">The stored answers that shorten a lookup are the same ones that keep the address book standing, and how much they hold decides how hard a failure lands.</p>
+<p style="margin-top: 25px;">
+<a href="https://qz.com/stages-of-dns-lookup" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="unlocking-longer-generation-with-key-value-cache-quantization-11857.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11857. Unlocking Longer Generation with Key-Value Cache Quantization
+        </a>
+        
+        <a href="latest-update-ai-devops-and-the-cost-of-hosting-from-idea-to-prod-11794.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11794. Latest Update: AI, DevOps and the Cost of Hosting: From Idea to Production for $0
+        </a>
+        
+        <a href="kv-cache-from-scratch-in-nanovlm-11614.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11614. KV Cache from scratch in nanoVLM
+        </a>
+        
+        <a href="bofh-the-best-way-to-stop-an-idea-spreading-is-a-controlled-burn-11012.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11012. BOFH: The best way to stop an idea spreading is a controlled burn
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

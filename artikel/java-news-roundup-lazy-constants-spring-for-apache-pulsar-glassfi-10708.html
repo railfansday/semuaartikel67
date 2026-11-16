@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java News Roundup: Lazy Constants, Spring for Apache Pulsar, GlassFish, Hibernate, TomEE, Seed4J</title>
+    <meta name="description" content="InfoQ Homepage News Java News Roundup: Lazy Constants, Spring for Apache Pulsar, GlassFish, Hibernate, TomEE, Seed4J. Nov 16, 2026 5 min read. This week's ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/java-news-roundup-lazy-constants-spring-for-apache-pulsar-glassfi-10708.html">
+    <meta property="og:title" content="Java News Roundup: Lazy Constants, Spring for Apache Pulsar, GlassFish, Hibernate, TomEE, Seed4J">
+    <meta property="og:description" content="InfoQ Homepage News Java News Roundup: Lazy Constants, Spring for Apache Pulsar, GlassFish, Hibernate, TomEE, Seed4J. Nov 16, 2026 5 min read. This week's ">
+    <meta property="og:image" content="https://res.infoq.com/news/2026/11/java-news-roundup-nov09-2026/en/headerimage/java-news-roundup-image-1794842460564.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/java-news-roundup-lazy-constants-spring-for-apache-pulsar-glassfi-10708.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Java News Roundup: Lazy Constants, Spring for Apache Pulsar, GlassFish, Hibernate, TomEE, Seed4J", "image": ["https://res.infoq.com/news/2026/11/java-news-roundup-nov09-2026/en/headerimage/java-news-roundup-image-1794842460564.jpg"], "datePublished": "2026-11-16T15:25:00", "dateModified": "2026-11-16T21:07:23.925884", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/java-news-roundup-lazy-constants-spring-for-apache-pulsar-glassfi-10708.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Java News Roundup: Lazy Constants, Spring for Apache Pulsar, GlassFish, Hibernate, TomEE, Seed4J</h1>
+        <div class="meta-line">🌐 Source: <strong>Infoq</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 6 min read (1193 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>InfoQ Homepage
+News
+Java News Roundup: Lazy Constants, Spring for Apache Pulsar, GlassFish, Hibernate, TomEE, Seed4J.</li><li style='margin-bottom:6px;'>Nov 16, 2026
+								
+								
+								
+									
+									5
+									min read.</li><li style='margin-bottom:6px;'>This week's Java roundup for November 9th, 2026, features news highlighting: Lazy Constants proposed to target for JDK 28; TornadoVM jitLLM 3.0; point releases of Seed4J; second release candidates of Spring AI and Spring Boot; first release candidates of Hibernate ORM and Hibernate Reactive; fourth milestone release of GlassFish; and the second milestone release of Apache TomEE.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-10708"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-10708"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-10708"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Java News Roundup: Lazy Constants, Spring for Apache Pulsar, GlassFish, Hibernate, TomEE, Seed4J" loading="lazy" src="https://res.infoq.com/news/2026/11/java-news-roundup-nov09-2026/en/headerimage/java-news-roundup-image-1794842460564.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-10708">InfoQ Homepage
+News
+Java News Roundup: Lazy Constants, Spring for Apache Pulsar, GlassFish, Hibernate, TomEE, Seed4J.</p>
+<p>Nov 16, 2026
+								
+								
+								
+									
+									5
+									min read.</p>
+<p>This week's Java roundup for November 9th, 2026, features news highlighting: Lazy Constants proposed to target for JDK 28; TornadoVM jitLLM 3.0; point releases of Seed4J; second release candidates of Spring AI and Spring Boot; first release candidates of Hibernate ORM and Hibernate Reactive; fourth milestone release of GlassFish; and the second milestone release of Apache TomEE.</p>
+<p>JEP 547, Lazy Constants (Fourth Preview), has been elevated from Candidate to Proposed to Target for JDK 28. This JEP proposes a fourth preview, with no changes, after three rounds of preview delivered in the upcoming release of JDK 27 and JDK 26 through JDK 25. Formerly known as Stable Values and Computed Constants, this feature introduces the concept of computed constants, defined as immutable value holders that are initialized at most once. This offers the performance and safety benefits of final fields, while offering greater flexibility as to the timing of initialization. The name change from Stable Values to Lazy Constants with the release of JDK 26, better captures the intent of a high-level use case. The review is expected to conclude on Wednesday, November 18, 2026.</p>
+<p>It has been revealed that build 24 of the JDK 28 early-access builds was made available this past week featuring updates from Build 23 that include fixes for various challenges. More details on this release may be found in the release notes.</p>
+<p>For JDK 28, developers are encouraged to report bugs via the Java Bug Database.</p>
+<p>The second release candidate of Spring AI 2.1.0 delivers newly introduced features such as: a new DecisionModel API, anchored by the DecisionModel interface, that returns the probability of different outcomes instead of generated text based on yes/no answers, questions about text or a set of fields; and a new similaritySearch(float [], SearchRequest) method, added to the VectorStoreRetriever interface to complement the corresponding overloaded methods, to search with a user's embeddings in more vector stores. Further details on this release may be found in the release notes.</p>
+<p>Industry observers note that the second release candidate of Spring Boot 4.2.0 ships with bug fixes, documentation improvements, dependency upgrades and new features such as: support for reading the value defined in a X-Forwarded-Prefix HTTP header in a WebFlux application on Reactor Netty when the server.forward-headers-strategy property is set to native; and a database assigned to the spring.data.redis.database property is now properly applied to master/replica connections if a value is assigned to the spring.data.redis.masterreplica.nodes property. More details on this release may be found in the release notes and this wiki page.</p>
+<p>The Spring for Apache Pulsar team has declared that the project is moving as a subproject within Apache Pulsar at the Apache Software Foundation to "foster even deeper integration and collaboration with the broader Pulsar community." As stated in the blog post:.</p>
+<p>Bringing this integration directly into the Apache Pulsar project allows the community to streamline development, accelerate feature support, and ensure long-term alignment with the evolution of Apache Pulsar.</p>
+<p>Spring for Apache Pulsar 2.0.8, released in October 2026, was the final release under the auspices of the Spring ecosystem.</p>
+<p id="sec-mid-10708">According to recent reports, the fourth milestone release of GlassFish 9.0.0 provides bug fixes, documentation improvements, dependency upgrades and upcoming features such as: implementation of the Jakarta Persistence 4.0.0-M7 specification with EclipseLink 6.0.0-M1; a move of the Sun Theme module out of the out of the external GlassFish Woodstock Components repository into its own module in GlassFish so that Sun Theme and the Admin Console can be modified together; and an update to versions 1.2.0-M2 and 2.0.0-M1 of Eclipse JNoSQL. Further details on this release may be found in the release notes.</p>
+<p>Beehive Lab, makers of TornadoVM, has released version 3.0 of jitLLM, a JVM-native LLM inference and serving engine, delivers notable changes such as: 1.43 times faster startup with GraalVM Native Image; an up to 9.3 times faster prefill phase; and a more efficient reading of model weights by eliminating the copy from the mapped GGUF file into a Apple Metal buffer. More details on this release may be found in the release notes.</p>
+<p>It has been revealed that the first release candidate of Hibernate ORM 8.0.0 ships with notable changes such as: an implementation of the Jakarta Persistence 4.0.0-M7 and Jakarta Data 1.1.0-M4 specifications (the latter via Hibernate Data Repositories); and support for coordination of graph-based flushing that builds a dependency graph for pending entity and collection mutations. Further details on this release may be found in the what's new page.</p>
+<p>Industry observers note that the first release candidates of Hibernate Reactive 5.1.0 and 5.0.0 provide notable changes such as: the EXTENDED constant, defined in the Jakarta Persistence PessimisticLockScope enum class, now locks the collection tables as intended to align with the same functionality in Hibernate ORM; and an update to the VertxFactory interface to allow for adding observability without changing the functionality in using the DefaultVertxInstance class. These versions are compatible with Hibernate ORM 8.0.0.CR1. More details on these releases may be found in the release notes for version 5.1.0.CR1 and version 5.0.0.CR1.</p>
+<p>In a recent development, the second milestone release of Apache TomEE 11.0.0 delivers bug fixes, documentation improvements, dependency upgrades and newly introduced features such as: resolutions to 38 CVEs; completion of their implementation of the Jakarta Authorization 3.0 specification; and TomEE Plume, the enterprise version, now ships the modular EclipseLink JPA artifact instead of the eclipselink Uber-Jar. Further details on this release may be found in the release notes.</p>
+<p>The release of JobRunr 9.0.4 ships with bug fixes and one latest feature that improves build caching and security by moving to hardened Docker images. More details on this release may be found in the release notes.</p>
+<p>The first rolling release of JReleaser 2.0.0-SNAPSHOT provides a upcoming feature in which the -a and -d short option flags, for their respective corresponding --assembly and --download long versions, were removed from the CLI due to the lack of short option flags for the --changelog and --announce flags. Further details on this release may be found in the release notes.</p>
+<p>Sources indicate that versions 2.4.0 and 2.3.0 of Seed4J, formerly known as JHipster Lite, deliver bug fixes, dependency upgrades and new features such as: install Playwrite only on applications that execute the relevant Playwright component tests; and improved efficiency by creating one global Maven cache that is shared by the Seed4J build and every generated Maven application that replaces a Maven cache for each generated application. More details on these releases may be found in the release notes for version 2.4.0 and version 2.3.0.</p>
+<p>The Quarkus team has introduced the Quarkus Resiliency Testing utility that allows developers to reproduce various failure scenarios and their respective responses while testing an application with the @QuarkusTest annotation. An example application using this upcoming utility may be found here.</p>
+<p>Presented by: David Iparraguirre - Senior Product Marketing Manager at Datadog, and Jessica Yang - Product Manager at Datadog.</p>
+<p id="sec-end-10708">A round-up of last week’s content on InfoQ sent out every Tuesday. Join a community of over 250,000 senior developers. View an example.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.infoq.com/news/2026/11/java-news-roundup-nov09-2026/?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=global" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="generators-and-iterators-in-javascript-lazy-data-and-async-flows-11853.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11853. Generators and Iterators in JavaScript: Lazy Data and Async Flows
+        </a>
+        
+        <a href="industry-news-how-to-learn-java-with-ai-a-practical-guide-for-beg-11671.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11671. Industry News: How to Learn Java with AI: A Practical Guide for Beginners
+        </a>
+        
+        <a href="state-of-open-source-on-hugging-face-spring-2026-11203.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11203. State of Open Source on Hugging Face: Spring 2026
+        </a>
+        
+        <a href="latest-update-granite-embedding-multilingual-r2-open-apache-20-mu-11075.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11075. Latest Update: Granite Embedding Multilingual R2: Open Apache 2.0 Multilingual Embeddings with 32K Context — Best Sub-100M Retrieval Quality
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

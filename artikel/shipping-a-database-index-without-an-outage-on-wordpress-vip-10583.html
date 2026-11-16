@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping a Database Index Without an Outage on WordPress VIP</title>
+    <meta name="description" content="The deploy trap mentioned in passing in an earlier post — that an index hint referencing an index MySQL doesn't recognize yet is a hard error, not a slow q">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/shipping-a-database-index-without-an-outage-on-wordpress-vip-10583.html">
+    <meta property="og:title" content="Shipping a Database Index Without an Outage on WordPress VIP">
+    <meta property="og:description" content="The deploy trap mentioned in passing in an earlier post — that an index hint referencing an index MySQL doesn't recognize yet is a hard error, not a slow q">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto/https%3A%2F%2Fdeploy-and.run%2Fwp-content%2Fuploads%2F2026%2F11%2Fshipping-a-database-index-without-an-outage.webp">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/shipping-a-database-index-without-an-outage-on-wordpress-vip-10583.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Shipping a Database Index Without an Outage on WordPress VIP", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto/https%3A%2F%2Fdeploy-and.run%2Fwp-content%2Fuploads%2F2026%2F11%2Fshipping-a-database-index-without-an-outage.webp"], "datePublished": "2026-11-16T21:02:38", "dateModified": "2026-11-16T21:07:17.279064", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/shipping-a-database-index-without-an-outage-on-wordpress-vip-10583.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Shipping a Database Index Without an Outage on WordPress VIP</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 5 min read (985 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>The deploy trap mentioned in passing in an earlier post — that an index hint referencing an index MySQL doesn't recognize yet is a hard error, not a slow query, so the index has to exist before the code that references it goes live — turns out to generalize well beyond that one sitemap fix.</li><li style='margin-bottom:6px;'>It has been revealed that TL;DR: A shared plugin enhancement needed five new indexes across a multisite network.</li><li style='margin-bottom:6px;'>Recent findings suggest that A shared plugin used across the network needed a version bump that included, among other things, five latest index-creation commands — covering things like sitemap last-modified lookups, taxonomy timestamps, and media MIME-type filtering, the same category of query-plan problem covered in the sitemap posts, just generalized into reusable commands rather than one-off fixes.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-10583"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-10583"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-10583"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Shipping a Database Index Without an Outage on WordPress VIP" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto/https%3A%2F%2Fdeploy-and.run%2Fwp-content%2Fuploads%2F2026%2F11%2Fshipping-a-database-index-without-an-outage.webp" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-10583">The deploy trap mentioned in passing in an earlier post — that an index hint referencing an index MySQL doesn't recognize yet is a hard error, not a slow query, so the index has to exist before the code that references it goes live — turns out to generalize well beyond that one sitemap fix. It came up again, differently, shipping a batch of five new indexes as part of an internal shared plugin upgrade across a WordPress VIP-style multisite network. This time the near-miss wasn't about sequencing an index against code. It was about trusting a diff.</p>
+<p>It has been revealed that TL;DR: A shared plugin enhancement needed five new indexes across a multisite network. The actual near-miss wasn't the indexes — it was applying a narrow version-bump diff to a branch that had silently drifted two minor versions further behind than assumed, landing a partial, subtly broken state. Fix: verify the base directly, replace the tree wholesale instead of trusting the diff, then apply the same existence-guard discipline to the index rollout itself.</p>
+<p>Recent findings suggest that A shared plugin used across the network needed a version bump that included, among other things, five latest index-creation commands — covering things like sitemap last-modified lookups, taxonomy timestamps, and media MIME-type filtering, the same category of query-plan problem covered in the sitemap posts, just generalized into reusable commands rather than one-off fixes. Each command follows the same shape: a status check to report whether the index already exists, and an ensure action to create it, safe to run repeatedly.</p>
+<p>According to recent reports, --network runs it against every site in the multisite install in one pass; --dry-run=false is deliberately required rather than defaulted, so an accidental invocation without it reports what would happen instead of mutating the schema. status afterward re-checks all five against both a staging and a production-mirrored environment before anything goes near real traffic.</p>
+<p>That part went cleanly. The near-miss happened one step earlier, validating the change on an intermediate branch before it ever reached the index commands.</p>
+<p>The plan was ordinary: bump the shared plugin from one version to the next, validate the bump on a develop branch first, then open the real pull request against main. The version bump itself — call it 4.21.3 to 4.21.4 — was a small, contained diff. Cherry-picking just that diff onto develop seemed like the lower-risk move: touch less, verify faster.</p>
+<p id="sec-mid-10583">develop's copy of the plugin wasn't actually at 4.21.3. It was pinned two minor versions further back, at 4.19.0 — a fact the diff itself gave no indication of, because a diff only describes the distance between the two versions it was generated from, not the version of whatever it's about to be applied to. Applying the narrow 4.21.3→4.21.4 diff on top of an actual 4.19.0 base landed exactly the changes that diff described and nothing else — silently skipping every change introduced in the two versions develop had missed in between, including includes and files the plugin's newer code now assumed existed.</p>
+<p>Sources indicate that the plugin didn't fail loudly. It failed the way missing includes usually do: warnings on load, behavior that's subtly wrong rather than obviously broken, the kind of state that's easy to wave off as noise during a validation pass if you're not specifically watching for it.</p>
+<p>Industry observers note that the fix, once caught, was to stop treating this as a diff-application problem and treat it as a state problem: replace the plugin directory wholesale with the exact tree from the released 4.21.4 version, rather than trying to reconstruct the missing intermediate changes by hand. Confirmed clean load with zero warnings afterward, and only then did the five index commands get run against it.</p>
+<p>It has been revealed that the specific bug — a stale branch, an unexpectedly large version gap — is mundane. What generalizes is the assumption underneath it: that a diff between version X and version Y is safe to apply anywhere, because the diff itself looks small and contained. A diff only knows about X and Y. It states nothing about the actual state of the branch you're about to apply it to, and if that branch silently drifted further behind than anyone tracked, a clean-looking small diff can land a broken partial state without raising any obvious alarm — no merge conflict, no failed patch, just missing files the new code quietly assumes are there.</p>
+<p>The generally safer default, once a branch's actual pinned version is in doubt: check what's actually there before deciding whether a diff or a full-tree replacement is the right move. A version pin is a claim about state, and claims about state are worth verifying directly rather than inferring from how major or small the intended change looks on paper.</p>
+<p>Once the code was confirmed correct, the index rollout followed the same discipline covered in the earlier sitemap post: never assume a referenced index exists just because the deploy that's supposed to create it has already shipped. The commands were run with an explicit status check both before and after ensure, against every site in the network individually, not just spot-checked on one — a network-wide --network flag makes it easy to assume uniform state across sites that may, in practice, have drifted from each other in exactly the way the branch above had.</p>
+<p id="sec-end-10583">According to recent reports, that last point turned out to matter beyond this one rollout: the branch drift that caused the near-miss above was itself a symptom of develop having gone unsynced with main for longer than anyone had tracked, on a dependency pinned by another engineer's unrelated, still-open work. Fixing the immediate version mismatch doesn't fix that underlying drift — it's worth flagging as its own follow-up, separate from the deploy that surfaced it, rather than assuming one clean bump means the branches are back in sync generally.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/fettekette/shipping-a-database-index-without-an-outage-on-wordpress-vip-47lo" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="efficient-table-pre-training-without-real-data-an-introduction-to-12177.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12177. Efficient Table Pre-training without Real Data: An Introduction to TAPEX
+        </a>
+        
+        <a href="setfit-efficient-few-shot-learning-without-prompts-12135.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12135. SetFit: Efficient Few-Shot Learning Without Prompts
+        </a>
+        
+        <a href="building-location-aware-interfaces-without-mixing-up-language-cur-11917.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11917. Building Location-Aware Interfaces Without Mixing Up Language, Currency, and Region
+        </a>
+        
+        <a href="industry-news-h3-podcast-crew-reunite-to-tease-show-without-ethan-11560.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11560. Industry News: H3 podcast crew reunite to tease show without Ethan Klein, Tamara, and Harley
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

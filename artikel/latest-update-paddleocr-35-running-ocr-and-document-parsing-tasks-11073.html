@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend</title>
+    <meta name="description" content="PaddleOCR 3.5 brings OCR and document parsing tasks closer to the Hugging Face ecosystem. With this release, supported PaddleOCR models can run with Huggin">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-paddleocr-35-running-ocr-and-document-parsing-tasks-11073.html">
+    <meta property="og:title" content="Latest Update: PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend">
+    <meta property="og:description" content="PaddleOCR 3.5 brings OCR and document parsing tasks closer to the Hugging Face ecosystem. With this release, supported PaddleOCR models can run with Huggin">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/652b2e9166313ebb6197e706/Bl-qDWU9OfuXZ06hNxZE7.jpeg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-paddleocr-35-running-ocr-and-document-parsing-tasks-11073.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend", "image": ["https://cdn-uploads.huggingface.co/production/uploads/652b2e9166313ebb6197e706/Bl-qDWU9OfuXZ06hNxZE7.jpeg"], "datePublished": "2026-05-18T15:12:46", "dateModified": "2026-11-16T21:07:45.138499", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-paddleocr-35-running-ocr-and-document-parsing-tasks-11073.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 18 May 2026 &bull; ⏱️ 3 min read (605 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>PaddleOCR 3.5 brings OCR and document parsing tasks closer to the Hugging Face ecosystem.</li><li style='margin-bottom:6px;'>PaddleOCR continues to provide OCR model series such as PP-OCRv5 and document parsing model series such as PaddleOCR-VL 1.5, while Transformers becomes one of the supported backends for running them.</li><li style='margin-bottom:6px;'>Try the live demo on Hugging Face Spaces:
+https://huggingface.co/spaces/PaddlePaddle/paddleocr-3.5-transformers-demo.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11073"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11073"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11073"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/652b2e9166313ebb6197e706/Bl-qDWU9OfuXZ06hNxZE7.jpeg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11073">PaddleOCR 3.5 brings OCR and document parsing tasks closer to the Hugging Face ecosystem. With this release, supported PaddleOCR models can run with Hugging Face Transformers as an inference backend by setting:.</p>
+<p>PaddleOCR continues to provide OCR model series such as PP-OCRv5 and document parsing model series such as PaddleOCR-VL 1.5, while Transformers becomes one of the supported backends for running them.</p>
+<p>Try the live demo on Hugging Face Spaces:
+https://huggingface.co/spaces/PaddlePaddle/paddleocr-3.5-transformers-demo.</p>
+<p>Industry observers note that paddleOCR 3.5 introduces a more flexible inference-engine interface. Developers can select the backend through the engine parameter and pass backend-specific options through engine_config.</p>
+<p>A simple way to understand the stack:.</p>
+<p>This release is mainly about the inference backend layer: PaddleOCR continues to provide OCR and document parsing capabilities, while Transformers gives supported PaddleOCR models another backend option that fits naturally into Hugging Face-centered environments. The larger Document AI workflow remains in the hands of developers and application builders.</p>
+<p>For RAG, Document AI, and document agent applications, the hard part often starts before the LLM.</p>
+<p>Industry observers note that developers first need to turn PDFs, scanned documents, screenshots, tables, charts, formulas, and complex page layouts into reliable structured data. If this ingestion step is weak, the downstream LLM workflow may miss key information, retrieve the wrong context, or produce unreliable answers.</p>
+<p>PaddleOCR helps address this document ingestion challenge by providing OCR series models such as PP-OCRv5 and document parsing series models such as PaddleOCR-VL-1.5.</p>
+<p>Sources indicate that with PaddleOCR 3.5, these capabilities are now easier to connect with Transformers-centered stacks. Supported PaddleOCR models can run with a Transformers backend, while PaddleOCR continues to manage the OCR or document parsing pipeline behind the scenes.</p>
+<p>For developers, this means less integration friction and a more natural path from documents to downstream RAG, agent, search, analytics, or automation workflows.</p>
+<p>Install PaddleOCR 3.5, PaddleX, Transformers, and a compatible PyTorch build for your hardware.</p>
+<p>For example, on a CUDA 12.6 environment:.</p>
+<p>For CPU, ROCm, or other environments, install the PyTorch build that matches your target hardware.</p>
+<p>The Hugging Face Space uses float32 for broad compatibility. For your own hardware, you can tune backend-specific options through engine_config:.</p>
+<p id="sec-mid-11073">The best configuration depends on your model, hardware, and deployment environment.</p>
+<p>Use the Transformers backend when you want PaddleOCR’s OCR and document parsing capabilities to fit more naturally into a Hugging Face-centered stack.</p>
+<p>This is especially useful if you are building RAG, Document AI, search, analytics, or agent applications and already rely on PyTorch / Transformers infrastructure for model loading, experimentation, deployment, or model artifact management.</p>
+<p>The Transformers backend is a good fit when you want:.</p>
+<p>When maximizing OCR or document parsing throughput is the priority, PaddleOCR’s default paddle_static backend is usually the recommended choice.</p>
+<p>According to recent reports, this release is not about replacing one backend with another. It is about giving developers more flexibility: use PaddleOCR for OCR and document parsing capabilities, and choose the inference backend that best fits your stack.</p>
+<p>Try the PaddleOCR 3.5 Transformers demo on Hugging Face Spaces:.</p>
+<p>https://huggingface.co/spaces/PaddlePaddle/paddleocr-3.5-transformers-demo.</p>
+<p>Explore PaddleOCR models on the Hub:.</p>
+<p>https://huggingface.co/PaddlePaddle/models.</p>
+<p>PaddleOCR 3.5 brings OCR and document parsing capabilities closer to Transformers-centered workflows, while giving developers the freedom to build the larger Document AI applications around them.</p>
+<p>We sincerely thank the Hugging Face engineers who supported the PaddleOCR 3.5 Transformers integration.</p>
+<p>Special thanks to Anton Vlasjuk for his end-to-end involvement, including reviewing and merging all related pull requests.</p>
+<p>We also appreciate Raushan Turganbay and Yoni Gozlan for their valuable PR reviews and feedback.</p>
+<p>Their guidance helped improve the integration quality, documentation, and developer experience for the Hugging Face community.</p>
+<p id="sec-end-11073">Love the article and the support.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="transformersjs-v3-webgpu-support-new-models-tasks-and-more-11764.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11764. Transformers.js v3: WebGPU Support, New Models & Tasks, and More…
+        </a>
+        
+        <a href="transformers-backend-integration-in-sglang-11603.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11603. Transformers backend integration in SGLang
+        </a>
+        
+        <a href="native-speed-vllm-transformers-modeling-backend-10944.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10944. Native-speed vLLM transformers modeling backend
+        </a>
+        
+        <a href="breaking-how-to-train-a-upcoming-language-model-from-scratch-usin-12264.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12264. Breaking: How to train a upcoming language model from scratch using Transformers and Tokenizers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

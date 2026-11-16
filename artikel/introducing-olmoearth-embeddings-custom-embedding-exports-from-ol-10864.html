@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing OlmoEarth embeddings: Custom embedding exports from OlmoEarth Studio for downstream analysis</title>
+    <meta name="description" content="📄 Tech Report: https://allenai.org/papers/olmoearth | 📊 Documentation: https://docs.olmoearth.allenai.org/embeddings | 💻 Learn more about OlmoEarth: https:">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/introducing-olmoearth-embeddings-custom-embedding-exports-from-ol-10864.html">
+    <meta property="og:title" content="Introducing OlmoEarth embeddings: Custom embedding exports from OlmoEarth Studio for downstream analysis">
+    <meta property="og:description" content="📄 Tech Report: https://allenai.org/papers/olmoearth | 📊 Documentation: https://docs.olmoearth.allenai.org/embeddings | 💻 Learn more about OlmoEarth: https:">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/638e39b249de7ae552d977b5/u9KR_QjSYF7mJIbRE3Ni8.jpeg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/introducing-olmoearth-embeddings-custom-embedding-exports-from-ol-10864.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Introducing OlmoEarth embeddings: Custom embedding exports from OlmoEarth Studio for downstream analysis", "image": ["https://cdn-uploads.huggingface.co/production/uploads/638e39b249de7ae552d977b5/u9KR_QjSYF7mJIbRE3Ni8.jpeg"], "datePublished": "2026-08-12T16:14:36", "dateModified": "2026-11-16T21:07:31.532908", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/introducing-olmoearth-embeddings-custom-embedding-exports-from-ol-10864.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Introducing OlmoEarth embeddings: Custom embedding exports from OlmoEarth Studio for downstream analysis</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 12 Aug 2026 &bull; ⏱️ 7 min read (1308 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>📄 Tech Report: https://allenai.org/papers/olmoearth | 📊 Documentation: https://docs.olmoearth.allenai.org/embeddings | 💻 Learn more about OlmoEarth: https://allenai.org/olmoearth.</li><li style='margin-bottom:6px;'>Recent findings suggest that olmoEarth Studio, our platform for building Earth observation models, now lets you compute and export embedding vectors—compact numerical representations of Earth-observation data produced by our open source OlmoEarth foundation models.</li><li style='margin-bottom:6px;'>Embeddings are a fast, cost-effective entry point for leveraging OlmoEarth: they support a wide range of downstream tasks, from similarity search to segmentation to unsupervised exploration.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-10864"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-10864"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-10864"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Introducing OlmoEarth embeddings: Custom embedding exports from OlmoEarth Studio for downstream analysis" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/638e39b249de7ae552d977b5/u9KR_QjSYF7mJIbRE3Ni8.jpeg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-10864">📄 Tech Report: https://allenai.org/papers/olmoearth | 📊 Documentation: https://docs.olmoearth.allenai.org/embeddings | 💻 Learn more about OlmoEarth: https://allenai.org/olmoearth.</p>
+<p>Recent findings suggest that olmoEarth Studio, our platform for building Earth observation models, now lets you compute and export embedding vectors—compact numerical representations of Earth-observation data produced by our open source OlmoEarth foundation models. The source code and model weights are publicly available alongside the research paper, so the community can inspect exactly how these embeddings are generated.</p>
+<p>Embeddings are a fast, cost-effective entry point for leveraging OlmoEarth: they support a wide range of downstream tasks, from similarity search to segmentation to unsupervised exploration. Locations with similar surface characteristics end up with similar vectors; locations that differ land far apart. OlmoEarth embeddings have shown strong performance in our own benchmarking and in independent evaluations. The exported Cloud-Optimized GeoTIFFs (COGs) are lightweight and easy to share. Choose your area of interest, time range, encoder variant, resolution, and imagery sources via the Studio UI or API, and get back a COG you can use however you like. If your application requires higher performance, Studio also supports supervised fine-tuning (SFT).</p>
+<p>Custom-computed embeddings are now available for consumers of OlmoEarth Studio. Reach out if you're interested in gaining access. Instructions for using the publicly available OlmoEarth models to compute your own embeddings are available here.</p>
+<p>Global structure in OlmoEarth embeddings from seasonal Sentinel-2 imagery across 1.1M samples. Colors indicate 15 k-means clusters in a PCA-reduced embedding space.</p>
+<p>According to recent reports, computing embeddings follows the same workflow as any other prediction in Studio. First configure a model and run it, and then download the results. Several parameters tailor the output:.</p>
+<p>Different visualization options applied to the same embedding raster.</p>
+<p>It has been revealed that studio delivers a COG with one band per embedding dimension. Vectors are stored as signed 8-bit integers (int8). Values range from -127 to +127, with -128 reserved for nodata. To recover floating-point vectors, see dequantize_embeddings in olmoearth_pretrain.</p>
+<p>Because everything is computed on demand rather than pulled from a pre-computed global archive, your embeddings reflect exactly the conditions you care about. You can generate monthly embeddings to capture seasonal dynamics, not just annual snapshots.</p>
+<p>The examples below all use OlmoEarth-v1-Tiny (192-dim) embeddings at 40-meter resolution with Sentinel-2 L2A composites (annual for most examples; monthly for change detection). Tiny is a lightweight encoder but still highly performant; for your own applications, you can swap it for a larger variant at the cost of higher compute and storage.</p>
+<p>Pick a query pixel, extract its embedding, and compute cosine similarity against every other pixel. The result is a heatmap showing where the landscape looks most and least like your query pixel.</p>
+<p>This query sits near the Merced urban center in California. Urban fabric and road corridors light up coherently while agricultural parcels stay dark. The model distinguishes built-up surfaces from cropland without any labels.</p>
+<p>Switching the query to a small agricultural window, we define the query vector as the mean of the embedding vectors over that window, then pull Sentinel-2 imagery at the highest- and lowest-similarity locations to see what the model treats as similar and dissimilar.</p>
+<p>The most similar patches (0.89 and above) are all agricultural parcels with irrigated fields. The least similar (around zero) are an airport with surrounding bare ground, a reservoir with dry terrain, and arid rangeland. No training data, no labels, just a dot product in embedding space.</p>
+<p>Recent findings suggest that similarity search tells you "where is it like this?" but sometimes you need discrete labels across a region. Because the representations are already rich, a simple linear classifier can produce a wall-to-wall land-cover map from very few labeled pixels.</p>
+<p id="sec-mid-10864">Recent findings suggest that to test this, we labeled just 60 pixels (20 per class) over Ca Mau, Vietnam, a coastal mangrove region. Using ESA WorldCover 2021 as the label source for three classes (mangrove, water, other), we randomly sampled 20 pixels per class, trained a logistic regression with per-feature standardization, and predicted every pixel in the region.</p>
+<p>From 60 labeled pixels, the classifier produces a coherent map with weighted F1 = 0.84. Mangrove stands, tidal channels, and open water are delineated across the entire region. The classifier saturates quickly: increasing from 30 to 300 labels barely changes accuracy, because the embeddings are doing most of the heavy lifting.</p>
+<p>The core of the analysis is a few lines of Python:.</p>
+<p>This is a linear probe, a standard evaluation for foundation models. The fact that a logistic regression over 192 dimensions recovers land-cover boundaries from so few labels means the Tiny encoder has organized these ecological distinctions during pretraining. Larger variants (Base, 768-dim) encode even richer representations.</p>
+<p>If you have ground-truth polygons, field survey points, or a coarse existing map, you can train a similar classifier and produce a wall-to-wall map for your own region of interest.</p>
+<p>In a recent development, because Studio can generate embeddings at any temporal resolution (monthly through annual), you can compare two time periods directly to identify where surface conditions have changed. Below, we computed monthly Sentinel-2 embeddings for the same region in September 2023 and September 2024 and measured per-pixel cosine distance. The Park Fire (July-September 2024) burn scar in Butte County, California lights up immediately.</p>
+<p>No labels or training required—just two embedding COGs and a few lines of Python.</p>
+<p>Industry observers note that sometimes you have no query location or reference labels. You just want to understand what structure exists in the embeddings. Principal Component Analysis (PCA) is a clean way to do this: reduce to three dimensions, map to R/G/B, and display as a false-color image. Similar embeddings get similar colors automatically.</p>
+<p>Flevoland, in the Netherlands, is a reclaimed polder landscape with a regular grid of agricultural parcels. The PCA false-color image reproduces those boundaries with high fidelity. Different crop types, water bodies, and urban areas each get distinct hues. The embedding has internalized landscape structure without ever being told what a parcel or crop is.</p>
+<p>This kind of unsupervised view is a quick way to see what structure the model has picked up across your area of interest.</p>
+<p>Similarity search, few-shot segmentation, change detection, and PCA exploration are simple operations on standard raster data that run in seconds. The power comes from the embeddings: learned representations that compress earth observation data into vectors capturing rich information about each location from many sensors and millions of training examples.</p>
+<p>Custom embedding exports are available now. Create a project, configure an embeddings model, and compute your embeddings. The exported GeoTIFF works with any geospatial tool: QGIS, GDAL, rasterio, or your own scripts. For end-to-end code reproducing the examples in this post, see the embeddings tutorial, which includes working code for similarity search, few-shot segmentation, change detection, and PCA visualization. To get hands-on without any local setup, try the Colab notebook.</p>
+<p>According to recent reports, the examples in this post all use frozen embeddings with no task-specific training. Embeddings are a great entry point for leveraging OlmoEarth: they enable fast, cost-effective generation of results, work well in resource-constrained environments, and are easy to share. For applications that require higher performance, OlmoEarth Studio also supports SFT, training a task-specific model head on your own labels, which typically outperforms linear probes on frozen features.</p>
+<p>While we are always working to improve our pretraining approaches, it's key to check the quality of the embeddings for your use case using some of the techniques described above. Performance also depends on the quality of the input imagery—persistent cloud cover, atmospheric artifacts, or missing observations in the composite period can affect the resulting vectors.</p>
+<p id="sec-end-10864">According to recent reports, sentinel-2 L2A imagery from the European Space Agency, accessed via Microsoft Planetary Computer. ESA WorldCover 2021 v200 for mangrove reference. The global clustering visualization uses OlmoEarth-v1-Base (768-dim) with seasonal Sentinel-2 composites at patch size 8, instance-level embeddings over 1.1M pretraining samples.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/allenai/olmoearth-embeddings" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="introducing-the-hugging-face-embedding-container-for-amazon-sagem-11841.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11841. Introducing the Hugging Face Embedding Container for Amazon SageMaker
+        </a>
+        
+        <a href="introducing-three-upcoming-serverless-inference-providers-hyperbo-11689.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11689. Introducing Three Upcoming Serverless Inference Providers: Hyperbolic, Nebius AI Studio, and Novita 🔥
+        </a>
+        
+        <a href="introducing-sygra-studio-11285.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11285. Introducing SyGra Studio
+        </a>
+        
+        <a href="latest-update-granite-embedding-multilingual-r2-open-apache-20-mu-11075.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11075. Latest Update: Granite Embedding Multilingual R2: Open Apache 2.0 Multilingual Embeddings with 32K Context — Best Sub-100M Retrieval Quality
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

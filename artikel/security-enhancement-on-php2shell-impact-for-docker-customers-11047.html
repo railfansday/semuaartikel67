@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Enhancement on PHP2Shell: Impact for Docker Customers</title>
+    <meta name="description" content="On Tuesday, October 20, 2026, Docker began tracking two critical vulnerabilities in PHP, CVE-2026-109618 and CVE-2026-109619, commonly known as PHP2Shell. ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/security-enhancement-on-php2shell-impact-for-docker-customers-11047.html">
+    <meta property="og:title" content="Security Enhancement on PHP2Shell: Impact for Docker Customers">
+    <meta property="og:description" content="On Tuesday, October 20, 2026, Docker began tracking two critical vulnerabilities in PHP, CVE-2026-109618 and CVE-2026-109619, commonly known as PHP2Shell. ">
+    <meta property="og:image" content="https://www.docker.com/app/uploads/2025/03/image.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/security-enhancement-on-php2shell-impact-for-docker-customers-11047.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Security Enhancement on PHP2Shell: Impact for Docker Customers", "image": ["https://www.docker.com/app/uploads/2025/03/image.png"], "datePublished": "2026-10-22T17:22:47", "dateModified": "2026-11-16T21:07:42.954461", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/security-enhancement-on-php2shell-impact-for-docker-customers-11047.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Security Enhancement on PHP2Shell: Impact for Docker Customers</h1>
+        <div class="meta-line">🌐 Source: <strong>Docker</strong> &bull; 📅 22 Oct 2026 &bull; ⏱️ 3 min read (693 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>On Tuesday, October 20, 2026, Docker began tracking two critical vulnerabilities in PHP, CVE-2026-109618 and CVE-2026-109619, commonly known as PHP2Shell.</li><li style='margin-bottom:6px;'>To address these vulnerabilities, PHP released 8.5.12, 8.4.27, 8.3.36, and 8.2.35, and advised anyone running PHP to enhancement to the latest version immediately.</li><li style='margin-bottom:6px;'>Industry observers note that although this is a vulnerability in PHP itself, not in Docker’s systems, it nonetheless affects Docker customers who build on PHP images and packages.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11047"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11047"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11047"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Security Enhancement on PHP2Shell: Impact for Docker Customers" loading="lazy" src="https://www.docker.com/app/uploads/2025/03/image.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11047">On Tuesday, October 20, 2026, Docker began tracking two critical vulnerabilities in PHP, CVE-2026-109618 and CVE-2026-109619, commonly known as PHP2Shell. The vulnerabilities allow attackers to execute code remotely in PHP core, and they affect PHP packages going back to version 5.4: the supported versions 8.2 through 8.5, and the end-of-life versions 5.x, 7.x, 8.0, and 8.1.</p>
+<p>To address these vulnerabilities, PHP released 8.5.12, 8.4.27, 8.3.36, and 8.2.35, and advised anyone running PHP to enhancement to the latest version immediately.</p>
+<p>Industry observers note that although this is a vulnerability in PHP itself, not in Docker’s systems, it nonetheless affects Docker customers who build on PHP images and packages. In response, we have updated the Docker Hardened Images and Docker Official Images on Docker Hub, and advise customers to immediately update.</p>
+<p>Along with other package repositories and secure package providers, Docker has been made aware of and is tracking two recently discovered critical vulnerabilities in PHP packages distributed since version 5.4. The two critical vulnerabilities, now commonly referred to as “PHP2Shell,” are identified and tracked as CVE-2026-109618 and CVE-2026-109619. (The PHP Foundation has published a detailed report on the discovery that we recommend reading for full context.).</p>
+<p>In a recent development, in short: these vulnerabilities could allow remote code execution in PHP core by malicious actors. Both are flaws in how PHP manages request memory. In CVE-2026-109618, when PHP runs out of memory mid-request and aborts, some code paths leave memory uninitialized, and PHP’s cleanup step then reads it. In CVE-2026-109619, PHP’s internal state can keep pointing at memory that has already been freed, and a later request then uses that stale state. Attackers have multiple ways to trigger either condition and turn it into remote code execution.</p>
+<p>Affected versions include the currently supported versions (8.2 through 8.5), as well as the EOL and unsupported versions 5.x, 7.x, 8.0, and 8.1.</p>
+<p>Whether you are a Docker user or not, if you are using any of the above affected versions of PHP, you should immediately upgrade to the latest version. That includes PHP 8.2.35, 8.3.36, 8.4.27, or 8.5.12, or a later release in the corresponding branch.</p>
+<p>Recent findings suggest that there is no other comprehensive remediation for the affected versions. Updating is the only complete mitigation path.</p>
+<p>In a recent development, if for any reason you are unable to complete an immediate upgrade, we strongly recommend taking your system offline until such time that you can initiate mitigation. This the guidance of not only Docker, but of the FBI, and numerous experts throughout the cybersecurity community.</p>
+<p id="sec-mid-11047">While this vulnerability exists in PHP itself and not directly in Docker’s systems, there is nonetheless potential risk and exposure to Docker customers who run PHP in their applications, including anyone using PHP images or packages from Docker Hub, Docker Official Images, or Docker Hardened Images.</p>
+<p>For consumers of Docker Official Images:Docker Official Images have already been updated and released to Docker Hub and mirrored to Amazon ECR. Customers using either of these sources should update immediately.</p>
+<p>For users of Docker Hardened Images (DHI):Docker Hardened Images have already been updated and released to Docker Hub. The currently supported versions of PHP were updated as follows:.</p>
+<p>The updates to our images were completed and released within 24-hours of the upstream patches being made available. These images were made available after successfully executing the DHI testing and verification processes.</p>
+<p>Recent findings suggest that if you have any challenges accessing the updated images or migrating to the newly introduced versions, please contact Docker Support at app.docker.com/support/contact. As always when it comes to matters of security, we appreciate your diligence.</p>
+<p>Docker’s WeAreDevelopers keynote demonstrates how Sandboxes, Kits, and Cloud Sandboxes give AI agents strong isolation and reproducible authority.</p>
+<p>Give AI coding agents live web access with the Firecrawl kit for Docker Sandboxes. Learn to search, scrape, and crawl websites with network controls.</p>
+<p>A container shares the host kernel. Docker Sandboxes are microVMs with their own kernel and private Docker Engine. See how they differ and when to use each.</p>
+<p id="sec-end-11047">Docker partners with ActiveState to continue to provide one standard for trusted content across everything you and your teams build on.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.docker.com/blog/security-update-on-php2shell-impact-for-docker-customers/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="space-secrets-security-enhancement-11845.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11845. Space secrets security enhancement
+        </a>
+        
+        <a href="cncf-score-project-improved-its-security-posture-by-joining-the-d-10987.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10987. CNCF Score project improved its security posture by joining the Docker-Sponsored Open Source Program
+        </a>
+        
+        <a href="how-we-sped-up-transformer-inference-100x-for-api-customers-12256.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12256. How we sped up transformer inference 100x for 🤗 API customers
+        </a>
+        
+        <a href="hugging-face-partners-with-wiz-research-to-improve-ai-security-11887.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11887. Hugging Face partners with Wiz Research to Improve AI Security
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

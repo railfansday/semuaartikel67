@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychic: Like fzf but learns from your actions</title>
+    <meta name="description" content="According to recent reports, most days Iâm in the terminal cdâing into directories and opening files in my editor. In any given week itâs mostly the ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/psychic-like-fzf-but-learns-from-your-actions-4047.html">
+    <meta property="og:title" content="Psychic: Like fzf but learns from your actions">
+    <meta property="og:description" content="According to recent reports, most days Iâm in the terminal cdâing into directories and opening files in my editor. In any given week itâs mostly the ">
+    <meta property="og:image" content="https://klauria.tech/psychic.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/psychic-like-fzf-but-learns-from-your-actions-4047.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Psychic: Like fzf but learns from your actions", "image": ["https://klauria.tech/psychic.jpg"], "datePublished": "2026-11-16T15:33:34", "dateModified": "2026-11-16T21:00:47.897832", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/psychic-like-fzf-but-learns-from-your-actions-4047.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Psychic: Like fzf but learns from your actions</h1>
+        <div class="meta-line">🌐 Source: <strong>Klauria</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 6 min read (1186 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, most days Iâm in the terminal cdâing into directories and opening files in my editor.</li><li style='margin-bottom:6px;'>Recent findings suggest that so I made psychic, a fast terminal-based file browser.</li><li style='margin-bottom:6px;'>Everything about how it works flows from a key design decision: it has to be fast enough to enhancement within one frame after a keypress.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-4047"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-4047"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-4047"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Psychic: Like fzf but learns from your actions" loading="lazy" src="https://klauria.tech/psychic.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-4047">According to recent reports, most days Iâm in the terminal cdâing into directories and opening files in my editor. In any given week itâs mostly the same files and dirs because Iâm working on the same projects. I was annoyed I had to remember where files live, and tired of tab-completing the same few paths. My computer should already know which file I want to open!</p>
+<p>Recent findings suggest that so I made psychic, a fast terminal-based file browser. It tracks the directories you go to and remembers which files you open. It trains a lightweight ML model on your data and ranks results using that model. It prioritizes interactivity and speed above all else: results update as you type and the UI renders in under 16ms.</p>
+<p>Everything about how it works flows from a key design decision: it has to be fast enough to enhancement within one frame after a keypress. Iâd rather do 10 fast searches in the space of a couple seconds, than 1 smart search that takes many seconds to complete.</p>
+<p>I use psychic every time Iâm on my computer. Itâs become the main way I move around the filesystem. Some numbers: Since I started using it in October 2025,.</p>
+<p>(These are from the built-in psychic stats command, which you can run on your own history!).</p>
+<p>Itâs on homebrew: brew install kshitijl/tap/psychic.</p>
+<p>In a recent development, on the left are search results. On the right is a preview of the file or directory currently selected. You type a query in the bottom and the results are filtered and ranked, changing with every letter. If you hit Enter on a file, it opens your terminal editor in the same window and waits in the background. If itâs a directory, it restarts the search from inside there. It remembers every file and dir you open, and a shell integration records every dir you cd into from outside psychic. All of those are included in every search.</p>
+<p>Itâs like fzf and zoxide had a baby, plus a small ML model that learns your patterns and favorites. Itâs doing ad optimization on your own data, to help you navigate your computer faster.</p>
+<p>All your searches and clicks get written to a sqlite db on your computer. psychic trains a LightGBM model on that data. The model learns to predict which files youâll open, based on your search query. psychic uses the model to rank search results. After every keypress, psychic reruns the model and reranks all results.</p>
+<p>For more details, see the README in the repo.</p>
+<p>According to recent reports, the model I use is LightGBM, an implementation of gradient-boosted trees. Itâs tiny and fast and trains in seconds. It can learn rules that depend on threshold values. For example, it can learn a rule like âFiles above 1 MB are only opened if theyâve been modified in the last 24 hoursâ, like log files. LightGBM also has the excellent LambdaRank objective, which is specialized for exactly this kind of ranking task.</p>
+<p>Industry observers note that the latency budget ruled out any model thatâs not local: a network call could easily be over 10 ms or worse. It also ruled out LLMs or any kind of transformer model. Linear and logistic regression were too simple and performed much worse than LightGBM.</p>
+<p id="sec-mid-4047">The model is re-trained from scratch every time you open psychic. This means it always reflects your current usage patterns. Training happens in the background and writes the model to disk when itâs done. We donât switch to using the new model while youâre looking at results, because itâs jarring when apps do that. Instead, we wait for when youâre not looking at the screen, like when youâre opening a file in an editor or when you click on a directory. Then we switch to the new model. Iâm proud of this careful little dance.</p>
+<p>When a user has just started using psychic, there arenât enough clicks to train on. We use a simple model that rewards recent clicks, recent modification time and a fuzzy match between the query and filename. The final score is a weighted sum of the simple model and ML model. With few clicks, the simple model dominates. As more clicks accumulate, the ML modelâs score gets higher weight, until itâs basically 1.</p>
+<p>Sources indicate that I use a carefully chosen set of features to try to predict which file youâll open. Some features are simple: how recently you last clicked it within psychic, its modification time, whether the filename starts with the query, a fuzzy text match score between the query and the filename. Hereâs a debug pane that shows the features and some performance stats:.</p>
+<p>According to recent reports, this debug pane was very helpful in the beginning for figuring out weird results or slowness. These days psychic is pretty stable but I still like opening it sometimes.</p>
+<p>Sources indicate that one feature is ânumber of recent clicks on files that are in the same directory as this oneâ. This feature helps the model boost files that are in right now active projects.</p>
+<p>It has been revealed that the feature âclicks for this queryâ helps the model associate specific queries with specific files, without having to literally remember filenames and query texts. This way, while the model doesnât directly see filenames, it can still remember associations.</p>
+<p>Every training run writes a pdf with some stats. Here we see a training curve and the gain of each feature.</p>
+<p>An episode is defined as everything that happens from opening psychic (or from the last click) to clicking on an item. So a single episode has a bunch of queries, including hitting backspace and trying new queries. The feature âengagements in episode with queryâ counts the number of times you clicked on a file at any point in an episode that had the current query. So if you always type âesâ and end up clicking on âbayesian-estimate.mdâ, then the model can see that association. Next time you type âesâ, the model will put that file at the top of the list.</p>
+<p>According to recent reports, here are SHAP values and a dot chart. These help me understand how much a feature affects the modelâs output, and to interpret why a model behaves the way it does. For example, the dot chart shows that the model prefers recently modified files, and dislikes most massive files.</p>
+<p>Recent findings suggest that I watch perf closely and spent a lot of effort on a good benchmarking setup, plus perf logging. Every commit has performance benchmarks. If you use psychic and get bad performance, thatâs a bug! Let me know and Iâll fix it.</p>
+<p>It has been revealed that my tech choices were driven by performance. Probably the most vital choices were Rust and LightGBM.</p>
+<p id="sec-end-4047">Syscalls are expensive but of course this whole program is syscalls. I tried to minimize syscalls. No filesystem syscalls in the main render loop; I carefully made sure that we ask for file metadata at the time we walk the filesystem and then carry that around everywhere else.</p>
+<p style="margin-top: 25px;">
+<a href="https://klauria.tech/psychic/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="scaling-up-bert-like-model-inference-on-modern-cpu-part-2-12226.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12226. Scaling up BERT-like model Inference on modern CPU  - Part 2
+        </a>
+        
+        <a href="run-a-chatgpt-like-chatbot-on-a-single-gpu-with-rocm-12046.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12046. Run a Chatgpt-like Chatbot on a Single GPU with ROCm
+        </a>
+        
+        <a href="can-foundation-models-label-data-like-humans-12028.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12028. Can foundation models label data like humans?
+        </a>
+        
+        <a href="code-llama-llama-2-learns-to-code-11989.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11989. Code Llama: Llama 2 learns to code
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing Storage Buckets on the Hugging Face Hub</title>
+    <meta name="description" content="Sources indicate that hugging Face Models and Datasets repos are great for publishing final artifacts. But production ML generates a constant stream of int">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/introducing-storage-buckets-on-the-hugging-face-hub-11209.html">
+    <meta property="og:title" content="Introducing Storage Buckets on the Hugging Face Hub">
+    <meta property="og:description" content="Sources indicate that hugging Face Models and Datasets repos are great for publishing final artifacts. But production ML generates a constant stream of int">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/storage-buckets/buckets-annoucement.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/introducing-storage-buckets-on-the-hugging-face-hub-11209.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Introducing Storage Buckets on the Hugging Face Hub", "image": ["https://huggingface.co/blog/assets/storage-buckets/buckets-annoucement.png"], "datePublished": "2026-03-10T00:00:00", "dateModified": "2026-11-16T21:07:53.251377", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/introducing-storage-buckets-on-the-hugging-face-hub-11209.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Introducing Storage Buckets on the Hugging Face Hub</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 10 Mar 2026 &bull; ⏱️ 6 min read (1250 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that hugging Face Models and Datasets repos are great for publishing final artifacts.</li><li style='margin-bottom:6px;'>Storage Buckets are built exactly for this: mutable, S3-like object storage you can browse on the Hub, script from Python, or manage with the hf CLI.</li><li style='margin-bottom:6px;'>Git starts to feel like the wrong abstraction pretty quickly when you're dealing with:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-11209"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-11209"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-11209"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Introducing Storage Buckets on the Hugging Face Hub" loading="lazy" src="https://huggingface.co/blog/assets/storage-buckets/buckets-annoucement.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-11209">Sources indicate that hugging Face Models and Datasets repos are great for publishing final artifacts. But production ML generates a constant stream of intermediate files (checkpoints, optimizer states, processed shards, logs, traces, etc.) that change often, arrive from many jobs at once, and rarely need version control.</p>
+<p>Storage Buckets are built exactly for this: mutable, S3-like object storage you can browse on the Hub, script from Python, or manage with the hf CLI. And because they are backed by Xet, they are especially efficient for ML artifacts that share content across files.</p>
+<p>Git starts to feel like the wrong abstraction pretty quickly when you're dealing with:.</p>
+<p>The storage need in all these cases is the same: write fast, overwrite when needed, sync directories, remove stale files, and keep things moving.</p>
+<p>It has been revealed that A Bucket is a non-versioned storage container on the Hub. It lives under a user or organization namespace, has standard Hugging Face permissions, can be private or public, has a page you can open in your browser, and can be addressed programmatically with a handle like hf://buckets/username/my-training-bucket.</p>
+<p>Buckets are built on Xet, Hugging Face’s chunk-based storage backend, and this matters more than it might seem.</p>
+<p>According to recent reports, instead of treating files as monolithic blobs, Xet breaks content into chunks and deduplicates across them. Upload a processed dataset that’s mostly similar to the raw one? Many chunks already exist. Store successive checkpoints where large parts of the model are frozen? Same story. Buckets skip the bytes that are already there, which means less bandwidth, faster transfers, and more efficient storage.</p>
+<p>This is a natural fit for ML workloads. Training pipelines constantly produce families of related artifacts — raw and processed data, successive checkpoints, Agent traces and derived summaries — and Xet is designed to take advantage of that overlap.</p>
+<p>In a recent development, for Enterprise customers, billing is based on deduplicated storage, so shared chunks directly reduce the billed footprint. Deduplication helps with both speed and cost.</p>
+<p>Sources indicate that buckets live on the Hub, which means global storage by default. But not every workload can afford to pull data from wherever it happens to live, for distributed training and large-scale pipelines, storage location directly affects throughput.</p>
+<p>Industry observers note that pre-warming lets you bring hot data closer to the cloud provider and region where your compute runs. Instead of data traveling across regions on every read, you declare where you need it and Buckets make sure it's already there when your jobs start. This is especially useful for training clusters that need fast access to large datasets or checkpoints, and for multi-region setups where different parts of a pipeline run in different clouds.</p>
+<p>We are partnering with AWS and GCP to start with, more more cloud providers coming in the future.</p>
+<p>Create a bucket for your project:.</p>
+<p>Say your training job is writing checkpoints locally to ./checkpoints. Sync that directory into the Bucket:.</p>
+<p>For large transfers, you might want to see what will happen before anything moves. --dry-run prints the proposal without executing anything:.</p>
+<p>You can also save the blueprint to a file for review and apply it later:.</p>
+<p>Once done, inspect the Bucket from the CLI:.</p>
+<p>or browse it directly on the Hub at https://huggingface.co/buckets/username/my-training-bucket.</p>
+<p>Sources indicate that that is the whole loop. Create a bucket, sync your working data into it, check on it when you need to, and save the versioned repo for when something is worth publishing. For one-off operations, hf buckets cp copies individual files and hf buckets remove cleans up stale objects.</p>
+<p>Recent findings suggest that everything above also works from Python via huggingface_hub (available since v1.5.0). The API follows the same pattern: create, sync, inspect.</p>
+<p id="sec-mid-11209">Recent findings suggest that this makes it straightforward to integrate Buckets into training scripts, data pipelines, or any service that manages artifacts programmatically. The Python client also supports batch uploads, selective downloads, deletes, and bucket moves for when you need finer control.</p>
+<p>Bucket support is also available in JavaScript via @huggingface/hub (since v2.10.5), so you can integrate Buckets into Node.js services and web applications as well.</p>
+<p>Recent findings suggest that buckets also work through HfFileSystem, the fsspec-compatible filesystem in huggingface_hub. This means you can list, read, write, and glob Bucket contents using standard filesystem operations — and any library that supports fsspec can access Buckets directly.</p>
+<p>Because fsspec is the standard Python interface for remote filesystems, libraries like pandas, Polars, and Dask can read from and write to Buckets using hf:// paths with no extra setup:.</p>
+<p>This makes it easy to plug Buckets into existing data workflows without changing how your code reads or writes files.</p>
+<p>It has been revealed that buckets are the fast, mutable place where artifacts live while they are still in motion. Once something becomes a stable deliverable, it usually belongs to a versioned model or dataset repo.</p>
+<p>On the roadmap, we blueprint to support direct transfers between Buckets and repos in both directions: promote final checkpoint weights into a model repo, or commit processed shards into a dataset repo once a pipeline completes. The working layer and the publishing layer stay separate, but fit into one continuous Hub-native workflow.</p>
+<p>Before opening Buckets to everyone, we ran a private beta with a small group of launch partners.</p>
+<p>A huge thank you to Jasper, Arcee, IBM, and PixAI for testing early versions, surfacing bugs, and sharing feedback that directly shaped this feature.</p>
+<p>Recent findings suggest that storage Buckets bring a missing storage layer to the Hub. They give you a Hub-native place for the mutable, high-throughput side of ML: checkpoints, processed data, Agent traces, logs, and everything else that is useful before it becomes final.</p>
+<p>Sources indicate that because they are built on Xet, Buckets are not just easier to use than forcing everything through Git. They are also more efficient for the kinds of related artifacts AI systems produce all the time. That means faster transfers, better deduplication, and on Enterprise aims, billing that benefits from the deduplicated footprint.</p>
+<p>According to recent reports, if you already use the Hub, Buckets let you keep more of your workflow in one place. If you come from S3-style storage, they give you a familiar model with better alignment to AI artifacts and a clear path toward final publication on the Hub.</p>
+<p>Buckets are included in existing Hub storage plans. Free accounts come with storage to get started, and PRO and Enterprise plans offer higher limits. See the storage page for details.</p>
+<p>Has there been any consideration of a cold-storage tier?</p>
+<p>There are likely users (myself included) with data that:.</p>
+<p>Recent findings suggest that I understand that Xet and the newer storage limits reductions focus heavily on reducing your opex costs because there was a lot of abuse re: users hosting video files and uploading bogus. However, some legitmate workloads involve large static assets that are rarely accessed but still useful to keep hosted (natural disaster/fire reasons 😅).</p>
+<p>I’m curious whether something like a lower-cost (and much slower) archival tier might eventually make sense for these cases?</p>
+<p>We've discussed such feature internally and we might offer it at some point, but it's not in our short-term roadmap.</p>
+<p>For now the main goal is to fuel data-heavy AI workflows 🤗.</p>
+<p>how do i attach this to my spaaces for persistance storage . where i need quick acces to my data reterival and storage. via fast api. i hosted on my spaces.</p>
+<p id="sec-end-11209">we have something coming soon, cc @XciD.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/storage-buckets" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-introducing-bertopic-integration-with-the-hugging-f-12036.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12036. Industry News: Introducing BERTopic Integration with the Hugging Face Hub
+        </a>
+        
+        <a href="record-train-and-deploy-from-one-place-with-strands-agents-lerobo-10858.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #10858. Record, train, and deploy from one place with Strands Agents, LeRobot, and Hugging Face Storage Buckets
+        </a>
+        
+        <a href="industry-news-sentence-transformers-in-the-hugging-face-hub-12240.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12240. Industry News: Sentence Transformers in the Hugging Face Hub
+        </a>
+        
+        <a href="breaking-welcome-spacy-to-the-hugging-face-hub-12238.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12238. Breaking: Welcome spaCy to the Hugging Face Hub
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
