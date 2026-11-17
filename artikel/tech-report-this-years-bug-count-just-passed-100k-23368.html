@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: This year’s bug count just passed 100K</title>
+    <meta name="description" content="‘We don’t have a security problem anymore. We have a data problem now’. Chalk up a new record for vulns. The number of Common Vulnerabilities and Exposures">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-this-years-bug-count-just-passed-100k-23368.html">
+    <meta property="og:title" content="Tech Report: This year’s bug count just passed 100K">
+    <meta property="og:description" content="‘We don’t have a security problem anymore. We have a data problem now’. Chalk up a new record for vulns. The number of Common Vulnerabilities and Exposures">
+    <meta property="og:image" content="https://image.theregister.com/262189.jpg?imageId=262189&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-this-years-bug-count-just-passed-100k-23368.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: This year’s bug count just passed 100K", "image": ["https://image.theregister.com/262189.jpg?imageId=262189&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683"], "datePublished": "2026-11-13T20:52:17.000Z", "dateModified": "2026-11-17T15:21:35.182600", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-this-years-bug-count-just-passed-100k-23368.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: This year’s bug count just passed 100K</h1>
+        <div class="meta-line">🌐 Source: <strong>Theregister</strong> &bull; 📅 13 Nov 2026 &bull; ⏱️ 5 min read (1034 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>‘We don’t have a security problem anymore.</li><li style='margin-bottom:6px;'>The number of Common Vulnerabilities and Exposures (CVEs) found and disclosed so far in 2026 surpassed 100,000 on Friday - more than double 2025’s total - and the reason can be summed up in two letters: AI.</li><li style='margin-bottom:6px;'>“It’s kind of wild,” Josh Bressers, VulnCheck’s director of coordinated vulnerability disclosure, told The Register.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-23368"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-23368"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-23368"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: This year’s bug count just passed 100K" loading="lazy" src="https://image.theregister.com/262189.jpg?imageId=262189&amp;x=0&amp;y=0&amp;cropw=100&amp;croph=100&amp;panox=0&amp;panoy=0&amp;panow=100&amp;panoh=100&amp;width=1200&amp;height=683" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-23368">‘We don’t have a security problem anymore. We have a data problem now’.</p>
+<p>Chalk up a new record for vulns. The number of Common Vulnerabilities and Exposures (CVEs) found and disclosed so far in 2026 surpassed 100,000 on Friday - more than double 2025’s total - and the reason can be summed up in two letters: AI.</p>
+<p>“It’s kind of wild,” Josh Bressers, VulnCheck’s director of coordinated vulnerability disclosure, told The Register. “The thing that almost scares the bejesus out of me is while 100K sounds like a lot, in a couple years we're going to say, remember when it was only 100K?”.</p>
+<p>It has been revealed that as of the time of our interview, about 4 pm UTC on Friday, VulnCheck counted 100,222 CVEs, he stated. Microsoft alone added 1,094 security flaws to the total count on Tuesday, following 1,474 vulnerabilities the month before.</p>
+<p>Recent findings suggest that “There's no denying the fact that vulnerability hunting with AI is driving a majority of what we're seeing.” All the major CVE Numbering Authorities (CNAs) - these are the organizations authorized by the CVE program to assign unique identifiers to security vulnerabilities - like VulnCheck, Microsoft, Oracle, GitHub, and other large enterprise IT vendors “are just screaming into the atmosphere right now,” Bressers noted. “It’s AI.”.</p>
+<p>Industry observers note that meanwhile, the percentage of these bugs that are exploited in the wild remains relatively consistent. About 1.4 percent (1,363) of the CVEs published this year have been added to VulnCheck’s Known Exploited Vulnerabilities (KEV) catalog.</p>
+<p>“But obviously, as the number of CVEs grows, [1 percent] of 1,000 is a lot different than [1 percent] of 100,000,” Bressers said.</p>
+<p>In a recent development, plus, as other security researchers have documented, the window between the public release of a security patch and attackers developing working exploits – often by reverse engineering the patch while end users are still applying the fix – is rapidly shrinking. This is also thanks to AI.</p>
+<p>In a recent development, from January to June, 88 percent of the exploitation observed by CrowdStrike using public proof-of-concept (PoC) code occurred within 48 hours of the code's release. The security firm mentioned China-linked groups such as Vault Panda and Genesis Panda moved even faster, launching attacks within 24 hours of disclosure.</p>
+<p>Similarly, VulnCheck found the median time from CVE publication to exploitation falling from 120 days in 2025 to 80 days during the first half of 2026. This window has closed even further during the second half of the year, which also seems to coincide with the AI-induced vulnpocalypse.</p>
+<p>“It’s often just hours,” Bressers noted, noting 14 make-me-root vulnerabilities that VulnCheck disclosed on Friday in Copeland refrigeration controllers. Two are under active exploitation. These are the devices that Iranian hackers abused to spoil food and spark fires in supermarkets across Europe.</p>
+<p id="sec-mid-23368">“We published those CVEs, and literally minutes later, we were seeing hits on our honey pots,” Bressers said about the Copeland device vulnerabilities. “We’ve hit a point where with anything that looks interesting, someone is taking that information and seeing what they can do with it. Is it AI driven? Probably. It'd be hard to say it's not, because we've seen it really ramp up recently.”.</p>
+<p>This influx of software bugs requires a sea change in how the entire industry approaches vulnerability disclosure and patching.</p>
+<p>Sources indicate that “We don't have a security problem anymore,” Bressers stated. “We have a data problem now. Instead of obsessing over vulnerabilities, we need to start looking at things like heat maps for infrastructure, and figure out the vulnerabilities that actually affect you. The CISA BOD helps with that.”.</p>
+<p>The US Cybersecurity and Infrastructure Security Agency (CISA) in June issued a cybersecurity directive that replaces flat-deadline vulnerability management policies. Instead of prioritizing patching based solely on CVSS severity scores, the directive instructs organizations to prioritize based on specific risk criteria, including whether the asset is internet-exposed, under active exploitation, and whether an attacker can automate the exploit.</p>
+<p>“It's telling people to figure out the vulnerabilities that actually affect you, and then put those at the top of the list, instead of just saying we're going to fix all the criticals,” Bressers noted.</p>
+<p>AI-generated vulnerability disclosures also create huge headaches for open source software developers and maintainers, which Bressers describes as a security problem “super close to my heart.”.</p>
+<p>It has been revealed that “You've got individual developers that are drowning in vulnerability reports,” he noted. “You have foundations being crushed by AI agents scraping their data or downloading their packages, millions of times a day, and it's straining the seams absolutely everywhere you look. The one thing I can say with certainty is: The way we at the moment do things has to change, and it's going to have to change fairly soon.”.</p>
+<p>Different open source projects have taken different approaches to solving this concern. The Eclipse Foundation, which houses the Open VSX Registry, in April rolled out a “managed tier” for enterprise customers and other organizations running Open VSX at scale.</p>
+<p>Instead of using the free, open source version, the managed version guarantees a 99.95 percent uptime SLA backed by service credits. Its customers include AWS, IBM, Google, Cursor, and Windsurf. This paid option means commercial customers who rely on the registry help fund its ongoing maintenance - and their own platforms’ security and performance.</p>
+<p>Meanwhile, curl’s maintainer, Daniel Stenberg, citing an “avalanche of vulnerability reports," updated its bug reporting rules last month. As of October 26, all low- and medium-severity reports go directly into the public GitHub repository, with only the high- and critical-flaws receiving private handling.</p>
+<p>Stenberg already shuttered curl's bug bounty program this year as AI-generated submissions piled work onto its security team.</p>
+<p id="sec-end-23368">Recent findings suggest that “A lot more needs to happen, and I think it is going to be a challenge to enact some of this change,”  Bressers said. “When a package registry drastically changes something, people start freaking out, and the world is going to end, and people on LinkedIn are complaining - a lot of people are hesitant. No one wants to be the first to jump into the alligator-filled pool. That's one of our challenges.”®.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.theregister.com/security/2026/11/13/this-years-bug-count-just-passed-100k/5309882" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-some-of-my-favorite-evergreen-shrubs-just-went-on-sal-21135.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #21135. Tech Report: Some of My Favorite Evergreen Shrubs Just Went on Sale at Home Depot – and They'll Keep Your Garden Looking Good Year-Round
+        </a>
+        
+        <a href="nba-rookie-of-the-year-race-three-players-at-top-but-dont-count-o-15456.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #15456. NBA Rookie of the Year race: Three players at top, but don't count out AJ Dybantsa, Darryn Peterson just yet
+        </a>
+        
+        <a href="tech-report-scientists-just-discovered-what-coffee-really-does-to-22613.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #22613. Tech Report: Scientists just discovered what coffee really does to your gut and brain
+        </a>
+        
+        <a href="tech-report-all-the-award-winning-photos-from-nature-photographer-22328.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #22328. Tech Report: All the Award-Winning Photos From Nature Photographer of the Year 2026
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

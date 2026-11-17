@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give Your Local AI Agent a Read-Only File Manifest, Not Your Home Directory</title>
+    <meta name="description" content="In a recent development, an agent that can read your entire home directory has more context than it needs and more access than you can easily review. A den">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/give-your-local-ai-agent-a-read-only-file-manifest-not-your-home--22909.html">
+    <meta property="og:title" content="Give Your Local AI Agent a Read-Only File Manifest, Not Your Home Directory">
+    <meta property="og:description" content="In a recent development, an agent that can read your entire home directory has more context than it needs and more access than you can easily review. A den">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fi6fdjso0x08a7rery50s.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/give-your-local-ai-agent-a-read-only-file-manifest-not-your-home--22909.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Give Your Local AI Agent a Read-Only File Manifest, Not Your Home Directory", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fi6fdjso0x08a7rery50s.png"], "datePublished": "2026-11-17T15:17:35", "dateModified": "2026-11-17T15:21:10.596861", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/give-your-local-ai-agent-a-read-only-file-manifest-not-your-home--22909.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Give Your Local AI Agent a Read-Only File Manifest, Not Your Home Directory</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 17 Nov 2026 &bull; ⏱️ 3 min read (614 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, an agent that can read your entire home directory has more context than it needs and more access than you can easily review.</li><li style='margin-bottom:6px;'>A smaller interface is easier to reason about: choose the files yourself, read them once, and hand the model an immutable manifest of text snapshots.</li><li style='margin-bottom:6px;'>The Node.js process still runs with your operating-system permissions.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-22909"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-22909"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-22909"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Give Your Local AI Agent a Read-Only File Manifest, Not Your Home Directory" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fi6fdjso0x08a7rery50s.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-22909">In a recent development, an agent that can read your entire home directory has more context than it needs and more access than you can easily review. A denylist of sensitive filenames helps, but it grows by exception: .env, .ssh, browser profiles, cloud credentials, and the next file you forgot existed.</p>
+<p>A smaller interface is easier to reason about: choose the files yourself, read them once, and hand the model an immutable manifest of text snapshots. The model can request only entries in that manifest. It cannot ask your tool to open a latest path.</p>
+<p>The Node.js process still runs with your operating-system permissions. This design does not sandbox it: another tool or a bug could still give it access to other files.</p>
+<p>For one task, define a short list such as README.md, src/config.ts, and src/routes.ts. At setup time, the host reads each approved file and stores its text and metadata in memory. Later model requests use an ID like file-2, never a path. That gives the task a stable view: if a file changes after snapshotting, the model continues to see the captured text.</p>
+<p>Sources indicate that each task gets a known set of captured text. Include a content hash and capture timestamp so you can identify the bytes used in that task, even after the source file changes.</p>
+<p>Prerequisite: Node.js 20 or newer and a directory containing the files you intend to expose. Save this as manifest.mjs; pass the project root as the first argument. Edit approved before running it.</p>
+<p id="sec-mid-22909">Run node manifest.mjs /path/to/project. The JSON is the complete handoff for this exercise; in an agent host, keep snapshot in memory and expose a lookup by id. Validate the ID against the manifest and return only its stored text. Never turn a model-supplied string into a filesystem path.</p>
+<p>Industry observers note that the code rejects lexical .., checks every component with lstat, resolves the final path, and verifies it remains below the root. These checks help with an ordinary, stable directory tree. They are not atomic. Between lstat or realpath and readFile, another process with write access could replace a component or file. That is a time-of-check-to-time-of-use (TOCTOU) race. An attacker able to mutate the tree at the same time may exploit it.</p>
+<p>For a hostile, concurrently writable directory, use OS-level isolation or platform APIs that open files relative to a trusted directory handle with no-follow semantics. Portable Node.js path helpers alone do not provide that security boundary. A read-only container mount can reduce what the process may change, but it is a separate control to configure and verify.</p>
+<p>In a recent development, UTF-8 decoding can replace invalid byte sequences, and an approved file can contain prompt injection. Reject binary content and treat file text as untrusted data in the prompt. A content hash identifies the bytes; it indicates nothing about whether the text is safe to follow.</p>
+<p>Industry observers note that cap the number of entries, reject files above a byte ceiling before reading them, and keep a total snapshot-size budget. A manifest of hundreds of approved files can quietly become a whole-repository dump. If a file is too large, split it deliberately or leave it out and tell the agent that it was omitted. Fail visibly on unreadable or invalid text so a partial snapshot cannot pass for a complete one.</p>
+<p>Recent findings suggest that keep the manifest with the task record. When a summary refers to an outdated setting in src/config.ts, its snapshot ID and hash let you check exactly which version the model read.</p>
+<p id="sec-end-22909">References: Node.js file system APIs document lstat, realpath, and file reads; Node.js path APIs document path resolution and platform-specific behavior.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/pavelespitia/give-your-local-ai-agent-a-read-only-file-manifest-not-your-home-directory-40o0" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="the-ugreen-homeagent-is-a-local-first-way-to-make-your-smart-home-23507.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23507. The UGREEN HomeAgent is a ‘local-first’ way to make your smart home even smarter
+        </a>
+        
+        <a href="running-an-ai-agent-on-a-local-llm-what-i-measured-on-one-gpu-23477.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23477. Running an AI Agent on a Local LLM: What I Measured on One GPU
+        </a>
+        
+        <a href="stop-hunting-for-pricey-antiquesdesigners-say-these-9-humble-find-19937.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #19937. Stop Hunting for Pricey Antiques—Designers Say These 9 Humble Finds Give a Home So Much Character
+        </a>
+        
+        <a href="the-rise-of-the-multi-market-agent-why-local-expertise-is-going-g-18510.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #18510. The rise of the multi-market agent: Why local expertise is going global
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

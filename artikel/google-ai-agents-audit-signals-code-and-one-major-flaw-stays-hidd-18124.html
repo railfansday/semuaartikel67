@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google AI agents audit Signal’s code and one major flaw stays hidden</title>
+    <meta name="description" content="Google DeepMind researchers say their AI agents produced mathematical proofs linking specific security guarantees to a compiled build of Signal’s encryptio">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/google-ai-agents-audit-signals-code-and-one-major-flaw-stays-hidd-18124.html">
+    <meta property="og:title" content="Google AI agents audit Signal’s code and one major flaw stays hidden">
+    <meta property="og:description" content="Google DeepMind researchers say their AI agents produced mathematical proofs linking specific security guarantees to a compiled build of Signal’s encryptio">
+    <meta property="og:image" content="https://cryptoslate.com/wp-content/uploads/2026/11/signal-one-to-one-proof-display-case.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/google-ai-agents-audit-signals-code-and-one-major-flaw-stays-hidd-18124.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Google AI agents audit Signal’s code and one major flaw stays hidden", "image": ["https://cryptoslate.com/wp-content/uploads/2026/11/signal-one-to-one-proof-display-case.jpg"], "datePublished": "2026-11-17T05:10:11+00:00", "dateModified": "2026-11-17T15:16:42.372013", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/google-ai-agents-audit-signals-code-and-one-major-flaw-stays-hidd-18124.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Google AI agents audit Signal’s code and one major flaw stays hidden</h1>
+        <div class="meta-line">🌐 Source: <strong>Cryptoslate</strong> &bull; 📅 17 Nov 2026 &bull; ⏱️ 3 min read (650 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Google DeepMind researchers say their AI agents produced mathematical proofs linking specific security guarantees to a compiled build of Signal’s encryption library, and they put the resulting evidence online for others to check.</li><li style='margin-bottom:6px;'>10 AlphaProof Code report describes about 6.5 million lines of machine-checked Lean proof code.</li><li style='margin-bottom:6px;'>Sources indicate that the authors say five people worked on the proofs over four weeks.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-18124"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-18124"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-18124"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Google AI agents audit Signal’s code and one major flaw stays hidden" loading="lazy" src="https://cryptoslate.com/wp-content/uploads/2026/11/signal-one-to-one-proof-display-case.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-18124">Google DeepMind researchers say their AI agents produced mathematical proofs linking specific security guarantees to a compiled build of Signal’s encryption library, and they put the resulting evidence online for others to check.</p>
+<p>The Nov. 10 AlphaProof Code report describes about 6.5 million lines of machine-checked Lean proof code. The result concerns a particular build of libsignal, the Signal protocol’s implementation, under explicit assumptions about cryptography and the environment in which the code runs.</p>
+<p>Sources indicate that the authors say five people worked on the proofs over four weeks. Humans directed the work, selected reference models and reviewed the specifications that defined what the agents had to prove.</p>
+<p>The target was an AArch64 Linux executable using libsignal-protocol v0.105.4 and SPQR v1.6.0 inside a small command-line harness. The theorems cover session initialization, sending a message, and receiving one. Key generation falls outside that verified scope.</p>
+<p>The Google report connects the compiled executable to specified properties of PQXDH and Triple Ratchet one-to-one messaging, including forward secrecy, authentication, and post-compromise security.</p>
+<p>These address whether earlier messages stay secret after keys are stolen, whether senders are authentic, and whether a session can regain secrecy after a compromise.</p>
+<p>Its two proof models provide different assurances: the symbolic analysis relies on idealized cryptographic operations and collision-free executions, while the computational analysis bounds the success of classical attackers under stated cryptographic assumptions.</p>
+<p>DeepMind’s reported process connects human-selected requirements and one executable to a machine-checked proof, with trusted assumptions still defining the result.</p>
+<p>A checked proof establishes the stated guarantee for the specified build and model.</p>
+<p>Author-reported proofs for a specific AArch64 Linux harness. Specifications, execution model, routine contracts and cryptographic assumptions remain trusted. No direct verification of phone apps, key generation or groups; no independent rebuild performed here.</p>
+<p id="sec-mid-18124">Source-bound schematic of the reported proof workflow and trust boundary; connectors show logical dependence, not elapsed time or measured security strength.</p>
+<p>It has been revealed that author-reported proofs for a specific AArch64 Linux harness. Specifications, execution model, routine contracts and cryptographic assumptions remain trusted. No direct verification of phone apps, key generation or groups; no independent rebuild performed here.</p>
+<p>The symbolic proof establishes handshake secrecy under specified later breaks of Diffie-Hellman, but the computational proof does not cover quantum attackers. Group messaging is outside the report’s scope, and the computational model excludes multi-device state. Its bounds also stop providing a useful guarantee at sufficiently large workloads.</p>
+<p>The results still require trust in Lean’s checking kernel, the specifications reviewed by the researchers, the AArch64 Linux model, and contracts describing selected routines.</p>
+<p>In a recent development, the project’s Nov. 11 update, merged on GitHub, claims ten more library routines were verified, cutting trusted routine hooks from 37 to 27. Those hooks replace execution of selected routines with assumed descriptions of their behavior.</p>
+<p>In a recent development, the update retains libsignal v0.105.4 but changes the pinned executable. The newer build verifies the machine code for those ten routines instead of relying on their modeled contracts.</p>
+<p>It has been revealed that the project repository provides public instructions to rebuild the pinned binary and check its proofs. A Linux-only comparator checks that the theorems and their dependent definitions match trusted statements, then replays proofs in a fresh Lean kernel.</p>
+<p>According to recent reports, the authors also report reintroducing two previously fixed libsignal bugs and proving that the modified binaries violate their symbolic security theorem. That tests whether the specification rejects those known regressions.</p>
+<p>The public package gives other researchers a concrete way to check the claimed connection between security requirements and executable code.</p>
+<p>In a recent development, also known as "Akiba," Liam Wright is a reporter, podcast producer, and Editor-in-Chief at CryptoSlate. He believes that decentralized technology has the potential to make….</p>
+<p id="sec-end-18124">Gino Matos is a law school graduate and a seasoned journalist with six years of experience in the crypto industry. His expertise primarily focuses on the Brazilian blockchain….</p>
+<p style="margin-top: 25px;">
+<a href="https://cryptoslate.com/google-deepmind-says-ai-agents-proved-security-properties-of-a-compiled-signal-library-build/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="stop-treating-agents-as-one-off-projects-and-start-running-them-a-23536.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23536. Stop treating agents as one-off projects and start running them as a continuous discipline
+        </a>
+        
+        <a href="samsung-galaxys-next-major-update-keeps-leaking-heres-what-to-exp-23465.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23465. Samsung Galaxy’s next major update keeps leaking – here’s what to expect in One UI 9.5
+        </a>
+        
+        <a href="latest-update-googles-latest-fast-switch-feature-leaks-lets-you-u-23425.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23425. Latest Update: Google’s latest ‘Fast Switch’ feature leaks, lets you use one number on two Android phones
+        </a>
+        
+        <a href="record-train-and-deploy-from-one-place-with-strands-agents-lerobo-23265.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23265. Record, train, and deploy from one place with Strands Agents, LeRobot, and Hugging Face Storage Buckets
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

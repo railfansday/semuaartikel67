@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP2Shell and eMudhra Patched</title>
+    <meta name="description" content="Two security events landed side by side this week, PHP2Shell and the eMudhra certificate compromise. Both reached the same place, the foundation their appl">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/php2shell-and-emudhra-patched-23346.html">
+    <meta property="og:title" content="PHP2Shell and eMudhra Patched">
+    <meta property="og:description" content="Two security events landed side by side this week, PHP2Shell and the eMudhra certificate compromise. Both reached the same place, the foundation their appl">
+    <meta property="og:image" content="https://www.docker.com/app/uploads/2025/03/image.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/php2shell-and-emudhra-patched-23346.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "PHP2Shell and eMudhra Patched", "image": ["https://www.docker.com/app/uploads/2025/03/image.png"], "datePublished": "2026-10-23T13:08:08", "dateModified": "2026-11-17T15:21:33.510609", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/php2shell-and-emudhra-patched-23346.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>PHP2Shell and eMudhra Patched</h1>
+        <div class="meta-line">🌐 Source: <strong>Docker</strong> &bull; 📅 23 Oct 2026 &bull; ⏱️ 4 min read (801 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Two security events landed side by side this week, PHP2Shell and the eMudhra certificate compromise.</li><li style='margin-bottom:6px;'>PHP2Shell is a pair of critical flaws in the PHP engine itself, CVE-2026-109618 and CVE-2026-109619.</li><li style='margin-bottom:6px;'>According to recent reports, the eMudhra compromise is a different kind of problem.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-23346"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-23346"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-23346"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="PHP2Shell and eMudhra Patched" loading="lazy" src="https://www.docker.com/app/uploads/2025/03/image.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-23346">Two security events landed side by side this week, PHP2Shell and the eMudhra certificate compromise. Both reached the same place, the foundation their applications are built on.</p>
+<p>PHP2Shell is a pair of critical flaws in the PHP engine itself, CVE-2026-109618 and CVE-2026-109619. They let an unauthenticated request become code execution on the server, on any PHP application, however careful its own code is, and PHP runs about 69% of the websites whose server-side language is known.</p>
+<p>According to recent reports, the eMudhra compromise is a different kind of problem. Eight intermediate certificates from the certificate authority eMudhra turned out to have private keys that can be computed from the public certificates, which let anyone glitch a certificate for any website and have it accepted. Browsers revoke certificates like these on their own, but a container image carries its own trust store and keeps trusting them until it is rebuilt.</p>
+<p>The dhi.io/php image was rebuilt on the patched PHP and published early on October 22, within 24 hours of the upstream release and after the DHI testing and verification steps. Pulling the current tag puts you on the fixed version. The few DHI images that bundle their own PHP application, such as composer and nextcloud, follow as their upstream projects release.</p>
+<p>Recent findings suggest that the certificate compromise touched the whole catalog, because every image carries a trust store. In the 48 hours after the PHP release, the DHI build system ran 16,567 package and image builds across the catalog. By 10pm UTC on October 22, almost all catalog tags were on the fixed CA store, with most of the rest in the build queue. That percentage comes from the SBOM that ships with every image, read for every published tag to check which CA store and which PHP version it carries, and you can run the same check on anything you pull.</p>
+<p>If you run PHP on Docker Hardened Images, pull the current tag for your branch and redeploy, and rebuild anything you built on top of a DHI image so it picks up the newly introduced base docker pull dhi.io/php:8.4.</p>
+<p>In a recent development, customizations built through the DHI Enterprise workflow are rebuilt automatically when the base layer is patched. For the certificate fix the same applies to every image you build from a DHI base, PHP or not. The Docker Security enhancement from October 22 lists the affected PHP versions and the support path.</p>
+<p>If you run PHP in any other container, check the PHP version running inside it rather than the tag on the outside, and rebuild it on a patched base.</p>
+<p>Weeks like this one will keep coming, but a trusted foundation will make all the difference.</p>
+<p id="sec-mid-23346">If you are not building on hardened images yet, this week is the wake-up call and the week to start. Both events landed on the foundation, and that is where the fix has to happen, in the image itself, rebuilt from fixed sources before anyone pulls it.</p>
+<p>This is exactly what Docker Hardened Images were built for. Docker builds, patches and maintains the system packages inside each image from source, and the build system is event-driven, so an upstream release or a changed package triggers rebuilds of everything that depends on it. Each image ships signed, with its SBOM, SLSA Build Level 3 provenance and VEX data attached, which is why a rebuild of this size can be measured as well as done.</p>
+<p>Recent findings suggest that the catalog is free and open source under Apache 2.0, with near-zero CVEs on every image. It stays compatible with the Alpine and Debian your teams already run, so adoption is a one-line change to the FROM line in your Dockerfile, with no migration project attached. DHI Select and DHI Enterprise add SLA-backed remediation with critical CVE fixes within 7 days, FIPS and STIG variants, image customization with the guarantees kept, and Extended Lifecycle Support for the versions upstream has stopped patching. All of it is in the Docker Hardened Images catalog, free to pull today.</p>
+<p>Principal Product Marketing Manager, Docker.</p>
+<p>Vishrut Iyengar is Principal PMM for Security at Docker, focused on Docker Hardened Images, supply chain security, and securing what AI agents build.</p>
+<p>Docker’s WeAreDevelopers keynote shows how Sandboxes, Kits, and Cloud Sandboxes give AI agents strong isolation and reproducible authority.</p>
+<p>Give AI coding agents live web access with the Firecrawl kit for Docker Sandboxes. Learn to search, scrape, and crawl websites with network controls.</p>
+<p>It has been revealed that A container shares the host kernel. Docker Sandboxes are microVMs with their own kernel and private Docker Engine. See how they differ and when to use each.</p>
+<p id="sec-end-23346">Docker partners with ActiveState to continue to provide one standard for trusted content across everything you and your teams build on.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.docker.com/blog/php2shell-and-emudhra-patched/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-pentagon-tests-pack-hunting-with-autonomous-war-robots-23687.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23687. Breaking: Pentagon tests pack hunting with autonomous war robots
+        </a>
+        
+        <a href="enthusiast-builds-a-working-486-dx2-retro-pc-on-a-breadboard-in-j-23686.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23686. Enthusiast builds a working 486 DX2 retro PC on a breadboard in just 16 days, immediately runs Doom
+        </a>
+        
+        <a href="3d-printing-devs-free-tool-unlocks-curved-printing-along-all-thre-23685.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23685. 3D printing dev’s free tool unlocks curved printing along all three axes
+        </a>
+        
+        <a href="judge-denies-motion-to-dismiss-dram-price-fixing-lawsuit-against--23684.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23684. Judge denies motion to dismiss DRAM price-fixing lawsuit against Micron, Samsung, and SK hynix, finds evidence of DRAM collusion plausible after 500% price surge
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

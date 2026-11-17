@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: NoisyTCP bug gives Linux servers a remote crash problem 11 years in the making</title>
+    <meta name="description" content="Flaw can take down an entire host, even when the vulnerable service is running inside a container. The researcher who sounded the alarm over Dirty Frag ear">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-noisytcp-bug-gives-linux-servers-a-remote-crash-pro-23264.html">
+    <meta property="og:title" content="Latest Update: NoisyTCP bug gives Linux servers a remote crash problem 11 years in the making">
+    <meta property="og:description" content="Flaw can take down an entire host, even when the vulnerable service is running inside a container. The researcher who sounded the alarm over Dirty Frag ear">
+    <meta property="og:image" content="https://image.theregister.com/5310154.jpg?imageId=5310154&x=0&y=9.55&cropw=100&croph=64.82&panox=0&panoy=9.55&panow=100&panoh=64.82&width=1200&height=683">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-noisytcp-bug-gives-linux-servers-a-remote-crash-pro-23264.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: NoisyTCP bug gives Linux servers a remote crash problem 11 years in the making", "image": ["https://image.theregister.com/5310154.jpg?imageId=5310154&x=0&y=9.55&cropw=100&croph=64.82&panox=0&panoy=9.55&panow=100&panoh=64.82&width=1200&height=683"], "datePublished": "2026-11-16T18:28:00.000Z", "dateModified": "2026-11-17T15:21:28.225848", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-noisytcp-bug-gives-linux-servers-a-remote-crash-pro-23264.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚠️ Warning</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: NoisyTCP bug gives Linux servers a remote crash problem 11 years in the making</h1>
+        <div class="meta-line">🌐 Source: <strong>Theregister</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 3 min read (517 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Flaw can take down an entire host, even when the vulnerable service is running inside a container.</li><li style='margin-bottom:6px;'>The researcher who sounded the alarm over Dirty Frag earlier this year has uncovered another Linux kernel flaw, and this one lets attackers crash entire servers remotely without so much as a password.</li><li style='margin-bottom:6px;'>The vulnerability, tracked as CVE-2026-99288 and dubbed NoisyTCP, was discovered by security researcher Hyunwoo Kim, who indicates it affects almost all Linux distributions.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-23264"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-23264"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-23264"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: NoisyTCP bug gives Linux servers a remote crash problem 11 years in the making" loading="lazy" src="https://image.theregister.com/5310154.jpg?imageId=5310154&amp;x=0&amp;y=9.55&amp;cropw=100&amp;croph=64.82&amp;panox=0&amp;panoy=9.55&amp;panow=100&amp;panoh=64.82&amp;width=1200&amp;height=683" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-23264">Flaw can take down an entire host, even when the vulnerable service is running inside a container.</p>
+<p>The researcher who sounded the alarm over Dirty Frag earlier this year has uncovered another Linux kernel flaw, and this one lets attackers crash entire servers remotely without so much as a password.</p>
+<p>The vulnerability, tracked as CVE-2026-99288 and dubbed NoisyTCP, was discovered by security researcher Hyunwoo Kim, who indicates it affects almost all Linux distributions. The flaw dates back to October 2015 and went unnoticed until this year, when Kim found and patched it.</p>
+<p>Sources indicate that the bug is buried in Linux's TCP networking code. Two parts of the kernel can trip over each other while processing incoming traffic, leaving one trying to use memory that's already been freed. When that happens, Linux can panic and take the whole machine down with it.</p>
+<p>Industry observers note that kim indicates there's no need for any special server configuration either. Services such as Nginx, Apache, and SSH can be vulnerable straight out of the box. An attacker needs access to an open TCP port on a system that processes incoming network traffic across multiple receive queues or CPUs.</p>
+<p>Recent findings suggest that perhaps more concerning for administrators running containerized workloads, the damage isn't necessarily limited to the application being attacked. Because the flaw sits in the Linux kernel, crashing a web server inside a container can take down the underlying host and anything else running on it.</p>
+<p id="sec-mid-23264">Kim found that the attack was particularly effective against virtual machines. During testing, he managed to crash Nginx, Apache, and SSH servers running on QEMU/KVM virtual machines in between five seconds and two minutes.</p>
+<p>Physical hardware put up more of a fight. Even after tailoring his exploit to the target machine, Kim needed roughly 14 hours to crash a bare-metal server running Nginx.</p>
+<p>Sources indicate that kim has a knack for finding holes in Linux. Back in May, he uncovered Dirty Frag, a kernel bug that allowed local owners to gain root privileges. That one caused headaches for administrators when a working exploit went public before patches were ready.</p>
+<p>His latest discovery, NoisyTCP, has another potentially nasty trick up its sleeve. Kim identified a second exploitation path involving a use-after-free condition, although pulling it off is considerably more difficult than simply crashing a server.</p>
+<p>In his advisory, Kim indicates he has developed a limited exploit targeting virtual machines in a lab environment but has yet to demonstrate a general-purpose remote code execution attack. For the moment, the confirmed impact is remote denial of service.</p>
+<p>A fix was committed to the upstream Linux kernel on November 3, but administrators will need to check whether their distribution has shipped an updated kernel. Red Hat has rated the vulnerability Important, assigning it a CVSS score of 7.5.</p>
+<p id="sec-end-23264">Kim published the details on November 15, once the disclosure embargo was lifted. The bug had been hiding in plain sight since 2015, leaving Linux servers vulnerable to remote crashes for 11 years. Not bad for a flaw that doesn't even require a login. ®.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.theregister.com/security/2026/11/16/noisytcp-bug-gives-linux-servers-a-remote-crash-problem-11-years-in-the-making/5310144" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-latest-us-rules-aim-to-restrict-chinese-firms-remote--23616.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23616. Tech Report: Latest US rules aim to restrict Chinese firms’ remote access to AI servers and infrastructure
+        </a>
+        
+        <a href="critical-rails-bug-threatens-to-derail-vulnerable-servers-23116.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23116. Critical Rails Bug Threatens to Derail Vulnerable Servers
+        </a>
+        
+        <a href="latest-update-attackers-crash-claudes-office-party-flaw-to-run-ma-23079.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23079. Latest Update: Attackers Crash Claude's 'Office Party' Flaw to Run Malicious Code on Linux
+        </a>
+        
+        <a href="8-popular-home-items-from-20-years-ago-that-are-making-a-surprisi-19888.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #19888. 8 Popular Home Items From 20 Years Ago That Are Making a Surprising Comeback
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

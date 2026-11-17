@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Stateless Authentication in Spring Security Using JWTs</title>
+    <meta name="description" content="In conventional session-based authentication, the server manages session information for each authenticated user. Stateless authentication, however, involv">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-stateless-authentication-in-spring-security-using-jwt-22944.html">
+    <meta property="og:title" content="Tech Report: Stateless Authentication in Spring Security Using JWTs">
+    <meta property="og:description" content="In conventional session-based authentication, the server manages session information for each authenticated user. Stateless authentication, however, involv">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F4lpu206hnovn28mlsim1.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-stateless-authentication-in-spring-security-using-jwt-22944.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Stateless Authentication in Spring Security Using JWTs", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F4lpu206hnovn28mlsim1.png"], "datePublished": "2026-11-17T15:15:00", "dateModified": "2026-11-17T15:21:11.921555", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-stateless-authentication-in-spring-security-using-jwt-22944.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Stateless Authentication in Spring Security Using JWTs</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 17 Nov 2026 &bull; ⏱️ 3 min read (512 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In conventional session-based authentication, the server manages session information for each authenticated user.</li><li style='margin-bottom:6px;'>Each request carries an unique identifier or token (such as a signed, self-contained JWT) that the server validates before granting access.</li><li style='margin-bottom:6px;'>APIs are constant targets for unauthorized access and exposure of sensitive information.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-22944"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-22944"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-22944"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Stateless Authentication in Spring Security Using JWTs" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F4lpu206hnovn28mlsim1.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-22944">In conventional session-based authentication, the server manages session information for each authenticated user. Stateless authentication, however, involves each request carrying the information needed to authenticate a user. This means the server doesn’t need to maintain previous request or session data.</p>
+<p>Each request carries an unique identifier or token (such as a signed, self-contained JWT) that the server validates before granting access. This process is more independent and can be easily adopted for distributed applications. It is also well suited for REST APIs, where JWTs enable stateless authentication without requiring server-side session storage.</p>
+<p>APIs are constant targets for unauthorized access and exposure of sensitive information. Securing them requires authentication, authorization, and token validation at every endpoint. This ensures that only authorized users can create, enhancement, or delete resources.</p>
+<p>It has been revealed that in OAuth2 protocol, first the Resource Owner grants permission to the Client, which then requests authorized access from the Auth Server. Once approved, the Authorization Server complications JWT signature as an access token, which the Client sends to the Resource Server (API).</p>
+<p>A typical stateless authentication flow is as follows:.</p>
+<p>This allows the server to independently authenticate each request without relying on previous session data. JwtAuthenticationConverter checks the claims in JWT and maps them to a collection of GrantedAuthority objects. For that particular request, a stateless Authentication object is placed in the SecurityContext.</p>
+<p id="sec-mid-22944">Spring Security has built-in support for stateless authentication. SecurityFilterChain is used to configure security rules and disable any server-side HTTP sessions (SessionCreationPolicy.STATELESS). JWT authentication components validate tokens for incoming requests. In simple steps, this can be implemented as follows:.</p>
+<p>It has been revealed that once the security configuration is ready, JWTs can handle authentication for incoming HTTP requests. The client sends the access token in the Authorization header (Authorization: Bearer ), and Spring Security validates it.</p>
+<p>If the token is valid (and has not expired yet), the request is processed. If the token is invalid, the API throws an authentication error.</p>
+<p>Below is a simple implementation of how to configure JWT authentication in Spring Security:.</p>
+<p>This keeps the authentication stateless while allowing Spring Security to verify each incoming request with JWT.</p>
+<p>It has been revealed that APIs are the gateways between applications and protected data, which is why securing them is essential. Otherwise, anyone with an API endpoint could potentially access sensitive data. This tutorial shows how to secure a Spring Boot API with OAuth2 and JWTs, so the backend validates tokens without ever touching the user credentials itself. OAuth2 and JWTs work together: OAuth2 manages delegated access and JWTs carry the verified identity and access claims.</p>
+<p id="sec-end-22944">Industry observers note that if you’re building a Spring Boot API and have been putting off the security aspects, this tutorial is a good starting point. It is particularly relevant to Kotlin developers with basic Spring Security knowledge who want to implement stateless authentication in REST APIs. In practice, I could take the same approach of using a custom JwtAuthenticationConverter that maps and centralises roles and permissions, and then enforce them with @PreAuthorize for method-level authorization.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/shreya/stateless-authentication-in-spring-security-using-jwts-14dl" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-ubuntu-gets-ai-generated-security-fixes-for-those-fee-23270.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23270. Tech Report: Ubuntu gets AI-generated security fixes for those feeling brave
+        </a>
+        
+        <a href="tech-report-as-test-takers-turn-to-ai-exam-security-plays-catch-u-23016.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23016. Tech Report: As Test Takers Turn to AI, Exam Security Plays Catch-Up
+        </a>
+        
+        <a href="tech-report-security-engineer-infrastructure-security-at-livekit-20583.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #20583. Tech Report: Security Engineer, Infrastructure Security at LiveKit
+        </a>
+        
+        <a href="tech-report-it-security-support-analyst-at-openzeppelin-20237.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #20237. Tech Report: IT & Security Support Analyst at OpenZeppelin
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

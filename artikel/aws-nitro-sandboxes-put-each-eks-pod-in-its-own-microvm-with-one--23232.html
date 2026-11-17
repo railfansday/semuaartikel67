@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Nitro Sandboxes Put Each EKS Pod in Its Own MicroVM with One RuntimeClass Field</title>
+    <meta name="description" content="InfoQ Homepage News AWS Nitro Sandboxes Put Each EKS Pod in Its Own MicroVM with One RuntimeClass Field. Nov 16, 2026 4 min read. AWS has debuted Nitro San">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/aws-nitro-sandboxes-put-each-eks-pod-in-its-own-microvm-with-one--23232.html">
+    <meta property="og:title" content="AWS Nitro Sandboxes Put Each EKS Pod in Its Own MicroVM with One RuntimeClass Field">
+    <meta property="og:description" content="InfoQ Homepage News AWS Nitro Sandboxes Put Each EKS Pod in Its Own MicroVM with One RuntimeClass Field. Nov 16, 2026 4 min read. AWS has debuted Nitro San">
+    <meta property="og:image" content="https://res.infoq.com/news/2026/11/aws-nitro-sandboxes-eks/en/headerimage/generatedHeaderImage-1794301940782.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/aws-nitro-sandboxes-put-each-eks-pod-in-its-own-microvm-with-one--23232.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "AWS Nitro Sandboxes Put Each EKS Pod in Its Own MicroVM with One RuntimeClass Field", "image": ["https://res.infoq.com/news/2026/11/aws-nitro-sandboxes-eks/en/headerimage/generatedHeaderImage-1794301940782.jpg"], "datePublished": "2026-11-16T09:07:00", "dateModified": "2026-11-17T15:21:26.228740", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/aws-nitro-sandboxes-put-each-eks-pod-in-its-own-microvm-with-one--23232.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>AWS Nitro Sandboxes Put Each EKS Pod in Its Own MicroVM with One RuntimeClass Field</h1>
+        <div class="meta-line">🌐 Source: <strong>Infoq</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 4 min read (898 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>InfoQ Homepage
+News
+AWS Nitro Sandboxes Put Each EKS Pod in Its Own MicroVM with One RuntimeClass Field.</li><li style='margin-bottom:6px;'>Nov 16, 2026
+								
+								
+								
+									
+									4
+									min read.</li><li style='margin-bottom:6px;'>AWS has debuted Nitro Sandboxes, which run an opted-in Kubernetes pod, ECS task, or EC2 workload inside its own lightweight virtual machine with a separate guest kernel, carved out of a running EC2 instance by the Nitro hypervisor.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-23232"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-23232"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-23232"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="AWS Nitro Sandboxes Put Each EKS Pod in Its Own MicroVM with One RuntimeClass Field" loading="lazy" src="https://res.infoq.com/news/2026/11/aws-nitro-sandboxes-eks/en/headerimage/generatedHeaderImage-1794301940782.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-23232">InfoQ Homepage
+News
+AWS Nitro Sandboxes Put Each EKS Pod in Its Own MicroVM with One RuntimeClass Field.</p>
+<p>Nov 16, 2026
+								
+								
+								
+									
+									4
+									min read.</p>
+<p>AWS has debuted Nitro Sandboxes, which run an opted-in Kubernetes pod, ECS task, or EC2 workload inside its own lightweight virtual machine with a separate guest kernel, carved out of a running EC2 instance by the Nitro hypervisor. On Amazon EKS, the whole change is one pod field: runtimeClassName: isolated-sandbox or confidential-sandbox.</p>
+<p>Recent findings suggest that the feature is available in all commercial regions at no additional charge, and AWS positions it for workloads where the tenant or the code cannot be trusted, with coding agents named first. In an AWS blog post, Carlos Santana and Trishi Mehta write:.</p>
+<p>Each pod gets its own operating system, completely separate from the host and from every neighbor.</p>
+<p>According to the EKS documentation, a containerd-shim-nitro-sandbox-v2 process on the parent instance debuts a Firecracker microVM as a first-level guest with hardware-assisted virtualization, after which an agent inside the VM runs the pod’s containers through its own containerd and the two sides communicate over virtio and vsock. The result is a sandbox that shares neither kernel nor memory mappings with the parent instance or any other sandbox, while the containers themselves start unchanged. How the nodes get there depends on the cluster type: on EKS Auto Mode the two RuntimeClasses ship with every cluster and sandbox-capable nodes are provisioned on demand, whereas on standard EKS a team builds a sandbox-enabled AMI for its node groups or Karpenter.</p>
+<p>(Source: Amazon EKS User Guide).</p>
+<p>What separates the two modes is which side of the boundary is trusted. Isolated mode trusts the parent instance and not the guest, which is why kubectl exec, logs, and process listing keep working, whereas confidential mode treats the parent as untrusted and moves enforcement inside the VM: a Cedar policy generated from the pod spec pins image digests, arguments, environment, mounts and capabilities, exec and stdin are denied, the Nitro Secure Module measures the image and policy into PCRs, and a KMS key policy can release secrets only to a sandbox whose measurements match. Image layers can be encrypted as well, so the parent moves ciphertext it never reads.</p>
+<p id="sec-mid-23232">That chain only holds if something checks the measurements, and the documentation says so: without a KMS policy or external verifier checking the PCR values, "the attestation measurement is recorded but never verified, and the confidentiality guarantees of confidential mode are incomplete." Separately from either mode, a network-isolated annotation boots the sandbox with no network device at all, which also removes DNS, NTP, IMDS and Pod Identity and breaks HTTP and TCP probes.</p>
+<p>Sandip Das, an AWS Container Hero, read the documentation the same way and drew out what isolated mode leaves to the operator: the protection "only runs in one direction," so a compromised parent can still observe or tamper with unencrypted traffic and DNS, writes the pod's /etc/hosts, and can mint Pod Identity credentials for any pod on the node. He also lists prerequisites the blog post does not, among them Kubernetes 1.36 or later, a launch template with Nitro Enclaves enabled on managed node groups, without which "sandboxed pods sit in Pending," and Pod Identity rather than IRSA for credentials. On AWS's description of performance as near-native, he advises treating it "as a vendor claim" and benchmarking startup latency, I/O throughput and tail latency.</p>
+<p>Beyond agents, AWS lists multi-tenant SaaS, regulated workloads, CI builds and remote IDEs, and points to the open-source agent-sandbox project for warm pools that hand out a pre-booted VM in about two seconds.</p>
+<p>The constraints are on the considerations page, and the largest is GPU and device passthrough, which is not supported at launch because Firecracker cannot pass host devices into a guest, so GPU pods run without the sandbox class. Density is capped twice over: total sandbox vCPUs may not exceed five times the node's vCPU count, and neither may the number of sandboxes, halved on CPU-overcommit types, which gives a 4-vCPU node room for twenty 1-vCPU sandboxes or five 4-vCPU ones. Simultaneous multithreading costs more than the arithmetic suggests, because core scheduling stops two sandboxes sharing the sibling threads of one core and leaves roughly half the advertised vCPUs usable; Graviton, with one thread per core, is unaffected.</p>
+<p>According to recent reports, the nearest comparison is GKE Sandbox, which has offered a gvisor RuntimeClass since 2019 and more recently a microvm class built on Kata Containers and Cloud Hypervisor. gVisor intercepts syscalls in a user-space kernel, starts in under 200 milliseconds and supports CUDA on a subset of GPUs; Google's microVM option carries a fixed 250 mCPU and 130 MiB per pod, starts in one to two seconds and does not support GPUs. AWS has taken the VM side of that split and expressed its overhead as density and threads rather than per-pod resources.</p>
+<p>On EC2, Amazon Linux and Firecracker are supported natively and patches are available for other virtual machine monitors. The EC2 User Guide carries the supported instance list and notes that snapshot, restore and live migration are not available.</p>
+<p>Presented by: David Iparraguirre - Senior Product Marketing Manager at Datadog, and Jessica Yang - Product Manager at Datadog.</p>
+<p id="sec-end-23232">A round-up of last week’s content on InfoQ sent out every Tuesday. Join a community of over 250,000 senior developers. View an example.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.infoq.com/news/2026/11/aws-nitro-sandboxes-eks/?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=global" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="aws-weekly-roundup-aws-nitro-sandboxes-aws-emulator-and-more-nove-23254.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23254. AWS Weekly Roundup: AWS Nitro Sandboxes, AWS Emulator, and more (November 16, 2026)
+        </a>
+        
+        <a href="10-best-ai-app-builders-ive-used-in-2026-and-what-each-one-gets-w-23527.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23527. 10 Best AI App Builders I've Used in 2026 (and What Each One Gets Wrong)
+        </a>
+        
+        <a href="aws-weekly-roundup-agentcore-runtime-v2-amazon-dynamodb-bulk-put--23262.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23262. AWS Weekly Roundup: AgentCore Runtime V2, Amazon DynamoDB bulk put items, and more (November 9, 2026)
+        </a>
+        
+        <a href="where-to-donate-used-books-11-places-and-what-each-one-takes-21737.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #21737. Where to Donate Used Books – 11 Places and What Each One Takes
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

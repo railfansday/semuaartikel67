@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Red Hat Quay Flaw Lets Attackers Read and Overwrite All Private Container Images in a Registry</title>
+    <meta name="description" content="A critical flaw in Red Hat Quay allows an attacker who can access a Quay registry to read and overwrite private container images in every repository. Sourc">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/critical-red-hat-quay-flaw-lets-attackers-read-and-overwrite-all--23252.html">
+    <meta property="og:title" content="Critical Red Hat Quay Flaw Lets Attackers Read and Overwrite All Private Container Images in a Registry">
+    <meta property="og:description" content="A critical flaw in Red Hat Quay allows an attacker who can access a Quay registry to read and overwrite private container images in every repository. Sourc">
+    <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtLHm05FB2LmoHZMLAD5nDmfo_G2tdIqO4URdUwukuooBCVwIJhKC2rUDbDNtsGB8_lwium1MEUD1CxYcix4WMVpCoS58DJivMBSmb9LcIGswQu0nKUNE_sbfH8EsgFfhPrKEgEY7MJHWKyhFqX61ne-AOFKnTNuqIkWez1bec-kq-3Cz8BFbPLrgiV8k/s1600/redhat.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/critical-red-hat-quay-flaw-lets-attackers-read-and-overwrite-all--23252.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Critical Red Hat Quay Flaw Lets Attackers Read and Overwrite All Private Container Images in a Registry", "image": ["https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtLHm05FB2LmoHZMLAD5nDmfo_G2tdIqO4URdUwukuooBCVwIJhKC2rUDbDNtsGB8_lwium1MEUD1CxYcix4WMVpCoS58DJivMBSmb9LcIGswQu0nKUNE_sbfH8EsgFfhPrKEgEY7MJHWKyhFqX61ne-AOFKnTNuqIkWez1bec-kq-3Cz8BFbPLrgiV8k/s1600/redhat.jpg"], "datePublished": "2026-11-17T14:38:24", "dateModified": "2026-11-17T15:21:27.501041", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/critical-red-hat-quay-flaw-lets-attackers-read-and-overwrite-all--23252.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚠️ Warning</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Critical Red Hat Quay Flaw Lets Attackers Read and Overwrite All Private Container Images in a Registry</h1>
+        <div class="meta-line">🌐 Source: <strong>Thehackernews</strong> &bull; 📅 17 Nov 2026 &bull; ⏱️ 4 min read (775 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>A critical flaw in Red Hat Quay allows an attacker who can access a Quay registry to read and overwrite private container images in every repository.</li><li style='margin-bottom:6px;'>Sources indicate that quay enables anonymous access by default, and while it is enabled, the attacker needs no account.</li><li style='margin-bottom:6px;'>The flaw is tracked as CVE-2026-123710 (CVSS score: 9.8).</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-23252"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-23252"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-23252"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Critical Red Hat Quay Flaw Lets Attackers Read and Overwrite All Private Container Images in a Registry" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtLHm05FB2LmoHZMLAD5nDmfo_G2tdIqO4URdUwukuooBCVwIJhKC2rUDbDNtsGB8_lwium1MEUD1CxYcix4WMVpCoS58DJivMBSmb9LcIGswQu0nKUNE_sbfH8EsgFfhPrKEgEY7MJHWKyhFqX61ne-AOFKnTNuqIkWez1bec-kq-3Cz8BFbPLrgiV8k/s1600/redhat.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-23252">A critical flaw in Red Hat Quay allows an attacker who can access a Quay registry to read and overwrite private container images in every repository.</p>
+<p>Sources indicate that quay enables anonymous access by default, and while it is enabled, the attacker needs no account. When it is off, anyone with a valid account can still exploit the flaw, Red Hat remarked yesterday. The manufacturer has released fixed builds for eight Quay 3 branches.</p>
+<p>The flaw is tracked as CVE-2026-123710 (CVSS score: 9.8).</p>
+<p>In a recent development, quay uses keys it trusts to sign the access tokens that allow image pushes and pulls. The flaw lets an attacker add their own key to the keys Quay trusts, with no expiry date. Quay then accepts tokens signed with that key for any repository.</p>
+<p>With those tokens, an attacker can retrieve private images and any secrets or credentials stored within them. The attacker can also push or overwrite images, and the change propagates to every system that later pulls those images.</p>
+<p>The planted key survives restarts until someone removes it. It can also be used to delete the keys that running Quay instances use, so normal pushes and pulls start failing with authentication errors.</p>
+<p>Recent findings suggest that quay's key server checks that a request to replace a key carries a token signed by a trusted key, with the expected audience and issuer. It does not check whether the token was issued for key rotation. An anonymous token from Quay's /v2/auth endpoint passes: Quay signs it with a trusted key, and the caller chooses its audience.</p>
+<p>Industry observers note that A second critical flaw, CVE-2026-110697 (CVSS score: 9.9), was disclosed at the same time. It lets a Quay user who can create a namespace steal other tenants' robot account tokens and use them to read, push, or overwrite those tenants' images.</p>
+<p>Industry observers note that this flaw is in the code that lists robot accounts. It builds an SQL LIKE pattern from the namespace name without escaping wildcard characters, and in SQL LIKE an underscore matches any single character.</p>
+<p>In a recent development, so a namespace with an underscore in the right place can match another tenant's namespace and return its robot accounts, with their decrypted tokens. The attacker needs no elevated privileges, and the victim does not have to do anything.</p>
+<p>Deleting the attacker's namespace also deletes the corresponding robot accounts, which can cut off systems that rely on them. Where Quay is the integrated registry for OpenShift, stolen robot credentials can be used to inject malicious images into CI/CD pipelines, the organization claims.</p>
+<p id="sec-mid-23252">Red Hat's Dave O'Connor found both flaws. The logic behind CVE-2026-123710 has been in Quay since its first public commit, according to the bug report for that flaw.</p>
+<p>Industry observers note that red Hat lists every version of Quay 3 and Quay 5 as affected by both flaws. For CVE-2026-123710, its guidance names standalone installs, Quay deployed by the Quay Operator on OpenShift, and the mirror registry for Red Hat OpenShift as affected.</p>
+<p>Any Quay instance that untrusted clients can reach is exposed, including internal registries, the firm claims.</p>
+<p>When checked today, the CVE entry for CVE-2026-123710 still revealed every Quay package as affected, with no fix, even though each advisory lists the flaw.</p>
+<p>The company recommends these steps:.</p>
+<p>Industry observers note that "Turning off anonymous access doesn't protect you," the manufacturer says in its key remediation article. A planted key also continues to work after password resets and changes to the robot token.</p>
+<p>Sources indicate that for CVE-2026-110697, the manufacturer's CVE page names the same eight releases as fixed, calls updating the only complete fix, and notes Quay.io is already fixed. But none of the eight advisories list CVE-2026-110697.</p>
+<p>Until an patch is in place, the tech giant suggests limiting who can create organizations or namespaces containing an underscore, rotating robot tokens for any namespace that matches an underscore namespace, and watching for pulls or pushes that do not fit normal robot use. These steps reduce the exposure, but the flaw remains.</p>
+<p>Industry observers note that the upstream fix adds the missing rotation check, requires keys added through the key server to have an expiry date, and stops callers from choosing a token's audience. The same change fixes the robot account search too.</p>
+<p>Discover why SHA pinning alone isn't enough and learn how to close hidden security gaps in your GitHub Actions pipelines.</p>
+<p>Learn what 6,000 real-world attacks reveal about MFA weaknesses and how to stop AI-driven phishing and account takeovers.</p>
+<p id="sec-end-23252">Get the latest news, expert insights, exclusive resources, and strategies from industry leaders, all for free.</p>
+<p style="margin-top: 25px;">
+<a href="https://thehackernews.com/2026/11/critical-red-hat-quay-flaw-lets.html" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-attackers-crash-claudes-office-party-flaw-to-run-ma-23079.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23079. Latest Update: Attackers Crash Claude's 'Office Party' Flaw to Run Malicious Code on Linux
+        </a>
+        
+        <a href="five-ios-27-toggles-that-make-your-iphone-easier-to-read-and-more-16025.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #16025. Five iOS 27 Toggles That Make Your iPhone Easier to Read and More Private
+        </a>
+        
+        <a href="unlock-toms-hardware-premiums-supercomputer-2026-coverage-for-fre-23656.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23656. Unlock Tom's Hardware Premium's SuperComputer 2026 coverage for free — sign up for an account to read detailed reports from the show
+        </a>
+        
+        <a href="3-ways-to-calm-your-critical-inner-voice-23620.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23620. 3 ways to calm your critical inner voice
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

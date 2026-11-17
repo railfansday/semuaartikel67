@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: How the Claude Code team thinks about verification</title>
+    <meta name="description" content="Industry observers note that on the Claude Code team, the vast majority of our code (~90%) is written and reviewed by Claude. At this scale, how we equip o">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-how-the-claude-code-team-thinks-about-verification-16259.html">
+    <meta property="og:title" content="Industry News: How the Claude Code team thinks about verification">
+    <meta property="og:description" content="Industry observers note that on the Claude Code team, the vast majority of our code (~90%) is written and reviewed by Claude. At this scale, how we equip o">
+    <meta property="og:image" content="https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/og.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-how-the-claude-code-team-thinks-about-verification-16259.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: How the Claude Code team thinks about verification", "image": ["https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/og.png"], "datePublished": "2026-11-16", "dateModified": "2026-11-17T15:15:31.385027", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-how-the-claude-code-team-thinks-about-verification-16259.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: How the Claude Code team thinks about verification</h1>
+        <div class="meta-line">🌐 Source: <strong>Claude</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 11 min read (2186 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that on the Claude Code team, the vast majority of our code (~90%) is written and reviewed by Claude.</li><li style='margin-bottom:6px;'>Verification loops are the building block that lets you delegate more work to Claude.</li><li style='margin-bottom:6px;'>Thatâs because giving agents a way to verify their output is an effective way to improve quality.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-16259"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-16259"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-16259"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: How the Claude Code team thinks about verification" loading="lazy" src="https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/og.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-16259">Industry observers note that on the Claude Code team, the vast majority of our code (~90%) is written and reviewed by Claude. At this scale, how we equip our agents to verify their work with evidence becomes extremely crucial.</p>
+<p>Verification loops are the building block that lets you delegate more work to Claude. Without them, you can really only run one or two Claudes at a time, because you have to check everything yourself. With them, you can run dozens or hundreds in parallel.</p>
+<p>Thatâs because giving agents a way to verify their output is an effective way to improve quality. In internal testing around structured file generation, having a separate grader check Claudeâs work against a rubric improved task success by up to 10 points over a standard prompting loop, with the largest gains on the hardest problems.</p>
+<p>What was once expensive to verify (tests, benchmarks, specs, real end-to-end runs) is now cheap to request from an agent. Like code, agents can quickly generate tests, benchmarks, and specs. And once generated, these tests and benchmarks run as software so they can be run frequently without using many additional tokens.</p>
+<p>According to recent reports, you can also close the verification loop by using the results to improve the agentâs performance on that task. For example, if an agent repeatedly fails a test that checks logs for user data, you can create a hook or a more explicit rule in your CLAUDE.md to avoid future issues. This (mostly) stops issues from happening again.</p>
+<p>Sources indicate that so if verification is critical to producing quality code at a high velocity, what types of tests should you use and how should you apply them across your pipeline? This article answers those questions and also shares the process used by the Claude Code team.</p>
+<p>No matter which test type you choose, there are a few failure modes to avoid.</p>
+<p>Recent findings suggest that if your tests are flaky youâll train the agent to run them again rather than fixing the failing code. If your tests are slow, the agent will do fewer tests across batches which can make pinpointing problems difficult. Heavier tests are best deployed before youâve committed the changes.</p>
+<p>Now, here are the three types of tests I think are most worth investing in.</p>
+<p>If you have to focus on one test type, pick end-to-end. These tests describe real user flows like adding an item to a cart, checking out, and moving to a confirmation page.</p>
+<p>The reason E2E tests are so effective is that they are difficult to foolâeither the whole feature works or it doesn't. They also have definitive done criteria and can concretely tell you whatâs broken.</p>
+<p>According to recent reports, while unit tests are faster and less flaky, itâs possible to pass them and still break the feature. This is because both the agent and the test donât understand the full task.</p>
+<p>Industry observers note that with E2E tests, it is effective to give your agent hands and eyes on the real running system. You can use a skill to boot, drive, and inspect the app with tools like CDP, simulators, or API harnesses.</p>
+<p>The feature map can serve as a guide and grading rubric for agents as they typically list features from the userâs point of view with descriptions of paths, keyboard shortcuts, selectors, and expected results.</p>
+<p>In a recent development, A lot of tests are based on what you thought might go wrong. Property tests look at the edge cases that people tend to miss, which is where agents often fail.</p>
+<p>You start by writing a statement you think canât fail and then use a test library (fast-check for JS/TS, Hypothesis for Python, proptest for Rust, etc.) to generate thousands of inputs that try to prove otherwise.</p>
+<p>There are many properties in virtually every software project like:.</p>
+<p>It has been revealed that property libraries are a great way to keep agents honest by using edge cases that arenât created with the same bias as the agent that created the original code. They are also particularly helpful for rewrites when the spec has drifted from production behavior and is no longer a reliable source for verification.</p>
+<p>Differential tests are particularly effective for large-scale migration use cases where functionality is expected to remain the same. For these tests, you run both the old system and the new system with the same inputs and see if you get different results. If you do, there is a bug or breaking change that needs to be fixed.</p>
+<p>The key for differential tests is to use randomly generated inputs or a sample of production traffic. Youâll also want to normalize irrelevant factors like whitespace and keep a list of approved changes for situations where the new environment should differ from the old.</p>
+<p>We have previously written about how code review works at Anthropic, but this article aims to go deeper on how we verify our work.</p>
+<p>Running the app end to end matters more than tests. You wouldn't ship an iOS change without trying it in a simulator, and the same goes for Claude.</p>
+<p>Industry observers note that claude can test the whole app the way a human or QA engineer would. Ask it to use the Claude Chrome extension for web changes, an iOS or Android MCP for mobile, computer use for desktop, or to run the service locally for backend work.</p>
+<p>In a recent development, to codify how to start the simulator or run your app, create a skill called verify. Put it in a .claude/skills/ folder in your repo, as close to the relevant code as you can, and add as many as you need. Claude knows to use the verify skill before committing changes.</p>
+<p>Then invest in making your verify skill fast and reliable. Ask Claude to iterate on it and stress test it. It's your smoke test harness, so you want it rock solid.</p>
+<p id="sec-mid-16259">When you give Claude a way to smoke test its changes end to end, you get much better results. You'll see it iterate and catch real mistakes faster, the way a human would. This is how we test nearly all changes at Anthropic.</p>
+<p>According to recent reports, nobody can read every change, so we use failures as one way to decide what needs a person. Claude runs the checks and tries to fix anything that fails. If a check is still failing after three rounds, Claude stops and brings in a human.</p>
+<p>Recent findings suggest that the people who own the code write the checks for it, and refine them until they flag what the owner would flag. When a check pulls in a reviewer, it should say why, so they don't have to work it out from the diff.</p>
+<p>According to recent reports, we maintain a reliability checklist with 39 items, each with a trigger that can be read from a diff, a check, and the incidents or PRs behind it. One is â--resume loads old transcripts.â When session storage or message types change, we ask whether a fresh field loads safely, since older transcripts wonât have it.</p>
+<p>Claude reads the diff and checks only the items whose trigger matchesâusually 3 to 10âso nobody has to memorize past outages.</p>
+<p>We don't try to improve reviews by stacking on more reviewers. Adding a second, more expensive, reviewer on top of the primary one is often a worse approach than tuning the primary. Instead, we have a REVIEW.md that indicates what the reviewer should pay attention to for this code.</p>
+<p>Industry observers note that we also think review and verification rounds should build on each other. We point each pass at context from earlier rounds and past failures rather than re-checking everything from scratch. Itâs cheaper and finds more.</p>
+<p>According to recent reports, if a change can modify the check that judges it, the check is broken. Code Review reads the REVIEW.md file from the base or default branch, never from the pull request's changes. The Claude Code team ensures the rules that gate changes are on a branch that the change can't modify.</p>
+<p>The Claude Code team also reserves reviews for commits. If someone's pushing while the review is happening, then the review result is no longer useful. A passing review on an out-of-date commit means nothing.</p>
+<p>The team also runs cheap checks first. If an agent pushes before testing locally, it has spent shared review and CI time when it could have caught the bug itself. On our team, Claude runs the tests, build, and linter before opening a pull request. You can enforce this with a hook that runs the tests when Claude finishes, or a /goal of a passing test suite.</p>
+<p>Recent findings suggest that in our own repos, we stamp each commit with how it was verified. The stamp even includes "none" so we can query for commits that weren't verified.</p>
+<p>We've also created a commit gate that can block a commit if the session did not contain /code-review or /verify. We've set it up with off, observe, and enforce modes.</p>
+<p>Observe mode will log what would have been blocked, so that we can review any false positives and ensure no one is impacted.</p>
+<p>Enforce mode will block the commit. Any commit can carry an explanation in its message as to why it didn't get verified. If commits have been blocked twice in the session, the next one will be allowed through so Claude doesn't get stuck â Claude Code isn't perfect.</p>
+<p>The Claude Code team also regularly reviews the reviewers. We track how many merged changes were reverted, how many changes a maintainer rejected before merging, and a size-matched subset of changes that have stayed clean.</p>
+<p>This can also be done with a formal evaluation. In our code review post, we described how the Code Review team has set up an evaluation based on previous incidents and reverts. They recreate the repo to the state at the time of review for each example, and provide a one-sentence answer key to what the bug was. Only findings that correctly describe the bug in question get points. They use merged and stable changes as a control to prevent over-flagging. Their tuning set is split out from the fixed test set they use to evaluate their system.</p>
+<p>It has been revealed that they also evaluated the recall rate for raw findings, post-verification, and final review separately. This lets them see if the system is losing bugs it had already found. Any evaluation that treats all these as one end-to-end score won't capture this nuance.</p>
+<p>It has been revealed that in addition to validity, the other dimension we care about is how notable it is to make the change. A good reviewer will catch most things that are technically correct, but people care about whether a given bug is a must-fix, a should-fix, or a nit.</p>
+<p>It has been revealed that code Review has this exact idea, and it will tag things as Important, Nit or Pre-existing. The "pre-existing" tag means that the reviewer shouldn't hold the author responsible for something that was already a bug.</p>
+<p>Finally, the Claude Code team tunes recall up to the point where the next improvement would be overfitting to the eval rather than actually catching bugs.</p>
+<p>According to recent reports, in the Claude Code repo, we have two methods of turning missed cases into rules. The first is extracting patterns in human code review comments and PR reverts to identify common issues. These must occur in at least two PRs and be identifiable from a diff to be considered a potential rule. Three agents will try to disprove them, and they will be reviewed and approved by a human in a PR.</p>
+<p>According to recent reports, the second method is replaying three bug finders against a PR that is associated with a known incident. If at least two find the bug, it's a detectable bug. If the bug is missed on a small diff, this is a gap that is worth turning into a rule in REVIEW.md.</p>
+<p>Recent findings suggest that flaky tests get the same treatment. Claude can't skip them, add sleeps or retry until they pass. If it can't find the root cause, it deletes the test and writes down why.</p>
+<p>Industry observers note that rules need cleaning up too. Test suites, verification steps and .md files only grow if you let them, so we tidy them up on a routine.</p>
+<p>Weâve found that giving your agent a way to verify its work with a strong feedback loop makes all the difference. Treat your verification layer like you would any other system. Keep it out of reach of the changes they judge, grade them against the bugs that mattered to you, and write down lessons when they miss something so that it doesnât happen more than once, and prune those lessons so they stay worth running.</p>
+<p id="sec-end-16259">Do that and your job shifts from reading every diff to defining what âdoneâ looks like and reviewing the evidence, which is what lets you run many Claudes at once.</p>
+<p style="margin-top: 25px;">
+<a href="https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-the-design-workflow-is-broken-here-is-how-vitalii-k-23634.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23634. Industry News: The Design Workflow Is Broken. Here Is How Vitalii Khomenko Thinks It Should Be Fixed
+        </a>
+        
+        <a href="industry-news-where-should-your-code-live-in-a-docker-sandbox-23335.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23335. Industry News: Where should your code live in a Docker Sandbox?
+        </a>
+        
+        <a href="latest-update-attackers-crash-claudes-office-party-flaw-to-run-ma-23079.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23079. Latest Update: Attackers Crash Claude's 'Office Party' Flaw to Run Malicious Code on Linux
+        </a>
+        
+        <a href="i-moved-my-claude-code-workflow-scripts-into-skills-any-agent-har-23003.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23003. I Moved my Claude Code Workflow Scripts Into Skills Any Agent Harness Can Run
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>‘We need more reviewers’: Finding Linux bugs is easy now – fixing them is another story</title>
+    <meta name="description" content="Recently, Microsoft’s FORGE Lab reported that its AI scanning system, MDASH, turned up 59 upstream Linux kernel bug reports, including one flaw at least 21">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/we-need-more-reviewers-finding-linux-bugs-is-easy-now-fixing-them-16034.html">
+    <meta property="og:title" content="‘We need more reviewers’: Finding Linux bugs is easy now – fixing them is another story">
+    <meta property="og:description" content="Recently, Microsoft’s FORGE Lab reported that its AI scanning system, MDASH, turned up 59 upstream Linux kernel bug reports, including one flaw at least 21">
+    <meta property="og:image" content="https://www.zdnet.com/wp-content/uploads/sites/3/GettyImages-10167204.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/we-need-more-reviewers-finding-linux-bugs-is-easy-now-fixing-them-16034.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "‘We need more reviewers’: Finding Linux bugs is easy now – fixing them is another story", "image": ["https://www.zdnet.com/wp-content/uploads/sites/3/GettyImages-10167204.jpg"], "datePublished": "2026-11-13T20:20:06-05:00", "dateModified": "2026-11-17T15:15:20.154115", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/we-need-more-reviewers-finding-linux-bugs-is-easy-now-fixing-them-16034.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>‘We need more reviewers’: Finding Linux bugs is easy now – fixing them is another story</h1>
+        <div class="meta-line">🌐 Source: <strong>Zdnet</strong> &bull; 📅 13 Nov 2026 &bull; ⏱️ 4 min read (781 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recently, Microsoft’s FORGE Lab reported that its AI scanning system, MDASH, turned up 59 upstream Linux kernel bug reports, including one flaw at least 21 years old.</li><li style='margin-bottom:6px;'>Easy: in Linux, any bug can be a security bug.</li><li style='margin-bottom:6px;'>Industry observers note that it’s not just Linux, though.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-16034"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-16034"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-16034"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="‘We need more reviewers’: Finding Linux bugs is easy now – fixing them is another story" loading="lazy" src="https://www.zdnet.com/wp-content/uploads/sites/3/GettyImages-10167204.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-16034">Recently, Microsoft’s FORGE Lab reported that its AI scanning system, MDASH, turned up 59 upstream Linux kernel bug reports, including one flaw at least 21 years old. That’s less impressive than it sounds. For 2026, through Nov. 2, the Linux Common Vulnerabilities and Exposures (CVEs) team reported an average of 27 CVEs a day.</p>
+<p>Why so many? Easy: in Linux, any bug can be a security bug. As Linux Torvalds told me in 2024, “Bugs will happen, and anything can be a security bug if somebody is clever enough to just figure out how to abuse it.” Besides, since Linux runs everything from smartphones to refrigerators to supercomputers, what may be a serious bug in one device may not even appear at all on another.</p>
+<p>Industry observers note that it’s not just Linux, though. In the latest Windows Patch Tuesday security release, Microsoft reported 726 CVEs. The vast majority of these bug reports are coming from AI programmers. Finding bugs on anything is no longer the hard part. But reviewing and fixing them is, and both Microsoft developers and kernel maintainers are struggling to keep up.</p>
+<p>Also: Microsoft fixes over 1,000 Windows flaws – and one is being exploited.</p>
+<p>As the FORGE Lab mentioned, “Finding bugs and fixing them are drastically out of balance.” Turning its findings into reports took more than four person-months because “human effort [is] the bottleneck.”.</p>
+<p>Recent findings suggest that that’s hurting the overworked maintainers. On Nov. 10, an ARM engineer and Linux kernel maintainer Lorenzo Stoakes gave up reviewing code. He’d been a reviewer for the memory-management core, misc, reclaim, and Rust-related sections. Stoakes, a kernel contributor since 2014,  wrote, “Given the current throughput in the kernel resulting from AI-generated series, I unfortunately lack the bandwidth to generally be able to offer review except in those areas I maintain.”.</p>
+<p>In a recent development, stoakes added, “Of course the AI wave has been horrible, and is getting significantly worse. At first it was once in a while that I’d see slop. Then it was at least once a week. Then every few days. Nowadays it’s pretty much half of what I see, if not more.”.</p>
+<p>Also: Filing bugs for open-source apps is a huge help for devs – and easier than you think.</p>
+<p id="sec-mid-16034">In a recent development, he’s not alone. As Greg Kroah-Hartman, the Linux kernel stable maintainer, said in a Q&amp;A session at Open Source Summit Europe, “We don’t have enough people to review them, the onslaught of the LLM-generated patches. We need more reviewers. We don’t have enough. All of the maintainers are burnt out, and we have been for ten years.”.</p>
+<p>It’s not all doom and gloom, though. Linux Torvalds, Linux’s creator, noted in a recent Linux Kernel Mailing List (LKML) message that much of the new code in the Linux 7.4 rc 2 “was driven by various AI fixes.”.</p>
+<p>According to recent reports, he continued, “that on the bpf [Berkeley Packet Filter]- side at least the fixes are now coming in faster than the new reports, and that sounds lovely if true. I think most other areas haven’t reached that point yet, but it’s at least a sign that we _may_ be starting to see the tide starting to turn. Don’t hold your breath, but maybe cross your fingers we’ll be getting there in the not entirely distant future.”.</p>
+<p>We can but hope. In an interview, Kroah-Hartman isn’t so optimistic. “We are getting closer, yes, but not quite there yet.”  He’s not even willing to give a guesstimate of when human-approved AI fixes will catch up with and overcome AI bug reports.</p>
+<p>Also: I locked down my OpenClaw agent with Claude Code – then dared it to escape.</p>
+<p>In a recent development, daniel Steinberg, the creator of the open-source cURL project, is also cautiously optimistic. Steinberg, who’s been especially critical of AI slop bug reports, told me in an interview that he now believes “we manage the flood pretty well so far, even if it goes a little up and down in periods depending exactly on who sends us a new set of findings this particular week.”.</p>
+<p>In a recent development, still, while AI bugs remain a major headache for now, AI bug fixes, along with the work of thousands of maintainers, may finally be starting to stem the AI bug flood. I still foresee long days and nights of work ahead.</p>
+<p id="sec-end-16034">Industry observers note that I also expect we’ll see more serious security breaches. In November alone, we saw a serious Linux TCP networking security hole revealed; the nasty Alpine Linux OpenSSH flaw; Alpine’s GitLab near-miss; and the wide-open PHP2Shell security problem, which many groups still haven’t patched.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.zdnet.com/innovation/ai-bug-reports-linux-windows/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="getting-rich-is-easy-compared-to-finding-and-keeping-love-21626.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #21626. Getting Rich Is Easy Compared To Finding And Keeping Love
+        </a>
+        
+        <a href="do-skiers-really-need-another-outerwear-brand-atomic-thinks-so-21389.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #21389. Do Skiers Really Need Another Outerwear Brand? Atomic Thinks So.
+        </a>
+        
+        <a href="now-40-alex-honnold-must-juggle-climbing-with-fatherhood-and-fame-21370.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #21370. Now 40, Alex Honnold Must Juggle Climbing with Fatherhood and Fame. It Isn’t Always Easy.
+        </a>
+        
+        <a href="41-elf-on-the-shelf-ideas-because-youre-gonna-need-them-21321.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #21321. 41 Elf on the Shelf Ideas (Because You’re Gonna Need Them)
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms</title>
+    <meta name="description" content="In a recent development, last November, we introduced AnyLanguageModel on this blog: a drop-in replacement for Apple's Foundation Models framework that let">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/anylanguagemodel-10-one-year-of-local-models-on-apple-platforms-23071.html">
+    <meta property="og:title" content="AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms">
+    <meta property="og:description" content="In a recent development, last November, we introduced AnyLanguageModel on this blog: a drop-in replacement for Apple's Foundation Models framework that let">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/anylanguagemodel-1-0/banner.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/anylanguagemodel-10-one-year-of-local-models-on-apple-platforms-23071.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms", "image": ["https://huggingface.co/blog/assets/anylanguagemodel-1-0/banner.png"], "datePublished": "2026-10-20T00:00:00", "dateModified": "2026-11-17T15:21:18.107362", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/anylanguagemodel-10-one-year-of-local-models-on-apple-platforms-23071.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Gadgets</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 20 Oct 2026 &bull; ⏱️ 3 min read (588 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, last November, we introduced AnyLanguageModel on this blog:
+a drop-in replacement for Apple's Foundation Models framework
+that lets you choose the model and provider your app uses.</li><li style='margin-bottom:6px;'>Sources indicate that local and hosted inference each have their strengths,
+and both have a role in building this newly introduced generation of intelligent apps.</li><li style='margin-bottom:6px;'>A year and dozens of releases later,
+AnyLanguageModel 1.0 is out,
+along with swift-huggingface 1.0
+and swift-xet 1.0.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-23071"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-23071"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-23071"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms" loading="lazy" src="https://huggingface.co/blog/assets/anylanguagemodel-1-0/banner.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-23071">In a recent development, last November, we introduced AnyLanguageModel on this blog:
+a drop-in replacement for Apple's Foundation Models framework
+that lets you choose the model and provider your app uses. We heard from app developers who were curious about local models
+but weren't always sure how to get started. They also wanted to avoid the added complexity
+of supporting multiple inference providers. AnyLanguageModel grew out of that feedback.</p>
+<p>Sources indicate that local and hosted inference each have their strengths,
+and both have a role in building this newly introduced generation of intelligent apps. A shared API makes it easier to choose the right model for each task.</p>
+<p>A year and dozens of releases later,
+AnyLanguageModel 1.0 is out,
+along with swift-huggingface 1.0
+and swift-xet 1.0.</p>
+<p>Here's what changed, and what's next:.</p>
+<p>Sources indicate that the core idea of AnyLanguageModel remains the same:
+use the Foundation Models API with the model that fits your app. To get started, change your import statement:.</p>
+<p>The same session code then works with the system model,
+with open-weight models through llama.cpp, MLX, and Core ML,
+and with the hosted providers below.</p>
+<p>Over the past year, we've added several major features:.</p>
+<p>On OS 27, AnyLanguageModel also works with
+any model that conforms to Foundation Models' LanguageModel protocol,
+including Core AI models.</p>
+<p>Alongside AnyLanguageModel, we've built out
+swift-huggingface
+and swift-xet
+to bring accelerated model downloads from the Hub to Swift apps.</p>
+<p>Support for hosted models expanded this year, too. AnyLanguageModel now supports:.</p>
+<p id="sec-mid-23071">With Inference Providers,
+you can use open-weight models that are too big to run on the device
+with the same session code:.</p>
+<p>Hosted providers get the same features as local models:
+guided generation, tool calling with streaming,
+and token usage on responses.</p>
+<p>Industry observers note that reasoning is now part of the transcript too. When you switch providers,
+reasoning blocks are automatically omitted from requests if the latest provider can't replay them.</p>
+<p>API keys come from a closure instead of a string,
+so your app can fetch short-lived tokens from your own server. The README
+explains when to let people bring their own keys
+and when to route requests through a proxy.</p>
+<p>AnyLanguageModel also runs on Linux,
+so the same code can work on a server.</p>
+<p>While we've made local models easier to use,
+the models themselves have become more capable,
+making the small ones a good place to start. Here are some of the most downloaded models on the Hub right now:.</p>
+<p>The first two fit on an iPhone,
+and Qwen3.8 27B runs on a Mac with 32 GB of memory or more. Selecting the MLX model takes one line:.</p>
+<p>According to recent reports, and if you have four maxed-out Mac Studios handy,
+GLM-5.3 from Z.ai takes about 1.5 TB in BF16. For the rest of us, it's available through Inference Providers.</p>
+<p>If you're upgrading an existing app, see the migration guidance in the
+AnyLanguageModel,
+swift-huggingface,
+and swift-xet release notes
+for help updating your code.</p>
+<p>Sources indicate that community feedback and contributions have shaped several of our major features. Thank you to everyone who contributed
+for helping make AnyLanguageModel more useful to app developers.</p>
+<p id="sec-end-23071">It has been revealed that language models have proven to be a powerful tool
+for building intelligence into products. They're also one of many kinds of models developers can put to work. We're excited to bring the same approach to more capabilities:
+familiar Swift APIs with a choice of models running on the device. Coming soon: models that decide, and models that listen.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/anylanguagemodel-1-0" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="introducing-anylanguagemodel-one-api-for-local-and-remote-llms-on-11440.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11440. Introducing AnyLanguageModel: One API for Local and Remote LLMs on Apple Platforms
+        </a>
+        
+        <a href="introducing-anyspeechrecognizer-and-anydecisionmodel-open-models--23032.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23032. Introducing AnySpeechRecognizer and AnyDecisionModel: Open Models for Speech and Decisions on Apple Platforms
+        </a>
+        
+        <a href="breaking-arkansas-sues-vgw-and-kalshi-citing-66-million-in-vgw-ta-23480.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23480. Breaking: Arkansas sues VGW and Kalshi, citing $66 million in VGW taxable sales in one year
+        </a>
+        
+        <a href="running-an-ai-agent-on-a-local-llm-what-i-measured-on-one-gpu-23477.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23477. Running an AI Agent on a Local LLM: What I Measured on One GPU
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

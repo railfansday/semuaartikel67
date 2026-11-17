@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Much Memory Does Your Agent Actually Need?</title>
+    <meta name="description" content="Industry observers note that in our previous post, we compared ALTK-Evolve with ACE and showed that how you deliver an agent's self-distilled guidelines — ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-much-memory-does-your-agent-actually-need-23246.html">
+    <meta property="og:title" content="How Much Memory Does Your Agent Actually Need?">
+    <meta property="og:description" content="Industry observers note that in our previous post, we compared ALTK-Evolve with ACE and showed that how you deliver an agent's self-distilled guidelines — ">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/6435a1131860001f144239ea/j-n1Au9SJ2-RGkT9i98u4.jpeg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-much-memory-does-your-agent-actually-need-23246.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How Much Memory Does Your Agent Actually Need?", "image": ["https://cdn-uploads.huggingface.co/production/uploads/6435a1131860001f144239ea/j-n1Au9SJ2-RGkT9i98u4.jpeg"], "datePublished": "2026-08-18T18:09:38", "dateModified": "2026-11-17T15:21:27.021283", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-much-memory-does-your-agent-actually-need-23246.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How Much Memory Does Your Agent Actually Need?</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 18 Aug 2026 &bull; ⏱️ 8 min read (1631 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that in our previous post, we compared ALTK-Evolve with ACE and showed that how you deliver an agent's self-distilled guidelines — a few retrieved per task vs.</li><li style='margin-bottom:6px;'>Equipping an agent with agentic memory sounds simple: distill lessons from its past work, put them back in context, and more experience should mean better performance.</li><li style='margin-bottom:6px;'>Sources indicate that agentic memory is not a feature you switch on.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-23246"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-23246"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-23246"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How Much Memory Does Your Agent Actually Need?" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/6435a1131860001f144239ea/j-n1Au9SJ2-RGkT9i98u4.jpeg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-23246">Industry observers note that in our previous post, we compared ALTK-Evolve with ACE and showed that how you deliver an agent's self-distilled guidelines — a few retrieved per task vs. the whole set injected — drives both accuracy and cost. This post steps back to the question that comes before it: how much should you give it?</p>
+<p>Equipping an agent with agentic memory sounds simple: distill lessons from its past work, put them back in context, and more experience should mean better performance. It doesn't always work that way. When we scaled the evaluation to eight models — from a 30B dense model to frontier proprietary systems — one finding stood out:.</p>
+<p>Sources indicate that agentic memory is not a feature you switch on. It's a dose you calibrate to the model.</p>
+<p>ALTK-Evolve lets an agent learn from its own past trajectories: distilling reusable guidelines and injecting them back at inference time, with no weight updates and no human annotation.</p>
+<p>The right dose differs by model tier: strong models with headroom want the full guideline set, weaker models do best with a compact core plus per-task retrieval, and saturated models show no measurable gain.</p>
+<p>Curated retrieval can be both the most accurate and the cheapest option: gpt-oss-120b gained +16.1pp task completion at only +5% tokens — and prompt caching keeps even the full guideline set affordable in production.</p>
+<p>Recent findings suggest that not every model benefits from the same amount of memory. Across eight models spanning the capability spectrum, we saw three recurring patterns:.</p>
+<p>Strong models with headroom want the full guideline set — every guideline, including rare edge-case lessons. They have the capacity to absorb and apply all of it. DeepSeek-V3.2 (671B MoE) climbed +9.5 percentage points in task completion when given its full self-mined guideline set.</p>
+<p>Smaller or weaker models get drowned by a large guideline set. For these, a tight, high-confidence core plus a handful of task-relevant guidelines retrieved per task works best. gpt-oss-120b (117B MoE) gained +16.1pp with this selective approach — while the full guideline set gained less and cost ~50% more tokens.</p>
+<p>Industry observers note that already-saturated models show no measurable gain. We call this the saturated pattern — the label describes what we observed, not a proven cause. The model may already have been near its ceiling on these tasks, the guidelines may not have addressed its remaining failures, or it may not have applied the guidance effectively. GLM-5 (745B MoE) sat here in our runs.</p>
+<p>In a recent development, what puts a model into one pattern rather than another isn't simply parameter count. Benchmark headroom, context-window size, architecture, guideline quality, and task distribution all appear to shape where a model lands, and separating those factors is ongoing work. The practical takeaway holds either way: the right dose of memory depends on the model, and we can calibrate it.</p>
+<p>Industry observers note that "Memory" here doesn't mean replaying a past transcript. It means a guideline set — strategies that worked, mistakes to avoid, and edge cases — distilled from the agent's own prior trajectories. The loop is straightforward:.</p>
+<p>The agent attempts tasks and produces trajectories.</p>
+<p>ALTK-Evolve extracts behavioral guidelines from both its successful and unsuccessful runs.</p>
+<p>It consolidates those guidelines into a reusable set.</p>
+<p>At inference time, the agent receives either the full guideline set or a task-relevant selection of it.</p>
+<p>No model weights are updated. The learning loop changes the guidance available to the agent, not the underlying model — which is exactly why it's cheap to adopt and portable across the eight models we tested.</p>
+<p>According to recent reports, we evaluated on AppWorld — 585 multi-step tasks (168 test_normal + 417 test_challenge) across 9 simulated apps (calendars, messaging, payments, and so on). Tasks are scored two ways: whether the agent fully completes each task (TGC — Task Goal Completion) and whether every variant of a scenario passes (SGC — Scenario Goal Completion, a stricter, all-or-nothing bar). Full definitions are in the appendix.</p>
+<p>Because the confusing part of any memory study is what's actually in the context window, we define the configurations up front.</p>
+<p>According to recent reports, both memory configurations draw from the same guideline set, mined once (via the loop above) from AppWorld's training split only. What changes between them is only how that one set is delivered — the full guideline set injects all of it every step, while curated retrieval delivers a selected subset — never how the guidelines were produced, and no test-split data ever goes into building it.</p>
+<p>In a recent development, the number of guidelines a model mines depends on its own capability, so we report configurations by strategy — "full guideline set" vs. "curated retrieval" — rather than by raw counts, which aren't comparable across models.</p>
+<p>Representative models from the eight-model sweep, measured by task completion (TGC) on test_normal:.</p>
+<p id="sec-mid-23246">According to recent reports, figure 1. Representative models in the three observed patterns. Bars show TGC on AppWorld test_normal for baseline vs. the best-memory configuration; the x-axis begins at 40% to make differences visible. TGC alone understates the larger SGC gains — see the SGC columns in the table below.</p>
+<p>The figure plots TGC to keep it readable; the table adds the stricter SGC metric, where the gains are often larger:.</p>
+<p>According to recent reports, reading the SGC column, the stricter metric usually moves more than TGC — DeepSeek's SGC jumps +16.1pp against a +9.5pp TGC gain — because good guidelines especially help an agent clear every variant of a scenario, not just the average case. And the effect doesn't disappear at the top of the range: GPT-5.5 and Opus, both near the ceiling on TGC, still gain +7.2 and +7.1pp SGC respectively. Memory keeps paying off as long as a model has a remaining failure mode to target.</p>
+<p>A practical concern: injecting a full guideline set inflates every ReAct step's input, because the guidelines are re-sent each turn. Here's what we observed:.</p>
+<p>Table 1. Average token use per task, accumulated across agent steps, measured against the no-memory baseline.</p>
+<p>According to recent reports, curated retrieval keeps cost near baseline. For weaker models, where selection wins on accuracy, it also wins on cost — the best of both worlds (+16.1pp TGC at only +5% tokens for gpt-oss-120b). Better performance here does not require more inference cost.</p>
+<p>In a recent development, memory doesn't blow up the reasoning loop. DeepSeek runs about the same number of ReAct steps with memory as without (≈18–19 on average), so the added cost is input-token inflation, not longer trajectories.</p>
+<p>The real efficiency lever in production is prompt caching: the static portion of the guideline set is identical across steps and can be cached, cutting effective cost substantially. Cache-aware prompt design — keeping the shared guideline-set prefix stable so it stays cacheable — is worth engineering for. We also hypothesize that context-window size plays a role: models with larger windows may absorb the full guideline set more effectively, while smaller-context models benefit more from retrieval that keeps injected content compact. We have not yet run controlled experiments isolating this factor.</p>
+<p>It has been revealed that the lesson isn't to give an agent everything it has learned. It's to give it the amount of experience it can actually use.</p>
+<p>For weak models, that means a compact core plus a few task-specific lessons — which, conveniently, is also the cheapest option.</p>
+<p>For strong models with headroom, it means preserving the full guideline set, kept affordable in production via prompt caching.</p>
+<p>For saturated models, it means spending no extra context until their remaining failure modes are better understood.</p>
+<p>The gains are real across the board — automatic, leakage-free, and requiring no human annotation — but only when the dose fits the model.</p>
+<p>This is a starting point, not the finish line:.</p>
+<p>Recent findings suggest that A learned selector. Our current retrieval ranks guidelines by cosine similarity, which we've shown doesn't perfectly predict which guidelines help a given task. A selector trained on outcome signal is the natural next step.</p>
+<p>Memory for very weak models. Below a minimum capability baseline, self-distillation lacks signal. Teacher-distilled memory for very weak models is a separate problem we're exploring.</p>
+<p>Sources indicate that beyond AppWorld. These results are validated on AppWorld — a rigorous multi-step benchmark, but a single one. Broader agent benchmarks and real-world deployments are in progress.</p>
+<p>Isolating context window. As above, we want controlled experiments that separate context-window size from raw capability.</p>
+<p>Try the ALTK-Evolve library — which includes the extraction, consolidation, and retrieval pipeline used here — or read the full technical report for the complete method and ablations.</p>
+<p>AppWorld tasks are graded by two metrics, both reported as percentages (higher is better):.</p>
+<p>According to recent reports, TGC — Task Goal Completion. The share of individual tasks the agent completes fully and correctly. This is the headline "did it get the job done" number.</p>
+<p>It has been revealed that SGC — Scenario Goal Completion. A stricter, all-or-nothing metric. Each scenario bundles several variants of the same task (the same request with different data, phrasing, or edge conditions). SGC counts a scenario as passing only if the agent succeeds on every variant. It measures reliability — an agent that solves a task most of the time but fails on one variant scores on TGC but not on SGC.</p>
+<p id="sec-end-23246">Recent findings suggest that really interesting take on agentic memory. The idea that memory needs to be calibrated to the model rather than simply accumulated is especially useful for production systems. Selective retrieval also seems like a practical way to improve reliability without unnecessarily increasing context and inference costs. It makes a strong case for thoughtful custom AI agent development and enterprise AI agent solutions, where memory, performance, and cost all need to be designed together. https://mobisoftinfotech.com/services/ai-agent-development-tech giant.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ibm-research/altk-evolve-hmm" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-how-much-latency-does-a-self-hosted-llm-gateway-add-l-23503.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23503. Tech Report: How Much Latency Does a Self-Hosted LLM Gateway Add? Langfuse vs LiteLLM vs AcruxCore
+        </a>
+        
+        <a href="breaking-what-is-emdr-therapy-and-does-it-actually-work-22857.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #22857. Breaking: What is EMDR therapy, and does it actually work?
+        </a>
+        
+        <a href="tech-report-how-much-does-a-will-cost-complete-price-guide-22810.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #22810. Tech Report: How Much Does a Will Cost? Complete Price Guide
+        </a>
+        
+        <a href="industry-news-does-creatine-increase-dht-what-you-need-to-know-22248.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #22248. Industry News: Does Creatine Increase DHT? What You Need to Know
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugging Face and Cerebras bring Gemma 4 to real-time voice AI</title>
+    <meta name="description" content="It has been revealed that for voice AI, latency is a critical parameter. Developers have made tremendous progress in model quality, but the user experience">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/hugging-face-and-cerebras-bring-gemma-4-to-real-time-voice-ai-23359.html">
+    <meta property="og:title" content="Hugging Face and Cerebras bring Gemma 4 to real-time voice AI">
+    <meta property="og:description" content="It has been revealed that for voice AI, latency is a critical parameter. Developers have made tremendous progress in model quality, but the user experience">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/cerebras-gemma4-voice-ai/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/hugging-face-and-cerebras-bring-gemma-4-to-real-time-voice-ai-23359.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Hugging Face and Cerebras bring Gemma 4 to real-time voice AI", "image": ["https://huggingface.co/blog/assets/cerebras-gemma4-voice-ai/thumbnail.png"], "datePublished": "2026-07-01T00:00:00", "dateModified": "2026-11-17T15:21:34.559544", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/hugging-face-and-cerebras-bring-gemma-4-to-real-time-voice-ai-23359.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Hugging Face and Cerebras bring Gemma 4 to real-time voice AI</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 01 Jul 2026 &bull; ⏱️ 4 min read (865 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that for voice AI, latency is a critical parameter.</li><li style='margin-bottom:6px;'>Industry observers note that the result is a speech-to-speech experience that feels dramatically more natural.</li><li style='margin-bottom:6px;'>It has been revealed that the demo is built as a real-time speech-to-speech pipeline.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-23359"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-23359"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-23359"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Hugging Face and Cerebras bring Gemma 4 to real-time voice AI" loading="lazy" src="https://huggingface.co/blog/assets/cerebras-gemma4-voice-ai/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-23359">It has been revealed that for voice AI, latency is a critical parameter. Developers have made tremendous progress in model quality, but the user experience is still often limited by response times. Hugging Face and Cerebras are changing that experience. Today, we demonstrate what becomes possible when an open, modular voice AI architecture is paired with industry-leading inference speed.</p>
+<p>Industry observers note that the result is a speech-to-speech experience that feels dramatically more natural. Instead of waiting for an AI to respond, conversations flow with the responsiveness owners expect from human interaction.</p>
+<p>It has been revealed that the demo is built as a real-time speech-to-speech pipeline. Each part of the system is modular, open, and replaceable, making it easy for developers to adapt the stack for different assistants, robots, products, or research projects.</p>
+<p>This creates a fully open speech-to-speech loop:.</p>
+<p>The architecture brings together the strength of the open-source AI ecosystem: Cerebras for fast inference, Google DeepMind’s Gemma 4 31B for the language model, and Qwen for text-to-speech. Every layer can be inspected, modified, and extended by the developers.</p>
+<p>It has been revealed that today, some production systems see a reasonable median latency while still experiencing frustrating multi-second delays at the P95. Those delays become even more noticeable when tool calls or multimodal steps require multiple turns.</p>
+<p>Cerebras helps solve one of the most notable bottlenecks in the stack: the language-model response time. By making inference dramatically faster and more stable, Cerebras allows the rest of the Hugging Face pipeline to shine.</p>
+<p>Recent findings suggest that that stability is especially vital at the long tail. Many systems can deliver acceptable median response times, but occasional slow responses still make conversations feel unreliable.</p>
+<p>Sources indicate that this same Hugging Face speech-to-speech pipeline already powers Reachy Mini robots, with more than 9,000 robots in the wild. For robots, voice assistants, and embodied AI, responsiveness is not a cosmetic improvement. It is what makes the interaction feel alive.</p>
+<p>It has been revealed that the motivation to use Cerebras is therefore not simply cost reduction. It is low latency, predictable performance, and the ability to create real-time experiences that feel natural at scale.</p>
+<p id="sec-mid-23359">This collaboration reflects a shared belief that the future of AI will be both open and performant. Open-source models, open infrastructure, and breakthrough inference speed together create a foundation for the next generation of conversational AI.</p>
+<p>We invite developers to explore the demo, experiment with the code, and help shape what comes next for real-time voice AI.</p>
+<p>Repository: huggingface/speech-to-speech.</p>
+<p>We even crossed 10k Reachy Minis in the wild 😄.</p>
+<p>It's exciting to see how Hugging Face and Cerebras are pushing real-time voice technology forward. Fast responses make conversations feel much more comfortable and engaging, and that's exactly what users have been hoping for. 😊 When the delay is reduced, interactions become smoother and more natural, making voice experiences feel less like talking to software and more like having a real conversation.</p>
+<p>What I appreciate most is the focus on an open and modular approach. That gives developers more flexibility to build solutions that fit different needs instead of being locked into a single ecosystem. The combination of strong model quality with impressive inference speed could help unlock many practical applications across education, customer support, accessibility, and beyond. 🚀.</p>
+<p>In a recent development, the emphasis on latency is absolutely the right direction because speed directly shapes the overall experience. Even the smartest system can feel frustrating if every response takes too long. Bringing that waiting time down creates a much more fluid interaction, and it's great to see innovation focused on something users notice immediately. 👏.</p>
+<p>In a recent development, looking forward to seeing how this evolves over the coming months... Faster conversations... Better responsiveness... More natural interactions... Exciting progress for developers and users alike... 🌟🙂.</p>
+<p>Industry observers note that does anybody work on multipoint speech2speech interaction? I.e. when 2 or more people are talking to AI?I think LLM can handle messages from several persons when they are properly tagged.How about speech2text models - are there any works in this direction? The model would have to have some context and probably stereo audio input or some additional tagging to differentiate between persons.As an example  practical usage: voice assistant in car, when we have more than one person there, not unusual.Also some public kiosks where a group of people can interact by voice.There is much more in it then just text tagging by voice, as in this case people could also talk to each other (not to AI) and here also some capturing of non-verbal communication will be needed.</p>
+<p id="sec-end-23359">The development of voice technology is opening up latest possibilities for businesses, especially in improving customer interactions and automating everyday communication. Modern AI voice assistants are becoming more capable, while Voice AI for enterprise is helping organizations build smarter and more efficient workflows. As these technologies continue to evolve, understanding how AI agents use context to deliver accurate and relevant responses is equally important.I also came across this article, which I found useful to read. It is a good resource to look into for understanding context engineering and its role in enterprise AI agents: https://mobisoftinfotech.com/resources/blog/ai-development/context-engineering-for-llms-enterprise-ai-agents.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/cerebras-gemma4-voice-ai" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="hugging-face-and-cloudflare-partner-to-make-real-time-speech-and--11655.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11655. Hugging Face and Cloudflare Partner to Make Real-Time Speech and Video Seamless with FastRTC
+        </a>
+        
+        <a href="fetch-consolidates-ai-tools-and-saves-30-development-time-with-hu-12078.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12078. Fetch Consolidates AI Tools and Saves 30% Development Time with Hugging Face on AWS
+        </a>
+        
+        <a href="patch-time-series-transformer-in-hugging-face-11927.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11927. Patch Time Series Transformer in Hugging Face
+        </a>
+        
+        <a href="fine-tuning-gemma-models-in-hugging-face-11912.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #11912. Fine-Tuning Gemma Models in Hugging Face
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

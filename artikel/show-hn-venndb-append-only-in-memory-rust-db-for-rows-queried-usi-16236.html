@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show HN: VennDB: append-only in-memory Rust DB for rows queried using bit flags</title>
+    <meta name="description" content="An append-only in-memory database in Rust for rows queried using bit (flag) columns. This database is designed for a very specific use case where you have ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/show-hn-venndb-append-only-in-memory-rust-db-for-rows-queried-usi-16236.html">
+    <meta property="og:title" content="Show HN: VennDB: append-only in-memory Rust DB for rows queried using bit flags">
+    <meta property="og:description" content="An append-only in-memory database in Rust for rows queried using bit (flag) columns. This database is designed for a very specific use case where you have ">
+    <meta property="og:image" content="https://repository-images.githubusercontent.com/618452402/843c8829-6a4a-467d-8aea-2271df08ceec">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/show-hn-venndb-append-only-in-memory-rust-db-for-rows-queried-usi-16236.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Show HN: VennDB: append-only in-memory Rust DB for rows queried using bit flags", "image": ["https://repository-images.githubusercontent.com/618452402/843c8829-6a4a-467d-8aea-2271df08ceec"], "datePublished": "2026-11-16T09:17:37", "dateModified": "2026-11-17T15:15:30.384062", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/show-hn-venndb-append-only-in-memory-rust-db-for-rows-queried-usi-16236.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Show HN: VennDB: append-only in-memory Rust DB for rows queried using bit flags</h1>
+        <div class="meta-line">🌐 Source: <strong>Github</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 11 min read (2173 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>An append-only in-memory database in Rust for rows queried using bit (flag) columns.</li><li style='margin-bottom:6px;'>For the limited usecases where venndb can be applied to,
+it has next to no dependencies and is faster then traditional choices,
+such as a naive implementation or a more heavy lifted dependency such as Sqlite.</li><li style='margin-bottom:6px;'>See the benchmarks for more information on this topic.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-16236"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-16236"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-16236"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Show HN: VennDB: append-only in-memory Rust DB for rows queried using bit flags" loading="lazy" src="https://repository-images.githubusercontent.com/618452402/843c8829-6a4a-467d-8aea-2271df08ceec" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-16236">An append-only in-memory database in Rust for rows queried using bit (flag) columns. This database is designed for a very specific use case where you have mostly static data that you typically load at startup and have to query constantly using very simple filters. Datasets
+like these can be large and should be both fast and compact.</p>
+<p>For the limited usecases where venndb can be applied to,
+it has next to no dependencies and is faster then traditional choices,
+such as a naive implementation or a more heavy lifted dependency such as Sqlite.</p>
+<p>See the benchmarks for more information on this topic.</p>
+<p>According to recent reports, this project was developed originally in function of rama,
+where you can see it being used for example to provide an in-memory (upstream) proxy database. Do let us know in case you use it as well in your project, such that we can assemble a showcase list.</p>
+<p>Recent findings suggest that 💬 Come join us at Discord on the #venndb public channel. To ask questions, discuss ideas and ask how venndb may be useful for you.</p>
+<p>and import the derive macro in the module where you want to use it:.</p>
+<p>See the full example, the examples (the code in this document is taken from these)
+or the "Generated Code Summary" chapter below to learn how to use the VennDB and its generated code.</p>
+<p>Benchmarks displayed here are taken on a dev machine with following specs:.</p>
+<p>The benchmarks test 4 different implementations of a proxy database,
+shaped like the one of rama: 7 bool properties and 5 filter maps,
+of which the state, city and ASN have up to 1 000, 10 000 and 5 000 distinct values.</p>
+<p>In a recent development, apart from the first two, each row is a query: the filters listed are set on db.query(),
+followed by any() to pick a random proxy among the matching ones. The bool filters ask for true,
+the filter maps (pool, country, city) for one value unless more are mentioned, and 1% of their rows match any value. The numbers are the median time. The benchmarks are created by running just bench-full | python3 scripts/bench_tables.py.</p>
+<p>Database with 1_000_000 records:.</p>
+<p>It has been revealed that we are not database nor hardware experts though. Please do open an issue if you think
+these benchmarks are incorrect or if related improvements can be made. Contributions in the form of Pull requests are welcomed as well,
+see the Contribution guidelines for more information.</p>
+<p>❓ Why use this over Database X?</p>
+<p>It has been revealed that venndb is not a database, but is close enough for some specific purposes. It shines for long-lived read-only use cases where you need to filter on plenty of binary properties and get a rando matching result.</p>
+<p>Do not try to replace your usual database needs with it.</p>
+<p>❓ Where can I propose a newly introduced feature X or some other improvement?</p>
+<p>According to recent reports, please open an problem and also read the Contribution guidelines. We look forward to hear from you.</p>
+<p>Alternatively you can also join our Discord and start a conversation / discussion over there.</p>
+<p>❓ Can I use whatever type for a #[venndb(filter)] property?</p>
+<p>Yes, as long as it implements Eq + Hash + Clone. That said, we do recommend that you use enum values if you can, or some other highly restricted form.</p>
+<p>It has been revealed that using for example a String directly is a bad idea as that would mean that bE != Be != BE != Belgium != Belgique != België. Even though these are really referring all to the same country. In such cases a much better idea is to at the very least create a wrapper type such as struct Country(String), to allow you to enforce sanitization/validation when creating the value and ensuring the hashes will be the same for those values that are conceptually the same.</p>
+<p>❓ How do I make a filter optional?</p>
+<p>Both filters (bool properties) and filter maps (T != bool properties with the #[venndb(filter)] attribute)
+can be made optional by wrapping the types with Option, resulting in Option and Option.</p>
+<p>Rows that have the Option::None value for such an optional column cannot filter on that property,
+but there is no other consequence beyond that.</p>
+<p>❓ Why can do keys have to be unique and non-optional?</p>
+<p>Within venndb keys are meant to be able to look up,
+a row which was previously received via filters.</p>
+<p>As such it makes no sense for such keys to be:.</p>
+<p>❓ How can I allow some rows to match for any value of a certain (filter) column?</p>
+<p>Filter maps can allow to have a value to match all other values. It is up to you to declare the filter as such,
+and to also define for that type what the one value to rule them all is.</p>
+<p>For a type that is no enum you implement venndb::Any yourself, and for a type that is not yours
+you can point to a function instead: #[venndb(filter, any = is_any)].</p>
+<p>❓ How can a property have multiple values?</p>
+<p>Mark the filter as a set. A row then matches each of the values in it:.</p>
+<p>It works for HashSet, BTreeSet and any type implementing venndb::FilterSet, not for lists such as Vec. For a type that is not yours use #[venndb(filter, members = path)], with path a function
+returning an iterator over the values, and item = "Type" if the type of those cannot be told from
+the property. Every "filter map" property has a _where method, rows with an any value always match it.</p>
+<p>❓ How can I filter on something that is not a property, or that changes?</p>
+<p>Create a column for it and add it to the query:.</p>
+<p>The first only knows about the rows the database had when it was created, in the second any row can be set at any time:
+see the runtime example, also for what to do when the database is replaced. For a condition that fits no column there is EmployeeDBQueryResult::any_where(predicate).</p>
+<p>❓ How can I provide custom validation of rows prior to them getting appended?</p>
+<p id="sec-mid-16236">Sources indicate that is is possible to validate a row based on one or multiple of its properties? Validate in function of relationship
+between multiple properties? Is it possible to provide custom validation to prevent rows
+from getting appended that do not adhere to custom validation rules?</p>
+<p>❓ Why do any filter values only match rows that have an any value for that property?</p>
+<p>Let's say I have the following struct:.</p>
+<p>Industry observers note that why is this true? Because it is correct.</p>
+<p>Sources indicate that allowing it also to match the value foo would unfairly
+give more chances for foo to be selected over the any value. This might not seem like a significant difference, but it is. Because what if
+we generate a random string for Values with an _any value? If we
+would allow all rows to be matched then that logic is now rigged,
+with a value of foo being more likely then other strings.</p>
+<p>As such the only correct answer when filtering for any value,
+is to return rows that have any value.</p>
+<p>❓ How can I query on multiple variants of a "filter map" property?</p>
+<p>Just call the query method multiple times. It will allow you to match
+rows that have either of these values.</p>
+<p>Here follows an example demonstrating all the features of VennDB.</p>
+<p>If you prefer a summary of what is generated, or do not understand something from the example below,
+you can also read the "Generated Code Summary" chapter below.</p>
+<p>In this chapter we'll list the API as generated by VennDB for the following example code from above:.</p>
+<p>The following public-API datastructures will be generated:.</p>
+<p>Recent findings suggest that the visual specifiers of these datastructures will be the same as the struct that the VennDB macro is applied to. E.g. in this example Employee has a specifier of pub so the above datastructures and their public-apy methods will also be pub.</p>
+<p>According to recent reports, these are built from the types found in venndb itself, such as RowSet, ValueColumn and Plan,
+which you can also use directly, without the macro (default-features = false). In case you do not want to expose the generated structures to the outside you can wrap your struct within its own mod (module).</p>
+<p>Database: (e.g. EmployeeInMemDB):.</p>
+<p>Sources indicate that query (e.g. EmployeeInMemDBQuery).</p>
+<p>Sources indicate that | EmployeeInMemDBQuery::department_ref(&amp;mut self, value: &amp;Q) -&gt; &amp;mut Self | the same, for a value that is borrowed, e.g. a &amp;str for a String filter. |
+| EmployeeInMemDBQuery::department_where(&amp;mut self, predicate: impl FnMut(&amp;Department) -&gt; bool) -&gt; &amp;mut Self | filter on the values for which the predicate returns true. Called once per distinct value, not once per row. One such method per non-bool filter. |
+| EmployeeInMemDBQuery::and(&amp;mut self, filter: venndb::Filter&lt;'a&gt;) -&gt; &amp;mut Self | add a filter on a column created with column, or on a venndb::RuntimeColumn, of which rows can be set at any time. |
+| EmployeeInMemDBQuery::any(&amp;self) -&gt; Option&lt;&amp;Employee&gt; and EmployeeInMemDBQuery::any_where(&amp;self, predicate: impl FnMut(&amp;Employee) -&gt; bool) -&gt; Option&lt;&amp;Employee&gt; | return a randomly selected employee matching the filters. For filters that many rows match this is a lot faster than execute followed by any, as random rows are tried instead of all matches worked out. |.</p>
+<p>Industry observers note that query Result (e.g. EmployeeInMemDBQueryResult).</p>
+<p>This crate uses #![forbid(unsafe_code)] to ensure everything is implemented in 100% safe Rust.</p>
+<p>venndb is developed mostly on MacOS M-Series machines and run in production
+on a variety of Linux systems. Windows support is not officially guaranteed,
+but is tested using Github Actions with success.</p>
+<p>Sources indicate that please open a ticket in case you have compatibility challenges for your setup/platform. Our goal is not to support all possible platformns in the world, but we do want to
+support as many as we reasonably can.</p>
+<p>Using GitHub Actions we also test if venndb on that version still works on
+the stable and beta versions of rust as well.</p>
+<p>It has been revealed that please refer to https://github.com/plabayo/venndb/milestones to know what's on the roadmap. Is there something not on the roadmap for the next version that you would really like? Please create a feature request to request it and become a sponsor if you can.</p>
+<p>This project is dual-licensed under both the MIT license and Apache 2.0 License.</p>
+<p>🎈 Thanks for your help improving the project! We are so happy to have
+you! We have a contributing guide to help you get involved in the
+venndb project.</p>
+<p>Contributions often come from people who already know what they want, be it a fix for a bug they encountered,
+or a feature that they are missing. Please do always make a ticket if one doesn't exist already.</p>
+<p>It's possible however that you do not yet know what specifically to contribute, and yet want to help out. For that we thank you. You can take a look at the open concerns, and in particular:.</p>
+<p>According to recent reports, in general, any glitch not assigned already is free to be picked up by anyone else. Please do communicate in the ticket
+if you are planning to pick it up, as to avoid multiple people trying to solve the same one.</p>
+<p>Should you want to contribure this project but you do not yet know how to program in Rust, you could start learning Rust with as goal to contribute as soon as possible to venndb by using "the Rust 101 Learning Guide" as your study companion. Glen can also be hired as a mentor or teacher to give you paid 1-on-1 lessons and other similar consultancy services. You can find his contact details at https://www.glendc.com/.</p>
+<p>Unless you explicitly state otherwise, any contribution intentionally submitted
+for inclusion in venndb by you, shall be licensed as both MIT and Apache 2.0,
+without any additional terms or conditions.</p>
+<p>Special thanks goes to all involved in developing, maintaining and supporting the Rust programming language. Also a substantial shoutout to the "Write Powerful Rust Macros" book by Sam Van Overmeire, which gave the courage to develop this crate.</p>
+<p>Some code was also copied/forked from google/argh, for which thank you,
+we are big fans of that crate. Go use it if you want to create a CLI App.</p>
+<p>venndb is completely free, open-source software which needs lots of effort and time to develop and maintain.</p>
+<p>Support this project by becoming a sponsor. One time payments are accepted at GitHub as well as at "Buy me a Coffee".</p>
+<p>It has been revealed that sponsors help us continue to maintain and improve venndb, as well as other
+Free and Open Source (FOSS) technology. It also helps us to create
+educational content such as https://github.com/plabayo/learn-rust-101,
+and other open source frameworks such as https://github.com/plabayo/rama.</p>
+<p>Sponsors receive perks and depending on your regular contribution it also
+allows you to rely on us for support and consulting.</p>
+<p id="sec-end-16236">Finally, you can also support us by shopping Plabayo &lt;3 VennDB merchandise 🛍️ at https://plabayo.threadless.com/.</p>
+<p style="margin-top: 25px;">
+<a href="https://github.com/plabayo/venndb" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="a-gentle-introduction-to-8-bit-matrix-multiplication-for-transfor-12147.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #12147. A Gentle Introduction to 8-bit Matrix Multiplication for transformers at scale using transformers, accelerate and bitsandbytes
+        </a>
+        
+        <a href="subway-reveals-vice-city-sub-for-gta-6-but-theres-only-one-way-to-23674.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23674. Subway reveals Vice City sub for GTA 6, but there’s only one way to get it
+        </a>
+        
+        <a href="grab-a-ddr5-gaming-pc-with-a-10gb-gpu-for-only-949-23671.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23671. Grab a DDR5 gaming PC with a 10GB GPU for only $949
+        </a>
+        
+        <a href="latest-update-fable-52-creates-an-underwater-world-in-a-browser-i-23669.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23669. Latest Update: Fable 5.2 creates an underwater world in a browser in only 96 KB
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
