@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Sentence Transformers is joining Hugging Face!</title>
+    <meta name="description" content="Today, we are announcing that Sentence Transformers is transitioning from Iryna Gurevych’s Ubiquitous Knowledge Processing (UKP) Lab at the TU Darmstadt to">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-sentence-transformers-is-joining-hugging-face-34401.html">
+    <meta property="og:title" content="Tech Report: Sentence Transformers is joining Hugging Face!">
+    <meta property="og:description" content="Today, we are announcing that Sentence Transformers is transitioning from Iryna Gurevych’s Ubiquitous Knowledge Processing (UKP) Lab at the TU Darmstadt to">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/sentence-transformers-joins-hf/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-sentence-transformers-is-joining-hugging-face-34401.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Sentence Transformers is joining Hugging Face!", "image": ["https://huggingface.co/blog/assets/sentence-transformers-joins-hf/thumbnail.png"], "datePublished": "2025-10-22T00:00:00", "dateModified": "2026-11-18T14:58:38.032575", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-sentence-transformers-is-joining-hugging-face-34401.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Sentence Transformers is joining Hugging Face!</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 22 Oct 2025 &bull; ⏱️ 4 min read (866 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Today, we are announcing that Sentence Transformers is transitioning from Iryna Gurevych’s Ubiquitous Knowledge Processing (UKP) Lab at the TU Darmstadt to Hugging Face.</li><li style='margin-bottom:6px;'>SentenceBERT or SBERT) is a popular open-source library for generating high-quality embeddings that capture semantic meaning.</li><li style='margin-bottom:6px;'>Sources indicate that "Sentence Transformers has been a huge success story and a culmination of our long-standing research on computing semantic similarities for the whole lab.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34401"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34401"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34401"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Sentence Transformers is joining Hugging Face!" loading="lazy" src="https://huggingface.co/blog/assets/sentence-transformers-joins-hf/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34401">Today, we are announcing that Sentence Transformers is transitioning from Iryna Gurevych’s Ubiquitous Knowledge Processing (UKP) Lab at the TU Darmstadt to Hugging Face. Hugging Face's Tom Aarsen has already been maintaining the library since late 2023 and will continue to lead the project. At its fresh home, Sentence Transformers will benefit from Hugging Face's robust infrastructure, including continuous integration and testing, ensuring that it stays up-to-date with the latest advancements in Information Retrieval and Natural Language Processing.</p>
+<p>Sentence Transformers (a.k.a. SentenceBERT or SBERT) is a popular open-source library for generating high-quality embeddings that capture semantic meaning. Since its inception by Nils Reimers in 2019, Sentence Transformers has been widely adopted by researchers and practitioners for various natural language processing (NLP) tasks, including semantic search, semantic textual similarity, clustering, and paraphrase mining. After years of development and training by and for the community, over 16,000 Sentence Transformers models are publicly available on the Hugging Face Hub, serving more than a million monthly unique owners.</p>
+<p>Sources indicate that "Sentence Transformers has been a huge success story and a culmination of our long-standing research on computing semantic similarities for the whole lab. Nils Reimers has made a very timely discovery and has produced not only outstanding research outcomes, but also a highly usable tool. This continues to impact generations of students and practitioners in natural language processing and AI. I would also like to thank all the users and especially the contributors, without whom this project would not be what it is today. And finally, I would like to thank Tom and Hugging Face for taking the project into the future.".</p>
+<p>"We're thrilled to officially welcome Sentence Transformers into the Hugging Face family! Over the past two years, it’s been amazing to see this project grow to massive global adoption, thanks to the incredible foundation from the UKP Lab and the amazing community around it. This is just the beginning: we’ll keep doubling down on supporting its growth and innovation, while staying true to the open, collaborative spirit that made it thrive in the first place.".</p>
+<p>Sentence Transformers will remain a community-driven, open-source project, with the same open-source license (Apache 2.0) as before. Contributions from researchers, developers, and enthusiasts are welcome and encouraged. The project will continue to prioritize transparency, collaboration, and broad accessibility.</p>
+<p>The Sentence Transformers library was introduced in 2019 by Dr. Nils Reimers at the Ubiquitous Knowledge Processing (UKP) Lab at Technische Universität Darmstadt, under the supervision of Prof. Dr. Iryna Gurevych. Motivated by the limitations of standard BERT embeddings for sentence-level semantic tasks, Sentence-BERT used a Siamese network architecture to produce semantically meaningful sentence embeddings that could be efficiently compared using cosine similarity. Thanks to its modular, open-source design and strong empirical performance on tasks such as semantic textual similarity, clustering, and information retrieval, the library rapidly became a staple in the NLP research toolkit, spawning a range of follow-up work and real-world applications that rely on high-quality sentence representations.</p>
+<p>In 2020, multilingual support was added to the library, extending sentence embeddings to more than 400 languages. In 2021, with contributions from Nandan Thakur and Dr. Johannes Daxenberger, the library expanded to support pair-wise sentence scoring using Cross Encoder and Sentence Transformer models. Sentence Transformers was also integrated with the Hugging Face Hub (v2.0). For over four years, the UKP Lab team maintained the library as a community-driven open-source project and provided continued research-driven innovation. During this period, the project's development was supported by grants to Prof. Gurevych by the German Research Foundation (DFG), German Federal Ministry of Education and Research (BMBF), and Hessen State Ministry for Higher Education, Research and the Arts (HMWK).</p>
+<p id="sec-mid-34401">In late 2023, Tom Aarsen from Hugging Face took over maintainership of the library, introducing modernized training for Sentence Transformer models (v3.0), as well as improvements of Cross Encoder (v4.0) and Sparse Encoder (v5.0) models.</p>
+<p>The Ubiquitous Knowledge Processing (UKP) Lab at Technische Universität Darmstadt, led by Prof. Dr. Iryna Gurevych, is internationally recognized for its research in natural language processing (NLP) and machine learning. The lab has a long track record of pioneering work in representation learning, large language models, and information retrieval, with numerous publications at leading conferences and journals. Beyond Sentence Transformers, the UKP Lab has developed a number of widely used datasets, benchmarks, and open-source tools that support both academic research and real-world applications.</p>
+<p>Hugging Face would like to thank the UKP Lab and all past and present contributors, especially Dr. Nils Reimers and Prof. Dr. Iryna Gurevych, for their dedication to the project and for entrusting us with its maintenance and now stewardship. We also extend our gratitude to the community of researchers, developers, and practitioners who have contributed to the library's success through model contributions, bug reports, feature requests, documentation improvements, and real-world applications. We are excited to continue building on the strong foundation laid by the UKP Lab and to work with the community to further advance the capabilities of Sentence Transformers.</p>
+<p>For those new to Sentence Transformers or looking to explore its capabilities:.</p>
+<p>The most significant updates since Sentence Transformers started being maintained by Hugging Face, in chronological order:.</p>
+<p>Related technique-focused posts:.</p>
+<p id="sec-end-34401">Thanks David! I appreciate it 🤗.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/sentence-transformers-joins-hf" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="sentence-transformers-in-the-hugging-face-hub-35366.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35366. Sentence Transformers in the Hugging Face Hub
+        </a>
+        
+        <a href="latest-update-faster-tensorflow-models-in-hugging-face-transforme-35381.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35381. Latest Update: Faster TensorFlow models in Hugging Face Transformers
+        </a>
+        
+        <a href="industry-news-hugging-face-reads-feb-2021-long-range-transformers-35377.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35377. Industry News: Hugging Face Reads, Feb. 2021 - Long-range Transformers
+        </a>
+        
+        <a href="fine-tune-wav2vec2-for-english-asr-in-hugging-face-with-transform-35376.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35376. Fine-Tune Wav2Vec2 for English ASR in Hugging Face with 🤗 Transformers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

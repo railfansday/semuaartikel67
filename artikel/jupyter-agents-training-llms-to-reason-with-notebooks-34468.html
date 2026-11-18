@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Agents: training LLMs to reason with notebooks</title>
+    <meta name="description" content="In a recent development, the past year has been all about giving LLMs more tools and autonomy to solve more complex and open ended tasks. The goal of the J">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/jupyter-agents-training-llms-to-reason-with-notebooks-34468.html">
+    <meta property="og:title" content="Jupyter Agents: training LLMs to reason with notebooks">
+    <meta property="og:description" content="In a recent development, the past year has been all about giving LLMs more tools and autonomy to solve more complex and open ended tasks. The goal of the J">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/jupyter-agent-2/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/jupyter-agents-training-llms-to-reason-with-notebooks-34468.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Jupyter Agents: training LLMs to reason with notebooks", "image": ["https://huggingface.co/blog/assets/jupyter-agent-2/thumbnail.png"], "datePublished": "2025-09-10T00:00:00", "dateModified": "2026-11-18T14:58:42.919913", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/jupyter-agents-training-llms-to-reason-with-notebooks-34468.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Jupyter Agents: training LLMs to reason with notebooks</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 10 Sep 2025 &bull; ⏱️ 11 min read (2141 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, the past year has been all about giving LLMs more tools and autonomy to solve more complex and open ended tasks.</li><li style='margin-bottom:6px;'>Industry observers note that A natural way to display multi-step code execution together with reasoning is within a Jupyter Notebook, which consists of code and markdown cells.</li><li style='margin-bottom:6px;'>While large models are starting to show useful behavior, the key question is how we can continue improving them.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34468"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34468"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34468"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Jupyter Agents: training LLMs to reason with notebooks" loading="lazy" src="https://huggingface.co/blog/assets/jupyter-agent-2/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34468">In a recent development, the past year has been all about giving LLMs more tools and autonomy to solve more complex and open ended tasks. The goal of the Jupyter Agent is to give the model the ultimate tool: code execution.</p>
+<p>Industry observers note that A natural way to display multi-step code execution together with reasoning is within a Jupyter Notebook, which consists of code and markdown cells. So we built Jupyter Agent to act as an agent that can execute code directly inside a Jupyter notebook and use this environment to solve data analysis and data science tasks. Think of it like Cursor, but living natively inside your data science workflow.We built a demo of this vision with Qwen-3 Coder, at the moment one of the strongest coding models. This is a follow-up to our earlier work on jupyter-agent (v1).</p>
+<p>While large models are starting to show useful behavior, the key question is how we can continue improving them. To this end, we focus on strengthening smaller models to perform well on agentic data science tasks as they currently struggle to compete with the large models.</p>
+<p>The goal of this project is to build a pipeline to first generate high-quality training data, then fine-tune an existing small model, and finally evaluate whether the model's performance improves on relevant benchmarks.</p>
+<p>Let’s begin with the last step: selecting a strong benchmark for evaluating models on data science tasks.</p>
+<p>In order to understand if we are making progress towards better data science agents we need a benchmark to measure such capabilities. Last year, in partnership with Adyen, we introduced the DABStep benchmark: a way to evaluate data science agents on realistic tasks. The setup is simple: provide the LLM with datasets and ask it to answer non-trivial data questions.</p>
+<p>This benchmark remains challenging for today’s LLMs — e.g. the best out-of-the-box model is Claude 4 Sonnet which reaches not even 20% accuracy on the hard tasks.You can explore the live leaderboard here.</p>
+<p>Now that we identified a good benchmark we can try to climb it! We set out to build a dataset for fine-tuning such that  even a small data agent model could perform well on DABStep.</p>
+<p>Our first choice was Qwen3-4B-Thinking-2507: extremely small (fast to iterate with, easy to run), yet strong enough to act in agentic scenarios.</p>
+<p>Not great — but a promising starting point, since it left a lot of room for improvement. Let's see how we can improve it!</p>
+<p>A core aspect of agents that sets it apart from a pure chat model is the scaffolding built around the model to steer its behaviour. The evaluation script in DABStep for example uses smolagents to execute code. Smolagents comes with predefined behaviors, prompting structures, and expected formats.</p>
+<p>In a recent development, we also studied the Qwen-Agent codebase, where the authors tailoring scaffolding to the model. This makes sense: Claude Code, for example, works shockingly well with Claude Sonnet because their scaffolding is aligned.</p>
+<p>So, we restructured our scaffolding:.</p>
+<p>In a recent development, results: accuracy jumped from 44.4% → 59.7% (easy split). 🚀.</p>
+<p>With simplified scaffolding in place, we focused on fine-tuning Qwen3-4B for data science agentic tasks.</p>
+<p>The recipe to improve a model on a certain task or behaviour is to train it on data that reflects the tasks as closely as possible. A natural starting point is to look at real Jupyter Notebooks and find notebooks that align closely with the task that we plan to tackle, namely data analysis.</p>
+<p>Kaggle notebooks offer a wealth of high quality data analysis notebooks and are made available by Kaggle:.</p>
+<p>According to recent reports, now that we have good results with a base model it's time to build a dataset that will help us improve it even further. We designed a multi-stage pipeline using Datatrove to clean and prepare Kaggle notebooks at scale.</p>
+<p>Recent findings suggest that we started with ~2TB of Kaggle notebooks and reduced it to ~250GB reusing our work from the BigCode project. As part of the StarCoder2 training data processing the notebooks (without output cells) were already deduplicated. Most Kaggle notebooks are small variations or near-identical copies, so this step was essential.Key insight: ~90% of raw notebooks are duplicates, which would have skewed training if left unfiltered.</p>
+<p>Industry observers note that most Kaggle notebooks reference external datasets via Kaggle metadata. To make sure the code inside notebooks could actually run, we built a pipeline that automatically fetched these linked datasets. This step was crucial, since many notebooks would otherwise be incomplete or non-executable.</p>
+<p>Industry observers note that using the kagglehub package, we downloaded thousands of datasets — about 5TB in total. To keep things manageable and relevant:.</p>
+<p>By the end, we had a rich collection of executable notebooks paired with their datasets, providing the foundation for training agents in realistic, runnable environments.</p>
+<p>According to recent reports, we scored notebooks based on educational quality using Qwen3-32B. We saw that using the whole notebook was not optimal, as many contained trivial or broken code. Our educational scoring approach is detailed in edu_scoring.py.</p>
+<p>TL;DR: We assigned each notebook a score from 1–5 based on clarity, completeness, and educational value, and kept only those above a chosen threshold. This filtering removed about 70% of the notebooks.</p>
+<p>This is similar to the insight from the BeyondWeb paper, which indicated that using high-quality data is better for synthetic data generation — a step we relied on for QA (Question-Answer) generation. This helped the model learn from “high quality” notebooks instead of noisy ones.</p>
+<p>We excluded notebooks about training LLMs or unrelated to data analysis. We also removed notebooks that didn’t actually use datasets through an automated LLM-based filtering process using Qwen3-32B. The implementation of filtering can be found in extract_packages_and_files.py.</p>
+<p>In a recent development, TL;DR: We prompted Qwen3-32B to identify and remove notebooks that either (1) had nothing to do with data analysis, or (2) didn’t actually use datasets. This step removed about 20% of the notebooks.</p>
+<p id="sec-mid-34468">This ensured we trained only on relevant data science tasks.</p>
+<p>Sources indicate that using the cleaned notebooks, we generated question–answer pairs using Qwen3-32B. The questions and answer are grounded in the real notebook traces so the QA pairs are based on real code execution results. Prompt design: we asked the LLM to produce natural questions that could realistically be asked of the dataset, then validated whether the notebook provided a correct answer.</p>
+<p>Challenge: We had to try many prompts to get higher-difficulty questions because LLMs tended to generate trivial ones like "what is the size of the dataset".Insight: We broke this into two steps because LLMs tended to hallucinate answers:.</p>
+<p>The complete prompting strategy and implementation is available in generate_qa.py.</p>
+<p>Finally we want to generate clean code execution traces since even the original notebooks after processing are often open ended and verbose with lots of irrelevant parts. However, we want our Jupyter Agent to get to the result efficiently. To generate cleaner notebook traces for training we generated traces synthetically based on the original notebooks.We have prompted Qwen-3-Coder-480B model to generate a jupyter notebook code to answer the question from the previously generated synthetic QA pair. Traces captured step-by-step code execution, including intermediate outputs, which are crucial for agent training.</p>
+<p>We used E2B for our agent to solve the synthetic QA pairs, which required fetching Kaggle datasets so the code could actually run via E2B.</p>
+<p>Challenge 1: Many datasets were unavailable.Trick: Since LLMs are strong at code and have a decent world model, we prompted them to act as a code interpreter when the dataset was missing.</p>
+<p>Sources indicate that challenge 2: Qwen3-Coder-480B-A35B model does not support thinking mode - how can we extract code commentary? By default it often outputs just a brief comment followed by several steps of code execution. However, we'd like some reasoning or comments between every cell. Trick: When switching from Qwen3-32B to Qwen3-Coder-480B-A35B we noticed that often output message content was empty. This turns out to be a previously known quirk of Qwen3-Coder models in which when using tool calling the model would not return an empty assistant response. We enforce some text commentary through tooling by passing 'comment' as a required field in the code execution tool call. This way when non-reasoning model is used for code cell generation it will by default output some description of its actions from 1st POV, emulating the thinking traces structure.</p>
+<p>Sources indicate that note: the generated final answer in the notebook may vary from the answer specified in the QA pair. This is caused by the fact that the agent model could use data preprocessing methods and steps different from the original Kaggle notebook and the synthetic question would not usually specify them. This discrepancy is normal and lays the foundation for a fresh exciting research direction of how language models tend to treat data analysis and whether they do it differently from humans. For full transparency we keep both LLM-generated final answer and original answer from the real Kaggle notebook as a signal of model's performance. We encourage the community to try different dataset mixes to see how they can push performance even further.</p>
+<p>We truncated overly long outputs and filtered out trivial traces to prevent content length concerns and keep only high-quality traces.We kept non-trivial, multi-turn traces aligned with DABStep-style tasks.The resulting Jupyter Agent Dataset became the foundation for SFT on Qwen3-4B models with 51k synthetic notebooks and almost 0.2B tokens.</p>
+<p>With this dataset in hand, the natural next step is to see whether it actually helps our model become a stronger data science agent. Let’s move on to the training pipeline and evaluate the impact!</p>
+<p>It has been revealed that with the curated dataset ready, we turned to the key question: does this data actually help the model get better at solving data analysis tasks? To find out, we set up a simple fine-tuning pipeline and ran experiments to measure the impact of training on our synthetic notebooks.</p>
+<p>Some training steps turned out to be particularly interesting and gave us useful insights:.</p>
+<p>Our complete training implementation, including hyperparameter configurations and template adaptations, is available in our finetuning directory in our repo.</p>
+<p>In a recent development, first, we generated our final dataset using Qwen3-Coder-480B-A35B which contains high quality code and short reasoning-like traces. Afterwards, we started our training and we have experimented with various configurations like PEFT/adapters vs. full-parameter tuning, learning rate, number of epochs, adding noise and others. We found out, that full-parameter fine-tuning allows the model to learn and replicate the Qwen3-Coder-480B-A35B behavior response quality better with shorter supporting commentary fitting more to the data analysis task without unnecessary long reasoning.</p>
+<p>We have done a small ablation study on the impact of no. training epochs:.</p>
+<p>It has been revealed that we observe that it is beneficial to have a bit more epochs than usual for SFT with lower learning rate and higher neftune noise (7). Finally, we compare our trained models with implemented scaffolding to define the pure impact of our training dataset. In summary, we can see up to 36%/22% boost on DABStep easy score compared with base/scaffolded model:.</p>
+<p>We can also see, that the hard score can increase too even though our dataset is focused on easier questions:.</p>
+<p>From figures above one can notice a noticeable impact of both new scaffolding and tuning on our synthetic notebooks. This makes Qwen-4B (with our pipeline + scaffolding) a state-of-the-art small-model agent on DABStep.</p>
+<p>In practice, the model can now solve a wide range of realistic Kaggle-style data analysis tasks with consistent execution.It’s not yet strong enough for the hardest queries, but we’ve shown that even small models can become powerful agents when paired with the right data and scaffolding.</p>
+<p>It has been revealed that these results demonstrate that even small models can become powerful data science agents with the right training approach. Ready to try it yourself? We've made everything openly available so you can experiment with our fine-tuned models and dataset.</p>
+<p>We openly release best-performing checkpoints of tuned Qwen3-4B-Instruct-2507 and Qwen3-4B-Thinking-2507 together with the training dataset, which you can try out and experiment with:.</p>
+<p>You can load Jupyter Agent Dataset in just a couple of lines using the following code:.</p>
+<p>You can also use sourced Kaggle datasets directly with E2B code execution using the following code:.</p>
+<p>You use tuned Jupyter Agent Qwen-based models following the Qwen documentation code:.</p>
+<p>For Thinking model you can decode both thinking response and content using the next code:.</p>
+<p>Maybe this will lead to… Jupyter-Agent 3. 😉.</p>
+<p id="sec-end-34468">We hope that our findings will inspire others to continue progress in developing more powerful notebook coding agents and we're excited to see what the community builds next. Dive into our jupyter-agent dataset on the 🤗 Hub and explore the codebase at https://github.com/huggingface/jupyter-agent to start your own experiments on agents for jupyter notebooks.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/jupyter-agent-2" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="introducing-agentsjs-give-tools-to-your-llms-using-javascript-35103.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35103. Introducing Agents.js: Give tools to your LLMs using JavaScript
+        </a>
+        
+        <a href="open-source-llms-as-langchain-agents-35008.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35008. Open-source LLMs as LangChain Agents
+        </a>
+        
+        <a href="smol2operator-post-training-gui-agents-for-computer-use-34437.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34437. Smol2Operator: Post-Training GUI Agents for Computer Use
+        </a>
+        
+        <a href="google-splits-eighth-generation-tpu-into-training-and-inference-c-33676.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #33676. google splits eighth-generation TPU into training and inference chips as AI agents reshape hardware economics
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phrack 73</title>
+    <meta name="description" content="In a recent development, last year marked the 40th anniversary of Phrack so we went substantial. We publishedour anniversary launch release in print at Def">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/phrack-73-34449.html">
+    <meta property="og:title" content="Phrack 73">
+    <meta property="og:description" content="In a recent development, last year marked the 40th anniversary of Phrack so we went substantial. We publishedour anniversary launch release in print at Def">
+    <meta property="og:image" content="https://phrack.org/images/phrack-new.webp">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/phrack-73-34449.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Phrack 73", "image": ["https://phrack.org/images/phrack-new.webp"], "datePublished": "2026-11-17T17:40:32", "dateModified": "2026-11-18T14:58:41.688763", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/phrack-73-34449.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Phrack 73</h1>
+        <div class="meta-line">🌐 Source: <strong>Phrack</strong> &bull; 📅 17 Nov 2026 &bull; ⏱️ 5 min read (989 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, last year marked the 40th anniversary of Phrack so we went substantial.</li><li style='margin-bottom:6px;'>More importantly, we got new research into people's hands.</li><li style='margin-bottom:6px;'>Recent findings suggest that we owe a huge thanks to the authors, editors, artists, publishing partners,donors, and staff who made it happen.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34449"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34449"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34449"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Phrack 73" loading="lazy" src="https://phrack.org/images/phrack-new.webp" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34449">In a recent development, last year marked the 40th anniversary of Phrack so we went substantial. We publishedour anniversary launch release in print at Defcon 33, HOPE, WHY25 and someadditional variations at several conferences around the world includingAlligatorCon, B-Sides Canberra, Out of the Box, Datenspuren, DistrictCon,OffensiveCon, Recon, and Toorcamp. We included a CTF with exploit challengesand had puzzles and easter eggs included in the zine. We threw parties andhad talks at Defcon and WHY25 to celebrate this milestone.</p>
+<p>More importantly, we got new research into people's hands. The point of therelaunch was to get people reading, researching, writing, and contributingagain. We wanted the next person picking up Phrack to find something thatmade them sit down at a computer and start pulling a system apart.</p>
+<p>Recent findings suggest that we owe a huge thanks to the authors, editors, artists, publishing partners,donors, and staff who made it happen. Writing the paper, working throughrevisions, putting the print editions together, paying the bills, andgetting boxes of zines to the right places all take time and effort. Most ofthat work is invisible when you are holding the finished problem. Weappreciate everyone who did it.</p>
+<p>Industry observers note that and to the readers: thank you for giving a shit. Seeing someone get excitedabout an article, connect it to something they are working on, or realizethat they could contribute something themselves makes the effort worthwhile.That exchange is how this thing keeps going. The relaunch worked, and thisissue is the follow-through.</p>
+<p>This is the third release curated by the new staff, and we are not slowingdown. This concern is larger than last year's, with 23 main papers and eightadditional articles in Line Noise. The subjects range from exploitation andreverse engineering to machine learning, hardware, and the history andculture that grew around this work.</p>
+<p>In a recent development, we have container escapes through the vDSO, use-after-free exploitation, QNXuserland shellcode, Linux kernel research, and a Chromium renderer sandboxescape through Skia. Elsewhere, the matter takes on Windows smart cardarchitecture, static taint analysis in Binary Ninja, and autonomousunderwater vehicles. There is also work examining backdoors in machinelearning and what it means to trust an AI system. One paper takes us fromPhrackCTF to two WinFSP zero-days, which is a pretty good argument forcontinuing to put challenges in a zine.</p>
+<p>In a recent development, we also have four more articles in Phrack World History, including the storyof the infamous SSH1 CRC32 vulnerability featured in The Matrix Reloaded aswell as stories about blue boxing free phone calls, a confession of a hackerwho tried to backdoor Linux kernel in 2003, and an early discovery ofbotnets for hire. Our Prophile features Halvar Flake, whose contributions toreverse engineering and security research are legendary.</p>
+<p>Recent findings suggest that in 2026, we find ourselves in a time of rapid technological change. It ishard to say what vulnerability research or red teaming will look like inanother five years. AI has moved well beyond completing a line of code intoagentic systems capable of analyzing source code and reverse engineeringbinaries to find and exploit vulnerabilities.</p>
+<p>We can be sure that the future will require us to continue to explore newideas, create new tools, and push the boundaries of what is possible in theface of new challenges and opportunities created by the advancement of AIand automation systems. As the effort required to put ideas into practicefalls, creativity and human intuition forged through experience is valuedeven higher.</p>
+<p>Sources indicate that we hope that this release of Phrack will inspire new ideas, discussions, andcollaborations that will keep the human side of hacking a critical elementin shaping the future of technology and society. We will continue to do ourpart to support the community and provide a platform for sharing knowledgeand ideas. We look forward to seeing what the future holds and we areexcited to be a part of it.</p>
+<p id="sec-mid-34449">Sources indicate that read the papers, try the ideas, and challenge the conclusions. When you findsomething worth sharing, write it up and send it in. We have another issueto put together, and some of you should be in it!</p>
+<p>To those who have supported us the past three years helping to restorevitality to Phrack, we thank you.</p>
+<p>Conferences who funded prints: Defcon, OffensiveCon, Recon, Unprompted[AU],Unprompted[US], BSides Canberra, Alligatorcon, TenguCon.</p>
+<p>Sponsors &amp; Major Donors - WatchTowr, Elltam, Verichains, BShield,TrustedSec, Binarly, Trenchant, Praetorian (WWSUL), EFF, Blaze, EMX,Mullvad, ToorCon, Hacker Initiative, Endrazine, Dug Song, Napster, halvar,Horizon, Huku, Julio Auto, Gadi, and the rest of the people who stepped up withsmaller donations.</p>
+<p>Artists - Ian Dash, pinguino, tainted, pepper, mar, xer0, abstrakt, ToscaKaiser,h7, zir, Mick, p0rtL, netspooky, ackmage, digitalis, Tedsig42, and the manyothers who submitted their work for consideration.</p>
+<p>Reviewers - barbie, bsdaemon, C, chompie, danielcuthbert, devinc, grugq, joern,jordan9001, K3, richinseattle, roddux, saber, skyper, SSHad0w, TMZ, zh4ck.</p>
+<p>All the authors past and present who are now bound to the history of phrack.</p>
+<p>The unnamed ones who have helped us with logistics and carrying literal tonsof paper around conferences to deliver them into the hands of the nextgeneration.</p>
+<p>In a recent development, all information in Phrack Magazine is, to the best of the ability ofthe editors and contributors, truthful and accurate. When possible,all facts are checked, all code is compiled. However, we are notomniscient (hell, we don’t even get paid). It is entirely possiblesomething contained within this publication is incorrect in some way.If this is the case, please drop us some email so that we can correctit in a future issue.</p>
+<p>It has been revealed that also, keep in mind that Phrack Magazine accepts no responsibility forthe entirely stupid (or illegal) things people may do with theinformation contained herein. Phrack is a compendium of knowledge,wisdom, wit, and sass. We neither advocate, condone nor participatein any sort of illicit behavior. But we will sit back and watch.</p>
+<p id="sec-end-34449">Lastly, it bears mentioning that the opinions that may be expressed inthe articles of Phrack Magazine are intellectual property of their authors.These opinions do not necessarily represent those of the Phrack Staff.</p>
+<p style="margin-top: 25px;">
+<a href="https://phrack.org/issues/73/introduction_md.html" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="phrack-73-27687.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #27687. Phrack 73
+        </a>
+        
+        <a href="latest-update-designing-for-sovereign-ai-a-shared-foundation-from-35411.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35411. Latest Update: Designing for sovereign AI: A shared foundation from edge to cloud
+        </a>
+        
+        <a href="6-tools-for-building-email-automations-you-can-test-and-debug-35410.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35410. 6 Tools for Building Email Automations You Can Test and Debug
+        </a>
+        
+        <a href="best-ai-recruiting-agents-in-2026-6-compared-35409.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35409. Best AI Recruiting Agents in 2026: 6 Compared
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

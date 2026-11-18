@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accelerating Qwen3-8B Agent on Intel® Core™ Ultra with Depth-Pruned Draft Models</title>
+    <meta name="description" content="Qwen3-8B is one of the most exciting recent releases—a model with native agentic capabilities, making it a natural fit for the AIPC. With OpenVINO.GenAI, w">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/accelerating-qwen3-8b-agent-on-intel-core-ultra-with-depth-pruned-34424.html">
+    <meta property="og:title" content="Accelerating Qwen3-8B Agent on Intel® Core™ Ultra with Depth-Pruned Draft Models">
+    <meta property="og:description" content="Qwen3-8B is one of the most exciting recent releases—a model with native agentic capabilities, making it a natural fit for the AIPC. With OpenVINO.GenAI, w">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/intel-qwen3-agent/smolagents-1300-650.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/accelerating-qwen3-8b-agent-on-intel-core-ultra-with-depth-pruned-34424.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Accelerating Qwen3-8B Agent on Intel® Core™ Ultra with Depth-Pruned Draft Models", "image": ["https://huggingface.co/blog/assets/intel-qwen3-agent/smolagents-1300-650.png"], "datePublished": "2025-09-29T00:00:00", "dateModified": "2026-11-18T14:58:40.120756", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/accelerating-qwen3-8b-agent-on-intel-core-ultra-with-depth-pruned-34424.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Hardware & Chips</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Accelerating Qwen3-8B Agent on Intel® Core™ Ultra with Depth-Pruned Draft Models</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 29 Sep 2025 &bull; ⏱️ 4 min read (815 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Qwen3-8B is one of the most exciting recent releases—a model with  native agentic capabilities, making it a natural fit for the AIPC.</li><li style='margin-bottom:6px;'>With OpenVINO.GenAI, we’ve been able to accelerate generation by ~1.3× using speculative decoding with a lightweight Qwen3-0.6B draft.</li><li style='margin-bottom:6px;'>By using speculative decoding and applying a simple pruning process to the draft, we pushed the speedup even further to ~1.4×.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34424"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34424"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34424"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Accelerating Qwen3-8B Agent on Intel® Core™ Ultra with Depth-Pruned Draft Models" loading="lazy" src="https://huggingface.co/blog/assets/intel-qwen3-agent/smolagents-1300-650.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34424">Qwen3-8B is one of the most exciting recent releases—a model with  native agentic capabilities, making it a natural fit for the AIPC.</p>
+<p>With OpenVINO.GenAI, we’ve been able to accelerate generation by ~1.3× using speculative decoding with a lightweight Qwen3-0.6B draft.</p>
+<p>By using speculative decoding and applying a simple pruning process to the draft, we pushed the speedup even further to ~1.4×.</p>
+<p>We wrapped this up by showing how these improvements can be used to run a fast, local AI Agent with 🤗 smolagents.</p>
+<p>According to recent reports, qwen3-8B is part of the latest Qwen family, trained with explicit agentic behaviors. It supports tool invocation, multi-step reasoning, and long-context handling capabilities, that make it well-suited for complex agent workflows. When integrated with frameworks like Hugging Face 🤗smolagents, QwenAgent, or AutoGen, it enables a wide range of agentic applications built around tool use and reasoning. Unlike single-turn chatbots, agentic applications rely on reasoning models that produce “thinking aloud” traces, intermediate steps that expand token usage, making inference speed critical to responsiveness. The combination of optimized inference and built-in agentic intelligence makes Qwen3-8B a compelling foundation for next-gen AI agents.</p>
+<p>We started by benchmarking the 4-bit optimized OpenVINO version of Qwen3-8B on an Intel Lunar Lake integrated GPU, establishing this as our baseline for further acceleration.</p>
+<p>Speculative decoding is a method to speed up auto-regressive generation. It works by using a smaller, faster model as a draft to propose multiple tokens in a single forward pass, which are then validated by the larger target model in one forward pass. In our setup, Qwen3-8B served as the target model while Qwen3-0.6B was used as the draft. This approach delivered an average of 1.3× speedup over the baseline.</p>
+<p>Sources indicate that before initializing the LLMPipeline, make sure both the target and draft models are converted to OpenVINO. You can either download pre-converted models from the provided links or follow these instructions to convert your own.</p>
+<p>The speculative decoding speedup depends on the average number of generated tokens per forward step of the target, γ \gamma γ, the speculation window size, and the ratio between the target and draft models' latency c c c. A smaller, faster (though less accurate) draft can often deliver greater acceleration. This inspired us to shrink the draft model while still preserving its quality, i.e. E(#generated_tokens) E(\# generated\_tokens) E(#generated_tokens).</p>
+<p id="sec-mid-34424">Speedup=E(#generated_tokens)γc+1
+Speedup = \frac{E(\# generated\_tokens)}{\gamma c + 1}
+Speedup=γc+1E(#generated_tokens)​.</p>
+<p>Recent findings suggest that our recent work shows that model depth (number of layers) is a major contributor to inference latency. We drew inspiration from recent work on layer-wise compression[1]. In our approach, we identify blocks of layers that contribute little, measured using angular distance, and remove them. After pruning, we apply fine-tuning to recover accuracy. Using this method, we pruned 6 out of 28 layers from the Qwen3-0.6B draft model. To recover the quality of the pruned draft model, we further finetuned it using synthetic data generated by Qwen3-8B. The data was produced by generating responses to 500k prompts from BAAI/Infinity-Instruct dataset.</p>
+<p>The resulting pruned draft model delivered ~1.4x speedup compared to the baseline, an improvement over the ~1.3× gain achieved with the original draft. This outcome aligns with theoretical expectations - reducing draft latency improves the over-all speedup, enabling faster and more efficient inference.</p>
+<p>This demonstrates how pruning + speculative decoding can unlock faster and more efficient inference—making local AI agents even more practical.</p>
+<p>Check out the notebook and the Qwen3-0.6B depth-pruned draft model to reproduce our results step by step.</p>
+<p>Recent findings suggest that to showcase the real-world potential, we deployed our optimized setup with the 🤗smolagents library. With this integration, developers can plug in Qwen3-8B (paired with our pruned draft) to build agents that call APIs and external tools, write and execute code, handle long-context reasoning and run efficiently on Intel® Core™ Ultra. The benefits aren’t limited to Hugging Face, this model pairing can also be used seamlessly with frameworks like AutoGen or QwenAgent, further strengthening the agentic ecosystem.</p>
+<p>In our demo, we assigned the accelerated Qwen3-based agent a task: 👉 Summarize the key features of the Qwen3 model series and present them in a slide deck.</p>
+<p>Here’s how it worked:
+1. The agent used a web search tool to gather up-to-date information. 2. It then switched to the Python interpreter to generate slides with the python-pptx library. This simple workflow highlights just a fraction of the possibilities unlocked when accelerated Qwen3 models meet frameworks like 🤗smolagents, bringing practical, efficient AI agents to life on AI PC. Try it here 🚀.</p>
+<p>Sources indicate that [1] Gromov, A., Tirumala, K., Shapourian, H., Glorioso, P., &amp; Roberts, D. A. (2025, January 22). The unreasonable ineffectiveness of the deeper layers. Poster presented at ICLR 2025. https://arxiv.org/abs/2403.17887.</p>
+<p id="sec-end-34424">How might developers adapt the approach described in the article on accelerating the Qwen3-8B agent to serve lightweight real-time decision-making in resource-constrained environments instead of data-centre settings?</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/intel-qwen3-agent" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="accelerating-pytorch-distributed-fine-tuning-with-intel-technolog-35347.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35347. Accelerating PyTorch distributed fine-tuning with Intel technologies
+        </a>
+        
+        <a href="accelerate-your-models-with-optimum-intel-and-openvino-35236.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35236. Accelerate your models with 🤗 Optimum Intel and OpenVINO
+        </a>
+        
+        <a href="accelerating-pytorch-transformers-with-intel-sapphire-rapids-part-35207.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35207. Accelerating PyTorch Transformers with Intel Sapphire Rapids - part 1
+        </a>
+        
+        <a href="industry-news-accelerating-pytorch-transformers-with-intel-sapphi-35191.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35191. Industry News: Accelerating PyTorch Transformers with Intel Sapphire Rapids - part 2
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Cloning with Consent</title>
+    <meta name="description" content="In this blog post, we introduce the idea of a 'voice consent gate' to support voice cloning with consent. We provide an example Space and accompanying code">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/voice-cloning-with-consent-34386.html">
+    <meta property="og:title" content="Voice Cloning with Consent">
+    <meta property="og:description" content="In this blog post, we introduce the idea of a 'voice consent gate' to support voice cloning with consent. We provide an example Space and accompanying code">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/voice-consent-gate/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/voice-cloning-with-consent-34386.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Voice Cloning with Consent", "image": ["https://huggingface.co/blog/assets/voice-consent-gate/thumbnail.png"], "datePublished": "2025-10-28T00:00:00", "dateModified": "2026-11-18T14:58:36.974509", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/voice-cloning-with-consent-34386.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Voice Cloning with Consent</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 28 Oct 2025 &bull; ⏱️ 7 min read (1445 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In this blog post, we introduce the idea of a 'voice consent gate' to support voice cloning with consent.</li><li style='margin-bottom:6px;'>Industry observers note that realistic voice generation technology has gotten uncannily good in the past few years.</li><li style='margin-bottom:6px;'>In a recent development, voice generation, and in particular the subtask of voice cloning, has notable risks and benefits.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34386"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34386"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34386"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Voice Cloning with Consent" loading="lazy" src="https://huggingface.co/blog/assets/voice-consent-gate/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34386">In this blog post, we introduce the idea of a 'voice consent gate' to support voice cloning with consent. We provide an example Space and accompanying code to start the ball rolling on the idea.</p>
+<p>Industry observers note that realistic voice generation technology has gotten uncannily good in the past few years. In some situations, it’s possible to generate a synthetic voice that sounds almost exactly like the voice of a real person. And today, what once felt like science fiction is reality: Voice cloning. With just a few seconds of recorded speech, anyone’s voice can be made to say almost anything.</p>
+<p>In a recent development, voice generation, and in particular the subtask of voice cloning, has notable risks and benefits. The risks of “deepfakes”, such as the cloned voice of former President Biden used in robocalls, can mislead people into thinking that people have noted things that they haven’t said. On the other hand, voice cloning can be a powerful beneficial tool, helping people who’ve lost the ability to speak communicate in their own voice again, or assisting people in learning new languages and dialects.</p>
+<p>So how do we create meaningful use without  malicious use? We’re exploring one possible answer: a voice consent gate. That’s a system where a voice can be cloned only when the speaker explicitly indicates they consent. In other words, the model won’t speak in your voice unless you say it’s okay.</p>
+<p>We provide a basic demo of this idea below:.</p>
+<p>Sources indicate that the voice consent gate is a piece of infrastructure we're exploring that provides methods for ethical principles like consent to be embedded directly into AI system workflows. In our demo, this means the model only starts once the speaker’s consent phrase has been both spoken and recognized, effectively making consent a prerequisite for action. This turns an abstract principle into a concrete system condition, creating a traceable, auditable interaction: an AI model can only run after an unambiguous act of consent.</p>
+<p>Industry observers note that such design choices matter beyond voice cloning. They illustrate how AI systems can be built to respect autonomy by default, and how transparency and consent can be made functional, not just declarative.</p>
+<p>To create a basic voice cloning system with a voice consent gate, you need three parts:.</p>
+<p>Our observation: Since some voice-cloning systems can now generate speech similar to a speaker’s voice using just one sentence, a sentence used for consent can also be used for voice cloning.</p>
+<p>It has been revealed that the consent bit: To create a voice consent gate in an English voice cloning system, generate a short, natural-sounding English utterance (~20 words) for a person to read aloud that clearly states their informed consent in the current context. We recommend explicitly including a consent phrase and the model name, such as “I give my consent to use the &lt; MODEL &gt; voice cloning model with my voice”. We also recommend using an audio recording that cannot be uploaded, but that instead comes directly from a microphone, to make sure that the sentence isn’t part of an earlier recording that’s been manipulated. Pairing this with a novel (previously unsaid) sentence further helps to directly index the current consent context - supporting explicit, active, context-specific, informed consent. While this design reduces risks of reusing prior recordings, it’s not foolproof; a person could still generate a matching phrase using another TTS system. Future iterations could explore lightweight audio provenance checks, speaker-embedding similarity, or metadata from real-time capture to help verify that the consent audio originates from the intended speaker.</p>
+<p>The suitable-for-voice-cloning bit: Previous work on voice cloning has shown that the phrases provided by the speaker must have phonetic variety, covering diverse vowels and consonants; have a “neutral” or polite tone, without background noise and with the speaker in a comfortable position; and have a clear start and end (i.e., don’t trim the clip mid-word).</p>
+<p>To enact both of these aspects within the demo, we prompt a language model to create pairs of sentences: one expressing explicit consent, and another neutral sentence that adds phonetic diversity (covering different vowels, consonants, and tones). Each prompt utilizes a randomly-chosen everyday topic (like the weather, food, or music) to keep the sentences varied and comfortable to say, aiding in creating recordings that are clear, natural, and phonetically rich, while also containing an unambiguous statement of consent. This generation step is automated rather than pre-written so that each user receives a unique sentence pair, preventing reuse of the same text and ensuring that consent recordings are specific to the current session. In other words, the language model generates two fresh sentences per consent instance: one for explicit consent and one for phonetic variety. For example, the language model might generate: “I give my consent to use my voice for generating audio with the model EchoVoice. The weather is bright and calm this morning.”  This approach ensures that every sample used for cloning contains verifiable, explicit consent, while remaining suitable as technical input for high-quality voice synthesis. (Note: It's not required that the language model be a  "large" language model, which brings its own consent complications.).</p>
+<p>Once the speaker’s input matches the generated text, the voice cloning system can start, using the speaker’s consent audio as the input.</p>
+<p id="sec-mid-34386">Sources indicate that there are a few options for doing this, and we’d love to hear further ideas. For now, there’s:.</p>
+<p>You can copy the code to suit your own use.</p>
+<p>The code is modular so it can be sliced and diced in different ways to incorporate into your own projects. We’ll be working on making this more robust and secure over time, and we’re curious to hear your ideas on how to improve.</p>
+<p>According to recent reports, handled responsibly, this technology doesn’t have to haunt us. It can instead become a respectful collaboration between humans and machines — no ghosts in the machine, just good practice. 🎃.</p>
+<p>Not a big fan of trying to legislate every problem away but if malicious deep fakes are already illegal in most jurisdictions it seems that malicious voice cloning ought to be too.</p>
+<p>Industry observers note that I think the problem with enforcement will be offshore usage (i.e. if a person from country X is illegally using a voice clone of a person from country Y, how will enforcement work?), as has already been shown with widespread global IP misuse. The second matter is going to be detection. Who is going to check that every single AI voice was or was not cloned with consent? Anything that would truly prevent misuse with robust checks would probably stifle the ability to iterate and develop quickly and anything that didn't stifle the ability to iterate and develop quickly probably wouldn't truly prevent misuse. The classic regulatory Catch-22.</p>
+<p>It's problems like these that kind of necessitate a global response and whilst I'm usually not one to advocate for supranational law-making, it would be nice to see the so-called international community create a joint response or at least initiative on this topic because it's going to be a brutal wake-up call one day.</p>
+<p>Sources indicate that at this point even just outreach and education on this topic would be helpful. In my time working with random developers and others in the OSS community, I've come across several suspicious requests from people I hardly know asking me for seemingly random recordings of my voice. Someone who doesn't understand the potential for misuse might provide such a recording and inadvertently have their voice used in scam campaigns.</p>
+<p>In a recent development, I have tested it in local... its wonderful... We have to extend it to all the languages.</p>
+<p>Recent findings suggest that @ZennyKenny 's point about suspicious voice recording requests hits home. We're living in an era where 'Can you say something for my ringtone?' has become the new 'Can I borrow your SSN for a second?' The consent gate approach at least makes the ask more obvious: 'Hey, can you explicitly consent to me cloning your voice while reading this phonetically diverse sentence about coffee?' Much harder to slip that one past someone!</p>
+<p>Sources indicate that I saw your project and found it very interesting. I tried to contribute to it by adding a multilingual support and local sentence generation (with ollama and llama3:8b) and voice cloning using XTTS v2. I uploaded the code on GitHub, you can find it here: https://github.com/faridgnank02/voice-cloning.</p>
+<p>Please let me know how you feel about it.</p>
+<p id="sec-end-34386">Industry observers note that very interesting! But couldn't the consent by bypassed using another voice cloning model that doesn't require verification? E.g. use that to generate the verification audio.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/voice-consent-gate" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="open-tts-leaderboard-scalable-evaluation-for-multilingual-text-to-23141.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23141. Open TTS Leaderboard: Scalable Evaluation for Multilingual Text-to-Speech and Voice Cloning
+        </a>
+        
+        <a href="tech-report-how-consumer-ai-companions-handle-context-windows-per-34521.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34521. Tech Report: How Consumer AI Companions Handle Context Windows, Persistent Memory, and Voice Latency
+        </a>
+        
+        <a href="latest-update-acclaim-names-veeam-co-founder-ratmir-timashev-ceo--34346.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34346. Latest Update: Acclaim Names Veeam Co-Founder Ratmir Timashev CEO for U.S. Voice AI Expansion
+        </a>
+        
+        <a href="latest-update-what-businesses-should-know-about-consent-rules-whe-32160.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #32160. Latest Update: What businesses should know about consent rules when calling consumers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

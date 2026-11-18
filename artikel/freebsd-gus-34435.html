@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeBSD GUS</title>
+    <meta name="description" content="FreeBSD has a pretty neat safe memory reclamation scheme (something akin to RCU), that's also been adopted by XNU that hasn't really been well-documented o">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/freebsd-gus-34435.html">
+    <meta property="og:title" content="FreeBSD GUS">
+    <meta property="og:description" content="FreeBSD has a pretty neat safe memory reclamation scheme (something akin to RCU), that's also been adopted by XNU that hasn't really been well-documented o">
+    <meta property="og:image" content="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/freebsd-gus-34435.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "FreeBSD GUS", "image": ["https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk"], "datePublished": "2026-11-18T02:54:59", "dateModified": "2026-11-18T14:58:40.698509", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/freebsd-gus-34435.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>FreeBSD GUS</h1>
+        <div class="meta-line">🌐 Source: <strong>Gregoire</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 10 min read (2072 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>FreeBSD has a pretty neat safe memory reclamation scheme (something akin to RCU), that's also been adopted by XNU that hasn't really been well-documented outside of code comments, and I thought it would've been interesting to write about it.</li><li style='margin-bottom:6px;'>The problem of safe memory reclamation (SMR) shows up notably when working with lock-free data structures.</li><li style='margin-bottom:6px;'>Sources indicate that lock-free data structure code in unmanaged languages needs to carefully manage the liveness of the objects it manages, i.e it must guarantee that memory is freed if and only if no one is able to access it.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34435"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34435"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34435"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="FreeBSD GUS" loading="lazy" src="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34435">FreeBSD has a pretty neat safe memory reclamation scheme (something akin to RCU), that's also been adopted by XNU that hasn't really been well-documented outside of code comments, and I thought it would've been interesting to write about it.</p>
+<p>The problem of safe memory reclamation (SMR) shows up notably when working with lock-free data structures. Lock-free data structures are the bread and butter of modern scalability in operating systems, and they often allow much higher throughput than their finely grained locked counterparts, but they come with their own complications.</p>
+<p>Sources indicate that lock-free data structure code in unmanaged languages needs to carefully manage the liveness of the objects it manages, i.e it must guarantee that memory is freed if and only if no one is able to access it. This arises because there is no synchronization around the access of the data structure, so an object that is removed can still be visible concurrently by another CPU (who might have made a local copy).</p>
+<p>More broadly, SMR schemes can also be used for other things than memory reclamation, I like to think of them as providing barriers ensuring that all participants (read: CPUs or threads) have passed through a certain point.</p>
+<p>In a recent development, SMR schemes broadly fall in two families: Epoch-based reclamation (EBR) and Quiescent-state based reclamation (QSBR). You might have also heard of Hazard Pointers (HP), which are useful on their own but are seldom seen in operating systems (at least, that I know of!).</p>
+<p>Recent findings suggest that QSBR is notable because you might've heard of it called a different name by the Linux project, RCU (Read-Copy-Enhancement)! RCU's author, Paul McKenney, actually invented QSBR for the DYNIX operating system.</p>
+<p>Sources indicate that RCU has been described extensively, and I would recommend reading McKenney's excellent LWN Articles to learn more. The TL;DR is that there are three operations: rcu_read_lock, rcu_read_unlock and rcu_synchronize, the read operations are used to guard reads around potentially-freed memory (i.e to enter a read section) and the synchronize function waits until there is no CPU in a read section (this could be used to wait until memory is safe to be freed).</p>
+<p>The gist of the algorithm is that memory is known to be safe to free when all CPUs have gone through at least one quiescent point ever since the object was removed from its data structure (a grace period), and read section operations block those quiescent points from ever happening.</p>
+<p>It has been revealed that in practice, this can be implemented by having a quiescent point on context switches and inhibiting preemption during read operations. The core of the algorithm is actually pretty simple, and much of the complexity of the Linux code stems from making this scalable (Tree RCU) and handling other RCU flavors (e.g preemptible RCU).</p>
+<p>FreeBSD's safe memory reclamation scheme is called GUS and is part of the EBR family.</p>
+<p>Sources indicate that epoch-based reclamation was first described by Keir Fraser in his now-famous thesis titled Practical Lock-freedom (link). The way it works is that there is a global epoch which moves through 0, 1 and 2. When a thread enters a read section, it pins itself by reading the global epoch and copying it into its local slot.</p>
+<p>It has been revealed that when a writer retires an object, it goes into a "limbo" bag tagged with the current epoch (really, the epoch is used as an index into an array of three linked lists). The global epoch is advanced by polling all other threads and checking whether or not they have acknowledged the current epoch by reading their local slot; if it so happens that they have, then the global epoch is advanced and memory that was retired two epochs ago can now be freed.</p>
+<p>It is now time to reveal that GUS really means Global Unbounded Sequences, and it tackles on issue #1 by making epochs unbounded (hence the name) and issue #2 is somewhat mitigated by clever integration with the broader system.</p>
+<p>I am using sequence and epoch interchangeably here. Confusing, I know!</p>
+<p>The way GUS works is that there is a global, monotonically increasing write sequence, as well as a global read sequence, which represents the last minimum observed sequence across CPUs.</p>
+<p>Each CPU also keeps track of its own local sequence when it is pinned, akin to how EBR does things.</p>
+<p>The algorithm goes as follows, in pseudocode:.</p>
+<p>I will not go too much into details about the atomic operations here, if you're curious, they have been extensively described by people smarter than me! The basic idea, however, is that one needs to remember that all operations after enter must not be reordered w.r.t the publication of the epoch (the store to cur_seq).</p>
+<p>The basic idea is therefore that a sequence is essentially a timestamp[1], and that the read sequence is always playing catch-up with the write sequence, but never actually reaching it,
+(i.e there is always at least a separation of 1 between both). Obviously, in practice, there is a bit more to it especially w.r.t memory orderings, but the whole thing is still freakishingly simple
+and can be implemented in a few hundred lines, see the FreeBSD implementation here.</p>
+<p>The unbounded epochs solved the problem #1 that was presented earlier, but what about issue #2: how is polling amortized?</p>
+<p>Jeff Roberson, the author of GUS, also wrote the UMA (universal memory allocator) implementation, and both tie nicely together.</p>
+<p>To me, the way GUS is integrated with the allocator is really its distinguishing feature and what makes the whole thing work well.</p>
+<p>According to recent reports, the UMA allocator is essentially a modernized slab allocator, which was first implemented in Solaris and described in Jeff Bonwick's influential papers[2][3] in the early 2000s. To make things scale on SMP systems, it relies on per-CPU "buckets" (magazines in Bonwickspeak), which are essentially an array of N objects on which objects are popped from and pushed onto promptly. A certain amount of pre-allocated buckets are stored in a per-zone (kmem_cache in Bonwickspeak) "depot" from which empty buckets and full buckets are pulled. N, i.e the size of buckets, is dynamically resized
+according to measured contention on the depot lock; high contention needs to be reduced by increasing the bucket size,
+which provides amortization over the (potentially) slow and contended operation of going to the depot.</p>
+<p id="sec-mid-34435">In a recent development, GUS and the allocator join together by allowing the creation of "SMR zones" which are zones that do careful handling around the freeing of objects. Someone wanting to write a lock-free data structure could create a SMR zone for their object and do allocations and frees effectively transparently.</p>
+<p>On SMR zones, when the allocator notices a bucket is completely free (i.e full of objects), it advances the write sequence and stamps the bucket with it,
+then puts it back at the end of the depot free list.</p>
+<p>When the allocator then needs to get a free bucket from the depot, it gets the bucket from the head of the free list,
+and then polls other CPUs for the sequence that is stamped on that bucket. If the goal has already been reached, then the bucket can be reused, otherwise,
+the allocator will fallback on allocating another bucket itself.</p>
+<p>What's cool about this is that buckets naturally provide amortization for those SMR operations;
+polling is done on a batch of objects at once, and not on a per-object basis (which avoids starting one write sequence per object) and growing the buckets lengthens the time spent before touching the depot again, which gives the time for other buckets to age.</p>
+<p>Remember that the GUS algorithm relies on finding the lowest sequence across all CPUs, which means that oftentimes, if buckets are aged as expected,
+then a single poll operation could allow the reuse of many buckets at the same time, e.g if the depot free list contains buckets stamped with 100, 101, 102 and we notice via polling that the new minimum sequence is 103,
+then all of those buckets can be reused immediately, which avoids having to do future polls for those buckets.</p>
+<p>That is what makes everything click together and the polling not so bad anymore!</p>
+<p>According to recent reports, apple's XNU has also adopted a very similar scheme but with many goodies on top. For instance, they support preemptible read sections and a call_rcu-style API. The way it integrates with their zone allocator, however, is quite interesting and its implementation differs enough that I deem it worthy to be described here as well.</p>
+<p>XNU's zone allocator (zalloc) is, like UMA, also essentially a modernized slab allocator;
+I will not try to explain it in depth here because it is quite sophisticated (over 10k lines!), and I am keeping this in reserve for another post, but I will go over the details of how their buckets are reused.</p>
+<p>In a recent development, what's interesting is that zalloc does not rely on resizing buckets at all, instead, buckets are kept at a fixed size (something like 8 objects),
+and a per-CPU depot is installed on top of the per-zone depot, which they call the "recirculation depot" (this should make sense later why such a name was used). This per-CPU depot is then resized with an algorithm similar to the one used to resize buckets, providing the same kind of amortization.</p>
+<p>When a bucket becomes full and ready to be recycled, it is stamped with a deferred advance of the write sequence and put onto the per-CPU depot. When allocation is in need of a bucket, it polls the head of the per-CPU depot, and grabs it if it has expired. Otherwise, it does four things:.</p>
+<p>It has been revealed that since the head of the per-CPU depot hasn't expired yet, this means that all buckets that sit in the per-CPU depot are not yet ready. All buckets are therefore put at the end of the zone depot, as to let them age behind the buckets that were already in depot.</p>
+<p>The last bucket in the depot is the newest, its sequence is taken and the global write sequence is advanced to that one immediately,
+this allows to do one write sequence write for many buckets.</p>
+<p>A batch of buckets is then pulled from the head of the zone depot, these are the oldest buckets, so they are more likely to have expired. The batching here avoids having to constantly thrash on the depot and avoids contention on it.</p>
+<p>Finally, the oldest bucket we just freshly pulled from the zone depot is polled again, if it still hasn't expired, then
+there is no choice but to fallback on allocating latest memory.</p>
+<p>According to recent reports, what's all this jazz about deferring and committing? I like to think of a deferred advance as a "fake advance", it snapshots the current sequence but does not increment it,
+which avoids a global read-modify-write (RMW) operation on the global write sequence. The key idea is that there is no need to advance the sequence, i.e commit it, until we actually need to, and
+this also serves as an amortization feature because a sequence can be jumped to instantly, for instance, from 1 to 5 instead of individually advancing through 1, 2, 3, 4, and 5.</p>
+<p>The recirculation depot is hence called as such because it allows a given bucket to recirculate and age before given the chance to be reused again.</p>
+<p>According to recent reports, this SMR scheme, like anything else, has its own tradeoffs. It is relevant to compare it with RCU because both are analogous, compared to RCU:.</p>
+<p>In a recent development, the best resource, as always, is reading the actual code, which is thankfully very well commented (GUS link, UMA link). The XNU code is also heavily commented (SMR link, zalloc link).</p>
+<p>Additionally, these are useful resources:.</p>
+<p>I have also implemented GUS and an allocator inspired by XNU's and UMA in my own operating system, zag (SMR link, allocator link).</p>
+<p>According to recent reports, in fact, one could use a timestamp counter such as the TSC for this, as seen in Parallel Sequences. ↩.</p>
+<p>The Slab Allocator: An Object-Caching Kernel Memory Allocator ↩.</p>
+<p>Magazines and Vmem: Extending the Slab Allocator to Many CPUs and Arbitrary Resources ↩.</p>
+<p id="sec-end-34435">Industry observers note that this was actually measured by the FreeBSD people, see the talk I mentioned above. ↩.</p>
+<p style="margin-top: 25px;">
+<a href="https://gregoire.dev/writing/gus/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="cole-stock-lifts-lid-on-coventry-city-gig-gus-hamer-and-being-the-26334.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #26334. Cole Stock lifts lid on Coventry City gig, Gus Hamer and being the voice of Singers' Corner
+        </a>
+        
+        <a href="latest-update-designing-for-sovereign-ai-a-shared-foundation-from-35411.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35411. Latest Update: Designing for sovereign AI: A shared foundation from edge to cloud
+        </a>
+        
+        <a href="6-tools-for-building-email-automations-you-can-test-and-debug-35410.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35410. 6 Tools for Building Email Automations You Can Test and Debug
+        </a>
+        
+        <a href="best-ai-recruiting-agents-in-2026-6-compared-35409.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35409. Best AI Recruiting Agents in 2026: 6 Compared
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

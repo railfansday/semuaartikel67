@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Solid 2.0</title>
+    <meta name="description" content="Sources indicate that 5 years is a long time to work on anything. It took 5 years from my first commit of Solid to 1.0, and it's been another 5 since then.">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-solid-20-27758.html">
+    <meta property="og:title" content="Tech Report: Solid 2.0">
+    <meta property="og:description" content="Sources indicate that 5 years is a long time to work on anything. It took 5 years from my first commit of Solid to 1.0, and it's been another 5 since then.">
+    <meta property="og:image" content="https://www.solidjs.com/og/blog/solid-2-0-the-long-hold.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-solid-20-27758.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Solid 2.0", "image": ["https://www.solidjs.com/og/blog/solid-2-0-the-long-hold.png"], "datePublished": "2026-11-16T00:00:00Z", "dateModified": "2026-11-18T14:52:54.727047", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-solid-20-27758.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Solid 2.0</h1>
+        <div class="meta-line">🌐 Source: <strong>Solidjs</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 8 min read (1553 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that 5 years is a long time to work on anything.</li><li style='margin-bottom:6px;'>Solid 1.0 made a bet that fine-grained reactivity, signals, was the right foundation for building user interfaces.</li><li style='margin-bottom:6px;'>Sources indicate that more recently that conversation has shifted to AI, arguably an even larger change in how we build.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-27758"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-27758"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-27758"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Solid 2.0" loading="lazy" src="https://www.solidjs.com/og/blog/solid-2-0-the-long-hold.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-27758">Sources indicate that 5 years is a long time to work on anything. It took 5 years from my first commit of Solid to 1.0, and it's been another 5 since then.</p>
+<p>A lot changes in 5 years. Solid 1.0 made a bet that fine-grained reactivity, signals, was the right foundation for building user interfaces. Back then it was an unusual position. Today signals are everywhere. In Angular, in Svelte's runes, in Vue Vapor, and in a proposal before TC39 to put them in the language itself. It even pushed the conversation into React's compiler.</p>
+<p>Sources indicate that more recently that conversation has shifted to AI, arguably an even larger change in how we build. But Solid has always been about building the right things; the performant things. So for us the mission hasn't really changed all that much. The things that we identified as standout about our approach still stand out now. But instead of living in the shadow of more popular solutions Solid 2.0 carves out a path that others can follow. Deliberately this time.</p>
+<p>Today that solution reaches stable.</p>
+<p>If fine-grained reactivity's greatest strength is knowing the shape of our application, that knowledge shouldn't end with the process, or the machine the code is running on. Real applications are distributed. Real applications are born from data that lives on a server. The coordination of these pieces should be intentional and by design.</p>
+<p>This starts with bringing async into the graph. A computation can return a Promise or an async iterator, and everything downstream just understands:.</p>
+<p>This allows authoring by affordance while automating the handling of race conditions. The introduction of async doesn't cause an app refactor. Speculative state is automatically rolled back without manually written processes ensuring the server remains the authority on truth.</p>
+<p>SolidStart introduce the world to server functions in early 2022, and now they have found their way home to Solid's core, better than ever. Not only do they support highly capable RPC calls over Request/Response but persistent connections over Server Sent Events. And consuming it remains as simple as the code below.</p>
+<p>This is only the beginning of what can be done with Server Functions and we will be announcing some new features (like reactive Server Components) in coming weeks that leverage this capability.</p>
+<p>"But, we aren't writing the code anymore!" We hear you. A system built on constraints by construction ends up with less code to maintain and less edge cases. What used to be considered a DX shortcoming of reactive frameworks are now their greatest strength. And Solid 2.0 goes all in.</p>
+<p>Every framework now says it "works great with AI", and usually that means models have seen a lot of it. That's a statement about training data, not about the framework. The question that matters is what happens when the agent gets it wrong.</p>
+<p>In most frameworks a reactive mistake is silent. The app runs, it's just wrong, and the framework can't tell you, because it can't see it either. Solid can. A fine-grained graph knows exactly what was read, where, and what will upgrade. So Solid 2.0's development builds report mistakes as they happen, with a stable code, the location in your source, and the fix:.</p>
+<p>These handle everything from strict errors to helpful heuristics. Thanks to async in the graph we can detect waterfalls, poorly constructed effect loops, poorly scaling graph shapes like wide graph fanouts and fan-ins. Today along with linting rules we can provide the best in class direction for agents at compile and at runtime.</p>
+<p>In a recent development, this area is still evolving as we learn more about how agents build applications with Solid. The hard part, defining the primitives and semantics, is done. We've integrated with new dev tooling, and Chrome's Performance Tracks. And this capability goes beyond development as this observability powers things like our updated Sentry plugin so you can get the same information on your production builds.</p>
+<p id="sec-mid-27758">Sources indicate that we've also been looking at alternative syntax. Solid 2.0 adds experimental support for ReactiveScript and TSRX, both aiming to use compilation to further improve agent authoring.</p>
+<p>According to recent reports, I've always been a major believer that React's super power is its composability. That it allowed the ecosystem to build on its humble pieces. However, we've learned a lot since 2013. At that point composable state, async patterns, and server rendering lacked the primitives to build upon and the ecosystem came up with their own solutions. This was fine for a while but tied React's hands and fractured their ecosystem. Something only a framework as popular as React could survive.</p>
+<p>Recent findings suggest that newer frameworks have taken more on themselves and tend to only have one metaframework, or one router. We respect React's original positioning but have updated it for 2026. It isn't about restricting the solution but giving developers the primitives to build upon in the way React originally did. Server functions are example of this. Supporting any router, and cache solution for Single-Flight Mutation is another.</p>
+<p>It has been revealed that we retired our metaframework SolidStart, since every primitive needed to build a Solid Metaframework is now provided by the core or by framework agnostic Vite plugins. We believe that building an opinionated layer like a metaframework shouldn't have you needing to re-implement everything again. We've taken care of the hard parts so you can focus on what you care about. And these days a lot of that work is going to be taken on by your agent. This means less to maintain but no loss in capability.</p>
+<p>And this makes it easier for the ecosystem. Solid 2.0 only requires one Clerk or Sentry plugin since we provide the primitives for Request/Response (built on web standards) and the hooks for observability that work across any library. We've already seen success with TanStack Query and Router being as capable as anything we've built first party, bringing in Tanner's impeccable attention to detail for the APIs people love to use.</p>
+<p>It has been revealed that somehow even though Solid 2.0 brings more capability to Solid, we've collapsed the surface area at almost every point. There are less primitives needed to be learnt, less ceremony around handling async. createResource, batch, startTransition, on, produce, createComputed, createMutable are all gone, because we no longer need them.</p>
+<p>Sources indicate that the equivalent code written for Solid 2.0 is shorter and clearer on intent. It informs our ability observe the runtime, provide better compiler errors, and removes the need for as many escape hatches (like createEffect) that can get us in trouble. This is something we believe key in an age of AI. Safe by construction rather than by exhaustion. Reduce complexity by deriving(reducing) state rather than putting it in a reducer.</p>
+<p>When the framework carries the guarantees, all loading state, race conditions, and cancellation logic disappears and what you are left with is the UI.</p>
+<p>The first discussions of what a Solid 2.0 would look like started at the moment 1.0 was released. We saught feedback from the community on latest reactivity ideas. The real effort started in late 2024. We unveiled the road to 2.0 in February 2025. Over a year of experiments followed, rewriting the reactive core from scratch until the async model held up to everything we threw at it. The beta landed in March, and the Release Candidate in August, with the API frozen.</p>
+<p>It has been revealed that then 23 release candidates in 14 weeks. In that time alone, 971 pull requests were merged and 753 issues closed. We set one bar for stable. A full week with no regression in ordinary app code, and no crash or hang anywhere. It took a while to get there. By the end, the bug reports coming in were from people(agents) deliberately hunting edge cases in the deepest corners of the scheduler, and finding them.</p>
+<p>So many people have touched the project over the past 5 years, from working on the initial reactivity prototypes, to testing the latest RC builds on their production apps. I've tried to thank as many of you as I can and attached hundreds of handles in the RC announcement. There are so many. There are also the many great organizations that have sponsored our development over the years: Sentry, Netlify, Google Chrome, JetBrains, Anomaly, Cursor, Code Rabbit, Anthropic, Tembo and so many more.</p>
+<p>Sources indicate that but mostly I want to thank everyone who has believed in the project. We've accomplished great things and there is much more to come. That isn't possible without all of you. Personally, the past 2 and half years have been some of the most difficult of my life, but knowing what we are building that impacts so many people leaves me with a sense of fulfillment. Solid has always been bigger than its core team, and 2.0 is the clearest proof of that yet.</p>
+<p>It has been revealed that solid 2.0 is here. Let's build.</p>
+<p id="sec-end-27758">Sources indicate that the Long Hold refers to a diagnostic warning in Solid 2.0. It fires when a hold has been shown(isPending) but sufficient time has passed since the last input. Holds were at the heart of our async work for 2.0, and we acknowledge it took a while for this all to land.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.solidjs.com/blog/solid-2-0-the-long-hold/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-stock-futures-rise-as-nvidia-gains-on-an-earnings-bea-29870.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #29870. Tech Report: Stock futures rise as Nvidia gains on an earnings beat and a solid outlook
+        </a>
+        
+        <a href="tech-report-quantumscape-unveils-osprey-all-solid-state-cell-1000-29197.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #29197. Tech Report: QuantumScape unveils Osprey all-solid-state cell: 1,000 cycles at 1 atm
+        </a>
+        
+        <a href="tech-report-how-to-organize-css-with-cascade-layers-in-large-web--35402.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35402. Tech Report: How to Organize CSS with Cascade Layers in Large Web Projects
+        </a>
+        
+        <a href="tech-report-leveraging-pre-trained-language-model-checkpoints-for-35384.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35384. Tech Report: Leveraging Pre-trained Language Model Checkpoints for Encoder-Decoder Models
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

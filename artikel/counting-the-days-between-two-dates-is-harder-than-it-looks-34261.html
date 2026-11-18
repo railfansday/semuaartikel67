@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting the days between two dates is harder than it looks</title>
+    <meta name="description" content="Recent findings suggest that &quot;How many days between these two dates?&quot; sounds like a one-liner. Subtract, divide by 86,400,000, done. It works in most tests">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/counting-the-days-between-two-dates-is-harder-than-it-looks-34261.html">
+    <meta property="og:title" content="Counting the days between two dates is harder than it looks">
+    <meta property="og:description" content="Recent findings suggest that &quot;How many days between these two dates?&quot; sounds like a one-liner. Subtract, divide by 86,400,000, done. It works in most tests">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fnyqde7j1ef2p42dotgu9.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/counting-the-days-between-two-dates-is-harder-than-it-looks-34261.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Counting the days between two dates is harder than it looks", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fnyqde7j1ef2p42dotgu9.png"], "datePublished": "2026-11-18T14:47:20", "dateModified": "2026-11-18T14:58:28.573289", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/counting-the-days-between-two-dates-is-harder-than-it-looks-34261.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Counting the days between two dates is harder than it looks</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 4 min read (868 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that "How many days between these two dates?" sounds like a one-liner.</li><li style='margin-bottom:6px;'>Industry observers note that I have been building small date and money calculators, and the date ones have produced more "wait, that's wrong" moments than anything else.</li><li style='margin-bottom:6px;'>Sources indicate that fine in a quick test.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34261"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34261"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34261"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Counting the days between two dates is harder than it looks" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fnyqde7j1ef2p42dotgu9.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34261">Recent findings suggest that "How many days between these two dates?" sounds like a one-liner. Subtract, divide by 86,400,000, done. It works in most tests you will write, which is exactly why it ships with a bug.</p>
+<p>Industry observers note that I have been building small date and money calculators, and the date ones have produced more "wait, that's wrong" moments than anything else. Here are the four places it breaks, with outputs I ran myself (Node 24), and a version that does not.</p>
+<p>Sources indicate that fine in a quick test. Now run it in a machine set to US Eastern time:.</p>
+<p>March 1 to March 31 is 30 days. You got 29, and the same code on a server running UTC returns 30. The bug only shows up for customers in a time zone that changes its clocks.</p>
+<p>In 2026 the US moved its clocks forward on March 8. That day is 23 hours long, so a span that crosses it is one hour short of a whole number of days. 29.958333... is 29 days plus 23 hours, which is what you get when you count the real elapsed time and not the calendar.</p>
+<p>In a recent development, going the other way, clocks fell back on November 1, 2026. October 1 to November 5 comes out as 35.041666..., so Math.floor happens to give the right answer there and Math.round would too. That is the nasty part: the same function is right in autumn and wrong in spring.</p>
+<p>Math.round hides the problem for local-midnight dates, but I would not rely on it. If one of your inputs has a time of day, or comes from a different zone, rounding will eventually pick the wrong side.</p>
+<p>Say you read the dates from a form or an API as "2026-03-01". JavaScript treats a date-only ISO string as UTC midnight, but prints it in local time:.</p>
+<p>Same-looking input, a different day on screen. Drop the T00:00 and anything that calls getDate() on it returns the 28th in New York. This is behind a lot of "my birthday indicates up a day early" reports.</p>
+<p>Recent findings suggest that A calendar day count has nothing to do with clocks, so take clocks out of it. Pull out the year, month and day, build UTC timestamps from those with Date.UTC, and subtract. UTC has no daylight saving, so every day is exactly 86,400,000 ms.</p>
+<p id="sec-mid-34261">According to recent reports, I ran it with TZ set to America/New_York, UTC and Asia/Karachi. All three printed 30. If your inputs are date strings, split them yourself (const [y, m, d] = s.split("-").map(Number)) and call Date.UTC(y, m - 1, d) directly, so no local-time conversion ever happens.</p>
+<p>According to recent reports, the Math.round is only there to absorb floating point noise in the division. With UTC midnights the quotient is already a whole number.</p>
+<p>According to recent reports, february 28 to March 1 is 1 day in 2026 and 2 days in 2024. The UTC approach gets that right for free, because it uses the real calendar. The place people go wrong is when they write their own leap year check. The rule has three parts:.</p>
+<p>Forget the 100 and 400 rules and 1900 and 2100 come out wrong. Better still, do not write the check at all: let Date.UTC handle it, as above. A year from January 1, 2024 to January 1, 2025 is 366 days with that function, and 2026 to 2027 is 365.</p>
+<p>Total days is the easy question. The question people really ask is "how long is that in years, months and days?", and here there is no single right answer, only a convention.</p>
+<p>How long is January 31 to March 1, 2026? In total days it is 29. In months and days, you first have to decide what "one month after January 31" means, because February has no 31st. The usual convention (used by Python's dateutil, among others) clamps to the last day of the month: January 31 plus one month is February 28, and then one more day gets you to March 1. So the answer is 1 month, 1 day.</p>
+<p>According to recent reports, the textbook method of borrowing days from the previous month, the way you did subtraction at school, goes wrong here. I wrote it first and got [0, 1, -2], a negative number of days. Clamping fixes it:.</p>
+<p>I checked it against dateutil.relativedelta on seven date pairs, and the answers matched on all of them:.</p>
+<p>The leap day rows are the awkward ones. Whether someone born on February 29 turns a year older on February 28 or March 1 is a legal question and differs by country, so the "right" output depends on your product.</p>
+<p>If you want to compare your results against something while you test, there is a free date difference calculator you can use for that kind of sanity check. Newer runtimes are also adding the Temporal API, which is built to avoid most of the traps above. It was not available in the Node 24 build I tested on, so I stuck with plain Date.</p>
+<p id="sec-end-34261">Disclosure: I run MultiCalify, a free calculator site, and the link above points to it.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/multicalify/counting-the-days-between-two-dates-is-harder-than-it-looks-150n" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="retrying-a-send-is-harder-than-sending-35159.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35159. Retrying a send is harder than sending
+        </a>
+        
+        <a href="is-water-better-than-diet-soft-drinks-for-weight-loss-a-two-year--34120.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34120. Is Water Better Than Diet Soft Drinks For Weight Loss? A Two-Year Trial Put Them To The Test
+        </a>
+        
+        <a href="motion-north-2027-reveals-speakers-for-two-days-of-talks-workshop-33771.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #33771. Motion North 2027 reveals speakers for two days of talks, workshops and more
+        </a>
+        
+        <a href="near-perfect-historical-drama-is-one-of-the-top-series-on-prime-v-33381.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #33381. Near-Perfect Historical Drama is One of the Top Series on Prime Video Two Days After Its Release
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

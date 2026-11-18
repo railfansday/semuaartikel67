@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator</title>
+    <meta name="description" content="Sources indicate that it has become increasingly challenging to assess whether a model’s reported improvements reflect genuine advances or variations in ev">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/the-open-evaluation-standard-benchmarking-nvidia-nemotron-3-nano--34329.html">
+    <meta property="og:title" content="The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator">
+    <meta property="og:description" content="Sources indicate that it has become increasingly challenging to assess whether a model’s reported improvements reflect genuine advances or variations in ev">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/688cf7e6026af0cf8ac969dd/6RiFGxMzn9Fmgml83fK8G.jpeg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/the-open-evaluation-standard-benchmarking-nvidia-nemotron-3-nano--34329.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator", "image": ["https://cdn-uploads.huggingface.co/production/uploads/688cf7e6026af0cf8ac969dd/6RiFGxMzn9Fmgml83fK8G.jpeg"], "datePublished": "2025-12-17T13:22:18", "dateModified": "2026-11-18T14:58:32.676133", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/the-open-evaluation-standard-benchmarking-nvidia-nemotron-3-nano--34329.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Hardware & Chips</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 17 Dec 2025 &bull; ⏱️ 9 min read (1733 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that it has become increasingly challenging to assess whether a model’s
+reported improvements reflect genuine advances or variations in
+evaluation conditions, dataset composition, or training data that
+mirrors benchmark tasks.</li><li style='margin-bottom:6px;'>Sources indicate that NVIDIA released Nemotron 3 Nano 30B
+A3B
+with an explicitly open evaluation approach to make that distinction
+clear.</li><li style='margin-bottom:6px;'>According to recent reports, we believe that open innovation is the foundation of AI progress.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34329"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34329"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34329"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/688cf7e6026af0cf8ac969dd/6RiFGxMzn9Fmgml83fK8G.jpeg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34329">Sources indicate that it has become increasingly challenging to assess whether a model’s
+reported improvements reflect genuine advances or variations in
+evaluation conditions, dataset composition, or training data that
+mirrors benchmark tasks. The NVIDIA Nemotron approach to openness
+addresses this by publishing transparent and reproducible evaluation
+recipes that make results independently verifiable.</p>
+<p>Sources indicate that NVIDIA released Nemotron 3 Nano 30B
+A3B
+with an explicitly open evaluation approach to make that distinction
+clear. Alongside the model card, we are publishing the complete
+evaluation recipe used to generate the results, built with the
+NVIDIA NeMo
+Evaluator library, so
+anyone can rerun the evaluation pipeline, inspect the artifacts, and
+analyze the outcomes independently.</p>
+<p>According to recent reports, we believe that open innovation is the foundation of AI progress. This
+level of transparency matters because most model evaluations omit
+critical details. Configs, prompts, harness versions, runtime settings,
+and logs are often missing or underspecified, and even small differences
+in these parameters can materially change results. Without a complete
+recipe, it’s nearly impossible to tell whether a model is genuinely
+more intelligent or simply optimized for a benchmark.</p>
+<p>Industry observers note that this blog shows developers exactly how to reproduce the evaluation
+behind Nemotron 3 Nano 30B
+A3B
+using fully open tools, configurations, and artifacts. You’ll learn how
+the evaluation was run, why the methodology matters, and how to execute
+the same end-to-end workflow using the NeMo Evaluator library so you can
+verify results, compare models consistently, and build transparent
+evaluation pipelines of your own.</p>
+<p>Recent findings suggest that developers and researchers need evaluation workflows they can rely on,
+not one-off scripts that behave differently from model to model. NeMo
+Evaluator provides a unified way to define benchmarks, prompts,
+configuration, and runtime behavior once, then reuse that methodology
+across models and releases. This avoids the common scenario where the
+evaluation setup quietly changes between runs, making comparisons over
+time difficult or misleading.</p>
+<p>Recent findings suggest that model outputs can vary by inference backend and configuration, so
+evaluation tools should never be tied to a single inference solution. Locking an evaluation tool to one inference solution would limit its
+usefulness. NeMo Evaluator avoids this by separating the evaluation
+pipeline from the inference backend, allowing the same configuration to
+run against hosted endpoints, local deployments, or third-party
+providers. This separation enables meaningful comparisons even when you
+change infrastructure or inference engines.</p>
+<p>Recent findings suggest that many evaluation pipelines work once and then break down as the scope
+expands. NeMo Evaluator is designed to scale from quick,
+single-benchmark validation to full model card suites and repeated
+evaluations across multiple models. The launcher, artifact layout, and
+configuration model support ongoing workflows, not just isolated
+experiments, so teams can maintain consistent evaluation practices over
+time.</p>
+<p>In a recent development, transparent evaluation requires more than final scores. Each evaluation
+run produces structured results and logs by default, making it easy to
+inspect how scores were computed, understand score calculations, debug
+unexpected behavior, and conduct deeper analysis. Each component of the
+evaluation is captured and reproducible.</p>
+<p>Recent findings suggest that by releasing Nemotron 3 Nano 30B
+A3B
+with its full evaluation
+recipe,
+NVIDIA is providing a reference methodology that the community can run,
+inspect, and build upon. Using the same configuration and tools brings
+consistency to how benchmarks are selected, executed, and interpreted,
+enabling more reliable comparisons across models, providers, and
+releases.</p>
+<p>Open evaluation means publishing not just the final results, but the
+full methodology behind them, so benchmarks are run consistently, and
+results can be compared meaningfully over time. For Nemotron 3 Nano
+30B
+A3B,
+this includes open‑source tooling, transparent configurations, and
+reproducible artifacts that anyone can run end‑to‑end.</p>
+<p>Sources indicate that neMo
+Evaluator is an
+open-source library designed for robust, reproducible, and scalable
+evaluation of generative models. Instead of introducing yet another
+standalone benchmark runner, it acts as a unifying orchestration layer
+that brings multiple evaluation harnesses under a single, consistent
+interface.</p>
+<p>Under this architecture, NeMo Evaluator integrates and coordinates
+hundreds of benchmarks from many widely used evaluation harnesses,
+including NeMo
+Skills
+for Nemotron instruction-following, tool use, and agentic evaluations,
+as well as the LM Evaluation
+Harness
+for base model and pre-training benchmarks, and many more (full
+benchmark
+catalog). Each harness retains its native logic, datasets, and scoring semantics,
+while NeMo Evaluator standardizes how they are configured, executed, and
+logged.</p>
+<p>Recent findings suggest that this provides two practical advantages: teams can run diverse benchmark
+categories using a single configuration without rewriting custom
+evaluation scripts, and results from different harnesses are stored and
+inspected in a consistent, predictable way, even when the underlying
+tasks differ. The same orchestration framework used internally by
+NVIDIA’s Nemotron research and model‑evaluation teams is now available
+to the community, enabling developers to run heterogeneous,
+multi‑harness evaluations through a shared, auditable workflow.</p>
+<p>According to recent reports, we published the exact YAML configuration used for the Nemotron 3
+Nano 30B A3B model
+card
+evaluation with NeMo Evaluator. This includes:.</p>
+<p>Using the same configuration means running the same evaluation
+methodology.</p>
+<p>It has been revealed that each evaluation run produces structured, inspectable outputs, including
+per‑task results.json files, execution logs for debugging and
+auditability, and artifacts organized by task for easy comparison. This
+structure makes it possible to understand not only the final scores, but
+also how those scores were produced and to perform deeper analysis of
+model behavior.</p>
+<p>Reproducing Nemotron 3 Nano 30B A3B model
+card
+results follows a simple loop:.</p>
+<p>The same workflow applies to any model you evaluate using NeMo
+Evaluator. You can point the evaluation at a hosted endpoint or a local
+deployment, including common inference providers such as
+HuggingFace,
+build.nvidia.com,
+and
+OpenRouter. The key requirement is access to the model, either as weights you can
+serve or as an endpoint you can call. For this tutorial, we use the
+hosted endpoint on
+build.nvidia.com.</p>
+<p>This tutorial reproduces the evaluation results for NVIDIA Nemotron
+3 Nano 30B
+A3B
+using NeMo Evaluator. The step-by-step tutorial, including the
+published configs used for the model card
+evaluation,
+is available on GitHub. Although we have focused this tutorial on the
+Nemotron 3 Nano 30B A3B, we also published recipes for the base
+model
+evaluation.</p>
+<p>This walkthrough runs a comprehensive evaluation suite of the published configs used for the model card
+evaluation for NVIDIA Nemotron
+3 Nano 30B A3B using the following benchmarks:.</p>
+<p>In a recent development, for Model Card details, see the NVIDIA Nemotron
+3 Nano 30B A3B Model Card. For a deep dive into the architecture, datasets, and benchmarks, read the full Nemotron 3 Nano Technical Report.</p>
+<p id="sec-mid-34329">pip install nemo-evaluator-launcher.</p>
+<p>Optional but recommended for faster reruns:
+export HF_HOME="/path/to/your/huggingface/cache".</p>
+<p>The evaluation uses the NVIDIA API endpoint hosted on
+build.nvidia.com:.</p>
+<p>Evaluations can be run against common inference providers such as
+HuggingFace,
+build.nvidia.com,
+or
+OpenRouter,
+or anywhere that the model has an available endpoint.</p>
+<p>If you're hosting the model locally or using a
+different endpoint:.</p>
+<p>Preview the run without executing using --dry-run:.</p>
+<p>From the examples directory, run the evaluation using the YAML
+configuration provided:.</p>
+<p>Note that for quick testing, you can limit the number
+of samples by setting limit_samples:.</p>
+<p>You can run specific benchmarks using the -t
+flag (from the examples/nemotron
+directory):.</p>
+<p>Results are written to the defined output directory:.</p>
+<p>It has been revealed that when reproducing evaluations, you may observe small differences in final
+scores across runs. This variance reflects the probabilistic nature of
+LLMs rather than an glitch with the evaluation pipeline. Modern
+evaluation introduces several sources of non‑determinism: decoding
+settings, repeated trials, judge‑based scoring, parallel execution, and
+differences in serving infrastructure. All of which can lead to slight
+fluctuations.</p>
+<p>The purpose of open evaluation is not to force bit-wise identical
+outputs, but to deliver methodological consistency with clear
+provenance of evaluation results. To ensure your evaluation aligns with
+the reference standard, verify the following:.</p>
+<p>When these elements are consistent, your results represent a valid
+reproduction of the methodology, even if individual runs differ
+slightly. NeMo Evaluator simplifies this process, tying benchmark
+definitions, prompts, runtime settings, and inference configuration into
+a single auditable workflow to minimize inconsistencies.</p>
+<p>The evaluation recipe released alongside Nemotron 3 Nano represents a
+meaningful step toward a more transparent and reliable approach to
+open-model evaluation. We are moving away from evaluation as a
+collection of bespoke, "black box" scripts, and towards a defined system
+where benchmark selection, prompts, and execution semantics are encoded
+into a transparent workflow.</p>
+<p>Sources indicate that for developers and researchers, this transparency changes what it means
+to share results. A score is only as trustworthy as the methodology
+behind it and making that methodology public is what enables the
+community to verify claims, compare models fairly, and continue building
+on shared foundations. With open evaluation configurations, open
+artifacts, and open tooling, Nemotron 3 Nano demonstrates what that
+commitment to openness looks like in practice.</p>
+<p>It has been revealed that neMo Evaluator supports this shift by providing a consistent
+benchmarking methodology across models, releases, and inference
+environments. The objective isn’t identical numbers on every run; it’s
+confidence in an evaluation methodology that is explicit, inspectable,
+and repeatable. And for organizations that need automated or large‑scale
+evaluation pipelines, a separate microservice offering provides an
+enterprise‑ready NeMo Evaluator
+microservice built on
+the same evaluation principles.</p>
+<p>Use the published NeMo Evaluator
+    evaluation configuration for an end-to-end walkthrough of the evaluation recipe.</p>
+<p>Sources indicate that neMo
+Evaluator is fully open
+source, and community input is essential to shaping the future of open
+evaluation. If there’s a benchmark you’d like us to support or an
+improvement you want to propose, open an problem, or contribute directly
+on GitHub. Your contributions help strengthen the ecosystem and advance
+a shared, transparent standard for evaluating generative models.</p>
+<p>Sources indicate that wish I had the VRAM to run this model but my 3090 and an added 32GB shared memory doesn't cut it. I have a 4070 too but the container won't start up with dual GPU's unless you have identical cards. Thinking about just biting the bullet and buying an A100.</p>
+<p>The Open Evaluation Standard is a great step forward in providing consistent benchmarks across AI models, and it’s exciting to see how it compares NVIDIA’s Nemotron 3 Nano with the NeMo Evaluator. By standardizing how models are tested, it gives developers and researchers a clearer understanding of performance differences. It’ll be interesting to see how Nemotron 3 Nano stacks up in real-world applications! https://soch.weeb.pk.</p>
+<p id="sec-end-34329">Hamara yah sab kuchh kam karna chahie.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/nvidia/nemotron-3-nano-evaluation-recipe" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="welcome-the-nvidia-llama-nemotron-nano-vlm-to-hugging-face-hub-34540.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34540. Welcome the NVIDIA Llama Nemotron Nano VLM to Hugging Face Hub
+        </a>
+        
+        <a href="introducing-nvidia-nemotron-3-nano-omni-long-context-multimodal-i-23445.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23445. Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents
+        </a>
+        
+        <a href="introducing-the-open-ko-llm-leaderboard-leading-the-korean-llm-ev-34984.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34984. Introducing the Open Ko-LLM Leaderboard: Leading the Korean LLM Evaluation Ecosystem
+        </a>
+        
+        <a href="the-open-medical-llm-leaderboard-benchmarking-large-language-mode-34917.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34917. The Open Medical-LLM Leaderboard: Benchmarking Large Language Models in Healthcare
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

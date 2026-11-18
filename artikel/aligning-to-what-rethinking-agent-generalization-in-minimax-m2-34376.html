@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aligning to What? Rethinking Agent Generalization in MiniMax M2</title>
+    <meta name="description" content="It's been fantastic to see the community dive into our fresh MiniMax M2, with many highlighting its impressive skills in complex agentic tasks. This is par">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/aligning-to-what-rethinking-agent-generalization-in-minimax-m2-34376.html">
+    <meta property="og:title" content="Aligning to What? Rethinking Agent Generalization in MiniMax M2">
+    <meta property="og:description" content="It's been fantastic to see the community dive into our fresh MiniMax M2, with many highlighting its impressive skills in complex agentic tasks. This is par">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/MiniMax-AI/aligning-to-what.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/aligning-to-what-rethinking-agent-generalization-in-minimax-m2-34376.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Aligning to What? Rethinking Agent Generalization in MiniMax M2", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/MiniMax-AI/aligning-to-what.png"], "datePublished": "2025-10-30T10:03:45", "dateModified": "2026-11-18T14:58:36.211778", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/aligning-to-what-rethinking-agent-generalization-in-minimax-m2-34376.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Aligning to What? Rethinking Agent Generalization in MiniMax M2</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 30 Oct 2025 &bull; ⏱️ 3 min read (615 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It's been fantastic to see the community dive into our fresh MiniMax M2, with many highlighting its impressive skills in complex agentic tasks.</li><li style='margin-bottom:6px;'>If you've worked with LLM Agents, you've felt this pain: the same model can feel brilliant in one framework and useless in another.</li><li style='margin-bottom:6px;'>In a recent development, when we designed M2, we knew we had to tackle this problem head-on.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34376"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34376"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34376"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Aligning to What? Rethinking Agent Generalization in MiniMax M2" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/MiniMax-AI/aligning-to-what.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34376">It's been fantastic to see the community dive into our fresh MiniMax M2, with many highlighting its impressive skills in complex agentic tasks. This is particularly exciting for me, as my work was centered on the agent alignment part of its post-training. In this post, I'd like to share some of the key insights and lessons we learned during that process.</p>
+<p>If you've worked with LLM Agents, you've felt this pain: the same model can feel brilliant in one framework and useless in another. An agent might crush a tool-use leaderboard but fail spectacularly at a simple, real-world task. This gap between benchmark performance and practical usability is one of the biggest challenges in the field.</p>
+<p>In a recent development, when we designed M2, we knew we had to tackle this problem head-on. This led us to two core, and sometimes conflicting, objectives:.</p>
+<p>It has been revealed that so, who do we align with? The answer is both. We align with benchmarks to build skill, but we must ultimately align with the user by ensuring those skills work everywhere.</p>
+<p>While the methods for acing benchmarks are a deep topic for another day, I want to focus on that second, trickier objective: How do we train an agent for the wild?</p>
+<p>Early in the project, we hit a frustrating wall. Agent performance was inconsistent, and we struggled to diagnose why. After many discussions, especially with Professor @Junxian He and @Wenhu Chen, we arrived at our first major conclusion: Agents require Interleaved Thinking.</p>
+<p>This means that an agent's internal monologue—its "thinking"—can and should happen at any point during a task, not just once at the beginning like a standard reasoning model. This design is critical for two reasons:.</p>
+<p>This principle became a cornerstone of M2's effectiveness.</p>
+<p id="sec-mid-34376">Pro Tip for M2 Users: Because M2 relies on Interleaved Thinking, its context is its memory. For best performance, you must retain the full session history, including the thinking steps. We've noticed that much of the community feedback about performance gaps stems from accidentally discarding this vital context, which is a common practice with simpler reasoning models.</p>
+<p>Our initial theory was simple: tool scaling is agent generalization.</p>
+<p>Sources indicate that we started with a minimal set of tools (a Python interpreter, search engine, a browser) to build a baseline of tool-calling capability. The roadmap was clear: scale up the number and variety of tools, and the agent's ability to generalize to unseen tools would naturally follow.</p>
+<p>At first, this worked. Our benchmark scores climbed to respectable levels. But as we dug deeper, we realized we were solving the wrong problem. The model aced the tests, but if we changed the environment even slightly—like swapping to a different scaffolding framework—its performance would plummet. We were still far from our goal of a "practically useful" model.</p>
+<p>This led to our second, more profound realization: Agent generalization is not just about adapting to upcoming tools; it's about adapting to perturbations across the model's entire operational space.</p>
+<p>This sounds abstract, so let's break it down. Think about everything that can change in a single agent task:.</p>
+<p>It has been revealed that our work on M2 taught us an immense amount about agents, generalization, and data, but it has opened up more questions than it answered. Many of our ideas are still on the whiteboard. In the coming months, we will be exploring these frontiers even more deeply, and we can't wait to bring you the next generation of powerful and genuinely useful models.</p>
+<p id="sec-end-34376">According to recent reports, is this the reason I observe output degradation in subsequent rounds in Chatbox+M2 API? Questions answered correctly in the first turn sometimes become incorrect.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/MiniMax-AI/aligning-to-what" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="introducing-the-microsoft-copilot-harness-in-foundry-agent-servic-35211.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35211. Introducing the Microsoft Copilot harness in Foundry Agent Service
+        </a>
+        
+        <a href="what-makes-a-dialog-agent-useful-35197.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35197. What Makes a Dialog Agent Useful?
+        </a>
+        
+        <a href="tech-report-why-your-ai-agent-cant-read-the-web-and-how-to-build--35074.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35074. Tech Report: Why Your AI Agent Can't Read the Web (and How to Build a Fetch Layer That Can)
+        </a>
+        
+        <a href="seo-for-ai-crawlers-how-to-serve-ai-agent-friendly-pages-35023.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35023. SEO For AI Crawlers: How to serve AI Agent friendly pages?
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

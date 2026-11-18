@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java4Shell: RCE in OpenJDK when processing Base64</title>
+    <meta name="description" content="After we disclosed PHP2Shell, we realized many people didn't know what PHP was. So we decided to go after something a little more familiar: Java. Today, we">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/java4shell-rce-in-openjdk-when-processing-base64-27585.html">
+    <meta property="og:title" content="Java4Shell: RCE in OpenJDK when processing Base64">
+    <meta property="og:description" content="After we disclosed PHP2Shell, we realized many people didn't know what PHP was. So we decided to go after something a little more familiar: Java. Today, we">
+    <meta property="og:image" content="https://calif.io/java4shell/poster.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/java4shell-rce-in-openjdk-when-processing-base64-27585.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Java4Shell: RCE in OpenJDK when processing Base64", "image": ["https://calif.io/java4shell/poster.jpg"], "datePublished": "2026-11-17T21:11:28", "dateModified": "2026-11-18T14:52:46.968606", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/java4shell-rce-in-openjdk-when-processing-base64-27585.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Java4Shell: RCE in OpenJDK when processing Base64</h1>
+        <div class="meta-line">🌐 Source: <strong>Calif</strong> &bull; 📅 17 Nov 2026 &bull; ⏱️ 5 min read (960 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>After we disclosed PHP2Shell, we realized many people didn't know what PHP was.</li><li style='margin-bottom:6px;'>Today, we are disclosing Java4Shell (CVE-2026-114938), a memory-corruption vulnerability in OpenJDK's Base64 decoder.</li><li style='margin-bottom:6px;'>Industry observers note that while PHP is a high-level web technology, Java sits much deeper.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-27585"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-27585"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-27585"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Java4Shell: RCE in OpenJDK when processing Base64" loading="lazy" src="https://calif.io/java4shell/poster.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-27585">After we disclosed PHP2Shell, we realized many people didn't know what PHP was. So we decided to go after something a little more familiar: Java.</p>
+<p>Today, we are disclosing Java4Shell (CVE-2026-114938), a memory-corruption vulnerability in OpenJDK's Base64 decoder. OpenJDK is the most popular Java runtime. Under CVSS 4.0, this vulnerability scores 9.2 out of 10 (CRITICAL).</p>
+<p>Industry observers note that while PHP is a high-level web technology, Java sits much deeper. Java is the world's third most popular programming language, powering 90% of Fortune 500 companies. It is the beating heart of the modern economy. Banking, aviation, telecommunications, nearly every critical sector runs on Java, including national security systems.</p>
+<p>Base64 is a very common way of representing binary data as text. It is used in authentication protocols, to encode file uploads, and to deliver network messages. To decode Base64 faster, OpenJDK uses specialized x86-64 CPU instructions to process many bytes at once. We discovered a bug in that optimized machine-level code that lets malformed input overwrite neighboring memory. With careful exploitation, the corruption can reveal sensitive memory, as Heartbleed did, or lead to remote code execution. The corruption itself can be triggered by just 64 A characters followed by a single =:.</p>
+<p>In older OpenJDK 17, the trigger input is 128 of A followed by =.</p>
+<p>Our initial testing demonstrated remote code execution in the following widely deployed Java applications, in their default configs.</p>
+<p>Recent findings suggest that the lists are non-exhaustive. We also demonstrated RCE in sample applications built on widely used frameworks, including Apache Struts and Spring Boot. Ordinary features such as authentication and file uploads can expose the vulnerable Base64 decoder, extending the potential impact far beyond the products we tested. samczsun also shared a client-side exploit with us. A Java program that opens a TLS connection to a malicious server can be compromised, even if it exposes no service of its own.</p>
+<p>Here are a demo video of the exploits running:.</p>
+<p>In a recent development, memory corruption is the most common class of vulnerability on the Internet. But one of Java's biggest selling points is memory safety. Java manages memory on developers' behalf and checks memory accesses, protecting applications from the memory-corruption bugs common in other software.</p>
+<p>But like PHP and many other technologies, much of Java itself is written in low-level languages like C, C++, and, in this case, assembly, where memory corruption is still a part of life.</p>
+<p>It has been revealed that to speed up Base64 decoding, OpenJDK uses specialized AVX-512 VBMI instructions on supported x86-64 processors. The bug sits in the hand-rolled assembly code that handles the final few characters. For the 65-character input above, OpenJDK allocates a 50-byte result array. After decoding the first 64 characters, the routine mishandles the stray = and calculates a negative output length. That invalid length becomes a full 64-byte write, sending 62 bytes past the end of the array. Java eventually rejects the input, but by then neighboring objects may already be corrupted.</p>
+<p id="sec-mid-27585">As with PHP2Shell, Calif used AI to find and weaponize Java4Shell. AI brings the horsepower. Our researchers bring the context. The best hacker today is neither AI nor human. It is the centaur hacker, part human, part AI.</p>
+<p>Recent findings suggest that it took our own Quang Luong an hour to discover the vulnerability, and two more hours to develop the first working exploit. The total token cost was less than $200.</p>
+<p>One thing to note about this vulnerability is that there is no universal exploit. Depending on how Base64 is used and how the application works, different steps may be required for exploitation. Calif was able to accelerate the exploit development by spending initial effort building pipelines and strategies, then directing AI agents to use those for initial exploitation. Afterwards, most of the later chains are built almost autonomously with AI.</p>
+<p>Java is one of many shared software stacks we all rely on. Over the years, it has grown to serve many different needs. Each feature request may make sense on its own, but everyone inherits the added complexity. Those who need a feature get the benefit. Everyone else carries the code and its risks, even if they never use it.</p>
+<p>Java4Shell is a concrete example. The Base64 optimization helps applications that decode enormous amounts of data. But the code ships to everyone else too, including applications that gain little from it. On affected systems, an optimization few applications needed became a serious security risk.</p>
+<p>Sources indicate that features can be useful, and most bugs can be fixed. But why do we have to worry about code we never needed in the first place?</p>
+<p>If you don't need something, there is little reason to keep it running in your systems. Do you need that hand-rolled assembly Base64 decoder to process a few hundred bytes? Probably not.</p>
+<p>Earlier this year we found Squidbleed, an older cousin of Heartbleed, hiding in the Squid proxy since 1997. The bug was in Squid's FTP module. But who uses FTP anymore? It's a dead protocol and should be removed.</p>
+<p>Removing code is harder than it sounds. An apparently unused feature may have hidden dependencies. Someone has to understand what can be removed, make the change, and test what remains.</p>
+<p>This is where AI can help to make that work practical at a scale we could not previously afford.</p>
+<p>The same centaur hacker that discovered PHP2Shell and Java4Shell can comb a large codebase and flag dead code, bloated features, and needless optimizations. We call this vibe-uncoding: identify the parts a system actually needs, then remove everything else to reduce its attack surface.</p>
+<p id="sec-end-27585">With AI, everyone is asking, “What can we build?” But maybe the right question for security is, “What can we delete?”.</p>
+<p style="margin-top: 25px;">
+<a href="https://calif.io/java4shell/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="fetch-cuts-ml-processing-latency-by-50-using-amazon-sagemaker-hug-35078.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35078. Fetch Cuts ML Processing Latency by 50% Using Amazon SageMaker & Hugging Face
+        </a>
+        
+        <a href="industry-news-scaling-ai-based-data-processing-with-hugging-face--34758.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34758. Industry News: Scaling AI-based Data Processing with Hugging Face + Dask
+        </a>
+        
+        <a href="major-brazilian-signature-apps-enable-rce-amp-fraud-34313.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34313. Major Brazilian Signature Apps Enable RCE &amp; Fraud
+        </a>
+        
+        <a href="breaking-critical-java4shell-flaw-allows-rce-attacks-on-major-jav-34291.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34291. Breaking: Critical Java4Shell flaw allows RCE attacks on major Java applications
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

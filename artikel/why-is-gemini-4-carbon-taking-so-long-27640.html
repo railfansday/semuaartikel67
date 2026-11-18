@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why is Gemini 4 Carbon taking so long?</title>
+    <meta name="description" content="While benchmarking Gemini 4 Carbon on one of our private evals, we found something surprising: it spent close to an hour completing tasks that routinely to">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/why-is-gemini-4-carbon-taking-so-long-27640.html">
+    <meta property="og:title" content="Why is Gemini 4 Carbon taking so long?">
+    <meta property="og:description" content="While benchmarking Gemini 4 Carbon on one of our private evals, we found something surprising: it spent close to an hour completing tasks that routinely to">
+    <meta property="og:image" content="https://kernel.dev/blog/why-is-gemini-4-carbon-taking-so-long/og.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/why-is-gemini-4-carbon-taking-so-long-27640.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Why is Gemini 4 Carbon taking so long?", "image": ["https://kernel.dev/blog/why-is-gemini-4-carbon-taking-so-long/og.png"], "datePublished": "2026-11-18T04:14:04", "dateModified": "2026-11-18T14:52:49.691932", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/why-is-gemini-4-carbon-taking-so-long-27640.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Why is Gemini 4 Carbon taking so long?</h1>
+        <div class="meta-line">🌐 Source: <strong>Kernel</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 4 min read (735 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>While benchmarking Gemini 4 Carbon on one of our private evals, we found something surprising: it spent close to an hour completing tasks that routinely took Opus and Astra only a few minutes:.</li><li style='margin-bottom:6px;'>I don't really know how to properly emphasize this.</li><li style='margin-bottom:6px;'>i really love gemini 4 carbon but its too slow.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-27640"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-27640"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-27640"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Why is Gemini 4 Carbon taking so long?" loading="lazy" src="https://kernel.dev/blog/why-is-gemini-4-carbon-taking-so-long/og.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-27640">While benchmarking Gemini 4 Carbon on one of our private evals, we found something surprising: it spent close to an hour completing tasks that routinely took Opus and Astra only a few minutes:.</p>
+<p>Left is faster; lower is cheaper.</p>
+<p>Turns out we weren't alone in noticing this.</p>
+<p>I don't really know how to properly emphasize this. Gemini 4 Carbon is unacceptably slow in real world usage.</p>
+<p>Gemini 4 Carbon low: 22m21sOpus 5.5 high: 9m33s.</p>
+<p>i really love gemini 4 carbon but its too slow. im losing my mind waiting just to stay focused and learn simple things.</p>
+<p>dude why is carbon so fucking slow.</p>
+<p>carbon is nearly unusable because of how slow it is, but people are majorly sleeping on it.</p>
+<p>To find out why, we traced every step of Carbon's runs and quantified what contributes to the slowness.</p>
+<p>In each task, the agent gets a codebase from just before a bug was fixed, along with a report that describes the bug only by its symptoms. Its job is to diagnose the bug and fix it, without making any unrelated changes.</p>
+<p>Much of the task's difficulty comes from engineering judgment rather than raw intelligence: tracing the user's symptoms to the right code path, ruling out rival explanations, putting the fix in the right place, and knowing when to stop.</p>
+<p>It has been revealed that the first (and easiest) factor to separate out was inference speed: queueing at the provider, network latency, prompt processing and generation speed. Together, these set how long each step takes:.</p>
+<p>Slower inference accounts for part of the gap: 16–30% of Carbon’s extra time compared with Astra, and 45–49% compared with Opus. The rest comes from longer trajectories. Carbon simply does more work per task, as the step counts, tool calls and tokens below show:.</p>
+<p id="sec-mid-27640">GPT-6 Astra against Gemini 4 Carbon, mean per bug.</p>
+<p>Carbon takes about seven times as many steps as Astra, and eleven times as many actions such as reading a file or running a command. It writes seven times as much and, because every step re-sends a longer and longer conversation, it processes more than sixteen times as much input.</p>
+<p>Before looking inside the runs, we checked two simpler explanations.</p>
+<p>We labelled every step of the Astra and Carbon runs by what it was for, and then counted how many steps went to each kind of work:.</p>
+<p>Each model’s steps, grouped by what they were for.</p>
+<p>Half of Carbon’s steps went into work the ticket never asked for:.</p>
+<p>Sources indicate that minutes from the start of each run. GPT-6 Astra at max effort, Gemini 4 Carbon at high.</p>
+<p>According to recent reports, in this sample trial, both models identified the cause early, Astra within a minute and Carbon within about six. Astra had its fix written three minutes later; Carbon didn't write any code for another 25 minutes.</p>
+<p>Sources indicate that carbon might not have been sure it had the cause (a knowledge gap), or it might have known and kept going anyway (a general habit, learned from training that rewards right answers more than it penalises extra steps). To tell them apart, we re-ran one of the trials in a modified harness that automatically injects the same check-in every five turns: "do you already have enough to make the fix?".</p>
+<p>The same bug and scale as above. Gemini 4 Carbon at high, with the check-in injected every five turns (circles).</p>
+<p>Recent findings suggest that with check-ins, Carbon finished in 28 minutes instead of 37, and the wait between naming the cause and editing shrank from 25 minutes to about 10. This implies that the slowness seems to come from how Carbon behaves, not what it knows.</p>
+<p>Even within the steps the fix needed, we found some additional low-hanging fruit: Carbon got less done with each step, and it kept re-reading code it had already seen.</p>
+<p>Astra made more than two tool calls per step, often reading several files at once — Carbon, on the other hand, made about one, usually reading a single file. Carbon also re-read far more: 39% of the lines it read were ones it had already seen, against 7% for Astra. We estimate that these two "mechanical" inefficiencies account for roughly 25% of Carbon's excess runtime.</p>
+<p id="sec-end-27640">On difficult bug-fixing tasks, Carbon took close to an hour where Opus and Astra took minutes. We traced that gap to three sources:.</p>
+<p style="margin-top: 25px;">
+<a href="https://kernel.dev/blog/why-is-gemini-4-carbon-taking-so-long/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-hugging-face-reads-feb-2021-long-range-transformers-35377.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35377. Industry News: Hugging Face Reads, Feb. 2021 - Long-range Transformers
+        </a>
+        
+        <a href="synthetic-data-save-money-time-and-carbon-with-open-source-34988.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34988. Synthetic data: save money, time and carbon with open source
+        </a>
+        
+        <a href="people-are-taking-an-unapproved-weight-loss-drug-ai-found-somethi-34832.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34832. People are taking an unapproved weight-loss drug. AI found something surprising
+        </a>
+        
+        <a href="llama-31-405b-70b-8b-with-multilinguality-and-long-context-34813.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34813. Llama 3.1 - 405B, 70B & 8B with multilinguality and long context
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

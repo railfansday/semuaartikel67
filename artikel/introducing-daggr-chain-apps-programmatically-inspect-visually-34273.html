@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing Daggr: Chain apps programmatically, inspect visually</title>
+    <meta name="description" content="According to recent reports, TL;DR: Daggr is a newly introduced, open-source Python library for building AI workflows that connect Gradio apps, ML models, ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/introducing-daggr-chain-apps-programmatically-inspect-visually-34273.html">
+    <meta property="og:title" content="Introducing Daggr: Chain apps programmatically, inspect visually">
+    <meta property="og:description" content="According to recent reports, TL;DR: Daggr is a newly introduced, open-source Python library for building AI workflows that connect Gradio apps, ML models, ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/daggr/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/introducing-daggr-chain-apps-programmatically-inspect-visually-34273.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Introducing Daggr: Chain apps programmatically, inspect visually", "image": ["https://huggingface.co/blog/assets/daggr/thumbnail.png"], "datePublished": "2026-01-29T00:00:00", "dateModified": "2026-11-18T14:58:29.094464", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/introducing-daggr-chain-apps-programmatically-inspect-visually-34273.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Introducing Daggr: Chain apps programmatically, inspect visually</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 29 Jan 2026 &bull; ⏱️ 6 min read (1178 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, TL;DR: Daggr is a newly introduced, open-source Python library for building AI workflows that connect Gradio apps, ML models, and custom functions.</li><li style='margin-bottom:6px;'>Sources indicate that if you've built AI applications that combine multiple models or processing steps, you know the pain: chaining API calls, debugging pipelines, and losing track of intermediate results.</li><li style='margin-bottom:6px;'>Most developers either build fragile scripts that are hard to debug or turn to heavy orchestration platforms designed for production pipelines—not rapid experimentation.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34273"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34273"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34273"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Introducing Daggr: Chain apps programmatically, inspect visually" loading="lazy" src="https://huggingface.co/blog/assets/daggr/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34273">According to recent reports, TL;DR: Daggr is a newly introduced, open-source Python library for building AI workflows that connect Gradio apps, ML models, and custom functions. It automatically generates a visual canvas where you can inspect intermediate outputs, rerun individual steps, and manage state for complex pipelines, all in a few lines of Python code!</p>
+<p>Sources indicate that if you've built AI applications that combine multiple models or processing steps, you know the pain: chaining API calls, debugging pipelines, and losing track of intermediate results. When something goes wrong in step 5 of a 10-step workflow, you often have to re-run everything just to see what happened.</p>
+<p>Most developers either build fragile scripts that are hard to debug or turn to heavy orchestration platforms designed for production pipelines—not rapid experimentation.</p>
+<p>We've been working on Daggr to solve problems we kept running into when building AI demos and workflows:.</p>
+<p>According to recent reports, visualize your code flow: Unlike node-based GUI editors, where you drag and connect nodes visually, Daggr takes a code-first approach. You define workflows in Python, and a visual canvas is generated automatically. This means you get the best of both worlds: version-controllable code and visual inspection of intermediate outputs.</p>
+<p>Sources indicate that inspect and Rerun Any Step: The visual canvas isn't just for show. You can inspect the output of any node, modify inputs, and rerun individual steps without executing the entire pipeline. This is invaluable when you're debugging a 10-step workflow and only step 7 is misbehaving. You can even provide “backup nodes” – replacing one model or Space with another – to build resilient workflows.</p>
+<p>Industry observers note that first-Class Gradio Integration: Since Daggr is built by the Gradio team, it works seamlessly with Gradio Spaces. Point to any public (or private) Space and you can use it as a node in your workflow. No adapters, no wrappers—just reference the Space name and API endpoint.</p>
+<p>According to recent reports, state Persistence: Daggr automatically saves your workflow state, input values, cached results, canvas position—so you can pick up where you left off. Use "sheets" to maintain multiple workspaces within the same app.</p>
+<p>Install daggr with pip or uv, it just requires Python 3.10 or higher:.</p>
+<p>It has been revealed that here's a simple example that generates an image and removes its background. Check out this Space’s API reference from the bottom of the Space to see which inputs it takes and which outputs it yields. In this example, the Space returns both original image and the edited image, so we return only the edited image.</p>
+<p>That's it. Run this script and you get a visual canvas served on port 7860 introduced automatically, as well as a shareable live link, showing both nodes connected, with inputs you can modify and outputs you can inspect at each step.</p>
+<p>Daggr supports three types of nodes:.</p>
+<p>In a recent development, gradioNode calls a Gradio Space API endpoint or locally served Gradio app. Passing run_locally=True, Daggr automatically clones the Space, creates an isolated virtual environment, and releases the app. If local execution fails, it gracefully falls back to the remote API.</p>
+<p>FnNode — runs a custom Python function:.</p>
+<p>InferenceNode — calls a model via Hugging Face Inference Providers:.</p>
+<p>Generate a public URL with Gradio's tunneling:.</p>
+<p>For permanent hosting, deploy on Hugging Face Spaces using the Gradio SDK—just add daggr to your requirements.txt.</p>
+<p id="sec-mid-34273">We will now develop an app that takes in an image and generates a 3D asset. This demo can run on daggr 0.4.3. Here are the steps:.</p>
+<p>Recent findings suggest that spaces that are run locally might take models to CUDA (with to.(“cuda”)) or ZeroGPU within the application file. To disable this behavior to run the model on CPU (useful if you have a device with no NVIDIA GPU) duplicate the Space you want to use and clone it.</p>
+<p>The resulting graph looks like below.</p>
+<p>Industry observers note that let’s write the first step, which is the background remover. We will clone and run this Space locally. This Space runs on CPU, and takes ~13 seconds to run. You can swap with this app if you have an NVIDIA GPU.</p>
+<p>For the second step, we need to write a helper function to downscale the image and pass it to FnNode.</p>
+<p>We can now pass in the function to initialize the FnNode.</p>
+<p>We will now write the InferenceNode with the Flux model.</p>
+<p>When deploying apps with InferenceNode to Hugging Face Spaces, use a fine-grained Hugging Face access token with the option "Make calls to Inference Providers" only.</p>
+<p>Last node is 3D generation with querying the Trellis.2 Space on Hugging Face.</p>
+<p>Chaining them together and launching the app is as simple as follows.</p>
+<p>You can find the complete example running in this Space, to run locally you just need to take app.py, install requirements and login to Hugging Face Hub.</p>
+<p>Recent findings suggest that daggr is in beta and intentionally lightweight. APIs may change between versions, and while we persist workflow state locally, data loss is possible during updates. If you have feature requests or find bugs, please open an concern here. We’re looking forward to your feedback! Share your daggr workflows on socials with Gradio for a chance to be featured. Check out all the featured works here.</p>
+<p>In a recent development, what about conditional nodes? I mean the node where the next selected node is determined based on the current node's output.</p>
+<p>Industry observers note that this is a great point. We'd like to support them, but are thinking about the right API because we'd also like programmatic inspection / API usage, which requires some level of determinism. If you have any suggestions, please feel free to open an issue here: https://github.com/gradio-app/daggr.</p>
+<p>Industry observers note that do you have any challenges running Daggr in a jupyter notebook? It should be supported, but if run into issues, please feel free to open an problem here: https://github.com/gradio-app/daggr.</p>
+<p>According to recent reports, the visual inspection capability for chained apps is brilliant! Being able to see the flow programmatically while maintaining visibility is so important for debugging and understanding system behavior. Speaking of visualizing system flows, I've been using InfraSketch (https://www.infrasketch.net/) for documenting our application architectures—it generates diagrams from plain English descriptions and lets you refine through conversation. It's been a great complement to tools like Daggr for communicating the overall system design to the broader team.</p>
+<p>This is a solid approach to pipeline transparency. Working with Funnelsflex deployments, we often see a friction point between rigid UI funnel builders and the flexibility of raw Python scripts. Daggr seems to bridge that gap by keeping the logic in the code where it belongs, while providing the visual state persistence that’s usually missing in standard Gradio chains.</p>
+<p id="sec-end-34273">According to recent reports, the ability to rerun individual nodes without triggering the entire inference stack is a huge win for debugging complex flexible workflows. I’m curious to see how it handles state management when scaling to high-concurrency environments, but for rapid prototyping and 'inspectable' AI apps, it’s a very clean implementation.https://funnelsflex.io/.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/daggr" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-introducing-the-open-chain-of-thought-leaderboard-34912.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34912. Industry News: Introducing the Open Chain of Thought Leaderboard
+        </a>
+        
+        <a href="introducing-accelerate-35370.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35370. Introducing 🤗 Accelerate
+        </a>
+        
+        <a href="introducing-optimum-the-optimization-toolkit-for-transformers-at--35360.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35360. Introducing Optimum: The Optimization Toolkit for Transformers at Scale
+        </a>
+        
+        <a href="6-best-coding-apps-for-beginners-to-learn-programming-35348.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35348. 6 Best Coding Apps for Beginners to Learn Programming
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

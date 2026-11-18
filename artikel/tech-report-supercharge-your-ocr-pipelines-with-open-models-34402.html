@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Supercharge your OCR Pipelines with Open Models</title>
+    <meta name="description" content="We have added Chandra and OlmOCR-2 to this blog, as well as OlmOCR Scores of the models 🫡. TL;DR: The rise of powerful vision-language models has transform">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-supercharge-your-ocr-pipelines-with-open-models-34402.html">
+    <meta property="og:title" content="Tech Report: Supercharge your OCR Pipelines with Open Models">
+    <meta property="og:description" content="We have added Chandra and OlmOCR-2 to this blog, as well as OlmOCR Scores of the models 🫡. TL;DR: The rise of powerful vision-language models has transform">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/ocr-open-models/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-supercharge-your-ocr-pipelines-with-open-models-34402.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Supercharge your OCR Pipelines with Open Models", "image": ["https://huggingface.co/blog/assets/ocr-open-models/thumbnail.png"], "datePublished": "2025-10-21T00:00:00", "dateModified": "2026-11-18T14:58:38.236653", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-supercharge-your-ocr-pipelines-with-open-models-34402.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Supercharge your OCR Pipelines with Open Models</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 21 Oct 2025 &bull; ⏱️ 11 min read (2191 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>We have added Chandra and OlmOCR-2 to this blog, as well as OlmOCR Scores of the models 🫡.</li><li style='margin-bottom:6px;'>TL;DR: The rise of powerful vision-language models has transformed document AI.</li><li style='margin-bottom:6px;'>Sources indicate that by the end, you’ll know how to choose the right OCR model, start building with it, and gain deeper insights into document AI.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34402"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34402"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34402"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Supercharge your OCR Pipelines with Open Models" loading="lazy" src="https://huggingface.co/blog/assets/ocr-open-models/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34402">We have added Chandra and OlmOCR-2 to this blog, as well as OlmOCR Scores of the models 🫡.</p>
+<p>TL;DR: The rise of powerful vision-language models has transformed document AI. Each model comes with unique strengths, making it tricky to choose the right one. Open-weight models offer better cost efficiency and privacy. To help you get started with them, we’ve put together this guide.</p>
+<p>Sources indicate that by the end, you’ll know how to choose the right OCR model, start building with it, and gain deeper insights into document AI. Let’s go!</p>
+<p>Optical Character Recognition (OCR) is one of the earliest and longest running challenges in computer vision. Many of AI’s first practical applications focused on turning printed text into digital form.</p>
+<p>Sources indicate that with the surge of vision-language models (VLMs), OCR has advanced significantly. Recently, many OCR models have been developed by fine-tuning existing VLMs. But today’s capabilities extend far beyond OCR: you can retrieve documents by query or answer questions about them directly. Thanks to stronger vision features, these models can also handle low-quality scans, interpret complex elements like tables, charts, and images, and fuse text with visuals to answer open-ended questions across documents.</p>
+<p>Recent models transcribe texts into a machine-readable format.The input can include:.</p>
+<p>OCR models convert them into machine-readable text that comes in many different formats like HTML, Markdown and more.</p>
+<p>On top of text, some models can also recognize:.</p>
+<p>In a recent development, some models know where images are inside the document, extract their coordinates, and insert them appropriately between texts. Other models generate captions for images and insert them where they appear. This is especially useful if you are feeding the machine-readable output into an LLM. Example models are OlmOCR by AllenAI, or PaddleOCR-VL by PaddlePaddle.</p>
+<p>It has been revealed that models use different machine-readable output formats, such as DocTags, HTML or Markdown (explained in the next section Output Formats). The way a model handles tables and charts often depends on the output format they are using. Some models treat charts like images: they are kept as is. Other models convert charts into markdown tables or JSON, e.g., a bar chart can be converted as follows.</p>
+<p>Similarly for tables, cells are converted into a machine-readable format while retaining context from headings and columns.</p>
+<p>Different OCR models have different output formats. Briefly, here are the common output formats used by modern models.DocTag: DocTag is an XML-like format for documents that expresses location, text format, component-level information, and more. Below is an illustration of a paper parsed into DocTags. This format is employed by the open Docling models.</p>
+<p>The right model depends on how you proposal to use its outputs:.</p>
+<p>It has been revealed that documents can have complex structures, like multi-column text blocks and floating figures. Older OCR models handled these documents by detecting words and then the layout of pages manually in post-processing to have the text rendered in reading order, which is brittle. Modern OCR models, on the other hand, incorporate layout metadata to help preserve reading order and accuracy. This metadata is called “anchor”, it can come in bounding boxes. This process is also called as “grounding/anchoring” because it helps with reducing hallucination.</p>
+<p>OCR models can either take in images and an optional text prompt, this depends on the model architecture and the pre-training setup.Some OCR models support prompt-based task switching, e.g. granite-docling can parse an entire page with the prompt “Convert this page to Docling” while it can also take prompts like “Convert this formula to LaTeX” along with a page full of formulas.Other models, however, are trained only for parsing entire pages, and they are conditioned to do this through a system prompt.For instance, OlmOCR by AllenAI takes a long conditioning prompt. Like many others, OlmOCR is technically an OCR fine-tuned version of a VLM (Qwen2.5VL in this case), so you can prompt for other tasks, but its performance will not be on par with the OCR capabilities.</p>
+<p>Recent findings suggest that we’ve seen an incredible wave of fresh models this past year. Because so much work is happening in the open, these players build on and benefit from each other’s work. A great example is AllenAI’s release of OlmOCR, which not only released a model but also the dataset used to train it. With these, others can build upon them in new directions. The field is incredibly active, but it’s not always obvious which model to use.</p>
+<p>In a recent development, to make things a bit easier, we’re putting together a non-exhaustive comparison of some of our current favorite models. All of the models below are layout-aware and can parse tables, charts, and math equations. The full list of languages each model supports are detailed in their model cards, so make sure to check them if you’re interested. All models below have open-source license except for Chandra having OpenRAIL license and Nanonets license being unclear. The average scores are taken from model cards of Chandra, OlmOCR, evaluated on OlmOCR Benchmark, which is English-only. Many of the models in this collection have been fine-tuned from Qwen2.5-VL or Qwen3-VL, so we also provide Qwen3-VL model below as well.</p>
+<p>Industry observers note that while Qwen3-VL itself is a powerful and versatile vision-language model post-trained for document understanding and other tasks, it isn’t optimized for a single, universal OCR prompt. In contrast, the other models were fine-tuned using one or a few fixed prompts specifically designed for OCR tasks. So to use Qwen3-VL, we recommend experimenting with prompts.</p>
+<p>Here’s a small demo for you to try some of the latest models and compare their outputs.</p>
+<p>According to recent reports, there’s no single best model, as every problem has different needs. Should tables be rendered in Markdown or HTML? Which elements should we extract? How should we quantify text accuracy and error rates? 👀While there are many evaluation datasets and tools, many don’t answer these questions. So we suggest using the following benchmarks:.</p>
+<p>According to recent reports, when testing different OCR models, we've found that the performance across different document types, languages, etc., varies a lot. Your domain may not be well represented in existing benchmarks! To make effective use of this new generation of VLM-based OCR models we suggest aiming to collect a dataset of representative examples of your task domain and testing a few different models to compare their performance.</p>
+<p>Industry observers note that most OCR models are small, having between 3B and 7B parameters; you can even find models with fewer than 1B parameters, like PaddleOCR-VL. However, the cost also depends on the availability of optimized implementations for specialized inference frameworks. For example, OlmOCR-2 comes with vLLM and SGLang implementations, and the cost per million pages is 178 dollars (assuming on H100 for $2.69/hour). DeepSeek-OCR can process 200k+ pages per day on a single A100 with 40GB VRAM. With napkin math, we see that the cost per million pages is more or less similar to OlmOCR (although it depends on your A100 provider). If your use case remains unaffected, you can also opt for quantized versions of the models. The cost of running open-source models heavily depends on the hourly cost of the instance and the optimizations the model includes, but it’s guaranteed to be cheaper than many closed-source models out there on a larger scale.</p>
+<p>Sources indicate that while the past year has seen a surge in open OCR models, this hasn't been matched by as many open training and evaluation datasets. An exception is AllenAI's olmOCR-mix-0225, which has been used to train at least 72 models on the Hub – likely more, since not all models document their training data.</p>
+<p>Sources indicate that sharing more datasets could unlock even greater advances in open OCR models. There are several promising approaches for creating these datasets:.</p>
+<p id="sec-mid-34402">It has been revealed that it's worth noting that many such datasets exist but remain unused. Making them more readily available as 'training-ready' datasets carries a considerable potential for the open-source community.</p>
+<p>We have received many questions about getting started with OCR models, so here are a few ways you can use local inference tools and host remotely with Hugging Face.</p>
+<p>Sources indicate that most cutting-edge models come with vLLM support and transformers implementation. You can get more info about how to serve each from the models’ own cards. For convenience, we show how to infer locally using vLLM here. The code below can differ from model to model, but for most models it looks like the following.</p>
+<p>It has been revealed that and then you can query as follows using e.g. OpenAI client.</p>
+<p>Transformers provides standard model definitions for easy inference and fine-tuning. Models available in transformers come with either official transformers implementation (model definitions within the library) or “remote code” implementations. Latter is defined by the model owners to enable easy loading of models into transformers interface, so you don’t have to go through the model implementation. Below is an example loading Nanonets model using transformers implementation.</p>
+<p>In a recent development, MLXMLX is an open-source machine learning framework for Apple Silicon. MLX-VLM is built on top of MLX to serve vision language models easily. You can explore all the OCR models available in MLX format here. They also come in quantized versions.You can install MLX-VLM as follows.</p>
+<p>Inference Endpoints for Managed DeploymentYou can deploy OCR models compatible with vLLM or SGLang on Hugging Face Inference Endpoints, either from a model repository “Deploy” option or directly through Inference Endpoints interface. Inference Endpoints serve the cutting-edge models in a fully managed environment with GPU acceleration, auto-scaling, and monitoring without manually managing the infrastructure.</p>
+<p>Here is a simple method of deploying nanonets using vLLM as the inference engine.</p>
+<p>You can learn more about it here.</p>
+<p>Hugging Face Jobs for Batch Inference.</p>
+<p>For many OCR applications, you want to do efficient batch inference, i.e., running a model across thousands of images as cheaply and efficiently as possible. A good approach is to use vLLM's offline inference mode. As discussed above, many recent VLM-based OCR models are supported by vLLM, which efficiently batches images and generates OCR outputs at scale.</p>
+<p>To make this even easier, we've created uv-scripts/ocr, a collection of ready-to-run OCR scripts that work with Hugging Face Jobs. These scripts let you run OCR on any dataset without needing your own GPU. Simply point the script at your input dataset, and it will:.</p>
+<p>For example, to run OCR on 100 images:.</p>
+<p>The scripts handle all the vLLM configuration and batching automatically, making batch OCR accessible without infrastructure setup.</p>
+<p>If you are interested in document AI, not just OCR, here are some of our recommendations.</p>
+<p>Sources indicate that visual document retrieval is to retrieve the most relevant top-k documents when given a text query. If you have previously worked with retriever models, the difference is that you search directly on a stack of PDFs. Aside from using them standalone, you can also build multimodal RAG pipelines by combining them with a vision language model (find how to do so here). You can find all of them on Hugging Face Hub.</p>
+<p>According to recent reports, there are two types of visual document retrievers, single-vector and multi-vector models. Single-vector models are more memory efficient and less performant; meanwhile, multi-vector models are more memory hungry and more performant. Most of these models often come with vLLM and transformers integrations, so you can index documents using them and then do a search easily using a vector DB.</p>
+<p>Sources indicate that if you have a task at hand that only requires answering questions based on documents, you can use some of the vision language models that had document tasks in their training tasks. We’ve observed customers trying to convert documents into text and passing the output to LLMs, but if your document has a complex layout, and your converted document outputs charts and so on in HTML, or images are captioned incorrectly, the LLM will miss out. Instead, feed your document and query to one of the advanced vision language models like Qwen3-VL not to miss out on any context.</p>
+<p>In this blog post, we wanted to give you an overview of how to pick your OCR model, existing cutting-edge models and capabilities, and the tools to get you started with OCR.If you want to learn more about OCR and vision language models, we encourage you to read the resources below.</p>
+<p>According to recent reports, if only this came last week! I spent the last week learning about about and benchmarking all these plus extra models, and I wanna point out a correction. OlmOCR isn't an English language only model, in fact, it produced the best results across all VLM and none VLM frameworks on my Arabic language corpus.</p>
+<p>Great summary! Don't forget, DeepSeek OCR also supports grounding OCR!</p>
+<p>wondering why minerU 2.5 model was not included in the comparison? MinerU2.5-2509-1.2B.</p>
+<p>Super helpful breakdown. The layout-awareness and cost benefits really stand out. Thanks for sharing!</p>
+<p>Superb insights and breaking down the benchmarks. I will be using the datasets here to do the evaluations.</p>
+<p id="sec-end-34402">LightOnOCR-1B would fit nicely in this comparison as a strong performer that punches above its weight:.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ocr-open-models" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-leveraging-pre-trained-language-model-checkpoints-for-35384.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35384. Tech Report: Leveraging Pre-trained Language Model Checkpoints for Encoder-Decoder Models
+        </a>
+        
+        <a href="tech-report-introducing-doi-the-digital-object-identifier-to-data-35243.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35243. Tech Report: Introducing DOI: the Digital Object Identifier to Datasets and Models
+        </a>
+        
+        <a href="industry-news-making-a-web-app-generator-with-open-ml-models-35113.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35113. Industry News: Making a web app generator with open ML models
+        </a>
+        
+        <a href="the-hallucinations-leaderboard-an-open-effort-to-measure-hallucin-35004.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35004. The Hallucinations Leaderboard, an Open Effort to Measure Hallucinations in Large Language Models
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

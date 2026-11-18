@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Transformers v5: Simple model definitions powering the AI ecosystem</title>
+    <meta name="description" content="Transformers' version v4.0.0rc-1, the initial release candidate for version 4, was released on November 19th, 2020. Five years later, we now release v5.0.0">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-transformers-v5-simple-model-definitions-powering-the-ai-34349.html">
+    <meta property="og:title" content="Breaking: Transformers v5: Simple model definitions powering the AI ecosystem">
+    <meta property="og:description" content="Transformers' version v4.0.0rc-1, the initial release candidate for version 4, was released on November 19th, 2020. Five years later, we now release v5.0.0">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/transformers_v5/transformers-thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-transformers-v5-simple-model-definitions-powering-the-ai-34349.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Transformers v5: Simple model definitions powering the AI ecosystem", "image": ["https://huggingface.co/blog/assets/transformers_v5/transformers-thumbnail.png"], "datePublished": "2025-12-01T00:00:00", "dateModified": "2026-11-18T14:58:34.138527", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-transformers-v5-simple-model-definitions-powering-the-ai-34349.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Transformers v5: Simple model definitions powering the AI ecosystem</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 01 Dec 2025 &bull; ⏱️ 10 min read (2029 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Transformers' version v4.0.0rc-1, the initial release candidate for version 4, was released on November 19th, 2020.</li><li style='margin-bottom:6px;'>Today, as we launch v5, Transformers is installed more than 3 million times each day via pip - up from 20,000/day in v4 🤯.</li><li style='margin-bottom:6px;'>The ecosystem has expanded from 40 model architectures in v4 to over 400 today, and the community has contributed more than 750,000 model checkpoints on the Hub compatible with Transformers, up from roughly 1,000 at the time of v4.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-34349"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-34349"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-34349"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Transformers v5: Simple model definitions powering the AI ecosystem" loading="lazy" src="https://huggingface.co/blog/assets/transformers_v5/transformers-thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-34349">Transformers' version v4.0.0rc-1, the initial release candidate for version 4, was released on November 19th, 2020. Five years later, we now release v5.0.0rc-0.</p>
+<p>Today, as we launch v5, Transformers is installed more than 3 million times each day via pip - up from 20,000/day in v4 🤯. Altogether, it has now surpassed 1.2 billion installs!</p>
+<p>The ecosystem has expanded from 40 model architectures in v4 to over 400 today, and the community has contributed more than 750,000 model checkpoints on the Hub compatible with Transformers, up from roughly 1,000 at the time of v4.</p>
+<p>This growth is powered by the evolution of the field and the now mainstream access to AI. As a leading model-definition library in the ecosystem, we need to continuously evolve and adapt the library to continue being relevant. Reinvention is key for longevity in AI.</p>
+<p>We’re fortunate to collaborate with many libraries and apps built on transformers, in no specific order: llama.cpp, MLX, onnxruntime, Jan, LMStudio, vLLM, SGLang, Unsloth, LlamaFactory, dLLM, MaxText, TensorRT, Argmax, among many other friends.</p>
+<p>For v5, we wanted to work on several notable aspects: simplicity, training, inference, and production. We detail the work that went into them in this post.</p>
+<p>The first focus of the team was on simplicity. Working on transformers, we see the code as the product. We want our model integrations to be clean, so that the ecosystem may depend on our model definitions and understand what’s really happening under the hood, how models differ from each other, and the key features of each upcoming model. Simplicity results in wider standardization, generality, and wider support.</p>
+<p>Transformers is the backbone of hundreds of thousands of projects, Unsloth included. We build on Transformers to
+help people fine-tune and train models efficiently, whether that’s BERT, text-to-speech (TTS), or others; to run
+fast inference for reinforcement learning (RL) even when models aren’t yet supported in other libraries. We're
+excited for Transformers v5 and are super happy to be working with the Hugging Face team!</p>
+<p>Sources indicate that transformers, at the core, remains a model architecture toolkit. We aim to have all recent architectures and to be the “source of truth” for model definitions. We’ve been adding between 1 - 3 new models every week for 5 years, shown in the timeline below:.</p>
+<p>We’ve worked on improving that model-addition process.</p>
+<p>Over the past year, we’ve heavily pushed our modular design as a significant step forward. This allows for easier maintenance, faster integration, and better collaboration across the community.</p>
+<p>Sources indicate that we give a deeper overview in our Maintain the Unmaintainable blog post. For brevity, we aim to achieve a much easier model contribution process, as well as a lower maintenance burden. One metric we can highlight is that the number of lines of code to contribute (and review), drop significantly when modular is used:.</p>
+<p>While we respect the “One model, one file” philosophy, we continue introducing some abstractions making the management of common helpers simpler. The prime example of this is the introduction of the AttentionInterface, which offers a centralized abstraction for attention methods. The eager method will remain in the modeling file; others, such as FA1/2/3, FlexAttention, or SDPA, are moved to the interface.</p>
+<p>Over the past couple of years, the increasing amount of 0-day support for upcoming model architectures and
+standardization of attention handling has helped to simplify our support for post-training modern LLMs.</p>
+<p>Sources indicate that we’re building tooling to help us identify which existing model architecture a newly introduced model resembles. This feature uses machine learning to find code similarities between independent modeling files. Going further, we aim to automate the conversion process by opening a draft PR for the model to be integrated into our transformers format. This process reduces manual effort and ensures consistency.</p>
+<p>According to recent reports, we’ve significantly refactored the modeling and tokenization files. Modeling files have been greatly improved thanks to the modular approach mentioned above, on top of standardization across models. Standardization contributes to abstracting most of the tools that don’t make up a model, so that the modeling code only contains the relevant parts for a model’s forward/backward passes.</p>
+<p>Alongside this work, we’re simplifying the tokenization and processing files: going forward, we’ll only focus on the tokenizers backend, removing the concept of “Fast” and “Slow” tokenizers.</p>
+<p>Recent findings suggest that we'll use tokenizers as our main tokenization backend, just as we do for PyTorch-based models. We’ll offer alternatives for Sentencepiece or MistralCommon backed tokenizers, which will be non-default but will be supported. Image processors will now only exist with their fast variant, which depends on the torchvision backend.</p>
+<p>Finally, we’re sunsetting our Flax/TensorFlow support in favor of focusing on PyTorch as the sole backend; however,
+we're also working with partners in the Jax ecosystem to ensure we have compatibility between our models and this
+ecosystem.</p>
+<p>Industry observers note that with its v5 release, transformers is going all in on PyTorch. Transformers acts as a source of truth and
+foundation for modeling across the field; we've been working with the team to ensure good performance
+across the stack.</p>
+<p>We're excited to continue pushing for this in the future across training, inference, and deployment.</p>
+<p>-- Matt White, Executive Director, PyTorch Foundation. GM of AI, Linux Foundation.</p>
+<p>Training remains a massive focus of the team as we head into v5: whereas previously we would focus heavily on fine-tuning rather than pre-training/full-training at scale, we’ve recently done significant work to improve our support for the latter as well.</p>
+<p>Supporting pre-training meant reworking the initialization of our models, ensuring that they worked at scale with different parallelism paradigms, and shipping support for optimized kernels for both the forward and backward passes.</p>
+<p>Going forward, we’re excited to have extended compatibility with torchtitan, megatron, nanotron, as well as any other pre-training tool that is interested in collaborating with us.</p>
+<p>According to recent reports, we continue collaborating closely with all fine-tuning tools in the Python ecosystem. We aim to continue providing model implementations compatible with Unsloth, Axolotl, LlamaFactory, TRL and others in the PyTorch ecosystem; but we are also working with tools such as MaxText, in the JAX ecosystem, to have good interoperability between their frameworks and transformers.</p>
+<p>All fine-tuning and post-training tools can now rely on transformers for model definitions; further enabling Agentic use-cases through OpenEnv or the Prime Environment Hub.</p>
+<p id="sec-mid-34349">We’re putting a significant focus on inference for v5, with several paradigm changes: the introduction of specialized kernels, cleaner defaults, new APIs, support for optimized inference engines.</p>
+<p>In a recent development, similarly to training, we’ve been putting some effort in packaging kernels so that they’re automatically used in case your hardware and software permits it. If you haven’t heard of kernels before, we recommend taking a look at this doc.</p>
+<p>Alongside this effort, we ship two new APIs dedicated to inference:.</p>
+<p>It has been revealed that we see this as a major step forward for use-cases such as evaluation, where a great number of inference requests are done simultaneously. We don’t aim to do specialized optimizations like the dedicated inference engines (vLLM, SGLang, TensorRT LLM). Instead, we aim to be perfectly inter-compatible with these, as detailed in the next section.</p>
+<p>It has been revealed that the Transformers backend in vLLM has been very enabling to get more architectures, like BERT and other encoders, available to more consumers. We've been working with the Transformers team to ensure many models are available across modalities with the best performance possible. This is just the start of our collaboration: we're happy to see the Transformers team will have this as a focus going into version 5.</p>
+<p>-- Simon Mo, Harry Mellor at vLLM.</p>
+<p>Industry observers note that standardization is key to accelerating AI innovation. Transformers v5 empowers the SGLang team to spend less time on model reimplementation and more time on kernel optimization. We look forward to building a more efficient and unified AI ecosystem together!</p>
+<p>Industry observers note that recently, we've been working hand in hand with the most popular inference engines for them to use transformers as a backend. The value added is significant: as soon as a model is added to transformers, it becomes available in these inference engines, while taking advantage of the strengths each engine provides: inference optimizations, specialized kernels, dynamic batching, etc.</p>
+<p>Sources indicate that we've also been working very closely with ONNXRuntime, llama.cpp and MLX so that the implementations between transformers and these modeling libraries have great interoperability. For example, thanks to a significant community effort, it's now very easy to load GGUF files in transformers for further fine-tuning. Conversely, transformers models can be easily converted to GGUF files for use with llama.cpp.</p>
+<p>According to recent reports, the Transformers framework is the go-to place for reference AI model implementations. The framework plays a crucial role in enabling modern AI across the entire stack. The team and the community behind the project truly understand and embrace the spirit of the open-source development and collaboration.</p>
+<p>The same is true for MLX, where the transformers' safetensors files are directly compatible with MLX's models.</p>
+<p>It has been revealed that it’s hard to overstate the importance of Transformers (and datasets, tokenizers, etc) to the open-source and
+overall AI ecosystem. I can’t count the number of times I’ve personally used Transformers as a source-of-truth.</p>
+<p>In a recent development, finally, we’re pushing the boundaries of local inference and are working hand-in-hand with the executorch team to get the transformers models to be available on-device. We’re expanding the coverage to multimodal models (vision, audio) through optimum.</p>
+<p>Quantization is quickly emerging as the standard for state-of-the-art model development. Many SOTA models are now released in low-precision formats such as 8-bit and 4-bit (e.g., gpt-oss, Kimi-K2, Deepseek-r1), hardware is increasingly optimized for low-precision workloads, and the community is actively sharing high-quality quantized checkpoints. In v5, we're making quantization a central focus of Transformers support, ensuring full compatibility with all major features, and delivering a reliable framework for training and inference.</p>
+<p>We introduce a significant change to the way we load weights in our models; and with this, we move to quantization being a first-class citizen.</p>
+<p>Our collaboration with the Transformers team was highly productive, marked by their proactive code reviews,
+feedback, and technical expertise. Their support was crucial in integrating TorchAO, expanding quantization
+features, and improving documentation for broader adoption in the V5.</p>
+<p>In a recent development, we're excited that v5 has made quantization a first-class citizen. It provides the foundation for bitsandbytes to better support key features like TP and MoEs, and also makes it easier to integrate newly introduced quantization methods.</p>
+<p>-- Matthew Douglas &amp; Titus von Koeller, bitsandbytes.</p>
+<p>The overarching theme of this version 5 release is “interoperability”. All refactors, performance improvements, and standardization are aligned with this theme. v5 plays nicely and end-to-end with the growing ecosystem:  train a model with Unsloth/Axolotl/LlamaFactory/MaxText deploy it with vLLM/SGLang, and export it to llama.cpp/executorch/MLX to run locally!</p>
+<p>In a recent development, version 5 is undeniably an accomplishment of the past five years by a very large number of people in our community. We also see it as a promise, and as a beacon of the direction we want to go.</p>
+<p>Sources indicate that we took it as an opportunity to clean up the toolkit and isolate what mattered; we now have a clean slate on top of which to build. Thanks to the many changes from the community and team, improvements in performance, usability, and readability, will be simpler to ship.</p>
+<p>Now that v5.0.0's first RC is out there, we'll be eagerly awaiting your feedback. Please check our release notes for all the technical details, and we'll be awaiting your feedback in our GitHub issues!</p>
+<p>Awesome work, great job of maintaining the library, it sure isn't easy with all the different architectures and advancements.</p>
+<p>Congratulations for the launch !</p>
+<p>No, you don’t! It’s just pure control. Researchers would love to have direct PyTorch only access to the architecture, training, and inference code for different models without this Transformers blab.</p>
+<p>Is there a spaces link to the " Transformers Models Timeline" dashboard? I want to add it in my course.</p>
+<p id="sec-end-34349">will transformers serve be a good enough alternative to llama.cpp?</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/transformers-v5" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="the-transformers-library-standardizing-model-definitions-34574.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34574. The Transformers Library: standardizing model definitions
+        </a>
+        
+        <a href="how-to-train-a-newly-introduced-language-model-from-scratch-using-35392.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35392. How to train a newly introduced language model from scratch using Transformers and Tokenizers
+        </a>
+        
+        <a href="training-a-language-model-with-transformers-using-tensorflow-and--35155.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35155. Training a language model with 🤗 Transformers using TensorFlow and TPUs
+        </a>
+        
+        <a href="breaking-timm-transformers-use-any-timm-model-with-transformers-34685.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34685. Breaking: Timm ❤️ Transformers: Use any timm model with transformers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

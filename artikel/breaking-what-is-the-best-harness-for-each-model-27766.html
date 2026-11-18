@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: What is the best harness for each model?</title>
+    <meta name="description" content="We partnered with Baseten to build the largest-scale harness leaderboard using 83B tokens across 27,280 agent runs. We wanted to answer two questions: when">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-what-is-the-best-harness-for-each-model-27766.html">
+    <meta property="og:title" content="Breaking: What is the best harness for each model?">
+    <meta property="og:description" content="We partnered with Baseten to build the largest-scale harness leaderboard using 83B tokens across 27,280 agent runs. We wanted to answer two questions: when">
+    <meta property="og:image" content="https://runta.com/social/blog-introducing-frontierharness-eval-v1-1.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-what-is-the-best-harness-for-each-model-27766.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: What is the best harness for each model?", "image": ["https://runta.com/social/blog-introducing-frontierharness-eval-v1-1.png"], "datePublished": "2026-11-17T14:53:43", "dateModified": "2026-11-18T14:52:55.020091", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-what-is-the-best-harness-for-each-model-27766.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: What is the best harness for each model?</h1>
+        <div class="meta-line">🌐 Source: <strong>Runta</strong> &bull; 📅 17 Nov 2026 &bull; ⏱️ 10 min read (1987 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>We partnered with Baseten to build the largest-scale harness leaderboard using 83B tokens across 27,280 agent runs.</li><li style='margin-bottom:6px;'>Previously, our v1.0 FrontierHarness leaderboard ranked harnesses on a single model, Kimi K3.</li><li style='margin-bottom:6px;'>V1.1 expands the benchmark to 22 harnesses Ã 5 models Ã 62 tasks Ã 4 attempts, 76Ã the size of v1.0.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-27766"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-27766"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-27766"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: What is the best harness for each model?" loading="lazy" src="https://runta.com/social/blog-introducing-frontierharness-eval-v1-1.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-27766">We partnered with Baseten to build the largest-scale harness leaderboard using 83B tokens across 27,280 agent runs. We wanted to answer two questions: when you switch your model, should you consider switching the harness too? What is the best harness for each model?</p>
+<p>Previously, our v1.0 FrontierHarness leaderboard ranked harnesses on a single model, Kimi K3.</p>
+<p>V1.1 expands the benchmark to 22 harnesses Ã 5 models Ã 62 tasks Ã 4 attempts, 76Ã the size of v1.0.</p>
+<p>Through our experiments, we found that you should consider switching harnesses when switching models to maximize your experience.</p>
+<p>Industry observers note that each model had a different best-value (pass rate vs. cost) harness: Codex CLI with GLM-5.3, Pi with GLM-5.3 Flash, ZCode with DeepSeek V4.1 Flash 1017, Oh My Pi with Muse and Alma with Kimi-K3. Cost ranks moved far between models.</p>
+<p>By cost per task, the median harness moved 11 of 22 places, and Codex CLI went from 1st with GLM-5.3 to 16th with Kimi-K3.</p>
+<p>Sources indicate that figure 1. Cost per task and pass rate of each harness.</p>
+<p>Each point is one harness: further left is a lower average cost per task, and higher is a higher pass rate. The orange line joins the harnesses that no other harness beats in both cost and pass rate. Select a model to filter all figures of this post.</p>
+<p>This figure is interactive and needs JavaScript.</p>
+<p>Over all models, four harnesses are on the line: OpenCode v2 (lowest cost per task, $0.561), Pi, Codex CLI and ZCode (highest pass rate, 61.9%). The others cost up to 1.6 times as much and passed 50.6% to 60.2%.</p>
+<p>Each card names the best-value harness for one model: the lowest cost per pass, unless another harness costs at most 30% more per pass and passes at least 5 points more often. This rule picked ZCode over OpenCode v1 with DeepSeek (25% more cost, 7.7 more points) and Alma over Oh My Pi with Kimi-K3 (9% more cost, 6.5 more points).</p>
+<p>Industry observers note that V1.0 ran nine harnesses with one model. Their pass rates were within 17 points of each other, but the median cost per pass differed by 17 times. We thought that this came mostly from the pair of harness and model: a harness that is cheap with one model can be expensive with another.</p>
+<p>V1.1 runs each harness with five models.</p>
+<p>Harnesses. 18 harnesses. The four DeepSeek Harness profiles have different tool sets, and OpenCode ran at two versions. Each counts separately: 22 configurations. Table 2 in the appendix gives their versions.</p>
+<p>It has been revealed that models. Baseten served all five: GLM-5.3 (zai-org/GLM-5.3), GLM Flash (zai-org/GLM-5.3-Flash), DeepSeek (deepseek-ai/DeepSeek-V4.1-Flash-1017), Muse (meta-models/muse-spark-open) and Kimi-K3 (moonshotai/Kimi-K3).</p>
+<p>In a recent development, tasks. 62 terminal tasks. The time limits are those of the tasks, from 15 minutes to 8 hours.</p>
+<p>In a recent development, we ran the Harbor evaluation with each harnessâs default settings, because we think this is closest to how people use a harness every day. Each harness used the same version and settings with all models, at the maximum reasoning effort.</p>
+<p>According to recent reports, figure 2. How Harbor and Runta divide the work in each trial.</p>
+<p>Sources indicate that each trial gets a fresh Runta runtime, which is deleted at the end. Thus no trial can see the files of an earlier trial.</p>
+<p>This figure is interactive and needs JavaScript.</p>
+<p>A cell is one harness and model pair. We use the two cost metrics of our dashboard:.</p>
+<p>According to recent reports, we pick the best value by cost per pass because we want harnesses at the top left of a chart of pass rate against cost per task: a high pass rate at a low cost. Draw a line from the origin to the point of a harness. Its slope, pass rate Ã· cost, is the passes per dollar. Cost per pass is the inverse of this slope, so the lowest cost per pass has the steepest line.</p>
+<p>According to recent reports, audits of the trial logs flagged 216 trials for reward hacking, and 163 of them were online lookups. These trials score 0. Table 3 in the appendix gives the count for each harness and model.</p>
+<p>According to recent reports, figure 3. Cost and pass rate of each harness with each model.</p>
+<p>This figure is interactive and needs JavaScript.</p>
+<p>A deeper cell costs less than the others in its column. Codex CLI was the cheapest per pass with GLM-5.3, $0.803, but 12th with Muse and 10th with Kimi-K3. Over all models, it cost the least per pass, $0.937, and Antigravity CLI the most, $1.63.</p>
+<p>According to recent reports, we drew the 62 tasks again 4,000 times and chose the best-value harness each time. Codex CLI stayed first with GLM-5.3 in 99.6% of the draws. The other four winners are the most likely of several close harnesses: Oh My Pi with Muse (53%), ZCode with DeepSeek (47%), Pi with GLM Flash (42%) and Alma with Kimi-K3 (25%).</p>
+<p>The model sets the general level of the cost, because the list prices of the models differ by 20 times or more (Figure 9). We took the average cost per task of the 110 cells on a log scale, so that a doubling counts the same with each model. A two-way analysis of variance divides the spread of these costs into three parts:.</p>
+<p>So with the model fixed, 68% of the variation between harnesses (4.9 of 7.2 points) depends on the pair, or is noise.</p>
+<p>Figure 4. Lowest-cost and highest-cost harness for each model.</p>
+<p>Each row is a model, on a log scale of average cost per task. The ratio divides the highest cost by the lowest.</p>
+<p>This figure is interactive and needs JavaScript.</p>
+<p>Industry observers note that to test for chance, we shuffled the trials between the harnesses of each model 300 times and calculated the ratio again. âChanceâ is the median of these ratios, 1.2 to 1.8 times. All five real ratios are larger than every shuffle (p = 0.003), so the spread comes from the harnesses, not from the noise of reruns. The largest is with DeepSeek: Cline CLI cost 5.0 times as much as OpenCode v1, for 2.0 more points. With the other models, the cheapest harness per task was at most 0.4 points behind the most expensive one.</p>
+<p>Sources indicate that figure 5. Cost rank of each harness with each model (1 = lowest cost per task).</p>
+<p>In a recent development, each line is a harness, with the cheapest at the top. The five highlighted lines are the cheapest harnesses per task with GLM-5.3, GLM Flash, DeepSeek, Muse and Kimi-K3.</p>
+<p id="sec-mid-27766">This figure is interactive and needs JavaScript.</p>
+<p>Sources indicate that codex CLI was 1st with GLM-5.3 and 16th with Kimi-K3. DeepSeek Harness: Creator moved the most, from 1st with Muse to 21st with GLM Flash. OpenCode v1 was 1st with DeepSeek and 13th with Muse.</p>
+<p>Reruns do not explain these moves. We divided the attempts into two halves and ranked the harnesses by cost in each half. With the same model, the two rankings had a mean rank correlation of 0.71. With two different models, it was 0.26.</p>
+<p>Figure 6. Lowest and highest cost per pass for each model.</p>
+<p>In a recent development, this is Figure 4 for cost per pass. After each ratio is the rank correlation of the cost per task and the pass rate of the harnesses, from â0.39 to +0.22. A positive value means that the more expensive harnesses passed more often.</p>
+<p>This figure is interactive and needs JavaScript.</p>
+<p>The harness with the highest pass rate was 5th to 20th of 22 in cost per task. With four of the five models, the most expensive harness per pass passed less often than the cheapest one.</p>
+<p>In a recent development, no. We compared four factors with the cost per pass. Prompt size, tool count and cache hit rate are not the main cost factors. Steps are.</p>
+<p>Figure 7. Four factors of each harness and the cost per pass.</p>
+<p>This figure is interactive and needs JavaScript.</p>
+<p>In a recent development, over the 22 harnesses, the rank correlation of the steps per pass and the cost per pass was +0.51 (p = 0.015). For the other three factors, it was â0.03 to +0.02 (p â¥ 0.88). Within each model, tool calls tracked cost as well as steps. Table 4 below and Table 5 in the appendix give the values.</p>
+<p>In a recent development, each step sends the context again, so a trial used 2.0 to 4.8 million input tokens on average, by harness, and the largest first request, 21,365 tokens, is less than 1% of that. mini-SWE-agent has the smallest first request, 882 tokens, but took 38 steps per pass and was 17th of 22 in cost per pass.</p>
+<p>Table 4. Start tokens, tools, cache hit rate, steps and cost per pass of each harness.</p>
+<p>This figure is interactive and needs JavaScript.</p>
+<p>In a recent development, figure 8. Inference cost of each harness, by token type or by trial outcome.</p>
+<p>This figure is interactive and needs JavaScript.</p>
+<p>All costs are inference estimates at list prices. The pass rate of the harness on the model card has an outline.</p>
+<p>Over all trials, input from the cache was 42% of the cost, output 33% and other input 25%.</p>
+<p>Sources indicate that the cache makes repeated input much cheaper. Cached input costs 2% (DeepSeek) to 20% (GLM Flash) of the price of other input (Figure 9).</p>
+<p>Recent findings suggest that figure 9. List prices of each model (USD for one million tokens).</p>
+<p>This figure is interactive and needs JavaScript.</p>
+<p>Industry observers note that one pair reveals the effect of the cache. Cline CLI with DeepSeek (highest cost per task) read 86% of its input from the cache, and OpenCode v1 read 97%. It also sent twice as much input. Input that did not come from the cache was 57% of its cost.</p>
+<p>64.5% of the list-price cost of the scored runs went to trials that did not pass: 52.7% to failures and 11.8% to timeouts.</p>
+<p>According to recent reports, the traces of the five best-value harnesses show three common design choices. These are observations, not tests.</p>
+<p>In a recent development, one shell tool does most of the work. By harness, it got 61% to 93% of the tool calls. Piâs default prompt has four tools and sends file searches to bash:.</p>
+<p>Each request only adds to the one before it. The start of the context does not change, so the provider reads it from the cache: 91.1% to 94.0% of input in passed trials (Table 4). But 18 of the 22 harnesses read 91% or more, so this does not separate the five. Each step pays the full input price for only about 500 new tokens:.</p>
+<p>No subagents and almost no summaries. Each of the five used a subagent in at most 6 trials, too few to tell if subagents help. Of the five, only Codex CLI summarized, in 8 trials (the 11 Alma trials in Table 6 only drop old images and reminders). Codex CLI summarizes at 90% of the window (Table 6):.</p>
+<p>Recent findings suggest that the five also share a weakness. Failed runs end with a confident answer. About three in four failed trials ended with a final answer, not at the time limit: from 68% with Pi to 82% with Codex CLI. Few remarked that the work was incomplete:.</p>
+<p>Trials that did not pass took 60% (Codex CLI) to 69% (Alma) of the cost of each harness. A check before the harness stops could save part of it, but we did not test this.</p>
+<p>Table 2. Harness configurations.</p>
+<p>This figure is interactive and needs JavaScript.</p>
+<p>Table 3. Reward-hacked trials of each harness.</p>
+<p>This figure is interactive and needs JavaScript.</p>
+<p>Table 5. Prompt and tools of each harness.</p>
+<p id="sec-end-27766">This figure is interactive and needs JavaScript.</p>
+<p style="margin-top: 25px;">
+<a href="https://runta.com/blog/introducing-frontierharness-eval-v1-1/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="best-cash-advance-apps-what-each-advance-really-costs-33199.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #33199. Best Cash Advance Apps – What Each Advance Really Costs
+        </a>
+        
+        <a href="tech-report-ultimate-1-50-the-male-footballers-best-associated-wi-24589.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #24589. Tech Report: Ultimate 1-50: the male footballers best associated with each squad number
+        </a>
+        
+        <a href="best-ecommerce-platforms-for-developers-six-options-and-the-layer-23605.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23605. Best Ecommerce Platforms for Developers: Six Options and the Layers Each Leaves to You
+        </a>
+        
+        <a href="10-best-ai-app-builders-ive-used-in-2026-and-what-each-one-gets-w-23527.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #23527. 10 Best AI App Builders I've Used in 2026 (and What Each One Gets Wrong)
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
