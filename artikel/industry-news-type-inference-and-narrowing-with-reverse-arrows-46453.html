@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: Type inference and narrowing with reverse arrows</title>
+    <meta name="description" content="This article explains how Elixir implements type inference and type narrowing using reverse arrows: a small set of composable ideas, rather than special ca">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-type-inference-and-narrowing-with-reverse-arrows-46453.html">
+    <meta property="og:title" content="Industry News: Type inference and narrowing with reverse arrows">
+    <meta property="og:description" content="This article explains how Elixir implements type inference and type narrowing using reverse arrows: a small set of composable ideas, rather than special ca">
+    <meta property="og:image" content="https://elixir-lang.org/images/seo/og-image-elixir.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-type-inference-and-narrowing-with-reverse-arrows-46453.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: Type inference and narrowing with reverse arrows", "image": ["https://elixir-lang.org/images/seo/og-image-elixir.png"], "datePublished": "2026-11-10T00:00:00.000Z", "dateModified": "2026-11-19T15:08:21.356235", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-type-inference-and-narrowing-with-reverse-arrows-46453.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">📈 Bullish</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: Type inference and narrowing with reverse arrows</h1>
+        <div class="meta-line">🌐 Source: <strong>Elixir-lang</strong> &bull; 📅 10 Nov 2026 &bull; ⏱️ 9 min read (1828 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>This article explains how Elixir implements type inference and type narrowing
+using reverse arrows: a small set of composable ideas, rather than special cases
+hardcoded into the type checker.</li><li style='margin-bottom:6px;'>Industry observers note that thanks to this work, the upcoming Elixir v1.21 passes all tests in the
+If-T: Type Narrowing Benchmark by Guo et al..</li><li style='margin-bottom:6px;'>Industry observers note that the type system was made possible thanks to a partnership between CNRS
+and Remote.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46453"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46453"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46453"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: Type inference and narrowing with reverse arrows" loading="lazy" src="https://elixir-lang.org/images/seo/og-image-elixir.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46453">This article explains how Elixir implements type inference and type narrowing
+using reverse arrows: a small set of composable ideas, rather than special cases
+hardcoded into the type checker.</p>
+<p>Industry observers note that thanks to this work, the upcoming Elixir v1.21 passes all tests in the
+If-T: Type Narrowing Benchmark by Guo et al.. This means v1.21 can find even more sure bugs in existing Elixir programs and, once
+type signatures are introduced, narrowing will give us more precise types and fewer
+false positives.</p>
+<p>Industry observers note that the type system was made possible thanks to a partnership between CNRS
+and Remote. The development work is currently sponsored by
+Fresha, Supermethod and
+Dashbit.</p>
+<p>Elixir performs type inference by refining the dynamic type. This is quite different
+from how inference and gradual typing are implemented in most type systems, so let’s
+break it down.</p>
+<p>In many gradual languages, the dynamic type, often known as any, is a “black box” and
+can be used in any context. For example, imagine this Elixir function, where x starts
+with type dynamic(), as there is no type signature:.</p>
+<p>Sources indicate that the program above uses x both as a number (more precisely, as integer() or float()
+in x * 2) and as a bitstring in byte_size(x). In some gradual type systems, the type
+checker will accept the program above, even though it will crash at runtime, because
+the dynamic type can be used in any context.</p>
+<p>However, in Elixir, the dynamic() type can be refined, and the above will report the
+following typing violation:.</p>
+<p>Sources indicate that as you can see in the error message, Elixir infers that the type of x after
+x * 2 is a dynamic(float() or integer()). This means that x can be given
+to any function that accepts at least one of float() or integer(). However,
+because byte_size(x) expects a bitstring, we have a typing violation.</p>
+<p>It has been revealed that this is possible because dynamic() in Elixir actually means dynamic(term()),
+where term() is the top type. Then, as a variable is used throughout the code,
+its dynamic type is refined by intersecting its type with the arguments of the
+functions the code invokes. In other words, we go through the following steps:.</p>
+<p>x is given to x * 2. The left operand of * expects integer() or float(),
+which we then intersect with term(), and therefore x gains the type
+dynamic(integer() or float()).</p>
+<p>x is given to byte_size(x), which expects a bitstring. The intersection
+of integer() or float() with bitstring() is empty, which will lead to a
+typing violation.</p>
+<p>Now, let’s take a look at this program:.</p>
+<p>This time, we pass x to the remainder function, rem, which expects all of its
+inputs to be integers. This means that, at the end of this function, Elixir will
+correctly infer that x can only be an integer, because x was refined from
+dynamic(term()) to dynamic(integer() or float()) and then only to dynamic(integer()). The inferred type for using_x_as_integer is a function, commonly written using
+the arrow notation: dynamic(integer()) -&gt; :ok.</p>
+<p>In a recent development, the best part is that all dynamic types in Elixir are refined and therefore the type
+system is always doing its best to find bugs, even in the presence of dynamism. And the refinement itself is often quite precise, thanks to reverse arrows, which we
+will explore next.</p>
+<p>Industry observers note that an arrow is the type of a function: integer() -&gt; boolean() is an arrow that
+says “given an integer, this function returns a boolean”. The type on the left
+of the arrow is its domain (what it accepts) and the type on the right is its
+codomain (what it returns). Every function has arrows, whether they come from
+a type signature you wrote or are inferred by Elixir from the function’s clauses.</p>
+<p>It has been revealed that functions in Elixir can be typed with multiple arrows. As an exercise, let’s take
+a function that negates numbers, such as negate(1) returning -1:.</p>
+<p>You could give it this type signature with a single arrow:.</p>
+<p>Industry observers note that however, this type says that, if you give it an integer, it may return a
+float, which is never the case! This signature is too broad. Instead, we
+could give it this signature with two arrows:.</p>
+<p>According to recent reports, this precisely captures that, if you give it an integer, it returns an integer. If you give it a float, it returns a float. Multiple arrows are an excellent way
+to type functions with multiple clauses, which are common in both Erlang and Elixir.</p>
+<p>With this in mind, and remembering that rem only works on integers (its type is
+integer(), integer() -&gt; integer()), what do you believe is the inferred type of
+x in the function below?</p>
+<p>You may think x is dynamic(integer() or float()), because that’s the domain of
+negate. However, x will once again be inferred to be dynamic(integer()),
+because Elixir propagates types through the arrows in reverse: it starts from
+what the outermost call expects and walks inwards, from results to arguments,
+until it reaches the variables. Let’s break it down.</p>
+<p>We start type checking the function and we find rem(negate(x), 2). rem has
+a single arrow, integer(), integer() -&gt; integer(), so we know that negate(x)
+must return an integer() for this to type check.</p>
+<p>Recent findings suggest that now we type check negate(x). negate has two arrows: integer() -&gt; integer()
+and float() -&gt; float(). Since its result must be an integer, we can discard
+the float() -&gt; float() arrow, as it never returns an integer. The only remaining
+arrow is integer() -&gt; integer(), so the argument of negate must be integer().</p>
+<p id="sec-mid-46453">According to recent reports, now we type check x itself. x starts with the type dynamic(term()). We then
+intersect it with integer(), resulting in dynamic(integer()).</p>
+<p>Recent findings suggest that in other words, inference goes in two directions. Going forward, from arguments to
+results, arrows tell us what each call returns. Going in reverse, from results to
+arguments, arrows tell us what each argument must have been for the call to produce
+the expected result. As we give precise type signatures to our programs using multiple
+arrows, the type system will use these same arrows to infer precise types. As we will
+learn next, Elixir uses this technique to infer types from guards and to perform type
+narrowing (also known as occurrence typing).</p>
+<p>Now we have the foundation to understand how Elixir performs type inference of guards. Take this function clause:.</p>
+<p>Both x and y start with type dynamic(term()). We also know that a guard only
+succeeds if it returns true and we have the following type signatures (roughly):.</p>
+<p>Therefore, to infer the types of when is_integer(x) and is_bitstring(y),
+we start with true, which is the only result for which a guard succeeds,
+and propagate it through the arrows in reverse:.</p>
+<p>The only arrow of and that can return true is true, true -&gt; true,
+therefore we know that both operands must be true.</p>
+<p>The only arrow of is_integer that can return true is integer() -&gt; true,
+therefore we know x must be an integer.</p>
+<p>The only arrow of is_bitstring that can return true is bitstring() -&gt; true,
+therefore we know y must be a bitstring.</p>
+<p>If multiple arrows could return true, we would then simply union their domains.</p>
+<p>It has been revealed that it is worth emphasizing that this behaviour is not hardcoded to a handful of
+functions the type checker knows about. It works with any function, in any context. Let’s see more examples.</p>
+<p>Occurrence typing refines the type of variables and expressions based on
+the branch taken in a conditional or pattern match, so the same variable may
+have different types in different branches. For example:.</p>
+<p>According to recent reports, the mechanism we use to perform occurrence typing is quite similar to the one
+from the previous sections. Within the do-branch, we consider the scenarios
+where is_bitstring(x) will return true. Within the else-branch, we consider
+the ones where it returns false.</p>
+<p>It has been revealed that and since our foundation is built on reverse arrows, the narrowing also applies to
+patterns and case-expressions! For example:.</p>
+<p>Here, parse has no type signature, but Elixir infers its arrows from its clauses:
+integer() -&gt; {:ok, integer()} and bitstring() -&gt; :error. Within the first branch,
+we know parse(x) returned a tuple, and the only arrow that returns a tuple has
+integer() as its domain, so x must be an integer.</p>
+<p>Recent findings suggest that the If-T benchmark is a collection of
+test scenarios designed to evaluate both the precision and soundness of type narrowing. Elixir v1.20 already handled 12 out of the 13 tests, but it could not infer the
+proper types for this example:.</p>
+<p>To narrow x, we need to reverse the arrows of is_integer(x). In Elixir v1.20, we
+only did so for the expression given directly to if or case. Here, the expression
+given to if is the variable y. All v1.20 knew about y is that it was a boolean(). Inside the do-branch, y is true, but by then the connection between y and
+is_integer(x) had been lost at the assignment, so there were no arrows to reverse.</p>
+<p>This would be quite harmful once we add type signatures, because it means trivial
+refactoring techniques, such as extracting an expression into a variable, could lead
+to false positives.</p>
+<p>Elixir v1.21 solves this by keeping track of the expression each variable was assigned
+to. Now, when y is narrowed to true, we know y came from is_integer(x), so we
+continue propagating true in reverse through the arrows of is_integer, narrowing x
+to integer(). This works across any number of assignments:.</p>
+<p>Our implementation also performs the narrowing lazily, by cross-referencing the variables
+in the if and case expressions with the variables used in each clause, trying to find
+any assignment they share with each other. If the clauses above do not access z, y, or
+x, then no narrowing is performed.</p>
+<p>Finally, because Elixir defines reverse arrows for almost all operations, it can refine
+expressions which are not at the moment refined in TypeScript,
+such as data constructors:.</p>
+<p>In the program above, even though foo is set as the value of a map,
+refining the map still refines the original variable.</p>
+<p>Elixir’s approach to type inference and narrowing is built on a few ideas that
+compose well. Dynamic types are refined as variables are used, multiple arrows
+give precise types to functions, and propagating types through those arrows in
+reverse lets us infer and narrow types across conditionals, patterns, and assignments,
+all without hardcoding knowledge about specific functions.</p>
+<p id="sec-end-46453">It has been revealed that in Elixir v1.21, we use these techniques to find sure bugs in existing Elixir programs,
+without requiring any changes to your code. The same mechanisms will apply once type
+signatures are introduced: the more precise the signatures, the more precise the
+narrowing and the fewer false positives.</p>
+<p style="margin-top: 25px;">
+<a href="https://elixir-lang.org/blog/2026/11/10/inference-narrowing-reverse-arrows/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-smaller-apps-and-faster-gpu-inference-with-litert-i-46717.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46717. Industry News: Smaller apps and faster GPU inference with LiteRT in Google Play services
+        </a>
+        
+        <a href="industry-news-ai-makes-reverse-engineering-mainstream-software-am-46334.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46334. Industry News: AI Makes Reverse Engineering Mainstream Software &amp; Malware Far Easier
+        </a>
+        
+        <a href="industry-news-typography-spark-and-swift-typefaces-by-interval-ty-45569.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #45569. Industry News: Typography: Spark and Swift Typefaces by Interval Type
+        </a>
+        
+        <a href="industry-news-how-reverse-grip-lat-pulldowns-helped-jay-cutler-bu-45092.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #45092. Industry News: How Reverse-Grip Lat Pulldowns Helped Jay Cutler Build an Even Wider Back
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

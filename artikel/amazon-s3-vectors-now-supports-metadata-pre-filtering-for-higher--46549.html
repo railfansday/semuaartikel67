@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon S3 Vectors now supports metadata pre-filtering for higher recall on filtered searches</title>
+    <meta name="description" content="Today, we’re announcing metadata pre-filtering for Amazon S3 Vectors, which delivers higher recall on filtered queries by evaluating your metadata filter b">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/amazon-s3-vectors-now-supports-metadata-pre-filtering-for-higher--46549.html">
+    <meta property="og:title" content="Amazon S3 Vectors now supports metadata pre-filtering for higher recall on filtered searches">
+    <meta property="og:description" content="Today, we’re announcing metadata pre-filtering for Amazon S3 Vectors, which delivers higher recall on filtered queries by evaluating your metadata filter b">
+    <meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/09/30/News-Blog-Featured-Images-15-1-2.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/amazon-s3-vectors-now-supports-metadata-pre-filtering-for-higher--46549.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Amazon S3 Vectors now supports metadata pre-filtering for higher recall on filtered searches", "image": ["https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/09/30/News-Blog-Featured-Images-15-1-2.png"], "datePublished": "2026-09-30T13:03:34-07:00", "dateModified": "2026-11-19T15:08:28.475709", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/amazon-s3-vectors-now-supports-metadata-pre-filtering-for-higher--46549.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Amazon S3 Vectors now supports metadata pre-filtering for higher recall on filtered searches</h1>
+        <div class="meta-line">🌐 Source: <strong>Amazon</strong> &bull; 📅 30 Sep 2026 &bull; ⏱️ 5 min read (946 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Today, we’re announcing metadata pre-filtering for Amazon S3 Vectors, which delivers higher recall on filtered queries by evaluating your metadata filter before the similarity search.</li><li style='margin-bottom:6px;'>Recent findings suggest that most applications never search a whole index.</li><li style='margin-bottom:6px;'>Common use cases
+         Pre-filtering applies wherever results have to be both relevant and correctly scoped:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46549"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46549"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46549"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Amazon S3 Vectors now supports metadata pre-filtering for higher recall on filtered searches" loading="lazy" src="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/09/30/News-Blog-Featured-Images-15-1-2.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46549">Today, we’re announcing metadata pre-filtering for Amazon S3 Vectors, which delivers higher recall on filtered queries by evaluating your metadata filter before the similarity search. You can filter on attributes such as tenant, category, status, or time, and pre-filtering adds prefix matching with $startsWith for paths, URLs, and hierarchical keys. Each vector carries up to 2 KB of filterable metadata, and a single query supports up to 100 filter constraints. There is no additional cost, no re-ingestion, and no change to your queries.</p>
+<p>Recent findings suggest that most applications never search a whole index. They search the part of it that belongs to a particular user, account, or category, and they express that scope as a metadata filter. Semantic search, retrieval-augmented generation (RAG), and agentic applications all need the same thing from a filtered query: a similarity search that covers the vectors matching the filter, and returns the closest of them. With pre-filtering, a filtered query returns more of the relevant matches your index contains, giving you higher recall on filtered searches.</p>
+<p>Common use cases
+         Pre-filtering applies wherever results have to be both relevant and correctly scoped:.</p>
+<p>How pre-filtering works
+         Each vector in an S3 Vectors index can carry application-defined metadata, and a query can filter on those fields.</p>
+<p>Recent findings suggest that every vector index has an index mode. On an index whose index mode is ENHANCED, S3 Vectors resolves your filter first, then searches only the vectors that match. On an index whose index mode is CLASSIC, S3 Vectors performs the vector search and filter evaluation in tandem, validating each candidate vector against your filter as it searches. Existing indexes use CLASSIC until you update them.</p>
+<p>Consider a support knowledge base of 8 million tickets, where an agent searches one customer’s history for a recurring error. If that customer accounts for 400 of those tickets, resolving customer_id first means the similarity search runs across all 400 of them, so the agent sees that customer’s prior occurrences. Before the index was updated, the same query drew its candidates from the full 8 million, and the result set contained fewer of that customer’s matching tickets.</p>
+<p>On highly selective filters, pre-filtering returns up to 5x more of the matching vectors than the same query returned before on CLASSIC indexes.</p>
+<p>Getting started
+         Before you start, make sure your IAM policy grants permissions for the latest actions.</p>
+<p>The dimension must match the output size of your embedding model, and distance-metric should match how that model was trained (cosine is common for text embeddings). Second, write vectors with the PutVectors API, attaching up to 2 KB of filterable metadata to each vector:.</p>
+<p>Each vector carries the attributes your application filters on. In this example, tenant_id scopes results to a single customer, category narrows by document type, created_date records when the document was created, and active is a boolean flag. By default every metadata field is filterable, so you can query on any of them without declaring a schema up front.</p>
+<p>Third, run a filtered similarity query with the QueryVectors API. The filter uses a compact JSON syntax where a bare key-value pair is an equality match, and operators such as $and, $or, and $gt combine or refine conditions. Pass --return-metadata so the query returns each vector’s metadata:.</p>
+<p id="sec-mid-46549">The expected result is a single vector, doc-001, the only one matching all three filter conditions (tenant_id, category, and active):.</p>
+<p>S3 Vectors first narrows the search space to vectors matching all three filter conditions, then returns the 50 most similar vectors from that subset. Because the filter is applied before the search, those results are drawn from across all the vectors that match it.</p>
+<p>Prefix matching with $startsWith
+         Pre-filtering adds a prefix match operator for filtering on paths, URLs, and hierarchical keys. A document store that encodes case and folder structure into a document ID can scope a search to a subtree in one condition:.</p>
+<p>$startsWith joins the existing operators: equality, numeric range, set membership, existence checks, and boolean logic with $and and $or.</p>
+<p>Turning on pre-filtering for existing indexes
+         Call UpdateIndexMode on an existing index to turn on pre-filtering:.</p>
+<p>Industry observers note that pre-filtering takes effect in place. Your existing vectors are not re-ingested, your queries do not change, and the newly introduced filter operators are available immediately.</p>
+<p>Here is the difference on the same index and the same query. Before the update, a query scoped to one tenant returns two of the ten results requested:.</p>
+<p>After the upgrade, the same query returns a full result set drawn from across that tenant’s documents:.</p>
+<p>Rolling out across your indexes
+         Once you have validated pre-filtering on an index, set the default index mode on the vector bucket so that latest indexes use ENHANCED without a follow-up call:.</p>
+<p>To bring the rest of your existing indexes across, list them and check the index mode on each one, then call UpdateIndexMode on the ones still using CLASSIC:.</p>
+<p>Recent findings suggest that now available
+         Metadata pre-filtering is available at no additional cost in all commercial AWS Regions where Amazon S3 Vectors is available, and in the AWS China Regions. You pay standard S3 Vectors pricing for storage, PUT requests, and queries. For full pricing details, visit the Amazon S3 pricing page. For regional availability, visit Amazon S3 Vectors Regions and quotas.</p>
+<p id="sec-end-46549">Whether you’re scoping a RAG application to one tenant, scoping an agent’s searches to one user’s documents, or narrowing a catalog search to a licensing window, pre-filtering lets you apply those filters without trading away recall. To learn more and get started, visit the Amazon S3 Vectors documentation. Send feedback to AWS re:Post for S3 or through your usual AWS Support contacts.</p>
+<p style="margin-top: 25px;">
+<a href="https://aws.amazon.com/blogs/aws/amazon-s3-vectors-now-supports-metadata-pre-filtering-for-higher-recall-on-filtered-searches/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="amazon-aurora-postgresql-now-supports-direct-querying-of-apache-i-46552.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46552. Amazon Aurora PostgreSQL now supports direct querying of Apache Iceberg and Parquet data in your data lake
+        </a>
+        
+        <a href="best-black-friday-deals-now-live-google-pixel-samsung-amazon-echo-46638.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46638. Best Black Friday deals now live: Google Pixel, Samsung, Amazon Echo, TVs, Anker, much more
+        </a>
+        
+        <a href="breaking-amazon-s3-tables-now-support-all-apache-iceberg-v3-data--46545.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46545. Breaking: Amazon S3 Tables now support all Apache Iceberg V3 data types
+        </a>
+        
+        <a href="amazon-s3-is-now-available-on-the-vercel-marketplace-and-v0-by-ve-46516.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46516. Amazon S3 is now available on the Vercel Marketplace and v0 by Vercel
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

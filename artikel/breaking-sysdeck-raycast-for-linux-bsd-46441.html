@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: sysdeck: Raycast for Linux & BSD</title>
+    <meta name="description" content="Introducing sysdeck, a command center for Linux and the BSDs that searches applications, files, the clipboard history and more from a single hotkey, and th">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-sysdeck-raycast-for-linux-bsd-46441.html">
+    <meta property="og:title" content="Breaking: sysdeck: Raycast for Linux & BSD">
+    <meta property="og:description" content="Introducing sysdeck, a command center for Linux and the BSDs that searches applications, files, the clipboard history and more from a single hotkey, and th">
+    <meta property="og:image" content="https://xn--gckvb8fzb.com/sysdeck-raycast-for-linux-bsd/social.5dfb3ba88f20ccd5f364312ff7e3266e.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-sysdeck-raycast-for-linux-bsd-46441.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: sysdeck: Raycast for Linux & BSD", "image": ["https://xn--gckvb8fzb.com/sysdeck-raycast-for-linux-bsd/social.5dfb3ba88f20ccd5f364312ff7e3266e.jpg"], "datePublished": "2026-11-18T21:35:40+09:00", "dateModified": "2026-11-19T15:08:20.700408", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-sysdeck-raycast-for-linux-bsd-46441.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: sysdeck: Raycast for Linux & BSD</h1>
+        <div class="meta-line">🌐 Source: <strong>Xn--gckvb8fzb</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 6 min read (1151 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Introducing sysdeck, a command center for Linux and the BSDs that searches
+applications, files, the clipboard history and more from a single hotkey, and
+that only runs when you call it.</li><li style='margin-bottom:6px;'>Sources indicate that in August I started working on a tool that I had been missing on my Linux
+desktop for a while, and for which I tried to build a somewhat glued-together
+mess of scripts that used bemenu to do what I wanted.</li><li style='margin-bottom:6px;'>I wanted something that, just like bemenu (or rofi, or wofi, or whatnot), is
+basically a single popup that I can open with a hotkey and type a few letters
+into, to start an application, find a file, paste something I copied an hour
+ago, or convert a currency without opening a browser.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46441"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46441"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46441"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: sysdeck: Raycast for Linux &amp; BSD" loading="lazy" src="https://xn--gckvb8fzb.com/sysdeck-raycast-for-linux-bsd/social.5dfb3ba88f20ccd5f364312ff7e3266e.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46441">Introducing sysdeck, a command center for Linux and the BSDs that searches
+applications, files, the clipboard history and more from a single hotkey, and
+that only runs when you call it.</p>
+<p>Sources indicate that in August I started working on a tool that I had been missing on my Linux
+desktop for a while, and for which I tried to build a somewhat glued-together
+mess of scripts that used bemenu to do what I wanted. At some point, though, I
+figured that I should probably try to put together an actual program, ideally
+using Zig and GTK.</p>
+<p>I wanted something that, just like bemenu (or rofi, or wofi, or whatnot), is
+basically a single popup that I can open with a hotkey and type a few letters
+into, to start an application, find a file, paste something I copied an hour
+ago, or convert a currency without opening a browser. Now, roughly three months
+later, I think I got it to a point where it’s worth publishing for others to
+try. It’s called sysdeck, and the way I describe it is the less bloated
+Linux/BSD equivalent of Raycast on macOS.</p>
+<p>In a recent development, yes, I’m aware that the title of this post is clickbait. sysdeck isn’t a port
+of Raycast, it doesn’t share a single line of code with it, and it
+doesn’t come with an extension store or a subscription initiative. However, Raycast is
+the name that probably most people know for this kind of tool, and considering
+that you’re here, reading this post, the title has obviously done its job. :-).</p>
+<p>sysdeck is supposed to be bound to a hotkey in your window manager. When you
+press it, a window appears in which you start typing, and sysdeck shows the
+matching entries from your applications, command-line executables, files and
+folders, browser bookmarks, clipboard history, open Sway windows, SSH hosts,
+Podman containers, text snippets and emoji. Return acts on the selected entry
+depending on its kind, meaning it rolls out an application, opens a file or
+copies a clipboard entry back. Holding Alt opens a context menu with further
+actions. Selected images are shown along with their EXIF data, and executables
+show their manual page underneath the list unless the man extension is
+disabled in the config.</p>
+<p>Besides searching, sysdeck calculates and converts units and currencies using
+the library behind whats. It also controls running media players
+via MPRIS, connects and disconnects NetworkManager connections, and takes
+screenshots of a region, a window or the whole screen. If you configure a
+Gemini, OpenAI or Anthropic model, or any OpenAI-compatible server, it also
+sends your questions to an LLM. It keeps track of what you pick and ranks its
+suggestions accordingly so that it can show you recommendations that matter to
+your personal workflow.</p>
+<p>Oh, and its --dmenu mode can replace dmenu in scripts, just like a single
+line in your Sway configuration lets it replace clipboard managers like
+cliphist.</p>
+<p>Recent findings suggest that what I’d like sysdeck to become is the one command center from which you
+start, find and control everything on a Linux or BSD desktop, instead of the
+collection of single-purpose tools and scripts that a typical tiling window
+manager setup combines for launching programs, managing the clipboard, picking
+emoji and taking screenshots. As mentioned before, sysdeck is written in Zig,
+uses GTK4 for its interface and keeps its indexes in SQLite.</p>
+<p>Sources indicate that one part of sysdeck’s design that differs from most launchers that come with
+more advanced features is that sysdeck doesn’t use a background service. This
+is deliberate and will stay that way for the foreseeable future.</p>
+<p>Sources indicate that raycast, for example, keeps running at all times, so that its window can appear
+the instant you press the hotkey. sysdeck, however, only runs when you ask for
+it. Every press of the hotkey starts a upcoming process that indicates the window, does
+what you asked it to do, and exits as soon as you pick an entry, press Escape
+or switch to another window. Whenever one of its indexes is older than its
+configured maximum age, sysdeck rebuilds it on a separate thread while the
+window is open, and searches the existing index in the meantime.</p>
+<p id="sec-mid-46441">Similarly, even the clipboard history works without a resident process of its
+own, because wl-paste starts a lightweight sysdeck process (that only loads
+the absolute necessary bits) for every copy. That run records the entry and
+exits again, all within 10 to 20 milliseconds. The price for all of this is a
+start time of about a tenth of a second on my machine, most of which GTK spends
+on building and presenting the window. In my opinion this “slight delay” is a
+fair trade over running a background service, because RAM has become expensive
+and hard to get, as I’ve outlined in my posts on
+holding on to your hardware and on
+dealing with faulty RAM, and I believe that a program that is on
+screen for only a few seconds at a time shouldn’t occupy memory and eat up CPU
+cycles for the rest of the day.</p>
+<p>sysdeck uses the whats library for conversions and can convert
+various units and currencies.</p>
+<p>You can configure custom web search engines and search them directly from
+sysdeck, which then opens your default browser with the results.</p>
+<p>sysdeck can be configured to index specific folders and include their contents
+in its search results. In disk mode it reveals only those items.</p>
+<p>Using MPRIS, sysdeck can control media players and trigger actions such as
+play, pause, skip the current track or go back to the previous one, and it can
+also show what is presently playing from within its UI.</p>
+<p>sysdeck builds an index of all available emoji and lets you search for
+individual ones using keywords that make sense, so that you find the one you’re
+looking for, which it then copies to your clipboard on Return.</p>
+<p>Podman containers can be started and stopped from within sysdeck, which also
+shows the current status of each individual container.</p>
+<p>In a recent development, anyway, sysdeck is open source under the SEGV License and its primary
+repository is on tty.fail, with a mirror on GitHub that also
+publishes pre-built binaries. The latest release includes builds for
+Linux on x86_64, aarch64, riscv64, powerpc64le and s390x, each for
+glibc as well as musl, a musl build for loongarch64, and x86_64 builds for
+FreeBSD, NetBSD and OpenBSD. The binaries use your system’s GTK4 libraries. If
+you’d rather build sysdeck yourself, the README lists the packages you need on
+each of these systems.</p>
+<p>If a keyboard-driven command center that only runs when you need it sounds like
+your kind of thing, give sysdeck a try, and let me know how it works for you
+in the community channel.</p>
+<p>sysdeck on tty.fail
+sysdeck on GitHub.</p>
+<p id="sec-end-46441">Enjoyed this? Please consider supporting my work.</p>
+<p style="margin-top: 25px;">
+<a href="https://xn--gckvb8fzb.com/sysdeck-raycast-for-linux-bsd/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-attackers-crash-claudes-office-party-flaw-to-run-ma-46350.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46350. Industry News: Attackers Crash Claude's 'Office Party' Flaw to Run Malicious Code on Linux
+        </a>
+        
+        <a href="graduate-software-engineer-open-source-and-linux-canonical-ubuntu-43393.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #43393. Graduate Software Engineer, Open Source and Linux, Canonical Ubuntu at Canonical
+        </a>
+        
+        <a href="the-flipper-one-is-more-than-a-zero-20-its-a-399-linux-computer-w-39127.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #39127. The Flipper One is more than a Zero 2.0 – it’s a $399 Linux computer with a $13M Kickstarter
+        </a>
+        
+        <a href="breaking-get-your-vlm-running-in-3-simple-steps-on-intel-cpus-46959.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46959. Breaking: Get your VLM running in 3 simple steps on Intel CPUs
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

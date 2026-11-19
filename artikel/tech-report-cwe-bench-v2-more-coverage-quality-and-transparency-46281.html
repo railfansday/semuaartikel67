@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: CWE-bench v2: More coverage, quality, and transparency</title>
+    <meta name="description" content="CWE-bench is designed to test the limits of frontier cyber capabilities. In our continued pursuit to push the horizon at Collinear AI, CWE-bench v2 opens u">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-cwe-bench-v2-more-coverage-quality-and-transparency-46281.html">
+    <meta property="og:title" content="Tech Report: CWE-bench v2: More coverage, quality, and transparency">
+    <meta property="og:description" content="CWE-bench is designed to test the limits of frontier cyber capabilities. In our continued pursuit to push the horizon at Collinear AI, CWE-bench v2 opens u">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/cwe-bench/thumbnail.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-cwe-bench-v2-more-coverage-quality-and-transparency-46281.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: CWE-bench v2: More coverage, quality, and transparency", "image": ["https://huggingface.co/blog/assets/cwe-bench/thumbnail.jpg"], "datePublished": "2026-11-03T00:00:00", "dateModified": "2026-11-19T15:08:12.159212", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-cwe-bench-v2-more-coverage-quality-and-transparency-46281.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: CWE-bench v2: More coverage, quality, and transparency</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 03 Nov 2026 &bull; ⏱️ 3 min read (591 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>CWE-bench is designed to test the limits of frontier cyber capabilities.</li><li style='margin-bottom:6px;'>A defender has to anticipate the ways an attacker could get in, and get it right every single time.</li><li style='margin-bottom:6px;'>As part of our meticulous effort to keep improving quality, for every task we checked that the following questions were true:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46281"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46281"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46281"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: CWE-bench v2: More coverage, quality, and transparency" loading="lazy" src="https://huggingface.co/blog/assets/cwe-bench/thumbnail.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46281">CWE-bench is designed to test the limits of frontier cyber capabilities. In our continued pursuit to push the horizon at Collinear AI, CWE-bench v2 opens up a public set of 100 tasks that anyone can run and evaluate their models on. The setup is the same as before. An agent gets a checkout of a real open-source repository and a short instruction, with the goal of finding and fixing a security weakness without breaking existing functionality. Scoring is fully programmatic, so results are deterministic and anyone can reproduce them without extra cost. All our programmatic checks have been curated with the help of LLM judge panels that shape them towards the direction of hardness and fairness. We also maintain a held-out set, so that we can keep tracking progress on tasks no model has seen. To evaluate your model on the held-out set, contact cyber@collinear.ai.</p>
+<p>Our goal is to be exhaustive. A defender has to anticipate the ways an attacker could get in, and get it right every single time. These 100 tasks cover 91 different CWEs, spanning a wide range of vulnerability classes. A model that does well here has to understand the multiple weakness surfaces that a potential attacker can exploit. Recognising a familiar pattern is not enough.</p>
+<p>As part of our meticulous effort to keep improving quality, for every task we checked that the following questions were true:.</p>
+<p>Sources indicate that every task was also reviewed by hand. Open-sourcing the set is part of the same effort to improve quality. We welcome feedback on any task, and contributions to the public set.</p>
+<p>Results are tracked in two places on the Hub. The leaderboard on the CWE-bench dataset page covers open-weight models and updates on its own: labs and the community add a result by opening a PR on the model's repo with a results file (how). For the full comparison, including API-only models such as Gemini, Claude and GPT, see the CWE-bench leaderboard Space, where new models are added through a PR on the Space.</p>
+<p>Open-weight models, from the dataset page:.</p>
+<p id="sec-mid-46281">All evaluated models, including API-only ones:.</p>
+<p>Of the 11 models evaluated, Gemini 4 Argon leads with 67.8% pass@1 and 81.0% pass@4, just ahead of Claude Opus 5.5 (67.3% pass@1, 78.0% pass@4). 95 tasks are solved by at least one model, an indication that the tasks are indeed solvable. However, even the leader fails 19% of the set on every attempt, so the long tail is far from solved. The public set, the grader and the harness are open. Run your model, and tell us where it stands.</p>
+<p>On cost, DeepSeek V4.1 Flash (1017), Claude Opus 5.5 and Gemini 4 Argon form the Pareto frontier: DeepSeek reaches 57.0% pass@1 at $0.04 per rollout, Opus adds ten points at $1.83, and Gemini edges ahead at $3.92.</p>
+<p>According to recent reports, every task is a self-contained Harbor task (a Dockerized environment, an instruction, and a deterministic verifier), and the dataset ships a registry.json. Harbor can therefore run the whole benchmark straight from the Hugging Face repo, without cloning anything yourself:.</p>
+<p>According to recent reports, -k 4 runs 4 attempts per task, and the reported score is the mean reward over all 400 trials. The dataset is gated: accept its access conditions on the dataset page first. Harbor fetches the tasks with git, so also save your HF token to git's credential helper once:.</p>
+<p id="sec-end-46281">The tasks are also tagged rl-environment: the same environments and verifiers can provide rewards for training defensive agents, not just for evaluating them.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/cwe-bench" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-a-deep-dive-into-the-sigma-fp2s-image-quality-finds-a-45650.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #45650. Tech Report: A deep dive into the Sigma FP2’s image quality finds a camera that’s unconventional to its core
+        </a>
+        
+        <a href="tech-report-best-cheap-cell-phone-prepares-coverage-where-you-liv-44995.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #44995. Tech Report: Best Cheap Cell Phone Prepares – Coverage Where You Live, the Data You Need
+        </a>
+        
+        <a href="tech-report-lawmakers-push-for-medicare-coverage-of-alzheimers-sc-42106.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #42106. Tech Report: Lawmakers push for Medicare coverage of Alzheimer’s screening tests
+        </a>
+        
+        <a href="tech-report-our-best-offer-of-the-year-get-50-off-middlesbrough-f-38003.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #38003. Tech Report: Our best offer of the year: Get 50% off Middlesbrough FC Premium coverage this Black Friday
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

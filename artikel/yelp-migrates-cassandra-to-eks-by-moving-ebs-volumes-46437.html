@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yelp Migrates Cassandra to EKS by Moving EBS Volumes</title>
+    <meta name="description" content="InfoQ Homepage News Yelp Migrates Cassandra to EKS by Moving EBS Volumes. Nov 18, 2026 4 min read. In a recent development, yelp has moved its Cassandra fl">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/yelp-migrates-cassandra-to-eks-by-moving-ebs-volumes-46437.html">
+    <meta property="og:title" content="Yelp Migrates Cassandra to EKS by Moving EBS Volumes">
+    <meta property="og:description" content="InfoQ Homepage News Yelp Migrates Cassandra to EKS by Moving EBS Volumes. Nov 18, 2026 4 min read. In a recent development, yelp has moved its Cassandra fl">
+    <meta property="og:image" content="https://res.infoq.com/news/2026/11/kubernetes-cassandra-eks/en/headerimage/generatedHeaderImage-1794921404342.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/yelp-migrates-cassandra-to-eks-by-moving-ebs-volumes-46437.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Yelp Migrates Cassandra to EKS by Moving EBS Volumes", "image": ["https://res.infoq.com/news/2026/11/kubernetes-cassandra-eks/en/headerimage/generatedHeaderImage-1794921404342.jpg"], "datePublished": "2026-11-18T09:00:00", "dateModified": "2026-11-19T15:08:20.314165", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/yelp-migrates-cassandra-to-eks-by-moving-ebs-volumes-46437.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Yelp Migrates Cassandra to EKS by Moving EBS Volumes</h1>
+        <div class="meta-line">🌐 Source: <strong>Infoq</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 5 min read (1007 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>InfoQ Homepage
+News
+Yelp Migrates Cassandra to EKS by Moving EBS Volumes.</li><li style='margin-bottom:6px;'>Nov 18, 2026
+								
+								
+								
+									
+									4
+									min read.</li><li style='margin-bottom:6px;'>In a recent development, yelp has moved its Cassandra fleet from legacy self-managed Kubernetes clusters to Amazon EKS by re-pointing existing EBS volumes at newly introduced pods, rather than streaming data between nodes.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46437"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46437"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46437"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Yelp Migrates Cassandra to EKS by Moving EBS Volumes" loading="lazy" src="https://res.infoq.com/news/2026/11/kubernetes-cassandra-eks/en/headerimage/generatedHeaderImage-1794921404342.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46437">InfoQ Homepage
+News
+Yelp Migrates Cassandra to EKS by Moving EBS Volumes.</p>
+<p>Nov 18, 2026
+								
+								
+								
+									
+									4
+									min read.</p>
+<p>In a recent development, yelp has moved its Cassandra fleet from legacy self-managed Kubernetes clusters to Amazon EKS by re-pointing existing EBS volumes at newly introduced pods, rather than streaming data between nodes. A blog post by the site reliability team details a migration. It covered about 90 production clusters. There was zero downtime for customers and no data loss. The largest cluster, a 54-pod user-data store, took about 12 hours end to end.</p>
+<p>Yelp had already moved its stateless workloads to EKS through its PaaSTA deployment layer, but Cassandra stayed behind. Kubernetes has no built-in way to migrate StatefulSets and their persistent volumes across clusters. The usual approach is to add nodes to the newly introduced cluster and shut down the old ones. This would temporarily double compute capacity but also lead to data transfer costs. For the largest clusters, streaming alone could have taken weeks. Yelp also considered a regional failover and rebuild, and a new Cassandra datacenter in EKS, but rated both as less transparent to customers.</p>
+<p>Recent findings suggest that yelp's "Rolling PV Transplant" relies on the fact that an EBS volume is bound to an Availability Zone, not to a Kubernetes cluster, and that a PersistentVolume is effectively a pointer to a volume ID. The team pre-creates PVs and PVCs in EKS that reference the existing volume IDs, then creates an identical StatefulSet there, whose pods wait in ContainerCreating. The automation then deletes one pod at a time on the legacy cluster, waits for the volume to detach, and lets the EKS pod claim it. The pod rejoins the ring with the same data and token range, and the process repeats for the next pod. Cassandra's replication tolerates the few minutes each node is offline.</p>
+<p>According to recent reports, yelp set a skipReconciliation: true flag on the custom resources in both clusters. This was done because two operators managed the same logical ring during the migration. The flag helped prevent them from conflicting over pod state. The flag was cleared on the EKS side at the end.</p>
+<p>Across roughly 1,000 pods, about 1,000 TiB moved by pointer rather than over the wire. No node was ever decommissioned from the ring, so rollback was the same operation in reverse. Yelp used it a handful of times, for a missing subnet definition and a certificate mismatch, and restored pods within minutes. After a week of manual dev runs and a week of automation, one engineer ran the production rollout in about three weeks, migrating three to six clusters on a typical day.</p>
+<p id="sec-mid-46437">The team had Claude generate the orchestration script, roughly 800 lines of bash, from its validated manual runbook, rather than asking it to design the procedure. The script needed minor adjustments after two days of testing.</p>
+<p>Recent findings suggest that the approach relies on a previous Container Storage Interface migration by Yelp's Compute Infrastructure team. This work gave the Data Infrastructure team confidence in the volume detach and attach process. Yelp also used the technique for Kafka clusters, and says it applies to any AZ-pinned stateful workload on Kubernetes. The legacy clusters are now retired.</p>
+<p>Industry observers note that the one failure specific to this technique was a stale VolumeAttachment object left behind by the AWS CSI controller after pod deletion. The EKS pod sat in Pending with no error, and deleting the object on the legacy cluster fixed it. Yelp advises building explicit timeouts for stalled detach and attach operations into any automation. Two other findings were unrelated to the mechanism. Backups failed with IAM AccessDenied errors for 48 hours because a upcoming -eks role was not yet being assumed by scheduled jobs, and the alert only filed a ticket instead of paging. Pausing repairs for the migration also exposed one cluster whose repairs had been silently disabled for three months, leaving accumulated data inconsistencies. Teams planning a similar move should audit repair state, backup IAM roles and alert severity before starting.</p>
+<p>Sources indicate that yelp's approach is not the only way to move Cassandra between EKS clusters. Monday.com's engineering team describes a different one in a post on zero-downtime Cassandra migration between EKS clusters. K8ssandra-managed clusters had to move without any downtime or data loss. So, the team created a workflow to add new Cassandra data centers, safely transfer data, and remove the old ones. That is the streaming model Yelp considered and rejected. The new cluster is brought up alongside the old one and receives data over the network, and the original is retired only afterwards. The team believes success relied more on control, automation, and handling failures than on speed. They automated long tasks like rebuilds and planned the migration in stages based on operator behavior.</p>
+<p>Sources indicate that the two migrations differ in what they trade away. Yelp's disk transplant skips data transfer and extra compute. It allows for a rollback by swapping the pointer. However, it relies on EBS volumes being linked to an Availability Zone, not a cluster. Monday.com's approach does not rely on that property, and it keeps the old environment intact until the end. The cost is a longer migration and the capacity to run both sides at once, which Yelp calculated would have taken weeks for its largest clusters.</p>
+<p>Sources indicate that despite the different mechanics, the post-migration lessons are similar. Monday.com devotes part of its write-up to verifying that backups work after the migration, along with monitoring, dashboards and alerts. Yelp's own backups failed on an IAM role mismatch within 48 hours of its first production clusters landing in EKS. Teams planning either approach should treat those checks as part of the migration plan, not as cleanup afterwards.</p>
+<p>Presented by: Kiran Gangadharappa - Engineering Advisor at Harness, and Scott Davis - Senior Engineering Manager at Harness.</p>
+<p id="sec-end-46437">A round-up of last week’s content on InfoQ sent out every Tuesday. Join a community of over 250,000 senior developers. View an example.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.infoq.com/news/2026/11/kubernetes-cassandra-eks/?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=global" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="hbo-max-is-moving-ahead-with-an-elon-musk-documentary-despite-his-46780.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46780. HBO Max is moving ahead with an Elon Musk documentary despite his $1B investment. Here’s why
+        </a>
+        
+        <a href="yes-to-life-in-spite-of-everything-viktor-frankls-lost-lectures-o-45772.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #45772. Yes to Life, in Spite of Everything: Viktor Frankl’s Lost Lectures on Moving Beyond Optimism and Pessimism to Find the Deepest Source of Meaning
+        </a>
+        
+        <a href="industry-news-significant-stacks-timber-volumes-with-alpine-views-45483.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #45483. Industry News: SIGNIFICANT stacks timber volumes with alpine views for new neighborhood in switzerland
+        </a>
+        
+        <a href="industry-news-the-powder-staff-reacts-to-nst-ski-moving-to-palisa-44793.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #44793. Industry News: The POWDER Staff Reacts To NST Ski Moving To Palisades Tahoe, California
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

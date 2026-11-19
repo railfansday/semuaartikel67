@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Magic of Partial Evaluation</title>
+    <meta name="description" content="There are certain ideas in software that are simply beautiful. It doesn't matter if they have any practical use. It doesn't matter that you will never conv">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/the-magic-of-partial-evaluation-46399.html">
+    <meta property="og:title" content="The Magic of Partial Evaluation">
+    <meta property="og:description" content="There are certain ideas in software that are simply beautiful. It doesn't matter if they have any practical use. It doesn't matter that you will never conv">
+    <meta property="og:image" content="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/the-magic-of-partial-evaluation-46399.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "The Magic of Partial Evaluation", "image": ["https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk"], "datePublished": "2026-11-18T17:30:14", "dateModified": "2026-11-19T15:08:17.792023", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/the-magic-of-partial-evaluation-46399.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>The Magic of Partial Evaluation</h1>
+        <div class="meta-line">🌐 Source: <strong>Jimmyhmiller</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 9 min read (1892 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>There are certain ideas in software that are simply beautiful.</li><li style='margin-bottom:6px;'>Sources indicate that for me, the most beautiful pieces of software are those that reveal something about the nature of programming languages.</li><li style='margin-bottom:6px;'>Industry observers note that so when I find something that makes me rethink the nature of programming languages, I start rethinking computation as a whole.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46399"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46399"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46399"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="The Magic of Partial Evaluation" loading="lazy" src="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46399">There are certain ideas in software that are simply beautiful. It doesn't matter if they have any practical use. It doesn't matter that you will never convince your coworkers to consider them. There is just something captivating about the way some computational systems work.</p>
+<p>Sources indicate that for me, the most beautiful pieces of software are those that reveal something about the nature of programming languages. Programming languages are my obsession. I have never met a problem that couldn't be solved by introducing yet another programming language. Solving a problem at the programming language level is about solving the meta problem. Instead of trying to solve a particular problem, we take a step back and ask how we can solve a whole class of problems at once.</p>
+<p>Industry observers note that so when I find something that makes me rethink the nature of programming languages, I start rethinking computation as a whole. One of these incredibly beautiful but tricky concepts goes by the name partial evaluation. If you are fascinated by interpreters and compilers, partial evaluation will teach you how they are related, and how you can get a compiler for free.</p>
+<p>Partial evaluation has been a fascination of mine for a while. But this whole thing came up when James Long announced he had revived Meta's partial evaluator for JavaScript called prepack. When I first heard about prepack, I had some high hopes and expectations for the project, but was sadly let down. This revival brought to light those same dreams. But sadly, just as with the original aim, prepack was not designed for beauty, but for practicality. So I figured it was time to renew my own efforts.</p>
+<p>Industry observers note that yes, in some ways this is a post repping my own library I'm releasing. But I'm not doing this because I want it to be used. I'm doing this because it lets you play with the idea I find so beautiful. That is what this post is about.</p>
+<p>In a recent development, as a person who reads code, you can think about how this code computes and what answer it will give. But you can do more than just give the answer. You can see the expanded form of this particular code for these particular calls. This code is spiritually the same as the following expression, once we expand it out.</p>
+<p>Industry observers note that in this case, there is really nothing at all that this code needs to do at runtime. A sufficiently smart compiler will just run this code directly at compile time and give the answer. But this is a bit less clear if things come in at runtime.</p>
+<p>It might seem like we can't do anything here, but again, if you are used to thinking about how programs run, you can trace this out and realize this is just the same as:.</p>
+<p>In a recent development, what we have done in both of these cases is called partial evaluation. In the first, it was a trivial case because everything was statically known. But in this latter case, we have reduced a program down into the essentials of its dynamic structure. There are no recursive function calls left. All of this has been expanded as far as it could till we get just the dynamic parts of the code remaining.</p>
+<p>It has been revealed that this intuitive notion of partial evaluation is all you need to know to appreciate the beauty here. Partial evaluation just evaluates the part of the program we can evaluate at build time and leaves all the rest. When we do this with certain programs in certain combinations, we get some quite surprising, incredible behavior.</p>
+<p>It has been revealed that here we have a very simple interpreter for a language that just supports arithmetic. For the above expression, you should be able to think about how we could start "partially" evaluating it. (In this case, it can be a full evaluation.) If this kind of partial evaluation isn't quite clicking for you, I've put the steps below to hopefully help it make sense.</p>
+<p>In a recent development, this is a simple evaluation of the code. But what happens if we throw a value we don't know into the expression?</p>
+<p>It has been revealed that here we can see that clear partial evaluation difference. We don't know how to evaluate Number(process.argv[2]). We have no idea what the answer to that will be. But as part of this process, we do know some partial information about it. For example, when we get to.</p>
+<p>According to recent reports, we know that Number(process.argv[2]) is indeed a number. So we can partially evaluate it further. Hopefully this is all making sense. But if you are like me, this all might seem a bit trivial and uninteresting. So let's look at a more complicated example.</p>
+<p>Here we have a brainfuck interpreter. And the example program we want to partially evaluate does not require any input at all (in brainfuck , is the way you get input). So when we go to partially evaluate this, we will just get an answer. In this case, this program is actually brainfuck's "hello world". But what about a program with input?</p>
+<p>When we do our partial evaluation, we get the following:.</p>
+<p>What is this? A compiled brainfuck program! This is the first incredible fact: when you take an interpreter and partially evaluate it with a program, you get the compiled program out! Now this particular exact form is an artifact of how my partial evaluator works. You could imagine slightly different code. But the key is that what we've done is remove the interpreter completely.</p>
+<p>Sources indicate that what we've discovered here is the first of three so-called Futamura Projections. Our partial evaluator, when applied to an interpreter and given a program, can give us a compiled version of that program. Or to put it in pseudocode.</p>
+<p id="sec-mid-46399">Recent findings suggest that depending on your exposure to interpreters and compilers, this might seem miraculous or mundane. Writing an interpreter and writing a compiler can seem like significantly different undertakings. In the age of AI, perhaps less so, but I think even then many things still hold. It is quite easy to instrument an interpreter, quite a bit harder to do so for a compiler. Changing an interpreter to support newly introduced features is quite easy, less so for a compiler. But more than that, there are all sorts of things that can be thought of as interpreters, that we'd almost never write a compiler for.</p>
+<p>Recent findings suggest that consider this simple schema setup. This is code that can easily be partially evaled into something where we have created specialized functions for our particular schema. While not the most crucial code, this can give us a 5x performance boost when our objects start getting more complicated. You may think that we should just hand-write those functions. Or hand-write a compiler for these schemas. But what about those schemas that exist only at runtime? Now we either need to compile those on the fly, or we have to keep both a compiler and interpreter. Having a way to partial eval lowers this burden quite a bit.</p>
+<p>It has been revealed that but if the Futamura projections stopped here, they would be exciting, but not quite the craziness they are. To understand how this can go further, we are going to take this a step beyond your raw intuition of what it means to partially evaluate something and give a different frame. We can think of partial evaluation as a process of "specializing" a program.</p>
+<p>What exactly is specializing a program? Well, it is taking a program that is generic and making a version that instead works for a single program. Let's think about a simple pattern matcher program like an overly simplified regex.</p>
+<p>According to recent reports, this program is generic. It lets you match on many different patterns. That can be great if we need that flexibility. But if you don't have a bunch of patterns, it might be worth it to just make specialized code. Now, exactly what kind of specialized code? It might be that you only have this literal pattern; then you want to specialize very particularly.</p>
+<p>Or  you just have *** as a pattern.</p>
+<p>For any bit of generic code, we can think of how to move our code to a more specialized form.</p>
+<p>Industry observers note that partial evaluation is a form of specialization that figures out what it should specialize on based on what input is static and what is dynamic. In many ways, a partial evaluator is a generic specializer. Given any program, we can make a specialized version of it for any input. What happens if we specialize an interpreter for a given input? We get back that interpreter for only exactly that one program. But what do we need then? Do we need all this generic dispatch? No, we know the full program. We don't need any operations we don't actually use. We can fully get rid of all the generic interpreter mechanism.</p>
+<p>But if the specializer can specialize any program, can it specialize itself?</p>
+<p>Sources indicate that this leads us to the second Futamura projection. Put in our pseudo-code format, we get:.</p>
+<p>Or, to put it in our specializer language, what if we make a special version of our generic specializer? What is it specialized for? A particular interpreter. Now we have a function that, given any program, will spit out newly specialized interpreters just for that program. Or, in Java speak, we have a specialized interpreter factory.</p>
+<p>Let's see a real example of one of these compilers to make this concrete. Here is the interpreter we are going to specialize.</p>
+<p>When we apply our second projection, we get out the following compiler:.</p>
+<p>And if we compile one of these very simple programs, we can see the output:.</p>
+<p>Recent findings suggest that now, of course, this is not a very interesting language. But hopefully you can see this general idea. Given an interpreter, we automatically derive a compiler! Pretty incredible.</p>
+<p>Industry observers note that but we can't stop at the second projection. We have to push on and get to the final mind-bending projection. If you apply our specializer to itself as input, you get a compiler generator.</p>
+<p>So now we have a generic function that will spit out compilers for any interpreter we give it!</p>
+<p>Recent findings suggest that I have implemented a reasonable, but still very limited partial evaluator for JavaScript in Rust. I have taken it further to try to make it work quite well for a number of different interpreters and interpreter-like programs in JavaScript. I've also tried to get limited versions of the second and third projections working. Go play with it, see what works, what doesn't, file concerns, or better, use some of your tokens to help me make more cases work.</p>
+<p id="sec-end-46399">But most of all, explore. This is such a rich space. Below are some papers, blogs, and projects about partial evaluation in some way, shape, or form. There has never been a better time to play with these kinds of crazy techniques for programming languages. Don't let what is practical stop you from exploring the cool, interesting aspects of programming.</p>
+<p style="margin-top: 25px;">
+<a href="https://jimmyhmiller.com/magic-of-partial-evaluation" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="the-open-evaluation-standard-benchmarking-nvidia-nemotron-3-nano--46924.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46924. The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator
+        </a>
+        
+        <a href="industry-news-alyah-toward-robust-evaluation-of-emirati-dialect-c-46912.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46912. Industry News: Alyah ⭐️: Toward Robust Evaluation of Emirati Dialect Capabilities in Arabic LLMs
+        </a>
+        
+        <a href="hill-climbing-agent-quality-with-agents-cli-evaluation-46699.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46699. Hill-Climbing Agent Quality with Agents CLI Evaluation
+        </a>
+        
+        <a href="latest-update-open-tts-leaderboard-scalable-evaluation-for-multil-46432.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46432. Latest Update: Open TTS Leaderboard: Scalable Evaluation for Multilingual Text-to-Speech and Voice Cloning
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

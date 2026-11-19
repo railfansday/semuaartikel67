@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPv6 delegation, an unusually subtle failure mode</title>
+    <meta name="description" content="Running a custom x64 router has a lot of upsides. One, it runs mainline Linux, so it gets updates quickly. Two, router adblocking. 'Nuff said. And three, i">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/ipv6-delegation-an-unusually-subtle-failure-mode-46409.html">
+    <meta property="og:title" content="IPv6 delegation, an unusually subtle failure mode">
+    <meta property="og:description" content="Running a custom x64 router has a lot of upsides. One, it runs mainline Linux, so it gets updates quickly. Two, router adblocking. 'Nuff said. And three, i">
+    <meta property="og:image" content="https://savyasacheejha.com/processed_images/cover.9c945b52eb23e34e.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/ipv6-delegation-an-unusually-subtle-failure-mode-46409.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "IPv6 delegation, an unusually subtle failure mode", "image": ["https://savyasacheejha.com/processed_images/cover.9c945b52eb23e34e.jpg"], "datePublished": "2026-11-15", "dateModified": "2026-11-19T15:08:18.436505", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/ipv6-delegation-an-unusually-subtle-failure-mode-46409.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>IPv6 delegation, an unusually subtle failure mode</h1>
+        <div class="meta-line">🌐 Source: <strong>Savyasacheejha</strong> &bull; 📅 15 Nov 2026 &bull; ⏱️ 7 min read (1475 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Running a custom x64 router has a lot of upsides.</li><li style='margin-bottom:6px;'>It has been revealed that this week, I had a really interesting time with my custom setup.</li><li style='margin-bottom:6px;'>According to recent reports, I have a stack where networkd is responsible for the network in general, with pppd dialing in to my ISP, kea-dhcp4 handing out DHCPv4 addresses, blocky handling DNS (on the router as well as the laptop) and networkd itself handling RA.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46409"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46409"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46409"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="IPv6 delegation, an unusually subtle failure mode" loading="lazy" src="https://savyasacheejha.com/processed_images/cover.9c945b52eb23e34e.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46409">Running a custom x64 router has a lot of upsides. One, it runs mainline Linux, so it gets updates quickly. Two, router adblocking. 'Nuff said. And three, if something breaks, you get to dive in deep and figure out what's going wrong.</p>
+<p>It has been revealed that this week, I had a really interesting time with my custom setup. I noticed that if I'd restart pppd (which connects to my ISP), Google would stop working. It would still resolve, but I couldn't reach it.</p>
+<p>According to recent reports, I have a stack where networkd is responsible for the network in general, with pppd dialing in to my ISP, kea-dhcp4 handing out DHCPv4 addresses, blocky handling DNS (on the router as well as the laptop) and networkd itself handling RA. As far as I knew, there was nothing wrong in this stack at all. All the daemons themselves are battle-tested and known to be working fine.</p>
+<p>So maybe this was a problem with my laptop?</p>
+<p>One ping told me that Google was getting resolved to its IPv6 address, which exonerated DNS, but I couldn't ping it. An IPv4 address on the other hand, worked fine.</p>
+<p>Industry observers note that on the other hand, wlan0 demonstrated 2 groups of IPv6 addresses with the older IPv6 address having a preferred lifetime greater than 0. Could this be the culprit? I restarted NetworkManager, and lo and behold, Google magically started working again and I was down to just one group of IPv6 addresses, the newer ones.</p>
+<p>I've never debugged networks in depth, but the problem here seemed to be fairly simple to grasp. Whenever pppd restarts, it negotiates a new connection with my ISP, which provides a new prefix to my router for delegation. However, no device drops the old IPv6 address. At first I thought this was NetworkManager's fault, but then I saw my iPhone do the same thing. Two points don't make a pattern, but they do make a line. Which pointed straight at networkd.</p>
+<p>Don't get me wrong. I like networkd. The only reason I have NetworkManager on my laptop is because it's purpose built for Wi-Fi and roaming and it's never let me down yet (iwd ftw). My router and server both run networkd. It's a very comfortable, no-nonsense daemon. So I was reluctant to blame it. So I turned to pppd instead as a cop-out.</p>
+<p>Recent findings suggest that I decided to ensure that pppd would never restart when I'd redeploy my NixOS router. But unfortunately, I've had times when my ISP has randomly hiccoughed and pppd reconnects to it leading to the same problem all over again. Which meant I'd have to get to the bottom of this.</p>
+<p>A little bit of searching led me to RFC 9096, Improving the Reaction of Customer Edge Routers to IPv6 Renumbering Events, which tightens RFC 7084, Basic Requirements for IPv6 Customer Edge Routers. Basically, whenever a upcoming prefix is given to the router and the old one dropped by upstream, the router needs to advertise the old prefix with preferred and valid lifetimes of 0 which causes consumers of the router advertisement to stop using it as a source address.</p>
+<p id="sec-mid-46409">According to recent reports, interestingly, networkd has an matter RFC 7084 support in networkd (automatic ipv6 range delegation) where a requirement for properly implementing RFC 9096 came up in September 2026. There's a patch as well which hasn't yet been merged. The same issue has been brought up with radvd on OPNsense and closed as "not planned", as well as with dnsmasq on OPNsense. VyOS's dynamic-prefix support is still an open request. Which meant that the usual suspects were out. There's only one option left, and it's not available on NixOS. odhcpd from OpenWrt, which actually does implement RFC 9096.</p>
+<p>Sources indicate that I was a bit wary of relying on an OpenWrt package. Not because I think there's anything wrong with OpenWrt (quite the contrary!), but because the distribution itself is unusual. It doesn't use systemd or dbus, instead using procd as pid1 and uses ubus for IPC. I know that many of their packages depend on these two pieces of infrastructure to function, so that was the first thing I checked. Fortunately, odhcpd is unusual in that it can get information from the kernel directly through netlink and can be configured without the need for ubus, so that was not a blocker. Packaging it took me a while, but I submitted it for review to nixpkgs and began running it on my router, switching off router advertisement on networkd. I could have used odhcpd for DHCP as well, but I was fairly happy with kea-dhcp4 so I left it alone.</p>
+<p>And lo and behold, when I deliberately restarted pppd, I got:.</p>
+<p>It has been revealed that success! The best thing was that odhcpd's memory is persistent across reboots and is agnostic to the time set on your machine. This is pretty vital for me, because I haven't replaced the dead CMOS battery on my router and the clock resets every time the router restarts. This allows odhcpd to advertise old prefixes with the correct preferred/valid lifetime of 0 after every reboot without caring about when they were delegated. In practice, this would matter if my router loses power while my Wi-Fi access point remains up, or if I reboot my router (which definitely does happen often). Given my family's reliance on the home network remaining up, I'd rather cover all cases.</p>
+<p>Industry observers note that my euphoria lasted until I got onto my iPhone, where the old address lingered on my screen. I switched off mobile data to check (iOS silently routes to mobile data where Wi-Fi fails, a service called Wi-Fi Assist) and the same problem persisted for a few minutes before the address changed and the problem resolved on its own.</p>
+<p>In a recent development, took me a bit of packet capture to work out, but it became clear what had happened. The router advertisement had gone out as soon as the prefix had arrived, but the phone was sleeping and missed it. It caught the next advertisement when it was awake and in my hands. This shows us that dropping prefixes is prompt, but not instant. It took around 10 minutes for my phone to pick the new one up. networkd advertises times of 30/60 mins for preferred/valid respectively, while radvd advertises times of 4/24 hours by default. odhcpd conforms to the recommendations of RFC 9096 by advertising 45/90 mins.</p>
+<p>odhcpd behaves slightly differently from its natural home in OpenWrt when deployed on another distribution. It cannot be updated via ubus (note: it technically can because ubus is packaged in NixOS, but I wasn't using it here) so it can only get interface names at startup and it gets state by talking to the kernel, not from ubus. The NixOS module ties it to device units so that it picks them up at startup. It also differs quite a bit from networkd's behaviour. For example, networkd, reloading its config, would send a router-lifetime-0 goodbye message, which odhcpd doesn't (which is correct here, because odhcpd being down does not imply the router being down). This would cause a brief network disruption where for a moment, everything connected to my network would lose IPv6 capability momentarily as networkd reloaded. And finally, when pppd would go down, odhcpd advertises a router lifetime of 0, implying there's no default route available, telling clients to not use it as a gateway.</p>
+<p>The takeaway for me was quite simple. I usually prefer using systemd utilities wherever possible. I prefer networkd, I don't use a separate syslog daemon, I feel like udev is my friend, and so on. However, that holds true when the machine is a client. As soon as the machine has to behave as a server to another machine, I'd prefer to fall back to specialised tools. Hence, my router has chrony instead of systemd-timesyncd, blocky instead of systemd-resolved, and kea-dhcp4 and now odhcpd in place of systemd-networkd's DHCP and router advertisement functionality. There's enough edge cases that getting dedicated tools there just makes more sense.</p>
+<p>Sources indicate that but more than that, I heartily recommend odhcpd. I don't know whether I'd want to replace kea-dhcp4 with it or not, but as a router advertisement daemon it's the best one I've found for a home network connecting to a consumer ISP.</p>
+<p id="sec-end-46409">According to recent reports, update: networkd recently merged a patch which targets this very concern. systemd v263, whenever it comes out, should handle most cases where I would otherwise have reached for odhcpd, the solution I landed upon. The one case where I can see a gap is one where the router reboots and devices still answer to their old IPv6 addresses since networkd does not preserve prefixes across reboots.</p>
+<p style="margin-top: 25px;">
+<a href="https://savyasacheejha.com/posts/why-odhcpd/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-inside-vakra-reasoning-tool-use-and-failure-modes-of--46849.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46849. Tech Report: Inside VAKRA: Reasoning, Tool Use, and Failure Modes of Agents
+        </a>
+        
+        <a href="android-auto-182-revision-starts-rolling-out-with-more-light-mode-46831.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46831. Android Auto 18.2 revision starts rolling out with more light mode teases
+        </a>
+        
+        <a href="pakistan-undersea-cable-fault-causes-internet-failure-near-strait-46692.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46692. Pakistan undersea cable fault causes internet failure near Strait of Hormuz
+        </a>
+        
+        <a href="microsoft-tests-fresh-edge-lockdown-mode-that-disables-gpu-apis-46209.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46209. Microsoft tests fresh Edge Lockdown Mode that disables GPU APIs
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

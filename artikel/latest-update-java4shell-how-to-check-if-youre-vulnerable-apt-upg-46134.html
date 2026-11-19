@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: Java4Shell: How to Check If You're Vulnerable (apt upgrade Misses Containers)</title>
+    <meta name="description" content="Industry observers note that you ran apt upgrade openjdk-17-jdk, java -version printed a fresh build, and you went to lunch. Your Keycloak container still ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-java4shell-how-to-check-if-youre-vulnerable-apt-upg-46134.html">
+    <meta property="og:title" content="Latest Update: Java4Shell: How to Check If You're Vulnerable (apt upgrade Misses Containers)">
+    <meta property="og:description" content="Industry observers note that you ran apt upgrade openjdk-17-jdk, java -version printed a fresh build, and you went to lunch. Your Keycloak container still ">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fimages.pexels.com%2Fphotos%2F6466143%2Fpexels-photo-6466143.jpeg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26fit%3Dcrop%26h%3D627%26w%3D1200">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-java4shell-how-to-check-if-youre-vulnerable-apt-upg-46134.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: Java4Shell: How to Check If You're Vulnerable (apt upgrade Misses Containers)", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fimages.pexels.com%2Fphotos%2F6466143%2Fpexels-photo-6466143.jpeg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26fit%3Dcrop%26h%3D627%26w%3D1200"], "datePublished": "2026-11-19T15:00:02", "dateModified": "2026-11-19T15:08:04.740136", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-java4shell-how-to-check-if-youre-vulnerable-apt-upg-46134.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: Java4Shell: How to Check If You're Vulnerable (apt upgrade Misses Containers)</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 19 Nov 2026 &bull; ⏱️ 5 min read (1047 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that you ran apt upgrade openjdk-17-jdk, java -version printed a fresh build, and you went to lunch.</li><li style='margin-bottom:6px;'>According to recent reports, java4Shell (CVE-2026-114938) is a heap overflow in HotSpot's AVX-512 Base64 decoder.</li><li style='margin-bottom:6px;'>Below: which Java 17, 21, 25 and 27 builds are affected, which are fixed, and four commands that find every JVM on a host or in a container image, including the ones java -version never sees.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46134"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46134"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46134"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: Java4Shell: How to Check If You're Vulnerable (apt upgrade Misses Containers)" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fimages.pexels.com%2Fphotos%2F6466143%2Fpexels-photo-6466143.jpeg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26fit%3Dcrop%26h%3D627%26w%3D1200" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46134">Industry observers note that you ran apt upgrade openjdk-17-jdk, java -version printed a fresh build, and you went to lunch. Your Keycloak container still runs its own JRE, your Jenkins agent image is pinned to last month's Temurin, and the vendor appliance in the corner has a JVM you have never seen a version string for.</p>
+<p>According to recent reports, java4Shell (CVE-2026-114938) is a heap overflow in HotSpot's AVX-512 Base64 decoder. Calif, who found it, rates it 9.2 under CVSS 4.0 and lists Keycloak, Jira, Confluence, Artifactory, Jenkins and PingFederate as pre-auth RCE in default configs. Oracle scores it 8.1 under CVSS 3.1, citing high attack complexity (Aikido). Patches shipped November 17, 2026.</p>
+<p>Below: which Java 17, 21, 25 and 27 builds are affected, which are fixed, and four commands that find every JVM on a host or in a container image, including the ones java -version never sees.</p>
+<p>Not in how easy it is to exploit. Log4Shell was one string in a User-Agent header. Here the overwritten bytes are a fixed pattern derived from the decoder, not attacker-chosen, and the Harness team didn't get code execution in their lab. With the default heap the write was silent across thousands of triggers; only after shrinking TLABs (-XX:TLABSize=2048 -XX:-ResizeTLAB) did they get a SIGSEGV in G1. Calif's own exploit is spray-and-retry heap grooming, and they say it is sensitive to RTT and jitter. On Lobsters someone called it "a nothingburger" next to Log4Shell, and the EPSS score quoted there was 0.00734.</p>
+<p>I still think it's the worst JVM bug since Log4Shell, for two reasons.</p>
+<p>First, the preconditions are boring. As a Lobsters commenter pointed out, Traefik, Envoy and HAProxy don't buffer requests by default, and Zen 4 shipped in 2022. And Base64 from strangers arrives before login all the time. Harness lists HTTP Basic headers, JWT segments decoded before the signature check, and SASL exchanges like Kafka SCRAM.</p>
+<p>Recent findings suggest that second, and this is the Log4Shell part, the fix lives in every copy of the runtime. Log4Shell at least came down to one dependency in a pom.xml. Here you have to hunt down every JVM you ship, and most teams have no list of those.</p>
+<p>Calif also claims finding the bug took about an hour and the first working exploit two more, for under $200 in token costs. They're holding back the per-product chains until people have upgraded. Aikido had seen no confirmed exploitation in the wild as of November 18. I wouldn't bet on that lasting.</p>
+<p>In a recent development, ARM64 is not affected. Graviton fleets can relax. EPYC Naples, Rome and Milan are AVX2-only, as one HN commenter noted, so older boxes are out of scope too.</p>
+<p>According to Aikido, standard Java 8 and 11 are not affected, with one exception: Oracle lists its Java SE 8 Enterprise Performance Pack build (8u511-perf) as vulnerable.</p>
+<p>Fixed builds, from Aikido's roundup:.</p>
+<p>According to recent reports, EOL lines are affected and don't get their own fix. Move 18-20 to 21, 22-24 to 25, and 26 to 27. Red Hat is expediting RHEL 8, 9 and 10 builds. Zulu and Microsoft number their builds differently, Aikido has no fixed build numbers for Liberica yet, and distro packages carry their own versioning, so check each vendor's advisory and don't eyeball it against Oracle's table.</p>
+<p>Sources indicate that one Temurin gotcha: Adoptium publishes the binaries per platform as testing finishes, and the Docker Hub images only follow once every binary for that version is out. Your FROM eclipse-temurin:17-jre rebuild may pull the old JRE for a while.</p>
+<p>This one is from Calif's writeup:.</p>
+<p id="sec-mid-46134">All four flags need to show up. If any are missing, this host can't hit the vulnerable path. But your autoscaling group can land the same image on a Sapphire Rapids node tomorrow, so don't treat a clean dev box as proof about production.</p>
+<p>Every JDK, JRE and jlink-built runtime has a release file at its root. Reading those files covers bundled runtimes without executing anything:.</p>
+<p>This is where the surprises turn up: /opt//jre, jpackage'd desktop tools, an IDE's bundled runtime, the copy your monitoring agent brought along.</p>
+<p>According to recent reports, the binary on disk doesn't matter if the process still has the old one loaded. Harness's advice is to check the running process rather than trust the image tag. Finding processes by name misses custom launchers, so match on libjvm.so instead:.</p>
+<p>For each hit, jcmd  VM.version tells you the build, and jcmd  VM.flags -all | grep -E 'UseBASE64Intrinsics|UseAVX' tells you whether the fast path is on. To see what a particular binary defaults to on this CPU:.</p>
+<p>UseBASE64Intrinsics true and UseAVX at 3 on a VBMI-capable host means you're exposed until you patch.</p>
+<p>Distroless images don't have a shell or find, so don't bother with docker exec. Export the filesystem and read the release file out of the tarball:.</p>
+<p>For Kubernetes, kubectl get pods -A -o jsonpath='{..image}' | tr ' ' '\n' | sort -u gives you the image list to feed into the same loop.</p>
+<p>Harness also published a runtime checker script that compares local JDKs against the advisory builds and checks the CPU and flags; exit code 2 means a JDK is still exposed. Their post indicates it as curl | bash. Read it before you pipe it into a root shell on prod.</p>
+<p>Calif lists both of these flags as workarounds and still tells everyone to patch right away.</p>
+<p>Strict Base64 validation in front of the decoder (length a multiple of 4, alphabet only, padding only at the end) is a backstop. Harness notes that a loose character-class check doesn't catch the inputs that overflow.</p>
+<p>Switching to ZGC isn't a fix either. The only exploit discussed so far targets G1, but as one Lobsters commenter pointed out, the bug isn't in G1 and can still be used for denial of service under ZGC.</p>
+<p>My order would be: internet-facing services that decode Base64 before auth (SSO, CI, artifact repos) first, then image rebuilds, then the appliances you'll have to open vendor tickets for.</p>
+<p id="sec-end-46134">In a recent development, did your scan find a Java runtime you didn't know you were running? Where was it hiding? And if you think the Log4Shell comparison is overblown, make your case in the comments.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/alanwest/java4shell-how-to-check-if-youre-vulnerable-apt-upgrade-misses-containers-18h9" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="save-36-on-this-4tb-samsung-990-pro-ssd-upgrade-for-your-gaming-p-46719.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46719. Save 36% on this 4TB Samsung 990 Pro SSD upgrade for your gaming PC, now just 17.5 cents per GB
+        </a>
+        
+        <a href="google-ai-ultra-upgrade-adds-youtube-premium-family-46650.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46650. Google AI Ultra upgrade adds YouTube Premium Family
+        </a>
+        
+        <a href="catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-so-46554.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46554. Catch Go bugs that fuzzing misses with Gemini and a constraint solver
+        </a>
+        
+        <a href="docker-sandboxes-vs-containers-choosing-the-right-isolation-for-a-46523.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46523. Docker Sandboxes vs. Containers: Choosing the Right Isolation for AI Agents
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

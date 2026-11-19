@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Migrate an Elementor Site to the WordPress Block Editor</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. Sources indicate that 7 Day Free Tria">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-to-migrate-an-elementor-site-to-the-wordpress-block-editor-46799.html">
+    <meta property="og:title" content="How to Migrate an Elementor Site to the WordPress Block Editor">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. Sources indicate that 7 Day Free Tria">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_sitepoint_feature_2000x1060_26ffd84335.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-to-migrate-an-elementor-site-to-the-wordpress-block-editor-46799.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How to Migrate an Elementor Site to the WordPress Block Editor", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_sitepoint_feature_2000x1060_26ffd84335.jpg"], "datePublished": "2026-11-13T09:13:41", "dateModified": "2026-11-19T15:08:45.398092", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-to-migrate-an-elementor-site-to-the-wordpress-block-editor-46799.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How to Migrate an Elementor Site to the WordPress Block Editor</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 13 Nov 2026 &bull; ⏱️ 7 min read (1413 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>Sources indicate that 7 Day Free Trial.</li><li style='margin-bottom:6px;'>Recent findings suggest that elementor made your site easy to build.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46799"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46799"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46799"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How to Migrate an Elementor Site to the WordPress Block Editor" loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_sitepoint_feature_2000x1060_26ffd84335.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46799">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>Weekly. Free. One click to leave.</p>
+<p>Sources indicate that 7 Day Free Trial. Cancel Anytime.</p>
+<p>Recent findings suggest that elementor made your site easy to build. It may also be making it slow. Here's how to move a site onto the Block Editor without breaking URLs, losing content or dropping out of Google.</p>
+<p>Recent findings suggest that page builders solved a real problem. Before the Block Editor matured, they were the easiest way to give clients drag-and-drop layouts. Many of those sites are still running today, and a lot of them are slow on phones.</p>
+<p>The data backs that up. According to the HTTP Archive Core Web Vitals Technology Report for June 2026, 36.8% of Elementor sites pass Core Web Vitals on mobile. Sites built with the Block Editor pass 53.0% of the time. That's correlation, not proof, since hosting and setup matter too. But in my experience, it matches what happens when you remove the builder from a slow site.</p>
+<p>It has been revealed that my reason for migrating sites off Elementor is simple: **page builders make websites heavy. **Having noted that, Elementor has improved a lot. Its performance settings, Flexbox Containers, and asset-loading options cut much of the bloat, and a carefully tuned Elementor site can pass Core Web Vitals. But tuning only goes so far. You’re still shipping the builder’s framework, wrapper markup and scripts, and every plugin or Elementor upgrade is a chance for the speed to slip again.</p>
+<p>For small business sites that don’t need drag-and-drop editing, rebuilding the same design on the WordPress Block Editor (Gutenberg) removes that weight at the source, without changing what the client sees.</p>
+<p>This guide follows the order I use. It assumes you're comfortable with WordPress admin, WP-CLI and a staging site. If you need to set those up first, SitePoint's guide to the ultimate WordPress development environment covers the tooling.</p>
+<p>Not every Elementor site needs to move. Migration makes sense when:.</p>
+<p>In a recent development, it's harder to justify when the site leans on Elementor Pro features you'd need to replace, such as complex popups, dynamic loops or WooCommerce templates. Those can all be rebuilt, but the job gets bigger fast.</p>
+<p>You can't prove a migration worked without "before" numbers. Capture these on the live site first.</p>
+<p>Industry observers note that crawl the site with a tool such as Screaming Frog, and export every indexable URL with its title, meta description, H1 and canonical tag. You can also pull published pages and posts with WP-CLI:.</p>
+<p>In a recent development, run Google PageSpeed Insights, which uses Lighthouse for its lab scores, on the homepage and two or three key templates. Save the mobile lab scores and, if the site has enough traffic, the field data from real users.</p>
+<p>In a recent development, export the last three months of pages and queries from Google Search Console. That's what you'll compare against after launch.</p>
+<p>Elementor stores each page's layout as JSON in the elementordata post meta field, and marks builder pages with elementoredit_mode. This command lists every page that uses the builder:.</p>
+<p>Then list everything else Elementor controls, which is easy to miss:.</p>
+<p>On the small business sites I've migrated, the inventory usually turns up more than the owner expects. The pages are the easy part. The surprises are saved templates nobody remembers creating, a popup still running on every page, add-on widgets from plugins that were installed once and forgotten, and contact forms that live inside Elementor Pro rather than a form plugin. Finding those before the rebuild saves a broken launch.</p>
+<p id="sec-mid-46799">Industry observers note that work on a staging copy. Install a block theme, such as Twenty Twenty-Five or a lightweight starter theme, and move the Elementor global styles into theme.json. That way colors, fonts and spacing are defined once, instead of in every widget.</p>
+<p>Copy the hex values and font names from Elementor's Site Settings so the upcoming site matches the old one. Rebuild the header and footer as template parts in the Site Editor. If you'd rather write a theme yourself, SitePoint's series on building a WordPress theme from scratch covers the basics.</p>
+<p>Most Elementor sites repeat the same few sections: a hero, a services grid, testimonials and a call to action. Build each one once as a block pattern, then reuse it on every page. Patterns are plain block markup, so you don't need React to write them, whatever you may have heard about React and WordPress development.</p>
+<p>In a block theme, any PHP file in the /patterns folder with a header comment is registered automatically:.</p>
+<p>Industry observers note that for page content, there's a useful shortcut. Elementor saves a plain HTML copy of each page into post_content. Open a page in the Block Editor, and the old content usually appears in a Classic block. Choose Convert to blocks, then delete the leftovers and rebuild the layout with your patterns. It keeps the copy and images, so you only redo the design.</p>
+<p>Recent findings suggest that the difference highlights up in the page source. Here's typical front-end markup for a single heading on an Elementor page, using the older section and column layout:.</p>
+<p>And the same heading as a block:.</p>
+<p>Newer Elementor versions with Flexbox containers and the optimized markup settings trim some of those wrappers, but most older sites still carry all of them. Multiply that by every element on every page, and the weight adds up.</p>
+<p>To speed up this step, I built a free Elementor to Gutenberg converter. Paste in a page's elementordata JSON from Step 2, and it returns block markup you can paste into the Block Editor's code editor. It handles headings, text, images, buttons, spacers, dividers and column layouts, and lists anything it can't convert, such as forms and popups, for you to rebuild by hand. It runs entirely in your browser, so the page data never leaves your computer.</p>
+<p>Industry observers note that the code is rarely what holds a migration up. Content is. Once clients see their site being rebuilt, many decide it's time to rewrite their pages too, and the project ends up waiting on copywriters and approvals. My fix is to separate the two: migrate the existing content as it is, launch, then enhancement the copy afterwards. That keeps the speed and SEO gains on schedule, and it means any ranking change can be traced to either the migration or the new copy, not both at once.</p>
+<p>This is the step that decides whether rankings hold.</p>
+<p>To spot-check a redirect or a status code from the command line:.</p>
+<p>Industry observers note that when staging matches the live site, deploy it. Then:.</p>
+<p>According to recent reports, leave the old elementordata meta in place for a few weeks, in case you need to roll back. Once you're confident, take a backup and remove it to shrink the database.</p>
+<p>Run PageSpeed Insights again straight away for lab scores. Field data takes longer: the Chrome UX Report uses a rolling 28-day window, so give it a month before judging real-user results. Compare Search Console clicks for the same period before and after launch.</p>
+<p>In my migrations, the biggest change is usually page weight and loading time, because the builder's CSS, JavaScript and wrapper markup are gone. What doesn't always improve is server response time. If the site is on slow shared hosting, the first byte still arrives late, and that needs a hosting fix, not a rebuild. Search traffic should hold steady if the URLs and metadata were protected. If it drops, the Step 5 crawl comparison is the first place to look.</p>
+<p>Moving off Elementor isn't a one-click job, but it isn't a full redesign either. Record a baseline, inventory what the builder controls, rebuild with patterns, and protect every URL. Most of the speed gain comes from removing code the site never needed. For what to tackle after that, see these practical web performance techniques. Most of the risk comes from rushing the SEO checks. Done carefully, the client gets the same site, a faster one, and an editor that comes with WordPress itself.</p>
+<p>***Author Bio: ***Fahad Raza is a WordPress developer and SEO consultant based in Sydney. He has built websites since 2005, worked in SEO for more than 18 years, and spent eight and a half years on the IKEA Australia and Upcoming Zealand website.</p>
+<p id="sec-end-46799">7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/how-to-migrate-an-elementor-site-to-the-wordpress-block-editor/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="find-orphan-pages-and-buried-content-build-an-internal-link-graph-46705.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46705. Find Orphan Pages and Buried Content: Build an Internal Link Graph for Your Site
+        </a>
+        
+        <a href="latest-update-feds-suspect-ransom-negotiator-ran-shinyhunters-ext-46293.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46293. Latest Update: Feds Suspect Ransom Negotiator Ran ShinyHunters Extortion Site
+        </a>
+        
+        <a href="widespread-php-flaw-may-cause-many-site-outages-today-46290.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46290. Widespread PHP Flaw May Cause Many Site Outages Today
+        </a>
+        
+        <a href="latest-update-top-7-best-wordpress-plugin-of-all-time-46212.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46212. Latest Update: Top 7 Best Wordpress Plugin Of All Time
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

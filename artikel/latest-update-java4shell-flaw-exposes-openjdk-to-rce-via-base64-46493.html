@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: 'Java4Shell' Flaw Exposes OpenJDK to RCE via Base64</title>
+    <meta name="description" content="Oops! Memory-safe except when you have handwritten SIMD code to accelerate base64 decoding.Well, glad it's getting fixed anyhow. I was going to say the sam">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-java4shell-flaw-exposes-openjdk-to-rce-via-base64-46493.html">
+    <meta property="og:title" content="Latest Update: 'Java4Shell' Flaw Exposes OpenJDK to RCE via Base64">
+    <meta property="og:description" content="Oops! Memory-safe except when you have handwritten SIMD code to accelerate base64 decoding.Well, glad it's getting fixed anyhow. I was going to say the sam">
+    <meta property="og:image" content="https://a.fsdn.com/sd/topics/java_64.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-java4shell-flaw-exposes-openjdk-to-rce-via-base64-46493.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: 'Java4Shell' Flaw Exposes OpenJDK to RCE via Base64", "image": ["https://a.fsdn.com/sd/topics/java_64.png"], "datePublished": "2026-11-19T15:08:24.421169", "dateModified": "2026-11-19T15:08:24.421178", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-java4shell-flaw-exposes-openjdk-to-rce-via-base64-46493.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: 'Java4Shell' Flaw Exposes OpenJDK to RCE via Base64</h1>
+        <div class="meta-line">🌐 Source: <strong>Slashdot</strong> &bull; 📅 19 Nov 2026 &bull; ⏱️ 10 min read (2001 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Memory-safe except when you have handwritten SIMD code to accelerate base64 decoding.Well, glad it's getting fixed anyhow.</li><li style='margin-bottom:6px;'>I was going to say the same thing, but you beat me to it.</li><li style='margin-bottom:6px;'>Certainly beclowns one of the biggest arguments for Java.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46493"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46493"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46493"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: 'Java4Shell' Flaw Exposes OpenJDK to RCE via Base64" loading="lazy" src="https://a.fsdn.com/sd/topics/java_64.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46493">Oops! Memory-safe except when you have handwritten SIMD code to accelerate base64 decoding.Well, glad it's getting fixed anyhow.</p>
+<p>I was going to say the same thing, but you beat me to it.</p>
+<p>Certainly beclowns one of the biggest arguments for Java.</p>
+<p>And if you are running older x86_64 cpu's that lack some of the newer AVX512 instructions (ex avx512vbmi) your are supposedly safe.</p>
+<p>Certainly beclowns one of the biggest arguments for Java.The argument is not complete immunity from memory-safety concerns, but a far reduced scope in which they are relevant and in which the developer needs to take care of them.There is no mainstream language that is 100% memory safe. All of them have at least some unsafe internals. The "memory safety guarantee" of the safe parts relies on the correctness of the unsafe internals they use.As example, from The Rustonomicon [rust-lang.org]:Much of the Rust standard library also uses Unsafe Rust internally. These implementations have generally been rigorously manually checked, so the Safe Rust interfaces built on top of these implementations can be assumed to be safe.That assumption holds only as long as those Unsafe Rust internal uses are actually bug-free, which is not a 100% guarantee as bugs can slip through even the most rigorous checks. After all, even the OpenJDK's AVX-512 Base64 decoder was very likely "rigorously manually checked"...What is true is that minimizing the unsafe parts reduces the attack surface and allows for more focused checks on those parts. This is still a very valid argument for Java compared to e.g. C/C++.</p>
+<p>Certainly beclowns one of the biggest arguments for Java.</p>
+<p>The argument is not complete immunity from memory-safety concerns, but a far reduced scope in which they are relevant and in which the developer needs to take care of them.</p>
+<p>According to recent reports, there is no mainstream language that is 100% memory safe. All of them have at least some unsafe internals. The "memory safety guarantee" of the safe parts relies on the correctness of the unsafe internals they use.</p>
+<p>As example, from The Rustonomicon [rust-lang.org]:.</p>
+<p>Much of the Rust standard library also uses Unsafe Rust internally. These implementations have generally been rigorously manually checked, so the Safe Rust interfaces built on top of these implementations can be assumed to be safe.That assumption holds only as long as those Unsafe Rust internal uses are actually bug-free, which is not a 100% guarantee as bugs can slip through even the most rigorous checks. After all, even the OpenJDK's AVX-512 Base64 decoder was very likely "rigorously manually checked"...What is true is that minimizing the unsafe parts reduces the attack surface and allows for more focused checks on those parts. This is still a very valid argument for Java compared to e.g. C/C++.</p>
+<p>Sources indicate that much of the Rust standard library also uses Unsafe Rust internally. These implementations have generally been rigorously manually checked, so the Safe Rust interfaces built on top of these implementations can be assumed to be safe.</p>
+<p>That assumption holds only as long as those Unsafe Rust internal uses are actually bug-free, which is not a 100% guarantee as bugs can slip through even the most rigorous checks. After all, even the OpenJDK's AVX-512 Base64 decoder was very likely "rigorously manually checked"...</p>
+<p>Sources indicate that what is true is that minimizing the unsafe parts reduces the attack surface and allows for more focused checks on those parts. This is still a very valid argument for Java compared to e.g. C/C++.</p>
+<p>From Oracle: [oracle.com] "The single biggest difference between Java and C or C++ is that Java's memory model eliminates the possibility of overwriting memory and corrupting data.".</p>
+<p>This was the early argument for Java, and they didn't hedge it like "well actually it's a far reduced scope." But also in the early days, there weren't clever optimizations for niche cases like base64 decode.</p>
+<p>To give Java the benefit of the doubt and save face, one might say that it's an aspirational goal, not a bulletproof guarantee; or that t.</p>
+<p>From Oracle: [oracle.com]
+"The single biggest difference between Java and C or C++ is that Java's memory model eliminates the possibility of overwriting memory and corrupting data."This was the early argument for Java, and they didn't hedge it like "well actually it's a far reduced scope."That statement is under the assumption that the language itself is implemented correctly. This is not different from the Rustonomicon, which makes the same assumption about Rust.This is from the first chapter of the Rustonomicon [rust-lang.org]:Safe Rust is the true Rust programming language. If all you do is write Safe Rust, you will never have to worry about type-safety or memory-safety. You will never endure a dangling pointer, a use-after-free, or any other kind of Undefined Behavior (a.k.a. UB).That is presented pretty clearly as "bulletproof guarantee", but it is actually only true under the assumption that Rust itself is implemented correctly.</p>
+<p>From Oracle: [oracle.com]
+"The single biggest difference between Java and C or C++ is that Java's memory model eliminates the possibility of overwriting memory and corrupting data.".</p>
+<p>This was the early argument for Java, and they didn't hedge it like "well actually it's a far reduced scope.".</p>
+<p>That statement is under the assumption that the language itself is implemented correctly. This is not different from the Rustonomicon, which makes the same assumption about Rust.</p>
+<p>This is from the first chapter of the Rustonomicon [rust-lang.org]:.</p>
+<p>Safe Rust is the true Rust programming language. If all you do is write Safe Rust, you will never have to worry about type-safety or memory-safety. You will never endure a dangling pointer, a use-after-free, or any other kind of Undefined Behavior (a.k.a. UB).That is presented pretty clearly as "bulletproof guarantee", but it is actually only true under the assumption that Rust itself is implemented correctly.</p>
+<p>Safe Rust is the true Rust programming language. If all you do is write Safe Rust, you will never have to worry about type-safety or memory-safety. You will never endure a dangling pointer, a use-after-free, or any other kind of Undefined Behavior (a.k.a. UB).</p>
+<p>That is presented pretty clearly as "bulletproof guarantee", but it is actually only true under the assumption that Rust itself is implemented correctly.</p>
+<p>It has been revealed that the argument is not complete immunity from memory-safety issues, but a far reduced scope in which they are relevant and in which the developer needs to take care of them.If they had written the base64 decoder in Java, it would not have this vulnerability. But no, they decided to optimized it by not using Java, so they got a serious bug. Why was it so key to write the decoder in another language? Isn't Java with JIT fast enough?</p>
+<p>The argument is not complete immunity from memory-safety complications, but a far reduced scope in which they are relevant and in which the developer needs to take care of them.</p>
+<p>If they had written the base64 decoder in Java, it would not have this vulnerability. But no, they decided to optimized it by not using Java, so they got a serious bug. Why was it so important to write the decoder in another language? Isn't Java with JIT fast enough?</p>
+<p id="sec-mid-46493">Why was it so vital to write the decoder in another language? Isn't Java with JIT fast enough?That's the kind of special case implementations you want as fast as possible. I doubt any mainstream language that takes performance seriously does it completely without unsafe internals either.</p>
+<p>Industry observers note that why was it so important to write the decoder in another language? Isn't Java with JIT fast enough?</p>
+<p>That's the kind of special case implementations you want as fast as possible. I doubt any mainstream language that takes performance seriously does it completely without unsafe internals either.</p>
+<p>According to recent reports, as an exercise, I reimplemented that base64 in pure Java, using the recent Vector API (and improving it a bit too to get fully on par, so it wouldn't work as is). It matches native speeds within a few %.The Vector API is still technically in incubation though, so base Java modules cannot depend on it.Furthermore, you are not really avoiding unsafe code completely, only moving the problem. The Vector API itself is implemented by HotSpot intrinsics in C++, which means its use is safe only as long as the underlying C++ implementation is bug-free.</p>
+<p>As an exercise, I reimplemented that base64 in pure Java, using the recent Vector API (and improving it a bit too to get fully on par, so it wouldn't work as is). It matches native speeds within a few %.</p>
+<p>The Vector API is still technically in incubation though, so base Java modules cannot depend on it.</p>
+<p>In a recent development, furthermore, you are not really avoiding unsafe code completely, only moving the problem. The Vector API itself is implemented by HotSpot intrinsics in C++, which means its use is safe only as long as the underlying C++ implementation is bug-free.</p>
+<p>In a recent development, absolutely not. Java guarantees that you can't write memory unsafe code in it. However, yes there can be problems within the implementation of the Java itself on any libraries that it uses if they're written with memory unsafe languages.</p>
+<p>&gt; Certainly beclowns one of the biggest arguments for Java.</p>
+<p>No, it just makes clowns of the OpenJDK teams. There's no good reason to write Base64 implementations in assembler. The idea that native Java isn't fast enough to process Base64 in the kinds of  volumes Base64 is used in is completely absurd. What the fuck were they thinking? And if they are going to implement this why wasn't it subject to rigorous review and testing?</p>
+<p>I'm not impressed with the Java back-end these days. I found changing the garbage.</p>
+<p>In a recent development, my wisdom is that the normal use case for base64 is once in a blue moon. You don't weaken the security of your code because you want to hand optimize some code that the average code base will use maybe once or twice for every web call. Nobody's writing a loop to go through 100,000 base64 strings.</p>
+<p>This is what comes of people who don't use profilers or don't understand how their code works enough to realize where the bottle necks are.</p>
+<p>This is what comes of people who don't use profilers or don't understand how their code works enough to realize where the bottle necks are.</p>
+<p>I don't think that's true of the authors, though.</p>
+<p>It has been revealed that and optimizing it wasn't a bad idea. The pure java version was already optimizable, and using AVX is a good, supposedly easy way to speed it up. Decoding a token is only a fraction of a web request processing time, but it does matter for bigger payloads too (mime...).</p>
+<p>All I see is old hardware running Java 8.</p>
+<p>The future's so bright I gotta wear shades.</p>
+<p>Is that like a fancy newly introduced compiler for Rust or Go? Never heard of it. /s.</p>
+<p>The short answer is that Java was a language that built complexity with a chain of inheritance from Object, and reduced complexity with interfaces.</p>
+<p>Jar files and the mythical JavaOS.</p>
+<p>Java was used to build programs for an imaginary JavaOS, that was never really completed (sort of like Gnu/Hurd).</p>
+<p>It has been revealed that instead of building executable programs,
+you used Java to build Jar files. A Jar file was like a compiled library,
+that was to be installed in the JavaOS.</p>
+<p>Yes but the real question is what is "/s" and what does it mean when someone puts "/s" at the end of the post?</p>
+<p>Speech4Shell will allow you to gain the root shell on a cloud server simply by talking with ChatGPT.</p>
+<p>It has been revealed that there may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</p>
+<p id="sec-end-46493">In a recent development, get hold of portable property. -- Charles Dickens, "Great Expectations".</p>
+<p style="margin-top: 25px;">
+<a href="https://developers.slashdot.org/story/26/11/18/1931246/java4shell-flaw-exposes-openjdk-to-rce-via-base64?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="drupal-patches-critical-rce-flaw-warns-exploits-may-surface-quick-46208.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46208. Drupal patches critical RCE flaw, warns exploits may surface quickly
+        </a>
+        
+        <a href="cyberattack-on-service-provider-exposes-payee-data-at-40-irish-cr-46433.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46433. Cyberattack on service provider exposes payee data at 40 Irish credit unions
+        </a>
+        
+        <a href="industry-news-attackers-crash-claudes-office-party-flaw-to-run-ma-46350.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46350. Industry News: Attackers Crash Claude's 'Office Party' Flaw to Run Malicious Code on Linux
+        </a>
+        
+        <a href="industry-news-microsoft-fixes-rce-bug-in-windows-paint-after-week-46345.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46345. Industry News: Microsoft Fixes RCE Bug in Windows Paint After Weeks of Confusion
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

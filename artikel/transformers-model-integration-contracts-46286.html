@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformers Model Integration Contracts</title>
+    <meta name="description" content="On July 30, 2026, Transformers enabled PyTorch's scaled dot-product attention (SDPA) for T5. As a side effect, UMT5's decoder could attend to future tokens">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/transformers-model-integration-contracts-46286.html">
+    <meta property="og:title" content="Transformers Model Integration Contracts">
+    <meta property="og:description" content="On July 30, 2026, Transformers enabled PyTorch's scaled dot-product attention (SDPA) for T5. As a side effect, UMT5's decoder could attend to future tokens">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/transformers-mic/mic-logo.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/transformers-model-integration-contracts-46286.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Transformers Model Integration Contracts", "image": ["https://huggingface.co/blog/assets/transformers-mic/mic-logo.png"], "datePublished": "2026-11-03T00:00:00", "dateModified": "2026-11-19T15:08:12.641689", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/transformers-model-integration-contracts-46286.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Transformers Model Integration Contracts</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 03 Nov 2026 &bull; ⏱️ 6 min read (1284 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>On July 30, 2026, Transformers enabled PyTorch's scaled dot-product attention
+(SDPA) for T5.</li><li style='margin-bottom:6px;'>Sources indicate that when we later replayed those commits, a small UMT5 model running on CPU flagged
+it on every one of them.</li><li style='margin-bottom:6px;'>Transformers supports over 750
+model types, and its test suite is big: 88,000+ CPU tests on main, plus
+200,000+ GPU tests in a daily run.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46286"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46286"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46286"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Transformers Model Integration Contracts" loading="lazy" src="https://huggingface.co/blog/assets/transformers-mic/mic-logo.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46286">On July 30, 2026, Transformers enabled PyTorch's scaled dot-product attention
+(SDPA) for T5. As a side effect, UMT5's decoder could attend to future tokens. During training, it could peek at the answer it was supposed to predict. Nothing crashed, and the bug stayed in main for almost two months.</p>
+<p>Sources indicate that when we later replayed those commits, a small UMT5 model running on CPU flagged
+it on every one of them. This post is about that model and the tests built
+around it.</p>
+<p>Transformers supports over 750
+model types, and its test suite is big: 88,000+ CPU tests on main, plus
+200,000+ GPU tests in a daily run. Model tests are only part of it: we also
+test pipelines, training, distributed execution, quantization and attention
+kernels.</p>
+<p>It has been revealed that the integration tests load real checkpoints and exercise the model's API on
+real hardware. Running all of that on every PR would mean keeping a lot of GPUs
+busy all day long, which isn't practical. By the time a scheduled run finds a
+regression, it may already be in main.</p>
+<p>Our approach is to shrink the model instead. We build a fixture: a small
+model made from the real checkpoint's configuration, with fewer and narrower
+layers but every kind of layer it has, and its tokenizer and processor files
+unchanged. It is published once, then reused. We run "fast integration tests"
+against it on a cheap CPU runner. In our
+CPU study,
+the experimental UMT5 fixture used 66 MB of weights; the source checkpoint
+is 1,227 MB.</p>
+<p>This also covers very large models: some don't fit on our standard GPU
+runners, but their fixtures run on CPU.</p>
+<p>It has been revealed that model integrators already build tiny test models (Transformers' tiny-random-*
+checkpoints). We wanted a common recipe, and
+checks that go beyond loading the model and running a forward pass. The UMT5
+bug would have passed a forward pass just fine.</p>
+<p>Fixtures won't replace full integration tests, but on PRs they give us a
+chance to catch bugs before they reach main.</p>
+<p>transformers-mic is a proposed
+standard for packaging these tests. A Model Integration Contract (MIC) has
+three parts:.</p>
+<p>The contract holds if running the usage path on the fixture still produces the
+baselines.</p>
+<p>A contract covers an architecture and a usage path, not a single checkpoint:
+compatible checkpoints can share a fixture, while each keeps its own expected
+results. We publish them in huggingface-mic.</p>
+<p>For example, the SmolLM contract generates from prompts such as "The capital
+of France is" and compares its token IDs with a recorded answer. After loading
+the model and tokenizer, the generation code is, simplified to one prompt:.</p>
+<p>It also compares training loss, checks that gradients are finite and verifies
+that an optimizer step changes the weights. See the full
+usage.md.</p>
+<p>A fleet dataset
+on the Hub pins each MIC to a frozen revision, along with the package versions
+used to record its baselines. Each CI run records the fleet revision it
+used, so we can reproduce it later.</p>
+<p>On a PR, we pick MICs based on the files the patch changes.</p>
+<p>In a recent development, we replayed frozen MICs over five months of Transformers commits. The small
+UMT5 fixture flagged the regression from its introduction on July 30, 2026
+until its fix on September 28. Label log-probabilities differed from the reviewed baseline by 1.22 and training
+loss by about 0.20.</p>
+<p>Industry observers note that one detail mattered: the contract used SDPA, the default attention path. Running only the eager attention variant missed the bug. A fixture only
+helps if it goes through the same code as the real checkpoint.</p>
+<p>Industry observers note that we then reverted the fix on a proof branch in Transformers' CI. The check
+failed with the same differences, and the selected T5 contract's runner step
+took 13.4 seconds on CPU, excluding setup.</p>
+<p id="sec-mid-46286">The replay results
+and the CI demo
+have the measurements and reproduction details.</p>
+<p>The first recipe was simple: make the dimensions smaller and keep fewer
+layers. That wasn't enough for mixed architectures. Keeping two layers is no
+use if both use sliding attention and the full-attention layers disappear.</p>
+<p>We also keep the original weights file format. Otherwise we would skip the
+conversion code that runs when a user loads the real checkpoint. The full recipe
+has more detail.</p>
+<p>Recent findings suggest that the Llama 4 Scout shrink report
+demonstrates what this looks like on a major model. 108.6 billion parameters become 44.7
+million. The vision stack goes from 34 layers to 2 and the language stack from
+48 to 4, keeping the checked layer kinds and MoE routing style.</p>
+<p>According to recent reports, our CLI, tmic, creates the contract and builds the fixture. For a fresh
+model, an LLM drafts the usage code and manifest, and CPU and GPU runs measure
+the candidate baselines. The LLM drafts; it doesn't approve. Changed
+expectations require human review.</p>
+<p>To try it on your machine, use your source checkpoint in place of org/model:.</p>
+<p>It drafts the contract, builds the fixture and records its baselines on your
+machine, asking you to review each step, and stops before uploading anything. For a fresh model, the draft comes from an LLM through Inference Providers, billed
+to your own account (--bill-to ''). The
+CLI docs
+cover the individual steps.</p>
+<p>We used agents to build MICs across model families. When they hit an edge
+case, we fixed the recipe itself rather than the one fixture, with help from
+model experts. The published models and remaining gaps are in the
+coverage space.</p>
+<p>Industry observers note that with random weights, our Whisper fixture barely responded to changes in
+the audio. It ran, but that made it a poor test of the audio path.</p>
+<p>In a recent development, so we trained it on a few tones paired with words such as "red" and "green". We weren't teaching it speech recognition, just making audio changes visible
+in its outputs. In our weight-initialization study,
+the random Whisper fixtures caught 18 of 24 injected faults. The overfit
+fixtures caught all 24.</p>
+<p>That gives us two ways to build the weights:.</p>
+<p>The Whisper result doesn't settle which is better. Those were synthetic
+faults, and we haven't found a real regression caught only by the overfit
+version. Both versions missed an assisted-decoding bug that the real Whisper
+checkpoint exposed.</p>
+<p>So we keep random weights when they pass the checks, and overfit when we need
+better sensitivity or readable answers. Training takes seconds, but it is one
+more step that can fail to converge, and one more thing to maintain. The comparison
+has the results for both.</p>
+<p>As of November 1, 2026, the MIC job in Transformers CI
+reports failures without blocking PRs. Whether it should block depends on
+things we haven't measured yet:.</p>
+<p>We also don't know how many bugs, like the Whisper assisted-decoding one, only
+show up with real weights, or whether overfitting catches real bugs that random weights miss.</p>
+<p>Recent findings suggest that coverage is still partial, across model families and the APIs people use. When a regression slips through, we can add the missing usage path and replay
+it on the broken and fixed versions. We'll keep existing tests until their
+coverage is accounted for.</p>
+<p>Finally, we'd like to link original Hub model pages to their MICs, so a
+developer or an agent using a checkpoint could start from an example tested on
+that checkpoint, its environment and its expected outputs.</p>
+<p>Want to help? Pick an uncovered model from the
+coverage space, try
+the tmic workflow,
+and contribute a usage path or review a generated contract.</p>
+<p id="sec-end-46286">t5/umt5 in a blog post in 2026, never thought I’d see the day 😍.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/transformers-mic" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-transformers-v5-simple-model-definitions-powering-the-46931.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46931. Tech Report: Transformers v5: Simple model definitions powering the AI ecosystem
+        </a>
+        
+        <a href="how-to-train-a-newly-introduced-language-model-from-scratch-using-35392.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35392. How to train a newly introduced language model from scratch using Transformers and Tokenizers
+        </a>
+        
+        <a href="training-a-language-model-with-transformers-using-tensorflow-and--35155.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #35155. Training a language model with 🤗 Transformers using TensorFlow and TPUs
+        </a>
+        
+        <a href="breaking-timm-transformers-use-any-timm-model-with-transformers-34685.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #34685. Breaking: Timm ❤️ Transformers: Use any timm model with transformers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

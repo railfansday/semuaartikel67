@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Specialist Agents, One Incident: What an A2A Handoff Takes</title>
+    <meta name="description" content="Originally published on data-agent.co. In a recent development, A Kubernetes expert and an AWS expert worked the same failure over A2A. These are field not">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/two-specialist-agents-one-incident-what-an-a2a-handoff-takes-46159.html">
+    <meta property="og:title" content="Two Specialist Agents, One Incident: What an A2A Handoff Takes">
+    <meta property="og:description" content="Originally published on data-agent.co. In a recent development, A Kubernetes expert and an AWS expert worked the same failure over A2A. These are field not">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F201zh1jnxtkrapgpgeqi.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/two-specialist-agents-one-incident-what-an-a2a-handoff-takes-46159.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Two Specialist Agents, One Incident: What an A2A Handoff Takes", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F201zh1jnxtkrapgpgeqi.png"], "datePublished": "2026-11-19T15:00:00", "dateModified": "2026-11-19T15:08:05.682757", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/two-specialist-agents-one-incident-what-an-a2a-handoff-takes-46159.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Two Specialist Agents, One Incident: What an A2A Handoff Takes</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 19 Nov 2026 &bull; ⏱️ 21 min read (4276 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, A Kubernetes expert and an AWS expert worked the same failure over A2A.</li><li style='margin-bottom:6px;'>Two in the morning, a checkout service starts failing, and two different agents can each see part of why.</li><li style='margin-bottom:6px;'>It has been revealed that one is watching the cluster.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-46159"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-46159"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-46159"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Two Specialist Agents, One Incident: What an A2A Handoff Takes" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F201zh1jnxtkrapgpgeqi.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-46159">Originally published on data-agent.co.</p>
+<p>In a recent development, A Kubernetes expert and an AWS expert worked the same failure over A2A. These are field notes on what the protocol handled, what it could not express, and what we had to build in between, measured over 63 runs against the real agent, on a real account, against real faults.</p>
+<p>Two in the morning, a checkout service starts failing, and two different agents can each see part of why.</p>
+<p>It has been revealed that one is watching the cluster. Within seconds it has the restart loop, the error, the deployment that went out on Tuesday, and the fact that this workload talks to something called payments-db. The other can read the inside of payments-db: the connection ceiling, the engine log, the parameter somebody changed last week.</p>
+<p>Neither can finish the job alone. That is not a gap in the tooling that will close next year. It is what a modern incident actually looks like, and it is the reason we spent this quarter building a handover rather than a bigger agent.</p>
+<p>Our agent's reads stop at the cluster boundary, on purpose. We read Kubernetes and the cloud control plane in place, which is what makes detection continuous and cheap rather than alarm-driven and expensive. The cost of that choice is that a managed database is a closed box, with its own telemetry, its own permissions and its own console.</p>
+<p>A large share of what actually breaks a Kubernetes application is not in the cluster. It is the managed database behind it, the queue in front of it, the permission path, the security group. The agent watching the cluster can tell you which door the problem went through. It cannot follow it inside.</p>
+<p>The instinct is to fix this by building one agent that sees everything. We think that instinct is wrong. Depth in a managed database means performance insights, engine logs and parameter history, with the permissions and domain knowledge that implies. Depth in Kubernetes means a live model of workloads, topology and drift. Build both into one agent and you get an agent that is mediocre at each, while you spend your quarters reimplementing somebody else's specialty.</p>
+<p>The other option is the one every engineering organization already uses for humans. You keep a specialist, and you get good at the handover.</p>
+<p>It is worth being concrete about what each side is actually for, because the moment people hear two agents they assume a competition.</p>
+<p>Industry observers note that ours is DataAgent, an autonomous observability and remediation platform. It does three things, and it is worth naming them separately because the third one surprises people.</p>
+<p>It has been revealed that it covers both layers. Kubernetes infrastructure and the application stack running on it, which matters because real incidents are rarely cleanly one or the other. A pod in CrashLoopBackOff because a connection pool is exhausted is an application fault wearing an infrastructure symptom, and an agent that sees only one layer describes half of it.</p>
+<p>According to recent reports, it fixes, rather than reports, once you enable it for that fault class. The output is a gated change, not a document, and the latency follows from that: seconds to a first opinion, minutes to an approved action, because a fix that arrives after the incident is over is not a fix.</p>
+<p>In a recent development, it right-sizes observability spend instead of adding to it. This one follows directly from reading in place. Detection never requires shipping telemetry into a store you pay for by the gigabyte, so continuously watching every pod and workload can reduce what you spend on observability rather than add to it. Most things you bolt onto a stack increase what you pay to collect. This one can reduce it, because an agent that proves which evidence each class of fault actually needs also knows what you never needed to ship, keep or index. That argument is the other half of why an agent that reads in place is worth building.</p>
+<p>Industry observers note that the AWS DevOps Agent, which went generally available on 31 March 2026, researches in depth. Point it at a problem and it runs an autonomous, multi-step investigation without a prompt per step; in our runs, that took five to twelve minutes. Ask it a direct question instead and it answers in seconds. It reads what we cannot, and it is good at it, as far as the permissions you grant its Agent Space allow. It ends with an answer, evidence and recommendations.</p>
+<p>Figure 1: Two agents at opposite ends of every axis that matters. That is what makes the handover worth building rather than an obvious feature bolt-on.</p>
+<p>According to recent reports, line the two up and they sit at opposite ends of all five axes. Wide against deep. Cloud agnostic against AWS native. Seconds against minutes. A gated change against a researched answer. An agent that can reduce what you spend on watching, against one that bills for the watching it does.</p>
+<p>It has been revealed that when two systems sit at opposite ends of every axis, the interesting engineering is not in either one. It is in the handover. The question is never which agent. It is when to hand over, what to send with it, and who owns the fix afterwards.</p>
+<p>The two protocols in play here are not interchangeable, and the difference matters more than it first appears.</p>
+<p>Industry observers note that MCP connects an agent to tools. You call, it returns, you continue. A2A connects an agent to another agent: you hand over a task, the other side works for minutes with its own initiative and its own sub-agents, and you follow it to a terminal state. A tool call has a result. A delegated task has a duration, a cost and an owner.</p>
+<p>It has been revealed that A2A, hosted by the Linux Foundation since June 2025, reached version 1.0 in March 2026. A year after launch it had more than 150 supporting organizations, with integrations in Azure AI Foundry, Copilot Studio and Amazon Bedrock AgentCore. It gave us the right abstraction. Discovery through Agent Cards, which v1.0 lets a publisher sign. Delegation as a task rather than a call. An eight-state lifecycle covering submitted, working, input required, auth required, completed, failed, canceled and rejected, which is exactly the vocabulary you need when the other side might come back asking for permission instead of an answer. Streaming progress, so a twelve-minute investigation is observable while it runs.</p>
+<p>Industry observers note that in practice, two of those did less than the spec suggests. We never saw a signed card from AWS, and the agent never asked us for input: when it tried, its own ask-the-user step failed and it ended the turn.</p>
+<p>Industry observers note that then the part nobody warns you about. A2A can express that a task was delegated. It cannot express who authorized it, who pays for it, or who to ask about it six weeks later.</p>
+<p>We are not the only ones to notice a gap at this layer. Kang and Diponegoro audited MCP, A2A, ACP and two other protocols against six governance dimensions, including human escalation and audit and replay, and found that none of them covers the full set. Their conclusion is that governance is a missing layer above these standards. Ours is a narrower, operational version of the same finding: cost, authority and the identity of the requesting human are not in the protocol, so we built them outside it.</p>
+<p>So the honest shape of this integration is that the protocol handled the conversation, and we built the layer around it.</p>
+<p>That layer is eight steps, and only one of them is the actual delegation.</p>
+<p>According to recent reports, figure 2: The handover, end to end. The protocol covers submit and follow. Everything that decides whether they happen, and what happens to the answer, is yours to build.</p>
+<p>Coverage asks whether anything actually leaves this cluster. Preflight does a few cheap reads against whatever coverage found, and either rules it out or adds what it learned.</p>
+<p>Then the brief, which is the step that decides the quality of everything downstream.</p>
+<p>It has been revealed that A DataAgent incident already knows which dependencies leave the cluster, which ones our own reads have settled, and what the remaining question is. Sending that, rather than a bare question, is what makes minutes of someone else's research worth having. We measured the difference. Handed just the question, the specialist came back with two rows of evidence. Handed what we already knew and what we had already ruled out, it came back with four, in the same twelve minutes.</p>
+<p>Recent findings suggest that context does not make the specialist faster. It moves its effort out of rediscovering what you already knew and into the part you actually needed.</p>
+<p>Then the answer comes back, and you have a newly introduced problem: two analyses of one incident, written by two systems, with no guarantee they agree.</p>
+<p>According to recent reports, so the handover ends in a reconciliation rather than an answer. Every finding lands in one of three buckets: it agrees with what we found, it adds something we did not have, or it conflicts with it. That last bucket is the valuable one, and it is exactly what nobody builds while they are still excited about the integration.</p>
+<p>Industry observers note that the answer is evidence, not a verdict. It attaches to the incident, our own enrichment runs over it, and the blueprint that comes out the other side is still ours and still gated. The specialist stops at a recommendation, which is the right place for it to stop. Somebody still has to own the change, verify the system recovered, and carry the consequence if it did not.</p>
+<p>None of the above is a cost story, but the moment a specialist bills by the second, economics becomes a design input whether you wanted it or not.</p>
+<p>Put the two halves side by side and the shape is unusual. The detection layer that decides when to delegate adds nothing to the bill, because it reads in place, and it can right-size what you were already spending on observability. The depth layer, when we call it, is billed by the second at \$0.0083. So the money in this system is concentrated exactly where the judgment is: in deciding whether a question is worth asking a specialist at all. Here is what that looked like when we measured it.</p>
+<p>Figure 3: Four runs against the same agent at the same rate. What changed was the brief, and whether we sent one at all.</p>
+<p>Two findings, and only one of them is intuitive.</p>
+<p>The informed brief cost two cents less than the plain one and returned twice the evidence. The agent fills whatever budget it is given, so context buys quality rather than savings. Do not let anyone sell an informed handover as a cost reduction, because the first invoice will contradict them.</p>
+<p>A later run against the same fault added a caution. It found the real connection ceiling sat near 450, which contradicted the informed run's headline claim that the pool was stuck at a 130 cap. Four rows was more evidence, not more truth. Count the rows that are new, and check them.</p>
+<p>Preflight checked a flagged database, found its connection count had never risen above zero, and ruled it out in two and a half seconds without opening a task. Disqualification is the only step in the whole system that removes money from the bill. Everything else moves cost around or improves what you get for it.</p>
+<p>Recent findings suggest that every way to start a billed run passes a gate that shows the estimate first, because a cancelled run still bills for the seconds it consumed and stopping is therefore not a refund. And the requesting human's identity travels in the task metadata, so the audit trail names a person rather than a service account. Delegation splits authorization from accountability, and you have to put them back together yourself. And treat any estimate as a floor, not a quote: our buttons said about \$0.10 for a direct question and about \$3 for an investigation, and real runs cost up to \$0.80 and \$6.40.</p>
+<p>Sources indicate that we have kept running the integration against the real agent since we first wrote this: 12 investigations and 51 direct questions so far. Some of what we learned changed the design. Some of it changed what we would tell you to expect.</p>
+<p>Recent findings suggest that A2A gives you two ways to ask. A single streamed message, with no task behind it, answered a question in 10.6 seconds for about nine cents. The same question as a persistent task took 153.6 seconds and cost about \$1.28, because the task path reports back in batches 30 to 90 seconds apart. So we now split by question. A direct question streams. An investigation keeps the task, because the task is what gives you cancel, deduplication and a link back into the AWS console. One bill question went from almost five minutes and \$2.46 to 11 seconds and nine cents.</p>
+<p id="sec-mid-46159">Industry observers note that figure 4: Two depths, priced on the button. A direct question streams back in under a minute; an investigation takes minutes. Nothing starts until somebody picks one, and declining costs nothing.</p>
+<p>After the agent finished, our client kept the connection open for another three and a half to four minutes, and agent time bills by the second. A 20-second check fixed it: one run dropped from \$3.30 to \$2.78. If a specialist bills by the second, audit the seconds you add.</p>
+<p>In a recent development, the specialist reads what its Agent Space is allowed to read. Without Performance Insights and the key to decrypt it, the inside-the-database answer was a permission dead end, after a 12-minute run that cost \$6.40. Without Cost Explorer access it could not answer a bill question at all. The good news is that one Agent Space can read a second AWS account as a secondary source, so the same chat answered a bill question in 24 seconds and an RDS question in 33.</p>
+<p>According to recent reports, figure 5: One Agent Space, two AWS accounts: a primary source and a secondary one, both valid. Account numbers masked.</p>
+<p>It has been revealed that asked for the current bill three times in seven minutes, it gave three totals up to 40 percent apart, and once reported zero usage where credits had cancelled the usage out. Asking for a table, the bottom line first, and gross figures before credits fixed the zero and matched Cost Explorer. Specify the shape of the answer, and show a person the variance rather than hiding it.</p>
+<p>Industry observers note that figure 6: A direct question, answered as a table in under a minute. Read the last paragraph: the specialist leaves the fix to the plan it knows someone else owns.</p>
+<p>Industry observers note that A brief of 10,681 bytes was rejected with an HTTP 500 validation error; collapsing repeated events brought it to 3,040 bytes and the run completed. Reading the Agent Card proves nothing about permission: it loads for any AWS login, including one that is refused on send, so we prove signing with a real five-cent question. A follow-up question does not carry its context over. And progress arrives in structured data parts that a text-only client drops, which left our panel silent for half a minute at a time.</p>
+<p>An external agent is an escalation, never a tool inside our own root-cause analysis. It takes minutes where we take seconds. It would bill on every incident instead of only where coverage finds a real gap. Its text would flow straight into our conclusions. And its answers vary in ways a person should see. So it is offered, priced and confirmed, and what it says comes back as evidence, never as our verdict.</p>
+<p>It has been revealed that everything above is architecture. Here is the same thing as a sequence of screens, captured against a running stack rather than mocked up. The AWS account number is masked; nothing else is retouched.</p>
+<p>In a recent development, on the left, our own analysis: orders-api in CrashLoopBackOff, the PostgreSQL database out of connection slots, the rollout that did it thirteen minutes earlier. On the right, what our agent knows about the boundary: two dependencies leave the cluster, and it can name them.</p>
+<p>Sources indicate that figure 7: One incident, both agents. The cluster-side analysis is already written and cost nothing. The panel on the right shows what our agent knows about the boundary, and the handoff already made for this incident.</p>
+<p>Sources indicate that the agent is explicit about the line it cannot cross. It lists what it can read itself, the CloudWatch metrics, the RDS events, the parameter group, the security groups, and then what it cannot: performance insights, top SQL, engine log contents. That list is the argument for delegating, written by the agent that would otherwise be guessing.</p>
+<p>Coverage, the dependencies, the brief mode it intends to send, and the price of asking, all on one line before any commitment exists.</p>
+<p>Industry observers note that figure 8: Coverage, brief and price, visible before a decision. The running total against the monthly cap is there too, before the AWS invoice notes it.</p>
+<p>Recent findings suggest that A slash in the ordinary chat composer offers the handoff alongside everything else. No separate console, no incantation to memorize.</p>
+<p>Figure 9: The handoff is offered where the conversation already happens.</p>
+<p>Recent findings suggest that the question is held, not sent. The estimate sits on the button itself, declining costs nothing, and pressing Enter again does not confirm.</p>
+<p>Figure 10: The ask is held until somebody agrees to the spend. This is the only moment money can start, and it is a deliberate second action.</p>
+<p>Recent findings suggest that since these screens were captured, the gate has changed shape. The single estimate became two priced choices, a direct question or an investigation, shown in Figure 4 above.</p>
+<p>When the specialist finishes, its findings do not sit in a separate tool. They attach to the incident, post into its chat attributed to the agent that produced them, trigger our own enrichment over the new evidence, and record a verdict on that dependency so the next incident on it starts from what we learned.</p>
+<p>It has been revealed that figure 11: Promotion, in four steps. The external answer becomes evidence on an incident we still own, and the edge verdict means the same question is not paid for twice.</p>
+<p>Note the last line of that panel. The verdict was inconclusive, which settles nothing, so the dependency stays eligible for a future handover. A system that records only its successes would have quietly closed that door.</p>
+<p>This is worth splitting honestly, because both sides get something they could not build alone.</p>
+<p>Recent findings suggest that four things change. A different population of incidents reaches it: on its own it investigates what somebody already pointed it at, while continuous cluster-level detection also starts on the first-time fault nobody wrote a rule for. It arrives aimed, at the dependencies that actually left the cluster, with everything already settled marked as settled. Its answer gets reconciled rather than filed. And it gains a path to a gated fix.</p>
+<p>It has been revealed that on our side, we get AWS depth we cannot reproduce and should not try to, an autonomous investigation that runs for minutes without supervision, and coverage in accounts where we would otherwise have no evidence at all. The findings feed our own enrichment, so the analysis and the plan stay ours.</p>
+<p>Industry observers note that there is a cost on your side too, and it is worth naming. You stop starting every investigation by hand, which means the system needs to check for a running task before opening a duplicate, and it needs to carry your identity so the spend is attributable later. Both are work. Neither is optional.</p>
+<p>The position, stated plainly: this runs your agent, in your Agent Space, on your bill. It is not a replacement for anything you have already chosen. It is what happens when continuous detection decides when to call it, what to send with the question, and what to do with the answer.</p>
+<p>In a recent development, the checkout service is still failing at two in the morning, and neither agent can finish the job alone. One knows the cluster and can act on it. One knows the database and can explain it.</p>
+<p>According to recent reports, the interesting work was never inside either of them. It was in deciding what to send, what to do with what came back, and who was accountable when it did.</p>
+<p>Recent findings suggest that AWS is the first specialist, not the design. Google ships Gemini Cloud Assist investigations and Microsoft ships the Azure SRE Agent, each deep inside its own cloud and blind outside it. Our first attempt with Google's agent, on our own GKE cluster, is a fair preview of the work ahead: it answered in its own console, but refused every programmatic call, a block we have raised with Google. Multi-cloud is turning into multi-agent, and the handover layer is the part that spans it. That is the subject of our next post.</p>
+<p>If you are wiring agents to agents yourself and have measurements of your own, we would like to compare notes.</p>
+<p>Industry observers note that at the list price of \$0.0083 per agent-second, twelve minutes (720 seconds) comes to about \$5.98. Idle time is not billed, but a cancelled run still bills for the seconds it already used. Treat any estimate as a floor: in our runs, an investigation estimated at about \$3 cost up to \$6.40. Put the estimate in front of whoever approves the run, not after it.</p>
+<p>New AWS customers get a two-month AWS DevOps Agent trial. Each trial month includes up to 20 hours of investigations. That is enough to measure brief quality and preflight hit rate before list pricing applies.</p>
+<p>All eight, but two are easy to miss: input required and auth required. Both mean the remote agent has paused and is waiting on you. Treat them as a question to route to a human or a policy, not as a failure. Treat completed, failed, canceled and rejected as terminal.</p>
+<p>A2A v1.0 lets an Agent Card carry a JWS signature computed over a canonical form of the card, but signing is optional, and in our runs the AWS DevOps Agent never presented a signed card. A readable card does not prove you are allowed to send either: AWS's card loads for any AWS login, including one that is refused on send. Check the signature where one exists, and prove permission with a small real request before you send incident context.</p>
+<p>Use MCP when you want a tool: you call it, it returns, you continue. Use A2A when the other side prepares its own work, runs for minutes and may ask you for input or permission along the way. If the work has a duration, a cost and an owner, it is a task, and A2A models it better.</p>
+<p>In a recent development, in the setup described here, the integration point is the incident itself. The cluster-side agent's live model of workloads and dependencies tells it which dependencies leave the cluster, and it hands those questions to a specialist agent over A2A as a task, with a brief of what is already known. The specialist's findings come back as evidence: they attach to the incident, post into its chat attributed to the agent that produced them, and record a verdict on that dependency. The remediation plan stays gated and owned by whoever owns the incident.</p>
+<p>The specialist. AWS DevOps Agent reached general availability on 31 March 2026 (AWS What's New, InfoQ). It is priced at \$0.0083 per agent-second, with no charge for idle time (AWS pricing).</p>
+<p>In a recent development, the protocol, and its gaps. Richard Kang and Yudho Diponegoro, "Governance Gaps in Agent Interoperability Protocols: What MCP, A2A, and ACP Cannot Express" (arXiv).</p>
+<p>The Linux Foundation has hosted the Agent2Agent protocol since June 2025 (Linux Foundation). Its first stable version, v1.0, shipped in March 2026 (Google Open Source Blog). The v1.0 changes, task states and Agent Card signing are listed in the A2A docs.</p>
+<p>At the one-year mark, more than 150 organizations supported A2A, with integrations in Azure AI Foundry, Copilot Studio and Amazon Bedrock AgentCore Runtime (Linux Foundation).</p>
+<p>Other clouds, other specialists. Microsoft, Azure SRE Agent documentation (Microsoft Learn). Google Cloud, Gemini Cloud Assist investigations (Google Cloud docs).</p>
+<p>According to recent reports, going deeper. If you are building the same kind of loop, the detect, diagnose, act and verify cycle is walked end to end in our free, open-source autonomous SRE training series. For the cost side of reading in place, see Precision vs. Recall: Why Observability Costs So Much.</p>
+<p id="sec-end-46159">Sources indicate that our figures. Run times, costs and evidence counts are our own measurements against the AWS DevOps Agent at list price, in our own AWS account, against real faults. They are not a customer's bill and not a vendor benchmark. Dollar figures are measured wall time multiplied by the published rate, not an AWS invoice. Runs before 29 September include up to four minutes our own client spent waiting after the agent had finished, since fixed; the runs in Figure 3 predate that fix.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/natishalom/two-specialist-agents-one-incident-what-an-a2a-handoff-takes-14i9" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="aging-in-place-takes-two-budgets-one-for-the-house-one-for-help-45008.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #45008. Aging in Place Takes Two Budgets – One for the House, One for Help
+        </a>
+        
+        <a href="googles-upcoming-fast-switch-feature-leaks-lets-you-use-one-numbe-46709.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46709. Google’s upcoming ‘Fast Switch’ feature leaks, lets you use one number on two Android phones
+        </a>
+        
+        <a href="stop-treating-agents-as-one-off-projects-and-start-running-them-a-46651.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46651. Stop treating agents as one-off projects and start running them as a continuous discipline
+        </a>
+        
+        <a href="record-train-and-deploy-from-one-place-with-strands-agents-lerobo-46558.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46558. Record, train, and deploy from one place with Strands Agents, LeRobot, and Hugging Face Storage Buckets
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
