@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: CodeGraph: Pre-Indexed Code Knowledge Graphs for Agent Tool Calls</title>
+    <meta name="description" content="Coding agents burn tokens on repeated file reads. Claude Code, Cursor, and Codex scan the same functions over and over because they lack persistent memory ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-codegraph-pre-indexed-code-knowledge-graphs-for-age-57483.html">
+    <meta property="og:title" content="Industry News: CodeGraph: Pre-Indexed Code Knowledge Graphs for Agent Tool Calls">
+    <meta property="og:description" content="Coding agents burn tokens on repeated file reads. Claude Code, Cursor, and Codex scan the same functions over and over because they lack persistent memory ">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fimages.unsplash.com%2Fphoto-1551288049-bebda4e38f71%3Fcrop%3Dentropy%26cs%3Dtinysrgb%26fit%3Dmax%26fm%3Djpg%26ixid%3DM3w4Njk2ODR8MHwxfHNlYXJjaHwxfHxDb2RlR3JhcGglM0ElMjBQcmUtSW5kZXhlZCUyMENvZGUlMjBLbm93bGVkZ2UlMjBHcmFwaHMlMjBmb3IlMjBBZ2VudCUyMFRvb2wlMjBDYWxscyUyMHNvZnR3YXJlJTIwaW5mcmFzdHJ1Y3R1cmUlMjBkYXNoYm9hcmR8ZW58MXwwfHx8MTc5NTEzMzAyMnww%26ixlib%3Drb-4.1.0%26q%3D80%26w%3D1080">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-codegraph-pre-indexed-code-knowledge-graphs-for-age-57483.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: CodeGraph: Pre-Indexed Code Knowledge Graphs for Agent Tool Calls", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fimages.unsplash.com%2Fphoto-1551288049-bebda4e38f71%3Fcrop%3Dentropy%26cs%3Dtinysrgb%26fit%3Dmax%26fm%3Djpg%26ixid%3DM3w4Njk2ODR8MHwxfHNlYXJjaHwxfHxDb2RlR3JhcGglM0ElMjBQcmUtSW5kZXhlZCUyMENvZGUlMjBLbm93bGVkZ2UlMjBHcmFwaHMlMjBmb3IlMjBBZ2VudCUyMFRvb2wlMjBDYWxscyUyMHNvZnR3YXJlJTIwaW5mcmFzdHJ1Y3R1cmUlMjBkYXNoYm9hcmR8ZW58MXwwfHx8MTc5NTEzMzAyMnww%26ixlib%3Drb-4.1.0%26q%3D80%26w%3D1080"], "datePublished": "2026-11-20T00:10:48", "dateModified": "2026-11-20T00:13:09.688257", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-codegraph-pre-indexed-code-knowledge-graphs-for-age-57483.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: CodeGraph: Pre-Indexed Code Knowledge Graphs for Agent Tool Calls</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 5 min read (914 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Coding agents burn tokens on repeated file reads.</li><li style='margin-bottom:6px;'>The project sits at 78K+ GitHub stars and trending #11 in TypeScript.</li><li style='margin-bottom:6px;'>This pattern wastes tokens and introduces latency.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57483"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57483"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57483"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: CodeGraph: Pre-Indexed Code Knowledge Graphs for Agent Tool Calls" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fimages.unsplash.com%2Fphoto-1551288049-bebda4e38f71%3Fcrop%3Dentropy%26cs%3Dtinysrgb%26fit%3Dmax%26fm%3Djpg%26ixid%3DM3w4Njk2ODR8MHwxfHNlYXJjaHwxfHxDb2RlR3JhcGglM0ElMjBQcmUtSW5kZXhlZCUyMENvZGUlMjBLbm93bGVkZ2UlMjBHcmFwaHMlMjBmb3IlMjBBZ2VudCUyMFRvb2wlMjBDYWxscyUyMHNvZnR3YXJlJTIwaW5mcmFzdHJ1Y3R1cmUlMjBkYXNoYm9hcmR8ZW58MXwwfHx8MTc5NTEzMzAyMnww%26ixlib%3Drb-4.1.0%26q%3D80%26w%3D1080" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57483">Coding agents burn tokens on repeated file reads. Claude Code, Cursor, and Codex scan the same functions over and over because they lack persistent memory of codebase structure. CodeGraph solves this by maintaining a live semantic graph that agents query instead of scanning files.</p>
+<p>The project sits at 78K+ GitHub stars and trending #11 in TypeScript. It runs 100% local with a Rust-powered kernel that watches file changes and incrementally updates the graph. The MCP server exposes this graph as a tool boundary for agents.</p>
+<p>Coding agents typically operate in two modes:.</p>
+<p>This pattern wastes tokens and introduces latency. A 10,000-line monorepo might require 50+ file reads per agent session. Each read costs tokens and round-trip time.</p>
+<p>In a recent development, codeGraph pre-indexes the codebase into a queryable graph. Agents ask "show me all functions that call authenticate" instead of reading 20 files to find them. The graph persists across sessions, so repeated queries cost nothing.</p>
+<p>CodeGraph splits into two layers:.</p>
+<p>In a recent development, rust kernel: Watches file system events, parses code into AST nodes, and updates the graph incrementally. When you edit a function, only that function's subgraph updates. Full re-indexing happens only on initial setup or major refactors.</p>
+<p>MCP server: Exposes the graph as a tool boundary. Agents call structured queries like find_callers(function_name) or get_dependencies(module_path). The server translates these into graph traversals and returns results as JSON.</p>
+<p>The kernel uses tree-sitter for parsing, which supports 40+ languages. Each language gets its own parser, but the graph schema is uniform: nodes represent symbols (functions, classes, variables), edges represent relationships (calls, imports, inheritance).</p>
+<p>In a recent development, the graph lives in a local SQLite database. Schema looks like this:.</p>
+<p>SQLite handles query speed well for graphs under 100K nodes. For larger monorepos, the kernel can export to a graph database like Neo4j, but most projects stay under the SQLite threshold.</p>
+<p>The MCP server exposes two query modes:.</p>
+<p>Recent findings suggest that structured queries: Direct graph operations. Example:.</p>
+<p>Returns a list of functions that call authenticate, plus functions that call those functions (up to depth 2).</p>
+<p>Natural language queries: The server embeds a small LLM (Phi-3 or similar) that translates plain English into structured queries. Example: "What functions depend on the database connection?" becomes a graph traversal for all nodes with edges to the db_connection module.</p>
+<p>Natural language queries add 50-200ms latency but reduce the need for agents to understand the graph schema.</p>
+<p>Recent findings suggest that file watching uses platform-native APIs (FSEvents on macOS, inotify on Linux, ReadDirectoryChangesW on Windows). When a file changes:.</p>
+<p id="sec-mid-57483">It has been revealed that example: You rename a function from login to authenticate. The kernel:.</p>
+<p>It has been revealed that this takes 10-50ms for typical changes. Full re-indexing (parsing every file) happens only when you add a newly introduced language or change the graph schema.</p>
+<p>In a recent development, codeGraph handles polyglot repos by treating imports as opaque edges. If a TypeScript file imports a Python module, the graph stores:.</p>
+<p>The kernel doesn't parse Python's internal structure from TypeScript. It just records the dependency. When an agent queries "what depends on data_loader?", it sees fetchData in the results.</p>
+<p>According to recent reports, for deeper cross-language analysis, you run the kernel with multiple parsers enabled. The Python parser indexes data_loader, the TypeScript parser indexes fetchData, and the graph links them via the import edge.</p>
+<p>It has been revealed that codeGraph ships with MCP server configs for Claude Code, Cursor, Codex, and others. The agent sees CodeGraph as a tool with these capabilities:.</p>
+<p>Agents call these tools instead of reading files. Example flow:.</p>
+<p>This reduces token usage by 60-80% for typical refactoring tasks.</p>
+<p>In a recent development, graph corruption: If the kernel crashes mid-patch, the SQLite database can end up in an inconsistent state. CodeGraph includes a codegraph repair command that re-indexes from scratch.</p>
+<p>According to recent reports, parser errors: If a file has syntax errors, the parser skips it and logs a warning. The graph remains incomplete until you fix the syntax. Agents see a partial view of the codebase.</p>
+<p>Memory usage: The kernel holds the graph in memory for fast queries. A 100K-node graph uses ~500MB RAM. For larger repos, you can configure the kernel to use disk-backed storage, but queries slow down by 2-3x.</p>
+<p>Observability: The MCP server logs every query with timing data. You can pipe logs to Prometheus or Datadog to track:.</p>
+<p>It has been revealed that codeGraph runs as a local daemon. Install via npm:.</p>
+<p>In a recent development, the kernel starts in the background and watches the repo. The MCP server listens on localhost:3000. Agents connect via HTTP or WebSocket.</p>
+<p>Sources indicate that for team deployments, you can run CodeGraph on a shared server and point multiple agents at the same MCP endpoint. This works if everyone on the team uses the same codebase. If developers work on different branches, each needs their own CodeGraph instance.</p>
+<p>In a recent development, codeGraph runs locally and never sends code to external servers. The MCP server has no authentication by default, so any process on the same machine can query the graph. For production deployments, you should:.</p>
+<p>According to recent reports, the kernel has read-only access to the file system. It never writes to source files, only to the SQLite database.</p>
+<p id="sec-end-57483">The project is stable but young. Expect rough edges in polyglot repos and large-scale deployments. The Rust kernel is solid, but the MCP server API may change as agent tooling evolves.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/mech_app_ai/codegraph-pre-indexed-code-knowledge-graphs-for-agent-tool-calls-1fg0" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="open-sourcing-knowledge-distillation-code-and-weights-of-sd-small-58280.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58280. Open-sourcing Knowledge Distillation Code and Weights of SD-Small and SD-Tiny
+        </a>
+        
+        <a href="our-transformers-code-agent-beats-the-gaia-benchmark-58096.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58096. Our Transformers Code Agent beats the GAIA benchmark 🏅
+        </a>
+        
+        <a href="tiny-agents-an-mcp-powered-agent-in-50-lines-of-code-57823.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57823. Tiny Agents: an MCP-powered agent in 50 lines of code
+        </a>
+        
+        <a href="industry-news-no-credible-pathway-for-the-energy-sector-to-return-57821.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57821. Industry News: No ‘credible pathway’ for the energy sector to return to the pre-Iran war days, indicates IEA
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

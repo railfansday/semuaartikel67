@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: Event Driven Orchestration vs Request Response for Agent Fleets</title>
+    <meta name="description" content="It has been revealed that synchronous orchestration treats a workflow as one long function call. The orchestrator holds a thread open for every dependency,">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-event-driven-orchestration-vs-request-response-for--57501.html">
+    <meta property="og:title" content="Latest Update: Event Driven Orchestration vs Request Response for Agent Fleets">
+    <meta property="og:description" content="It has been revealed that synchronous orchestration treats a workflow as one long function call. The orchestrator holds a thread open for every dependency,">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fmgnt1jww0ioxykfl9zn3.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-event-driven-orchestration-vs-request-response-for--57501.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: Event Driven Orchestration vs Request Response for Agent Fleets", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fmgnt1jww0ioxykfl9zn3.png"], "datePublished": "2026-11-20T00:08:00", "dateModified": "2026-11-20T00:13:10.833089", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-event-driven-orchestration-vs-request-response-for--57501.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: Event Driven Orchestration vs Request Response for Agent Fleets</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 2 min read (405 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that synchronous orchestration treats a workflow as one long function call.</li><li style='margin-bottom:6px;'>According to recent reports, an event broker turns the workflow into a directed graph of reactions.</li><li style='margin-bottom:6px;'>It has been revealed that the practical win of event driven orchestration is not concurrency, it is observability.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57501"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57501"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57501"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: Event Driven Orchestration vs Request Response for Agent Fleets" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fmgnt1jww0ioxykfl9zn3.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57501">It has been revealed that synchronous orchestration treats a workflow as one long function call. The orchestrator holds a thread open for every dependency, which means throughput is bounded by the slowest step and availability is the product of every component's uptime. If one agent crashes mid-task, the retry strategy must rewind the entire chain. Multi-agent orchestration research for real time enterprise decision intelligence confirms that synchronous pipelines become the bottleneck precisely when decision latency and component count rise together.</p>
+<p>According to recent reports, an event broker turns the workflow into a directed graph of reactions. Each agent publishes a typed event when it completes work, and consumers react only to the events they registered for. A failed agent emits an error event instead of blocking its dependents, so parallel branches keep running. Conceptual multi agent orchestration frameworks for computational research workflows formalize this as a scheduler that dispatches tasks based on event subscriptions rather than call ordering, which is what makes the topology resilient to nondeterministic task completion.</p>
+<p>It has been revealed that the practical win of event driven orchestration is not concurrency, it is observability. Because every transition flows through the broker, the event log is a complete trace of the workflow: what was attempted, what succeeded, what retried. In a request response chain the equivalent trace must be stitched from per-agent logs with timestamps that never align. A fleet debugging a stalled run needs the broker log, not a dozen separate stdout files.</p>
+<p id="sec-mid-57501">In a recent development, reactive agent architectures show the tradeoff is not speed but failure semantics. Request response is correct when steps are short, cheap, and must run in strict order, such as validation followed by write. Event driven is correct when steps are long, expensive, or independent, such as a research pipeline that parallelizes retrieval, synthesis, and scoring. The teardown signal appears when a fleet adds retries and timeouts to a synchronous chain: the complexity is masking a topology mismatch, not fixing it.</p>
+<p>According to recent reports, for short, ordered, dependency-bound steps where the cost of a broker outweighs the benefit. If no step can run in parallel and each is fast, synchronous is simpler and sufficient.</p>
+<p>Recent findings suggest that yes, in infrastructure and message overhead, but it removes the dominant cost of synchronous fleets: full-pipeline rewind on partial failure. For long-running workflows the tradeoff favors the broker.</p>
+<p id="sec-end-57501">More architectural blueprints at https://rausalbahtiar.dev.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/rausal_bahtiarfadhli_d94/event-driven-orchestration-vs-request-response-for-agent-fleets-15ke" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="ai-policy-response-to-the-us-ntias-request-for-comment-on-ai-acco-58298.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58298. AI Policy @🤗: Response to the U.S. NTIA's Request for Comment on AI Accountability
+        </a>
+        
+        <a href="tech-report-course-launch-community-event-58508.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58508. Tech Report: Course Launch Community Event
+        </a>
+        
+        <a href="diffusion-models-live-event-58392.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58392. Diffusion Models Live Event
+        </a>
+        
+        <a href="introducing-the-new-microsoft-iq-putting-your-organizations-intel-58372.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58372. Introducing the new Microsoft IQ: Putting your organization’s intelligence to work in every agent
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

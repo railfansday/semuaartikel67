@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Reverse-Engineering Kevin J. Lang's Lost OCaml Code in Apache DataSketches</title>
+    <meta name="description" content="It started with a routine feature in ScopeDB: implementing approx_count_distinct for approximate distinct counting. Sources indicate that hyperLogLog (HLL)">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-reverse-engineering-kevin-j-langs-lost-ocaml-code-in--50944.html">
+    <meta property="og:title" content="Tech Report: Reverse-Engineering Kevin J. Lang's Lost OCaml Code in Apache DataSketches">
+    <meta property="og:description" content="It started with a routine feature in ScopeDB: implementing approx_count_distinct for approximate distinct counting. Sources indicate that hyperLogLog (HLL)">
+    <meta property="og:image" content="https://www.tisonkun.io/images/og.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-reverse-engineering-kevin-j-langs-lost-ocaml-code-in--50944.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Reverse-Engineering Kevin J. Lang's Lost OCaml Code in Apache DataSketches", "image": ["https://www.tisonkun.io/images/og.png"], "datePublished": "2026-11-16T00:00:00.000Z", "dateModified": "2026-11-20T00:06:48.451149", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-reverse-engineering-kevin-j-langs-lost-ocaml-code-in--50944.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Reverse-Engineering Kevin J. Lang's Lost OCaml Code in Apache DataSketches</h1>
+        <div class="meta-line">🌐 Source: <strong>Tisonkun</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 23 min read (4629 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It started with a routine feature in ScopeDB: implementing approx_count_distinct for approximate distinct counting.</li><li style='margin-bottom:6px;'>Sources indicate that hyperLogLog (HLL) is the standard textbook choice.</li><li style='margin-bottom:6px;'>While evaluating alternatives, I came across Apache DataSketches, which offered a battle-tested HllSketch alongside CpcSketch, an even more space-efficient design.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-50944"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-50944"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-50944"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Reverse-Engineering Kevin J. Lang's Lost OCaml Code in Apache DataSketches" loading="lazy" src="https://www.tisonkun.io/images/og.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-50944">It started with a routine feature in ScopeDB: implementing approx_count_distinct for approximate distinct counting.</p>
+<p>Sources indicate that hyperLogLog (HLL) is the standard textbook choice. Early on, Rustâs HLL ecosystem was uneven, so I started with Cloudflareâs open-source cardinality-estimator. That crate leaned heavily on unsafe code and manual bit-packing tricks, though, so to keep things auditable and under our control, I forked and maintained an internal copy inside ScopeDB.</p>
+<p>While evaluating alternatives, I came across Apache DataSketches, which offered a battle-tested HllSketch alongside CpcSketch, an even more space-efficient design. At the time, Apache DataSketches only shipped Java and C++ implementations, whereas ScopeDB is written in Rust.</p>
+<p>Industry observers note that as it turned out, the Apache DataSketches community was interested in an official Rust port. Starting late last year, I teamed up with a few other Rust developers well-versed in sketching algorithms to build and ship the initial releases of datasketches-rust, beginning with HllSketch. Soon after, I switched ScopeDBâs distinct counting over to our datasketches-rust implementation.</p>
+<p>In a recent development, anyone who has implemented streaming distinct counting knows how HLL works: elements are hashed into KKK buckets, and each bucket keeps only the maximum leading-zero count seen so far (typically 4 to 6 bits), while every other hit in that bucket goes unrecorded. Once HLL enters dense mode, every bucket maintains a fixed-width register.</p>
+<p>In a recent development, in his 2017 paper Back to the Future: an Even More Nearly Optimal Cardinality Estimation Algorithm, Yahoo! Research scientist Kevin J. Lang proposed going back to basics: instead of keeping only per-bucket maxima, retain the full KÃ64K \times 64KÃ64 bit matrix of the classic FM85 coupon collectorâs process. Whenever row rrr sees a hash with ccc leading zeros, set bit (r,c)(r, c)(r,c) to 111. Keeping the full two-dimensional hit matrix lets CPC pair a streaming HIP estimator with a mergeable ICON estimator for higher statistical efficiency than HLL. On serialization, it adapts its layout to fill density: low cardinalities use a sparse PairTable of (row, column) pairs, while medium and high cardinalities combine a sliding 8-bit window, length-limited Huffman coding, and column permutations to pack the sketch near the information-theoretic entropy limit. According to the DataSketches documentation, serialized CPC shrinks storage by 30% to 40% compared with HLL at equal accuracy.</p>
+<p>In late January, I ported CpcSketch to datasketches-rust (PR-75) and switched ScopeDB over to it. It has run smoothly in production for more than six months.</p>
+<p>While porting CpcSketch from the upstream C++ and Java implementations, however, I noticed several hardcoded magic lookup tables in the source code:.</p>
+<p>It has been revealed that these four sets of static tables live in compression_data.rs and estimator.rs. Here is a short excerpt:.</p>
+<p>Whenever I port lookup tables, I prefer to derive the values from first principles in unit tests and check them element by element against the static array. For kxp_byte_lookup, for example, I kept the derivation right inside the test suite:.</p>
+<p>In a recent development, for CompressionData and the ICON estimator tables, though, no generator source existed anywhere in the repositories, so I had no way to derive them on my own back then. Only two build commands remained in an upstream comment:.</p>
+<p>In a recent development, I searched every Apache DataSketches repository and came up empty on those .ml files. So I opened CONCERN-720 on datasketches-java to ask where the generator sources lived. Lee Rhodes replied:.</p>
+<p>Kevin did most of his math simulations and modeling in OCaml. And his code was on his computer, which no longer exists. And his personal code died with him â¦ even if they have a copy of his old computer it might be trying to find a needle in a haystack.</p>
+<p>Kevin passed away in April 2019, and any code left on his personal machine is effectively lost to history.</p>
+<p>Sources indicate that I was saddened to hear that. Kevinâs research in sketching algorithms underpins many of the core sketches in Apache DataSketches:.</p>
+<p>Recent findings suggest that still, with the runtime decoders and detailed header comments sitting right there in the source files, it seemed possible to reverse-engineer the offline generators from the artifacts alone. I asked Lee whether the CPC paper explained how the tables were derived, and he answered:.</p>
+<p>In a recent development, you should definitely read the paper. But it wonât tell you any details on the Huffman codings. As I recall, in his paper he used a more standard compression scheme. He finished his work on the code after he had finished his paper â and in the process came up with the modified Huffman coding idea, which is quite a bit more efficient than what he discussed in the paper.</p>
+<p>That placed the derivation well beyond what I could work out on my own in an afternoon.</p>
+<p>Since CpcSketch worked fine in datasketches-rust as long as the lookup arrays were copied faithfully, I left the mystery aside for the time being.</p>
+<p>According to recent reports, then Gemini 4 Carbon came out just as I was preparing the next release of datasketches-rust. Since the checked-in tables and 20-digit header comments already acted as a strict numerical oracle, any candidate generator could be tested immediately in code: either it reproduced every codeword, permutation entry, and floating-point diagnostic within IEEE-754 precision, or it was wrong. That made the problem well suited to an agentic workflow built around executable checks and adversarial review.</p>
+<p>Over several iterations, I steered three models against that oracle and against one another:.</p>
+<p>None of the models got everything right on the first try, and several plausible-looking explanations collapsed as soon as we tested perturbations in code. What survived that filter became PR-355, which checks the reconstructed generators and derivations into datasketches-rust as unit tests, following the same approach we took for kxp_byte_lookup.</p>
+<p>The rest of this post focuses on the mathematics and numerical forensics behind those four sets of tables: how each structure works, which wrong turns looked convincing until an ablation broke them, and where the surviving artifacts cannot tell two models apart. Formal derivations sit in the appendix at the end; if you spot an error, feel free to leave a comment or open a PR on datasketches-rust.</p>
+<p>We begin with the 23 Huffman coding tables in compression_data.rs.</p>
+<p>Recent findings suggest that why hardcode 23 static Huffman tables at all? Building trees dynamically per sketch would force the serializer to write tree headers into the compressed stream, wiping out the tens of bytes saved on small sketches. Meanwhile, the probability that column jjj of the coupon matrix is set depends mainly on the fill ratio C/KC / KC/K (collected coupons CCC over row count KKK). Finite-KKK corrections enter only at order 1/K1 / K1/K, a tiny difference that turns out to be the key clue below. Precomputing optimal tables offline across representative C/KC / KC/K checkpoints lets determine_pseudo_phase select the right table solely from lg_k and num_coupons without storing a table ID.</p>
+<p>Industry observers note that the first 22 tables encode 8-bit sliding-window bytes (000 through 255255255). Given the per-column bit probabilities q0q_0q0â through q7q_7q7â for the 8 adjacent columns in the window (treated as independent), byte bbb has theoretical probability equal to the product of eight Bernoulli terms: qdq_dqdâ if bit ddd is 111, and 1âqd1 - q_d1âqdâ if bit ddd is 000.</p>
+<p>Sources indicate that upstream decoders use a 212=40962^{12} = 4096212=4096-entry lookup table, immediately revealing a hard 12-bit cap on codeword length. Feeding the byte probabilities into Larmore and Hirschbergâs 1990 Package-Merge algorithm yields the length-limited code lengths; assigning canonical codewords sorted by length and symbol value, then bit-reversing each codeword for CPCâs LSB-first bitstream, reproduces all 5,697 codewords across all 23 tables bit-for-bit.</p>
+<p>The next question is which occupancy model columnProbabilities.ml actually used for column jjj:.</p>
+<p>In a recent development, comparing integer codewords alone immediately runs into a blind spot: across the six midrange tables (array indices 16..21), sweeping KKK from 2162^{16}216 all the way to infinity yields the exact same 256 codewords. Huffman lengths are discrete step functions, so tiny shifts in probability rarely flip tree merge decisions.</p>
+<p>What actually acts as a continuous fingerprint to pin down KKK are the two 20-digit floating-point comments that generateHuffmanCodes.ml printed above each table. Here is table 16 (the first midrange byte table):.</p>
+<p>Sources indicate that shannon entropy H=ââP(b)logâ¡2P(b)H = -\sum P(b) \log_2 P(b)H=ââP(b)log2âP(b) and average code length âP(b)Lb\sum P(b) L_bâP(b)Lbâ vary continuously with the underlying distribution. Holding the C/KC / KC/K checkpoints fixed, we swept KKK from 2282^{28}228 to infinity across all 22 byte tables. Here are the worst-case errors across the six midrange tables:.</p>
+<p>At K=232K = 2^{32}K=232, the residual drops by four orders of magnitude, right down to IEEE-754 double-precision rounding noise.</p>
+<p>According to recent reports, look at the clean symmetry in that table: K=231K = 2^{31}K=231 produces the exact same error as KââK \to \inftyKââ, while K=233K = 2^{33}K=233 has half the error. That happens because, to first order, the finite-KKK departure from the Poisson limit scales linearly with 1/K1 / K1/K (derived in the first appendix section). When the true parameter is K0=232K_0 = 2^{32}K0â=232, both 2312^{31}231 and â\inftyâ sit one step of 1/2321 / 2^{32}1/232 away on the 1/K1 / K1/K axis, whereas 2332^{33}233 sits half a step away. Fittingly, comments in the upstream ICON estimator also put the maximum number of table rows at 2322^{32}232 slots.</p>
+<p>Moving to the 16 steady-state tables, which cover phases phase=(2m+1)/32\text{phase} = (2m + 1) / 32phase=(2m+1)/32 at fill ratios C/K=B+phaseC / K = B + \text{phase}C/K=B+phase, we ran into a convincing false lead.</p>
+<p>Recent findings suggest that the column permutation tables (covered next) establish that the steady-state integer baseline is B=6B = 6B=6. Yet plugging our newly recovered K=232K = 2^{32}K=232 and B=6B = 6B=6 into the 16 steady-state tables leaves a 6.1Ã10â126.1 \times 10^{-12}6.1Ã10â12 entropy residual in the 12th decimal place.</p>
+<p>At first glance, âleft-edge truncationâ looks like the obvious explanation: around C/Kâ6C / K \approx 6C/Kâ6, column 1 of the coupon matrix is not quite 100% saturated, and its probability of still being 000 is roughly 5.3Ã10â125.3 \times 10^{-12}5.3Ã10â12, right on the order of the residual. Sure enough, keeping K=232K = 2^{32}K=232 fixed and pushing the working point out to B=32B = 32B=32 (C/K=32+phaseC / K = 32 + \text{phase}C/K=32+phase) drops the entropy error to 10â1510^{-15}10â15. Everything seemed to line up to the order of magnitude.</p>
+<p>Two controlled ablations quickly ruled that hypothesis out:.</p>
+<p>Why does it halve every time? Incrementing BBB by 111 shifts the 8-bit sliding window one column to the right, where the binomial correction relative to the Poisson limit decays as 1/(2Kâ2j)â2âB/K1 / (2K \cdot 2^j) \propto 2^{-B} / K1/(2Kâ2j)â2âB/K. Pushing BBB to 323232 did nothing to left-edge truncation; it merely pushed the window out near column 29, shrinking the in-window finite-KKK correction 2â29/232=2â612^{-29} / 2^{32} = 2^{-61}2â29/232=2â61 below f64 machine epsilon and inadvertently faking the KââK \to \inftyKââ Poisson limit with deep columns.</p>
+<p>Recent findings suggest that how much effect can the left edge actually have? Even though the generator solves for Î»\lambdaÎ» using the expectation over all 128 columns before computing window probabilities (so column 1 does enter indirectly through Î»\lambdaÎ»), the shift identity bounds its magnitude cleanly. For the infinite-column Poisson expectation f(Î»)f(\lambda)f(Î»), doubling Î»\lambdaÎ» shifts the series index by one and adds a single leading term 1âexpâ¡(âÎ»)1 - \exp(-\lambda)1âexp(âÎ»). For the truncated 128-column sum f128(Î»)=E[C]/Kf_{128}(\lambda) = E[C] / Kf128â(Î»)=E[C]/K evaluated by the code, cutting off at column 128 subtracts the right-edge tail term as well:.</p>
+<p id="sec-mid-50944">According to recent reports, in other words, incrementing BBB by 111 doubles Î»\lambdaÎ» and shifts the window one column right, keeping in-window distributions nearly shift-invariant up to the left- and right-edge truncation terms. At C/K=6+1/32C / K = 6 + 1/32C/K=6+1/32 (Î»â51.93\lambda \approx 51.93Î»â51.93), the left-edge term expâ¡(âÎ»)\exp(-\lambda)exp(âÎ») is roughly 2.8Ã10â232.8 \times 10^{-23}2.8Ã10â23 (a â¼2Ã10â23\sim 2 \times 10^{-23}â¼2Ã10â23 relative effect on Î»\lambdaÎ»), and the right-edge term 1âexpâ¡(âÎ»/2128)1 - \exp(-\lambda / 2^{128})1âexp(âÎ»/2128) is roughly 1.53Ã10â371.53 \times 10^{-37}1.53Ã10â37. Both sit more than ten and twenty orders of magnitude below the 10â1210^{-12}10â12 residual. The discrepancy came from finite KKK, not the left edge.</p>
+<p>It has been revealed that this also draws a sharp identifiability boundary. On the 16 steady-state tables alone, under the testâs 3Ã10â143 \times 10^{-14}3Ã10â14 tolerance, both the Poisson limit for 6â¤Bâ¤846 \le B \le 846â¤Bâ¤84 and the K=232K = 2^{32}K=232 binomial model for 14â¤Bâ¤8414 \le B \le 8414â¤Bâ¤84 match every entropy and average-length header within tolerance. They are not bit-identical (still differing by â¼10â14\sim 10^{-14}â¼10â14), only indistinguishable within double-precision arithmetic and that tolerance. Right at B=84B = 84B=84, the 128-column right-edge term has already grown exponentially to â¼4.61Ã10â14\sim 4.61 \times 10^{-14}â¼4.61Ã10â14; by B=85B = 85B=85, table 7âs average-length error hits 3.11Ã10â143.11 \times 10^{-14}3.11Ã10â14 and breaks tolerance; further right, right-edge truncation takes over completely, reaching 7.4Ã10â107.4 \times 10^{-10}7.4Ã10â10 at B=100B = 100B=100. We chose the âB=6B = 6B=6 Poisson limitâ model because it shares the exact working point of the column permutations without inventing an arbitrary B=32B = 32B=32, though the static tables by themselves cannot rule out the equivalent finite-KKK shifted interval.</p>
+<p>According to recent reports, in the steady-state regime, columns left of the sliding window are nearly all 111, while columns to the right are nearly all 000. The remaining 56 out-of-window columns therefore store only surprising bits, namely zeros left of the window or ones right of the window, encoded via column index deltas. Putting higher-probability surprising columns first keeps unary deltas short, which is what the 16 56-byte tables from generatePermutationsForSLIDING.ml accomplish.</p>
+<p>That layout alone pins down BBB: in the first six tables (phase indices 0..5), three trailing slots correspond to columns left of the window and get interleaved upward; in the last ten tables, that count jumps to four. Since Ï\omegaÏ steps from Bâ3B - 3Bâ3 to Bâ2B - 2Bâ2 at phase 3/8, jumping from 3 to 4 settles B=6B = 6B=6. Testing candidates confirms it directly: B=5,6,7B = 5, 6, 7B=5,6,7 match 6,16,106, 16, 106,16,10 tables out of 16, respectively. Unlike the byte tables, sweeping KKK from 282^828 to â\inftyâ leaves all 16 permutation tables byte-for-byte identical: column permutations are completely insensitive to KKK.</p>
+<p>According to recent reports, once B=6B = 6B=6 is fixed, a subtle numerical trap waits in p0p_0p0â, the probability that a column left of the window remains 000. If you lazily compute 1.0 - q from the already-computed 1-bit probability qqq, both B=6B = 6B=6 and B=7B = 7B=7 match 15 out of 16 tables, missing just 4 entries in the single table for phase 19/32. At that phase (Ï=4\omega = 4Ï=4), look at the four trailing slots:.</p>
+<p>Physical column 1 has surprising probability p0=expâ¡(âÎ»/2)â2.22Ã10â17p_0 = \exp(-\lambda / 2) \approx 2.22 \times 10^{-17}p0â=exp(âÎ»/2)â2.22Ã10â17, strictly larger than column 62âs 1.66Ã10â171.66 \times 10^{-17}1.66Ã10â17. Sorted by descending probability, the trailing canonical sequence must be 48, 52, 49, 50, 51, putting [53, 54, 55, 52] at slice encode_perm[49..=52]. Computing 1.0 - q instead pushes slot 52 to last place, yielding [52, 53, 54, 55].</p>
+<p>The root cause is floating-point cancellation. Although 2.22Ã10â172.22 \times 10^{-17}2.22Ã10â17 is easily representable in IEEE-754 f64 (nowhere near underflow), q=1âp0q = 1 - p_0q=1âp0â lands right below 1.01.01.0, where adjacent doubles are spaced by 2â532^{-53}2â53. Under round-to-nearest-even, whenever p0â¤2â54â5.55Ã10â17p_0 \le 2^{-54} \approx 5.55 \times 10^{-17}p0ââ¤2â54â5.55Ã10â17, qqq rounds up to 1.01.01.0, turning 1.0 - q into 0.00.00.0 and wiping out p0p_0p0â completely before subtraction even happens.</p>
+<p>Industry observers note that evaluating the exponential directly (such as (-lambda / 2^j).exp() in Rust) avoids catastrophic cancellation and reproduces all 16 permutation tables bit-for-bit at B=6B = 6B=6. This single comparison simultaneously rules out B=7B = 7B=7 and 1.0 - q, though strictly speaking, it only proves Kevinâs generator did not use 1.0 - q, not the exact syntax he wrote.</p>
+<p>Recent findings suggest that next comes the ICON cardinality estimator in estimator.rs. Rather than running Newtonâs method across all 128 columns at query time, Kevin designed a two-piece approximation:.</p>
+<p>In a recent development, factoring out 1+(C/K)3/66.7747571 + (C / K)^3 / 66.7747571+(C/K)3/66.774757 keeps the polynomialâs target ratio within [0.89,1.48][0.89, 1.48][0.89,1.48], instead of letting N/CN / CN/C expand more than 8Ã8\times8Ã over [0,6][0, 6][0,6]. Scaling the variable as x=C/(2K)x = C / (2K)x=C/(2K) maps [0,6K][0, 6K][0,6K] onto [0,3][0, 3][0,3], keeping x19x^{19}x19 at 319â1.16Ã1093^{19} \approx 1.16 \times 10^9319â1.16Ã109 rather than 619â6.09Ã10146^{19} \approx 6.09 \times 10^{14}619â6.09Ã1014.</p>
+<p>Industry observers note that if runtime switches branches at 5.6K5.6K5.6K or 5.7K5.7K5.7K, what domain were the 23 polynomials originally fitted over? Evaluating the checked-in polynomials past the runtime cutoff reveals a clear pattern:.</p>
+<p>In a recent development, our confidence that fitting stopped right at 6K6K6K therefore relies on the coefficient regression below rather than error cliffs alone. Extending the fit slightly past the 5.6K/5.7K5.6K / 5.7K5.6K/5.7K threshold makes intuitive sense as a buffer against Runge boundary oscillations, though no upstream note confirms that intent.</p>
+<p>Attempting to reconstruct the coefficients exposes a sharp identifiability boundary between small and large sketches:.</p>
+<p>Sources indicate that the exponential constant and upstream test bounds used to look like pure empirical tuning. In reality, all three fall straight out of the Poisson model (derived in the appendix):.</p>
+<p>That 2.36Ã10â132.36 \times 10^{-13}2.36Ã10â13 gap between DDD and the runtime constant has a remarkably crisp mathematical explanation down to the last bit. Suppose AAA was chosen so that AâKâ2C/KA \cdot K \cdot 2^{C/K}AâKâ2C/K has zero mean relative error over one period relative to the exact Poisson inverse. By the appendix derivation on period-mean relative error, AAA must satisfy:.</p>
+<p>It has been revealed that replacing â¨e(lnâ¡2)P(t)â©\langle e^{(\ln 2)\mathcal{P}(t)} \rangleâ¨e(ln2)P(t)â© with the second-order expansion of the modified Bessel function I0(a)I_0(a)I0â(a) omits only â¼5Ã10â26\sim 5 \times 10^{-26}â¼5Ã10â26, far below double precision. Rounded to f64, this closed form matches 0.7940236163830469 bit-for-bit. Our unit test queries the production constant directly at runtime and verifies an exact match (and agrees within 2 ULPs against numerical harmonic integration over a full cycle). Still, the epistemological caveat holds: showing that an optimality criterion reproduces a constant bit-for-bit does not prove Kevin wrote that exact criterion.</p>
+<p>Sources indicate that the remaining pieces are the four confidence-bound tables: ICON_{LOW,HIGH}_SIDE_DATA and HIP_{LOW,HIGH}_SIDE_DATA. Upstream comments note that they record empirical quantiles from â¼106\sim 10^6â¼106 Monte Carlo trials per row at true cardinality N=1000KN = 1000KN=1000K: each cell stores (104KâÎµ)/Îº(10^4 \sqrt{K} \cdot \varepsilon) / \kappa(104KââÎµ)/Îº rounded to an integer, where Îµ\varepsilonÎµ is the one-sided relative-error quantile corresponding to normal tail probability Î¦(âÎº)\Phi(-\kappa)Î¦(âÎº).</p>
+<p>Stochastic tables cannot be reconstructed bit-for-bit like Huffman codes; they have to be checked statistically against independent simulations. Two practical hurdles arise immediately: how to run 10610^6106 trials across lg_k = 4..=14 on a single machine, and why todayâs numbers match Kevinâs original integers as closely as they do.</p>
+<p>Simulating individual insertions naively at lg_k =14= 14=14 (K=16384K = 16384K=16384) takes 1.6Ã1071.6 \times 10^71.6Ã107 steps per trial (1.6Ã10131.6 \times 10^{13}1.6Ã1013 iterations across 10610^6106 trials), which is impractical on a single machine. Our fast simulator builds on the exponential-skip coupon process Kevin sketched in Appendix B of his paper: maintain just 64 empty-cell counters mjm_jmjâ, the running HIP accumulator, and processed element count. Note one essential catch: HIP values cannot be reconstructed from final column counts alone, because HIP is strictly path-dependent on discovery order. As a minimal counterexample at K=16K = 16K=16, hitting column 1 and then column 2 yields 2.0323, whereas hitting column 2 and then column 1 yields 2.0159, even though the final column counts are identical. At each step, total fresh-cell probability is phit=âmj/(Kâ2j)p_{\text{hit}} = \sum m_j / (K \cdot 2^j)phitâ=âmjâ/(Kâ2j), so waiting steps between hits follow an exact geometric distribution sampled via a single logarithm; on each hit, add 1/phit1 / p_{\text{hit}}1/phitâ to HIP and sample column jjj proportionally to mjâ2âjm_j \cdot 2^{-j}mjââ2âj.</p>
+<p>It has been revealed that one subtle implementation boundary also belongs on the record: the fast simulator assigns explicit weight 2â642^{-64}2â64 to physical column 64 (index 63) with initial kxp =K= K=K absorbing the remaining tail mass, whereas sketch.rs folds all hashes with â¥63\ge 63â¥63 leading zeros into column 64 (actual hit probability 2â632^{-63}2â63) while still deducting 2â642^{-64}2â64 from kxp and calling refresh_kxp every 8 shifts to limit floating-point drift. Ideal and sketch processes therefore match strictly only as long as column 64 goes unhit and refresh_kxp drift stays negligible. Across over 4Ã10134 \times 10^{13}4Ã1013 simulated insertions in our runs, expected column-64 hits total roughly 4.5Ã10â64.5 \times 10^{-6}4.5Ã10â6, making it irrelevant in practice. Skipping empty draws reduces per-trial cost from O(N)O(N)O(N) to O(C)O(C)O(C) (roughly 10K10K10K coupons at N=1000KN = 1000KN=1000K), cutting runtime by two orders of magnitude so all 11 rows (10610^6106 trials each in simA) finished in ~11 minutes across 14 threads.</p>
+<p>Recent findings suggest that we also had to avoid a statistical pitfall. Because all six quantiles in a row (â3Ï-3\sigmaâ3Ï to +3Ï+3\sigma+3Ï) come from the same 10610^6106 trials, they are correlated; simply summing squared per-cell z-scores against a Ï2\chi^2Ï2 distribution is invalid. We saved full raw trial vectors CCC and HIP/N\text{HIP} / NHIP/N to disk across three runs:.</p>
+<p>We estimated each rowâs 6Ã66 \times 66Ã6 quantile covariance matrix in two independent ways, using 2,000 nonparametric Bootstrap resamples and Siddiquiâs order-statistic asymptotic variance formula, and formed joint Mahalanobis T2T^2T2 statistics across independent rows.</p>
+<p>Both sanity-check controls held cleanly and agreed closely between both covariance estimators:.</p>
+<p>Comparing against Kevinâs checked-in tables revealed a clear divide between ICON and HIP:.</p>
+<p>Industry observers note that why do nearly 90% of stochastic ICON quantile cells match Kevinâs original integers down to the last digit? Because ICON depends solely on the integer coupon count CCC, confining estimates to discrete âstair stepsâ. In a million-trial batch, as long as a target quantile does not straddle an integer-CCC transition and trigger sample interpolation â and inspecting all 66 target quantiles confirms none did â the sample quantile lands cleanly on a single integer CCC step. Each +1+1+1 step in CCC raises the scaled table entry by:.</p>
+<p>At lg_k =4= 4=4, Îº=1\kappa = 1Îº=1, adjacent steps sit roughly 1,733 units apart. Step widths vary slightly with N^(C)/N\hat{N}(C) / NN^(C)/N, yet whenever two independent Monte Carlo runs fall on the same integer CCC, their unrounded floats agree to the last bit and round to the same integer. Inverting the 7 mismatched cells demonstrates that every upstream entry also sits within Â±0.5\pm 0.5Â±0.5 of an exact integer-CCC step, just 1 to 3 counts away (5 cells differ by 1âC1\,C1C, and one cell each by 2âC2\,C2C and 3âC3\,C3C). At lg_k =7= 7=7, +1Ï+1\sigma+1Ï, for example, our run hits C=1329C = 1329C=1329 (6806.33), while Kevinâs 7458 rounds neighboring C=1330C = 1330C=1330 (7457.61). Streaming HIP, by contrast, spans a vastly denser set of values even at finite NNN, so independent runs never lock onto the same integers across years the way ICON does.</p>
+<p>To be clear, the million-trial Monte Carlo simulator and raw trial outputs were kept locally as an independent verification record rather than checked into the PR.</p>
+<p>The reconstructed generators, closed-form constants, and hardened tests have been merged upstream in PR-355.</p>
+<p>Writing those unit tests underscored an vital engineering lesson: never write tautological tests. An earlier draft verified the asymptotic constant against a second hardcoded copy inside the test file, and checked confidence bounds only by testing whether they bracketed the point estimate. Simple mutation testing exposed both gaps immediately: changing the production constant to a coarse 0.794024 or zeroing out all 132 confidence-table entries still passed every test. We hardened the merged tests in two ways: the constant test calls production code directly to compare the runtime constant against the closed form, and the confidence-table test asserts strict monotonicity of interval width with kappa while stating its verification limits explicitly in comments. Today, all 23 Huffman tables and 16 permutation tables have bit-exact constructive tests, whereas the Monte Carlo confidence tables clearly document that unit tests do not verify empirical cell values or true coverage.</p>
+<p>In a recent development, when reverse-engineering legacy numerical code, the biggest trap is thinking, âall tests pass, so we recovered what the author wrote.â Proving a model reproduces the artifacts is not proving the author coded that model. Throughout code comments and this report, we drew a bright line between parameters uniquely pinned by data and equivalence classes that observations cannot tell apart, leaving six open questions for the community:.</p>
+<p>Recent findings suggest that when I first spotted those two orphaned ocamlopt lines while porting CpcSketch back in January, they looked like a dead end. After chasing 12th-decimal floating-point residuals, falsifying intuitive guesses with ablations, tracing poles on the complex plane, running million-trial Monte Carlo sweeps with full covariance matrices, and pinning down test boundaries with mutation testing, almost every piece of mathematics Kevin J. Lang built into production code without publishing in his paper has been reconstructed â and where exact reconstruction stops, we now know the exact boundary of what the artifacts can tell us.</p>
+<p>In column jjj, letting x=1/(Kâ2j)âª1x = 1 / (K \cdot 2^j) \ll 1x=1/(Kâ2j)âª1, the log-survival probability in the finite-KKK binomial model expands via Taylor series as:.</p>
+<p>Sources indicate that comparing this with the Poisson limit lnâ¡(1âqpoi)=âÎ»/2j\ln(1 - q_{\text{poi}}) = -\lambda / 2^jln(1âqpoiâ)=âÎ»/2j, finite KKK multiplies each column exponent by a perturbation factor 1+1/(2Kâ2j)1 + 1 / (2K \cdot 2^j)1+1/(2Kâ2j). Since that factor decays as 2âj2^{-j}2âj across columns, tuning a single global scalar Î»\lambdaÎ» cannot cancel deviations across all 8 window columns simultaneously, leaving residual perturbations Î´qj=O(2âj/K)\delta q_j = O(2^{-j} / K)Î´qjâ=O(2âj/K) that shift Shannon entropy linearly in 1/K1 / K1/K: ÎH=Î±/K+O(Kâ2)\Delta H = \alpha / K + O(K^{-2})ÎH=Î±/K+O(Kâ2).</p>
+<p>Taking the Mellin transform fâ(s)=â«0âf(Î»)âÎ»sâ1âdÎ»f^*(s) = \int_0^\infty f(\lambda)\,\lambda^{s-1}\,d\lambdafâ(s)=â«0ââf(Î»)Î»sâ1dÎ» of the infinite-column expectation sum f(Î»)=âjâ¥1(1âeâÎ»/2j)f(\lambda) = \sum_{j \ge 1} (1 - e^{-\lambda / 2^j})f(Î»)=âjâ¥1â(1âeâÎ»/2j) in the fundamental strip â10-\Gamma(-1/2) = 2\sqrt{\pi} &gt; 0âÎ(â1/2)=2Ïâ&gt;0) yields the transform and oscillatory Fourier series:.</p>
+<p>Shifting the inversion contour rightward past all poles along Reâ¡(s)=0\operatorname{Re}(s) = 0Re(s)=0 produces the large-Î»\lambdaÎ» asymptotic expansion f(Î»)=logâ¡2Î»+Î³/lnâ¡2â1/2+P(logâ¡2Î»)+R(Î»)f(\lambda) = \log_2 \lambda + \gamma / \ln 2 - 1/2 + \mathcal{P}(\log_2 \lambda) + R(\lambda)f(Î»)=log2âÎ»+Î³/ln2â1/2+P(log2âÎ»)+R(Î»), where R(Î»)=ârâ¥0expâ¡(â2rÎ»)&lt;2Ã10â17R(\lambda) = \sum_{r \ge 0} \exp(-2^r \lambda) &lt; 2 \times 10^{-17}R(Î»)=ârâ¥0âexp(â2rÎ»)&lt;2Ã10â17 on the exponential branch (Î»â¥38.5\lambda \ge 38.5Î»â¥38.5):.</p>
+<p>Sources indicate that dropping R(Î»)R(\lambda)R(Î») and writing t=logâ¡2Î»t = \log_2 \lambdat=log2âÎ», inverting C/Kâlogâ¡2Î»+Î³/lnâ¡2â1/2+P(t)C / K \approx \log_2 \lambda + \gamma / \ln 2 - 1/2 + \mathcal{P}(t)C/Kâlog2âÎ»+Î³/ln2â1/2+P(t) gives Î»âDâ2C/Keâ(lnâ¡2)P(t)\lambda \approx D \cdot 2^{C/K} e^{-(\ln 2)\mathcal{P}(t)}Î»âDâ2C/Keâ(ln2)P(t), so Aâ2C/KA \cdot 2^{C/K}Aâ2C/K has relative error (A/D)e(lnâ¡2)P(t)â1(A / D) e^{(\ln 2)\mathcal{P}(t)} - 1(A/D)e(ln2)P(t)â1. Setting its period mean to zero requires the harmonic mean A=D/â¨e(lnâ¡2)P(t)â©A = D / \langle e^{(\ln 2)\mathcal{P}(t)} \rangleA=D/â¨e(ln2)P(t)â©.</p>
+<p>Representing the fundamental harmonic of (lnâ¡2)P(t)(\ln 2)\mathcal{P}(t)(ln2)P(t) as acosâ¡(2Ït+Ï)a \cos(2\pi t + \varphi)acos(2Ït+Ï) (mean square a2/2a^2 / 2a2/2) integrates to the modified Bessel function â¨e(lnâ¡2)Pâ©âI0(a)=1+a2/4+a4/64+â¦\langle e^{(\ln 2)\mathcal{P}} \rangle \approx I_0(a) = 1 + a^2/4 + a^4/64 + \dotsâ¨e(ln2)Pâ©âI0â(a)=1+a2/4+a4/64+â¦, yielding AâD(1âa2/4)A \approx D(1 - a^2 / 4)AâD(1âa2/4). Because a2/4â3Ã10â13a^2 / 4 \approx 3 \times 10^{-13}a2/4â3Ã10â13, D/I0(a)D / I_0(a)D/I0â(a) and D(1âa2/4)D(1 - a^2 / 4)D(1âa2/4) differ by only â¼5Ã10â26\sim 5 \times 10^{-26}â¼5Ã10â26 (and higher harmonics are negligible). Moreover, averaging over C/KC / KC/K gives the exact same result as averaging over ttt: in d(C/K)=(1+Pâ²(t))âdtd(C / K) = (1 + \mathcal{P}'(t))\,dtd(C/K)=(1+Pâ²(t))dt, the derivative integral â«01e(lnâ¡2)P(t)Pâ²(t)âdt=0\int_0^1 e^{(\ln 2)\mathcal{P}(t)} \mathcal{P}'(t)\,dt = 0â«01âe(ln2)P(t)Pâ²(t)dt=0 vanishes identically over [0,1][0, 1][0,1].</p>
+<p>At fixed C/KC / KC/K, finite KKK requires a slightly lower true density Î»\lambdaÎ» than the infinite-KKK limit, so the Poisson-derived exponential branch slightly overestimates cardinality near the splice point C=5.7KC = 5.7KC=5.7K. Plugging Î»spliceâ0.794Ã25.7â41.3\lambda_{\text{splice}} \approx 0.794 \times 2^{5.7} \approx 41.3Î»spliceââ0.794Ã25.7â41.3 into the first-order finite-KKK correction gives the peak relative bias:.</p>
+<p>According to recent reports, for Î»â«1\lambda \gg 1Î»â«1, matrix cells are independent in the Poisson limit, so total coupon variance sums across columns as Varâ¡(C)âKâexpâ¡(âÎ»/2j)(1âexpâ¡(âÎ»/2j))\operatorname{Var}(C) \approx K \sum \exp(-\lambda / 2^j)\left(1 - \exp(-\lambda / 2^j)\right)Var(C)âKâexp(âÎ»/2j)(1âexp(âÎ»/2j)). Approximating the sum by a continuous integral over one dyadic decade yields a standard Frullani integral:.</p>
+<p id="sec-end-50944">rust  open-source  apache  agentic-coding.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.tisonkun.io/posts/ai-repair-program/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-the-age-of-machine-learning-as-code-has-arrived-58511.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58511. Tech Report: The Age of Machine Learning As Code Has Arrived
+        </a>
+        
+        <a href="tech-report-bigcodearena-judging-code-generations-end-to-end-with-57493.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57493. Tech Report: BigCodeArena: Judging code generations end to end with code executions
+        </a>
+        
+        <a href="tech-report-engineering-manager-realtime-at-supabase-55124.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #55124. Tech Report: Engineering Manager - Realtime at Supabase
+        </a>
+        
+        <a href="tech-report-how-this-former-weightlifter-lost-80-pounds-after-glp-52506.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #52506. Tech Report: How This Former Weightlifter Lost 80 Pounds After GLP-1s Stopped Working
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

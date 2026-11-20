@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: Arc Virtual Cell Challenge: A Primer</title>
+    <meta name="description" content="Arc Institute recently unveiled the Virtual Cell Challenge. Participants are required to train a model capable of predicting the effect of silencing a gene">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-arc-virtual-cell-challenge-a-primer-57651.html">
+    <meta property="og:title" content="Industry News: Arc Virtual Cell Challenge: A Primer">
+    <meta property="og:description" content="Arc Institute recently unveiled the Virtual Cell Challenge. Participants are required to train a model capable of predicting the effect of silencing a gene">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/virtual-cell-challenge/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-arc-virtual-cell-challenge-a-primer-57651.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: Arc Virtual Cell Challenge: A Primer", "image": ["https://huggingface.co/blog/assets/virtual-cell-challenge/thumbnail.png"], "datePublished": "2025-07-18T00:00:00", "dateModified": "2026-11-20T00:13:22.415572", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-arc-virtual-cell-challenge-a-primer-57651.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: Arc Virtual Cell Challenge: A Primer</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 18 Jul 2025 &bull; ⏱️ 11 min read (2257 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Arc Institute recently unveiled the Virtual Cell Challenge.</li><li style='margin-bottom:6px;'>Goal Train a model to predict the effect on a cell of silencing a gene using CRISPR.</li><li style='margin-bottom:6px;'>Doing things in the world of atoms is expensive, laborious and error prone.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57651"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57651"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57651"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: Arc Virtual Cell Challenge: A Primer" loading="lazy" src="https://huggingface.co/blog/assets/virtual-cell-challenge/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57651">Arc Institute recently unveiled the Virtual Cell Challenge. Participants are required to train a model capable of predicting the effect of silencing a gene in a (partially) unseen cell type, a task they term context generalization. For ML engineers with little to no biology background, the jargon and required context can seem quite daunting. To encourage participation, we recapitulate the challenge in a form better suited to engineers from other disciplines.</p>
+<p>Goal Train a model to predict the effect on a cell of silencing a gene using CRISPR.</p>
+<p>Doing things in the world of atoms is expensive, laborious and error prone. What if we could test thousands of drug candidates without ever touching a petri dish? This is the goal of the virtual cell challenge — a model (most likely a neural network) that can simulate exactly what happens
+to a cell when we change some parameter. Given that tightening your feedback loop is often the best way to speed up progress,
+a model capable of doing this accurately would have significant impact.</p>
+<p>Sources indicate that to train this neural network, we will need data. For the challenge, Arc has curated a dataset of ~300k single-cell RNA sequencing profiles. It may be worthwhile to revisit the Central Dogma before continuing. This essay will build off of this to provide the ~minimum biology knowledge you'll need for the challenge.</p>
+<p>Sources indicate that the training set consists of a sparse matrix and some associated metadata. More specifically, we have 220k cells, and
+for each cell we have a transcriptome. This transcriptome is a sparse row vector, where each
+entry is the raw count of RNA molecules (transcripts) that the corresponding gene (our column) encodes for. Of the 220k cells,
+~38k are unperturbed, meaning no gene has been silenced using CRISPR. These control cells are crucial as we will see shortly.</p>
+<p>To understand the dataset more concretely, let's select a gene, TMSB4X (the most frequently silenced gene in the dataset) and compare the number of RNA molecules detected for a control cell and a
+perturbed cell.</p>
+<p>We can see that the cell with TMSB4X silenced has a greatly reduced number of transcripts compared with the control
+cells.</p>
+<p>According to recent reports, the astute among you may be wondering why you don't just measure the count of the RNA molecules before and after
+silencing the gene — why do we need the control cells at all? Unfortunately, reading the transcriptome destroys the cell, which is a problem reminiscent of the observer effect.</p>
+<p>In a recent development, this inability to measure the cell state before and after introduces many problems, as we are forced to use a population of basal
+(a.k.a control, unperturbed) cells as a reference point. The control cells and perturbed cells are not entirely
+homogeneous even prior to the perturbation. This means that we have to now separate out our true signal, the perturbation, from
+noise induced by the heterogeneity.</p>
+<p>More formally, we can model observed gene expression in perturbed cells as:.</p>
+<p>X^p∼T^p(Dbasal)+H(Dbasal)+ε,ε∼Pε
+\hat{X}_p \sim \hat{T}_p(\mathcal{D}_{\text{basal}}) + H(\mathcal{D}_{\text{basal}}) + \varepsilon, \quad \varepsilon \sim P_\varepsilon 
+X^p​∼T^p​(Dbasal​)+H(Dbasal​)+ε,ε∼Pε​.</p>
+<p>Recent findings suggest that prior to the Virtual Cell Challenge, Arc released STATE, their own attempt to solve the challenge
+using a pair of transformer based models. This serves as a strong baseline for participants to start with, so we will
+explore it in detail.</p>
+<p>STATE consists of two models, the State Transition Model (ST) and the State Embedding Model (SE). SE is designed to produce rich semantic embeddings of cells in an effort to improve cross cell type generalization. ST is the "cell simulator", that takes in either a transcriptome of a control cell, or an embedding of a cell produced by SE, along with a one hot encoded vector representing the perturbation of interest, and outputs the perturbed transcriptome.</p>
+<p>The State Transition Model is a relatively simple transformer with a Llama backbone that operates upon the following:.</p>
+<p>Using a covariate matched set of control cells with paired target cells should assist the model in discerning the
+actual effect of our intended perturbation. Both the control set tensor and the perturbation tensor are fed through independent encoders, which are simply 4 layer MLPs with GELU activations. If working directly in gene expression space (i.e producing a full transcriptome), they pass the output through a learned
+decoder.</p>
+<p>ST is trained using Maximum Mean Discrepancy. Put simply, the model learns to minimize the difference between the two probability distributions.</p>
+<p>Recent findings suggest that the State Embedding Model is a BERT-like autoencoder. To understand this more deeply, first we have to
+take a little detour for some more biological grounding.</p>
+<p>It has been revealed that A gene consists of exons (protein coding sections) and introns (non-protein coding sections). DNA is first transcribed into pre-mRNA, as shown above. The cell then performs Alternative Splicing. This is basically "pick and choose exons", cut out all introns. You can think of the gene as an IKEA manual for making a table. One could also construct a 3 legged table, perhaps an odd bookshelf with some effort, by leaving out some parts. These different objects are analogous to protein isoforms, proteins coded for by the same gene.</p>
+<p>In a recent development, with this basic understanding, we can move on to how the SE model works. Remember, our core goal for SE is to create meaningful
+cell embeddings. To do this, we must first create meaningful gene embeddings.</p>
+<p>According to recent reports, to produce a single gene embedding, we first obtain the amino acid sequence (e.g SDKPDMAEI\texttt{SDKPDMAEI}SDKPDMAEI... for TMSB4X) of all the different protein isoforms encoded for by the gene in question. We then feed these sequences to ESM2, a 15B parameter Protein Language Model from FAIR. ESM produces an embedding per amino acid, and we mean pool them together to obtain a "transcript" (a.k.a protein isoform) embedding.</p>
+<p>According to recent reports, now we have all of these protein isoform embeddings, we then just mean pool those to get the gene embedding. Next, we project these gene embeddings to our model dimension using a learned encoder as follows:.</p>
+<p>g~j=SiLU(LayerNorm(gjWg+bg))
+\tilde{g}_j = \text{SiLU}(\text{LayerNorm}(g_j \mathbf{W}_g + \mathbf{b}_g))
+g~​j​=SiLU(LayerNorm(gj​Wg​+bg​)).</p>
+<p>According to recent reports, we've now obtained a gene embedding, but what we really want is a cell embedding. To do this, Arc represents each cell
+as the top 2048 genes ranked by log fold expression level.</p>
+<p id="sec-mid-57651">We then construct a "cell sentence" from our 2048 gene embeddings as follows:
+c~(i)=[zcls,g~1(i),g~2(i),…,g~L(i),zds]∈R(L+2)×h
+\tilde{\mathbf{c}}^{(i)} = \left[\mathbf{z}_{\text{cls}}, \tilde{\mathbf{g}}_1^{(i)}, \tilde{\mathbf{g}}_2^{(i)}, \ldots, \tilde{\mathbf{g}}_L^{(i)}, \mathbf{z}_{\text{ds}}\right] \in \mathbb{R}^{(L+2) \times h}
+c~(i)=[zcls​,g~​1(i)​,g~​2(i)​,…,g~​L(i)​,zds​]∈R(L+2)×h.</p>
+<p>Sources indicate that we add a [CLS]\texttt{[CLS]}[CLS] token and [DS]\texttt{[DS]}[DS] token to our sentence. The [CLS]\texttt{[CLS]}[CLS] token ends up being used as our "cell embedding" (very BERT-like)
+and the [DS]\texttt{[DS]}[DS] token is used to "disentangle dataset-specific effects". Although the genes are sorted by log fold
+expression level, Arc further enforces the magnitude of each genes expression by incorporating the transcriptome in a
+fashion analogous to positional embeddings. Through an odd "soft binning" algorithm and 2 MLPs, they create some
+"expression encodings" which they then add to each gene embedding. This should modulate the magnitude of each gene
+embedding by how intensely it is expressed in the transcriptome.</p>
+<p>Recent findings suggest that to train the model, they mask 1280 genes per cell, and the model is tasked with predicting them. The 1280 genes are
+selected such that they have a wide range of expression intensities. For the graphically inclined, the below
+demonstrates the construction of the cell sentence.</p>
+<p>Understanding how your submission will be evaluated is key to success. The 3 evaluation metrics chosen by Arc are Perturbation Discrimination, Differential Expression and Mean Average Error. Given that Mean Average Error is simple and exactly as it sounds, we will omit it from our analysis.</p>
+<p>Perturbation Discrimination intends to evaluate how well your model can uncover relative differences between
+perturbations. To do this, we compute the Manhattan distances for all the measured perturbed transcriptomes in the test set (the ground
+truth we are trying to predict, yty_tyt​ and all other perturbed transcriptomes, ypny_p^nypn​) to our predicted transcriptome y^t\hat{y}_ty^​t​. We then rank where the
+ground truth lands with respect to all transcriptomes as follows:.</p>
+<p>rt=∑p≠t1{d(y^t,yp)
+After, we normalize by the total number of transcriptomes:
+PDisct=rtT
+\text{PDisc}_t = \frac{r_t}{T}
+PDisct​=Trt​​
+Where 000 would be a perfect match. The overall score for your predictions is the mean of all $$\text{PDisc}_t$$. This is then normalized to:
+PDiscNorm=1−2PDisc
+\text{PDiscNorm} = 1 - 2\text{PDisc}
+PDiscNorm=1−2PDisc
+We multiply by 2 as for a random prediction, ~half of the results would be closer and half would be further away. Differential Expression intends to evaluate what fraction of the truly affected genes did you correctly identify as significantly affected. Firstly, for each gene compute a ppp-value using a Wilcoxon rank-sum test with tie correction. We do this for both our predicted perturbation distribution and the ground truth perturbation distribution. Next, we apply the Benjamini-Hochberg procedure, basically some stats to modulate the ppp-values, as with 20,00020,00020,000 genes and a ppp-value threshold of 0.050.050.05, you'd expect 1,0001,0001,000 false positives. We denote our set of predicted differentially expressed genes Gp,predG_{p,pred}Gp,pred​, and the ground truth set of differentially expressed genes Gp,trueG_{p,true}Gp,true​. If the size of our set is less than the ground truth set size, take the intersection of the sets, and divide by the true number of differentially expressed genes as follows:
+DEp=Gp,pred∩Gp,truenp,true
+DE_p = \frac{G_{p,pred} \cap G_{p,true}}{n_{p,true}}
+DEp​=np,true​Gp,pred​∩Gp,true​​
+If the size of our set is greater than the ground truth set size, select the subset we predict are most differentially expressed (our "most confident" predictions, denoted G~p,pred\tilde{G}_{p,pred}G~p,pred​), take the intersection with the ground truth set, and then divide by the true number. DEp=G~p,pred∩Gp,truenp,true
+DE_p = \frac{\tilde{G}_{p,pred} \cap G_{p,true}}{n_{p,true}}
+DEp​=np,true​G~p,pred​∩Gp,true​​
+Do this for all predicted perturbations and take the mean to obtain the final score. If this challenge has piqued your interest, how can one get started? Fortunately, Arc has provided a Colab notebook that walks through the entire process of training their STATE model. Furthermore, STATE will be hitting transformers
+very soon, so starting with their pretrained models will be as simple as:
+Best of luck to all participants! This post was originally published here. This is a fantastic primer, especially for engineers coming from outside the bio world. The framing around the challenge of separating true signal from population noise is so well articulated. It reminded me of how easily that complexity translates into real-world healthcare tools, where even basic outcome tracking can be skewed by heterogeneity in patient populations. In this project, openforge.io/mobile-measures-case-study ,  a PT outcomes platform, we saw how embedding even simple real-time insights into mobile interfaces can transform provider decisions. So it’s exciting to imagine how something like this could evolve into usable tools for clinicians or researchers down the line. Curious if anyone here has explored clinical applications for models like STATE?</p>
+<p>After, we normalize by the total number of transcriptomes:.</p>
+<p>PDisct=rtT
+\text{PDisc}_t = \frac{r_t}{T}
+PDisct​=Trt​​.</p>
+<p>Where 000 would be a perfect match. The overall score for your predictions is the mean of all $$\text{PDisc}_t$$. This is then normalized to:.</p>
+<p>PDiscNorm=1−2PDisc
+\text{PDiscNorm} = 1 - 2\text{PDisc}
+PDiscNorm=1−2PDisc.</p>
+<p>We multiply by 2 as for a random prediction, ~half of the results would be closer and half would be further away.</p>
+<p>Differential Expression intends to evaluate what fraction of the truly affected genes did you correctly identify as significantly affected. Firstly, for each gene compute a ppp-value using a Wilcoxon rank-sum test with tie correction. We do this for both our predicted perturbation distribution and the ground truth perturbation distribution.</p>
+<p>Next, we apply the Benjamini-Hochberg procedure, basically some stats to modulate the ppp-values, as with 20,00020,00020,000 genes and a ppp-value threshold of 0.050.050.05, you'd expect 1,0001,0001,000 false positives. We denote our set of predicted differentially expressed genes Gp,predG_{p,pred}Gp,pred​, and the ground truth set of differentially expressed genes Gp,trueG_{p,true}Gp,true​.</p>
+<p>If the size of our set is less than the ground truth set size, take the intersection of the sets, and divide by the true number of differentially expressed genes as follows:.</p>
+<p>DEp=Gp,pred∩Gp,truenp,true
+DE_p = \frac{G_{p,pred} \cap G_{p,true}}{n_{p,true}}
+DEp​=np,true​Gp,pred​∩Gp,true​​.</p>
+<p>If the size of our set is greater than the ground truth set size, select the subset we predict are most differentially expressed (our "most confident" predictions, denoted G~p,pred\tilde{G}_{p,pred}G~p,pred​), take the intersection with the ground truth set, and then divide by the true number.</p>
+<p>DEp=G~p,pred∩Gp,truenp,true
+DE_p = \frac{\tilde{G}_{p,pred} \cap G_{p,true}}{n_{p,true}}
+DEp​=np,true​G~p,pred​∩Gp,true​​.</p>
+<p>Do this for all predicted perturbations and take the mean to obtain the final score.</p>
+<p>It has been revealed that if this challenge has piqued your interest, how can one get started? Fortunately, Arc has provided a Colab notebook that walks through the entire process of training their STATE model. Furthermore, STATE will be hitting transformers
+very soon, so starting with their pretrained models will be as simple as:.</p>
+<p>Best of luck to all participants!</p>
+<p>This post was originally published here.</p>
+<p>This is a fantastic primer, especially for engineers coming from outside the bio world. The framing around the challenge of separating true signal from population noise is so well articulated. It reminded me of how easily that complexity translates into real-world healthcare tools, where even basic outcome tracking can be skewed by heterogeneity in patient populations.</p>
+<p id="sec-end-57651">Industry observers note that in this project, openforge.io/mobile-measures-case-study ,  a PT outcomes platform, we saw how embedding even simple real-time insights into mobile interfaces can transform provider decisions. So it’s exciting to imagine how something like this could evolve into usable tools for clinicians or researchers down the line. Curious if anyone here has explored clinical applications for models like STATE?</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/virtual-cell-challenge" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-the-nhls-virtual-logos-are-not-going-down-well-57023.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57023. Industry News: The NHL's virtual logos are not going down well
+        </a>
+        
+        <a href="industry-news-beyond-the-ban-rethinking-cell-phone-policies-in-sc-55075.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #55075. Industry News: Beyond the ban: Rethinking cell phone policies in schools with smarter solutions
+        </a>
+        
+        <a href="tiktoks-viral-winter-arc-challenge-is-the-best-way-to-get-a-jump--52542.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #52542. TikTok’s Viral Winter Arc Challenge Is the Best Way to Get a Jump-Start on Your New Year’s Goals
+        </a>
+        
+        <a href="industry-news-can-virtual-reality-make-systemic-racism-easier-to--52419.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #52419. Industry News: Can Virtual Reality Make Systemic Racism Easier to Recognize?
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

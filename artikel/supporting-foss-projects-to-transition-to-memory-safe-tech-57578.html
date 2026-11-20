@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supporting FOSS projects to transition to memory safe tech</title>
+    <meta name="description" content="Weâre announcing, and honestly celebrating, the next chapter in our push for memory safety: Sovereign Tech Agency have selected us as their partner for h">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/supporting-foss-projects-to-transition-to-memory-safe-tech-57578.html">
+    <meta property="og:title" content="Supporting FOSS projects to transition to memory safe tech">
+    <meta property="og:description" content="Weâre announcing, and honestly celebrating, the next chapter in our push for memory safety: Sovereign Tech Agency have selected us as their partner for h">
+    <meta property="og:image" content="https://media.tweedegolf.nl/images/str-program-main.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/supporting-foss-projects-to-transition-to-memory-safe-tech-57578.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Supporting FOSS projects to transition to memory safe tech", "image": ["https://media.tweedegolf.nl/images/str-program-main.png"], "datePublished": "2026-11-19T18:39:29", "dateModified": "2026-11-20T00:13:16.505933", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/supporting-foss-projects-to-transition-to-memory-safe-tech-57578.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Supporting FOSS projects to transition to memory safe tech</h1>
+        <div class="meta-line">🌐 Source: <strong>Tweedegolf</strong> &bull; 📅 19 Nov 2026 &bull; ⏱️ 20 min read (4032 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Weâre announcing, and honestly celebrating, the next chapter in our push for memory safety: Sovereign Tech Agency have selected us as their partner for helping critical free and open source (FOSS) projects transition to memory safe tech like Rust, as part of their Sovereign Tech Resilience Program.</li><li style='margin-bottom:6px;'>According to recent reports, weâre announcing, and honestly celebrating, the next chapter in our push for memory safety: Sovereign Tech Agency have selected us as their partner for helping critical free and open source (FOSS) projects transition to memory safe tech like Rust, as part of their Sovereign Tech Resilience Program.</li><li style='margin-bottom:6px;'>Industry observers note that the Sovereign Tech Agency are well-known in the FOSS ecosystem for their Sovereign Tech Fund, which does âstrategic investments in the digital infrastructure of our economy and societyâ.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57578"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57578"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57578"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Supporting FOSS projects to transition to memory safe tech" loading="lazy" src="https://media.tweedegolf.nl/images/str-program-main.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57578">Weâre announcing, and honestly celebrating, the next chapter in our push for memory safety: Sovereign Tech Agency have selected us as their partner for helping critical free and open source (FOSS) projects transition to memory safe tech like Rust, as part of their Sovereign Tech Resilience Program. In this article, weâll go over the Program, why now is the right time to transition, and weâll explain the basics of how FOSS projects can benefit from this collaboration, free of charge.</p>
+<p>According to recent reports, weâre announcing, and honestly celebrating, the next chapter in our push for memory safety: Sovereign Tech Agency have selected us as their partner for helping critical free and open source (FOSS) projects transition to memory safe tech like Rust, as part of their Sovereign Tech Resilience Program. In this article, weâll go over the Program, why now is the right time to transition, and weâll explain the basics of how FOSS projects can benefit from this collaboration, free of charge.</p>
+<p>Industry observers note that the Sovereign Tech Agency are well-known in the FOSS ecosystem for their Sovereign Tech Fund, which does âstrategic investments in the digital infrastructure of our economy and societyâ. In September 2026, they relaunched the Sovereign Tech Resilience Program, which works a little differently; STA has contracted suppliers to perform various services for FOSS projects, to strengthen the resilience of these projects. Unlike many grant programs in the industry, the Sovereign Tech Resilience Program does not give money directly to projects; instead it provides support from a paid-for engineering team.So how does this program strengthen the resilience of FOSS projects? By âimproving projectsâ underlying capacity to prevent, withstand, and respond to [bugs]â in various ways (which you can read more about here), including by offering support for transitioning code bases to Rust, Go, or Python.Transition to memory safetyThat is where we come in. Weâve been contracted to support participating projects in transitioning codebases, whole or in part, from memory-unsafe languages such as C or C++ to memory-safe alternatives where appropriate.The services we will be delivering to FOSS projects are:assessing which components are suitable for rewritesproducing prioritized migration roadmapscarrying out rewrites while maintaining functional equivalence and compatibilitytraining maintainers to keep developing the memory-safe componentsWhy nowA lot of our world depends on various critical open source projects. By now, itâs obvious that hardening these critical open source components, by investing in them and contributing to them, is notable. As weâre right now seeing a surge in both (agentic) cyber attacks and AI-assisted vulnerability discoveries, this has become more pressing than ever before, and weâre not expecting this urgency to let up.There are, thankfully, different ways to go about it, and many excellent initiatives (e.g. the Alpha Omega project), but hereâs why weâre so excited to be a part of this one specifically:The Programsâs criteria ensure a risk and impact based investmentA projectâs maintainers stay in the leadThe effort is substantial enough (i.e. secured for at least 3 years) to create real and lasting impactTo us, being STAâs partner in this also presents a very tangible step in our advocacy for memory safety, which started in 2023 but has felt more pertinent each year since.How to apply for this programFor FOSS projects that are interested, the process is very straightforward:Read the participation criteriaApply to the programGet selectedMake a blueprint with STA and us, while you stay in the leadWe collaboratively execute the planYou can apply for one or multiple areas of support (aside from memory safety, think e.g. software supply chain security, security audits, and more). The resulting engagement can be large or small, long or short, depending on the services youâre interested in and that fit your projectâs needs.Questions?We are currently working on several FOSS projects that are unrelated to the Resilience Program. If youâd like to know more about our open-source work first, here are some of those projects:e-KS and Abacus, for the Dutch Electoral CouncilOpen Device Partnership for MicrosoftVarious projects at Trifecta Tech Foundation, the non-profit that we founded in 2024 to develop and maintain digital commons, open-source software and open standards for the Internet and other vital systems. Projects range from time synchronization (e.g. ntpd-rs and sectime.org), to compression (e.g. zlib-rs) and privilege boundary (e.g. sudo-rs).Any other questions? Please refer to the Programâs FAQ, or reach out to me, Hugo.Weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p>Sources indicate that so how does this program strengthen the resilience of FOSS projects? By âimproving projectsâ underlying capacity to prevent, withstand, and respond to [bugs]â in various ways (which you can read more about here), including by offering support for transitioning code bases to Rust, Go, or Python.Transition to memory safetyThat is where we come in. Weâve been contracted to support participating projects in transitioning codebases, whole or in part, from memory-unsafe languages such as C or C++ to memory-safe alternatives where appropriate.The services we will be delivering to FOSS projects are:assessing which components are suitable for rewritesproducing prioritized migration roadmapscarrying out rewrites while maintaining functional equivalence and compatibilitytraining maintainers to keep developing the memory-safe componentsWhy nowA lot of our world depends on various critical open source projects. By now, itâs obvious that hardening these critical open source components, by investing in them and contributing to them, is important. As weâre at the moment seeing a surge in both (agentic) cyber attacks and AI-assisted vulnerability discoveries, this has become more pressing than ever before, and weâre not expecting this urgency to let up.There are, thankfully, different ways to go about it, and many excellent initiatives (e.g. the Alpha Omega project), but hereâs why weâre so excited to be a part of this one specifically:The Programsâs criteria ensure a risk and impact based investmentA projectâs maintainers stay in the leadThe effort is substantial enough (i.e. secured for at least 3 years) to create real and lasting impactTo us, being STAâs partner in this also presents a very tangible step in our advocacy for memory safety, which started in 2023 but has felt more pertinent each year since.How to apply for this programFor FOSS projects that are interested, the process is very straightforward:Read the participation criteriaApply to the programGet selectedMake a blueprint with STA and us, while you stay in the leadWe collaboratively execute the planYou can apply for one or multiple areas of support (aside from memory safety, think e.g. software supply chain security, security audits, and more). The resulting engagement can be large or small, long or short, depending on the services youâre interested in and that fit your projectâs needs.Questions?We are currently working on several FOSS projects that are unrelated to the Resilience Program. If youâd like to know more about our open-source work first, here are some of those projects:e-KS and Abacus, for the Dutch Electoral CouncilOpen Device Partnership for MicrosoftVarious projects at Trifecta Tech Foundation, the non-profit that we founded in 2024 to develop and maintain digital commons, open-source software and open standards for the Internet and other vital systems. Projects range from time synchronization (e.g. ntpd-rs and sectime.org), to compression (e.g. zlib-rs) and privilege boundary (e.g. sudo-rs).Any other questions? Please refer to the Programâs FAQ, or reach out to me, Hugo.Weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p>That is where we come in. Weâve been contracted to support participating projects in transitioning codebases, whole or in part, from memory-unsafe languages such as C or C++ to memory-safe alternatives where appropriate.The services we will be delivering to FOSS projects are:assessing which components are suitable for rewritesproducing prioritized migration roadmapscarrying out rewrites while maintaining functional equivalence and compatibilitytraining maintainers to keep developing the memory-safe componentsWhy nowA lot of our world depends on various critical open source projects. By now, itâs obvious that hardening these critical open source components, by investing in them and contributing to them, is important. As weâre currently seeing a surge in both (agentic) cyber attacks and AI-assisted vulnerability discoveries, this has become more pressing than ever before, and weâre not expecting this urgency to let up.There are, thankfully, different ways to go about it, and many excellent initiatives (e.g. the Alpha Omega project), but hereâs why weâre so excited to be a part of this one specifically:The Programsâs criteria ensure a risk and impact based investmentA projectâs maintainers stay in the leadThe effort is substantial enough (i.e. secured for at least 3 years) to create real and lasting impactTo us, being STAâs partner in this also presents a very tangible step in our advocacy for memory safety, which started in 2023 but has felt more pertinent each year since.How to apply for this programFor FOSS projects that are interested, the process is very straightforward:Read the participation criteriaApply to the programGet selectedMake a proposal with STA and us, while you stay in the leadWe collaboratively execute the planYou can apply for one or multiple areas of support (aside from memory safety, think e.g. software supply chain security, security audits, and more). The resulting engagement can be large or small, long or short, depending on the services youâre interested in and that fit your projectâs needs.Questions?We are currently working on several FOSS projects that are unrelated to the Resilience Program. If youâd like to know more about our open-source work first, here are some of those projects:e-KS and Abacus, for the Dutch Electoral CouncilOpen Device Partnership for MicrosoftVarious projects at Trifecta Tech Foundation, the non-profit that we founded in 2024 to develop and maintain digital commons, open-source software and open standards for the Internet and other vital systems. Projects range from time synchronization (e.g. ntpd-rs and sectime.org), to compression (e.g. zlib-rs) and privilege boundary (e.g. sudo-rs).Any other questions? Please refer to the Programâs FAQ, or reach out to me, Hugo.Weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p>In a recent development, the services we will be delivering to FOSS projects are:assessing which components are suitable for rewritesproducing prioritized migration roadmapscarrying out rewrites while maintaining functional equivalence and compatibilitytraining maintainers to keep developing the memory-safe componentsWhy nowA lot of our world depends on various critical open source projects. By now, itâs obvious that hardening these critical open source components, by investing in them and contributing to them, is vital. As weâre at the moment seeing a surge in both (agentic) cyber attacks and AI-assisted vulnerability discoveries, this has become more pressing than ever before, and weâre not expecting this urgency to let up.There are, thankfully, different ways to go about it, and many excellent initiatives (e.g. the Alpha Omega project), but hereâs why weâre so excited to be a part of this one specifically:The Programsâs criteria ensure a risk and impact based investmentA projectâs maintainers stay in the leadThe effort is substantial enough (i.e. secured for at least 3 years) to create real and lasting impactTo us, being STAâs partner in this also presents a very tangible step in our advocacy for memory safety, which started in 2023 but has felt more pertinent each year since.How to apply for this programFor FOSS projects that are interested, the process is very straightforward:Read the participation criteriaApply to the programGet selectedMake a plan with STA and us, while you stay in the leadWe collaboratively execute the planYou can apply for one or multiple areas of support (aside from memory safety, think e.g. software supply chain security, security audits, and more). The resulting engagement can be large or small, long or short, depending on the services youâre interested in and that fit your projectâs needs.Questions?We are currently working on several FOSS projects that are unrelated to the Resilience Program. If youâd like to know more about our open-source work first, here are some of those projects:e-KS and Abacus, for the Dutch Electoral CouncilOpen Device Partnership for MicrosoftVarious projects at Trifecta Tech Foundation, the non-profit that we founded in 2024 to develop and maintain digital commons, open-source software and open standards for the Internet and other vital systems. Projects range from time synchronization (e.g. ntpd-rs and sectime.org), to compression (e.g. zlib-rs) and privilege boundary (e.g. sudo-rs).Any other questions? Please refer to the Programâs FAQ, or reach out to me, Hugo.Weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p>A lot of our world depends on various critical open source projects. By now, itâs obvious that hardening these critical open source components, by investing in them and contributing to them, is important. As weâre currently seeing a surge in both (agentic) cyber attacks and AI-assisted vulnerability discoveries, this has become more pressing than ever before, and weâre not expecting this urgency to let up.There are, thankfully, different ways to go about it, and many excellent initiatives (e.g. the Alpha Omega project), but hereâs why weâre so excited to be a part of this one specifically:The Programsâs criteria ensure a risk and impact based investmentA projectâs maintainers stay in the leadThe effort is substantial enough (i.e. secured for at least 3 years) to create real and lasting impactTo us, being STAâs partner in this also presents a very tangible step in our advocacy for memory safety, which started in 2023 but has felt more pertinent each year since.How to apply for this programFor FOSS projects that are interested, the process is very straightforward:Read the participation criteriaApply to the programGet selectedMake a blueprint with STA and us, while you stay in the leadWe collaboratively execute the planYou can apply for one or multiple areas of support (aside from memory safety, think e.g. software supply chain security, security audits, and more). The resulting engagement can be large or small, long or short, depending on the services youâre interested in and that fit your projectâs needs.Questions?We are currently working on several FOSS projects that are unrelated to the Resilience Program. If youâd like to know more about our open-source work first, here are some of those projects:e-KS and Abacus, for the Dutch Electoral CouncilOpen Device Partnership for MicrosoftVarious projects at Trifecta Tech Foundation, the non-profit that we founded in 2024 to develop and maintain digital commons, open-source software and open standards for the Internet and other vital systems. Projects range from time synchronization (e.g. ntpd-rs and sectime.org), to compression (e.g. zlib-rs) and privilege boundary (e.g. sudo-rs).Any other questions? Please refer to the Programâs FAQ, or reach out to me, Hugo.Weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p>There are, thankfully, different ways to go about it, and many excellent initiatives (e.g. the Alpha Omega project), but hereâs why weâre so excited to be a part of this one specifically:The Programsâs criteria ensure a risk and impact based investmentA projectâs maintainers stay in the leadThe effort is substantial enough (i.e. secured for at least 3 years) to create real and lasting impactTo us, being STAâs partner in this also presents a very tangible step in our advocacy for memory safety, which started in 2023 but has felt more pertinent each year since.How to apply for this programFor FOSS projects that are interested, the process is very straightforward:Read the participation criteriaApply to the programGet selectedMake a initiative with STA and us, while you stay in the leadWe collaboratively execute the planYou can apply for one or multiple areas of support (aside from memory safety, think e.g. software supply chain security, security audits, and more). The resulting engagement can be large or small, long or short, depending on the services youâre interested in and that fit your projectâs needs.Questions?We are presently working on several FOSS projects that are unrelated to the Resilience Program. If youâd like to know more about our open-source work first, here are some of those projects:e-KS and Abacus, for the Dutch Electoral CouncilOpen Device Partnership for MicrosoftVarious projects at Trifecta Tech Foundation, the non-profit that we founded in 2024 to develop and maintain digital commons, open-source software and open standards for the Internet and other vital systems. Projects range from time synchronization (e.g. ntpd-rs and sectime.org), to compression (e.g. zlib-rs) and privilege boundary (e.g. sudo-rs).Any other questions? Please refer to the Programâs FAQ, or reach out to me, Hugo.Weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p>To us, being STAâs partner in this also presents a very tangible step in our advocacy for memory safety, which started in 2023 but has felt more pertinent each year since.How to apply for this programFor FOSS projects that are interested, the process is very straightforward:Read the participation criteriaApply to the programGet selectedMake a plan with STA and us, while you stay in the leadWe collaboratively execute the planYou can apply for one or multiple areas of support (aside from memory safety, think e.g. software supply chain security, security audits, and more). The resulting engagement can be large or small, long or short, depending on the services youâre interested in and that fit your projectâs needs.Questions?We are at the moment working on several FOSS projects that are unrelated to the Resilience Program. If youâd like to know more about our open-source work first, here are some of those projects:e-KS and Abacus, for the Dutch Electoral CouncilOpen Device Partnership for MicrosoftVarious projects at Trifecta Tech Foundation, the non-profit that we founded in 2024 to develop and maintain digital commons, open-source software and open standards for the Internet and other vital systems. Projects range from time synchronization (e.g. ntpd-rs and sectime.org), to compression (e.g. zlib-rs) and privilege boundary (e.g. sudo-rs).Any other questions? Please refer to the Programâs FAQ, or reach out to me, Hugo.Weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p id="sec-mid-57578">For FOSS projects that are interested, the process is very straightforward:Read the participation criteriaApply to the programGet selectedMake a plan with STA and us, while you stay in the leadWe collaboratively execute the planYou can apply for one or multiple areas of support (aside from memory safety, think e.g. software supply chain security, security audits, and more). The resulting engagement can be large or small, long or short, depending on the services youâre interested in and that fit your projectâs needs.Questions?We are currently working on several FOSS projects that are unrelated to the Resilience Program. If youâd like to know more about our open-source work first, here are some of those projects:e-KS and Abacus, for the Dutch Electoral CouncilOpen Device Partnership for MicrosoftVarious projects at Trifecta Tech Foundation, the non-profit that we founded in 2024 to develop and maintain digital commons, open-source software and open standards for the Internet and other vital systems. Projects range from time synchronization (e.g. ntpd-rs and sectime.org), to compression (e.g. zlib-rs) and privilege boundary (e.g. sudo-rs).Any other questions? Please refer to the Programâs FAQ, or reach out to me, Hugo.Weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p>Recent findings suggest that you can apply for one or multiple areas of support (aside from memory safety, think e.g. software supply chain security, security audits, and more). The resulting engagement can be large or small, long or short, depending on the services youâre interested in and that fit your projectâs needs.Questions?We are currently working on several FOSS projects that are unrelated to the Resilience Program. If youâd like to know more about our open-source work first, here are some of those projects:e-KS and Abacus, for the Dutch Electoral CouncilOpen Device Partnership for MicrosoftVarious projects at Trifecta Tech Foundation, the non-profit that we founded in 2024 to develop and maintain digital commons, open-source software and open standards for the Internet and other vital systems. Projects range from time synchronization (e.g. ntpd-rs and sectime.org), to compression (e.g. zlib-rs) and privilege boundary (e.g. sudo-rs).Any other questions? Please refer to the Programâs FAQ, or reach out to me, Hugo.Weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p>It has been revealed that we are currently working on several FOSS projects that are unrelated to the Resilience Program. If youâd like to know more about our open-source work first, here are some of those projects:e-KS and Abacus, for the Dutch Electoral CouncilOpen Device Partnership for MicrosoftVarious projects at Trifecta Tech Foundation, the non-profit that we founded in 2024 to develop and maintain digital commons, open-source software and open standards for the Internet and other vital systems. Projects range from time synchronization (e.g. ntpd-rs and sectime.org), to compression (e.g. zlib-rs) and privilege boundary (e.g. sudo-rs).Any other questions? Please refer to the Programâs FAQ, or reach out to me, Hugo.Weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p>Sources indicate that any other questions? Please refer to the Programâs FAQ, or reach out to me, Hugo.Weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p>Industry observers note that weâre thankful for the opportunity to work with various open source projects and maintainers in such a constructive way in the years to come. We look forward to working with you, to helping you get things done that were challenging before, and making a positive impact together!</p>
+<p>Stay up-to-date with our work and blog posts?</p>
+<p>Itâs July 2026, and part of the Cyber Resilience Act (CRA) is now in effect; the remainder is imminent. The new EU regulations aim to significantly improve the cybersecurity of connected products placed on the European market. If your organization develops digital products such as IoT devices or EV chargers, youâre affected.</p>
+<p>Sources indicate that earlier this month Marc and I had the opportunity to deliver a talk at ONE Conference in The Hague, The Netherlands, on a topic thatâs near to our hearts: memory safety. Below we share some context, as well as our slides.</p>
+<p id="sec-end-57578">According to recent reports, weâve been raising awareness of the importance of using memory-safe technology to build systems that are truly secure-by-design. We do this alongside our core business, which is to help companies to use Rust successfully. With the CRA standardization process well on its way, now is the perfect time to update you on what weâve been doing and why.</p>
+<p style="margin-top: 25px;">
+<a href="https://tweedegolf.nl/en/blog/243/supporting-foss-projects-to-transition-to-memory-safe-tech/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-scientists-find-hidden-driver-of-aging-and-a-simple-a-57417.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57417. Tech Report: Scientists find hidden driver of aging and a simple amino acid that fights memory loss in mice
+        </a>
+        
+        <a href="tech-report-in-loving-memory-of-tiger-55825.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #55825. Tech Report: In Loving Memory of Tiger
+        </a>
+        
+        <a href="tech-report-is-it-safe-to-use-a-fireplace-i-havent-cleaned-in-yea-55660.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #55660. Tech Report: Is It Safe to Use a Fireplace I Haven’t Cleaned in Years?
+        </a>
+        
+        <a href="tech-report-is-pink-turkey-safe-to-eat-54358.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #54358. Tech Report: Is Pink Turkey Safe to Eat?
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

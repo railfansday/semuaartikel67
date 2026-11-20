@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Visualizing a Ledger with pgledger-ui</title>
+    <meta name="description" content="Recent findings suggest that iâve been working on a ledger implementation in pure PostgreSQL called pgledger. As Iâve written about previously, I think">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-visualizing-a-ledger-with-pgledger-ui-57565.html">
+    <meta property="og:title" content="Breaking: Visualizing a Ledger with pgledger-ui">
+    <meta property="og:description" content="Recent findings suggest that iâve been working on a ledger implementation in pure PostgreSQL called pgledger. As Iâve written about previously, I think">
+    <meta property="og:image" content="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-visualizing-a-ledger-with-pgledger-ui-57565.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Visualizing a Ledger with pgledger-ui", "image": ["https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk"], "datePublished": "2026-11-19T00:00:00-08:00", "dateModified": "2026-11-20T00:13:15.643533", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-visualizing-a-ledger-with-pgledger-ui-57565.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Visualizing a Ledger with pgledger-ui</h1>
+        <div class="meta-line">🌐 Source: <strong>Pgrs</strong> &bull; 📅 19 Nov 2026 &bull; ⏱️ 3 min read (641 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that iâve been working on a ledger implementation in pure PostgreSQL called pgledger.</li><li style='margin-bottom:6px;'>Sources indicate that however, once a ledger is integrated, it can be a bit hard to wrap your head around it visually.</li><li style='margin-bottom:6px;'>In my work with companies, Iâve often tried to make the ledger more visual and understandable, either with a database dashboard like Metabase or with custom in-app code.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57565"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57565"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57565"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Visualizing a Ledger with pgledger-ui" loading="lazy" src="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57565">Recent findings suggest that iâve been working on a ledger implementation in pure PostgreSQL called pgledger. As Iâve written about previously, I think more applications should use double-entry ledgers.</p>
+<p>Sources indicate that however, once a ledger is integrated, it can be a bit hard to wrap your head around it visually. What are the money flows? What are the main set of accounts per user? Why is the balance in this account not what I expect?</p>
+<p>In my work with companies, Iâve often tried to make the ledger more visual and understandable, either with a database dashboard like Metabase or with custom in-app code.</p>
+<p>The same way that pgledger is meant to be a common, reusable ledger across applications, I thought we could have a common, reusable visualization tool. And thus pgledger-ui was born.</p>
+<p>This is what it looks like to view a ledger account, showing the account details, the most common counterparty accounts, a chart of balance over time, and the detailed transfer entries:.</p>
+<p>In general, pgledger-ui is pretty simple. It runs database queries and shows them in a webpage. There are some charts and extra aggregate information. And the whole thing is bundled into a single Go binary:.</p>
+<p>Beyond this, there are a few main ideas baked into pgledger-ui:.</p>
+<p>It has been revealed that often, when debugging an matter, you start by realizing a ledger account doesnât have the balance you expect. Then, you want to see the transfers in and out of that account. And maybe you want to trace a given metadata key across transfers (e.g. the payment_id). As you continue debugging, you may follow an account to a transfer to another account and so on. With pgledger-ui, each entity highlights the related entities, and you can click on any of them to trace a flow. This even includes metadata keys, so you can see related transfers which share the same key/value pair.</p>
+<p>Recent findings suggest that it should be easy to find what you want, so pgledger-ui has a single, universal search box. You can search by id, account name, idempotency key, metadata values, etc., and it will show you all matches across all entities. For example, if you name your accounts hierarchically (e.g. user01.available, user01.pending, etc.) you can search for user01 and see all accounts and transfers for that user.</p>
+<p id="sec-mid-57565">Sources indicate that I like interfaces which are information dense, without being overwhelming. The goal is to show a lot of useful information in each page, and make it easy to scan for what you need.</p>
+<p>It has been revealed that normally, when you query data from a database, you get row-based results. However, I find that visualizing ledgers in a columnar format is often more useful.</p>
+<p>Sources indicate that for example, say you are looking at all of the transfer entries for a given payment. The results may come back like this:.</p>
+<p>But a columnar view of that same data looks like:.</p>
+<p>(Example from the pgledger reconciliation.sql.out script).</p>
+<p>In a recent development, postgreSQL calls this a crosstab (or crosstabview in psql). A pivot table in a spreadsheet may be similar. And itâs a common way to visualize a ledger1.</p>
+<p>This type of view exists in pgledger-ui as well, especially if youâre tracing a flow via a metadata key:.</p>
+<p>And you can separate the in/out flows, making it resemble a standard ledger T-account view:.</p>
+<p>Industry observers note that please check out pgledger-ui, and Iâd love to hear what you think, especially if you work with pgledger or other ledgers today. Are there other useful visualizations or tools youâve seen in this space? And if pgledger-ui is something that you are interested in using, please let me know.</p>
+<p id="sec-end-57565">For example, Accounting For Developers, Part I: The Fundamentals and T-Accounts Explained: The Visual Grammar of Debits and Credits Behind Every Journal Entry.Â ↩.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.pgrs.net/2026/11/19/visualizing-a-ledger-with-pgledger-ui/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="hackers-hijack-178-major-websites-including-bbc-zoom-cnn-hsbc-and-53422.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #53422. Hackers Hijack 178 Major Websites, Including BBC, Zoom, CNN, HSBC, and Ledger
+        </a>
+        
+        <a href="xrp-ledger-activity-hits-fresh-november-highs-as-batch-ticket-usa-53326.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #53326. XRP Ledger Activity Hits Fresh November Highs as Batch, Ticket Usage Surge
+        </a>
+        
+        <a href="latest-update-xrp-ledger-creates-new-baseline-1-billion-secured-53268.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #53268. Latest Update: XRP Ledger Creates New Baseline: 1 Billion Secured
+        </a>
+        
+        <a href="xrp-ledger-passes-117-million-sub-dollar-ai-agent-microtransactio-53245.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #53245. XRP Ledger Passes 11.7 Million Sub-Dollar AI Agent Microtransactions
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

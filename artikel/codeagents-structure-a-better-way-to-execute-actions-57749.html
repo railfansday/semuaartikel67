@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeAgents + Structure: A Better Way to Execute Actions</title>
+    <meta name="description" content="Recent findings suggest that today we're sharing research that bridges two powerful paradigms in AI agent design: the expressiveness of code-based actions ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/codeagents-structure-a-better-way-to-execute-actions-57749.html">
+    <meta property="og:title" content="CodeAgents + Structure: A Better Way to Execute Actions">
+    <meta property="og:description" content="Recent findings suggest that today we're sharing research that bridges two powerful paradigms in AI agent design: the expressiveness of code-based actions ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/structured-codeagent/thumbnail-codeagent.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/codeagents-structure-a-better-way-to-execute-actions-57749.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "CodeAgents + Structure: A Better Way to Execute Actions", "image": ["https://huggingface.co/blog/assets/structured-codeagent/thumbnail-codeagent.png"], "datePublished": "2025-05-28T00:00:00", "dateModified": "2026-11-20T00:13:31.563899", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/codeagents-structure-a-better-way-to-execute-actions-57749.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>CodeAgents + Structure: A Better Way to Execute Actions</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 28 May 2025 &bull; ⏱️ 5 min read (995 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that today we're sharing research that bridges two powerful paradigms in AI agent design: the expressiveness of code-based actions and the reliability of structured generation.</li><li style='margin-bottom:6px;'>Figure 1: Accuracy comparison of three approaches: Structured CodeAgent (blue), CodeAgent (orange), and ToolCallingAgent (gray) on SmolBench (GAIA, MATH, SimpleQA, and Frames).</li><li style='margin-bottom:6px;'>According to recent reports, AI agents need to take actions in the world - whether that's calling APIs, processing data, or reasoning through complex problems.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57749"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57749"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57749"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="CodeAgents + Structure: A Better Way to Execute Actions" loading="lazy" src="https://huggingface.co/blog/assets/structured-codeagent/thumbnail-codeagent.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57749">Recent findings suggest that today we're sharing research that bridges two powerful paradigms in AI agent design: the expressiveness of code-based actions and the reliability of structured generation. Our findings show that forcing CodeAgents to generate both thoughts and code in a structured JSON format can significantly outperform traditional approaches across multiple benchmarks.</p>
+<p>Figure 1: Accuracy comparison of three approaches: Structured CodeAgent (blue), CodeAgent (orange), and ToolCallingAgent (gray) on SmolBench (GAIA, MATH, SimpleQA, and Frames). Error bars represent 95% Confidence Intervals.</p>
+<p>According to recent reports, AI agents need to take actions in the world - whether that's calling APIs, processing data, or reasoning through complex problems. How agents express these actions has evolved through several paradigms:.</p>
+<p>Traditional JSON Agent: Agents generate structured JSON to call tools.</p>
+<p>Industry observers note that these agents operate by selecting from a list of predefined tools and generating JSON-formatted calls. This method for calling tools has been popularized by OpenAI's function calling API, and has since then been the most widely used method to call tools.</p>
+<p>It is reliable, but limited by:.</p>
+<p>Code Agents: Agents make use of their innate coding ability and write executable Python code directly.</p>
+<p>This shift, first presented as CodeAct in the paper “Executable Code Actions Elicit Better LLM Agents” gave AI agents the flexibility to write arbitrary executable Python code in addition to tool-calling.</p>
+<p>In a recent development, the key insight here is that tools are called directly from within the code, making variables and state management much more reliable. Agents can call tools within loops, functions, and conditional statements - essentially generating a dynamic graph of tool execution in each action!</p>
+<p>However, parsing code from markdown can be error-prone which leads us to a proposition: why not use structured generation to generate code actions?</p>
+<p>With Structured outputs, you can force the LLM to generate explicit thoughts and code as a JSON blob:.</p>
+<p>The key difference is that the generation is enforced: basically, now instead of just being prompted to output thoughts, then code, the usage of structured outputs forces it to respect the structure.</p>
+<p>This approach adds the reliability of structured generation to the flexibility of code execution, thus getting the best of both worlds.</p>
+<p>We compared these three paradigms across multiple benchmarks including GAIA, MATH, SimpleQA, and Frames. The results show a clear pattern: Code actions + structured generation consistently improves performance for capable models.</p>
+<p>Across most capable models, the structured approach consistently outperformed the regular CodeAgent approach by 2-7 percentage points on average.</p>
+<p>Our implementation of CodeAgent in smolagents extracts Python code from the LLM output, which can fail when:.</p>
+<p>Structured generation eliminates these issues with reliable JSON parsing.</p>
+<p>It has been revealed that to understand why structured generation matters, we analyzed 15,724 agent traces across our benchmarks. The results are striking:.</p>
+<p>Agent traces without parsing errors succeed 21.3% more often than those with parsing errors.</p>
+<p id="sec-mid-57749">According to recent reports, this isn't just about convenience - parsing errors create a cascade of failures that significantly impact overall agent performance. When an agent can't execute its first action due to malformed code, it often struggles to recover, leading to suboptimal problem-solving paths.</p>
+<p>Figure 2: Parsing errors in the first step reduce success rates of the agent by 21.3% and increase average steps taken from 3.18 to 4.63.</p>
+<p>Additionally: Enforced Reasoning Process.</p>
+<p>The use of structured generation and explicit thoughts not just prompts, but forces agents to articulate their reasoning before acting. This leads to:.</p>
+<p>Our results also reveal a clear capability threshold: models need sufficient instruction-following ability and JSON coverage in their pre-training data to benefit from structured generation. This suggests that structured approaches work best with:.</p>
+<p>Here's what happens when a smaller model (e.g mistralai/Mistral-7B-Instruct-v0.3) tries to generate structured code - the cognitive load becomes too much:.</p>
+<p>According to recent reports, the model generates syntactically broken Python code: web_search(query="Eiffel Tower height")", - notice the malformed string with an extra quote and comma. This leads to an immediate SyntaxError and execution failure.</p>
+<p>Sources indicate that this illustrates the "structure tax": smaller models struggle to simultaneously handle JSON formatting, Python syntax, and the actual problem-solving logic. The cognitive overhead of structured generation can overwhelm models that would otherwise perform reasonably well with simpler markdown-based code generation.</p>
+<p>✅ Use Structured CodeAgents when:.</p>
+<p>It’s super simple! Just enable it with use_structured_outputs_internally:.</p>
+<p>The LLM will generate something like this:.</p>
+<p>Then the "code" part gets executed by the agent as usual : this is the standard CodeAgent, but now it has 100% parsing reliability!</p>
+<p>This research suggests we're moving toward a more nuanced understanding of agent architectures. It's not just about "what can the agent do?" but "how should the agent think about what it's doing?".</p>
+<p>Recent findings suggest that maybe making the reasoning process more explicit helps the model stay on track. Or maybe it's just easier to parse. Either way, it’s a win.</p>
+<p>Industry observers note that but this is just the beginning. There are so many questions left to explore:.</p>
+<p>Recent findings suggest that for now, if you're using smolagents (or building your own CodeAgent system), consider giving structured output a try. Your parsing errors will thank you, and you might just see a nice increase in performance!</p>
+<p>Did you try YAML block scalars or Python triple-quoted strings? These require less escaping, so they might mitigate the "structure tax".</p>
+<p>AI agents the flexibility to write arbitrary executable Python code in addition to tool-calling. The key insight here is that tools are called directly from within the code, making variables and state management much more reliable. Agents can call tools within loops, functions, and conditional statements - essentially generating a dynamic graph of tool execution in each actionhttps://spacebar-clicker.org/.</p>
+<p id="sec-end-57749">I found the "structure tax" concept particularly interesting - it makes total sense that smaller models would struggle with the cognitive overhead of maintaining both JSON structure and Python syntax simultaneously. That Mistral-7B example with the malformed string really drives the point home. https://cpsgames.org/.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/structured-codeagent" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-introducing-the-private-hub-a-new-way-to-build-with-58433.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58433. Industry News: Introducing the Private Hub: A New Way to Build With Machine Learning
+        </a>
+        
+        <a href="smaller-is-better-q8-chat-an-efficient-generative-ai-experience-o-58322.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58322. Smaller is better: Q8-Chat, an efficient generative AI experience on Xeon
+        </a>
+        
+        <a href="data-is-better-together-enabling-communities-to-collectively-buil-58175.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58175. Data is better together: Enabling communities to collectively build better datasets together using Argilla and Hugging Face Spaces
+        </a>
+        
+        <a href="data-is-better-together-a-look-back-and-forward-58102.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58102. Data Is Better Together: A Look Back and Forward
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

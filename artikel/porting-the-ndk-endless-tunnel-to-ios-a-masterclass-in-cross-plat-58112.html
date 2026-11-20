@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porting the NDK “Endless Tunnel” to iOS: A Masterclass in Cross-Platform C++</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. 7 Day Free Trial. Cancel Anytime. Whe">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/porting-the-ndk-endless-tunnel-to-ios-a-masterclass-in-cross-plat-58112.html">
+    <meta property="og:title" content="Porting the NDK “Endless Tunnel” to iOS: A Masterclass in Cross-Platform C++">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. 7 Day Free Trial. Cancel Anytime. Whe">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_1_Vzs326wn_M7_WRL_Hkz_6_U9_Q_e78313c499.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/porting-the-ndk-endless-tunnel-to-ios-a-masterclass-in-cross-plat-58112.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Porting the NDK “Endless Tunnel” to iOS: A Masterclass in Cross-Platform C++", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_1_Vzs326wn_M7_WRL_Hkz_6_U9_Q_e78313c499.png"], "datePublished": "2026-11-02T06:48:07", "dateModified": "2026-11-20T00:13:54.878482", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/porting-the-ndk-endless-tunnel-to-ios-a-masterclass-in-cross-plat-58112.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Porting the NDK “Endless Tunnel” to iOS: A Masterclass in Cross-Platform C++</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 02 Nov 2026 &bull; ⏱️ 2 min read (452 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>When developers talk about high-performance mobile games, the Android NDK samples by Bruno Oliveira are often cited as the gold standard for clean, low-level C++.</li><li style='margin-bottom:6px;'>My latest project, TunnelFeveriOS, is the result of that journey.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-58112"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-58112"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-58112"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Porting the NDK “Endless Tunnel” to iOS: A Masterclass in Cross-Platform C++" loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_1_Vzs326wn_M7_WRL_Hkz_6_U9_Q_e78313c499.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-58112">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>Weekly. Free. One click to leave.</p>
+<p>7 Day Free Trial. Cancel Anytime.</p>
+<p>When developers talk about high-performance mobile games, the Android NDK samples by Bruno Oliveira are often cited as the gold standard for clean, low-level C++. But as an iOS developer, I wanted to see if I could take that same “pure” C++ logic and make it sing on an iPhone.</p>
+<p>My latest project, TunnelFeveriOS, is the result of that journey. It isn’t just a port; it’s a blueprint for building a custom game engine.</p>
+<p>In a recent development, the original Endless Tunnel is built to live within the Android lifecycle (JNI, Activity, and NDK). Moving this to iOS required more than just hitting “compile.” I had to build a Platform Abstraction Layer.</p>
+<p>It has been revealed that to make the C++ engine talk to the iOS UI, I utilized Objective-C++ (.mm** files)**. This allowed me to keep the game's high-speed math and geometry in native C++ while using Cocoa Touch to manage the windowing and touch input. In TunnelFeveriOS, you’ll see how the view controller manages the game loop, feeding time deltas and touch coordinates directly into the C++ core.</p>
+<p>It has been revealed that since the original game uses OpenGL ES, I leveraged iOS’s GLKit framework. The trick was ensuring that the shaders and vertex buffer objects (VBOs) originally written for Android were correctly initialized within the iOS EAGLContext. The result? 60 FPS performance that feels native because, at the machine level, it is.</p>
+<p id="sec-mid-58112">A port is only “production-ready” if it handles modern app requirements. I integrated Google Mobile Ads (AdMob) to trigger Interstitial ads during game-over states.</p>
+<p>This presented a unique threading challenge:.</p>
+<p>I implemented a messaging system that allows the C++ core to “request” an ad, which the Objective-C wrapper then catches and executes on the main thread — preventing the game from hanging or crashing.</p>
+<p>According to recent reports, this project proves that you don’t need a heavy engine like Unity or Unreal to achieve cross-platform results. By keeping the “brain” of your game in C++ and building thin “shells” for each platform (Android NDK or iOS/XCode), you gain:.</p>
+<p>If you’re interested in how to bridge the gap between low-level C++ and high-level iOS development, check out the full source code here:.</p>
+<p>According to recent reports, now that the foundation is laid, I’m looking into implementing a Metal-based renderer to fully embrace the future of Apple graphics. If you’ve worked on C++ to Metal bridges, I’d love to hear your thoughts in the comments!</p>
+<p>#Cpp #iOSDev #GameDev #Ndk #AdMob #Programming #XCode #OpenGLES.</p>
+<p id="sec-end-58112">7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/porting-the-ndk-endless-tunnel-to-ios-a-masterclass-in-cross-platform-c/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-expo-exact-could-change-how-developers-build-cross--46265.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46265. Industry News: Expo Exact Could Change How Developers Build Cross-Platform Apps
+        </a>
+        
+        <a href="industry-news-porting-fairseq-wmt19-translation-system-to-transfo-58539.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58539. Industry News: Porting fairseq wmt19 translation system to transformers
+        </a>
+        
+        <a href="breaking-microsoft-ignite-2026-whats-latest-in-azure-the-platform-58025.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58025. Breaking: Microsoft Ignite 2026: What’s latest in Azure, the platform purpose-built for AI
+        </a>
+        
+        <a href="breaking-youtube-music-removing-samples-tab-on-android-ios-57745.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57745. Breaking: YouTube Music removing Samples tab on Android & iOS
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

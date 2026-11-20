@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift Transformers Reaches 1.0 – and Looks to the Future</title>
+    <meta name="description" content="Sources indicate that we released swift-transformers two years ago (!) with the goal to support Apple developers and help them integrate local LLMs in thei">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/swift-transformers-reaches-10-and-looks-to-the-future-57517.html">
+    <meta property="og:title" content="Swift Transformers Reaches 1.0 – and Looks to the Future">
+    <meta property="og:description" content="Sources indicate that we released swift-transformers two years ago (!) with the goal to support Apple developers and help them integrate local LLMs in thei">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/swift-transformers/swift-transformers-thumb.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/swift-transformers-reaches-10-and-looks-to-the-future-57517.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Swift Transformers Reaches 1.0 – and Looks to the Future", "image": ["https://huggingface.co/blog/assets/swift-transformers/swift-transformers-thumb.png"], "datePublished": "2025-09-26T00:00:00", "dateModified": "2026-11-20T00:13:12.170239", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/swift-transformers-reaches-10-and-looks-to-the-future-57517.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Swift Transformers Reaches 1.0 – and Looks to the Future</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 26 Sep 2025 &bull; ⏱️ 3 min read (530 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that we released swift-transformers two years ago (!) with the goal to support Apple developers and help them integrate local LLMs in their apps.</li><li style='margin-bottom:6px;'>Industry observers note that we want to double down on the use cases that provide most benefits to the community, and lay out the foundations for the future.</li><li style='margin-bottom:6px;'>swift-transformers is a Swift library that aims to reduce the friction for developers that want to work with local models on Apple Silicon platforms, including iPhones.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57517"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57517"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57517"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Swift Transformers Reaches 1.0 – and Looks to the Future" loading="lazy" src="https://huggingface.co/blog/assets/swift-transformers/swift-transformers-thumb.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57517">Sources indicate that we released swift-transformers two years ago (!) with the goal to support Apple developers and help them integrate local LLMs in their apps. A lot has changed since then (MLX and chat templates did not exist!), and we’ve learned how the community is actually using the library.</p>
+<p>Industry observers note that we want to double down on the use cases that provide most benefits to the community, and lay out the foundations for the future. Spoiler alert: after this release, we’ll focus a lot on MLX and agentic use cases 🚀.</p>
+<p>swift-transformers is a Swift library that aims to reduce the friction for developers that want to work with local models on Apple Silicon platforms, including iPhones. It includes the missing pieces that are not provided by Core ML or MLX alone, but that are required to work with local inference. Namely, it provides the following components:.</p>
+<p>Most of the time people use the Tokenizers or Hub modules, and frequently both. Some notable projects that rely on swift-transformers include:.</p>
+<p>Version 1.0 signals stability in the package. Developers are building apps on swift-transformers, and this first major release recognizes those use cases and brings the version number in line with that reality. It also provides the foundation on which to iterate with the community to build the next set of features. These are some of our preferred updates:.</p>
+<p>Recent findings suggest that version 1.0 comes with breaking API changes. However, we don’t expect major problems if you are a user of Tokenizers or Hub. If you use the Core ML components of the library, please get in touch so we can support you during transition. We’ll prepare a migration guide and add it to the documentation.</p>
+<p>Here's how to use Tokenizers to format tool calling input for an LLM:.</p>
+<p id="sec-mid-57517">For additional examples, please check this section in the README and the Examples folder.</p>
+<p>Sources indicate that honestly, we don’t know. We do know that we are super interested in exploring MLX, because that’s usually the current go-to approach for developers getting started with ML in native apps, and we want to help make the experience as seamless as possible. We are thinking along the lines of better integration with mlx-swift-examples for LLMs and VLMs, potentially through pre-processing and post-processing operations that developers encounter frequently.</p>
+<p>It has been revealed that we are also extremely excited about agentic use in general and MCP in particular. We think that exposure of system resources to local workflows would be 🚀.</p>
+<p>If you want to follow along in this journey or want to share your ideas, please contact us through our social networks or the repo.</p>
+<p>We are immensely grateful to all the contributors and owners of the library for your help and feedback. We love you all, and can't wait to continue working with you to shape the future of on-device generation! ❤️.</p>
+<p>Many thanks to the Hugging Face team for the recognition and for pushing the Swift ecosystem forward. It’s been an honor to contribute Swift Jinja to the community, and I look forward to building the future together!♥️♥️♥️.</p>
+<p id="sec-end-57517">It's a pleasure to work together @JohnMai !</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/swift-transformers" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="releasing-swift-transformers-run-on-device-llms-in-apple-devices-58275.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58275. Releasing Swift Transformers: Run On-Device LLMs in Apple Devices
+        </a>
+        
+        <a href="all-of-taylor-swifts-looks-from-her-grand-return-to-the-cmas-54596.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #54596. All of Taylor Swift’s Looks From Her Grand Return to the CMAs
+        </a>
+        
+        <a href="out-there-moving-into-the-unknown-as-voyager-1-reaches-one-light--54156.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #54156. 'Out there, moving into the unknown': As Voyager 1 reaches one light-day from Earth, scientists reflect on its past — and its future
+        </a>
+        
+        <a href="champions-league-final-what-the-future-of-football-looks-like-mh-50128.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #50128. Champions League Final: What the Future of Football Looks Like – MH
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

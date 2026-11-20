@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Six days, six outages: Why reliability isn’t resilience</title>
+    <meta name="description" content="UPDATED 20:21 EST / NOVEMBER 18 2026. GUEST COLUMN by Zeus Kerravala. According to recent reports, A rash of major outages over the past week all seem to f">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/six-days-six-outages-why-reliability-isnt-resilience-53356.html">
+    <meta property="og:title" content="Six days, six outages: Why reliability isn’t resilience">
+    <meta property="og:description" content="UPDATED 20:21 EST / NOVEMBER 18 2026. GUEST COLUMN by Zeus Kerravala. According to recent reports, A rash of major outages over the past week all seem to f">
+    <meta property="og:image" content="https://images.siliconangle.com/blogs.dir/1/files/2026/11/JFK_during_2026_FAA_ground_stop_-_5.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/six-days-six-outages-why-reliability-isnt-resilience-53356.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Six days, six outages: Why reliability isn’t resilience", "image": ["https://images.siliconangle.com/blogs.dir/1/files/2026/11/JFK_during_2026_FAA_ground_stop_-_5.jpg"], "datePublished": "2026-11-19T01:21:51+00:00", "dateModified": "2026-11-20T00:08:42.717450", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/six-days-six-outages-why-reliability-isnt-resilience-53356.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Six days, six outages: Why reliability isn’t resilience</h1>
+        <div class="meta-line">🌐 Source: <strong>Siliconangle</strong> &bull; 📅 19 Nov 2026 &bull; ⏱️ 11 min read (2199 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>GUEST COLUMN																by								Zeus Kerravala.</li><li style='margin-bottom:6px;'>According to recent reports, A rash of major outages over the past week all seem to follow a similar script.</li><li style='margin-bottom:6px;'>None of these was a cyberattack, and as far as anyone can tell, none was related.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-53356"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-53356"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-53356"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Six days, six outages: Why reliability isn’t resilience" loading="lazy" src="https://images.siliconangle.com/blogs.dir/1/files/2026/11/JFK_during_2026_FAA_ground_stop_-_5.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-53356">UPDATED 20:21 EST / NOVEMBER 18 2026.</p>
+<p>GUEST COLUMN																by								Zeus Kerravala.</p>
+<p>According to recent reports, A rash of major outages over the past week all seem to follow a similar script. Services go dark, Downdetector lights up, the provider posts a string of status updates, a root cause emerges a few days later, and everyone goes back to work, assuming it won’t happen again. This past week, that script was on overdrive.</p>
+<p>None of these was a cyberattack, and as far as anyone can tell, none was related. A dormant bug, overloaded legacy routers, a bad internal update and an on-premises hardware glitch are about as different as root causes get. Some of these systems run in the public cloud, some in a manufacturer’s own data center, and some on air traffic control gear that’s decades old. That’s precisely the point. The common thread isn’t the technology. It’s that each organization had a critical dependency fail, and the business stopped with it.</p>
+<p>According to recent reports, that’s the lesson I want business leaders to take away. Outages aren’t rare events to be explained away after the fact. They’re a certainty to initiative for, and the plan must address what happens when an entire service fails, not just a server or a data center.</p>
+<p>Industry observers note that I wanted to dig into what real resilience looks like, and Zscaler Inc. is an interesting case study for a specific reason. When a organization deploys Zscaler, every user, branch and device connects to applications through its Zero Trust Exchange. That places Zscaler squarely in the critical path. If it goes down, consumers can’t reach Microsoft 365, Salesforce, internal apps or anything else, no matter how healthy those applications are. That all-or-nothing exposure has forced Zscaler to think harder than most about what happens when its service fails.</p>
+<p>At the last Zenith Live, Zscaler’s user event, I asked Chief Executive Jay Chaudhry about this, and he explained that because of the critical nature of their offering, it can’t afford any downtime, so the company built resiliency into its service design. After all these outages, I asked to speak with Chaudhry and Chief Reliability Officer Misha Kuperman to gather lessons learned for the industry.</p>
+<p>Recent findings suggest that to be clear, Zscaler couldn’t have kept a single Microsoft mailbox online or restarted the FAA’s routers, and no one at the tech giant claimed otherwise. But its approach to continuity for its own platform is a useful model for how any service on a company’s critical path, including software-as-a-service, should be architected. Here are my thoughts on what this means for boards and C-suite leaders:.</p>
+<p>I came from financial services, where the disaster recovery site was non-negotiable and everyone knew which services had to survive a failure. Chaudhry, who spent years at IBM Corp., made the same point.</p>
+<p>“Most of my large customers had a production data center and a DR data center,” he told me. “If the production data center went down, they’d fail over to DR. That was standard practice. When the world moved to the cloud, they forgot about it, thinking disaster recovery was the cloud provider’s responsibility, even though it is actually a shared responsibility.”.</p>
+<p>He’s right, and the record proves it. Availability zones and multiregion designs protect against hardware failures and localized events, but they share software, control planes, configuration pipelines and often DNS. When a bad configuration or a dormant bug propagates, it spreads everywhere. That’s exactly what happened to Microsoft.</p>
+<p>Industry observers note that availability architecture and resilience architecture aren’t the same thing. One keeps a service up when a component fails. The other keeps the business running when the entire service fails. Most companies have the first and assume they have the second, but as we have seen recently, that assumption is incorrect.</p>
+<p>It has been revealed that during the call, Chaudhry used an analogy that everyone can understand. You can own the world’s most reliable car and service it religiously, yet you still buy insurance for other risks not covered by the warranty, such as theft or a tree falling on it. Having insurance and knowing when and how to use it helps you get back on the road rapidly. Zscaler has built the cyber equivalent.</p>
+<p>Industry observers note that in the real world, people understand it. In cyber and digital, we seem to forget and rely on service-level agreements. A 99.999% uptime commitment sounds good until you translate it into business terms. Chaudhry remarked some of Zscaler’s largest banking customers told the company that five nines wasn’t enough, “because we could lose hundreds of millions of dollars if you went down even for five minutes.”.</p>
+<p>In a recent development, going back to my IT days, I’ve never liked SLAs because they are financial instruments, not operational ones. They tell you what credit you’ll receive after the fact, not how you’ll keep processing payments, as Chase customers learned, or how you’ll keep planes in the air, as United learned. Regulators have recognized this. The EU’s Digital Operational Resilience Act and Australia’s CPS 230 both require regulated firms to assess, test, and mitigate the risk posed by their technology providers. “Our cloud provider went down” is no longer an acceptable defense.</p>
+<p>IT executives should stop asking, “What’s our provider’s SLA?” and start asking, “What must our business continue to do when a critical dependency fails, and have we proven we can do so?”.</p>
+<p>According to recent reports, the instinctive response to an outage like Microsoft’s is to buy from a second provider. Chaudhry shared a story about a chief information officer whose CEO had flagged Office 365 as a business risk and told him to find an alternative. The CIO signed up for Google Workspace. When asked whether documents, links and role-based access controls would work after a switch, even in half the cases, he mentioned he didn’t think so.</p>
+<p>According to recent reports, that’s the reality. Email alone is hard enough because people lose their history the moment they switch. Modern productivity suites aren’t storage anymore. Every email includes links to shared documents, permissions are tied to identity, and workflows span multiple apps. Kuperman framed the problem in terms of scale: “I can switch between Gmail and Outlook, but can 10,000 people? Will they be as productive?”.</p>
+<p>Industry observers note that the same problem applies in security and networking, where the stakes are arguably higher. The vendor A/vendor B model requires two policy sets kept in perfect sync, two client software sets and a way to move tens of thousands of users and devices from one to the other in the middle of a crisis. Kuperman described one customer for whom it “used to take seven days to switch over and 30 days to switch back. You can’t run a business like that.”.</p>
+<p>It has been revealed that A backup that’s never tested at full scale isn’t a backup. It’s a hope. And a backup that changes the user experience will fail exactly when it’s needed.</p>
+<p>Sources indicate that another instinct is to turn off security entirely; however, when a crisis occurs, threat actors will rally and launch campaigns. During the CrowdStrike outage, phishing campaigns were mobilized almost immediately, and the Cybersecurity and Infrastructure Security Agency had to problem warnings not to take the bait. Threat actors are present both internally and externally, so security must remain on guard during critical failures, especially when they are publicly known.</p>
+<p>This brings me to what Zscaler has done with its Business Continuity Cloud and why I think it’s the right template for the industry. Rather than asking customers to bolt on a second vendor, Zscaler built a dedicated, per-customer environment that’s architecturally separate from its primary Zero Trust Exchange.</p>
+<p>The design choices are important to understand. The Business Continuity Cloud runs in third-party data centers, not Zscaler’s own, on separate networks, autonomous system numbers, DNS, and cloud domains. Software and threat-intelligence updates are deliberately staggered so a bad production release can’t land in the backup at the same time. Policy and identity data sync one way into a read-only, last-known-good state. It’s offered across nine regions, enough to keep operations in-country if a nation were cut off.</p>
+<p>According to recent reports, “No linkage — no network, no shared routers, no switches, no shared network operations,” Chaudhry stated. That’s the old production/DR discipline, rebuilt for the cloud. After watching overloaded routers ground the nation’s air traffic, “no shared routers” doesn’t sound like overkill.</p>
+<p>There were two operational details I felt were worth noting. First, Zscaler encourages customers to continuously route synthetic or trusted-user traffic through the backup environment in peacetime, so the failover path is validated daily rather than in an annual tabletop exercise. Second, the failover is automated to optimize for a low recovery time objective or RTO, or it can be triggered by the customer, ensuring it works even if Zscaler itself is unreachable.</p>
+<p>Zscaler indicates nearly 100 customers now use its service, including a global bank with more than 300,000 consumers, a global pharmaceutical organization with more than 100,000, and a U.S. telco with more than 75,000. The company charges what Chaudhry called a nominal fee to cover the dedicated infrastructure, network and always-on capacity.</p>
+<p id="sec-mid-53356">Industry observers note that the lesson from the Microsoft outage, in particular, isn’t that customers need a second productivity suite. It’s that the primary provider should offer a fate-separated continuity environment as part of the service. Zscaler has shown it can be done for a global security cloud. I’d like to see every SaaS provider that sits in a tech giant’s critical path, and Microsoft in particular, be pressed by large customers to offer the same.</p>
+<p>Sources indicate that the Microsoft outage also exposed a concentration risk that many companies have faced through enterprise licensing agreements. Microsoft stated the incident affected not only Exchange and Teams but also Defender XDR, Defender for Office 365 and Intune. For many organizations, Microsoft is the productivity suite, the identity provider and the security stack. When the shared infrastructure beneath them fails, all three can fail together.</p>
+<p>Kuperman described the minimum set of capabilities a business needs to keep operating during a disaster: people, identity, network and security, and business-critical applications. Each must work, and any one can fail. “You have to think about where your eggs are and which baskets they’re in,” he said.</p>
+<p>I’m not arguing against platforms. But boards should understand where consolidation has created a single point of failure across identity, applications and security, and ensure those layers don’t share the same fate.</p>
+<p>It has been revealed that this won’t be the last major outage, and the next one may be a cyberattack, a war, or a configuration push rather than a dormant bug. Here’s what I recommend IT and business leaders do now:.</p>
+<p>The cloud delivered on its promise of agility and scale, but in the process, the industry let a hard-won discipline lapse. This past week reminded us that everything fails eventually, whether in the cloud, a data center or an air traffic control tower. When it does, an SLA credit won’t keep the business running. A real continuity plan will.</p>
+<p>Recent findings suggest that zeus Kerravala is a principal analyst at ZK Research, a division of Kerravala Consulting. He wrote this article for SiliconANGLE.</p>
+<p>Support our mission to keep content open and free by engaging with theCUBE community. Join theCUBE’s Alumni Trust Network, where technology leaders connect, share intelligence and create opportunities.</p>
+<p>Sources indicate that founded by tech visionaries John Furrier and Dave Vellante, SiliconANGLE Media has built a dynamic ecosystem of industry-leading digital media brands that reach 15+ million elite tech professionals. Our new proprietary theCUBE AI Video Cloud is breaking ground in audience interaction, leveraging theCUBEai.com neural network to help technology companies make data-driven decisions and stay at the forefront of industry conversations.</p>
+<p>Despite posting a solid earnings beat, Elastic's stock slides on rough guidance.</p>
+<p>Resolve AI's SRE-1 model finds root causes of production alerts as AI agents go on call.</p>
+<p>Wiz ties Microsoft Agent Framework package compromise to release pipeline certificate.</p>
+<p>Intuit sells Mailchimp to Bending Spoons for $3.68B, less than a third of what it paid.</p>
+<p>Medical AI startup Boltz raises $110M to speed up small molecule research.</p>
+<p>Enterprise AI is pushing cloud infrastructure beyond the GPU.</p>
+<p>Despite posting a solid earnings beat, Elastic's stock slides on rough guidance.</p>
+<p>CLOUD - BY MIKE WHEATLEY . 7 MINUTES AGO.</p>
+<p>Resolve AI's SRE-1 model finds root causes of production alerts as AI agents go on call.</p>
+<p>AI - BY DUNCAN RILEY . 29 MINUTES AGO.</p>
+<p>Wiz ties Microsoft Agent Framework package compromise to release pipeline certificate.</p>
+<p>Sources indicate that SECURITY - BY DUNCAN RILEY . 55 MINUTES AGO.</p>
+<p>Intuit sells Mailchimp to Bending Spoons for $3.68B, less than a third of what it paid.</p>
+<p>It has been revealed that APPS - BY DUNCAN RILEY . 1 HOUR AGO.</p>
+<p>Medical AI startup Boltz raises $110M to speed up small molecule research.</p>
+<p>Sources indicate that AI - BY MARIA DEUTSCHER . 2 HOURS AGO.</p>
+<p>Enterprise AI is pushing cloud infrastructure beyond the GPU.</p>
+<p id="sec-end-53356">AI - BY PAUL NASHAWATY . 3 HOURS AGO.</p>
+<p style="margin-top: 25px;">
+<a href="https://siliconangle.com/2026/11/18/six-days-six-outages-why-reliability-isnt-resilience/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-the-real-reasons-we-keep-seeing-substantial-tech-outa-54103.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #54103. Tech Report: The real reasons we keep seeing substantial tech outages – it isn’t just hackers
+        </a>
+        
+        <a href="nvidias-stock-falls-further-it-has-lost-669-billion-in-six-tradin-47342.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #47342. Nvidia’s stock falls further. It has lost $669 billion in six trading days.
+        </a>
+        
+        <a href="your-ssl-certificates-can-now-last-200-days-at-most-the-real-risk-46671.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46671. Your SSL certificates can now last 200 days at most: The real risk isn’t renewal
+        </a>
+        
+        <a href="predicting-and-detecting-failures-how-azure-strengthens-reliabili-58547.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58547. Predicting and detecting failures: How Azure strengthens reliability for mission-critical workloads
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building the Hugging Face MCP Server</title>
+    <meta name="description" content="Recent findings suggest that TL;DR: The Hugging Face Official MCP Server offers unique customization options for AI Assistants accessing the Hub, along wit">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/building-the-hugging-face-mcp-server-57667.html">
+    <meta property="og:title" content="Building the Hugging Face MCP Server">
+    <meta property="og:description" content="Recent findings suggest that TL;DR: The Hugging Face Official MCP Server offers unique customization options for AI Assistants accessing the Hub, along wit">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/building-hf-mcp/building-hf-mcp.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/building-the-hugging-face-mcp-server-57667.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Building the Hugging Face MCP Server", "image": ["https://huggingface.co/blog/assets/building-hf-mcp/building-hf-mcp.png"], "datePublished": "2025-07-10T00:00:00", "dateModified": "2026-11-20T00:13:24.360862", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/building-the-hugging-face-mcp-server-57667.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Building the Hugging Face MCP Server</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 10 Jul 2025 &bull; ⏱️ 7 min read (1416 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that TL;DR: The Hugging Face Official MCP Server offers unique customization options for AI Assistants accessing the Hub, along with access to thousands of AI applications through one simple URL.</li><li style='margin-bottom:6px;'>We've learned many things about building a useful MCP server in the last month - we'll describe our journey here.</li><li style='margin-bottom:6px;'>The Model Context Protocol (MCP) is fulfilling its promise of being the standard to connect AI Assistants to the outside world.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57667"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57667"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57667"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Building the Hugging Face MCP Server" loading="lazy" src="https://huggingface.co/blog/assets/building-hf-mcp/building-hf-mcp.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57667">Recent findings suggest that TL;DR: The Hugging Face Official MCP Server offers unique customization options for AI Assistants accessing the Hub, along with access to thousands of AI applications through one simple URL. We used MCPs "Streamable HTTP" transport for deployment, and examine in detail the trade-offs that Server Developers have.</p>
+<p>We've learned many things about building a useful MCP server in the last month - we'll describe our journey here.</p>
+<p>The Model Context Protocol (MCP) is fulfilling its promise of being the standard to connect AI Assistants to the outside world.</p>
+<p>At Hugging Face, providing access to the Hub via MCP is an obvious choice, and this article shares our experience developing the hf.co/mcp MCP Server.</p>
+<p>Sources indicate that the community uses the Hub for research, development, content creation and more. We wanted to let people customize the server for their own needs, as well as easily access thousands of AI applications available on Spaces. This meant making the MCP Server dynamic by adjusting users' tools on the fly.</p>
+<p>We also wanted to make access simple by avoiding complicated downloads and configuration, so making it remotely accessible via a simple URL was a must.</p>
+<p>When building a remote MCP Server, the first decision is deciding how clients will connect to it. MCP offers several transport options, with different trade-offs. TL;DR: our open source code supports all variants, but for production we chose to go with the most modern one. This section goes through the different options in detail.</p>
+<p>Recent findings suggest that since its launch in November 2024, MCP has undergone rapid evolution with 3 protocol revisions in 9 months. This has seen the replacement of the SSE Transport with Streamable HTTP, as well as the introduction and rework of authorization.</p>
+<p>These rapid changes mean support for different MCP Features and revisions in Client applications varies, providing extra challenges for our design choices.</p>
+<p>Here is a brief summary of the Transport Options offered by the Model Context Protocol and associated SDKs:.</p>
+<p>Both STDIO and HTTP with SSE are fully bi-directional by default - meaning that Client and Server maintain an open connection and can send messages to each other at any time.</p>
+<p>SSE refers to "Server Sent Events" - a way for HTTP Servers to maintain an open connection and send events in response to a request.</p>
+<p>MCP Server Developers face a lot of choices when setting up the Streamable HTTP transport.</p>
+<p>There are 3 main communication patterns to choose from:.</p>
+<p>When using Request Scoped Streams with the official SDKs, use the sendNotification() and sendRequest() methods provided in the RequestHandlerExtra parameter (TypeScript) or set the related_request_id (Python) to send messages to the correct stream.</p>
+<p>An additional factor to consider is whether or not the MCP Server itself needs to maintain state for each connection. This is decided by the Server when the Client sends its Initialize request:.</p>
+<p>The table below summarizes the MCP Features and their supported communication pattern:.</p>
+<p>With Request Scoped streams, Sampling and Elicitation requests need a Stateful connection so that the mcp-session-id can be used for response association.</p>
+<p>The Hugging Face MCP Server is Open Source - and supports STDIO, SSE and Streamable HTTP deployment in both Direct Response and Server Push mode. You can configure keep-alive and last activity timeouts when using Server Push Streams. There's also a built-in observability dashboard that you can use to understand how different Clients manage connections, and handle Tool List change notifications.</p>
+<p>The following picture demonstrates our MCP Server connection dashboard running in "Server Push" Streamable HTTP mode:.</p>
+<p>For production, we decided to launch our MCP Server with Streamable HTTP in a Stateless, Direct Response configuration for the following reasons:.</p>
+<p id="sec-mid-57667">Stateless For anonymous users we supply a standard set of Tools for using the Hub along with an Image Generator. For authenticated users our state comprises their selected tools and chosen Gradio applications. We also make sure that users ZeroGPU quota is correctly applied for their account. This is managed using the supplied HF_TOKEN or OAuth credentials that we  look up on request. None of our existing tools require us to maintain any other state between requests.</p>
+<p>It has been revealed that you can use OAuth login by adding ?login to the MCP Server url - e.g. https://huggingface.co/mcp?login. We may make this the default once the claude.ai remote integration supports the latest OAuth spec.</p>
+<p>Direct Response  provides the lowest deployment resource overhead - and we don't currently have any Tools that require Sampling or Elicitation during execution.</p>
+<p>Future Support At launch, the "HTTP with SSE" transport was still the remote default in a lot of MCP Clients. However, we didn't want to invest heavily in managing it due to its imminent deprecation. Fortunately, popular clients had already started making the switch (VSCode and Cursor), and within a week of launch claude.ai also added support. If you need to connect with SSE, feel free to deploy a copy of our Server on a FreeCPU Hugging Face Space.</p>
+<p>In the future, we would like to support real-time Tool List Changed notifications when users update their settings on the Hub. However, this raises a couple of practical issues:.</p>
+<p>First, users tend to configure their favourite MCP Servers in their Client and leave them enabled. This means that the Client remains connected whilst the application is open. Sending notifications would mean maintaining as many open connections as there were right now active Clients - regardless of active usage - on the chance the user updates their tool configuration.</p>
+<p>Second, most MCP Servers and Clients disconnect after a period of inactivity, resuming when necessary. This inevitably means that immediate push notifications would be missed - as the notification channel will have been closed. In practice, it is far simpler for the Client to refresh the connection and Tool List as needed.</p>
+<p>Unless you have reasonable control over the Client/Server pair, using Server Push Streams adds a lot of complexity to a public deployment, when lower-resource solutions for refreshing the Tool List exist.</p>
+<p>Just before launch, @julien-c submitted a PR to include friendly instructions for users visiting hf.co/mcp. This hugely improves the User Experience - the default response is otherwise an unfriendly bit of JSON.</p>
+<p>Sources indicate that initially, we found this generated an enormous amount of traffic. After a bit of investigation we found that when returning a web page rather than an HTTP 405 error, VSCode would poll the endpoint multiple times per second!</p>
+<p>According to recent reports, the fix suggested by @coyotte508 was to properly detect browsers and only return the page in that circumstance. Thanks also to the VSCode team who rapidly fixed it.</p>
+<p>Although not specifically stated - returning a page in this manner does seem acceptable within the MCP Specification.</p>
+<p>It has been revealed that the MCP Protocol sends several requests during initialization. A typical connection sequence is: Initialize, Notifications/Initialize, tools/list and then prompts/list.</p>
+<p>Given that MCP Clients will connect and reconnect whilst open, and the fact that people make periodic calls, we find there is a ratio of around 100 MCP Control messages for each Tool Call.</p>
+<p>Some clients also send requests that don't make sense for our Stateless, Direct Response configuration - for example Pings, Cancellations or attempts to list Resources (which isn't a capability we currently advertise).</p>
+<p>Industry observers note that the first week of July 2025 saw an astonishing 164 different Clients accessing our Server. Interestingly, one of the most popular tools is mcp-remote. Approximately half of all Clients use it as a bridge to connect to our remote server.</p>
+<p>MCP is rapidly evolving, and we're excited about what has already been achieved across Chat Applications, IDEs, Agents and MCP Servers over the last few months.</p>
+<p>We can already see how powerful integrating the Hugging Face Hub has been and support for Gradio Spaces now makes it possible for LLMs to be easily extended with the latest Machine Learning applications.</p>
+<p>Here are some great examples of things people have been doing with our MCP Server so far:.</p>
+<p>We hope that this post has provided insights to the decisions that need to be made building Remote MCP Servers, and encourage you to try some of the examples in your favourite MCP Client.</p>
+<p>Take a look at our Open Source MCP Server, and try some of the different transport options with your Client, or open an Glitch or Pull Request to make improvements or suggest upcoming functionality.</p>
+<p id="sec-end-57667">Let us know your thoughts, feedback and questions on this discussion thread.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/building-hf-mcp" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="faster-tensorflow-models-in-hugging-face-transformers-58535.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58535. Faster TensorFlow models in Hugging Face Transformers
+        </a>
+        
+        <a href="industry-news-hugging-face-on-pytorch-xla-tpus-58534.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58534. Industry News: Hugging Face on PyTorch / XLA TPUs
+        </a>
+        
+        <a href="hugging-face-reads-feb-2021-long-range-transformers-58531.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58531. Hugging Face Reads, Feb. 2021 - Long-range Transformers
+        </a>
+        
+        <a href="fine-tune-wav2vec2-for-english-asr-in-hugging-face-with-transform-58530.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58530. Fine-Tune Wav2Vec2 for English ASR in Hugging Face with 🤗 Transformers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

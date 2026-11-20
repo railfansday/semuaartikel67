@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why I'm Moving My C++ Networking Library From C++26 to C++17</title>
+    <meta name="description" content="When I started developing LightnerX, I decided to use C++26 modules. At the time, it seemed like a reasonable choice. I was building a new library, so why ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/why-im-moving-my-c-networking-library-from-c26-to-c17-57509.html">
+    <meta property="og:title" content="Why I'm Moving My C++ Networking Library From C++26 to C++17">
+    <meta property="og:description" content="When I started developing LightnerX, I decided to use C++26 modules. At the time, it seemed like a reasonable choice. I was building a new library, so why ">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F8v5z498kag7pf7ro7ucf.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/why-im-moving-my-c-networking-library-from-c26-to-c17-57509.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Why I'm Moving My C++ Networking Library From C++26 to C++17", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F8v5z498kag7pf7ro7ucf.png"], "datePublished": "2026-11-20T00:07:29", "dateModified": "2026-11-20T00:13:11.397992", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/why-im-moving-my-c-networking-library-from-c26-to-c17-57509.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Why I'm Moving My C++ Networking Library From C++26 to C++17</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 2 min read (481 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>When I started developing LightnerX, I decided to use C++26 modules.</li><li style='margin-bottom:6px;'>At the time, it seemed like a reasonable choice.</li><li style='margin-bottom:6px;'>Well, there's one problem: not everyone is using C++26.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57509"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57509"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57509"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Why I'm Moving My C++ Networking Library From C++26 to C++17" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F8v5z498kag7pf7ro7ucf.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57509">When I started developing LightnerX, I decided to use C++26 modules.</p>
+<p>At the time, it seemed like a reasonable choice. I was building a new library, so why not use the latest features available?</p>
+<p>Well, there's one problem: not everyone is using C++26.</p>
+<p>And when you're developing an open-source library that other people are supposed to integrate into their projects, compatibility matters. What is LightnerX?</p>
+<p>LightnerX is an open-source C++ networking library I've been developing for multiplayer games.</p>
+<p>It originally started as part of my own game project, but eventually became a standalone library.</p>
+<p>It uses Valve's GameNetworkingSockets as its transport layer and implements INER, a communication model I designed around four message types:.</p>
+<p>LightnerX also provides connection management, message interpretation, callbacks, and message batching.</p>
+<p>Recent findings suggest that the idea is to provide a relatively small networking library that developers can integrate into their own games without adopting an entire networking framework. The compatibility problem.</p>
+<p>My original implementation relied on C++26 modules and newer standard library features.</p>
+<p>That worked for my development environment, but it also introduced requirements that many existing projects might not satisfy.</p>
+<p>For example, someone developing a game with a C++17 codebase would need to deal with those requirements just to integrate LightnerX.</p>
+<p>So I started working on a C++17 migration. What needs to change?</p>
+<p>This isn't just about changing the CMake standard from 26 to 17.</p>
+<p>The migration involves several changes:.</p>
+<p id="sec-mid-57509">The original library uses .cppm files and module imports.</p>
+<p>The C++17 version needs conventional .hpp and .cpp files, with the appropriate includes and declarations.</p>
+<p>Some of the original implementation relies on features such as std::span and std::expected.</p>
+<p>Since these aren't available in C++17, I'm implementing compatible alternatives within the LightnerX namespace.</p>
+<p>This is probably the most vital part.</p>
+<p>I don't want to redesign the library during the migration.</p>
+<p>The objective is to preserve its behavior and functionality while making the implementation compatible with an older C++ standard.</p>
+<p>That means reviewing the API, testing edge cases, and checking that the migration doesn't introduce regressions. Why C++17?</p>
+<p>I considered other standards, but C++17 felt like a reasonable compatibility target.</p>
+<p>It's modern enough for the architecture I'm using while allowing developers with older C++ projects to integrate the library more easily.</p>
+<p>Recent findings suggest that and honestly, I would rather spend time improving the networking library than require people to change their entire toolchain to try it. What's next?</p>
+<p>The C++17 migration is part of my effort to make LightnerX more practical for other developers.</p>
+<p>I'm also working on testing, documentation, and examples that demonstrate how to use the library in actual applications.</p>
+<p>If you're interested in multiplayer networking, C++, or open-source game development, I'd appreciate any feedback.</p>
+<p>I'm particularly curious about one thing:.</p>
+<p id="sec-end-57509">When choosing a C++ library for your own project, how much does the minimum required C++ standard influence your decision?</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/pietroth/why-im-moving-my-c-networking-library-from-c26-to-c17-53m2" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="ethical-guidelines-for-developing-the-diffusers-library-58352.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58352. Ethical Guidelines for developing the Diffusers library
+        </a>
+        
+        <a href="fastrtc-the-real-time-communication-library-for-python-57901.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57901. FastRTC: The Real-Time Communication Library for Python
+        </a>
+        
+        <a href="17-reasons-why-gradio-isnt-just-another-ui-library-57829.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57829. 17 Reasons Why Gradio Isn't Just Another UI Library
+        </a>
+        
+        <a href="latest-update-the-transformers-library-standardizing-model-defini-57787.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57787. Latest Update: The Transformers Library: standardizing model definitions
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

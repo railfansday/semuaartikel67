@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: SyGra: The One-Stop Framework for Building Data for LLMs and SLMs</title>
+    <meta name="description" content="It has been revealed that when we think about building a model - be it a Large Language Model (LLM) or a Small Language Model (SLM) - the first thing we ne">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-sygra-the-one-stop-framework-for-building-data-for-ll-57520.html">
+    <meta property="og:title" content="Tech Report: SyGra: The One-Stop Framework for Building Data for LLMs and SLMs">
+    <meta property="og:description" content="It has been revealed that when we think about building a model - be it a Large Language Model (LLM) or a Small Language Model (SLM) - the first thing we ne">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow-AI/sygra-data-gen-framework.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-sygra-the-one-stop-framework-for-building-data-for-ll-57520.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: SyGra: The One-Stop Framework for Building Data for LLMs and SLMs", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow-AI/sygra-data-gen-framework.png"], "datePublished": "2025-09-22T06:45:05", "dateModified": "2026-11-20T00:13:12.566374", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-sygra-the-one-stop-framework-for-building-data-for-ll-57520.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: SyGra: The One-Stop Framework for Building Data for LLMs and SLMs</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 22 Sep 2025 &bull; ⏱️ 3 min read (508 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that when we think about building a model - be it a Large Language Model (LLM) or a Small Language Model (SLM) - the first thing we need is data.</li><li style='margin-bottom:6px;'>Industry observers note that you start with a simple dataset, but the model fails on advanced reasoning tasks.</li><li style='margin-bottom:6px;'>Recent findings suggest that you already have a knowledge base, but it's not in Q&A format.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57520"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57520"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57520"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: SyGra: The One-Stop Framework for Building Data for LLMs and SLMs" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow-AI/sygra-data-gen-framework.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57520">It has been revealed that when we think about building a model - be it a Large Language Model (LLM) or a Small Language Model (SLM) - the first thing we need is data. While a vast amount of open data is available, it rarely comes in the exact format required to train or align models. In practice, we often face scenarios where the raw data isn't enough. We need data that is more structured, domain-specific, complex, or aligned with the task at hand. Let's look at some common situations:.</p>
+<p>Industry observers note that you start with a simple dataset, but the model fails on advanced reasoning tasks. How do you generate more complex datasets to strengthen performance?</p>
+<p>Recent findings suggest that you already have a knowledge base, but it's not in Q&amp;A format. How can you transform it into a usable question-answering dataset?</p>
+<p>Sources indicate that you've prepared a supervised fine-tuning (SFT) dataset. But now you want to align your model using Direct Preference Optimization (DPO). How can you generate preference pairs?</p>
+<p>In a recent development, you have a Q&amp;A dataset, but the questions are shallow. How can you create in-depth, multi-turn, or reasoning-heavy questions?</p>
+<p>You possess a massive corpus but need to filter and curate data for mid-training on a specific domain.</p>
+<p>Your data lives in PDFs or images, and you need to convert them into structured documents for building a Q&amp;A system.</p>
+<p>You already have reasoning datasets, but want to push models toward better "thinking tokens" for step-by-step problem-solving.</p>
+<p id="sec-mid-57520">According to recent reports, not all data is good data. How do you automatically filter out poor-quality samples and keep only the high-value ones?</p>
+<p>Your dataset has small chunks of context, but you want to build larger-context datasets optimized for RAG (Retrieval-Augmented Generation) pipelines.</p>
+<p>You have German datasets but need to translate, adapt, and repurpose them into English Q&amp;A systems. And the list goes on. The needs around data building never end when working with modern AI models.</p>
+<p>In a recent development, this is where SyGra comes in. SyGra is a low-code/no-code framework designed to simplify dataset creation, transformation, and alignment for LLMs and SLMs. Instead of writing complex scripts and pipelines, you can focus on prompt engineering, while SyGra takes care of the heavy lifting. Key Features of SyGra:.</p>
+<p>In a recent development, data is the foundation of AI. The quality, diversity, and structure of your data often matter more than model architecture tweaks. By enabling flexible and scalable dataset creation, SyGra helps teams:.</p>
+<p>Note: An example implementation can be found at https://github.com/ServiceNow/SyGra/blob/main/docs/tutorials/image_to_qna_tutorial.md.</p>
+<p>Few Example Task
+https://github.com/ServiceNow/SyGra/tree/main/tasks/examples.</p>
+<p id="sec-end-57520">According to recent reports, the journey of building and refining datasets never ends. Each use case brings upcoming challenges - from translation and knowledge base conversion to reasoning enhancement and domain filtering. With SyGra, you don't have to reinvent the wheel every time. Instead, you get a unified framework that empowers you to generate, filter, and align data for your models - so you can focus on what really matters: building smarter AI systems.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ServiceNow-AI/sygra-data-gen-framework" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-sentiment-analysis-on-encrypted-data-with-homomorphic-58397.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58397. Tech Report: Sentiment Analysis on Encrypted Data with Homomorphic Encryption
+        </a>
+        
+        <a href="industry-news-ethics-and-society-newsletter-6-building-better-ai--58101.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58101. Industry News: Ethics and Society Newsletter #6: Building Better AI: The Importance of Data Quality
+        </a>
+        
+        <a href="tech-report-spacex-wants-to-build-ai-data-centers-in-space-will-i-57975.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57975. Tech Report: SpaceX wants to build AI data centers in space. Will it work?
+        </a>
+        
+        <a href="tech-report-introducing-autoround-intels-advanced-quantization-fo-57818.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57818. Tech Report: Introducing AutoRound: Intel’s Advanced Quantization for LLMs and VLMs
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

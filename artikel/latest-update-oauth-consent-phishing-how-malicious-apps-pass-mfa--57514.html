@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: OAuth Consent Phishing: How Malicious Apps Pass MFA and How to Shut Them Down in Entra ID</title>
+    <meta name="description" content="In a recent development, OAuth consent phishing never asks for a password. The attacker registers a multi-tenant application, sends the victim a link to th">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-oauth-consent-phishing-how-malicious-apps-pass-mfa--57514.html">
+    <meta property="og:title" content="Latest Update: OAuth Consent Phishing: How Malicious Apps Pass MFA and How to Shut Them Down in Entra ID">
+    <meta property="og:description" content="In a recent development, OAuth consent phishing never asks for a password. The attacker registers a multi-tenant application, sends the victim a link to th">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F0qwee31mxta6t0bj8yn2.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-oauth-consent-phishing-how-malicious-apps-pass-mfa--57514.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: OAuth Consent Phishing: How Malicious Apps Pass MFA and How to Shut Them Down in Entra ID", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F0qwee31mxta6t0bj8yn2.png"], "datePublished": "2026-11-20T00:06:19", "dateModified": "2026-11-20T00:13:11.828184", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-oauth-consent-phishing-how-malicious-apps-pass-mfa--57514.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: OAuth Consent Phishing: How Malicious Apps Pass MFA and How to Shut Them Down in Entra ID</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 4 min read (896 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, OAuth consent phishing never asks for a password.</li><li style='margin-bottom:6px;'>According to recent reports, this guide covers how the attack works at the protocol level, the Entra ID consent settings that close it, a KQL detection you can deploy today, and the exact commands to clean up after a successful grant.</li><li style='margin-bottom:6px;'>According to recent reports, the attacker's app is just an ordinary registration with a redirect URI they control.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57514"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57514"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57514"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: OAuth Consent Phishing: How Malicious Apps Pass MFA and How to Shut Them Down in Entra ID" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F0qwee31mxta6t0bj8yn2.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57514">In a recent development, OAuth consent phishing never asks for a password. The attacker registers a multi-tenant application, sends the victim a link to the real login.microsoftonline.com authorize URL, and waits for the user to click Accept. Every step the victim sees is genuine, including MFA, which is why this attack class keeps working against organisations that think they are covered by phishing-resistant authentication. What matters is not who the user is, but what they just authorised an unknown app to do.</p>
+<p>According to recent reports, this guide covers how the attack works at the protocol level, the Entra ID consent settings that close it, a KQL detection you can deploy today, and the exact commands to clean up after a successful grant. For the related token-theft pattern that abuses RFC 8628 instead of the authorization code flow, see OAuth Device Code Flow Security.</p>
+<p>According to recent reports, the attacker's app is just an ordinary registration with a redirect URI they control. The lure is a standard authorization request:.</p>
+<p>Industry observers note that from then on the attacker calls Microsoft Graph as the app. The grant is independent of the user's password and sessions, so a password reset does not remove it. This is the same refresh-token persistence problem seen in MFA bypass attacks, except here Microsoft itself issued the token to the attacker's client at the user's request.</p>
+<p>Variants you will see in incident reports:.</p>
+<p>Microsoft documents three user consent settings in Entra ID: do not allow user consent, allow consent only for apps from verified publishers requesting low-impact permissions, or let Microsoft manage your consent settings (the default for newly introduced tenants, backed by the microsoft-user-default-recommended policy). Check which one your tenant is on before assuming you are protected.</p>
+<p>Read the current assignment with Microsoft Graph PowerShell:.</p>
+<p>Sources indicate that if this returns ManagePermissionGrantsForSelf.microsoft-user-default-legacy, users can consent to almost anything that does not require admin consent. Move to a stricter setting.</p>
+<p>This is the strongest control and fits regulated tenants. Pair it with the admin consent workflow below, otherwise users hit a dead end and look for workarounds.</p>
+<p id="sec-mid-57514">Note the weakness: it depends on the verified-publisher signal, and the permission classification (which scopes count as low impact) is something you must review rather than assume. Mail.Read should never be classified low-impact in a tenant that cares about mailbox confidentiality.</p>
+<p>In the Entra admin center go to Enterprise applications &gt; Consent and permissions &gt; Admin consent settings and set Consumers can request admin consent to apps they are unable to consent to to Yes, then pick reviewers. Users get a request button on the consent prompt instead of a block, and reviewers see the app, publisher and exact scopes before approving. Make sure reviewers know to decline anything requesting offline_access plus mail or file scopes from an unverified publisher.</p>
+<p>Microsoft's risk-based step-up consent turns a user consent request that Microsoft flags as risky into a requirement for admin consent. It only changes behaviour when user consent is enabled, and the BlockUserConsentForRiskyApps setting is controlled through the Graph PowerShell beta module with the Privileged Role Administrator role. Treat it as a useful extra layer, not a substitute for restricting consent: the flag is advisory and attackers iterate until their app is not flagged.</p>
+<p>Entra ID writes a Consent to application audit event each time a user or admin grants consent. Forward the AuditLogs table to Microsoft Sentinel (or Log Analytics) and run:.</p>
+<p>It has been revealed that property positions in modifiedProperties vary by event shape, so run this once against a known consent in your tenant and adjust the index before turning it into an alert. Elastic's prebuilt rule uses the same event with a new-terms approach (first time a user and application pair is seen in the recent window), which keeps a campaign hitting many customers visible because each pair alerts separately.</p>
+<p>In a recent development, do not wait for an alert. List every delegated grant in the tenant and review it:.</p>
+<p>ConsentType of AllPrincipals means an admin granted it for the whole tenant, which deserves the most scrutiny. Principal means a single user consented. Resolve ClientId to the service principal with Get-MgServicePrincipal -ServicePrincipalId  and check the publisher, creation date and sign-in activity. Apps nobody on your team can explain are candidates for removal.</p>
+<p>Industry observers note that A password reset alone leaves the attacker's refresh token valid. Run all four steps:.</p>
+<p>Recent findings suggest that the equivalent REST call for step 1 is DELETE https://graph.microsoft.com/v1.0/oauth2PermissionGrants/{id}. After cleanup, search the mailbox for inbox rules and forwarding the attacker may have created while they had Mail.ReadWrite, and review what the app read through the unified audit log so you can decide on disclosure.</p>
+<p id="sec-end-57514">Sources indicate that consent phishing succeeds because identity teams spend their effort on authentication strength and treat authorisation as a user decision. Passkeys and number matching do nothing here: the user authenticated correctly and then authorised the wrong party. The durable fix is making consent an administrative decision for anything beyond trivial scopes, and watching the audit log for the exceptions. If your org also exposes OAuth-based integrations to AI agents, the same principle applies to what those agents may be granted; see MCP OAuth 2.1 authentication and the OAuth 2.1 security best practices guide. To inspect the tokens an app receives during a test, use the JWT Decoder.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/iamdevbox/oauth-consent-phishing-how-malicious-apps-pass-mfa-and-how-to-shut-them-down-in-entra-id-5ba7" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-35-foot-el-nio-swell-slams-santa-cruz-as-beaches-an-56295.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #56295. Latest Update: 35-Foot El Niño Swell Slams Santa Cruz as Beaches and Wharf Shut Down
+        </a>
+        
+        <a href="yakuza-creator-toshiro-nagoshis-studio-has-officially-shut-down-e-52154.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #52154. Yakuza Creator Toshiro Nagoshi's Studio Has Officially Shut Down, Ending Gang Of Dragon's Development With It
+        </a>
+        
+        <a href="gta-6-fans-are-down-bad-for-mandy-who-might-actually-be-trying-to-51829.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #51829. GTA 6 fans are down bad for Mandy, who might actually be trying to kill them
+        </a>
+        
+        <a href="how-to-take-down-a-phishing-website-using-python-46233.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46233. How to Take Down a Phishing Website Using Python
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

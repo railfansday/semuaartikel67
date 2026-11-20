@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle reveals fix-this-ASAP-grade Java4Shell bug that allows attacks on many third-party apps</title>
+    <meta name="description" content="Attackers can crash the JVM or achieve unauthenticated RCE. The United States Cybersecurity and Infrastructure Security Agency (CISA) has urged Java users ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/oracle-reveals-fix-this-asap-grade-java4shell-bug-that-allows-att-57610.html">
+    <meta property="og:title" content="Oracle reveals fix-this-ASAP-grade Java4Shell bug that allows attacks on many third-party apps">
+    <meta property="og:description" content="Attackers can crash the JVM or achieve unauthenticated RCE. The United States Cybersecurity and Infrastructure Security Agency (CISA) has urged Java users ">
+    <meta property="og:image" content="https://image.theregister.com/5310666.jpg?imageId=5310666&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/oracle-reveals-fix-this-asap-grade-java4shell-bug-that-allows-att-57610.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Oracle reveals fix-this-ASAP-grade Java4Shell bug that allows attacks on many third-party apps", "image": ["https://image.theregister.com/5310666.jpg?imageId=5310666&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683"], "datePublished": "2026-11-18T04:33:05.000Z", "dateModified": "2026-11-20T00:13:18.390698", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/oracle-reveals-fix-this-asap-grade-java4shell-bug-that-allows-att-57610.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚠️ Warning</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Oracle reveals fix-this-ASAP-grade Java4Shell bug that allows attacks on many third-party apps</h1>
+        <div class="meta-line">🌐 Source: <strong>Theregister</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 4 min read (702 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Attackers can crash the JVM or achieve unauthenticated RCE.</li><li style='margin-bottom:6px;'>The United States Cybersecurity and Infrastructure Security Agency (CISA) has urged Java users to immediately patch a high-severity flaw in the software, which attackers can use to crash the Java virtual machine or achieve unauthenticated remote code execution (RCE).</li><li style='margin-bottom:6px;'>Oracle revealed the flaw in its monthly patch dump for November, which offers 655 patches, 62 of them rated critical, affecting 62 products.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-57610"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-57610"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-57610"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Oracle reveals fix-this-ASAP-grade Java4Shell bug that allows attacks on many third-party apps" loading="lazy" src="https://image.theregister.com/5310666.jpg?imageId=5310666&amp;x=0&amp;y=0&amp;cropw=100&amp;croph=100&amp;panox=0&amp;panoy=0&amp;panow=100&amp;panoh=100&amp;width=1200&amp;height=683" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-57610">Attackers can crash the JVM or achieve unauthenticated RCE.</p>
+<p>The United States Cybersecurity and Infrastructure Security Agency (CISA) has urged Java users to immediately patch a high-severity flaw in the software, which attackers can use to crash the Java virtual machine or achieve unauthenticated remote code execution (RCE).</p>
+<p>Oracle revealed the flaw in its monthly patch dump for November, which offers 655 patches, 62 of them rated critical, affecting 62 products.</p>
+<p>Several of the flaws are rated more dangerous than the Java problem, CVE-2026-114938, which Big Red didn’t single out as worthy of special attention despite CISA’s warning.</p>
+<p>The cyber-agency’s decision seems apt because vulnerability research and red teaming outfit Calif.io, which discovered the flaw, used its X account to claim news of the problem had leaked before public disclosure and the release of Oracle's fixes.</p>
+<p>By then, Calif had already tested the flaw, which it named “Java4Shell,” and found applications including Keycloak, Atlassian’s Jira and Confluence, Jenkins, Apache Kafka Broker, and Elasticsearch are susceptible to RCE.</p>
+<p>Calif, which also helped to find the PHP2Shell flaw, says the flaw is a memory-corruption vulnerability in OpenJDK's Base64 decoder.</p>
+<p>In a recent development, “Base64 is a very common way of representing binary data as text. It is used in authentication protocols, to encode file uploads, and to deliver network messages,” the manufacturer explained. “To decode Base64 faster, OpenJDK uses specialized x86-64 CPU instructions to process many bytes at once.”.</p>
+<p>“We discovered a bug in that optimized machine-level code that lets malformed input overwrite neighboring memory. With careful exploitation, the corruption can reveal sensitive memory, as Heartbleed did, or lead to remote code execution. The corruption itself can be triggered by just 64 A characters followed by a single =:”.</p>
+<p>Calif applied the CVSS 4.0 bug-rating scheme and gave the flaw a critical-rated score of 9.2/10.</p>
+<p>Infosec outfit SentinelOne’s analysis suggests the flaw “sits in the Java standard library, so exploit traffic is specific to each application.”.</p>
+<p>Sources indicate that “Any Base64 value an application passes to java.util.Base64.Decoder can carry the payload, including HTTP Basic credentials, SAML artifacts, CSRF tokens, and MIME encoded words. In default configurations of the affected applications listed above, attackers can reach this code path prior to authentication.”.</p>
+<p id="sec-mid-57610">Cisco’s Talos security team pointed out that the flaw is present in OpenJDK Java versions 17.0.6 and later running on x86-64 CPUs with AVX-512 VBMI (Vector Byte Manipulation Instructions) support enabled.</p>
+<p>“These vulnerabilities have already been tested against a suite of Java applications with success, but the attack surface is likely much larger as additional targets are tested and confirmed,” Talos advised.</p>
+<p>Cisco’s infosec experts urged adoption of the fixed versions of Java Oracle posted on Tuesday but noted it is possible to mitigate the flaw on x86-64 machines by starting the JVM with support for AVX-512 disabled.</p>
+<p>Akamai’s Chief Information Security Architect Jan Schaumann, writing on the Openwall project’s mailing list, expressed a little discomfort with Calif’s work.</p>
+<p>“Calif.io set their priorities on publicity-maxxing, it seems,” he wrote, pointing out that the flaw-finding firm’s announcement of Java4Shell opens by stating “After we disclosed PHP2Shell, we realized many people didn't know what PHP was. So we decided to go after something a little more familiar: Java.”.</p>
+<p>Talos’s analysis of Java4Shell includes the interesting observation that it “has not observed in-the-wild exploitation of this vulnerability yet. However, we anticipate probing attempts may pick up soon after public disclosure.”.</p>
+<p>That second sentence perhaps supports Calif’s assertion that news of the flaw leaked before disclosure.</p>
+<p>Java4Shell deserves a place high up on patch priority lists.</p>
+<p>So do the six 10.10 flaws Oracle reported, three in its Access Manager product, one in the Oracle Platform Security for Java, another in the WebLogic Server, and one in Business Intelligence Enterprise Edition.</p>
+<p>Substantial Red also repaired five 9.9-rated bugs, in Oracle Text, Hyperion, RDBMS, and Autovue.</p>
+<p>The November patch dump also includes 28 flaws rated 9.8/10.</p>
+<p>By Tenable Security’s count, 249 of the patches are for high severity bugs. Oracle’s Hyperion enterprise performance management accounts for 267 of the bugs.</p>
+<p id="sec-end-57610">Such is life in the age of AI-powered flaw finders – which Calif says burned through just $200 worth of tokens to find Java4Shell. ®.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.theregister.com/security/2026/11/18/oracle-reveals-fix-this-asap-grade-java4shell-bug-that-allows-attacks-on-many-third-party-apps/5310661" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="optimizely-malware-attacks-highlight-third-party-vendor-risks-46271.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #46271. Optimizely Malware Attacks Highlight Third-Party Vendor Risks
+        </a>
+        
+        <a href="jpmorgan-visa-mastercard-disclose-cyberattack-on-third-party-vend-57618.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57618. JPMorgan, Visa, Mastercard Disclose Cyberattack On Third-Party Vendors
+        </a>
+        
+        <a href="latest-update-chase-visa-mastercard-confirm-third-party-cyberatta-57544.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57544. Latest Update: Chase, Visa, Mastercard confirm third-party cyberattacks that may have exposed customers' info
+        </a>
+        
+        <a href="show-of-every-jan-van-eyck-portrait-reveals-many-latest-sides-to--57157.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57157. Show of every Jan van Eyck portrait reveals many latest sides to his works
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
