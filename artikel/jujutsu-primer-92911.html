@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jujutsu Primer</title>
+    <meta name="description" content="This guide is a brief(ish) introduction to the Jujutsu (jj) version control system (VCS) for someone familiar with Git. jj provides primitives for version ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/jujutsu-primer-92911.html">
+    <meta property="og:title" content="Jujutsu Primer">
+    <meta property="og:description" content="This guide is a brief(ish) introduction to the Jujutsu (jj) version control system (VCS) for someone familiar with Git. jj provides primitives for version ">
+    <meta property="og:image" content="https://ethanlowman.com/img/penrose.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/jujutsu-primer-92911.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Jujutsu Primer", "image": ["https://ethanlowman.com/img/penrose.png"], "datePublished": "2026-11-18T00:00:00+00:00", "dateModified": "2026-11-21T22:49:22.195888", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/jujutsu-primer-92911.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Jujutsu Primer</h1>
+        <div class="meta-line">🌐 Source: <strong>Ethanlowman</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 17 min read (3358 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>This guide is a brief(ish) introduction to the Jujutsu (jj) version control system (VCS) for someone familiar with Git.</li><li style='margin-bottom:6px;'>jj provides primitives for version control that are simple to learn, but elegantly compose into powerful workflows.</li><li style='margin-bottom:6px;'>In a recent development, if you work in a Git repository, you can try it today.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-92911"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-92911"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-92911"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Jujutsu Primer" loading="lazy" src="https://ethanlowman.com/img/penrose.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-92911">This guide is a brief(ish) introduction to the Jujutsu (jj) version control system (VCS) for someone familiar with Git.</p>
+<p>jj provides primitives for version control that are simple to learn, but elegantly compose into powerful workflows. Features like automatic rebase and native undo soften the sharp edges of Git. Eventually, you’ll organically discover new powerful workflows that would be too cumbersome to attempt with most other VCS tools.</p>
+<p>In a recent development, if you work in a Git repository, you can try it today. Jujutsu and Git can be used side-by-side in the same repository, so you can try out jj on a git repo on your own, without fully ejecting from git.</p>
+<p>In a recent development, personally, I think jj considerably boosts my effectiveness, because it allows me to keep VCS bookkeeping out of my working memory. Automatic rebasing also makes stacked diff workflows quite easy, and reduces thrashing of my working memory. It’s also just a fun tool to use.</p>
+<p>Official installation instructions are here, but here are a few common methods:.</p>
+<p>In an existing git repository, run:.</p>
+<p>From here on, jj and git repo state will be synchronized automatically.</p>
+<p>To set your user details globally, run commands like these:.</p>
+<p>You can edit jj’s TOML configuration for your user in an editor with:.</p>
+<p>Recent findings suggest that in addition to the --user scope, jj config also has --repo and --workspace scopes. View the merged config with:.</p>
+<p>Industry observers note that A commit, also called a revision, is essentially the same thing as a git commit. It represents a snapshot of repository state that descends from one or more parent repository snapshots. It is often visualized as a diff against a singular parent commit, or in the case of a merge commit, the diff against multiple parent commits once merged.</p>
+<p>It has been revealed that when using a Git repo backend, the jj commit ID is the same as the git commit ID: a hash formatted as a hex string. In the output of jj log below, the hex hashes 2bea5e3d and 849165bc on the right are commit IDs.</p>
+<p>Recent findings suggest that the IDs on the left hand side (royxmykx and kpqxywon) are change IDs, which are stable identifiers for logical changes as they physically evolve over time. We’ll discuss these more in the next section.</p>
+<p>Commit IDs and change IDs can be referenced in shorthand with an unambiguous (unique) prefix. jj helpfully highlights the shortest unique prefix of most IDs to make it easy to type them manually. For example,
+instead of copying and pasting kpqxywon, we can type in a prefix, down to the shortest unique prefix k.</p>
+<p>We can inspect the commit 2bea5e3d with jj show, using its short prefix 2.</p>
+<p>Many folks configure a custom diff formatter, like Delta. See configuration docs if you’re interested.</p>
+<p>Let’s take another look at our commit graph:.</p>
+<p>On commit 849165bc, you’ll see the symbol @ on the graph node. This represents a snapshot of our working copy, or the code we have actually checked out in our local directory. We can inspect this special commit pointer in a variety of ways:.</p>
+<p>Recent findings suggest that jj show indicates commit details and a diff, which is empty here. $ jj show
+Commit ID: 849165bca19639dbd6ccb53e8c1340e78c36d59a
+Change ID: kpqxywonksrltlrkyqukqqsxpltznztk
+Author   : Ethan Lowman  (2026-11-15 12:17:12)
+Committer: Ethan Lowman  (2026-11-15 12:17:12)
+
+    (no description set).</p>
+<p>According to recent reports, jj status shows repo state with diff stats. $ jj status
+The working copy has no changes. Working copy  (@) : kpqxywon 849165bc (empty) (no description set)
+Parent commit (@-): royxmykx 2bea5e3d main | Adjust config.</p>
+<p>Sources indicate that jj diff works much like git diff. Its output is empty here, since there are no changes in the current working copy relative to the parent commit.</p>
+<p>This output isn’t very interesting, since @ has no changes. Let’s make an example change to see what happens. If we edit main.py and rerun jj show, we see this:.</p>
+<p>You’ll notice several things have changed. The working copy has been automatically committed, and @ is no longer marked (empty). The upcoming commit ID for @ is 66b59f20, since we’ve added changes, but the change ID for 66b59f20 is still kpqxywon. jj has no staging area like in git, so we don’t have to manually add files. When we run a jj command to inspect or modify repo state after editing files, jj automatically snapshots the working copy as a new physical commit for the relevant logical change.</p>
+<p>In a recent development, let’s give this change a description (also called a commit message). We can either run jj desc, which opens an editor, or provide it directly with -m.</p>
+<p>Notice again that the commit ID has changed, since the hash covers the commit message, but the change ID has remained stable.</p>
+<p>According to recent reports, now, let’s say we’re ready to use this newly introduced feature, and we want to organize that change in a separate commit. We can create a new commit with jj new:.</p>
+<p>In a recent development, we’ve created an empty change nlrtlrxv on top of kpqxywon. jj status reflects that we are editing this upcoming revision which does not yet differ from its parent.</p>
+<p>In a recent development, jj commit is a shorthand for this common jj desc and jj new combo. Let’s make another change to use our new feature, and commit it.</p>
+<p>Recent findings suggest that to inspect the commit we just created (n), we can no longer use the bare jj show, which defaults to showing @. We have to pass the revision we want to inspect:.</p>
+<p>In a recent development, we can describe empty commits to record intent before starting work. Let’s create a new commit on top of k to remind ourselves that we need to document the feature.</p>
+<p>Recent findings suggest that A separate jj desc would also work just fine instead of the -m flag on jj upcoming. Here’s the current commit graph:.</p>
+<p>Note how we’ve created branching commits without creating a named branch. This highlights a major difference between jj’s branchless model and git’s branch-centric model of organizing work streams. Instead of juggling your work-in-progress on branches, you work on a graph of commits. Once ready to share, you push branches to a Git forge from your commit graph (more on that later).</p>
+<p>Sources indicate that A revset, an idea borrowed from Mercurial, is an expression that selects a set of revisions from the commit graph. Most jj commands accept revsets in their arguments. When we ran jj new k, the argument k was actually a trivial revset that resolved to the single change with ID kpqxywon. The jj log command has an -r  flag that we can use to preview a revset. Some demonstrative examples follow.</p>
+<p>Commits between r and @, inclusive:.</p>
+<p>Commits authored by ethan@example.com that also have ID k or q:.</p>
+<p>I’ll defer to the official documentation for exhaustive detail. The Revsets language specification is easily my most referenced jj documentation page, so I would recommend skimming it to see what’s possible.</p>
+<p>Sources indicate that let’s say in the course of documenting our feature in qwyusntz we realized we made a mistake in the implementation in parent change kpqxywon. We don’t need to manually commit or stash changes to switch tasks. We simply switch our working copy to kpqxywon with jj edit:.</p>
+<p>Our working copy once again demonstrates the changes from kpqxywon.</p>
+<p>jj hasn’t lost track of the changes above our working copy, including our most recent edits to q:.</p>
+<p>Industry observers note that instead of switching commits with jj edit k, we could have run jj edit @-. The revset @- is evaluated before switching the working copy, so this moves to the parent commit. The built-in commands jj next [--edit] and jj prev [--edit] provide another way to move up and down a stack of commits.</p>
+<p>If we edit files in the working copy, the descendant commits will be automatically rebased upon the next jj invocation. For example, if we edit my_new_feature’s implementation in main.py and then run jj log, we’ll see that changes k, n, and q all get upcoming commit IDs. jj also tells us that it performed a rebase.</p>
+<p>Recent findings suggest that if the automatic rebase happened to cause merge conflicts, jj doesn’t require us to fix them immediately, like git rebase would. Instead, jj records that the commit is conflicted and lets you carry on with your current task. This is massively helpful to reduce mental context switching, as your stacked commits grow more complex.</p>
+<p>To view the conflicts, we can edit the conflicted commit….</p>
+<p>In a text editor, we can resolve these conflicts, and the next time we run any jj command, we’ll see that jj has marked the commit as unconflicted:.</p>
+<p>Let’s say we made a mistake in that conflict resolution, and we want to undo it. In git, undoing an action, if it’s even possible, is often complicated. In jj, we can always run jj undo:.</p>
+<p>More generally, jj maintains a history of all actions in jj op log. We can inspect this log and jj op restore to a point in that history, or jj op revert an individual operation. If the jj undo itself was a mistake, we can jj redo.</p>
+<p>The Hint in the output above is a bit of a spoiler for our next topic, the squash workflow.</p>
+<p>Editing commits that have descendants can sometimes feel sketchy. If you’re iterating on a large diff that has left your working memory, it would be nice to separate your fresh changes from the existing diff. For example, we might like to inspect the diff that resolves a rebase conflict in isolation.</p>
+<p>Let’s follow the instructions from the above output. We first create a latest commit on top of the conflicted commit:.</p>
+<p>Now we can resolve the conflicts in main.py in our editor, and rerun jj log:.</p>
+<p id="sec-mid-92911">We can inspect the diff in @ if we like, and when we’re happy with the conflict resolution, we can squash it into the parent commit:.</p>
+<p>The conflict is now resolved, and we can continue our work.</p>
+<p>According to recent reports, one of the powerful qualities of jj is that it makes diffs malleable like clay. With automatic rebase and the confidence inspired by jj undo, we can move, combine, drop, and split diffs with ease.</p>
+<p>It has been revealed that let’s try a few operations on our current commit graph. Here’s the starting point.</p>
+<p>Let’s use jj rebase to coerce our branching commit graph into a linear history. Let’s say the documentation commit (q) should go between the implementation (k) and the usage (n). We could accomplish this by moving nlrtlrxv (and its empty descendant) on top of qwyusntz:.</p>
+<p>Another way to accomplish the same effect would be to use jj rebase -r q --before n. Many jj commands have multiple ways to specify revsets. jj rebase --help documents these well.</p>
+<p>Since arguments to jj rebase flags are all revsets, we can write a revset that selects a sequence of commits or commit subgraph, and move it elsewhere in the graph.</p>
+<p>If we wanted to insert a commit below k, the most direct way is jj upcoming --before k, but for demonstration purposes, we could alternatively create a new commit on top of r and rebase k:: on top:.</p>
+<p>If you enjoy using TUIs, jj arrange provides a commit graph editor similar to git rebase -i for reordering commits.</p>
+<p>If we decided documentation should be in the same commit as implementation, we can squash:.</p>
+<p>jj will open an editor and give us a chance to write a combined commit message.</p>
+<p>To drop a commit from the graph, we can use jj abandon. Let’s drop the preparation commit:.</p>
+<p>To abandon parts of a commit (hunks or changes to whole files), we can use the jj diffedit TUI (see docs).</p>
+<p>It has been revealed that the jj split TUI allows us to take a commit and split it into two consecutive commits by selecting which files or hunks should go in the first. Let’s use it to split up implementation and documentation again with jj split -r k:.</p>
+<p>The jj-hunk project provides a means to automate commit splitting. If you are so inclined, agents are quite good at using this tool to split up commits into a sequence of smaller changes for easier review.</p>
+<p>jj does not have a native concept of a branch, but it does have a primitive called bookmarks that map to Git branches. When we need to manipulate Git branches, we do it by way of bookmarks.</p>
+<p>You can go pretty far using Git without realizing this, but a Git branch is just a pointer to a commit. jj explicitly models bookmarks this way. jj bookmarks are essentially a named label attached to a commit that we can move around as we modify our commit graph, and push to/pull from a remote.</p>
+<p>We’ll discuss a few basic workflows around Git branches below, but you can find a more complete guide in the jj docs on Working with GitHub.</p>
+<p>Assuming we initialized jj in a git repository that has remotes, we should have some output for jj git remote list.</p>
+<p>Since jj is branchless, the commits we’ve created locally don’t have a branch name. Luckily, jj doesn’t require us to pick one, and generates one for us. Generated branch names free you from thinking of a unique branch name so you can instead focus on writing a good commit message (usually the more durable descriptor of a change).</p>
+<p>To create a generated bookmark for change ID nlrtlrxv and push up a corresponding Git branch, we can run a command like the following:.</p>
+<p>Now jj log reveals our change with a correspondingly named bookmark push-nlrtlrxvuusk associated:.</p>
+<p>We’re free to create a PR from this branch on GitHub now. You can customize the bookmark naming scheme with the git_push_bookmark template config documented here. It’s a common pattern to format branch names like /.</p>
+<p>In a recent development, since jj git push -c creates a branch name that corresponds to a change ID, it seems to encourage one evolving change per PR. I think it’s usually best to lean into these ergonomics, and have one change per PR.</p>
+<p>To upgrade a branch, the general process is to either squash commits into a change that is already bookmarked, or create upcoming commits and move the bookmark forward.</p>
+<p>If you choose to squash commits into an existing bookmark (recommended to keep one change per PR), the flow is as follows.</p>
+<p>Recent findings suggest that first, create a new commit on top of our branch. $ jj new push-nlrtlrxvuusk
+Working copy  (@) now at: stzvpxow f14a0cf7 (empty) (no description set)
+Parent commit (@-)      : nlrtlrxv b1284f61 push-nlrtlrxvuusk | Use the feature
+Added 2 files, modified 0 files, removed 0 files.</p>
+<p>Then make our edits. $ jj status
+Working copy changes:
+M README.md
+Working copy  (@) : stzvpxow 6bdd43dc (no description set)
+Parent commit (@-): nlrtlrxv b1284f61 push-nlrtlrxvuusk | Use the feature.</p>
+<p>In a recent development, squash them into the bookmark branch. $ jj squash --from @ --into push-nlrtlrxvuusk
+Working copy  (@) now at: xryuuprx 04d65a03 (empty) (no description set)
+Parent commit (@-)      : nlrtlrxv aeb869ae push-nlrtlrxvuusk* | Use the feature.</p>
+<p>Recent findings suggest that we now see push-nlrtlrxvuusk has an asterisk next to it, indicating it has changes that haven’t been pushed to the remote. So let’s push them. $ jj git push -b push-nlrtlrxvuusk
+Changes to push to origin:
+  bookmark: push-nlrtlrxvuusk [move sideways from b1284f61c417 to aeb869aef99b].</p>
+<p>The remote branch now reflects the fresh changes. The above output claims that we moved the branch sideways from one commit to another commit, which reflects that we did a force-push. jj git push runs the equivalent of a git push --force-with-lease, so if you’re ever unclear about what a push operation would do, you can use the jj git push --dry-run flag. jj protects you against most dangerous force pushes refusing to rewrite a configurable revset of immutable commits. The default immutable revset is sensible, but you can make it more or less conservative by configuring your own immutable heads.</p>
+<p>In this flow, we add newly introduced commits on top of our bookmark and then move the bookmark to point to our new commit.</p>
+<p>Let’s first prepare the upcoming commit. $ jj new push-nlrtlrxvuusk
+Working copy  (@) now at: pptrztmx 6e49ff1f (empty) (no description set)
+Parent commit (@-)      : nlrtlrxv aeb869ae push-nlrtlrxvuusk | Use the feature.</p>
+<p>The bookmark does not automatically move to our latest commit. This is the biggest difference between bookmarks and Git branches. For now push-nlrtlrxvuusk still points at the commit below:.</p>
+<p>It has been revealed that there are several ways to move the bookmark to the latest commit. The easiest is probably jj bookmark advance, which moves the closest bookmark to the given commit:.</p>
+<p>Now we’re ready to push the moved bookmark.</p>
+<p>Recent findings suggest that since jj is branchless, strictly speaking, we don’t “check out” a branch, but we can create a commit on top of a remote branch. First do the equivalent of a git fetch, importing remote bookmarks:.</p>
+<p>And create a new empty commit on top of the remote branch:.</p>
+<p>Our working copy now contains all the commits on the remote branch. However, if we were to drop back to git, we see that from git’s perspective, we’re in a detached head state, not on any branch.</p>
+<p>This is because jj is editing a commit above a bookmark, and does not have an equivalent to git’s “current branch” state.</p>
+<p>Syncing with the trunk (e.g. main) is just a specific example of this flow. We would jj git fetch to update our main to the upstream main, and then rebase our commits on top. For example, the following would rebase my-branch on top of a latest main:.</p>
+<p>Industry observers note that jj commit graph manipulation is easiest when you have a live commit graph on screen. There are different ways you can accomplish this.</p>
+<p>jjui is a TUI for jj that allows you to edit the visual graph directly. I have not personally used this, but I know people who like it.</p>
+<p>I recommend filtering down this log to a revset that represents your current work. Here’s a starting point:.</p>
+<p>You might also consider trying my experimental project jj-stamp, which is a local code review GUI for the squash workflow. Even if you don’t use the squash review workflow, it makes a pretty good diff viewer with a live jj log on the side and a terminal for running jj operations.</p>
+<p>According to recent reports, one of the biggest productivity gains from jj comes in its ability to support stacked PR workflows. This merits its own post, so I’ll keep it short.</p>
+<p>Large changes are easier to understand when they’re broken up into a series of logical steps. Breaking up a large change into smaller sequential atoms of review makes the whole change easier to understand. Stacked PRs attempt to leverage this fact to optimize merge throughput, while simultaneously removing pipeline stalls in the review process.</p>
+<p>Let’s say we’re building a upcoming feature. We can decide we want to split up implementation into three stages:.</p>
+<p>According to recent reports, jj’s ability to work on stacked changes with automatic rebase is a natural fit for implementing these three stages. Each of the three stages maps to a single commit, each with an associated bookmark/branch/PR:.</p>
+<p>It has been revealed that after you implement the first change, you can put up a PR for review and immediately start working on the next change. Your work stream becomes a long queue where you pop off the bottom as PRs are ready to merge and push to the top, with no pipeline stalls.</p>
+<p id="sec-end-92911">According to recent reports, it’s pretty easy to manually set up small PR stacks with jj and GitHub, but once you get hooked on the technique (making stacks 5–10 PRs deep), you’ll want a tool. jj-pancake is my entry into the ring of stacked PR tools. More on that soon.</p>
+<p style="margin-top: 25px;">
+<a href="https://ethanlowman.com/posts/jj-primer/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-jujutsu-kaisens-gojo-voice-actor-had-no-idea-he-was-93300.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93300. Industry News: Jujutsu Kaisen’s Gojo voice actor had no idea he was recording for GTA 6: “Sit on my lap daddy”
+        </a>
+        
+        <a href="announcing-jj-musubi-live-sync-for-jujutsu-92863.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92863. Announcing jj-musubi: live sync for Jujutsu
+        </a>
+        
+        <a href="breaking-the-robert-pattinson-james-bond-primer-87316.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #87316. Breaking: The Robert Pattinson James Bond Primer
+        </a>
+        
+        <a href="arc-virtual-cell-challenge-a-primer-81015.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81015. Arc Virtual Cell Challenge: A Primer
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: Removing binder.c</title>
+    <meta name="description" content="In a recent development, the final talk at Kangrejos 2026 was about the removal of the C implementation of Android's Binder driver, the primary interproces">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-removing-binderc-92868.html">
+    <meta property="og:title" content="Industry News: Removing binder.c">
+    <meta property="og:description" content="In a recent development, the final talk at Kangrejos 2026 was about the removal of the C implementation of Android's Binder driver, the primary interproces">
+    <meta property="og:image" content="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-removing-binderc-92868.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: Removing binder.c", "image": ["https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk"], "datePublished": "2026-11-20T10:33:36", "dateModified": "2026-11-21T22:49:18.761502", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-removing-binderc-92868.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: Removing binder.c</h1>
+        <div class="meta-line">🌐 Source: <strong>Lwn</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 7 min read (1411 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, the final talk at Kangrejos 2026 was about the removal of the C implementation
+of Android's
+
+Binder driver, the primary interprocess communication mechanism
+used on Android devices.</li><li style='margin-bottom:6px;'>In a recent development, binder was added to the kernel in 2008, Llamas said, as an interprocess
+communication mechanism for Android devices.</li><li style='margin-bottom:6px;'>That made it an obvious candidate for porting to Rust, Llamas said.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-92868"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-92868"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-92868"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: Removing binder.c" loading="lazy" src="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-92868">In a recent development, the final talk at Kangrejos 2026 was about the removal of the C implementation
+of Android's
+
+Binder driver, the primary interprocess communication mechanism
+used on Android devices. Carlos Llamas revealed that he had deleted the C
+code to general applause, and then shared some insights about what went into
+replacing the C implementation. Alice Ryhl, who has worked on the Rust
+implementation for some years, added her own thoughts about what the most
+difficult and interesting parts of the transition were.</p>
+<p>In a recent development, binder was added to the kernel in 2008, Llamas said, as an interprocess
+communication mechanism for Android devices. Its design originated in
+
+BeOS, but
+it has grown significantly since then. It provides a rich set of operations for
+allowing processes to communicate with the minimum amount of overhead. It also,
+therefore, presents a large attack surface for Android. Many complicated chained
+attacks against Android have involved Binder at one step or another, Llamas
+explained. Google's internal "red team" (the team dedicated to proactive
+security research) deemed Binder to be the most vulnerability-dense component in
+the entire operating system, with more CVEs per line than anywhere else.</p>
+<p>That made it an obvious candidate for porting to Rust, Llamas said. Binder was the first user
+of Rust in the kernel, he added, although Ryhl did not
+
+publicly post the first version
+of what became the Rust implementation until 2023, well after the Rust experiment started
+in 2021. All told, the effort took more than
+five years. Binder is used for every single screen touch, permission check,
+and cross-application message on Android, which runs on more than three billion
+devices. In total, it works out to hundreds of billions of Binder transactions
+per second, globally, he added. That scale meant that even the smallest discrepancy between the
+interface provided by the C version and the one provided by the Rust version
+would cause problems and regressions for some use case.</p>
+<p>One particularly tricky aspect has been performance, Ryhl said. Throughput
+doesn't matter that much; what matters is the tail latencies. Most
+screen frames on Android have a Binder transaction in the critical path of the
+frame, she explained. So, a difference of two microseconds on average is not a
+real problem, but if Binder is ever twenty milliseconds slower, even once
+in a while, people will notice and care.</p>
+<p>The actual algorithms that the C and Rust implementations use are identical, she
+continued, so there are no large differences in throughput. But, because Rust
+handles locking differently, there were problems with the tail latency
+from lock contention that she had to debug. For example, one user-reported
+traceback revealed Binder attempting to take a mutex that was held by another
+process. That process was preempted, and did not resume executing for twenty
+milliseconds, well past the sixteen millisecond budget to render a single frame.</p>
+<p>It was a classic case of priority inversion. To solve the problem in Binder, Ryhl moved
+as many operations out from under the lock as possible, and was able
+to replace it with a spinlock, which made the problem go away. The equivalent
+lock in the C implementation was already a spinlock: "I deviated from C
+Binder, and pow. It has eighteen years of accumulated quirks.".</p>
+<p>Eventually, however, the Rust implementation was good enough for most use cases. And the C implementation was still producing new vulnerabilities every time
+someone tried to introduce a new feature. Eventually, Llamas and Ryhl decided to
+only add new features to the Rust implementation, in order to motivate people to
+switch and to avoid headaches from the C implementation. That policy has
+resulted in the Rust version becoming faster than the C version,
+because Ryhl was able to introduce an algorithmic improvement that reduced the
+number of needed system calls, a change that had been considered too complex for
+the C implementation. Now that the C implementation has been deleted, there are
+more of those coming, she promised.</p>
+<p>Recent findings suggest that another area that proved difficult was dealing with tracepoints. Customers aren't
+supposed to rely on the presence or behavior of most kernel-internal
+tracepoints, but they do. This meant that Ryhl had to copy
+the existing tracepoints in Binder as a de facto part of the driver's API. That
+even extended into some of the data structures involved in the driver. In one
+case, she said, there was a reference-counted structure that had a slightly
+different reference count in the Rust implementation, because the Rust code was
+holding an additional pointer to the structure. That turned out to be a
+problem for one particular piece of client code, since it relied on checking the
+reference count via a tracepoint in order to determine when the C implementation
+had reached a particular state.</p>
+<p id="sec-mid-92868">In a recent development, there was also a lot of toolchain support needed, Ryhl continued. The Rust
+implementation had to work with kernel address-space layout randomization
+(KASLR), control-flow integrity (CFI), and profile-guided optimization. Production Android kernels are built with all of those enabled, and since they impact code
+generation, the Rust code needed to account for them.</p>
+<p>Llamas then went into more detail about the deployment plan that will be used
+to convert customers to the Rust implementation. A major problem with just rolling
+the Rust implementation out is the existence of
+
+vendor hooks: custom
+tracepoints used to inject vendor-specific behavior into the kernel. The Rust
+implementation of Binder was not able to reproduce those in every case, and
+therefore many vendors are stuck on the C implementation until they update their
+code. That's going to be a slow process.</p>
+<p>Old stable
+versions of the kernel will continue to have the C Binder, and receive security
+fixes, which gives the various Android vendors a little bit of leeway until
+they're forced to update. After the conference, the patch removing the C
+implementation
+
+was merged as part of the 7.4 merge window, so that is the
+version past which the Rust implementation is required. 7.3 is the designated
+long-term-support release for 2026.</p>
+<p>Sources indicate that one person asked whether this would pose a problem for people compiling
+the kernel with GCC. Miguel Ojeda responded that many distributions are using a
+workaround for the current lack of Rust support in GCC: they are building
+the C side of the kernel with GCC, and the Rust side with LLVM. He noted that he
+had advised against compiling the kernel in that way, because it is "a
+complete hack", though people who use it are unlikely to complain about
+being forced onto Clang. Greg Kroah-Hartman added that it will take months or
+years to learn about anyone who has problems with the Rust version of the
+driver, given how slowly Android vendors update their kernels. Furthermore, the
+removal is a single patch that can be cleanly reverted, if someone needs
+to continue using the C version.</p>
+<p>Llamas thought that it was worth considering what the removal process should
+look like for other code that gets ported to Rust. He asked what people thought
+should happen to the C version of converted drivers on long-term-support
+branches. Ojeda stated that the process would be exactly the same as the existing
+policy for replaced C code. The only difference
+between Rust and C in long-term-support releases is that the Rust maintainers
+backport fixes for soundness problems, he said. Kroah-Hartman told Llamas not to worry about code that has been replaced:
+"Just delete it. I take patches for subsystems that have been deleted. It's
+fine.".</p>
+<p>According to recent reports, with that declaration, the session, the conference, and the presence of the C
+Binder driver in the kernel were all over. Binder is the first nontrivial component
+in the
+kernel to be ported to Rust, and its journey has revealed several pitfalls that
+don't apply to new drivers written in Rust from scratch. Still, the most
+difficult problems were not Rust-specific; they were the compatibility problems
+that any rewrite would face. Whether any other kernel components will find the hassle
+of a rewrite worth it, and how long they will take to accomplish it, remains to
+be seen.</p>
+<p>Industry observers note that [ Thanks to the Linux Foundation, LWN's travel sponsor, for supporting my travel
+to Kangrejos. ].</p>
+<p>Note: you can avoid this step in the future by logging
+        into your LWN account.</p>
+<p id="sec-end-92868">Note: you can avoid this step in the future by logging
+        into your LWN account.</p>
+<p style="margin-top: 25px;">
+<a href="https://lwn.net/Articles/1102982/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-apples-support-community-shuts-down-on-friday-remov-85721.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #85721. Industry News: Apple’s Support Community Shuts Down on Friday, Removing User Discussions
+        </a>
+        
+        <a href="industry-news-determined-woman-completes-7-marathons-in-a-year-wh-93385.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93385. Industry News: “Determined” woman completes 7 marathons in a year while pregnant
+        </a>
+        
+        <a href="industry-news-take-two-ceo-is-shutting-down-questions-about-gta-7-93377.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93377. Industry News: Take-Two CEO is shutting down questions about GTA 7 just days after GTA 6’s launch
+        </a>
+        
+        <a href="industry-news-lerobotdatasetv30-bringing-large-scale-datasets-to--93375.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93375. Industry News: `LeRobotDataset:v3.0`: Bringing large-scale datasets to `lerobot`
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

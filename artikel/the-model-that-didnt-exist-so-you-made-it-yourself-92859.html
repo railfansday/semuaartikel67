@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The model that didn't exist, so you made it yourself</title>
+    <meta name="description" content="According to recent reports, last week, I wanted a small version of the prompt rewriter that ships with Qwen-Image 2.1. The official one is a 9B model that">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/the-model-that-didnt-exist-so-you-made-it-yourself-92859.html">
+    <meta property="og:title" content="The model that didn't exist, so you made it yourself">
+    <meta property="og:description" content="According to recent reports, last week, I wanted a small version of the prompt rewriter that ships with Qwen-Image 2.1. The official one is a 9B model that">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/building-with-ml-intern/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/the-model-that-didnt-exist-so-you-made-it-yourself-92859.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "The model that didn't exist, so you made it yourself", "image": ["https://huggingface.co/blog/assets/building-with-ml-intern/thumbnail.png"], "datePublished": "2026-10-08T00:00:00", "dateModified": "2026-11-21T22:49:18.269555", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/the-model-that-didnt-exist-so-you-made-it-yourself-92859.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>The model that didn't exist, so you made it yourself</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 08 Oct 2026 &bull; ⏱️ 8 min read (1560 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, last week, I wanted a small version of the prompt rewriter that ships with Qwen-Image 2.1.</li><li style='margin-bottom:6px;'>Recent findings suggest that over the course of the next few days, I made five more models the same way.</li><li style='margin-bottom:6px;'>The first message is where I spend my effort.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-92859"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-92859"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-92859"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="The model that didn't exist, so you made it yourself" loading="lazy" src="https://huggingface.co/blog/assets/building-with-ml-intern/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-92859">According to recent reports, last week, I wanted a small version of the prompt rewriter that ships with Qwen-Image 2.1. The official one is a 9B model that needs about 20 GB of memory and thinks for thousands of tokens before writing a single paragraph. On the Hub, I found only compressed copies of that same 9B model. So I described what I wanted to ML Intern, and the next day I had a 0.8B version that runs on a CPU. It returns valid output 99.7% of the time and uses about a quarter of the teacher's tokens. The compute for the whole project, including having the 9B model label 8,797 example requests, came to USD 16.</p>
+<p>Recent findings suggest that over the course of the next few days, I made five more models the same way. Each one started as a message in HuggingChat with ML-intern switched on, and each one ended as a public model on the Hub with its evaluation in the model card. ML-intern plans the work, asks me for a budget before it spends anything, runs a small test before the real job, then trains, evaluates and publishes on Hugging Face hardware.</p>
+<p>The first message is where I spend my effort. My first prompt, for the citrus model shared below, was about 450 words. By my 6th project it was closer to 2,000, because each project taught me something I wanted in the next one. All seven prompts are on GitHub at yvrjsharma/ml-intern-prompts, exactly as I wrote them.</p>
+<p>According to recent reports, A prompt starts with the idea in one line and why I want it. Then it names the exact pieces: the dataset, the base model, the training script. Anything I have already checked goes under a heading that literally claims "Verified facts, do not re-derive", so the agent spends its budget on the work instead of rediscovering what I know. For the camera-angle LoRA that section listed which trainer had just added transparent-image support, and which open GitHub challenges made the fallback trainer risky.</p>
+<p>In a recent development, two lines in the prompt are critical. The first asks for a baseline before any training. For example, the citrus prompt indicates: "Also report the base model's zero-shot score on the same metric before training so we can see the gain." Without it you get a trained model and no idea whether it is better than what you started with. The second is a smoke test with a check attached. For the image LoRAs I asked for 50 training steps, then a check that the saved weights had actually changed, before paying for the full run.</p>
+<p>At the end of the prompt, I lay out the expected deliverables and limit the cost. I define what belongs in the model card and include a instruction like: "Cap total spend at USD 12 and ask me before exceeding it." Because ML-intern begins every task with zero dollar budget and needs permission before executing paid jobs, this spending limit stays strictly enforced. When you leave out a budget, the agent suggests a couple of paths depending on project size and asks which one you prefer.</p>
+<p>You don't necessarily need all of that on your first attempt. For example, I didn't have the verified-facts section in my citrus brief and ML Intern still produced a model that more than tripled the accuracy of the Qwen3.5-2B model. Let me walk you through 6 things I built with Ml-Intern in just a couple of days.</p>
+<p>Recent findings suggest that A general vision model can describe a yellowing citrus leaf. However, telling you whether it is a mite problem or a magnesium deficiency, and the bio and non-bio remedies to treat the plant is very hard. Using Claude, I put together a training dataset merged from three sources hosted by the Project-AgML organization on the Hub. The resulting citrus-disease-vlm-instruct is a dataset containing 3,017 annotated images across 21 distinct pests, illnesses, nutritional gaps, and treatment approaches. ML-intern handled the fine-tuning of Qwen3.5-2B using these examples, making sure to benchmark the foundation model beforehand.</p>
+<p>Recent findings suggest that on the 335 test photos, the base model named the right problem 14.9% of the time. After two epochs on one A10G, the fine-tuned model got 52.8%. Compute cost, about USD 1.90.</p>
+<p>Check out: Model · Dataset · Citrus Doctor App.</p>
+<p>Image models know plenty of characters. Huggy, drawn in the flat style of the Hugging Face brand assets, was not one of them. I asked ML-Intern for a LoRA on FLUX.2 klein base 4B, trained on 84 captioned drawings from Chunte/huggy_for_training dataset.</p>
+<p>The agent saved a checkpoint every 100 steps and drew the same set of prompts with each one, which made choosing easy. Step 200 was the first where Huggy was fully on-model. From step 500 on, Huggy's style started bleeding into prompts that had nothing to do with Huggy! The trained LoRA also works on the distilled klein model at 4 steps. Compute cost, about USD 7.60.</p>
+<p>Check out: Model · Dataset · Huggy Generator App.</p>
+<p>Sources indicate that ML-intern rendered 1,030 scanned household objects from Google Scanned Objects at 24 angles each, 24,722 transparent images, on a CPU job that cost a few cents. It later finalised 461 objects for training and 40 held out for testing, and 1,844 before-and-after training pairs spread evenly over 23 camera instructions.</p>
+<p id="sec-mid-92859">Recent findings suggest that training ran 2,000 steps in about 90 minutes on one A100 (~USD 3.75). The whole project took about half a day and 48 jobs, counting the ones that failed on missing packages or wrong paths and had to be resubmitted by ML-Intern. Total compute cost, about USD 16.</p>
+<p>Check out: Model · Dataset · Viewpoint Orbit App.</p>
+<p>No dataset existed for this, so my prompt described how to make one. Start from a real photo in Open Images, remove one object with the LaMa inpainting model, and draw a scribble where the object used to be. The untouched photo is the target. ML-intern wrote and tested the pair-building scripts in a CPU sandbox, then ran them as GPU jobs, recording the author and license of every source photo along the way. It built 6,042 training pairs and a 160-pair test set, where 40 of the test pairs come from 23 object classes kept out of training entirely.</p>
+<p>It has been revealed that before training, it measured the base model on its own and with the Viggle turbo LoRA, and checked that running edits in batches produced identical images, which made the evaluation cheaper. Training ran 2,000 steps in 1 hour 38 minutes on one A100 (~USD 4), and a comparison of the saved checkpoints on 48 test pairs picked step 500.</p>
+<p>Recent findings suggest that paired with the Viggle turbo LoRA at 6 steps the LoRA performed really well. 67.5% of objects detected where they were drawn, at 4.7 seconds per edit. Objects from the 23 unseen classes landed as reliably as the rest (65.0% versus 64.2%). The project took a little over a day and 59 jobs. Total compute cost, about USD 24.</p>
+<p>Check out: Model · Dataset · Doodle-in App.</p>
+<p>Training the 0.8B and 2B students took 12 and 18 minutes on an A10G (USD 0.75 for both). The 0.8B also ships as an 812 MB GGUF file for running on a CPU. The project took about 11 hours and 24 jobs. Total compute cost, about USD 16.</p>
+<p>Check out: Pocket rewriter 0.8B Student · 2B Student · Dataset · Pocket Studio App · Compare the teacher-student in Rewriter Arena.</p>
+<p>According to recent reports, it took two runs. The first cached 155,000 training images as latents, baked the guidance into the model, then cut the step count in stages from 16 to 8 to 4, all on A100s. The 4-step student beat the teacher run at the same 4 steps on GenEval and FID, after that ML-intern exported it to ONNX for the browser. This run took about 13 hours and USD 22.</p>
+<p>In a recent development, I did a second training run by asking ML-Intern to improve the 4-step student a bit more. It then made 24,000 more image pairs with the teacher at 16 steps and fine-tuned the 4-step student against them for about an hour. GenEval went from 0.509 to 0.536, against the teacher's 0.563 at 50 steps, with just 4 steps (one-fourth the compute). ML-intern re-exported the browser version. The second run took about 8 hours. Total compute cost across both runs, about USD 37.</p>
+<p>Check out: Agate 4-step model · Dataset · Run Agate in your browser · Agate 4-step LIVE.</p>
+<p>These are the GPU and CPU job charges reported for each session.</p>
+<p>Sources indicate that ML-intern is in HuggingChat. Switch on ML-intern mode and paste a prompt. If you want a starting point, my example prompts are free to copy. Start from a model you wish existed and a dataset you have, or one you can describe. Give it a small budget, ask for a baseline and a smoke test, and read what comes back before you raise the cap.</p>
+<p id="sec-end-92859">Recent findings suggest that if you make something with it, share it on X and tag @Gradio and @HuggingFace. We would love to see the models you make that nobody else would think to build for you.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/building-with-ml-intern" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-arsenal-made-me-miserable-and-didnt-value-me-it-hur-84030.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #84030. Industry News: Arsenal made me miserable and didn’t value me - it hurt to leave
+        </a>
+        
+        <a href="what-is-model-routing-in-ai-93324.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93324. What is Model Routing in AI?
+        </a>
+        
+        <a href="transformers-v5-simple-model-definitions-powering-the-ai-ecosyste-93263.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93263. Transformers v5: Simple model definitions powering the AI ecosystem
+        </a>
+        
+        <a href="upcoming-in-llamacpp-model-management-93247.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93247. Upcoming in llama.cpp: Model Management
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

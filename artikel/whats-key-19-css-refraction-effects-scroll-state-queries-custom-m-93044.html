@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What’s !key #19: CSS Refraction Effects, Scroll State Queries, @custom-media, and More</title>
+    <meta name="description" content="Sources indicate that we’re back! Don’t worry, this isn’t a trick (despite what our name suggests!). However, due to the hiatus, we’re also a little behind">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/whats-key-19-css-refraction-effects-scroll-state-queries-custom-m-93044.html">
+    <meta property="og:title" content="What’s !key #19: CSS Refraction Effects, Scroll State Queries, @custom-media, and More">
+    <meta property="og:description" content="Sources indicate that we’re back! Don’t worry, this isn’t a trick (despite what our name suggests!). However, due to the hiatus, we’re also a little behind">
+    <meta property="og:image" content="https://css-tricks.com/wp-content/uploads/2026/09/wi19.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/whats-key-19-css-refraction-effects-scroll-state-queries-custom-m-93044.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "What’s !key #19: CSS Refraction Effects, Scroll State Queries, @custom-media, and More", "image": ["https://css-tricks.com/wp-content/uploads/2026/09/wi19.jpg"], "datePublished": "2026-10-27T09:09:16-06:00", "dateModified": "2026-11-21T22:49:33.791422", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/whats-key-19-css-refraction-effects-scroll-state-queries-custom-m-93044.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>What’s !key #19: CSS Refraction Effects, Scroll State Queries, @custom-media, and More</h1>
+        <div class="meta-line">🌐 Source: <strong>Css-tricks</strong> &bull; 📅 27 Oct 2026 &bull; ⏱️ 4 min read (878 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Don’t worry, this isn’t a trick (despite what our name suggests!).</li><li style='margin-bottom:6px;'>By the way, before we dive in, Mat Marquis’ highly recommended JavaScript for Everyone course is presently -30% off (code: CSSTRICKSFRIENDS).</li><li style='margin-bottom:6px;'>It has been revealed that preethi Sam demonstrated how to create background image refraction effects with CSS.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-93044"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-93044"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-93044"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="What’s !key #19: CSS Refraction Effects, Scroll State Queries, @custom-media, and More" loading="lazy" src="https://css-tricks.com/wp-content/uploads/2026/09/wi19.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-93044">Sources indicate that we’re back! Don’t worry, this isn’t a trick (despite what our name suggests!). However, due to the hiatus, we’re also a little behind. That’s why this matter of What’s !key is absolutely stacked. All killer, no filler. Here’s what you missed.</p>
+<p>By the way, before we dive in, Mat Marquis’ highly recommended JavaScript for Everyone course is presently -30% off (code: CSSTRICKSFRIENDS). You don’t want to miss this.</p>
+<p>It has been revealed that preethi Sam demonstrated how to create background image refraction effects with CSS. The effects are stunning, can be animated, don’t need very much CSS (no JavaScript), and we don’t need to duplicate the image either.</p>
+<p>Brecht De Ruyte demonstrated how to build customizable components using container style queries and advanced attr(), showcasing some incredible interactive demos, including the two below:.</p>
+<p>Dan Holloran showed us how to use the different scroll-state() queries (scrollable, scrolled, snapped, and stuck). It’s not a long read, which is exactly what you want for a new but simple feature like this.</p>
+<p>A quick, no-context CSS snippet to entice you:.</p>
+<p>In a recent development, declan Chidlow shared some of the craziest CSS to ever exist, and I mean craziest. Most of it comes from Internet Explorer, but let’s face it, you knew that already. Thankfully, they don’t build them like they used to.</p>
+<p>Bramus demonstrated how to animate CSS grids using anchor positioning. The idea is that we anchor content to its corresponding cell, and then as the grid reflows, it’s the content (not the cell) that animates with it.</p>
+<p>(But it doesn’t work in Firefox due to what sounds like a bug.).</p>
+<p>Recent findings suggest that chris Coyier talked about a bunch of upcoming HTML features, and honestly, there’s a whole lot in there that you definitely haven’t heard of. Like, I’m certain of it.</p>
+<p>Victor Ayomipo contemplated why container query adoption has been so terrible despite them topping CSS wishlists for years. Victor thinks that we’re using them wrong, so he’s here to set the record straight.</p>
+<p>Cory LaViska demonstrated how to use @custom-media in addition to container style queries as a fallback.</p>
+<p>Also, don’t forget that Declan has an extremely thorough @custom-media deep-dive in our Almanac.</p>
+<p id="sec-mid-93044">Ahmad Shadeed tackled an interesting topic — detecting overlapping elements (with CSS, of course). If you’re keen on anchor positioning, scroll-driven animations, and again (!), container style queries, then this walkthrough is for you.</p>
+<p>Sources indicate that I want to know when the decorative element hits the section from the left edge, taking into consideration that the element might have a fluid position or size that changes with the viewport size or container size. Basically, it’s a dynamic problem. It’s not about using a media query to hide the decorative element, I want to hide it upon overlapping.</p>
+<p>Maybe container queries are finally picking up?</p>
+<p>Patrick Brosset walked us through a proposal for the previewsrc HTML attribute, which would enable us to supply preview images for images that haven’t yet loaded using only HTML. For example, we could supply a blurry preview image. However, I’d rather have something like :loaded/:not(:loaded) so that we can style/transition unloaded images with CSS rather than needing to create extra images.</p>
+<p>Temani Afif shared a custom borders demo, where the trick is to declare a transparent border, use border-shape to define its shape, then declare a background in addition to background-clip: border-area so that it only demonstrates up within the border, like this (requires Chrome at the moment):.</p>
+<p>In a similar manner, Leon Arnott shared this awesome trick for animating the background color of ::selection, something that’s actually forbidden (or so we thought, anyway…):.</p>
+<p>In a recent development, today in CSS:
+
+We all know you can change the highlight colour of selected text, but it's impossible to animate that colour. Unless…
+the colour was just a variable inherited from the parent element, using @​property to make it animatable…
+
+Hahahahaha… [image or embed].</p>
+<p>And that’s it, really. Simply use var(--bg-color) on ::selection or some other visually restrictive element.</p>
+<p>Sources indicate that chris Coyier demonstrated how to random()ly animate an element along the edge of another element. There’s a cute doggo, by the way. Probably should’ve led with that.</p>
+<p>Polypane explained how we might disable the root scroller accidentally (which is surprisingly easy to do — I’ve definitely done it), what we lose in doing so, and what to do instead.</p>
+<p>Recent findings suggest that also, have you ever completely misunderstood how the root (:root/html) works? This is a solid explainer for that, too.</p>
+<p>Recent findings suggest that speaking of accidents, have you ever tapped on a target twice, apparently in quick succession, and ended up zooming in? Andy Bell revealed that touch-action: manipulation disables the double-tap-to-zoom-in functionality. It isn’t newly introduced, but I don’t see many web developers using it. One for the CSS reset, I think?</p>
+<p>It has been revealed that chrome and Firefox now ship every two weeks. The inaugural releases were fairly exciting (not smaller, as I assumed they’d be). In addition, Safari 27 (along with iOS, iPadOS, and macOS 27) shipped with some of the same features as Firefox, making them Baseline in the same release window. High fives all around!</p>
+<p id="sec-end-93044">And, as always, thanks for tuning in!</p>
+<p style="margin-top: 25px;">
+<a href="https://css-tricks.com/whats-important-19/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="whats-key-20-gta-6-scroll-effects-scrollspies-random-93037.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93037. What’s !key #20: GTA 6 Scroll Effects, Scrollspies, random()
+        </a>
+        
+        <a href="stop-treating-css-container-queries-like-traditional-media-querie-92182.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92182. Stop Treating CSS Container Queries Like Traditional Media Queries
+        </a>
+        
+        <a href="scroll-state-93012.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93012. scroll-state()
+        </a>
+        
+        <a href="wall-street-journal-reporter-evan-gershkovich-appeals-against-arr-82197.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #82197. Wall Street Journal reporter Evan Gershkovich appeals against arrest, Russian state media notes
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sizing GPU Memory for a RAG Service: KV Cache, Context and Concurrency</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. 7 Day Free Trial. Cancel Anytime. Acc">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/sizing-gpu-memory-for-a-rag-service-kv-cache-context-and-concurre-93077.html">
+    <meta property="og:title" content="Sizing GPU Memory for a RAG Service: KV Cache, Context and Concurrency">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. 7 Day Free Trial. Cancel Anytime. Acc">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_Screenshot_2026_11_18_183005_7d7eb59768.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/sizing-gpu-memory-for-a-rag-service-kv-cache-context-and-concurre-93077.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Sizing GPU Memory for a RAG Service: KV Cache, Context and Concurrency", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_Screenshot_2026_11_18_183005_7d7eb59768.png"], "datePublished": "2026-11-18T13:31:55", "dateModified": "2026-11-21T22:49:35.211943", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/sizing-gpu-memory-for-a-rag-service-kv-cache-context-and-concurre-93077.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Hardware & Chips</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Sizing GPU Memory for a RAG Service: KV Cache, Context and Concurrency</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 6 min read (1116 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>According to recent reports, A retrieval-augmented generation (RAG) app is usually drawn as a language model plus a vector database.</li><li style='margin-bottom:6px;'>This article demonstrates how to estimate that limit before you deploy, with a short script you can run, and then covers what else in the pipeline can slow responses down.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-93077"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-93077"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-93077"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Sizing GPU Memory for a RAG Service: KV Cache, Context and Concurrency" loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_Screenshot_2026_11_18_183005_7d7eb59768.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-93077">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>Weekly. Free. One click to leave.</p>
+<p>7 Day Free Trial. Cancel Anytime.</p>
+<p>According to recent reports, A retrieval-augmented generation (RAG) app is usually drawn as a language model plus a vector database. When it goes live, the part that fails first is rarely the retrieval. It is GPU memory on the generation model, because a model that loads fine for one request can run out of memory when several people send long questions at once.</p>
+<p>This article demonstrates how to estimate that limit before you deploy, with a short script you can run, and then covers what else in the pipeline can slow responses down.</p>
+<p>Serving a model takes more than its weights. The GPU also holds:.</p>
+<p>the key-value (KV) cache, which grows with the length of every active request.</p>
+<p>activations and batching overhead.</p>
+<p>memory used by the inference runtime itself.</p>
+<p>SitePoint's guide to running a local LLM on 10GB of VRAM makes the same point for a single desktop GPU: the usable budget is the total VRAM minus overhead, and the KV cache grows with the context window, so the real model budget is smaller than the number on the box.</p>
+<p>In a recent development, for a RAG service, the KV cache matters even more. Retrieved passages are pasted into the prompt, so every request carries a long context, and every concurrent request holds its own cache.</p>
+<p>In a recent development, the cache size per token depends on the model's architecture: two tensors (keys and values) for every layer, for every KV head. This script turns those numbers into a rough limit on concurrent requests:.</p>
+<p>def kv_bytes_per_token(layers, kv_heads, head_dim, dtype_bytes=2):.</p>
+<p># Keys and values, for every layer, for one token.</p>
+<p>return 2 *layers *kv_heads *head_dim *dtype_bytes.</p>
+<p>def max_concurrent(vram_gb, weights_gb, ctx_tokens, per_token, reserve_gb=2.0):.</p>
+<p>budget = (vram_gb - weights_gb - reserve_gb) * GIB.</p>
+<p>return int(budget // (ctx_tokens * per_token)).</p>
+<p>per_token = kv_bytes_per_token(32, 8, 128).</p>
+<p>print(per_token // 1024, "KiB per token").</p>
+<p>for ctx in (4096, 8192, 16384):.</p>
+<p>n = max_concurrent(24, 16, ctx, per_token).</p>
+<p>print(ctx, "tokens -&gt;", n, "concurrent requests").</p>
+<p>For a 24 GB GPU holding about 16 GB of fp16 weights with 2 GB kept in reserve, it prints:.</p>
+<p>4096 tokens -&gt; 12 concurrent requests.</p>
+<p id="sec-mid-93077">8192 tokens -&gt; 6 concurrent requests.</p>
+<p>16384 tokens -&gt; 3 concurrent requests.</p>
+<p>In a recent development, the numbers are estimates. Real runtimes add their own overhead, and the architecture values come from the model's configuration file, so read them from the model you actually use. The pattern is what matters: doubling the context length halves the number of requests that fit. A RAG prompt that stuffs in ten retrieved chunks costs real capacity.</p>
+<p>Serving runtimes do not simply crash when the cache is full. The vLLM documentation on optimization and tuning explains that when KV cache space is insufficient for all batched requests, the engine preempts some of them and recomputes them later, which can hurt end-to-end latency. Its suggested remedies include giving the cache more memory, reducing the number of concurrent sequences or batched tokens, or sharding the model across GPUs.</p>
+<p>So the symptom of undersizing is often not an error. It is slow, uneven responses under load. Test with realistic prompt lengths and several simultaneous owners, not a single request.</p>
+<p>Embedding and ingestion have a different profile from generation. Embedding is often lighter than serving a large language model, and some teams run it on CPU. Document parsing, chunking and tokenization also run on CPU, so a fast GPU cannot make up for a slow CPU upstream. SitePoint's tutorial on a local RAG system for private documents walks through chunking, embeddings, vector storage and reranking, and is a good map of which stages run where.</p>
+<p>RAM: vector indexes, document loaders and caches all live in system memory, so large collections need more of it.</p>
+<p>Storage: model files, indexes, logs and backups add up. Fast storage shortens model loading and re-indexing.</p>
+<p>Network: if the vector database, application server and model server sit in different places, latency adds to every request.</p>
+<p>Two layouts are common. A single instance runs everything and is simplest for prototypes and internal tools. Separated services put ingestion and retrieval on smaller machines and keep the GPU for generation, which scales better as traffic grows.</p>
+<p>Industry observers note that memory estimates only hold if the GPU memory is really yours. On a shared or time-sliced GPU, other workloads can take memory and compute away from your service, which makes capacity hard to proposal. Hosting providers describe this in different terms, such as passthrough, vGPU, MIG and time-slicing. For a view of how one GPU hosting provider explains those allocation methods, GPU Mart's GPU virtualization guide compares them. It is a hosting manufacturer's page, so confirm any provider's claims about isolation and performance with your own load test.</p>
+<p>Whatever provider you choose, ask these questions:.</p>
+<p>Is the physical GPU assigned to you exclusively, or partitioned or time-sliced?</p>
+<p>Do you have root access to install your own drivers, CUDA libraries and containers?</p>
+<p>Which minimum commitments, regions and support terms apply?</p>
+<p>A small stack can run as a handful of containers: an API service for request handling and prompt assembly, an ingestion worker, a vector database and a model server. Keeping them separate lets you monitor each one's memory and CPU use and move the heavy one to bigger hardware without rewriting the rest.</p>
+<p>For a service that stays up all month, a fixed monthly term is easier to forecast than hourly capacity. Hourly capacity suits testing quantization settings or processing a one-off document batch.</p>
+<p>Is GPU memory always the bottleneck for RAG?</p>
+<p>Industry observers note that not always. Generation usually hits memory first, but slow parsing, a small CPU or a distant vector database can dominate response time.</p>
+<p>Does quantization solve the memory problem?</p>
+<p>Industry observers note that it shrinks the weights, but the KV cache still grows with context length and concurrency. Test with your real prompt sizes.</p>
+<p>Should embeddings run on the GPU?</p>
+<p>It has been revealed that it depends on volume. Small workloads can run on CPU, while a large ingestion job may benefit from a GPU for a limited time.</p>
+<p>Size a RAG service for the worst realistic moment, not the single-request demo. Estimate the KV cache from the model's architecture, remember that long retrieved contexts reduce how many requests fit, watch for preemption under load, keep CPU, RAM, storage and network in the plan, and find out whether the GPU is exclusive or shared. The script above is small, but it turns a vague worry about memory into numbers you can check.</p>
+<p id="sec-end-93077">7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/sizing-gpu-memory-for-a-rag-service-kv-cache-context-and-concurrency/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="uber-cuts-translation-cache-memory-by-up-to-90-while-keeping-p99--92808.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92808. Uber Cuts Translation Cache Memory by up to 90% While Keeping P99 Latency Below 1 MS
+        </a>
+        
+        <a href="breaking-visualize-and-understand-gpu-memory-in-pytorch-81350.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81350. Breaking: Visualize and understand GPU memory in PyTorch
+        </a>
+        
+        <a href="industry-news-how-consumer-ai-companions-handle-context-windows-p-81026.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81026. Industry News: How Consumer AI Companions Handle Context Windows, Persistent Memory, and Voice Latency
+        </a>
+        
+        <a href="silicon-motion-demos-sm8466-pcie-60-ssd-controller-expected-to-sh-93396.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93396. Silicon Motion demos SM8466 PCIe 6.0 SSD controller, expected to ship by 2028 — controller boasts improved quality of service, samples imminent
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

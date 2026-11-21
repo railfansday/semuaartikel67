@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolmogorov-Arnold Networks: Why Learnable Functions on Edges Beat Fixed Activations</title>
+    <meta name="description" content="Every multilayer perceptron is built on the same deal: the edges carry numbers and the nodes carry the nonlinearity. A weight multiplies a signal, a fixed ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/kolmogorov-arnold-networks-why-learnable-functions-on-edges-beat--92640.html">
+    <meta property="og:title" content="Kolmogorov-Arnold Networks: Why Learnable Functions on Edges Beat Fixed Activations">
+    <meta property="og:description" content="Every multilayer perceptron is built on the same deal: the edges carry numbers and the nodes carry the nonlinearity. A weight multiplies a signal, a fixed ">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fz46binhmv072fbztwcdi.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/kolmogorov-arnold-networks-why-learnable-functions-on-edges-beat--92640.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Kolmogorov-Arnold Networks: Why Learnable Functions on Edges Beat Fixed Activations", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fz46binhmv072fbztwcdi.png"], "datePublished": "2026-11-21T22:39:18", "dateModified": "2026-11-21T22:49:07.217902", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/kolmogorov-arnold-networks-why-learnable-functions-on-edges-beat--92640.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Kolmogorov-Arnold Networks: Why Learnable Functions on Edges Beat Fixed Activations</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 21 Nov 2026 &bull; ⏱️ 8 min read (1592 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Every multilayer perceptron is built on the same deal: the edges carry numbers and the nodes carry the nonlinearity.</li><li style='margin-bottom:6px;'>The Kolmogorov-Arnold representation theorem, proved in 1957, states that any continuous multivariate function on a bounded domain can be written as a finite composition of continuous univariate functions and addition.</li><li style='margin-bottom:6px;'>Industry observers note that that is a striking claim.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-92640"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-92640"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-92640"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Kolmogorov-Arnold Networks: Why Learnable Functions on Edges Beat Fixed Activations" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fz46binhmv072fbztwcdi.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-92640">Every multilayer perceptron is built on the same deal: the edges carry numbers and the nodes carry the nonlinearity. A weight multiplies a signal, a fixed activation such as ReLU or GELU bends it, and the network learns by adjusting the numbers. It works, but the deal is arbitrary. The Kolmogorov-Arnold representation theorem says there is another way to build a function, one where the edges themselves are learnable functions and the nodes only add. Kolmogorov-Arnold Networks, or KANs, take that theorem literally, and the result is a model that is more interpretable, more parameter-efficient on structured problems, and surprisingly good at rediscovering symbolic laws from data.</p>
+<p>The Kolmogorov-Arnold representation theorem, proved in 1957, states that any continuous multivariate function on a bounded domain can be written as a finite composition of continuous univariate functions and addition. In its two-layer form:.</p>
+<p>Industry observers note that that is a striking claim. It claims a function of n variables never needs a genuinely multivariate nonlinearity. It only needs univariate functions, applied to single inputs, combined by addition. The outer functions 
+
+Φq\Phi_qΦq​
+
+ and the inner functions 
+
+ϕq,p\phi_{q,p}ϕq,p​
+
+ depend on f, and the theorem says nothing about how smooth they are. In the worst case they can be fractal and pathological, which is why the theorem sat on the shelf for decades as a curiosity rather than a blueprint.</p>
+<p>According to recent reports, the KAN idea is to turn the theorem into a trainable architecture by restricting those univariate functions to a smooth, parameterised family: B-splines. If the true function is reasonably well behaved, a spline can approximate each univariate piece closely, and the network can learn the decomposition from data. The theorem supplies the structure; the splines supply the learnability.</p>
+<p>It has been revealed that an MLP layer is a linear map followed by a fixed nonlinearity applied at each node. A KAN layer inverts that arrangement. Every edge carries a learnable univariate function, and every node simply sums its incoming signals:.</p>
+<p>Sources indicate that there is no activation function at the node at all. The nonlinearity lives entirely on the edges, inside the 
+
+ϕl,j,i\phi_{l,j,i}ϕl,j,i​
+
+.</p>
+<p>Each edge function is parameterised as a B-spline plus a smooth basis function:.</p>
+<p>Here 
+
+b(x)=x/(1+e−x)b(x) = x / (1 + e^{-x})b(x)=x/(1+e−x)
+
+ is the SiLU basis, 
+
+BiB_iBi​
+
+ are B-spline basis functions of order k on a grid of size G, and the coefficients 
+
+cic_ici​
+
+ are the learnable parameters. The grid controls resolution: a coarse grid gives a smooth, low-capacity function, while a fine grid can capture sharp features. One practical advantage is grid extension. A KAN trained on a coarse grid can be refined to a finer grid by fitting the finer spline to the learned function, without retraining from scratch. That is the analogue of increasing resolution in a numerical method, and it gives a principled way to add capacity during training.</p>
+<p>In a recent development, stacking layers composes these univariate functions, so a deep KAN can represent functions whose structure is compositional: a sum of functions of sums of functions, and so on. The width of a layer sets how many univariate pieces are available at that stage, just as width in an MLP sets how many features are available.</p>
+<p>In a recent development, the first payoff is interpretability. In an MLP, the learned object is a weight matrix, and understanding what a single weight means requires tracing it through the rest of the network. In a KAN, the learned object on each edge is a one-dimensional function, and a one-dimensional function can be plotted. You can look at an edge and see that it learned something close to a sine wave, a logarithm, or a saturating curve. After training, edges whose functions are near zero can be pruned, and the remaining functions can be fitted with symbolic expressions, turning the trained network into a readable formula. That is why KANs have attracted attention in scientific machine learning: when the data come from a physical law, the network has a chance of rediscovering the law rather than merely approximating it.</p>
+<p>The second payoff is parameter efficiency on structured problems. A function with a compositional structure, such as 
+
+f(x,y)=sin⁡(xy)f(x, y) = \sin(x y)f(x,y)=sin(xy)
+
+ or a polynomial in a few variables, can require a large MLP to approximate to high accuracy, because the MLP must build the structure out of generic piecewise-linear pieces. A KAN can represent the same structure directly, with far fewer parameters. In the original KAN paper, small KANs matched or beat larger MLPs on symbolic regression tasks and on fitting special functions, often by orders of magnitude in parameter count.</p>
+<p>The third payoff is a cleaner inductive bias for low-dimensional problems. Many scientific problems have few inputs and a smooth target with identifiable structure. An MLP treats such a problem as a generic high-dimensional approximation task. A KAN treats it as a composition of univariate pieces, which is a much stronger and often correct prior.</p>
+<p id="sec-mid-92640">The cleanest demonstration is symbolic regression. Suppose the data come from a function with multiplicative structure, and you want the model to recover it rather than just interpolate it. Using the pykan library, the workflow is short:.</p>
+<p>Three things about this workflow are worth noting. First, model.plot() is not a debugging aid; it is the main interpretability tool, because each edge function is a plot. Second, pruning is meaningful in a way weight pruning in an MLP is not: removing an edge removes a whole univariate function, and the surviving graph is a readable decomposition of the target. Third, symbolic_formula() closes the loop from data to equation, which is the point of the exercise. If the learned functions are close to sine, exponential, or polynomial pieces, the symbolic fit recovers them, and you can check the recovered formula against held-out data.</p>
+<p>Industry observers note that the same pattern applies to real scientific data. Given measurements of a physical system, a KAN can be trained, pruned, and converted to a candidate formula, which a domain expert can then inspect, test, and refine. That is a different workflow from deploying a black-box predictor, and for science it is often the more valuable one.</p>
+<p>KANs are not a replacement for MLPs, and the honest limitations matter more than the headline results.</p>
+<p>Training is slower. Evaluating a spline on every edge costs more than a matrix multiply followed by a pointwise activation, and the backward pass through the spline coefficients is heavier still. For large models, that cost dominates, and the parameter efficiency on small problems does not translate into a compute advantage at scale.</p>
+<p>Scaling behaviour is unsettled. The original paper reported favourable neural scaling laws for KANs on some tasks, but follow-up work has shown MLPs catching up or overtaking KANs as model and data scale grow, particularly on high-dimensional tasks such as vision and language where the target function has little low-dimensional compositional structure to exploit. No KAN has yet matched a transformer on a large language or vision benchmark, and there is no evidence it should.</p>
+<p>Optimisation is trickier. Spline coefficients interact with each other in ways that weights in an MLP do not, and the loss landscape can be harder to navigate. Grid extension helps, but choosing the grid size, spline order, and regularisation strength adds hyperparameters that an MLP does not have. Too fine a grid overfits; too coarse a grid underfits; and the right choice depends on the smoothness of the unknown target.</p>
+<p>Finally, interpretability has a limit. A KAN is interpretable when the true function is compositional and the learned decomposition is sparse. On a genuinely high-dimensional problem with no such structure, the learned edge functions are arbitrary wiggles, and plotting them tells you nothing. Interpretability is a property of the problem as much as of the model.</p>
+<p>Sources indicate that use a KAN when the problem is low-dimensional, the target is plausibly a composition of simple univariate functions, and you care about the formula as much as the prediction. Scientific modelling, symbolic regression, and small tabular problems with smooth structure are the natural home. Avoid KANs when the inputs are high-dimensional raw signals, when training speed at scale matters, or when a transformer or a large MLP is already known to work well. In those settings, the MLP's simplicity and speed win.</p>
+<p>A practical checklist before training: start with a small width and a coarse grid, and refine the grid only if the fit is underfitting; use the L1-style regularisation on edge magnitudes that the library provides, so pruning has something to work with; plot the edge functions early, not just at the end, because a healthy KAN shows smooth, recognisable curves while a struggling one shows noise; and always validate the symbolic formula on held-out data before believing it, since a spline can fit training noise with a plausible-looking curve.</p>
+<p>In a recent development, MLPs put the learning in the weights and the nonlinearity in fixed activations. KANs put the learning in the functions themselves, with one learnable univariate function per edge and nothing but addition at the nodes. The Kolmogorov-Arnold theorem guarantees that such a decomposition exists; B-splines make it trainable. The result is not a universal replacement for the MLP, but a sharper tool for a specific job: low-dimensional, structured problems where the learned function should be inspected, pruned, and ideally read back as a formula. When the problem fits that description, a KAN can do with a handful of parameters what an MLP needs thousands for, and it can show its working.</p>
+<p id="sec-end-92640">Connect with me on LinkedIn: linkedin.com/in/umeshtharukaofficial.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/umeshtharukaofficial/kolmogorov-arnold-networks-why-learnable-functions-on-edges-beat-fixed-activations-2aad" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-the-design-workflow-is-broken-here-is-how-vitalii-k-93366.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93366. Latest Update: The Design Workflow Is Broken. Here Is How Vitalii Khomenko Thinks It Should Be Fixed
+        </a>
+        
+        <a href="beyond-lora-can-you-beat-the-most-popular-fine-tuning-technique-93056.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93056. Beyond LoRA: Can you beat the most popular fine-tuning technique?
+        </a>
+        
+        <a href="announcing-aws-lambda-web-functions-92983.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92983. Announcing AWS Lambda Web Functions
+        </a>
+        
+        <a href="tech-report-aws-weekly-roundup-aws-lambda-web-functions-amazon-s3-92973.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92973. Tech Report: AWS Weekly Roundup: AWS Lambda Web Functions, Amazon S3 on the Vercel Marketplace, and more (October 19, 2026)
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

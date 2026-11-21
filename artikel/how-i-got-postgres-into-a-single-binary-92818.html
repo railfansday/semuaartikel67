@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I Got Postgres into a Single Binary</title>
+    <meta name="description" content="SQLite is one of my favorite database technologies. It's a full SQL database, designed as an embeddable library, that stores all its data in a single file.">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-i-got-postgres-into-a-single-binary-92818.html">
+    <meta property="og:title" content="How I Got Postgres into a Single Binary">
+    <meta property="og:description" content="SQLite is one of my favorite database technologies. It's a full SQL database, designed as an embeddable library, that stores all its data in a single file.">
+    <meta property="og:image" content="https://progrium.xyz/articles/2026/single-binary-postgres.card.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-i-got-postgres-into-a-single-binary-92818.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How I Got Postgres into a Single Binary", "image": ["https://progrium.xyz/articles/2026/single-binary-postgres.card.png"], "datePublished": "2026-11-20T00:00:00Z", "dateModified": "2026-11-21T22:49:15.352734", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-i-got-postgres-into-a-single-binary-92818.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How I Got Postgres into a Single Binary</h1>
+        <div class="meta-line">🌐 Source: <strong>Progrium</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 7 min read (1350 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>SQLite is one of my favorite database technologies.</li><li style='margin-bottom:6px;'>At the other end of the spectrum is Postgres.</li><li style='margin-bottom:6px;'>According to recent reports, SQLite is a natural fit for software that needs a database but isn't meant to be deployed in the cloud at scale: desktop apps, self-hosted tools, things you run locally.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-92818"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-92818"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-92818"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How I Got Postgres into a Single Binary" loading="lazy" src="https://progrium.xyz/articles/2026/single-binary-postgres.card.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-92818">SQLite is one of my favorite database technologies. It's a full SQL database, designed as an embeddable library, that stores all its data in a single file. The sqlite3 command line tool is great too. You point it at a file and run queries. There's no server to run.</p>
+<p>At the other end of the spectrum is Postgres. It's the most capable general purpose SQL database, trusted in production at scale, and is something of an industry standard. With that comes complexity, starting with the fact that it's client-server.</p>
+<p>According to recent reports, SQLite is a natural fit for software that needs a database but isn't meant to be deployed in the cloud at scale: desktop apps, self-hosted tools, things you run locally. These applications can use SQLite and manage it themselves, so you barely know there's a database involved.</p>
+<p>Recent findings suggest that so when you find self-hostable open source software you'd like to run on your own computer, it can be daunting when it says it requires Postgres. Now you're responsible for setting up a database and getting it ready for the software to use.</p>
+<p>According to recent reports, sure, you can run Postgres in Docker, and plenty of projects recommend it. But now you have two dependencies. If you don't already have Docker, you have to install it, which can mean a VM and a daemon on your machine. Then you have to run Postgres in it and make sure it's running whenever you use the software. That's a lot just to try something you don't know you want yet.</p>
+<p>Wouldn't it be great to have the SQLite experience, but with Postgres?</p>
+<p>According to recent reports, that's 
+              miniPG
+              . It isn't Postgres as a library. There's already a WASM project for that, reasonably called PGlite. miniPG is closer to the SQLite CLI: a single program that embeds a full Postgres server and client, wrapped up so you can use it the way you'd use sqlite3. Point it at a path, that path becomes the database, and you can run queries against it right away. There's no server to set up or keep running.</p>
+<p>Jumping into a new Postgres database to try something out or debug it is now easier than using Postgres in a Docker container, and you don't need Docker at all. And miniPG still provides a fully functional Postgres server for software that needs one. In many cases, you can just launch an open source program that looks for its Postgres config in the environment with miniPG.</p>
+<p>miniPG comes as a single, self-contained executable. You can just point it at a directory and run a query. There's no server to start, nothing to configure, and the result comes back immediately.</p>
+<p>That directory is the database. When nothing is using it, it's just files on disk. You can copy it, back it up, or delete it.</p>
+<p>This is actually real Postgres, not a compatibility layer, and this binary compiles to Mac, Windows, and Linux.</p>
+<p>When some software expects a Postgres server, miniPG can be one:.</p>
+<p>Like I mentioned before, it can even launch programs with environment variables that configure it for this Postgres database:.</p>
+<p>In a recent development, when the program is terminated, there's no database daemon to leave around or remember to stop. Only the data itself is kept right there on disk, ready to be used next time.</p>
+<p>Instructions for getting it and even an interactive demo are available on the 
+              miniPG website
+              .</p>
+<p>Software people, from developers to open source power people, and agents too, can use miniPG whenever they'd reach for SQLite but need Postgres.</p>
+<p>It has been revealed that this really makes Postgres more viable for scenarios it wasn't before. I'd love to hear the use cases I haven't thought of.</p>
+<p>miniPG is the result of several attempts at embedding real Postgres into a standalone, cross platform binary.</p>
+<p id="sec-mid-92818">Sources indicate that the obvious place to start was PGlite. The name says it all, and in a sense it delivers: it's Postgres compiled to WebAssembly. In Go, you can load the module with the wazero runtime, run Postgres inside your program, and have your app connect to it. That's very close to the SQLite library experience.</p>
+<p>Brad Fitzpatrick even made a 
+              proof of concept
+              that does this in a way that makes PGlite work as a driver for the standard Go SQL package.</p>
+<p>In a recent development, the catch is that PGlite only supports a single connection and a single session. Software written for a real Postgres server often assumes it can have more. A common pattern is to start a transaction, then make another query on a separate connection before committing. With only one connection, that second query waits for a transaction that's waiting on it. The app I was trying to run deadlocked.</p>
+<p>Industry observers note that if I needed real Postgres, I could run real Postgres in a virtual machine I could embed. I have a soft spot for using webviews as portable containers, so I ran v86, an x86 emulator for the browser, inside one, and booted a full Postgres server in it.</p>
+<p>Industry observers note that the rest was plumbing. The headless webview opens a WebSocket back to the host program. Postgres connections are tunneled through it, and Postgres writes its data to a mount served over the same socket. The benefit of this approach is whatever platform the host program runs on, Postgres is always the same build running in the same VM.</p>
+<p>I even built 
+              webframe
+              for this, a library and CLI for running a native system webview headlessly.</p>
+<p>The result was a proof of concept I called postgres-standalone: one binary, any platform, give it a port and a data directory, and you get a full Postgres server. It worked!</p>
+<p>Sources indicate that however, it was also an order of magnitude slower than native. Postgres in a VM in WebAssembly in a browser. Initializing and checking a database took a while. In the best case, on my M3 MacBook, it took 7 seconds before it would accept a connection.</p>
+<p>I'd already written a design doc for the SQLite-style CLI: give it a directory, run a query, no server to run. On this stack, though, every SELECT * would sit there for 7 seconds first. That ruins the experience, so I had to shelve it. I had proven that embeddable Postgres was possible, just not pleasant.</p>
+<p>Later, for unrelated reasons, I built 
+              Hyper9
+              . Inspired by system API translation, an approach that Wine and Valve's Proton are built on, combined with a unique way to use hypervisors, Hyper9 lets you run Plan 9 executables at near native speed on all platforms.</p>
+<p>I'll be posting more about Plan 9 soon, but with a little extra magic, I was able to run the same Postgres at near native speed, in isolation, on all platforms. It's effectively the same approach as the previous attempt, but now without the slowdown.</p>
+<p>Startup went from 7 seconds to 800ms. So I dusted off the design doc and built it. PGlite was taken, so postgres-standalone became miniPG.</p>
+<p>Industry observers note that miniPG isn't a replacement for real Postgres deployments. If you're running in the cloud, using replicas, or serving many users over many connections, use Postgres the normal way.</p>
+<p>miniPG is for local, single-user programs: the places SQLite would fit, but you need Postgres.</p>
+<p>That said, go ahead and see how far you can push it!</p>
+<p>According to recent reports, I'd really like to see how miniPG holds up in the wild, especially across different platforms and architectures. Please try it and tell me what breaks.</p>
+<p>Industry observers note that if this works, it proves a model that goes well beyond Postgres: taking complicated systems and packaging them as a single binary for more specific use cases. That's the part I find most exciting, and it's one of many new possibilities Hyper9 enables.</p>
+<p id="sec-end-92818">Once a month I send out a newsletter with a little of everything: latest articles, the best of the logs, useful resources, and a few surprises.</p>
+<p style="margin-top: 25px;">
+<a href="https://progrium.xyz/articles/2026/single-binary-postgres" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="we-got-claude-to-fine-tune-an-open-source-llm-93260.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93260. We Got Claude to Fine-Tune an Open Source LLM
+        </a>
+        
+        <a href="i-completed-gta-6s-indie-game-darling-pastiche-tenebrae-lux-and-a-93246.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93246. I completed GTA 6's indie game darling pastiche, Tenebrae Lux, and all I got was this lousy sense of accomplishment
+        </a>
+        
+        <a href="we-got-claude-to-build-cuda-kernels-and-teach-open-models-93209.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93209. We Got Claude to Build CUDA Kernels and teach open models!
+        </a>
+        
+        <a href="what-is-pathways-single-controller-training-for-large-models-93140.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93140. What is Pathways? Single-controller training for large models
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

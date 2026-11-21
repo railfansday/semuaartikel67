@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nvidia’s journey to forge the one CPU SKU to rule them all</title>
+    <meta name="description" content="Each generation of Intel Xeons or AMD Epycs brings dozens of newly introduced SKUs: high-core count parts tuned for throughput, high-frequency ones optimiz">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/nvidias-journey-to-forge-the-one-cpu-sku-to-rule-them-all-92850.html">
+    <meta property="og:title" content="Nvidia’s journey to forge the one CPU SKU to rule them all">
+    <meta property="og:description" content="Each generation of Intel Xeons or AMD Epycs brings dozens of newly introduced SKUs: high-core count parts tuned for throughput, high-frequency ones optimiz">
+    <meta property="og:image" content="https://image.theregister.com/5228929.jpg?imageId=5228929&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/nvidias-journey-to-forge-the-one-cpu-sku-to-rule-them-all-92850.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Nvidia’s journey to forge the one CPU SKU to rule them all", "image": ["https://image.theregister.com/5228929.jpg?imageId=5228929&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683"], "datePublished": "2026-11-20T18:45:50.000Z", "dateModified": "2026-11-21T22:49:17.552865", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/nvidias-journey-to-forge-the-one-cpu-sku-to-rule-them-all-92850.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Hardware & Chips</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Nvidia’s journey to forge the one CPU SKU to rule them all</h1>
+        <div class="meta-line">🌐 Source: <strong>Theregister</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 5 min read (986 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Each generation of Intel Xeons or AMD Epycs brings dozens of newly introduced SKUs: high-core count parts tuned for throughput, high-frequency ones optimized for latency, low-power chips designed for the edge, and everything in between.</li><li style='margin-bottom:6px;'>But if you ask Ian Finder, who heads development of Nvidia’s datacenter CPUs, for the vast majority of use cases, all those SKUs are overkill.</li><li style='margin-bottom:6px;'>Nvidia is a relative newcomer to the datacenter CPU space.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-92850"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-92850"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-92850"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Nvidia’s journey to forge the one CPU SKU to rule them all" loading="lazy" src="https://image.theregister.com/5228929.jpg?imageId=5228929&amp;x=0&amp;y=0&amp;cropw=100&amp;croph=100&amp;panox=0&amp;panoy=0&amp;panow=100&amp;panoh=100&amp;width=1200&amp;height=683" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-92850">Each generation of Intel Xeons or AMD Epycs brings dozens of newly introduced SKUs: high-core count parts tuned for throughput, high-frequency ones optimized for latency, low-power chips designed for the edge, and everything in between.</p>
+<p>But if you ask Ian Finder, who heads development of Nvidia’s datacenter CPUs, for the vast majority of use cases, all those SKUs are overkill. “There was sort of an overskewing, for many years on the other vendors side of things,” he told El Reg on the sidelines of Supercomputing 2026 this week.</p>
+<p>Nvidia is a relative newcomer to the datacenter CPU space. The firm’s first part, called Grace, debuted in 2023, but didn’t see widespread deployment outside AI headnodes, high-end NICs, and a handful of standalone CPU deployments by hyperscalers like Meta.</p>
+<p>Industry observers note that we explored the chip in greater detail earlier this year, but the GPU slinger’s latest CPU, Vera, is a different beast. In addition to showing up as part of Nvidia’s Vera-Rubin superchips, the CPU will also be offered in standalone CPU racks, storage, and context memory systems. Just this week, Nvidia revealed a newly introduced rack with 192 Vera CPUs aimed at high-performance computing (HPC) workloads, which don’t translate well to GPUs. And at least on paper, a single SKU with 88 cores clocking to 3.3 GHz powers all of them.</p>
+<p>Historically, CPUs with different combinations of cores, clocks, I/O, and power have been used in these roles.</p>
+<p>It has been revealed that according to Finder, most datacenter CPUs haven’t been loaded that heavily, and as a result unloaded latency has been the optimization point. As a consequence, CPUs that rely on high core counts to boost throughput often suffer from elevated loaded latencies.</p>
+<p>It has been revealed that on the flip side, chipmakers can optimize for loaded latency, but this usually comes at the expense of throughput. We see this pretty clearly across AMD’s last few generations of Epycs, where it designed both space-efficient Zen-C cores that prioritize throughput and fatter frequency-optimized versions that prioritize latency.</p>
+<p>Recent findings suggest that “As more cores are up and running, your latency to memory gets higher because you have to deal with congestion on the connectivity buses,” More than Moore analyst Ian Cutress tells The Reg. “What Nvidia is saying is right. Sometimes, you do have to pick between core count and core latency.”.</p>
+<p>88 custom cores, 176 funky threads, 1.5 TB of laptop RAM, and 1.8 TB/s of NVLink connectivity — this isn't your typical datacenter chip.</p>
+<p>With Vera, Nvidia sought to thread that needle to design a balanced architecture that maintains low latencies and high throughput even when all 88 cores are loaded. This does mean making some compromises – in particular, the CPU's vector unit isn’t the beefiest. But if you’ve got GPUs capable of running vectorized code, that compromise starts to make a lot more sense – and if you’re buying Vera you almost certainly do.</p>
+<p>“If you do a few things like that, you can actually get a part that, for the workloads people care about — knowledge agents for CI/CD, for software engineering, or databases and analytics — you can build a part that gets you the same performance per core as the frequency-optimized x86 parts at the same throughput per watt as the density-optimized parts,” Finder argued.</p>
+<p id="sec-mid-92850">We should note that Nvidia isn’t unique in this line of thinking. Cloud providers have long passed on the highest core-count parts in Intel or AMD’s lineup in favor of parts they feel deliver the right mix of throughput, latency, memory bandwidth, and capacity.</p>
+<p>The reason, in part, is that cloud providers don’t know exactly what their customers will actually be doing with those cores, and so it’s better to offer something that’s well-rounded than one that has the highest clocks or lowest latency. This same logic works pretty well for agent sandboxes.</p>
+<p>“Nvidia is confident that it understands the market well enough that one chip will cover most use cases,” Cutress said. “You could argue that Nvidia just wants to corner that bulk market.”.</p>
+<p>Having mentioned that, there are plenty of reasons to have multiple SKUs or product lines. Throughout much of AMD’s latest launch cycle, the House of Zen has argued its chips make for better agentic CPUs because agents aren’t one workload but many. Some may benefit from higher core counts while others may benefit from higher frequency, and AMD’s more diverse portfolio offers choice.</p>
+<p>To that point, Vera does have one trick up its sleeve: a split personality. The processor is one of the few Arm chips that supports simultaneous multithreading (SMT), but the way it works differs wildly from what Intel would call Hyperthreading.</p>
+<p>According to recent reports, when enabled, SMT effectively bifurcates Vera’s Olympus cores. Eighty-eight cores turns into something that functionally looks more like 176 narrower cores. So if you need more throughput than 88 cores afford, or your workload doesn’t benefit materially from a wider core, Vera does offer some flexibility.</p>
+<p>Recent findings suggest that 16 channels of DDR5, 5 GHz clock speeds, and support for CXL 3.1 memory god boxes? What's not to like?</p>
+<p>A broader SKU stack also helps with binning. Chip manufacturing isn’t a perfect process, and you’re going to run into defective cores from time to time. Binning allows chipmakers to sell these defective chips at a discount.</p>
+<p>Cutress suspects that Nvidia is probably doing this for its customers and it’s just not advertising them as different SKUs the way Intel and AMD have the past few decades.</p>
+<p>For instance, a hyperscaler might be happy to take a 72-core variant of Vera that clocks a little higher or delivers more memory bandwidth per core for the same amount of power.</p>
+<p id="sec-end-92850">But for now we have just the one, for the green lord on their green throne in the land of AI where the bots lie. ®.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.theregister.com/systems/2026/11/20/nvidias-journey-to-forge-the-one-cpu-sku-to-rule-them-all/5311438" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-one-martini-to-rule-them-all-89578.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #89578. Breaking: One Martini to Rule Them All
+        </a>
+        
+        <a href="stop-treating-agents-as-one-off-projects-and-start-running-them-a-93133.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93133. Stop treating agents as one-off projects and start running them as a continuous discipline
+        </a>
+        
+        <a href="alex-coopers-postpartum-journey-has-one-thing-in-common-with-baby-90961.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #90961. Alex Cooper’s Postpartum Journey Has One Thing in Common With Baby Son
+        </a>
+        
+        <a href="latest-update-ciara-has-one-holiday-cooking-rule-amp-you-really-d-89204.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #89204. Latest Update: Ciara Has One Holiday Cooking Rule &amp; You Really Don't Want To Break It
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

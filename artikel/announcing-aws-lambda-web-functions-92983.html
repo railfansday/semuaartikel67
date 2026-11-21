@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcing AWS Lambda Web Functions</title>
+    <meta name="description" content="Today, we’re announcing AWS Lambda Web Functions, a upcoming form factor that lets you run standard HTTP web applications on Lambda without rewriting your ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/announcing-aws-lambda-web-functions-92983.html">
+    <meta property="og:title" content="Announcing AWS Lambda Web Functions">
+    <meta property="og:description" content="Today, we’re announcing AWS Lambda Web Functions, a upcoming form factor that lets you run standard HTTP web applications on Lambda without rewriting your ">
+    <meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/10/14/01979_AWS_Lambda_Web_Functions-horizontal-1-1260x628.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/announcing-aws-lambda-web-functions-92983.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Announcing AWS Lambda Web Functions", "image": ["https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/10/14/01979_AWS_Lambda_Web_Functions-horizontal-1-1260x628.png"], "datePublished": "2026-10-12T15:34:47-07:00", "dateModified": "2026-11-21T22:49:28.472158", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/announcing-aws-lambda-web-functions-92983.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Announcing AWS Lambda Web Functions</h1>
+        <div class="meta-line">🌐 Source: <strong>Amazon</strong> &bull; 📅 12 Oct 2026 &bull; ⏱️ 5 min read (983 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Today, we’re announcing AWS Lambda Web Functions, a upcoming form factor that lets you run standard HTTP web applications on Lambda without rewriting your code into an event handler.</li><li style='margin-bottom:6px;'>With this launch, AWS Lambda now offers three distinct form factors, each built on the same Firecracker isolation technology and designed for a different programming model.</li><li style='margin-bottom:6px;'>Lambda Event Functions are what you already know as Lambda functions.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-92983"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-92983"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-92983"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Announcing AWS Lambda Web Functions" loading="lazy" src="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/10/14/01979_AWS_Lambda_Web_Functions-horizontal-1-1260x628.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-92983">Today, we’re announcing AWS Lambda Web Functions, a upcoming form factor that lets you run standard HTTP web applications on Lambda without rewriting your code into an event handler. You can take a standard port-listening server built with Express, Hono, Fastify, Next.js, or any Node.js framework, deploy it with a single command, and Lambda automatically handles scaling, multi-region distribution, and active CPU billing. No adapters, no infrastructure to manage, and no framework lock-in.</p>
+<p>With this launch, AWS Lambda now offers three distinct form factors, each built on the same Firecracker isolation technology and designed for a different programming model.</p>
+<p>Lambda Event Functions are what you already know as Lambda functions. They use the event-driven, single-concurrent handler model with wall-clock billing. We’re introducing the “Event Functions” name to highlight that programming model: your function receives an event, processes it, and returns a response. The event-driven programming model is ideal for event processing, queue consumers, and invocations triggered by other AWS services.</p>
+<p>Lambda Web Functions use an HTTP-native programming model with multi-concurrent execution and active CPU billing. Your code listens on a port and handles standard HTTP requests. That programming model is ideal for web applications, API backends, and interactive HTTP workloads where multiple concurrent requests and I/O-heavy processing are the norm.</p>
+<p>Lambda MicroVMs provide isolated, stateful sandbox environments with customer-managed lifecycles for running untrusted or user-generated code.</p>
+<p>According to recent reports, the three complement each other. An application might use Event Functions for asynchronous backend processing, Web Functions for the user-facing API and server-side rendering layer, and MicroVMs for interactive code execution features, all within the same AWS account and sharing the same operational model.</p>
+<p>Industry observers note that why Web FunctionsModern web applications need to serve global audiences with fast, consistent response times while giving developers the freedom to use standard frameworks and iterate promptly. Building this today typically requires assembling multiple infrastructure components, configuring multi-region deployments, setting up latency-based routing, and tuning billing models to avoid paying for I/O wait. Developers often find themselves adapting their application code to fit a specific compute model rather than deploying the HTTP server they already have.</p>
+<p>In a recent development, lambda Web Functions removes this complexity. Each execution environment handles multiple requests simultaneously (up to 128 concurrent requests per environment), which means a burst of incoming traffic can share warm environments instead of mapping each request to a new one. Web Functions meter the CPU time your code uses, so time spent waiting on a database query or an API call consumes little CPU. Memory is metered for as long as the execution environment exists. For I/O-heavy web workloads like server-side rendering, API backends, and AI inference endpoints streaming token responses, this can reduce compute costs.</p>
+<p>In a recent development, let’s try it outTo get started, I wrote a simple Express.js server. This is the same code I run locally with node index.js, no Lambda-specific adapters or wrappers required.</p>
+<p>The only difference from running locally is the AWS_LAMBDA_HTTP_ENDPOINT environment variable, which Lambda sets to the host and port your server must listen on. To run locally, set it yourself, for example AWS_LAMBDA_HTTP_ENDPOINT=127.0.0.1:3000 node index.js.</p>
+<p>With my code ready, I deployed using the AWS Command Line Interface (AWS CLI):.</p>
+<p id="sec-mid-92983">One command. No prior resource setup. The CLI bundled my source, created the Web Function, published its first revision, attached a Web Function endpoint, and returned a live HTTPS URL in under a minute.</p>
+<p>It has been revealed that A revision is an immutable snapshot of the code I deployed. The endpoint is the HTTPS URL that routes traffic to a revision, or splits traffic across revisions. Those are the resources I use to iterate and to control how traffic moves to fresh code.</p>
+<p>Sources indicate that next, I wanted my application to serve customers in Europe and Asia with lower latency. I redeployed with multiple regions:.</p>
+<p>Recent findings suggest that lambda Web Functions replicated my code to all three regions and configured latency-based routing automatically. Each request now routes to the Region with the lowest latency for the caller, on a best-effort basis, through one global URL (.lambda-web.global.on.aws).</p>
+<p>When I updated my code and ran the same deploy command again, the CLI detected the existing function, uploaded the newly introduced revision, and pointed the endpoint at it. Total turnaround from code change to live: seconds.</p>
+<p>For production workflows that require a more gradual rollout, I can shift traffic between revisions with a single API call:.</p>
+<p>This sends 90% of endpoint traffic to the current revision and 10% to the new one, giving me a canary deployment without additional tooling.</p>
+<p>Better together with Amazon CloudFrontFor applications that combine static and dynamic content, Web Functions works well alongside Amazon CloudFront. You can select a Web Function endpoint as the origin for your CloudFront distribution. Static assets are served from the cache while dynamic requests route to your Web Function, giving you CDN performance for static content with serverless compute for the dynamic parts.</p>
+<p>Web Functions improves the private-origin experience with CloudFront. With this launch, you attach CloudFront origin access control (OAC) to a Web Function endpoint instead. CloudFront signs requests to the origin, and the endpoint allows only your distribution to invoke it. You get the same private-origin pattern CloudFront already provides for Amazon Simple Storage Service (Amazon S3), without exposing the endpoint or adding custom authorization to your app.</p>
+<p>Now availableAWS Lambda Web Functions is available today in US East (N. Virginia), US East (Ohio), US West (Oregon), Asia Pacific (Tokyo), and Europe (Ireland). Web Functions run Node.js 24 (nodejs24.x) on Arm64 at launch and support Amazon Virtual Private Cloud (VPC) connectivity, allowing your function to access resources that exist within a VPC.</p>
+<p>To get started, deploy your first Web Function in under a minute:.</p>
+<p id="sec-end-92983">For pricing details, visit the AWS Lambda pricing page. To learn more, see the Lambda Web Functions documentation.</p>
+<p style="margin-top: 25px;">
+<a href="https://aws.amazon.com/blogs/aws/announcing-aws-lambda-web-functions-for-fast-consistent-web-app-performance-anywhere/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-aws-weekly-roundup-aws-lambda-web-functions-amazon-s3-92973.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92973. Tech Report: AWS Weekly Roundup: AWS Lambda Web Functions, Amazon S3 on the Vercel Marketplace, and more (October 19, 2026)
+        </a>
+        
+        <a href="benchmarking-aws-amplify-lambda-web-functions-and-ecs-for-nextjs-80909.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #80909. Benchmarking AWS Amplify, Lambda, Web Functions, and ECS for Next.js
+        </a>
+        
+        <a href="aws-lambda-now-supports-gpu-instances-for-event-functions-on-lamb-92940.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92940. AWS Lambda now supports GPU instances for Event Functions on Lambda Managed Instances
+        </a>
+        
+        <a href="announcing-aws-well-architected-agent-an-ai-powered-intelligence--92995.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92995. Announcing AWS Well-Architected Agent, an AI-powered intelligence to optimize your cloud environment (preview)
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

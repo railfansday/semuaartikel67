@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What 1 GB and 16 GB of managed Postgres really cost: notes from 11 providers</title>
+    <meta name="description" content="I wanted a plain answer to a plain question: what does it cost to keep one Postgres database running all month on a managed service? Not the &quot;from&quot; price, ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/what-1-gb-and-16-gb-of-managed-postgres-really-cost-notes-from-11-92636.html">
+    <meta property="og:title" content="What 1 GB and 16 GB of managed Postgres really cost: notes from 11 providers">
+    <meta property="og:description" content="I wanted a plain answer to a plain question: what does it cost to keep one Postgres database running all month on a managed service? Not the &quot;from&quot; price, ">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ftts7t46cipusdnkwax5p.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/what-1-gb-and-16-gb-of-managed-postgres-really-cost-notes-from-11-92636.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "What 1 GB and 16 GB of managed Postgres really cost: notes from 11 providers", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ftts7t46cipusdnkwax5p.png"], "datePublished": "2026-11-21T22:41:00", "dateModified": "2026-11-21T22:49:06.972899", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/what-1-gb-and-16-gb-of-managed-postgres-really-cost-notes-from-11-92636.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>What 1 GB and 16 GB of managed Postgres really cost: notes from 11 providers</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 21 Nov 2026 &bull; ⏱️ 3 min read (646 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>I wanted a plain answer to a plain question: what does it cost to keep one Postgres database running all month on a managed service?</li><li style='margin-bottom:6px;'>So we priced the same setup on 11 providers at two sizes:.</li><li style='margin-bottom:6px;'>According to recent reports, the rules: one database, always on (730 hours), single node with no standby, in London where offered (Railway in Amsterdam, Render in Frankfurt, Heroku in its EU region).</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-92636"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-92636"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-92636"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="What 1 GB and 16 GB of managed Postgres really cost: notes from 11 providers" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ftts7t46cipusdnkwax5p.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-92636">I wanted a plain answer to a plain question: what does it cost to keep one Postgres database running all month on a managed service? Not the "from" price, but the bill once storage and any initiative fee you must pay first are added.</p>
+<p>So we priced the same setup on 11 providers at two sizes:.</p>
+<p>According to recent reports, the rules: one database, always on (730 hours), single node with no standby, in London where offered (Railway in Amsterdam, Render in Frankfurt, Heroku in its EU region). Storage and any compulsory strategy fee are included. Prices are in US dollars, before VAT, and were checked in November 2026. They change, so check the vendor's page before you commit.</p>
+<p>In a recent development, heroku is cheapest on paper, but it doesn't publish Essential-1's memory, so it may not match 1 GB. The cheapest with a stated 1 GB are DigitalOcean at $15.15 and AWS RDS at $15.80.</p>
+<p>Neon's figure keeps the compute on all month. A Neon database that scales to zero when idle costs less: Neon's own "typical" Launch figure is $15 a month.</p>
+<p>Recent findings suggest that railway's figure is an estimate. It bills the RAM and CPU a service actually uses, and we assumed the database holds all 16 GB and averages 10% of its CPU; each extra 10% adds $8. Heroku's Standard-3 ($400) has only 2 vCPU and 15.25 GB, so Standard-4 is its first plan that fits.</p>
+<p>Almost everyone bills storage separately, per GB a month: Neon $0.35, Render $0.30, Google Cloud SQL $0.204 in London, Railway $0.15, AWS RDS $0.133, and Supabase $0.125 after the 8 GB it includes.</p>
+<p>At 200 GB that's a real line on the bill: $70.00 at Neon, $60 at Render, $40.80 at Google Cloud SQL, $30 at Railway and $26.60 at AWS RDS.</p>
+<p id="sec-mid-92636">Minimums matter at the small end. AWS's gp3 storage starts at 20 GiB, so a 10 GB database pays for 20. Azure's Burstable servers can't go below a 32 GiB disk. Aiven's cheaper plans are fixed at 8 GB of storage, so its cheapest proposal that holds 10 GB is Startup-4 at $75, the same plan and price as a 2 vCPU / 4 GB database.</p>
+<p>Neon, AWS, Google Cloud, DigitalOcean, Aiven and Heroku charge no platform fee.</p>
+<p>Sources indicate that on 15 October 2026 DigitalOcean changed its database prepares. Accounts that have never created a database, and every account from 30 November, can only create Standard Edition clusters up to 4 GiB, with no standby nodes.</p>
+<p>It has been revealed that so a 16 GB database, or any high availability, now means Advanced Edition, from $135.75 a month. The 16 GB setup above is $283 there. The 16 GiB Standard intends still shown on the pricing page ($198.55 and $244.35) can't be bought by fresh customers. If you priced DigitalOcean before mid-October, price it again.</p>
+<p>Sources indicate that at 1 GB, platform fees and storage minimums move the order as much as the compute price does. At 16 GB the range runs from $198 to $750, and the shape of the plan (burstable or not, more RAM than you asked for, which edition a new account may buy) matters more than the hourly rate.</p>
+<p>Sources indicate that I keep the full table, with every price linked to the vendor's own page, including a third size (2 vCPU, 4 GB, 50 GB) and the standby prices. Prices were checked on 9 November 2026.</p>
+<p>Alan Lui was Global Head of Shangri-La Circle (2022-2025), growing it to 17 million members; grew Asia Miles from 8 million to 12 million members; and was CMO at the launch of Fusion Bank, a Hong Kong virtual bank. He writes about loyalty economics and real software costs at https://alanslui.com.</p>
+<p id="sec-end-92636">Drafted with AI assistance from my own notes and the price data on my site.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/alanslui/what-1-gb-and-16-gb-of-managed-postgres-really-cost-notes-from-11-providers-5a12" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-will-gta-6-really-cost-the-us-economy-1-billion-in-lost--90220.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #90220. Breaking: Will GTA 6 really cost the U.S. economy $1 billion in lost productivity?
+        </a>
+        
+        <a href="tech-report-a-hrefhttpswwwfiercehealthcarecomprovidershealthcare--88222.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #88222. Tech Report: <a href="https://www.fiercehealthcare.com/providers/healthcare-purchasers-must-weigh-hospital-quality-alongside-their-prices" hreflang="en">Healthcare purchasers must weigh hospital quality alongside their prices, Leapfrog notes</a>
+        </a>
+        
+        <a href="breaking-how-much-does-charging-an-ev-really-cost-this-redditor-c-86930.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #86930. Breaking: How much does charging an EV really cost? This Redditor claims $7 per month
+        </a>
+        
+        <a href="breaking-running-wireguard-for-a-development-team-the-hidden-cost-93378.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93378. Breaking: Running WireGuard for a Development Team: The Hidden Cost of VPN Maintenance
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

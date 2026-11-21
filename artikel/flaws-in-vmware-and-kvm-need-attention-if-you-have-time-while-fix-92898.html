@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flaws in VMware and KVM need attention, if you have time while fixing Java, PHP, and everything else</title>
+    <meta name="description" content="Critical Virtzilla bugs allow authentication bypass, as a nested virtualization glitch got Digital Ocean ducking. If you’ve got a moment to spare in betwee">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/flaws-in-vmware-and-kvm-need-attention-if-you-have-time-while-fix-92898.html">
+    <meta property="og:title" content="Flaws in VMware and KVM need attention, if you have time while fixing Java, PHP, and everything else">
+    <meta property="og:description" content="Critical Virtzilla bugs allow authentication bypass, as a nested virtualization glitch got Digital Ocean ducking. If you’ve got a moment to spare in betwee">
+    <meta property="og:image" content="https://image.theregister.com/262623.jpg?imageId=262623&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/flaws-in-vmware-and-kvm-need-attention-if-you-have-time-while-fix-92898.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Flaws in VMware and KVM need attention, if you have time while fixing Java, PHP, and everything else", "image": ["https://image.theregister.com/262623.jpg?imageId=262623&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683"], "datePublished": "2026-11-20T00:57:45.000Z", "dateModified": "2026-11-21T22:49:21.137387", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/flaws-in-vmware-and-kvm-need-attention-if-you-have-time-while-fix-92898.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Flaws in VMware and KVM need attention, if you have time while fixing Java, PHP, and everything else</h1>
+        <div class="meta-line">🌐 Source: <strong>Theregister</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 3 min read (594 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Critical Virtzilla bugs allow authentication bypass, as a nested virtualization glitch got Digital Ocean ducking.</li><li style='margin-bottom:6px;'>If you’ve got a moment to spare in between sorting out emergency patches for PHP, Java, and PostgreSQL, VMware has just bid for any remaining space on your schedule by publishing two critical-rated security advisories.</li><li style='margin-bottom:6px;'>According to recent reports, VMSA-2026-0009 addresses CVE-2026-123890, a 9.8-rated flaw that VMware says means a malicious actor with network access to vCenter may exploit this matter to bypass authentication and gain unauthorized access to the system.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-92898"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-92898"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-92898"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Flaws in VMware and KVM need attention, if you have time while fixing Java, PHP, and everything else" loading="lazy" src="https://image.theregister.com/262623.jpg?imageId=262623&amp;x=0&amp;y=0&amp;cropw=100&amp;croph=100&amp;panox=0&amp;panoy=0&amp;panow=100&amp;panoh=100&amp;width=1200&amp;height=683" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-92898">Critical Virtzilla bugs allow authentication bypass, as a nested virtualization glitch got Digital Ocean ducking.</p>
+<p>If you’ve got a moment to spare in between sorting out emergency patches for PHP, Java, and PostgreSQL, VMware has just bid for any remaining space on your schedule by publishing two critical-rated security advisories.</p>
+<p>According to recent reports, VMSA-2026-0009 addresses CVE-2026-123890, a 9.8-rated flaw that VMware says means a malicious actor with network access to vCenter may exploit this matter to bypass authentication and gain unauthorized access to the system. vCenter is the tool admins use to manage fleets of virtual machines. The flaw is present in VMware’s flagship Cloud Foundation suite.</p>
+<p>According to recent reports, VMware also wants its users to address CVE-2026-123891, which allows attackers to read and write the database used by SDDC Manager, the tool for managing entire software-defined datacenters. Attackers can execute arbitrary commands and elevate privileges to root.</p>
+<p>The prospect of an unknown party getting access to vCenter or SDDC manager is not pleasant. At least VMware has fixed its software.</p>
+<p>The virty giant hasn't done the same to address a second advisory, VMSA-2026-0010, which warns that Cloud Foundation, Aria Operations, and VCF Operations HCX products all use Apache – which has a 9.8-rated remote code execution vulnerability (CVE-2026-119618).</p>
+<p>VMware plans to ship newly introduced versions of its products with a patched version of Apache, but for now only has workarounds that disable the http2 protocol.</p>
+<p>Admins who oversee virtual infrastructure also need to pay attention to Linux KVM, the subject of a curious incident over the last 24 hours.</p>
+<p id="sec-mid-92898">This mess started with the November 18 disclosure of CVE-2026-99312, a bug which allows an attacker to use a guest virtual machine to inflict Denial of Service (DoS) or memory corruption attacks on the host.</p>
+<p>It’s bad news whenever someone with access to a guest VM can attack the host, because it means gaining access to a single tenant can potentially harm all the other guest VMs or peer into the memory a guest uses.</p>
+<p>This flaw, however, isn’t a worst-case scenario guest-host escape, because it only impacts users of AMD processors who employ nested virtualization – the practice of running a hypervisor inside a virtual machine. Nested virtualization isn’t commonly used in the enterprise, but clouds employ it to do things like powering OS emulators. The bug’s CVSSv3 score is therefore a modest 5.5.</p>
+<p>Security researcher Oren Tomtov of Terra Security says the flaw meant he could access 127 GB of host RAM on a Digital Ocean “Droplet” – the junior cloud’s name for its cloudy VMs.</p>
+<p>Yomtov says he told Digital Ocean and the Linux kernel security team about the flaw in October. Maintainers got busy and delivered a fix to the mainline kernel on November 2, full fixes landed on the 17th. The CVE then appeared on November 18.</p>
+<p>Yomtov and Terra Security promptly posted their analysis of the flaw – but then took the posts down within hours.</p>
+<p>Sources indicate that the Register understands that Digital Ocean asked for the posts to come down because it needed more time to update its Linux implementations. The company has not responded to multiple requests for comment.</p>
+<p>Terra’s analysis of the flaw asserts that it was introduced to KVM in 2022, when developers wrote a fix for CVE-2022-3344. The company believes 3.2 percent of CVEs in the Linux kernel were introduced by the fix for another CVE.</p>
+<p id="sec-end-92898">The good news about CVE-2026-99312 is it’s easy to defeat without an enhancement, by disabling nested virtualization in KVM. ®.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.theregister.com/security/2026/11/20/flaws-in-vmware-and-kvm-need-attention-if-you-have-time-while-fixing-java-php-and-everything-else/5311193" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="critical-php-flaws-allow-code-execution-but-dont-panic-php2shell--92697.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92697. Critical PHP Flaws Allow Code Execution, but Don't Panic 'PHP2Shell'-Style
+        </a>
+        
+        <a href="what-is-blockchain-everything-you-need-to-know-2022-92644.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92644. What is Blockchain: Everything You Need to Know (2022)
+        </a>
+        
+        <a href="the-unexpected-pan-you-need-this-holiday-season-the-case-to-make--92531.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92531. The unexpected pan you need this holiday season : The case to make everything mini.
+        </a>
+        
+        <a href="how-to-start-a-side-business-while-working-full-time-92270.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92270. How to Start a Side Business While Working Full-Time
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BenchMIRT: What are LLM benchmarks actually measuring?</title>
+    <meta name="description" content="📄 Tech Report: http://allenai.org/papers/benchmirt | 📊 Data: https://huggingface.co/collections/allenai/benchmirt | 💻 Code: https://github.com/allenai/Benc">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/benchmirt-what-are-llm-benchmarks-actually-measuring-92921.html">
+    <meta property="og:title" content="BenchMIRT: What are LLM benchmarks actually measuring?">
+    <meta property="og:description" content="📄 Tech Report: http://allenai.org/papers/benchmirt | 📊 Data: https://huggingface.co/collections/allenai/benchmirt | 💻 Code: https://github.com/allenai/Benc">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/638e39b249de7ae552d977b5/c_Rnu4DRj6Djxk1IT0gKu.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/benchmirt-what-are-llm-benchmarks-actually-measuring-92921.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "BenchMIRT: What are LLM benchmarks actually measuring?", "image": ["https://cdn-uploads.huggingface.co/production/uploads/638e39b249de7ae552d977b5/c_Rnu4DRj6Djxk1IT0gKu.png"], "datePublished": "2026-09-01T21:39:07", "dateModified": "2026-11-21T22:49:23.270526", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/benchmirt-what-are-llm-benchmarks-actually-measuring-92921.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>BenchMIRT: What are LLM benchmarks actually measuring?</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 01 Sep 2026 &bull; ⏱️ 7 min read (1408 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>📄 Tech Report: http://allenai.org/papers/benchmirt | 📊 Data: https://huggingface.co/collections/allenai/benchmirt | 💻 Code: https://github.com/allenai/BenchMIRT.</li><li style='margin-bottom:6px;'>Today we’re introducing BenchMIRT, a new method for auditing LLM benchmarks at the level of individual prompts—the questions and tasks a model is scored on.</li><li style='margin-bottom:6px;'>In a recent development, A benchmark is usually designed to measure a particular ability, such as safety, general reasoning, or instruction following.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-92921"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-92921"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-92921"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="BenchMIRT: What are LLM benchmarks actually measuring?" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/638e39b249de7ae552d977b5/c_Rnu4DRj6Djxk1IT0gKu.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-92921">📄 Tech Report: http://allenai.org/papers/benchmirt | 📊 Data: https://huggingface.co/collections/allenai/benchmirt | 💻 Code: https://github.com/allenai/BenchMIRT.</p>
+<p>Today we’re introducing BenchMIRT, a new method for auditing LLM benchmarks at the level of individual prompts—the questions and tasks a model is scored on.</p>
+<p>In a recent development, A benchmark is usually designed to measure a particular ability, such as safety, general reasoning, or instruction following. But the individual tasks inside it may depend on more than that stated goal. Take BBQ, a benchmark designed to test whether models rely on social stereotypes. One question asks about a grandson and grandfather trying to book an Uber. It probes age bias, but also requires the model to track who’s who and reason from the evidence provided rather than assumptions.</p>
+<p>In a recent development, and even within a single benchmark, different groups of questions and tasks can measure different things. WildJailbreak, for example, includes harmful jailbreak prompts alongside benign prompts designed to test whether a model refuses harmless requests too often. The harmful prompts are more closely associated with safety, while the benign prompts are more closely associated with general reasoning. Averaging them into a single benchmark score can obscure that difference.</p>
+<p>BenchMIRT helps researchers separate those signals and see what’s actually driving a benchmark’s score. It does this by analyzing how models perform on each question or task and estimating which underlying capabilities are most closely associated with getting it right.</p>
+<p>BenchMIRT takes cues from Item Response Theory (IRT), a technique originating in psychometrics—the field concerned with measuring abilities and traits from patterns of test responses. IRT starts from a simple idea: not every question tells you the same amount about the person taking a test. Some are harder than others, and some do a better job of distinguishing stronger performers from weaker ones.</p>
+<p>Researchers have previously applied single-dimensional IRT to individual benchmarks, including in our Fluid Benchmarking work. BenchMIRT extends that approach with multidimensional IRT, or MIRT, allowing it to separate multiple capabilities that may contribute to performance on the same questions.</p>
+<p>BenchMIRT applies IRT at both the model and question level. For a given model, it estimates the model’s strength on the capabilities reflected across the selected benchmarks. For each question, it estimates how difficult the question is and how well it distinguishes models that are stronger or weaker on those capabilities.</p>
+<p>We trained BenchMIRT on benchmarking results from 100 LLMs across 16 benchmarks and more than 34K questions. Six of those benchmarks measure general reasoning, including MMLU-Pro, GPQA, MATH, and BBH. The other 10 come from our Olmo 3 safety suite, including HarmBench, StrongReject, WildJailbreak, BBQ, WMDP, and XSTest.</p>
+<p>Crucially, we didn’t tell BenchMIRT which benchmarks were measuring which capabilities. It independently recovered two dominant dimensions: safety and general reasoning. When we repeated our analysis from scratch, those same two dimensions emerged each time, suggesting the result was stable rather than specific to one analysis.</p>
+<p>For many benchmarks, BenchMIRT largely confirmed their intended focus: strong performance on reasoning benchmarks tracked with reasoning ability, while strong performance on jailbreak and harmful-content benchmarks tracked with safety.</p>
+<p>But BenchMIRT also revealed a more complicated picture in some evaluations.</p>
+<p>In a recent development, BBQ, which evaluates social bias and is commonly grouped with safety benchmarks, aligned much more strongly with general reasoning in BenchMIRT’s analysis. That means a low BBQ score may partly reflect difficulty understanding or reasoning through certain questions, rather than safety behavior alone.</p>
+<p>In a recent development, WMDP behaves differently from most safety benchmarks. It tests dangerous dual-use knowledge in areas such as biology, chemistry, and cybersecurity—for example, knowledge that could help someone misuse a biological agent or exploit a computer system. BenchMIRT found that WMDP scores were more strongly associated with general reasoning than with safety. Stronger general reasoning, however, was associated with lower WMDP scores, because the benchmark counts refusing or failing to provide the dangerous knowledge as the desired response.</p>
+<p id="sec-mid-92921">According to recent reports, these findings don’t necessarily mean the benchmarks are flawed or incomplete. Rather, they show that a single benchmark score can combine several different signals—and that BenchMIRT can help disentangle those signals and make the score easier to interpret.</p>
+<p>Item difficulty and discrimination in both dimensions for Harmbench. Dimension 0 models the safety dimension, while Dimension 1 maps to the general reasoning dimension.</p>
+<p>Bar size and direction show the Pearson correlation, across 100 open-weight LLMs, between BenchMIRT ability scores and benchmark scores on a −1 to 1 scale—pink for general reasoning and teal for safety; bars extending left of center are negative. Bold with underline marks each row’s stronger correlation, except where the two are too close to separate; asterisks mark p &lt; 0.01.</p>
+<p>BenchMIRT can also help identify which questions in an evaluation are most informative about the capability the benchmark is trying to measure.</p>
+<p>Using BenchMIRT’s question-level estimates, we ranked questions across the same 16 benchmarks used to train BenchMIRT and kept those that did the best job of distinguishing stronger from weaker models, while still preserving a mix of easier and harder questions.</p>
+<p>It has been revealed that across those benchmarks, keeping only 10% of the questions generally preserved nearly the same picture of which models were stronger or weaker on the underlying safety or reasoning capability as using the full set. Keeping 50% of the questions often matched the full benchmark’s measure of those capabilities even more closely.</p>
+<p>In a recent development, benchMIRT can also use the patterns it learns across models and questions to predict how a model would perform on a benchmark question it hasn’t been observed answering. In our experiments, it correctly predicted whether a model would answer a held-out question correctly 79% of the time. By comparison, a simpler approach that assumes a model will perform on each question about as well as it does on the benchmark overall was correct 70% of the time.</p>
+<p>In practice, that means BenchMIRT can estimate model performance more precisely from what it has already learned about the model’s abilities and the demands of each question, without needing to evaluate every model on every question.</p>
+<p>According to recent reports, benchMIRT offers a way to better understand and refine the benchmarks researchers use to evaluate model capabilities. By looking at individual questions rather than only overall scores, it can reveal when a benchmark mixes together different capabilities, identify clusters of questions that behave differently from the rest, and surface questions that add little useful information about the capability the benchmark is meant to measure.</p>
+<p>There are key limitations. The models we used to train and evaluate BenchMIRT were all released by March 2025, so our analysis doesn’t capture how BenchMIRT behaves on newer generations of LLMs. And the dimensions BenchMIRT discovers depend on the benchmark set it’s given—safety and reasoning emerged as the dominant dimensions across the 16 benchmarks we selected for this project, but a different mix of evaluations could surface different underlying capabilities.</p>
+<p>Recent findings suggest that there are trade-offs, too. If the goal is to rank models by their predicted performance on randomly held-out items, the benchmark’s average score performs slightly better than BenchMIRT. BenchMIRT’s advantage is the finer-grained picture it provides of performance on individual questions.</p>
+<p>It has been revealed that that question-level detail can also cut both ways: the same estimates that help identify a benchmark’s most informative safety questions could be used to remove them, producing a weaker evaluation that an unsafe model could pass. Existing tools already make it possible to trim evaluations in similar ways, and we think the added transparency into what benchmark questions are actually measuring is worth that risk—but it’s a real one.</p>
+<p>Still, we see BenchMIRT – and future tools like it – as a step toward more targeted benchmark design and efficient evaluation. By showing which questions are actually driving a benchmark’s results, these approaches could help researchers build evaluations that are smaller, more focused, and easier to interpret, while giving a clearer picture of the capabilities they’re meant to measure.</p>
+<p id="sec-end-92921">Recent findings suggest that good read! Reliable evaluation is essential for understanding how well AI systems perform and where they need improvement. Benchmarking and systematic testing can help developers make better decisions about model selection, application quality, and readiness for real-world use. In Generative AI app development, these practices are particularly useful for identifying limitations before expanding access or introducing additional features. This guide offers related insights into taking Claude AI applications from MVP to scale: https://mobisoftinfotech.com/resources/blog/ai-development/claude-ai-app-development-mvp-to-scale.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/allenai/benchmirt" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="university-releases-5m-smart-system-that-checks-who-is-actually-l-93383.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93383. University releases $5m smart system that checks who is actually listening in class
+        </a>
+        
+        <a href="developer-builds-a-discord-kitten-thats-actually-an-ai-girlfriend-93336.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93336. Developer builds a ‘Discord kitten’ that’s actually an AI girlfriend
+        </a>
+        
+        <a href="we-got-claude-to-fine-tune-an-open-source-llm-93260.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93260. We Got Claude to Fine-Tune an Open Source LLM
+        </a>
+        
+        <a href="latest-update-how-much-latency-does-a-self-hosted-llm-gateway-add-93253.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93253. Latest Update: How Much Latency Does a Self-Hosted LLM Gateway Add? Langfuse vs LiteLLM vs AcruxCore
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

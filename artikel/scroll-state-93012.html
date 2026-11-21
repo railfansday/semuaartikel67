@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll-state()</title>
+    <meta name="description" content="The CSS scroll-state() query, surprisingly, has nothing to do with whether you’re doom-scrolling in a state of existential dread. It does, however, allow y">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/scroll-state-93012.html">
+    <meta property="og:title" content="scroll-state()">
+    <meta property="og:description" content="The CSS scroll-state() query, surprisingly, has nothing to do with whether you’re doom-scrolling in a state of existential dread. It does, however, allow y">
+    <meta property="og:image" content="https://css-tricks.com/wp-content/uploads/2026/11/css-tricks-gradient-logo-default.webp">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/scroll-state-93012.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "scroll-state()", "image": ["https://css-tricks.com/wp-content/uploads/2026/11/css-tricks-gradient-logo-default.webp"], "datePublished": "2026-11-19T07:57:54-07:00", "dateModified": "2026-11-21T22:49:31.674459", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/scroll-state-93012.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>scroll-state()</h1>
+        <div class="meta-line">🌐 Source: <strong>Css-tricks</strong> &bull; 📅 19 Nov 2026 &bull; ⏱️ 6 min read (1177 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>The CSS scroll-state() query, surprisingly, has nothing to do with whether you’re doom-scrolling in a state of existential dread.</li><li style='margin-bottom:6px;'>While scroll-state(), with those slimming parentheses, looks like a function, it’s not technically one.</li><li style='margin-bottom:6px;'>In the following demo (which we’ll dissect in a bit), a “Back to Top” link slides in from the bottom as you scroll down the page.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-93012"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-93012"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-93012"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="scroll-state()" loading="lazy" src="https://css-tricks.com/wp-content/uploads/2026/11/css-tricks-gradient-logo-default.webp" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-93012">The CSS scroll-state() query, surprisingly, has nothing to do with whether you’re doom-scrolling in a state of existential dread. It does, however, allow you to change the CSS used based on scrolling behavior. Far from doom, that’s pretty neat-o speedo. (Okay, you’re right, there’s nothing neat-o about a speedo). You can do lots of things that used to require JavaScript, like revealing the navigation when a user scrolls up or animating in a back to top link once the user scrolls down.</p>
+<p>While scroll-state(), with those slimming parentheses, looks like a function, it’s not technically one. It’s a container query (@container) like style(). Since scroll-state() is a query, the website is basically asking the browser whether a particular feature of a container has a specific value. If it does, the styles within the brackets will apply. If it doesn’t have that feature at all or has the feature, but the value is different, the @container query is false and the styles in the brackets will not apply.</p>
+<p>In the following demo (which we’ll dissect in a bit), a “Back to Top” link slides in from the bottom as you scroll down the page.</p>
+<p>scroll-state() has four possible features and each of those has a variety of possible values.</p>
+<p>Asks if a container has been scrolled in a given direction:.</p>
+<p>Asks if a container can be scrolled in a given direction:.</p>
+<p>Asks if a sticky-positioned element is stuck:.</p>
+<p>Asks if a snap target has been snapped on a particular axis:.</p>
+<p>In a recent development, first let’s look at the scrolled feature. This is the demo we saw at the beginning where we animate a back-to-top link when we scroll down:.</p>
+<p>When the scroll container is scrolled toward the block-end (downward in this case) the translate applies and the .toplink element animates up into the visible area. Because we’re using a transition, when we scroll a different direction (up and down/block-start and block-end are the only options here), it nicely animates out.</p>
+<p>It has been revealed that while the scrolling direction in the demo above is pretty clear, what if this page was translated into a different language? Or we had a hero image that covered the entire viewport? One way we could indicate the scroll direction would be to have an arrow or other signifier animating and pointing in the correct direction. (I’m more a believer in constructing your page such that scroll direction is pretty obvious; however, I can foresee situations where an indicator was the best user experience or where translations/writing-mode changes could obscure what scrolling direction was appropriate.).</p>
+<p>One nice thing about the scrollable feature is that when you scroll to the end of the scrollable area, it shuts off. So when we scroll to the block-end of the page (bottom of the page in this instance) scrollable: block-end is no longer true and our scroll indicator will revert to its default (in this case, display: none).</p>
+<p id="sec-mid-93012">According to recent reports, you could also combine the scrollable and scrolled features to remove the scroll indicator once the container has been scrolled either in the block-start or block-end direction. (We need both, because if we’re down in the middle of the page and we scroll up, scrolled: block-end will no longer be true and the scroll indicator will appear again.).</p>
+<p>Recent findings suggest that another way we could enhance our demo is to have our navigation stick at the top while we’re scrolling down and change the look of the navigation once it’s stuck. The stuck feature must be on the element that gets stuck (as opposed to the scroll container, as was the case above). Also, because the container is set on the element that gets stuck, you cannot select the element itself from within the container query. You’ll need to position: sticky a wrapper element and “demote” all styles you want to change to the child.</p>
+<p>The work of setting up the stuck feature happens in that .header-wrapper, but since we can’t apply styles to the container from within the container (not even with :has()). We need most of the styling to be in the  element.</p>
+<p>Changing the size of an element in the header that affects the size of the header can lead to conflicting results. i.e. you scroll to a position where the header is stuck, which initiates the size change, but that reduces the size, which pulls it away from the stuck point, which cancels the size change which makes it stuck again, which initiates the size change and round and round we go. Even a small change can make it impossible to even scroll past the stuck point. Adding a transition can help with this and make scrolling work again, but you can still scroll to a place where the resizing happens in a loop. In the following demo, if you scroll down to a pixel or so past where the header touches the top of the viewport, you should see the stutter step.</p>
+<p>In a recent development, there is one weird trick to fix this, though. No, really, there is! (shakes fist at the internet for making “one weird trick” an unbelievable phrase.) The one weird trick is to set a height on the element that’s getting stuck (.header-wrapper in the case above). Ideally, set it smaller than the final size of the header if you’re making the header smaller. This prevents the element from resizing because of a change in its content’s size. This does require the header content to overflow. If that’s a no-go for you, you’ll have to change its size with transformations. The transformed element has a sort of placeholder that stays in the DOM where the transformed element originally lived. This placeholder is what’s used to determine the sticky position and does not change based on what happened in the animation.</p>
+<p>According to recent reports, we can also add some styles when scroll snapping has been applied and that scroll has snappity-snapped (technical term). Similar to the stuck feature, snapped should be defined on the element that is snapped, not on the scroll container. If scroll snapping has not been applied to the element, then the snapped feature returns false and the container query does not apply.</p>
+<p>First, we set up our scroll snapping in the scrolled container.</p>
+<p>Note: As with most scrolling CSS (scrolling animations, etc.), if you’re using the document’s default scroll, the  element is what’s being scrolled, not the .</p>
+<p>The slide s are what we’re going to snap to the size of the viewport:.</p>
+<p>As remarked above, the container type and name go on the snapped item. And then we modify descendants of the slide once it snaps:.</p>
+<p>Again, as with stuck, you cannot apply styles directly to the snapped element/the container, but only to the children of that element/container.</p>
+<p>Join our community of front-end nerds!</p>
+<p id="sec-end-93012">Industry observers note that andy Clarke shows you how to create designs that people recognize and remember in his brand-newly introduced e-book, Standout Designs for the Web. Pre-order it today!</p>
+<p style="margin-top: 25px;">
+<a href="https://css-tricks.com/almanac/functions/s/scroll-state/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="whats-key-19-css-refraction-effects-scroll-state-queries-custom-m-93044.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93044. What’s !key #19: CSS Refraction Effects, Scroll State Queries, @custom-media, and More
+        </a>
+        
+        <a href="building-deep-research-how-we-achieved-state-of-the-art-93274.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93274. Building Deep Research: How we Achieved State of the Art
+        </a>
+        
+        <a href="state-of-open-source-on-hugging-face-spring-2026-93149.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93149. State of Open Source on Hugging Face: Spring 2026
+        </a>
+        
+        <a href="utah-sues-stake-four-days-after-the-site-added-the-state-to-its-b-93055.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93055. Utah sues Stake four days after the site added the state to its blocked list
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
