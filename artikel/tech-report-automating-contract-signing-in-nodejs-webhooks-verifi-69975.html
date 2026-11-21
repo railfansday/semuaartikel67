@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Automating Contract Signing in Node.js: Webhooks, Verification, and Storing Signed PDFs</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Industry observers note that weekly. Free. One click to leave. 7 Day Fr">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-automating-contract-signing-in-nodejs-webhooks-verifi-69975.html">
+    <meta property="og:title" content="Tech Report: Automating Contract Signing in Node.js: Webhooks, Verification, and Storing Signed PDFs">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Industry observers note that weekly. Free. One click to leave. 7 Day Fr">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_Icon_Padding_Bg_PNG_1024_9e9a885895.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-automating-contract-signing-in-nodejs-webhooks-verifi-69975.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Automating Contract Signing in Node.js: Webhooks, Verification, and Storing Signed PDFs", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_Icon_Padding_Bg_PNG_1024_9e9a885895.png"], "datePublished": "2026-11-13T10:50:38", "dateModified": "2026-11-20T23:42:54.187758", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-automating-contract-signing-in-nodejs-webhooks-verifi-69975.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Automating Contract Signing in Node.js: Webhooks, Verification, and Storing Signed PDFs</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 13 Nov 2026 &bull; ⏱️ 8 min read (1582 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>Industry observers note that weekly.</li><li style='margin-bottom:6px;'>Recent findings suggest that sending a document for signature is the easy part of an e-signature integration.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69975"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69975"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69975"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Automating Contract Signing in Node.js: Webhooks, Verification, and Storing Signed PDFs" loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_Icon_Padding_Bg_PNG_1024_9e9a885895.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69975">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>Industry observers note that weekly. Free. One click to leave.</p>
+<p>7 Day Free Trial. Cancel Anytime.</p>
+<p>Recent findings suggest that sending a document for signature is the easy part of an e-signature integration. One POST request and the signer gets an email. The work that actually breaks in production happens afterwards: knowing when the document was signed, trusting the notification that told you so, handling the same notification twice, and getting the final PDF into storage before the download link expires.</p>
+<p>In a recent development, this tutorial builds that whole loop in Node.js with Express. An event in your app (a deal is approved, a client is onboarded, a task moves to "ready to sign") sends a contract from a template. When the signer finishes, a webhook arrives, your server verifies it, and the signed PDF plus its audit trail get saved without anyone touching them.</p>
+<p>According to recent reports, the code uses Firma.dev, the e-signature API I work on, because I needed a real API to make the examples runnable. The patterns are not specific to it, though. Signature verification, idempotent handlers, short-lived download URLs, and reconciliation jobs show up in almost every webhook-driven integration, and the same structure applies whether you're receiving events from a payment processor, a CI system, or another signing provider.</p>
+<p>Sources indicate that there's a fifth part that tutorials usually skip: a reconciliation job that catches anything the webhooks missed. We'll build that too, because webhooks are a notification mechanism, not a delivery guarantee.</p>
+<p>Set three environment variables:.</p>
+<p>Sources indicate that before sending anything, wrap the HTTP calls in one place. This is where authentication lives, and it's also where you handle 429 Too Many Requests once instead of in every caller. Most APIs, this one included, return a Retry-After header on a 429, so the client should honour it rather than guessing a backoff.</p>
+<p>The 503 branch matters later. When a document has just been completed, the final PDF and its completion certificate take a moment to generate, and the download endpoint says so with a 503 and a Retry-After instead of handing you a half-built file.</p>
+<p>The trigger depends on your product. It might be a route handler, a queue consumer, or a CRM automation calling into your service. What matters is that the function doing the sending is small and takes plain data:.</p>
+<p>Two design choices are worth calling out.</p>
+<p>It has been revealed that use a single create-and-send call when you can. Many signing APIs split this into "create a draft" and "send the draft." That's useful when a human needs to review the document first, but for automation it creates a window where your process can crash between the two calls and leave an orphaned draft. A combined endpoint makes the operation atomic from your side.</p>
+<p>In a recent development, store the provider's ID on your own record immediately. Webhook payloads reference the signing request, not your deal or customer. Without that mapping you'll end up searching by email address, which falls apart as soon as one client signs two documents.</p>
+<p>Here's the first place integrations quietly go wrong. Webhook signatures are computed over the exact bytes the sender transmitted. If Express parses the body as JSON first, you lose those bytes, and re-serialising the object won't reproduce them (key order, whitespace, and number formatting can all change). Signature checks then fail intermittently, which is the worst kind of failure.</p>
+<p>The fix is to use express.raw() on the webhook route only, so the handler receives a Buffer:.</p>
+<p>Industry observers note that most webhook providers sign payloads with HMAC-SHA256 using a shared secret. The details vary, so read your provider's docs for the exact header format, but the scheme here is common: the header looks like t=1731456000,v1=5f2b..., and the signed string is the timestamp, a dot, and the raw body. Stripe uses a very similar format, and the Standard Webhooks spec describes the same idea as a vendor-neutral convention.</p>
+<p>Each line here defends against something specific.</p>
+<p>The OWASP guidance on cryptographic storage covers the other half of this: the secret belongs in an environment variable or secrets manager, never in the repository.</p>
+<p>Every serious webhook system delivers at least once, not exactly once. If your endpoint is slow, returns a 5xx, or the network drops the response, the sender retries. Firma.dev, for example, makes up to three attempts per event (immediately, then after at least five minutes, then after at least an hour) and treats anything other than a 2xx as a failure, including redirects. Other providers retry more aggressively. Either way, your handler will eventually see the same event twice.</p>
+<p id="sec-mid-69975">The defence is to record each event's unique ID and skip ones you've seen. In the server above that's alreadyProcessed and markProcessed. For a demo, a Set works:.</p>
+<p>In production, use your database and let a unique constraint do the work, so two concurrent deliveries can't both pass the check:.</p>
+<p>Sources indicate that also notice the order in the route: respond with 200, then do the work. Many providers time out deliveries after a few seconds (five, in this case). Downloading a PDF and uploading it to object storage can easily take longer than that, and a timeout counts as a failure, which triggers a retry, which triggers duplicate work. Acknowledging fast and processing asynchronously avoids that loop.</p>
+<p>setImmediate is fine for a tutorial, but it has a real weakness: if the process dies after sending the 200 and before finishing the work, the event is acknowledged and lost. In production, push the event onto a durable queue (BullMQ, SQS, a jobs table) before responding. Step 7 covers the safety net for whatever still slips through.</p>
+<p>Sources indicate that now the actual business logic. You'll usually see several event types (sent, viewed, a signer signed, declined, expired, completed). Only one of them means "the document is final":.</p>
+<p>Three things in here are easy to get wrong.</p>
+<p>According to recent reports, don't treat "a signer signed" as "the document is done." With multiple signers, each one triggers its own event, and a per-signer "all complete" flag can be true on more than one of them. Key your storage logic off the single completion event.</p>
+<p>Don't persist the download URL. Pre-signed URLs expire (this one carries an expires_at). Saving the link to your database and serving it to consumers later produces broken links a few minutes or hours later. Download the bytes and store them in storage you control. Swapping the fs.writeFile calls for an S3 PutObject or a Google Drive upload is a drop-in change.</p>
+<p>Recent findings suggest that store the audit trail, not just the PDF. If a signature is ever disputed, the PDF shows what was signed, and the audit trail shows who signed it, when, and from where (timestamps, IP addresses, the sequence of views and signatures). That evidence is what makes an electronic signature defensible, which brings us to the legal side.</p>
+<p>Recent findings suggest that retries are finite. Endpoints go down during deploys. Some providers auto-disable a webhook after enough consecutive failures, and events aren't guaranteed to arrive in order. Any one of these can leave a completed document sitting unsaved.</p>
+<p>Sources indicate that A small scheduled job closes that gap. Keep a list of signing requests your app considers "pending," and periodically ask the API for their real status:.</p>
+<p>Since storeSignedDocument overwrites by ID, running it twice for the same document is harmless. That's the property you want from every step in a webhook pipeline: doing it again shouldn't change the result.</p>
+<p>None of this is legal advice, but a few facts shape how you build.</p>
+<p>In the US, the ESIGN Act and the Uniform Electronic Transactions Act (adopted by 49 states) give electronic signatures the same legal standing as handwritten ones for most commercial documents. ESIGN also has requirements around consumer consent and record retention, which is part of why you store the final PDF yourself rather than relying on a third-party link.</p>
+<p>In the EU, eIDAS defines three levels: simple (SES), advanced (AdES), and qualified (QES). SES and AdES cover most business contracts. QES requires a qualified trust service provider and certificate-based identity, and some documents (certain property transfers and court filings, depending on the country) require it or exclude e-signatures entirely. Check which level your document types need before you pick a provider, since not every API offers every level.</p>
+<p>In a recent development, across jurisdictions, the evidence that holds up is the same: who signed, how they were identified, when it happened, and proof the document hasn't changed since. That's the audit trail and the completion certificate, which is why Step 6 stores both.</p>
+<p>If you're evaluating providers for a workflow like this, the questions that matter at the integration level are mostly not on the pricing page:.</p>
+<p>The send call is one line. The reliability comes from everything around it: keeping the raw body for verification, checking timestamps and comparing in constant time, acknowledging fast and deduplicating by event ID, downloading files before their links expire, and running a reconciliation job for the events that never arrive. Get those right and contract signing becomes something your app does in the background, with no one chasing signatures or copying PDFs between folders.</p>
+<p>For the Firma.dev-specific details used here (event names, header format, rate limits), see the webhooks guide.</p>
+<p id="sec-end-69975">7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/automating-contract-signing-in-node-js-webhooks-verification-and-storing-signed-pdfs/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-inside-the-11-million-barbie-dream-house-that-started-64939.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #64939. Tech Report: Inside the $1.1 Million ‘Barbie Dream House’ That Started as a Goth Mansion Before Going Under Contract
+        </a>
+        
+        <a href="arda-gler-extends-real-madrid-contract-30m-signing-to-100m-valuat-61679.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #61679. Arda Güler extends Real Madrid contract: €30m signing to €100m valuation
+        </a>
+        
+        <a href="tech-report-mikel-arteta-makes-stan-kroenke-joke-in-cryptic-enhan-60729.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #60729. Tech Report: Mikel Arteta makes Stan Kroenke joke in cryptic enhancement on Declan Rice's latest contract
+        </a>
+        
+        <a href="tech-report-louis-saha-states-man-utd-should-have-signed-65m-form-60440.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #60440. Tech Report: Louis Saha states Man Utd should have signed £65m former Chelsea star
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisp Game Jam devlog: Polydraw</title>
+    <meta name="description" content="Sources indicate that this year's Autumn Lisp Game Jam has just wrapped up! Spritely's contribution to the jam was Polydraw, a peer-to-peer party game that">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/lisp-game-jam-devlog-polydraw-69674.html">
+    <meta property="og:title" content="Lisp Game Jam devlog: Polydraw">
+    <meta property="og:description" content="Sources indicate that this year's Autumn Lisp Game Jam has just wrapped up! Spritely's contribution to the jam was Polydraw, a peer-to-peer party game that">
+    <meta property="og:image" content="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/lisp-game-jam-devlog-polydraw-69674.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Lisp Game Jam devlog: Polydraw", "image": ["https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk"], "datePublished": "2026-11-20T11:18:47", "dateModified": "2026-11-20T23:42:35.012011", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/lisp-game-jam-devlog-polydraw-69674.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Lisp Game Jam devlog: Polydraw</h1>
+        <div class="meta-line">🌐 Source: <strong>Spritely</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 10 min read (1950 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that this year's Autumn Lisp Game
+Jam has just wrapped
+up!</li><li style='margin-bottom:6px;'>The rest of this post is a daily devlog of how we made Polydraw so you
+can see what the process look likes to make a game with Goblins and
+Hoot under a tight deadline.</li><li style='margin-bottom:6px;'>First, we created a Git repository on
+Codeberg and copied the
+Hoot game jam
+template into
+it.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69674"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69674"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69674"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Lisp Game Jam devlog: Polydraw" loading="lazy" src="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69674">Sources indicate that this year's Autumn Lisp Game
+Jam has just wrapped
+up! Spritely's contribution to the jam was
+Polydraw, a peer-to-peer party
+game that is easy to pick up and play with friends. In Polydraw,
+players take turns being the artist who draws an image based on a
+prompt. The catch is that the artist only has 60 seconds and can
+only draw using triangles. All of the other players are guessers
+who try to correctly guess the prompt. We're quite pleased with how
+the game turned out!</p>
+<p>The rest of this post is a daily devlog of how we made Polydraw so you
+can see what the process look likes to make a game with Goblins and
+Hoot under a tight deadline.</p>
+<p>It's go time! First, we created a Git repository on
+Codeberg and copied the
+Hoot game jam
+template into
+it.</p>
+<p>Since the core activity in Polydraw is drawing triangles, the first
+thing Dave implemented was an interface for doing that on a canvas. This first version was crude and didn't include a color picker.</p>
+<p>We took the weekend off to prepare for a busy week ahead.</p>
+<p>This is the day that we really got to work on the game jam.</p>
+<p>The first version of the triangle editor stored pixel coordinates of
+the local canvas, but that wasn't going to be good enough to display
+on other machines with different sized canvases. So, Dave simply
+normalized triangle vertices into the [0,1] range so each peer could
+scale them as needed.</p>
+<p>Dave also implemented a basic scene system, a common game programming
+pattern, to encapsulate the coarse game states such as the title
+screen, the lobby, and the main game.</p>
+<p>A color palette was added along with some additional mockup UI around
+the canvas.</p>
+<p>Sources indicate that with a good enough game engine in place, we turned our attention to
+the game protocol. Since we are using Goblins, all interactions are
+modeled using actors. Dave came up with the following actors:.</p>
+<p>Player: Used for player identity within the game and contains the
+player's self-proposed name.</p>
+<p>In a recent development, lobby: The place where players gather before the game starts. The
+player that creates the lobby is the host and all other players
+are guests.</p>
+<p>Game: Holds all of the game state like the player list, whose turn
+it is, and the scoreboard.</p>
+<p>In a recent development, controller: A player's virtual game controller. Used to speak to
+the game actor, but all actions are scoped to the individual player.</p>
+<p>A test
+script
+was written to simulate creating a game, joining the lobby, and
+playing a round. At this stage, everything was happening in a single
+process. Goblins makes it easy to start with a single process and
+then distribute the actors to multiple machines later.</p>
+<p>Now it was time to get the actors onto the network and hook them up to
+the game UI. For networking we used OCapN,
+naturally. Jessica started up an instance of our new end-to-end
+encrypted relay
+netlayer
+that we set as the default relay so the game would "just work" when we
+uploaded it to itch.io. In fact, dogfooding the
+relay was a large part of the motivation behind participating in the
+game jam in the first place!</p>
+<p>Dave got the actors online with OCapN and connected the game UI to the
+actors, then confirmed that a three player game works. Three players
+is the minimum number of players needed to trigger OCapN's
+third-party
+handoff
+feature. Handoffs are what enable distributed networking in OCapN:
+Alice can give Bob a reference to Carol, which causes Bob and Carol to
+establish a new OCapN session with each other. This is the first
+application we've made that does handoffs over the relay netlayer and
+it was nice to see them working as intended.</p>
+<p>Unfortunately, we discovered an matter with how Goblins handles two
+peers connecting to each other concurrently, a problem known as
+"crossed hellos". OCapN mandates that only one connection may be
+open between any two peers, so we have to pick which connection wins. The bug is that any promises that were created over the losing
+connection never resolve. This was observed in the game as an
+empty lobby player list that should be populated. It didn't prevent
+the rest of the game from working, though, so we didn't try to fix it
+(yet).</p>
+<p>On this day, Dave discovered that, despite his best efforts, he fell
+victim to the "identity footgun". We could write a whole blog post
+series about the many subtle issues of object identity (in the sense
+of Scheme's eq?) in object capability systems, but instead we'll
+refer you to the The Grant Matcher
+Puzzle
+and just mention that using object references as keys in associative
+data structures is error-prone. A promise that eventually resolves to
+a reference to Alice is not identical (again, in the eq? sense) to
+a reference to Alice. So, if you accidentally use a promise as a key
+somewhere or use eq? directly you will probably have a bad time,
+which is exactly what happened to us.</p>
+<p>Industry observers note that to deal with this identity crisis, Dave first detected it at runtime
+by writing a
+wrapper
+around eq? called geq?. This new predicate throws an error when
+comparing a promise to a non-promise. Then he used the resulting
+backtraces to find the offending code and change it to resolve all
+necessary promises before doing identity comparisons.</p>
+<p>According to recent reports, christine finally cleared enough other things off her plate where she
+could start contributing to the game. We thought it would be nice to
+have the game start with a splash screen of triangle'y animations that
+would resemble the kinds of art players would make in the game. We decided to use the Blender add-on by Ursula Kurdali named
+Stop Motion
+since it gives a great amount of freedom to animate by creating and
+destroying as much geometry as you like. Christine made the first
+mockup of a splash screen animation of a "death" type character
+swinging a scythe.</p>
+<p id="sec-mid-69674">Recent findings suggest that however, the animation hadn't left Blender yet. We're gonna have to
+figure out how to get those polygons out and into the game engine!</p>
+<p>It has been revealed that this was the day to finish implementing the core game loop. We
+wanted the weekend to be all about fixing bugs and making it look and
+feel as good as we can. At last, the points awarded at the end of
+each round were displayed in the UI. The player list on the left side
+of the screen was transformed into a leaderboard that sorted players
+by score.</p>
+<p>In a recent development, while creating the leaderboard it was discovered that Goblins was not
+correctly parsing pairs received over OCapN. Christine swooped in
+with a quick
+fix
+and Jessica folowed up with a regression
+test.</p>
+<p>We also added a small set of emoji reactions underneath the
+leaderboard. Reactions were not critical to the core gameplay but
+they were planned from the very beginning of the project. It's good
+that we had time to add them because it was a lot of fun to spam
+emojis at the artist to give them an indication of how good or bad
+they were doing.</p>
+<p>Industry observers note that with two days left and the core gameplay loop complete, the focus
+shifted to bug fixing and adding
+juice. Up until this
+point the HTML was mostly unstyled (as you can see in the videos
+above), so Dave added a little CSS to improve the look and feel.</p>
+<p>According to recent reports, A playtest revealed that the simple
+PRNG we
+were using was implemented incorrectly. We noticed because the artist
+prompt was always "bus" no matter how many rounds you played. Oops! This was fixed.</p>
+<p>Remember that crossed hellos bug from day 7? Dave finally implemented
+a workaround, which was to simply throw out the first pancake and try
+again,
+as suggested by Christine. A simple race against a timeout was all
+that was needed. We'll be thinking about how to fix this in Goblins
+so this situation cannot happen in the future.</p>
+<p>Christine started work on making more animations for the game's intro. The "death" animation was a good "hello world" for testing the exporter,
+but being all black it was too simple to make sure everything worked
+right; draw order, etc, didn't matter. Christine made a "square guys"
+animation as a kind of
+Acid2 test
+equivalent. This file had several tricky properties to it, most
+especially that draw order would matter, colors would be vital, et
+cetera.</p>
+<p>Christine also made this triangle'y duck themed piece:.</p>
+<p>Christine wrote a Python
+script
+to export the animations from Blender into a custom format encoded
+using Syrup. The encoded data was then embedded into the Scheme
+program as bytevector literals using a little
+script. Dave then started work on a renderer for these animations, but it
+wasn't working quite well enough by the end of the day to commit and
+push it.</p>
+<p>In a recent development, up until this point we only had a small number of frequently-repeated
+words. Morgan Lemmer-Webber curated a word list for us, starting with
+an existing public domain word list
+of 5000 words, and curated down to a 621 words, selecting for words
+that were more feasible to draw (ranging from easy to challenging, but
+all trying to be feasible).</p>
+<p>The game name was changed from the placeholder "Twenty Triangles" to
+"Polydraw".</p>
+<p>The code to render animations was finished. Some final minor bug
+fixes were made. Some CSS was tweaked. Original music and sound
+effects by
+encrypted.whispers were
+added. Additionally, we used a few CC0-licensed sound effects by
+Kenney.</p>
+<p>A few gameplay improvements were made, such as showing guessers what
+the prompt was when the round ends and how many triangles the artist
+had remaining. Little improvements can make a major difference and both
+of these changes were very helpful for players and made the game feel
+more polished.</p>
+<p>Industry observers note that there wasn't enough time remaining to do as much work on resiliency in
+the face of network partitions as we would have liked, but Dave did
+squeeze in a commit that allowed the game to survive if a guest
+leaves. Unfortunately, the experience for the disconnected guest
+isn't very good as they don't see any message that their connection
+dropped.</p>
+<p>In a recent development, we did a final playtest to confirm that there weren't any showstopper
+bugs. Christine added final splash animations.</p>
+<p>Finally, Christine added some code (fixed up by Dave) and animations
+which would overlay over the drawings indicating that drawing was
+starting, it was time to guess, or the results.</p>
+<p>We submitted the game two hours before the deadline! Now it was time
+to catch our breath and show off the game to everyone we could. Dave
+even played it live with a couple other people on a stream! Here's a
+screenshot which gives you a good look of the final result:.</p>
+<p>The response was quite positive! The feedback we received closely
+matched the things we wanted to improve upon if we had more time:
+better disconnect handling, a way for the host to skip to the next
+phase instead of being forced to wait for the timer to run out, and
+invite URLs (rather than URIs) that auto-join the game when visited.</p>
+<p>Polydraw ranked 5th overall in the official game jam
+results.</p>
+<p>Try playing it over on itch.io
+and leave us a comment!</p>
+<p id="sec-end-69674">It has been revealed that your support makes our work possible! If you like what we do, please
+consider becoming a Spritely supporter today!</p>
+<p style="margin-top: 25px;">
+<a href="https://spritely.institute/news/lisp-game-jam-devlog-polydraw.html" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="announcing-the-open-source-ai-game-jam-58311.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58311. Announcing the Open Source AI Game Jam 🎮
+        </a>
+        
+        <a href="results-of-the-open-source-ai-game-jam-58284.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58284. Results of the Open Source AI Game Jam
+        </a>
+        
+        <a href="free-christian-gta-6-parody-game-released-where-the-devil-hunts-y-70163.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70163. Free Christian GTA 6 parody game released where the devil hunts you instead of cops
+        </a>
+        
+        <a href="gta-6-devs-worried-about-layoffs-despite-making-biggest-game-of-a-70143.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70143. GTA 6 devs worried about layoffs despite making “biggest game of all time”
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

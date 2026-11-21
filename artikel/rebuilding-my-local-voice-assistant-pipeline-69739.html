@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebuilding my local voice assistant pipeline</title>
+    <meta name="description" content="I wrote an article a couple of months ago describing how I rebuilt my old voice assistant pipeline in Platypush. And I wrote earlier articles describing my">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/rebuilding-my-local-voice-assistant-pipeline-69739.html">
+    <meta property="og:title" content="Rebuilding my local voice assistant pipeline">
+    <meta property="og:description" content="I wrote an article a couple of months ago describing how I rebuilt my old voice assistant pipeline in Platypush. And I wrote earlier articles describing my">
+    <meta property="og:image" content="https://s3.platypush.tech/static/images/voice-assistant-pipeline.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/rebuilding-my-local-voice-assistant-pipeline-69739.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Rebuilding my local voice assistant pipeline", "image": ["https://s3.platypush.tech/static/images/voice-assistant-pipeline.png"], "datePublished": "2026-11-19T19:50:25", "dateModified": "2026-11-20T23:42:39.591599", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/rebuilding-my-local-voice-assistant-pipeline-69739.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Rebuilding my local voice assistant pipeline</h1>
+        <div class="meta-line">🌐 Source: <strong>Platypush</strong> &bull; 📅 19 Nov 2026 &bull; ⏱️ 5 min read (951 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>I wrote an article a couple of months ago describing how I rebuilt my old voice assistant pipeline in Platypush.</li><li style='margin-bottom:6px;'>And I wrote earlier articles describing my journey through self-hosted voice assistants - in 2024 (with Picovoice), in 2020 (diving into the legacy assistant.google integration, the now defunct assistant.alexa integration, the now defunct Snowboy integration, the now defunct DeepSpeech integration and Picovoice) and the original article in 2019 describing the Google Assistant integration.</li><li style='margin-bottom:6px;'>For a couple of months I used the voice pipeline described in my latest article as my main driver, but after getting used to the robustness of commercial voice assistants I was unhappy with the high rates of false positives/negatives of my self-hosted pipeline, as well as its lack of robustness in detecting start/end of speech, especially in noisy environments and using cheap microphones.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69739"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69739"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69739"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Rebuilding my local voice assistant pipeline" loading="lazy" src="https://s3.platypush.tech/static/images/voice-assistant-pipeline.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69739">I wrote an article a couple of months ago describing how I rebuilt my old voice assistant pipeline in Platypush.</p>
+<p>And I wrote earlier articles describing my journey through self-hosted voice assistants - in 2024 (with Picovoice), in 2020 (diving into the legacy assistant.google integration, the now defunct assistant.alexa integration, the now defunct Snowboy integration, the now defunct DeepSpeech integration and Picovoice) and the original article in 2019 describing the Google Assistant integration.</p>
+<p>For a couple of months I used the voice pipeline described in my latest article as my main driver, but after getting used to the robustness of commercial voice assistants I was unhappy with the high rates of false positives/negatives of my self-hosted pipeline, as well as its lack of robustness in detecting start/end of speech, especially in noisy environments and using cheap microphones.</p>
+<p>After a bit of experimentation, I decided to swap and fine tune a few parts, and after a couple of days of trying the results are satisfying enough for me to write a short article about it.</p>
+<p>Hotword detection- assistant.microwakeword (local).</p>
+<p>Speech-to-text- assistant.openai (cloud)- assistant.vosk (local).</p>
+<p>Generate response- openai (cloud or local).</p>
+<p>Text-to-speech- tts.openai (cloud)- tts.piper (local).</p>
+<p>Hotword detection- assistant.microwakeword (local).</p>
+<p>Speech-to-text- assistant.openai (cloud)- assistant.vosk (local).</p>
+<p>Generate response- openai (cloud or local).</p>
+<p>Text-to-speech- tts.openai (cloud)- tts.piper (local).</p>
+<p>Until recently I used assistant.openwakeword, which wraps openWakeWord.</p>
+<p>It works, but the project has been quiet for a while and all of its pre-trained models are v0.1 files from 2023, mostly trained on synthetic speech.</p>
+<p>In practice I was getting both false positives (the hotword triggering on background noise) and false negatives (the hotword not detected unless I was close to the microphone).</p>
+<p>I added a new plugin, assistant.microwakeword, on top of microWakeWord through the pymicro-wakeword Python bindings.</p>
+<p>microWakeWord is the engine used by ESPHome and Home Assistant Voice, its models are actively maintained, and the built-in models (okay_nabu, hey_jarvis, hey_mycroft, alexa) ship with the package — no download required.</p>
+<p>The current official models are provided under the ESPHome micro-wake-word-models repository.</p>
+<p>Custom models are supported too: drop a microWakeWord JSON manifest (with its .tflite model) in the plugin's models directory and reference it by name.</p>
+<p id="sec-mid-69739">The plugin exposes the same API as assistant.openwakeword (same models, detection_threshold, frame_duration, patience_frames, input_device, input_volume parameters, same list_models action, same HotwordDetectedEvent), so switching is a matter of just changing the configuration to point to the latest plugin:.</p>
+<p>assistant.openai records audio when a conversation starts and transcribes it through Whisper.</p>
+<p>In a recent development, the tricky part has always been end-of-speech detection: knowing when the user has finished talking. The previous implementation used a per-frame boolean from WebRTC VAD, and any single frame classified as speech would reset the silence timer. With even a bit of background noise, phrases would only end when the maximum conversation duration was hit.</p>
+<p>The audio preprocessing layer (AudioPreprocessor, shared by the STT integrations) has been reworked:.</p>
+<p>According to recent reports, hysteresis + sliding window: a frame becomes speech above the VAD threshold and stays speech until its score drops by a margin, and the per-frame decisions are smoothed by majority vote over a 0.5s window. A single noise burst can no longer keep a conversation alive.</p>
+<p>Adaptive noise floor: the background noise level is tracked over time, and frames that aren't louder than noise_floor_factor (default 2.0, ~6 dB) times the floor are never considered as speech.</p>
+<p>On a synthetic benchmark (Piper-generated phrases mixed with babble and burst noise), the old settings kept conversations open for 6–10 seconds after the speech had ended; the new pipeline ends them 1.0–1.6 seconds after the last word, which is the configured conversation_end_timeout plus the smoothing lag.</p>
+<p>It has been revealed that since the changes on Platypush have been performed directly in the AudioPreprocessor also used by other native speech-to-text engines, other speech-to-text plugins also benefit from them - e.g. if you use assistant.vosk for full on-device detection.</p>
+<p>The transcribed phrase is processed by the openai plugin, which handles both the API key and the conversation context. By default the assistant renders the response through the configured tts_plugin; if the response ends with a question mark, the conversation continues with a follow-up.</p>
+<p>Custom hooks can intercept phrases before the default response kicks in — for example, to handle home automation commands locally without an LLM round-trip:.</p>
+<p>And the hotword event is wired to the conversation start with a similar hook:.</p>
+<p>Recent findings suggest that responses are rendered by tts.openai, with volume and voice configurable. In my tests however tts.piper also yielded good results, and it runs entirely locally. In my tests on a RaspberryPi 5 however it added ~3-4s of latency to process the response to audio compared to tts.openai.</p>
+<p>Since the TTS output goes to the speakers and the wake word detector listens on the microphone, the assistant plugins pause hotword detection while a conversation is active — otherwise the assistant would hear itself.</p>
+<p>The microphone on my RPi doesn't support 16 kHz natively, so audio is captured at 44.1 kHz and software-resampled — it works, but if detection feels sluggish software resampling is usually the first suspect.</p>
+<p>The VAD and threshold defaults were tuned on synthetic audio plus a couple of my audio recordings.</p>
+<p>Industry observers note that different rooms, microphones and acoustics may yield different results. You may want to adjust detection_threshold on the wake word plugin and noise_floor_factor on the STT plugins if you don't feel satisfied with your mileage.</p>
+<p>To interact via Webmentions,
+          send an activity that references this URL from a platform that supports Webmentions,
+          such as Lemmy,
+          WordPress with Webmention plugins,
+          or any IndieWeb-compatible site.</p>
+<p>https://blog.platypush.tech/article/Rewriting-my-voice-assistant-pipeline.</p>
+<p>It's 2026. You deserve a good local-first or local-only voice assistant on your #RaspberryPi.</p>
+<p id="sec-end-69739">blog.platypush.tech/article/Rewriting-my-voice-assistant-pipeline.</p>
+<p style="margin-top: 25px;">
+<a href="https://blog.platypush.tech/article/Rewriting-my-voice-assistant-pipeline" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="voice-cloning-with-consent-70199.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70199. Voice Cloning with Consent
+        </a>
+        
+        <a href="introducing-anylanguagemodel-one-api-for-local-and-remote-llms-on-70189.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70189. Introducing AnyLanguageModel: One API for Local and Remote LLMs on Apple Platforms
+        </a>
+        
+        <a href="pokemon-gen-10-leaker-admits-faking-rumors-reviving-hopes-for-a-n-70164.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70164. Pokemon Gen 10 leaker admits faking rumors, reviving hopes for a new Eeveelution and voice acting
+        </a>
+        
+        <a href="breaking-ggml-and-llamacpp-join-hf-to-ensure-the-long-term-progre-70131.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70131. Breaking: GGML and llama.cpp join HF to ensure the long-term progress of Local AI
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

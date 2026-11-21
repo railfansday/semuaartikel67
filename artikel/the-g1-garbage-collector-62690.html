@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The G1 Garbage Collector</title>
+    <meta name="description" content="According to recent reports, the Garbage-First Garbage Collector (G1) is the default garbage collector on the JVM as of JDK 27, with JEP 523: Make G1 the D">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/the-g1-garbage-collector-62690.html">
+    <meta property="og:title" content="The G1 Garbage Collector">
+    <meta property="og:description" content="According to recent reports, the Garbage-First Garbage Collector (G1) is the default garbage collector on the JVM as of JDK 27, with JEP 523: Make G1 the D">
+    <meta property="og:image" content="https://dev.java/assets/images/java-logo-vert-blk.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/the-g1-garbage-collector-62690.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "The G1 Garbage Collector", "image": ["https://dev.java/assets/images/java-logo-vert-blk.png"], "datePublished": "2026-11-17T04:29:07", "dateModified": "2026-11-20T23:36:12.359456", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/the-g1-garbage-collector-62690.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>The G1 Garbage Collector</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 17 Nov 2026 &bull; ⏱️ 7 min read (1483 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, the Garbage-First Garbage Collector (G1) is the default garbage collector on the JVM as of JDK 27, with JEP 523: Make G1 the Default Garbage Collector in All Environments, which made it the default in all environments.</li><li style='margin-bottom:6px;'>In a recent development, G1 was originally introduced in JDK 6u14 as an experimental feature, promoted to a standard feature in JDK 7u4, and designated the default garbage collector in JDK 9, taking over that role from ParallelGC.</li><li style='margin-bottom:6px;'>In a recent development, at the time of its introduction, G1 was designed for server environments.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-62690"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-62690"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-62690"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="The G1 Garbage Collector" loading="lazy" src="https://dev.java/assets/images/java-logo-vert-blk.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-62690">According to recent reports, the Garbage-First Garbage Collector (G1) is the default garbage collector on the JVM as of JDK 27, with JEP 523: Make G1 the Default Garbage Collector in All Environments, which made it the default in all environments. It had been the default garbage collector in "server" environments since JDK 9, with JEP 248: Make G1 the Default Garbage Collector. G1 seeks to balance throughput and latency and is a good option for many workloads. In this article, we will cover a brief history of G1, its key design concepts, and how to use it.</p>
+<p>In a recent development, G1 was originally introduced in JDK 6u14 as an experimental feature, promoted to a standard feature in JDK 7u4, and designated the default garbage collector in JDK 9, taking over that role from ParallelGC. While G1 has taken over the role of default garbage collector from Parallel, it was originally introduced to replace the CMS (Concurrent-Mark-Sweep) Garbage Collector, which was deprecated in JDK 9 and removed in JDK 14.</p>
+<p>In a recent development, at the time of its introduction, G1 was designed for server environments. Systems using G1 were expected to have multiple processors and large amounts of system memory (tens of GB) available. Continued development of G1 has reduced its system requirements, and now G1 can provide good performance even in resource constrained environments with only a single CPU and less than 2 GB of available system memory. This is why, as of JDK 27, it is the default garbage collector across all system configurations.</p>
+<p>In garbage collector design, the three primary design constraints are throughput, latency (pause time), and memory footprint. G1 seeks to maintain a balance between latency and throughput, rather than heavily optimizing for either. By comparison, ParallelGC primarily focuses on maximizing throughput, and ZGC focuses on minimizing latency. G1 also aims for more consistent pause times than the CMS collector it replaced.</p>
+<p>As of the writing of this article, 12 JEPs relating to G1 have been delivered since JDK 8, with more changes planned for the future. Continued development has steadily improved G1's throughput, latency, and memory footprint.</p>
+<p>G1 is a generational, incremental, parallel, mostly concurrent, stop-the-world, and evacuating garbage collector. For an explanation of each of these terms, check the Garbage Collection Concepts and JVM Collectors article on dev.java. This section covers some of the key design characteristics of G1.</p>
+<p>Sources indicate that as mentioned in the previous section, G1 was originally designed with large "server-like" environments in mind. G1 is capable of efficiently marshalling the resources of systems with dozens of cores and addressing heaps measured in tens of GB.</p>
+<p>Figure 03-01: Simplified representation of the G1 heap layout.</p>
+<p>Recent findings suggest that G1 divides the heap into a set of regions (increments) of uniform size. Figure 03-01 is a simplified example of what the G1 heap space would look like. The size and number of regions, unless otherwise configured, are based on internal heuristics, with the overall heap size being the primary influence on both. These regions are then divided up into eden, survivor, old, and humongous regions.</p>
+<p>Recent findings suggest that eden and survivor regions are both part of the "young" generation. On creation, an object is placed in an eden region. If that object survives a collection, it is evacuated (copied) into a survivor region. Unreachable objects are not deleted individually; rather, the region they are a part of is considered empty and is eligible for reuse by G1. Surviving objects, if they remain reachable, will be evacuated to a latest survivor region on subsequent collections. If an object survives enough collections, based on internal heuristics unless otherwise configured, it will be evacuated to an old region, which is checked less frequently.</p>
+<p>According to recent reports, A humongous region is a contiguous space of one or more regions, reserved for a single "humongous" object. An object qualifies as "humongous" if it's larger than half the size of a single region. Humongous objects bypass the eden and survivor regions and are treated as equivalent to an old region by G1.</p>
+<p>Figure 03-02: Simplified representation of the G1 garbage collection cycle.</p>
+<p id="sec-mid-62690">Industry observers note that the G1 garbage collection cycle (GC cycle) consists of both stop-the-world and concurrent behavior, both of which can run in parallel. Again, check Garbage Collection Concepts and JVM Collectors for definitions of these terms. Figure 03-02 is a simplified visualization of the G1 GC cycle and will help to contextualize this section.</p>
+<p>In a recent development, at a high level, the G1 GC cycle consists of two phases: Young-Only and Space-Reclamation. G1 will start in the Young-Only phase, which, as the name suggests, means only young regions are collected. In G1, when a collection happens, the application is paused while G1 evacuates objects to latest regions or performs other GC work.</p>
+<p>The concurrent behavior of G1 is primarily concerned with determining which objects in old regions are still active. The concurrent phase can be broken into three distinct parts and starts when old-generation occupancy reaches a threshold.</p>
+<p>Sources indicate that concurrent Start is the first step in the concurrent phase and is a special pause. During this pause, normal evacuation of young regions still occurs, and G1 also initiates concurrent marking of old-generation regions to determine which objects are still reachable. It is also possible that G1 determines there is no need to follow through with marking, in which case a Concurrent Mark Undo pause occurs, and the Young-Only phase continues.</p>
+<p>In a recent development, remark is the second step in the concurrent phase. This is a special pause where no evacuation of young regions happens. Instead, during this pause, G1 finalizes concurrent marking and performs other work, such as reference processing, class unloading, and reclaiming empty regions. Between this phase and Cleanup, G1 will concurrently calculate information to be used during the Space-Reclamation phase.</p>
+<p>Sources indicate that cleanup is the third and final step in the concurrent phase. This is also a special pause where no evacuation of young regions happens. During this pause, G1 determines if it should proceed to the Space-Reclamation phase. If a Space-Reclamation phase is determined to be necessary, the Young-Only phase will complete with a single Prepare Mixed young collection.</p>
+<p>In a recent development, the Space-Reclamation phase consists of multiple mixed collections: collections where young and old regions are evacuated. G1 uses an efficiency algorithm to determine which old regions to collect first. A major factor in this algorithm is the amount of garbage in each old region, as regions with more garbage are more likely to yield large amounts of space. This is what "Garbage-First" in the G1 name refers to: it will reclaim the regions with the most garbage first.</p>
+<p>According to recent reports, the Space-Reclamation phase ends when G1 determines that evacuating more old regions is no longer worth the effort. At this point, G1 shifts back to the Young-Only phase.</p>
+<p>For more technical details on G1, check the Garbage-First Garbage Collector guide and the G1 Stack Walker video at the bottom of this page.</p>
+<p>G1 is explicitly enabled with the JVM argument -XX:+UseG1GC. If you are on JDK 27 or later, this argument is never necessary, as G1 was designated the default GC in all environments. From JDK 9 to JDK 26, G1 was chosen by the JVM if it detected two or more CPU cores and more than 1792 MB of available system memory; otherwise, SerialGC was used. If you are on JDK 8, you will need to explicitly set -XX:+UseG1GC to use G1, as ParallelGC is the default GC.</p>
+<p>Recent findings suggest that generally speaking, users should avoid applying too much configuration to garbage collectors. Often, "less is more," and the engineers who develop and maintain garbage collectors, G1 included, have worked toward having internal heuristics provide the best performance in most use cases "out of the box." As of the writing of this article, an upcoming change to G1, Automatic Heap Sizing, would handle one of the most notable remaining aspects of G1 configuration: configuring the heap size.</p>
+<p>When thinking about configuring a garbage collector, consider the three major constraints garbage collectors are designed around: throughput, latency, and memory footprint. G1 aims for a balance between latency and throughput. When a user provides custom configuration to G1, some tradeoff will be happening. A user increasing the heap size is trying to trade a larger memory footprint for reduced latency. A user setting a higher pause time goal for G1 will be trying to trade reduced latency for improved throughput. As a user considers configuring G1, there are no settings for simply "better" performance, but, at best, a tradeoff. Some configuration combinations simply lead to worse observed performance. Below are some key configuration parameters for G1.</p>
+<p id="sec-end-62690">For a deeper dive into configuring G1, check the guide maintained by the G1 engineering team.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.java/learn/jvm/tool/garbage-collection/g1gc-overview/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="5-interesting-startup-deals-you-may-have-missed-reflecting-sunlig-64644.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #64644. 5 Interesting Startup Deals You May Have Missed: Reflecting Sunlight From Space, Better Breathing And Smarter Garbage Trucks
+        </a>
+        
+        <a href="industry-news-one-week-from-launch-gta-6s-physical-map-reportedly-63353.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #63353. Industry News: One week from launch, GTA 6's physical map reportedly leaks online thanks to the £350 collector's edition on show in a UK department store
+        </a>
+        
+        <a href="elon-musk-claims-he-regrets-midterm-spending-70238.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70238. Elon Musk claims he regrets midterm spending
+        </a>
+        
+        <a href="hakeem-jeffries-and-his-team-will-seek-to-deliver-a-upcoming-era--70237.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70237. Hakeem Jeffries and his team will seek to deliver a upcoming era for House Democrats
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

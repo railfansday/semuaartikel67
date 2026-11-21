@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Apertus 1.5 Release Notes</title>
+    <meta name="description" content="It has been revealed that our latest release, Apertus 1.5, extends the 8B and 70B Apertus 1.0 models with image/audio understanding, an optional thinking m">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-apertus-15-release-notes-69582.html">
+    <meta property="og:title" content="Tech Report: Apertus 1.5 Release Notes">
+    <meta property="og:description" content="It has been revealed that our latest release, Apertus 1.5, extends the 8B and 70B Apertus 1.0 models with image/audio understanding, an optional thinking m">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/61f1877a168a0b52fda88455/2mHXxCtfos6CgwFSNKFVi.jpeg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-apertus-15-release-notes-69582.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Apertus 1.5 Release Notes", "image": ["https://cdn-uploads.huggingface.co/production/uploads/61f1877a168a0b52fda88455/2mHXxCtfos6CgwFSNKFVi.jpeg"], "datePublished": "2026-10-15T09:08:45", "dateModified": "2026-11-20T23:42:30.163552", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-apertus-15-release-notes-69582.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Apertus 1.5 Release Notes</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 15 Oct 2026 &bull; ⏱️ 6 min read (1297 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that our latest release, Apertus 1.5, extends the 8B and 70B Apertus 1.0 models with image/audio understanding, an optional thinking mode, a four times longer context window, improved instruction-following, and better tool use.</li><li style='margin-bottom:6px;'>In a recent development, apertus 1.5 is a continued pretraining of the first generation model: adding 4 trillion tokens of text and multimodal training data to the 8B model and 2 trillion tokens to the 70B model, for a total of 19T and 17T, respectively.</li><li style='margin-bottom:6px;'>We introduce multimodality in v1.5 models in an early-fusion manner, where images and audio enter Apertus as discrete tokens in the same sequence with text tokens, instead of using a separate vision encoder.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69582"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69582"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69582"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Apertus 1.5 Release Notes" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/61f1877a168a0b52fda88455/2mHXxCtfos6CgwFSNKFVi.jpeg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69582">It has been revealed that our latest release, Apertus 1.5, extends the 8B and 70B Apertus 1.0 models with image/audio understanding, an optional thinking mode, a four times longer context window, improved instruction-following, and better tool use. The updated 8B and 70B model weights were released to Hugging Face on July 24, 2026 under an Apache 2.0 license. Further details are now available from the project Technical Report, and summarized here.</p>
+<p>In a recent development, apertus 1.5 is a continued pretraining of the first generation model: adding 4 trillion tokens of text and multimodal training data to the 8B model and 2 trillion tokens to the 70B model, for a total of 19T and 17T, respectively. As with every Apertus release, the models are fully open: open weights, open data, open values, and full training details.</p>
+<p>The full Apertus 1.5 training pipeline.</p>
+<p>We introduce multimodality in v1.5 models in an early-fusion manner, where images and audio enter Apertus as discrete tokens in the same sequence with text tokens, instead of using a separate vision encoder. Images are tokenized with the Emu3.5 tokenizer (a 512×512 image becomes 1,024 tokens) and audio with WavTokenizer (40 tokens per second). We only extend the vocabulary, so the architecture stays unchanged and training runs at text-only speed. The models understand images and audio but generate only text.</p>
+<p>Starting from Apertus 1.0, we continue pretraining in four stages:.</p>
+<p>Overall, more than half of the training tokens are text-only, which preserves the language abilities of Apertus 1.0. The text data is refreshed with sources such as FineWeb2-HQ+, FinePDFs, and Nemotron-CC. All latest data, multimodal included, meets the same bar as before: publicly available, permissively licensed, and with robots.txt opt-outs respected retroactively. Every source is listed in apertus-data-transparency.</p>
+<p>Post-training runs in five stages: SFT → long-context SFT → RL → DPO → charter alignment (SDPO).</p>
+<p>Alongside the extended model capabilities, we also significantly expanded the scope of evaluations. Beyond the existing text-based evaluations used for Apertus 1.0, we added multimodal evaluations (image &amp; audio), and thinking-mode evaluations.</p>
+<p>Sources indicate that the multimodal evaluations are done through MLLM-eval-suite pipeline, merging two major multimodal evaluation frameworks lmms-eval and VLMEvalKit. We also added a series of text-based benchmarks, as well as extended benchmarking for translation and multilingual capabilities, safety, and tool use. These can be found in our post-training evaluation repository, based on lm-evaluation-harness fork.</p>
+<p>While still trailing frontier open-weight models, the upcoming release has also significantly improved performance in coding and instruction following capabilities with Apertus 1.5 8B outperforming similarly sized open-weight models on IF and multilingual tasks. Thinking further improves performance on challenging reasoning-heavy benchmarks like AIME. The multimodal performance of the model is closer to Gemma 4 12B and other current open-weight models. Apertus 1.5 multimodal performance is competitive in spatial understanding among open-weight models and document/chart understanding among open-source models.</p>
+<p>It has been revealed that we also thank our collaborators and external evaluators for their help with efficient benchmarking of Apertus capabilities. In particular, Apertus 1.5 demonstrates strong performance on Swiss Legal tasks, being on par with leading open-weight models (blog, code). Additionally, on Last Translation Benchmark, Apertus 1.5 8B presents machine translation capabilities which match GPT-OSS-20B and outperform models like Claude Haiku 4.5 or Google Translate (leaderboard, paper).</p>
+<p>In a recent development, apertus collaborates with the EvalEval Coalition to ensure fully transparent and reproducible benchmarking. We publish the Apertus 1.5 results in the Every Eval Ever (EEE) schema, a shared format that records not only scores, but also who ran the evaluation, how the model was accessed, the generation settings, and how each metric should be interpreted: details that are routinely missing from leaderboards and that often explain why similar-looking scores differ.</p>
+<p id="sec-mid-69582">According to recent reports, the results are shown in the Eval Card below, which combines the run data with benchmark and model metadata into one interpretable record, and are also available through Hugging Face Community Evals. This is the same infrastructure the UK AI Security Institute uses to publish its evaluations openly. Since our text evaluations run on our public fork of lm-evaluation-harness, which EEE supports with a dedicated converter, anyone can rerun them and compare their numbers against ours under identical settings.</p>
+<p>Sources indicate that structured evaluation reporting also matters beyond research. EvalEval has mapped Evaluation Cards to AI governance requirements, including Article 55 of the EU AI Act and the GPAI Code of Practice, and found that the EEE schema can represent 56 of the 60 evaluation-reporting elements these frameworks call for. This fits how we already release Apertus: alongside the models, we publish a Public Summary of Training Content and, voluntarily, a Code of Practice document. Machine-readable evaluation records are a natural next step: making it easier for regulators, deployers, and researchers to find, interpret, and compare the evidence behind a model.</p>
+<p>We are committed to promoting reproducible and transparent evaluation through Eval Cards and the EEE schema, and encourage other model developers to report their results in the same way, so that scores can be compared across models and organizations.</p>
+<p>All recipes, ablations, and data mixtures are documented in the Technical Report. We aim to popularize open model development by making the v1.5 training process public and accessible. Intermediate checkpoints are hosted in our Apertus 1.5 Hugging Face collection, including the base weights, SFT, RLVR and DPO, as well as our curated training data mixes/custom datasets in Apertus 1.5 datasets collection. Sharing them allows researchers to investigate how each stage changes the model behavior.</p>
+<p>The report covers numerous ablations on the effect of post-training data in different stages, where we observed that the multimodal data mixed in together with text data during SFT helps improve across all modalities. We also find that the benefits of multimodal reasoning traces survive the subsequent text-only reinforcement learning: starting from an SFT checkpoint trained with multimodal traces, RL improves mathematics more than when starting from a text-only checkpoint, and the advantage on reasoning tasks persists throughout training.</p>
+<p>Proton Lumo and Infomaniak Euria are two widely used apps that have recently integrated Apertus 1.5. These deployments are linked in the Community Showcase among others - see this discussion thread for a preview.</p>
+<p>Access to Apertus 1.5 in the form of an API for developers has been revealed by a range of providers, including Swisscom, Infomaniak, Phoeniqs, and other companies listed in our General Availability guide. The report also provides details on how we work with external evaluators to test and prepare the models.</p>
+<p>Technical instructions for running the models are in the model cards of the Apertus releases on Hugging Face and in our Quickstart guide.</p>
+<p>Sources indicate that thank you for reading this blog post and being part of our community! We just celebrated five million downloads in our Hugging Face analytics 🤗 and are not slowing down. At the recent AI+X Summit in Zurich, our team unveiled the roadmap for Apertus 2.0: sparse/MoE architecture, ~600B total parameters, extended training schedule, with agents, mathematics and coding as priorities.</p>
+<p>Industry observers note that in summary: we invite you to read our report, download the models, explore the intermediate checkpoints, finetune the weights, and reproduce our evaluations. Questions that are not already covered in our publications or website FAQ are always welcome, and we would also love to hear which topics would be most useful to the community for future deep dives.</p>
+<p>If you build with or use Apertus, please fill out the Showcase form, and reach out through the options on our Contact page. We are looking forward to highlighting more work, learning what you are building, and hearing how Apertus can be improved!</p>
+<p id="sec-end-69582">Sources indicate that project Apertus, et al. “Apertus 1.5: From Open Text Models to Open Multimodal Reasoners.” arXiv:2610.15542. Preprint, arXiv, October 11, 2026. https://doi.org/10.48550/arXiv.2610.15542.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/swiss-ai/apertus-v15-release-notes" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-artists-should-receive-tax-breaks-for-donating-their--68820.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #68820. Tech Report: Artists should receive tax breaks for donating their own work to UK museums, notes new philanthropy report
+        </a>
+        
+        <a href="tech-report-seattle-fleet-tracking-company-zonar-names-atlanta-ba-64774.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #64774. Tech Report: Seattle fleet tracking company Zonar names Atlanta-based CEO, who notes HQ is staying put
+        </a>
+        
+        <a href="umamusume-pretty-derby-parent-tech-giant-plans-to-release-seven-u-63295.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #63295. Umamusume: Pretty Derby parent tech giant plans to release seven upcoming games by 2030 as it boasts an "88 percent hit rate" on its mobile titles
+        </a>
+        
+        <a href="tech-report-gta-6-nearing-25-million-copies-sold-and-24-billion-i-62916.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #62916. Tech Report: GTA 6 Nearing 25 Million Copies Sold And $2.4 Billion In Revenue On Day 1, Report Notes; Take-Two To Reveal Official Sales Data Soon
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Markdown to HTML: 0 LLM Tokens for 4 Posts, 23 FAQs Extracted</title>
+    <meta name="description" content="We needed to publish four manuscripts (43,699 bytes in total) that another project had handed over, and the obvious move was to ask an LLM to turn the mark">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-markdown-to-html-0-llm-tokens-for-4-posts-23-faqs-ext-69400.html">
+    <meta property="og:title" content="Tech Report: Markdown to HTML: 0 LLM Tokens for 4 Posts, 23 FAQs Extracted">
+    <meta property="og:description" content="We needed to publish four manuscripts (43,699 bytes in total) that another project had handed over, and the obvious move was to ask an LLM to turn the mark">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkuspcnfjpf6wr73iy5yq.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-markdown-to-html-0-llm-tokens-for-4-posts-23-faqs-ext-69400.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Markdown to HTML: 0 LLM Tokens for 4 Posts, 23 FAQs Extracted", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkuspcnfjpf6wr73iy5yq.png"], "datePublished": "2026-11-20T23:34:31", "dateModified": "2026-11-20T23:42:19.690933", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-markdown-to-html-0-llm-tokens-for-4-posts-23-faqs-ext-69400.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Markdown to HTML: 0 LLM Tokens for 4 Posts, 23 FAQs Extracted</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 5 min read (976 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>We needed to publish four manuscripts (43,699 bytes in total) that another project had handed over, and the obvious move was to ask an LLM to turn the markdown into HTML.</li><li style='margin-bottom:6px;'>This post covers the rule we use to decide between a script and an LLM, what the converter actually does, and the two publishing traps it closed without anyone having to remember them.</li><li style='margin-bottom:6px;'>Ask these about the step you are about to automate.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69400"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69400"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69400"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Markdown to HTML: 0 LLM Tokens for 4 Posts, 23 FAQs Extracted" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkuspcnfjpf6wr73iy5yq.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69400">We needed to publish four manuscripts (43,699 bytes in total) that another project had handed over, and the obvious move was to ask an LLM to turn the markdown into HTML. We wrote a deterministic converter instead. It used zero LLM tokens, extracted 23 FAQ questions automatically, and all four posts passed its built-in checks. The reason is not cost. The manuscripts already contained values that had been cross-checked by hand, such as notice numbers and page numbers, so changing a single character during formatting would itself be a defect.</p>
+<p>This post covers the rule we use to decide between a script and an LLM, what the converter actually does, and the two publishing traps it closed without anyone having to remember them.</p>
+<p>Ask these about the step you are about to automate. A single "yes" means use a script.</p>
+<p>Our conversion answered yes to all three. The manuscripts already followed a fixed layout (title, three-line summary, tables, a Q/A list), the rules for turning that layout into tags were unambiguous, and compliance could be checked with plain string searches. Work that needs judgment, such as summarizing, restructuring, or adjusting tone, belongs to the LLM. Moving a fixed format into fixed tags does not. The short version: if judgment is needed, use an LLM; if there is a rule, use a script.</p>
+<p>In a recent development, there is a cost argument too, but it is the weakest of the three. A few posts are cheap either way, yet an LLM step also gives you a different output on each run and a chance to quietly touch a number. Those two problems are what actually hurt.</p>
+<p>The script takes one markdown file and produces body HTML plus a metadata JSON. If it finds a spec violation it exits with code 1.</p>
+<p>It has been revealed that standard output is two lines. The first is the metadata, the second is the self-check result:.</p>
+<p>According to recent reports, (The full manuscript and converter output checklists are in the original post.) Two numbers catch most formatting accidents. If faq_count differs from what you expect, the Q/A format in the manuscript drifted. If html_len is far smaller than the source, part of the body was not parsed.</p>
+<p>The converter also removes the H1 from the body and uses the first summary item as the excerpt. Our platform renders the title separately, so leaving the H1 in the body would show it twice.</p>
+<p>It has been revealed that FAQ entries are pulled only from the FAQ section of the body. That keeps the structured data from containing questions the page never demonstrates, which search engines flag as a mismatch. A runnable version of the idea looks like this:.</p>
+<p id="sec-mid-69400">Industry observers note that the regular expression enforces the format. If the section heading differs, the question line is styled differently, or an answer does not begin with A., that pair is simply not captured. In other words, the manuscript format becomes the parser's input specification. On these four posts the approach extracted 23 questions with no manual step.</p>
+<p>The last block of the converter counts the things that must not ship: a leftover style block, a leftover h1 tag, a leftover TODO marker, a leftover emoji, or a missing title. Any hit makes the process exit with 1.</p>
+<p>According to recent reports, with an LLM you would have to write "do not include a style block" into the prompt every time and then eyeball the result. A script holds the rule in code, so it does not forget, and a pipeline only has to look at whether the exit code is 0. All four posts passed.</p>
+<p>Sources indicate that the first trap is CSS leaking across the whole site. Our blog renderer lifts style definitions found inside a post body up into the page-level head, so CSS written for one post can change others. The converter never emits a style block. It keeps a per-tag style dictionary and injects the styles inline:.</p>
+<p>Tables are wrapped in an overflow-x:auto container in the same pass, so a wide table scrolls instead of pushing the whole page sideways on mobile.</p>
+<p>The second trap was duplicated JSON-LD, and it came from the handoff document, not from the script. The spec stated to put a BlogPosting block in the body. The front end already generates BlogPosting in the head, so following the spec literally would have produced duplicate structured data. Reading the receiving code while building the converter highlighted that only a FAQPage block belonged in the body.</p>
+<p>The lesson is about order, not about this spec: read the receiving code before executing a handoff document. A spec is true as of the day it was written, and the system on the other side may have changed since.</p>
+<p>Recent findings suggest that A deterministic converter is only deterministic if the input follows the spec. Otherwise it silently drops things.</p>
+<p>Some limits are worth stating plainly. This converter is built for our blog platform. The per-tag inline styles and the "no style block" rule exist because our renderer hoists styles globally, and another platform may not have that constraint. Markdown parsing relies on an external library and its extensions (tables, sane_lists, nl2br), so a version change can alter the output. And the approach only fits steps that need no judgment: writing the manuscript is still the LLM's job. Split a publishing pipeline along that line, with evidence gathering, machine verification, and layout in scripts and first drafts from the LLM.</p>
+<p>The original write-up, including the pre-publish checklist for manuscripts and converter output, is here: the full post on my-blog.org.</p>
+<p id="sec-end-69400">Recent findings suggest that free tools I keep on my own site: 34 calculators and how-to guides - loans, severance pay, take-home salary, savings vs deposits. Newly introduced ones go out in one email, no ads.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/sungwoo_lee_e0f26be4a29fd/markdown-to-html-0-llm-tokens-for-4-posts-23-faqs-extracted-1km" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-one-shot-any-web-app-with-gradios-grhtml-70138.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70138. Tech Report: One-Shot Any Web App with Gradio's gr.HTML
+        </a>
+        
+        <a href="tech-report-observations-after-sixers-beat-bucks-to-move-to-3-0-e-62128.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #62128. Tech Report: Observations after Sixers beat Bucks to move to 3-0, Embiid posts triple-double
+        </a>
+        
+        <a href="tech-report-introducing-multi-backends-trt-llm-vllm-support-for-t-57957.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57957. Tech Report: Introducing multi-backends (TRT-LLM, vLLM) support for Text Generation Inference
+        </a>
+        
+        <a href="tech-report-efficient-request-queueing-optimizing-llm-performance-57860.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57860. Tech Report: Efficient Request Queueing – Optimizing LLM Performance
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일은 16.5GB인데 코딩 과제는 28개: POCKET-27B-Pi가 원 정밀도 53.8GB 모델을 앞선 이유와 직접 돌려 보는 법</title>
+    <meta name="description" content="Sources indicate that 채팅용 모델은 답이 몇 초 늦어도 사용자가 기다리면 끝입니다. 코딩 에이전트는 다릅니다. 에이전트는 파일을 읽고, 명령을 실행하고, 결과를 보고 다음 수를 정하는 일을 수십 번 반복합니다. 한 번 반복할 때마다 모델의 답을 한 번 기다립니">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/165gb-28-pocket-27b-pi-538gb-69406.html">
+    <meta property="og:title" content="파일은 16.5GB인데 코딩 과제는 28개: POCKET-27B-Pi가 원 정밀도 53.8GB 모델을 앞선 이유와 직접 돌려 보는 법">
+    <meta property="og:description" content="Sources indicate that 채팅용 모델은 답이 몇 초 늦어도 사용자가 기다리면 끝입니다. 코딩 에이전트는 다릅니다. 에이전트는 파일을 읽고, 명령을 실행하고, 결과를 보고 다음 수를 정하는 일을 수십 번 반복합니다. 한 번 반복할 때마다 모델의 답을 한 번 기다립니">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fquickchart.io%2Fchart%3Fw%3D1000%26h%3D420%26bkg%3Dwhite%26c%3D%257B%2522type%2522%253A%2522bar%2522%252C%2522data%2522%253A%257B%2522labels%2522%253A%255B%2522Qwen3.8-27B%2520%25EC%259B%2590%25EB%25B3%25B8%252022.4GB%2522%252C%2522pi%2520%25EB%25AA%25A8%25EB%258D%25B8%2520%25EC%259B%2590%2520%25EC%25A0%2595%25EB%25B0%2580%25EB%258F%2584%252053.8GB%2522%252C%2522POCKET-27B-Pi%2520Q6_K%252022.1GB%2522%252C%2522POCKET-27B-Pi%2520Q4_K_M%252016.5GB%2522%255D%252C%2522datasets%2522%253A%255B%257B%2522label%2522%253A%2522%25ED%2595%25B4%25EA%25B2%25B0%25EB%25A5%25A0%2528%2525%2529%2522%252C%2522backgroundColor%2522%253A%255B%2522%25239aa5b1%2522%252C%2522%25239aa5b1%2522%252C%2522%2523d4693b%2522%252C%2522%2523d4693b%2522%255D%252C%2522data%2522%253A%255B39.6%252C43.8%252C56.3%252C58.3%255D%257D%255D%257D%252C%2522options%2522%253A%257B%2522legend%2522%253A%257B%2522display%2522%253Afalse%257D%252C%2522title%2522%253A%257B%2522display%2522%253Atrue%252C%2522text%2522%253A%2522Terminal-Bench%25202.1%2520%25EA%25B0%2599%25EC%259D%2580%252048%25EA%25B3%25BC%25EC%25A0%259C%2520%25ED%2595%25B4%25EA%25B2%25B0%25EB%25A5%25A0%2528%2525%2529%2522%257D%257D%257D">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/165gb-28-pocket-27b-pi-538gb-69406.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "파일은 16.5GB인데 코딩 과제는 28개: POCKET-27B-Pi가 원 정밀도 53.8GB 모델을 앞선 이유와 직접 돌려 보는 법", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fquickchart.io%2Fchart%3Fw%3D1000%26h%3D420%26bkg%3Dwhite%26c%3D%257B%2522type%2522%253A%2522bar%2522%252C%2522data%2522%253A%257B%2522labels%2522%253A%255B%2522Qwen3.8-27B%2520%25EC%259B%2590%25EB%25B3%25B8%252022.4GB%2522%252C%2522pi%2520%25EB%25AA%25A8%25EB%258D%25B8%2520%25EC%259B%2590%2520%25EC%25A0%2595%25EB%25B0%2580%25EB%258F%2584%252053.8GB%2522%252C%2522POCKET-27B-Pi%2520Q6_K%252022.1GB%2522%252C%2522POCKET-27B-Pi%2520Q4_K_M%252016.5GB%2522%255D%252C%2522datasets%2522%253A%255B%257B%2522label%2522%253A%2522%25ED%2595%25B4%25EA%25B2%25B0%25EB%25A5%25A0%2528%2525%2529%2522%252C%2522backgroundColor%2522%253A%255B%2522%25239aa5b1%2522%252C%2522%25239aa5b1%2522%252C%2522%2523d4693b%2522%252C%2522%2523d4693b%2522%255D%252C%2522data%2522%253A%255B39.6%252C43.8%252C56.3%252C58.3%255D%257D%255D%257D%252C%2522options%2522%253A%257B%2522legend%2522%253A%257B%2522display%2522%253Afalse%257D%252C%2522title%2522%253A%257B%2522display%2522%253Atrue%252C%2522text%2522%253A%2522Terminal-Bench%25202.1%2520%25EA%25B0%2599%25EC%259D%2580%252048%25EA%25B3%25BC%25EC%25A0%259C%2520%25ED%2595%25B4%25EA%25B2%25B0%25EB%25A5%25A0%2528%2525%2529%2522%257D%257D%257D"], "datePublished": "2026-11-20T23:32:31", "dateModified": "2026-11-20T23:42:20.096439", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/165gb-28-pocket-27b-pi-538gb-69406.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>파일은 16.5GB인데 코딩 과제는 28개: POCKET-27B-Pi가 원 정밀도 53.8GB 모델을 앞선 이유와 직접 돌려 보는 법</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 4 min read (781 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that 채팅용 모델은 답이 몇 초 늦어도 사용자가 기다리면 끝입니다.</li><li style='margin-bottom:6px;'>아래 숫자는 설명을 위한 가정(illustrative)이며 실측치가 아닙니다.</li><li style='margin-bottom:6px;'>In a recent development, 같은 그래픽카드에서 8개 에이전트를 동시에 돌리면 메모리 대역폭을 나눠 쓰기 때문에 파일이 작을수록 이 차이가 더 벌어집니다.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69406"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69406"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69406"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="파일은 16.5GB인데 코딩 과제는 28개: POCKET-27B-Pi가 원 정밀도 53.8GB 모델을 앞선 이유와 직접 돌려 보는 법" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fquickchart.io%2Fchart%3Fw%3D1000%26h%3D420%26bkg%3Dwhite%26c%3D%257B%2522type%2522%253A%2522bar%2522%252C%2522data%2522%253A%257B%2522labels%2522%253A%255B%2522Qwen3.8-27B%2520%25EC%259B%2590%25EB%25B3%25B8%252022.4GB%2522%252C%2522pi%2520%25EB%25AA%25A8%25EB%258D%25B8%2520%25EC%259B%2590%2520%25EC%25A0%2595%25EB%25B0%2580%25EB%258F%2584%252053.8GB%2522%252C%2522POCKET-27B-Pi%2520Q6_K%252022.1GB%2522%252C%2522POCKET-27B-Pi%2520Q4_K_M%252016.5GB%2522%255D%252C%2522datasets%2522%253A%255B%257B%2522label%2522%253A%2522%25ED%2595%25B4%25EA%25B2%25B0%25EB%25A5%25A0%2528%2525%2529%2522%252C%2522backgroundColor%2522%253A%255B%2522%25239aa5b1%2522%252C%2522%25239aa5b1%2522%252C%2522%2523d4693b%2522%252C%2522%2523d4693b%2522%255D%252C%2522data%2522%253A%255B39.6%252C43.8%252C56.3%252C58.3%255D%257D%255D%257D%252C%2522options%2522%253A%257B%2522legend%2522%253A%257B%2522display%2522%253Afalse%257D%252C%2522title%2522%253A%257B%2522display%2522%253Atrue%252C%2522text%2522%253A%2522Terminal-Bench%25202.1%2520%25EA%25B0%2599%25EC%259D%2580%252048%25EA%25B3%25BC%25EC%25A0%259C%2520%25ED%2595%25B4%25EA%25B2%25B0%25EB%25A5%25A0%2528%2525%2529%2522%257D%257D%257D" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69406">Sources indicate that 채팅용 모델은 답이 몇 초 늦어도 사용자가 기다리면 끝입니다. 코딩 에이전트는 다릅니다. 에이전트는 파일을 읽고, 명령을 실행하고, 결과를 보고 다음 수를 정하는 일을 수십 번 반복합니다. 한 번 반복할 때마다 모델의 답을 한 번 기다립니다. 과제에 제한시간이 있으면 모델의 응답 속도가 곧 시도할 수 있는 단계 수가 됩니다.</p>
+<p>간단한 어림셈으로 보면 이렇습니다. 아래 숫자는 설명을 위한 가정(illustrative)이며 실측치가 아닙니다.</p>
+<p>In a recent development, 같은 그래픽카드에서 8개 에이전트를 동시에 돌리면 메모리 대역폭을 나눠 쓰기 때문에 파일이 작을수록 이 차이가 더 벌어집니다. POCKET의 출발점이 바로 여기입니다. 큰 모델을 사람들이 실제로 가진 장비에서 빠르게 돌 만큼 줄이고, 줄인 뒤에도 일을 해내는지 실제 과제로 재서 확인합니다.</p>
+<p>비교는 같은 장비에 네 가지 판을 올려 같은 일을 시키는 방식입니다.</p>
+<p>In a recent development, 공통 과제만 세는 이유는 간단합니다. 어떤 판이 끝내지 못한 과제가 섞이면 분모가 달라져 비교가 흐려집니다. 네 판이 모두 끝낸 48과제로 맞추면 숫자가 같은 문제집 위에서 나옵니다.</p>
+<p>둘만 맞붙인 공통 50과제에서도 POCKET-27B-Pi Q4_K_M이 30개, 원 정밀도 원본이 23개를 풀었습니다. Q4_K_M과 Q6_K는 공통 62과제에서 똑같이 39개씩 풀었습니다. 파일이 더 작은 Q4_K_M이 같은 품질을 더 가볍게 내는 셈입니다.</p>
+<p>점수만큼 눈여겨볼 지표가 단계 수입니다. 같은 50과제에서 POCKET-27B-Pi와 원본 가중치 판(POCKET-27B)을 비교했습니다.</p>
+<p>POCKET-27B-Pi는 계획하고, 실행하고, 멈춥니다. 쓰는 단계가 절반 이하이므로 기다리는 시간이 줄고 생성하는 글자 수도 함께 줄어듭니다. 한도까지 달리다 끝나는 실행이 0건이라는 점은 에이전트를 무인으로 돌릴 때 비용 예측이 쉬워진다는 뜻이기도 합니다.</p>
+<p>Recent findings suggest that POCKET-27B-Pi는 공개 모델 Qwen3.8-27B와, 허깅페이스 하네스 팀이 공개한 pi 코딩 에이전트 어댑터를 하나로 합친 모델입니다. 어댑터는 검증기 보상으로 강화학습한 것이고, 비드래프트는 이를 가중치에 합쳐 어댑터 없이 파일 하나로 실행되게 만든 뒤 PC에 들어가는 크기로 줄였습니다.</p>
+<p>어댑터 제작자가 원 정밀도 기준으로 발표한 성적은 이렇습니다.</p>
+<p>It has been revealed that 비드래프트의 측정도 이 발표와 맞아떨어집니다. 원본 가중치를 그대로 담은 POCKET-27B는 비드래프트 측정에서 38.0%를 풀었고, 제작자가 발표한 원본 모델 성적은 39.5%입니다. 측정 환경이 서로 다른데도 두 숫자가 가까우므로, 위 비교표의 출발선이 같다고 볼 수 있습니다.</p>
+<p>Sources indicate that 단계 수 중앙값 15와 36.5의 차이는 점수보다 운영 비용에서 더 크게 보입니다. 에이전트는 단계마다 이전 대화를 다시 읽고 새 출력을 만듭니다. 단계가 절반 이하면 모델이 읽는 맥락의 누적량도, 새로 쓰는 글자 수도 함께 줄어듭니다. 아래는 가정을 둔 설명용 계산입니다(illustrative, 실측 아님).</p>
+<p>단계당 생성량이 같다는 가정이라 절대값은 의미가 없지만, 비율은 단계 수의 비율을 그대로 따릅니다. 사내 서버에서 돌리면 토큰당 요금은 없지만 그래픽카드가 일하는 시간은 그대로 전기와 대기열로 돌아옵니다. 같은 과제를 더 적은 단계로 끝내는 모델은 같은 서버에서 더 많은 과제를 처리할 수 있습니다.</p>
+<p id="sec-mid-69406">두 파일은 같은 모델을 다른 크기로 줄인 것입니다. 이번 측정에서 둘의 차이는 이렇습니다.</p>
+<p>Recent findings suggest that 코딩 에이전트 평가는 조건이 조금만 달라져도 숫자가 움직입니다. 비교가 의미를 가지려면 다음을 고정하고 기록해야 합니다.</p>
+<p>이렇게 고정한 뒤에 풀린 과제 수, 단계 수 중앙값, 한도에 걸린 실행 수를 세 줄로 남기면 다음에 모델을 바꿀 때 같은 자로 다시 잴 수 있습니다.</p>
+<p>기업의 소스 코드는 밖으로 내보내기 가장 어려운 자산 가운데 하나입니다. POCKET-27B-Pi는 사내 PC나 서버 안에서 돌기 때문에 코드가 외부 서비스로 전송되지 않습니다. 사용량에 따른 요금이 없고, 한 번 내려받으면 인터넷이 끊겨도 씁니다. 필요한 장비는 24GB 그래픽카드 한 장입니다.</p>
+<p>Recent findings suggest that llama.cpp의 llama-server 한 줄이면 됩니다. 아래는 공개 모델 카드와 같은 설정입니다.</p>
+<p>그다음 pi 코딩 에이전트가 이 서버를 보도록 ~/.pi/agent/models.json에 추가합니다.</p>
+<p>It has been revealed that 내 환경에서 재 보려면 같은 과제 묶음을 고정하고 세 가지를 같이 기록하면 됩니다. 풀린 과제 수, 과제당 단계 수 중앙값, 한도에 걸린 실행 수입니다. 점수 하나보다 이 세 숫자가 함께 있어야 모델을 바꿀 때 비용과 속도까지 비교할 수 있습니다.</p>
+<p>POCKET은 큰 모델을 개인 기기에 넣는 비드래프트의 제품군입니다. 수학·과학 추론의 POCKET-Darwin-180B, 노트북과 휴대폰용 POCKET-35B, 다국어 대화용 POCKET-26B에 이어 코딩 전문 POCKET-27B-Pi가 더해졌습니다.</p>
+<p>Recent findings suggest that 이번 공개의 핵심은 세 가지입니다. 첫째, 16.5GB 파일 하나가 같은 장비와 같은 제한시간에서 오리지날 모델보다 47%, 원 정밀도 pi 모델보다 33% 더 많은 과제를 풀었습니다. 둘째, 과제당 단계 수 중앙값이 15단계로 짧아 기다림과 생성량이 함께 줄었습니다. 셋째, 모든 재료와 결과물이 Apache-2.0이고 24GB 그래픽카드 한 장에서 돌아, 코드를 밖으로 보내지 않는 사내 코딩 에이전트를 지금 바로 세울 수 있습니다. 직접 돌려 본 결과나 다른 과제 묶음에서의 숫자는 댓글로 남겨 주세요. 같은 방식으로 이어서 비교하겠습니다.</p>
+<p>Q. 16.5GB 파일이 53.8GB 원 정밀도 모델보다 많이 푼 이유는 무엇인가요? A. 이 평가는 과제당 1시간 제한이 있는 에이전트 작업입니다. 같은 그래픽카드에서 작은 파일이 더 빨리 답하므로 제한시간 안에 더 많은 단계를 밟고 더 많은 과제를 끝냅니다. Q4_K_M과 Q6_K가 같은 62과제에서 똑같이 39개를 푼 점은 줄인 뒤에도 답의 품질이 유지됨을 보여 줍니다.</p>
+<p>According to recent reports, Q. 필요한 하드웨어는 무엇인가요? A. Q4_K_M 기준 파일 16.5GB이고, 24GB 그래픽카드 한 장이면 됩니다. Q6_K는 22.1GB입니다.</p>
+<p>Industry observers note that Q. 라이선스는 무엇인가요? A. 재료와 결과물 모두 Apache-2.0입니다.</p>
+<p>Q. 인터넷 없이 쓸 수 있나요? A. 한 번 내려받으면 네트워크 없이 동작합니다. 코드는 사내 장비 밖으로 나가지 않습니다.</p>
+<p id="sec-end-69406">Sources indicate that Q. 생각 기능을 켜야 하나요? A. 위 측정은 모두 생각 기능을 끈 상태입니다. 실행 예시의 enable_thinking: false가 같은 설정입니다.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/vidraft_lab/paileun-165gbinde-koding-gwajeneun-28gae-pocket-27b-piga-weon-jeongmildo-538gb-modeleul-apseon-iyuwa-jigjeob-dolryeo-boneun-beob-35d9" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="esr-x-craig-karl-bring-a-pocket-full-of-joy-to-everyday-technolog-68969.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #68969. ESR x Craig & Karl Bring a Pocket Full of Joy to Everyday Technology
+        </a>
+        
+        <a href="latest-update-the-best-latest-gear-we-tested-this-week-a-390-pock-68304.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #68304. Latest Update: The Best Latest Gear We Tested This Week: A $390 Pocket Knife, Fast Bike Tires, and More
+        </a>
+        
+        <a href="you-can-get-one-of-these-pocket-e-readers-for-as-little-as-55-bef-62693.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #62693. You Can Get One of These Pocket E-Readers for As Little As $55 Before Black Friday
+        </a>
+        
+        <a href="industry-news-mauricio-pochettino-to-pay-man-united-bill-from-own-59625.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #59625. Industry News: Mauricio Pochettino to pay Man United bill from own pocket and make instant change as newly introduced manager arrives at Carrington
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

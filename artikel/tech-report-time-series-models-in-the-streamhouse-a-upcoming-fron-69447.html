@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Time-Series Models in the Streamhouse: A Upcoming Frontier and Use Cases</title>
+    <meta name="description" content="Real-time forecasting, anomaly detection, and optimization, powered by IBM time-series models with more than 50 million downloads. Now available natively o">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-time-series-models-in-the-streamhouse-a-upcoming-fron-69447.html">
+    <meta property="og:title" content="Tech Report: Time-Series Models in the Streamhouse: A Upcoming Frontier and Use Cases">
+    <meta property="og:description" content="Real-time forecasting, anomaly detection, and optimization, powered by IBM time-series models with more than 50 million downloads. Now available natively o">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/64e8143f6de557454220921e/yf6E9vJHIkGHG_toGSasb.gif">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-time-series-models-in-the-streamhouse-a-upcoming-fron-69447.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Time-Series Models in the Streamhouse: A Upcoming Frontier and Use Cases", "image": ["https://cdn-uploads.huggingface.co/production/uploads/64e8143f6de557454220921e/yf6E9vJHIkGHG_toGSasb.gif"], "datePublished": "2026-11-18T15:00:23", "dateModified": "2026-11-20T23:42:22.409578", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-time-series-models-in-the-streamhouse-a-upcoming-fron-69447.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Time-Series Models in the Streamhouse: A Upcoming Frontier and Use Cases</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 10 min read (2084 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Real-time forecasting, anomaly detection, and optimization, powered by IBM time-series models with more than 50 million downloads.</li><li style='margin-bottom:6px;'>Every business generates a continuous record of change: a machine reading, a payment, a sale, an order, or a change in inventory.</li><li style='margin-bottom:6px;'>The challenge is turning those signals into decisions while they still matter.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69447"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69447"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69447"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Time-Series Models in the Streamhouse: A Upcoming Frontier and Use Cases" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/64e8143f6de557454220921e/yf6E9vJHIkGHG_toGSasb.gif" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69447">Real-time forecasting, anomaly detection, and optimization, powered by IBM time-series models with more than 50 million downloads. Now available natively on Confluent, in the cloud and on premises, running on CPUs.</p>
+<p>Every business generates a continuous record of change: a machine reading, a payment, a sale, an order, or a change in inventory. These observations form time series, and they carry signals that can help teams anticipate what happens next.</p>
+<p>The challenge is turning those signals into decisions while they still matter. A forecast delivered after a production run, a stockout, or a payment authorization may be accurate, but too late to influence the outcome.</p>
+<p>IBM and Confluent are bringing time-series foundation models closer to the data as it flows. With Apache Flink, teams can apply forecasting , anomaly detection and semantic intelligence to streaming data using SQL, making model outputs available to the applications and people responsible for the next action.</p>
+<p>Sources indicate that foundation models have changed how organizations work with text, images, and documents. Time-series foundation models extend a similar idea to numerical data by learning general patterns from diverse historical data and then applying that knowledge to upcoming series and tasks. The models can provide a starting point without requiring teams to train a separate model for every series. Depending on the task and deployment, teams can also fine-tune a model or combine its outputs with other data and business logic.</p>
+<p>It has been revealed that figure 1. More than 50 million downloads, and the family of four models behind them.</p>
+<p>In a recent development, now the time series foundation models run natively inside Confluent as built-in functions in the cloud and on premises. In Confluent Cloud they are fully managed, with nothing to deploy (documentation). On premises, the models can run within your own infrastructure using Confluent Platform for Apache Flink.(documentation). The models run on CPUs, without requiring GPUs.</p>
+<p>The models can support a range of mission-critical use cases, from helping keep production lines in spec and detecting unusual store activity to improving product-level planning. They can also provide signals to assess card payments and forecast trading volume to help place large orders. These building blocks can be applied across manufacturing, retail, banking, and airlines, bringing insights closer to where decisions are made.</p>
+<p>See how time series and real-time context come together to create value:.</p>
+<p>Industry observers note that businesses operate continuously. Orders are updated, payments arrive, shipments are delayed, and inventory changes throughout the day. Yet the information behind these events often sits across systems that update at different times or rely on periodic batch processes. When applications and AI agents act on outdated or inconsistent information, they risk making decisions that no longer reflect what is happening.</p>
+<p>Sources indicate that A Streamhouse addresses this by continuously capturing, processing, governing, and serving current business context. Confluent’s Data Streaming Platform brings together five capabilities—connect, stream, process, govern, and query—to make that context available to applications, analytics, and agents. Apache Flink transforms and enriches data as it flows, while Lightning Tables provide low-latency access to the current state.</p>
+<p>In a recent development, figure 2. The Streamhouse on Confluent: from existing data sources to current business context that agents, applications, analytics and lakehouses use anywhere.</p>
+<p>Recent findings suggest that time-series models add predictive power to this architecture. Flink can prepare the data, invoke forecasting and anomaly detection, and make the results available alongside the events that produced them. Other models—including large language models, statistical models, and specialized machine learning systems—can contribute where appropriate.</p>
+<p>In a recent development, figure 3. The intelligence layer of the Streamhouse: time series models, large language models, and ML and statistical models, with orchestration across them.</p>
+<p>This approach can help teams in four ways:.</p>
+<p>According to recent reports, -Scale model development. A pretrained model can provide a common starting point across many time series, reducing the need to develop and maintain a separate model for each one.</p>
+<p>-Refresh predictions as data changes. Forecasts can incorporate recent observations as part of a streaming workflow, subject to the model’s requirements and the pipeline’s configuration.</p>
+<p>-Put signals closer to decisions. Forecasts and anomalies can be routed to operational applications sooner, where teams can combine them with business context, rules, and human judgment.</p>
+<p>-Run compact models on CPUs. The models are small enough to run on standard CPUs alongside the streaming pipeline, in the cloud or on premises, which can reduce the need for dedicated GPU infrastructure and simplify deployment.</p>
+<p>Figure 4. Stream native time-series intelligence on Confluent.</p>
+<p>The following scenarios illustrate how organizations could combine time-series models, streaming data, and application logic.</p>
+<p>An ice cream line’s quality depends on overrun—the amount of air whipped into the mix. Today, the process engineer and operator rely on QA lab measurements taken after the tubs are filled. If a upcoming cream lot or a warm, humid day changes the process, hours of production may already need rework by the time the team sees the result.</p>
+<p>To get ahead of the problem, a pretrained TTM model reads SCADA telemetry and QA measurements every 10 minutes. It forecasts the share of tubs expected to be in spec four hours ahead, along with a likely range.</p>
+<p>When the forecast falls below the plant’s target, an optimization process evaluates combinations of freezer draw temperature and airflow. Because the model takes these control variables as inputs, it can score each option before anything changes on the line. The operator approves the recommended setpoints, while routine adjustments can be automated within predefined guardrails.</p>
+<p>It has been revealed that the outcome is a more proactive process: less rework, lower energy use per tonne, and more consistent quality. The same approach can be applied to ovens, dryers, kilns, and mills.</p>
+<p>According to recent reports, figure 5. A forecast of product quality helps the operator evaluate freezer setpoints before making an adjustment.</p>
+<p>A store operations team monitors sales for thousands of products across hundreds of stores. Fixed thresholds often flag predictable weekend peaks while missing quieter changes, such as a product selling less than expected. As alerts accumulate, it becomes harder for the team to know where to focus.</p>
+<p>Sources indicate that AI_DETECT_ANOMALIES gives each sales series an expected range based on its recent history. Each fresh reading is compared with that range at a confidence level the team chooses, without training a separate model for every product and store.</p>
+<p>Sources indicate that when sales fall outside the expected range, the signal can be combined with inventory and store data to help identify a likely cause and recommend a next step—for example, checking the shelf or replenishing stock. The same approach can be applied to machine sensors, API telemetry, meter readings, and payment volumes.</p>
+<p>Figure 6. Store sales are compared with an expected range. In the view shown, recurring peaks remain within the range and no anomaly is flagged.</p>
+<p id="sec-mid-69447">According to recent reports, A category planner and a replenishment team need to keep products available across every store without carrying excess inventory. But forecasts may be refreshed only once a week, often focusing on top-selling products, while the long tail is managed with simpler rules. When sales patterns change between planning cycles, one store can run out while another has too much stock.</p>
+<p>With AI_FORECAST, a pretrained model can forecast demand across products and stores. In this example, it produces a 28-day forecast with a P10–P90 range, refreshed as latest sales data arrives. The planning application combines the forecast with inventory, lead time, and the planner’s chosen service level to calculate a reorder point.</p>
+<p>When stock is projected to fall below that point, an agent can draft a purchase order for review. The same approach can support planning for spare parts, staffing, ATM cash, and energy demand.</p>
+<p>In a recent development, figure 7. A store-level demand forecast informs a reorder point and a proposed purchase order for oat milk.</p>
+<p>Recent findings suggest that fraud teams already rely on sophisticated rules and models to evaluate transactions. One continuing challenge is that a threshold applied across many cardholders may not reflect how each person normally spends.</p>
+<p>A time-series signal can add that individual context. In this example, each payment is compared with an expected spending range based on the card’s recent history. A transaction outside that range is passed to the bank’s existing fraud systems as an additional input, alongside other signals and business rules.</p>
+<p>The bank can then decide whether to approve the payment, request additional authentication, or investigate further. The decision and the signals behind it can be retained for review.</p>
+<p>Figure 8.A payment outside the card’s expected spending range prompts a step-up authentication in an illustrative fraud workflow.</p>
+<p>An execution desk needs to divide a large order into smaller trades while managing its effect on the market. Historical volume curves offer a starting point, but today’s trading activity may look very different from the average.</p>
+<p>On each one-minute bar, PatchTST-FM forecasts trading volume for the next 30 minutes, with a P10–P90 range. The execution algorithm uses that forecast to pace the order within the participation limit set by the desk.</p>
+<p>In a recent development, if a news event changes market activity, the algorithm can pause and replan. If trading is quieter than expected, it can reduce the size of each slice and signal that the order may take longer to complete. Each forecast and the resulting execution decisions can be retained in the audit trail.</p>
+<p>According to recent reports, figure 9. Volume forecast informs the proposed execution schedule for a 100,000-share order.</p>
+<p>A reliability engineer investigating an unusual sensor pattern may want to know whether similar behavior appeared elsewhere in the plant.</p>
+<p>Sources indicate that TSPulse can produce representations of time-series windows that support similarity search. In a separately built application, those representations could be indexed and used to retrieve historical patterns across equipment. An engineer could search for shapes such as a spike and recovery, a gradual rise, or a step change, then inspect the associated maintenance records and operating conditions.</p>
+<p>In a recent development, this application requires an embedding pipeline, an index, and access to the relevant context. Similarity can help narrow an investigation; it does not establish a root cause by itself.</p>
+<p>Industry observers note that figure 10. Time-series embeddings can support a search for similar patterns across equipment and other signals.</p>
+<p>The same models and building blocks can support different workflows across industries:.</p>
+<p>Sources indicate that figure 11. The plant twin, from sensor to setpoint. A upcoming cream lot pulls overrun off target. The forecast reads the line, the agent proposes a new draw temperature and air flow, the operator approves, and the tubs are back in spec. Simulated data.</p>
+<p>According to recent reports, figure 12. The store twin, a store and its supply chain. A promo is coming for oat milk. The forecast prices in the promo and sets the reorder point, the agent raises a purchase order, the planner approves, and the shelf is full on promo day. Simulated data.</p>
+<p>In a recent development, banking: payments and the trading desk. The fraud lead wants to stop card testing without blocking good customers, and the trader wants a large order done without moving the price. Every card and every symbol is scored against its own expected pattern, event by event. Fraud and security holds the odd swipe before authorization, anomaly detection spots the unusual flow, and trading paces each order with the forecast volume.</p>
+<p>Airlines: hub operations, fleet and network. Operations control wants to see a disruption coming while there is still time to act. Engine, gate and network streams are forecast and checked in real time. Anomaly detection catches the engine reading that drifts, production optimization rebalances gates and crews, and supply chain planning puts the spare part where the aircraft will be.</p>
+<p>In every industry, the Streamhouse does the same work: Flink runs the Granite models to forecast, detect and optimize, Streaming Agents act on the live context, and people approve the exceptions.</p>
+<p>Explore the models on Confluent to see how time-series intelligence can support real-time decisions.</p>
+<p>Code and notebooks: github.com/ibm-granite/granite-tsfm.</p>
+<p>Real-Time Intelligence with IBM Time Series Models on Confluent.</p>
+<p>Ensemble forecasting with IBM Granite time-series models.</p>
+<p>IBM releases SOTA Granite Time Series PatchTST-FM-r2 model with commercial-friendly license.</p>
+<p>Newly introduced in Confluent Intelligence and AI Tools: Making Agents Native to the Stream, Expanded Model Support, New Agent Skills, and Confluent Assistant.</p>
+<p>What's New in Q4'26 Confluent Data Streaming Platform.</p>
+<p id="sec-end-69447">What's Newly introduced for Confluent Platform for Apache Flink, November 2026.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ibm-research/time-series-powered-streamhouse" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-the-brand-latest-apple-watch-series-12-is-on-sale-jus-66341.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #66341. Tech Report: The Brand Latest Apple Watch Series 12 Is on Sale Just in Time for the Holidays
+        </a>
+        
+        <a href="tech-report-goodbye-gemini-gems-how-to-use-googles-upcoming-skill-62465.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #62465. Tech Report: Goodbye, Gemini Gems: How to use Google’s upcoming Skills – and share them
+        </a>
+        
+        <a href="tech-report-probabilistic-time-series-forecasting-with-transforme-58389.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58389. Tech Report: Probabilistic Time Series Forecasting with 🤗 Transformers
+        </a>
+        
+        <a href="tech-report-patch-time-series-transformer-in-hugging-face-58197.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58197. Tech Report: Patch Time Series Transformer in Hugging Face
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

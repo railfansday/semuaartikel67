@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimating Sample Size Before Testing a Law Firm Contact Form</title>
+    <meta name="description" content="Law firm clients ask for A/B tests all the time. Shorten the contact form, change the button text, move the phone number. The request is reasonable, but on">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/estimating-sample-size-before-testing-a-law-firm-contact-form-69416.html">
+    <meta property="og:title" content="Estimating Sample Size Before Testing a Law Firm Contact Form">
+    <meta property="og:description" content="Law firm clients ask for A/B tests all the time. Shorten the contact form, change the button text, move the phone number. The request is reasonable, but on">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F7zaxv2iict3svcixvtei.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/estimating-sample-size-before-testing-a-law-firm-contact-form-69416.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Estimating Sample Size Before Testing a Law Firm Contact Form", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F7zaxv2iict3svcixvtei.png"], "datePublished": "2026-11-20T23:26:54", "dateModified": "2026-11-20T23:42:20.592982", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/estimating-sample-size-before-testing-a-law-firm-contact-form-69416.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Business & Policy</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Estimating Sample Size Before Testing a Law Firm Contact Form</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 4 min read (755 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Law firm clients ask for A/B tests all the time.</li><li style='margin-bottom:6px;'>A few minutes with a sample size estimate before the test starts saves weeks of pointless testing and an awkward conversation later.</li><li style='margin-bottom:6px;'>A standard sample size estimate for comparing two conversion rates needs four numbers:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69416"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69416"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69416"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Estimating Sample Size Before Testing a Law Firm Contact Form" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F7zaxv2iict3svcixvtei.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69416">Law firm clients ask for A/B tests all the time. Shorten the contact form, change the button text, move the phone number. The request is reasonable, but on a typical criminal defense site the traffic to a single page is small, and the number of people who actually submit a form is smaller still. Run a test without checking the math first and you will likely end up calling a winner based on noise.</p>
+<p>A few minutes with a sample size estimate before the test starts saves weeks of pointless testing and an awkward conversation later. This post covers the inputs you need, a short script to do the arithmetic, and what to do when the answer indicates the test is not practical.</p>
+<p>A standard sample size estimate for comparing two conversion rates needs four numbers:.</p>
+<p>Industry observers note that get the baseline from real data. For a contact form, that is form submissions divided by unique visitors to the page over a recent, normal period. If you are not sure the form events are tracked correctly, fix that first. A test built on broken tracking is worse than no test.</p>
+<p>Choose the minimum detectable effect based on what would matter to the firm. A change from 3 percent to 3.1 percent is not worth anyone's time to detect. A change from 3 percent to 4 percent might be.</p>
+<p>The formula for two proportions is short enough to keep in a utility file. This version uses only the Python standard library:.</p>
+<p>With a hypothetical baseline of 3 percent and a target of 4 percent, the estimate comes out near 5,300 visitors per variant, or roughly 10,600 in total. A bigger expected lift, from 3 percent to 6 percent, needs only about 750 per variant. Small differences are expensive to detect.</p>
+<p>According to recent reports, online calculators give similar numbers. The value of the script is that you can drop it into a planning notebook and run it for every page you are asked to test.</p>
+<p>Divide the total by the page's weekly unique visitors. If a charge page gets 400 visitors a week and needs 10,600, the test would run for more than six months. In that time the firm will change other things on the site, search rankings will move and seasonal patterns in arrests will shift traffic. The result would be hard to trust.</p>
+<p>A useful rule: if the estimate runs past eight to ten weeks, the test as designed is not practical for that page.</p>
+<p id="sec-mid-69416">You still have choices when traffic is low.</p>
+<p>For the non-technical side of that last option, a write-up on running a conversion test on a low-traffic defense website covers how to initiative and read a test when traffic is thin.</p>
+<p>Sources indicate that on criminal defense sites, many visitors call instead of filling in a form, especially on mobile. If a form change pushes people toward the phone, form submissions fall while total contacts rise. Track calls with a dynamic number or call tracking tool that can attribute calls to the variant, and judge the test on total contacts. Otherwise you can reject a change that actually helped.</p>
+<p>In a recent development, record the baseline, the minimum detectable effect, the sample size, the expected end date and the decision rule in a short document before the test starts. Agree with the firm that you will not stop early because one variant looks ahead after a week. Peeking and stopping early is one of the most common ways small tests produce false winners.</p>
+<p>Sources indicate that when the test ends, report the result with its uncertainty alongside the percentage lift. A firm owner can work with "probably no meaningful difference" as long as they knew in advance that this was a possible outcome.</p>
+<p>More on testing and measurement for law firm websites is gathered in the library on conversion testing for law firm websites.</p>
+<p>Raising alpha above 0.05 shortens tests but makes false positives more likely. Change it only if the firm understands the tradeoff.</p>
+<p>Bayesian methods report results differently, but they do not create information from small samples. Low traffic still means uncertain results.</p>
+<p>According to recent reports, use whichever unit you randomize on, usually consumers. Keep it consistent for the baseline and the test.</p>
+<p id="sec-end-69416">SBD Marketing works only with criminal defense law firms, one firm per city. It builds websites for defense practices, handles SEO for the charges a firm defends, works on visibility in AI search tools and runs SEO audits.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/sbdmarketing/estimating-sample-size-before-testing-a-law-firm-contact-form-136i" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="no-pseudonymity-in-ex-associates-sexual-assault-claim-against-maj-67365.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #67365. No Pseudonymity in Ex-Associate's Sexual Assault Claim Against Major Law Firm
+        </a>
+        
+        <a href="after-weil-gotshals-collapse-law-firm-merger-interest-heats-up-67052.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #67052. After Weil Gotshal’s collapse, law firm merger interest heats up
+        </a>
+        
+        <a href="testing-json-ld-like-an-api-7-checks-before-your-next-release-58215.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58215. Testing JSON-LD Like an API: 7 Checks Before Your Next Release
+        </a>
+        
+        <a href="open-asr-leaderboard-trends-and-insights-with-fresh-multilingual--70188.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70188. Open ASR Leaderboard: Trends and Insights with Fresh Multilingual & Long-Form Tracks
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

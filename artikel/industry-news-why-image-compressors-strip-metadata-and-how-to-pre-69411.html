@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: Why Image Compressors Strip Metadata — and How to Prevent It</title>
+    <meta name="description" content="If you have ever run images through a compression pipeline and discovered the EXIF data came out empty, the explanation is usually straightforward: the com">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-why-image-compressors-strip-metadata-and-how-to-pre-69411.html">
+    <meta property="og:title" content="Industry News: Why Image Compressors Strip Metadata — and How to Prevent It">
+    <meta property="og:description" content="If you have ever run images through a compression pipeline and discovered the EXIF data came out empty, the explanation is usually straightforward: the com">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fx0ae9hpb9ziww2w5km5a.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-why-image-compressors-strip-metadata-and-how-to-pre-69411.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: Why Image Compressors Strip Metadata — and How to Prevent It", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fx0ae9hpb9ziww2w5km5a.png"], "datePublished": "2026-11-20T23:29:59", "dateModified": "2026-11-20T23:42:20.368528", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-why-image-compressors-strip-metadata-and-how-to-pre-69411.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: Why Image Compressors Strip Metadata — and How to Prevent It</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 3 min read (583 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>If you have ever run images through a compression pipeline and discovered the EXIF data came out empty, the explanation is usually straightforward: the compressor never handled the metadata in the first place.</li><li style='margin-bottom:6px;'>Image compression operates on pixel data.</li><li style='margin-bottom:6px;'>Recent findings suggest that JPEG files use marker segments to organize data.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69411"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69411"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69411"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: Why Image Compressors Strip Metadata — and How to Prevent It" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fx0ae9hpb9ziww2w5km5a.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69411">If you have ever run images through a compression pipeline and discovered the EXIF data came out empty, the explanation is usually straightforward: the compressor never handled the metadata in the first place.</p>
+<p>Image compression operates on pixel data. Metadata — EXIF, IPTC, XMP, GPS coordinates — is stored in structurally separate sections of the file. Whether those sections survive compression is entirely a function of how the tool is built.</p>
+<p>Recent findings suggest that JPEG files use marker segments to organize data. The pixel stream starts at the SOS (Start of Scan) marker. Metadata lives in application markers:.</p>
+<p>Low-level libraries like libjpeg and libjpeg-turbo process only the pixel buffer. They do not automatically parse or carry over APPn markers. To preserve metadata, the developer must explicitly intercept markers during reading (via jpeg_save_markers()) and reinject them during writing (via jpeg_write_marker()).</p>
+<p>Sources indicate that metadata behavior varies by library and configuration. Some image libraries strip metadata by default, while others can preserve it when explicitly configured. For example, Sharp removes metadata by default unless preservation options such as keepMetadata(), keepExif(), or keepXmp() are used.</p>
+<p>PNG files store metadata in ancillary chunks:.</p>
+<p>Recent findings suggest that PNG compression itself is lossless — optimizers like OxiPNG reorganize the pixel data more efficiently without changing it. But whether the metadata chunks are preserved depends on the optimizer's implementation.</p>
+<p>WebP uses a RIFF container with dedicated chunks:.</p>
+<p>Sources indicate that IPTC is not part of the WebP specification. When converting from JPEG to WebP, EXIF and XMP can be carried over, but IPTC fields have no standard container in WebP.</p>
+<p>The compression library does not handle it — if the tool wraps libjpeg without marker handling or uses HTMLCanvasElement.toBlob() without separately preserving and reattaching source metadata, the output file will have no metadata regardless of the input.</p>
+<p id="sec-mid-69411">Deliberate size optimization — some tools strip metadata to save a few kilobytes per file.</p>
+<p>Format conversion side effects — converting between formats (JPEG → WebP, TIFF → JPEG) can drop metadata fields that the target format does not support.</p>
+<p>Canvas-based workflows operate on decoded pixel data rather than the original file container. Exporting with canvas.toBlob() or canvas.toDataURL() creates a newly encoded image and does not automatically carry over the source file's EXIF, IPTC, or XMP metadata. Applications that need metadata preservation must handle and reattach that metadata separately.</p>
+<p>Recent findings suggest that tools that use WebAssembly-based encoders (MozJPEG, libwebp, OxiPNG) can produce better compression results and can handle metadata if the implementation explicitly copies the relevant sections. The GeoImageTagger Image Compressor uses WASM encoders for compression and is designed to preserve supported metadata as a separate step, including post-compression verification.</p>
+<p>If metadata preservation matters for your pipeline, add a verification step:.</p>
+<p>Recent findings suggest that before compression — inspect the original file's metadata. The Metadata Viewer reveals EXIF, IPTC, XMP, and GPS fields for any supported image.</p>
+<p>It has been revealed that if fields are missing — use a metadata editor to restore them, or switch to a compressor that preserves metadata. The Metadata Editor handles writing EXIF, IPTC, and XMP fields.</p>
+<p>For programmatic workflows, exiftool can copy metadata between files:.</p>
+<p>Metadata preservation is not always the right choice. Personal photos shared publicly may contain GPS coordinates and device information. For privacy-sensitive images, deliberately removing metadata is the correct approach. The EXIF Remover handles selective removal without re-encoding pixels.</p>
+<p id="sec-end-69411">For the full guide, see How to Compress Images Without Losing EXIF, GPS, IPTC or XMP Metadata.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/geoimagetagger/why-image-compressors-strip-metadata-and-how-to-prevent-it-34no" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-training-design-for-text-to-image-models-lessons-fr-70153.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70153. Industry News: Training Design for Text-to-Image Models: Lessons from Ablations
+        </a>
+        
+        <a href="industry-news-european-beauty-standards-impact-on-self-image-and--68685.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #68685. Industry News: European Beauty Standards: Impact on Self-Image and Diversity
+        </a>
+        
+        <a href="industry-news-only-you-can-prevent-javascript-security-hacks-appl-67013.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #67013. Industry News: Only You Can Prevent JavaScript Security Hacks; AppLovin Eyes A Criteo Acquisition
+        </a>
+        
+        <a href="industry-news-heart-stents-may-not-prevent-heart-attacks-or-early-65870.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #65870. Industry News: Heart Stents May Not Prevent Heart Attacks or Early Death, Landmark Study Finds
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

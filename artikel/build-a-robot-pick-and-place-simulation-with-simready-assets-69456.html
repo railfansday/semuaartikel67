@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build a Robot Pick-and-Place Simulation with SimReady Assets</title>
+    <meta name="description" content="This walkthrough showcases a beverage can pick-and-place task that uses the UR17G arm, Robotiq 2F-140 gripper, and beverage can to compose a scene in Isaac">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/build-a-robot-pick-and-place-simulation-with-simready-assets-69456.html">
+    <meta property="og:title" content="Build a Robot Pick-and-Place Simulation with SimReady Assets">
+    <meta property="og:description" content="This walkthrough showcases a beverage can pick-and-place task that uses the UR17G arm, Robotiq 2F-140 gripper, and beverage can to compose a scene in Isaac">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/6abfe9e7d7cf09a9b38ef308/HFZWtQ2i9VN_agjeUw2HB.gif">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/build-a-robot-pick-and-place-simulation-with-simready-assets-69456.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Build a Robot Pick-and-Place Simulation with SimReady Assets", "image": ["https://cdn-uploads.huggingface.co/production/uploads/6abfe9e7d7cf09a9b38ef308/HFZWtQ2i9VN_agjeUw2HB.gif"], "datePublished": "2026-11-13T18:00:39", "dateModified": "2026-11-20T23:42:23.279116", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/build-a-robot-pick-and-place-simulation-with-simready-assets-69456.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Build a Robot Pick-and-Place Simulation with SimReady Assets</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 13 Nov 2026 &bull; ⏱️ 7 min read (1386 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>This walkthrough showcases a beverage can pick-and-place task that uses the UR17G arm, Robotiq 2F-140 gripper, and beverage can to compose a scene in Isaac Sim, check their behavior, and run a pick-and-place example with agent-generated controls.</li><li style='margin-bottom:6px;'>For robotics workflows, SimReady means an OpenUSD asset has been prepared with the properties needed for a defined simulation use case, such as collisions, mass, joints, and joint drives.</li><li style='margin-bottom:6px;'>SimReady Foundation defines what features the OpenUSD asset needs for a simulation use case.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69456"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69456"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69456"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Build a Robot Pick-and-Place Simulation with SimReady Assets" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/6abfe9e7d7cf09a9b38ef308/HFZWtQ2i9VN_agjeUw2HB.gif" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69456">This walkthrough showcases a beverage can pick-and-place task that uses the UR17G arm, Robotiq 2F-140 gripper, and beverage can to compose a scene in Isaac Sim, check their behavior, and run a pick-and-place example with agent-generated controls.</p>
+<p>For robotics workflows, SimReady means an OpenUSD asset has been prepared with the properties needed for a defined simulation use case, such as collisions, mass, joints, and joint drives. SimReady Central, an open asset library on Hugging Face, lets you reuse robot and object assets with authored simulation properties and profile-validation evidence. For more about the library and its launch, read the announcement blog.</p>
+<p>SimReady Foundation defines what features the OpenUSD asset needs for a simulation use case. Its specifications connect three levels:.</p>
+<p>According to recent reports, for this task, those properties include the arm and gripper’s joints and a beverage can asset collisions and mass. Validation checks these settings against the profile’s requirements. The simulation then tests whether the assembled robot can use them to pick up and move the can.</p>
+<p>Industry observers note that the UR17G, Robotiq 2F-140, and beverage can packages include the models and their simulation settings. You assemble the scene and add task code to define the arm–gripper assembly, work surface, starting positions, and controls for moving the arm and opening and closing the gripper.</p>
+<p>Figure 2. SimReady Central supplies the asset models and simulation settings and the example scene and controls define the pick-and-place task.</p>
+<p>A robot can look visually correct while stationary in Isaac Sim but move or interact with objects incorrectly when the simulation runs. Before running pick-and-place, test its joints, movement, and contact behavior. You can ask the agent to perform these tests or do them manually in Isaac Sim.</p>
+<p>In a recent development, during pick-and-place, watch whether a beverage can stay in the gripper as the arm moves. Asset structures vary, so use the settings in your loaded scene as your starting point. We will be going through the overall process of downloading the assets and composing the scene in the steps below.</p>
+<p>This example combines the UR17G arm, Robotiq 2F-140 gripper, and beverage can in Isaac Sim. The task is to grasp the can, lift it, move it to a target, and release it. You can also leverage SimReady Central Space search service endpoint to look for OEM curated content.</p>
+<p>Recent findings suggest that we will also use a frontier AI model to help create and run the task code in an open Isaac Sim scene. For this example, we use GPT-6 Sol, but another agent and model combination may work if it can load the required skills and execute Python against Isaac Sim (generated code and results can vary). The prompt provides a starting point. Inspect the generated code and check the resulting behavior before adapting the task.</p>
+<p>In a recent development, open SimReady Central and find the UR17G arm, Robotiq 2F-140 gripper, and beverage can used here. Select Download on each asset, then use Save to folder or the supplied Hugging Face command. Keep all three complete asset folders intact so Isaac Sim can find their supporting files.</p>
+<p>Industry observers note that use the asset versions linked in this example and provide your agent with the local USD file paths for the arm, gripper, and beverage can. An example gripper path is shown below; your download location may differ.</p>
+<p>Figure 3. SimReady Central search and interactive previews help identify the Robotiq 2F-140 gripper and beverage can used in this example.</p>
+<p>It has been revealed that figure 4. The beverage can’s download options include saving the asset package to a folder or using the Hugging Face CLI.</p>
+<p>The arm validation report uses the Robot-Body 4.0.0 profile and the gripper validation report uses Robot-Gripper 3.0.0. Both record passing PhysX driven-joint checks, which inspect joint-drive settings.</p>
+<p>In a recent development, simReady profile validation provides a shared baseline for reusing these assets. The pick-and-place run then tests how the arm, gripper, can, and controller work together in the assembled scene.</p>
+<p>With the assets downloaded, use your agent with Isaac Sim skills to help assemble the robot, run validation tools, and create the pick-and-place controls. You can also perform these steps manually using the linked documentation.</p>
+<p>Start Isaac Sim from its installation directory with the remote Python server enabled so the agent can interact with the simulation through Python:.</p>
+<p id="sec-mid-69456">If you are using an agent, make sure you start it from the Isaac Sim directory so that it can access the skills needed while going through the steps below.</p>
+<p>In a recent development, confirm that all three assets appear without missing-file errors. Ask the agent to inspect the arm and gripper’s joint limits and drive settings, or review them yourself in Isaac Sim. The robot and the gripper contain physics joints which can be tested and validated in the Isaac Sim GUI as well. We will now assemble the arm and the gripper next so that we can control the assembly as a single articulation.</p>
+<p>Sources indicate that you can follow the Robot Assembler tutorial for manual assembly. Here we will ask our agent to complete the assembly and validate it for us:.</p>
+<p>Sample prompt used in this example:.</p>
+<p>The agent ends up using the ‘isaac-sim-remote’ and ‘usd-articulation’ skills packaged with Isaac Sim to complete the assembly and validate the physics of the robot. We now have all the assets needed for running pick and place; the assembled robot and the soda can. We will now proceed with the final portion of the workflow.</p>
+<p>Figure 5. Joint settings for the UR17G arm and Robotiq 2F-140 gripper in Isaac Sim.</p>
+<p>With the assembled robot and can in the scene, ask the agent to run the task. Evaluate the simulation behavior using the checks in the next step.</p>
+<p>Now that the assets include simulation properties and profile validation, we can now test in an assembled scene and controller. The controller coordinates the UR17G arm’s movement with the Robotiq 2F-140 gripper’s opening and closing. Use the behavior checks below to evaluate the agent-generated task. To understand or adapt the controller yourself, see the Adding a Manipulator Robot tutorial.</p>
+<p>Sample prompt used in this example:.</p>
+<p>Skills used: ‘isaac-sim-remote’, ‘manipulaiton-ik’ and ‘physics-simulation’.</p>
+<p>The full task tests whether the gripper holds the can during movement and releases it at the target. Reset the scene, then run the approach, grasp, lift, hold, transfer, and release sequence. Compare your run with the opening video and the success criteria below.</p>
+<p>Figure 6. The UR17G arm and Robotiq 2F-140 gripper move the beverage can from the yellow pickup marker to the green target in Isaac Sim. Shown at 4× speed.</p>
+<p>If your run differs, note where the sequence fails and ask the agent to inspect the scene and generate controls. Reset the can and robot to the same starting state before retrying so you can compare the results.</p>
+<p>Sources indicate that these results apply to this scripted setup. They do not establish robustness to uncertain object positions, different payloads, or real hardware.</p>
+<p>Build your own pick-and-place task with assets from SimReady Central, then use an agent of your choice to help assemble the scene and run it in Isaac Sim.</p>
+<p>Sources indicate that for inspiration, explore Michael Wagner’s voice-controlled VR demo or Maziyar Panahi’s Microduck simulation. Both show how developers are using SimReady assets in their own projects.</p>
+<p>Industry observers note that what will you build? Share your scene and results in the Hugging Face comments, including the assets and Isaac Sim version you used.</p>
+<p>This walkthrough showcases a beverage can pick-and-place task that uses the UR17G arm, Robotiq 2F-140 gripper, and beverage can to compose a flixfox scene in Isaac Sim, check their behavior, and run a pick-and-place example with agent-generated controls.For robotics workflows, SimReady means an OpenUSD asset has been prepared with the properties needed for a defined simulation use case, such as collisions, mass, joints, and joint drives. SimReady Central, an open asset library on Hugging Face, lets you reuse robot and object assets with authored simulation properties and profile-validation evidence. For more about the library and its launch, read the announcement blog.</p>
+<p id="sec-end-69456">Recent findings suggest that with the assembled robot and can in the scene, ask the agent to run the task. Evaluate the simulation behavior using the checks in the next step.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-how-to-build-a-healthcare-robot-from-simulation-to--70197.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70197. Industry News: How to Build a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac for Healthcare
+        </a>
+        
+        <a href="building-a-healthcare-robot-from-simulation-to-deployment-with-nv-70196.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70196. Building a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac
+        </a>
+        
+        <a href="mit-scientists-build-a-tiny-robot-that-swims-using-living-muscle--57838.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #57838. MIT scientists build a tiny robot that swims using living muscle cells
+        </a>
+        
+        <a href="industry-news-lerobot-v040-supercharging-oss-robot-learning-70202.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70202. Industry News: LeRobot v0.4.0: Supercharging OSS Robot Learning
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Ruby2Shell (GHSA-34m4-m9fh-gqp5)</title>
+    <meta name="description" content="In a recent development, the bug is reachable from the following frameworks in their default configuration. Other frameworks are not exposed by default, bu">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-ruby2shell-ghsa-34m4-m9fh-gqp5-69725.html">
+    <meta property="og:title" content="Breaking: Ruby2Shell (GHSA-34m4-m9fh-gqp5)">
+    <meta property="og:description" content="In a recent development, the bug is reachable from the following frameworks in their default configuration. Other frameworks are not exposed by default, bu">
+    <meta property="og:image" content="https://verialabs.com/og/ruby2shell.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-ruby2shell-ghsa-34m4-m9fh-gqp5-69725.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Ruby2Shell (GHSA-34m4-m9fh-gqp5)", "image": ["https://verialabs.com/og/ruby2shell.png"], "datePublished": "2026-11-19T10:50:28", "dateModified": "2026-11-20T23:42:38.319899", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-ruby2shell-ghsa-34m4-m9fh-gqp5-69725.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Ruby2Shell (GHSA-34m4-m9fh-gqp5)</h1>
+        <div class="meta-line">🌐 Source: <strong>Verialabs</strong> &bull; 📅 19 Nov 2026 &bull; ⏱️ 2 min read (345 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, the bug is reachable from the following frameworks in their default configuration.</li><li style='margin-bottom:6px;'>Industry observers note that these products bundle their own Ruby, so the fix has to come
+              from the vendor.</li><li style='margin-bottom:6px;'>Upgrade Ruby to a fixed release:
+3.3.14, 3.4.13 or
+4.0.10.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69725"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69725"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69725"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Ruby2Shell (GHSA-34m4-m9fh-gqp5)" loading="lazy" src="https://verialabs.com/og/ruby2shell.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69725">In a recent development, the bug is reachable from the following frameworks in their default configuration. Other frameworks are not exposed by default, but application code that upcases strings received in a legacy encoding may also be vulnerable.</p>
+<p>Industry observers note that these products bundle their own Ruby, so the fix has to come
+              from the vendor. Products marked
+Vulnerable have no fixed
+              release yet: every current version is vulnerable.</p>
+<p>Updated
+20 November 2026 at 23:29 UTC.</p>
+<p>Upgrade Ruby to a fixed release:
+3.3.14, 3.4.13 or
+4.0.10.</p>
+<p>Recent findings suggest that install the vendor's fixed release. See
+Self-hosted software for fixed versions
+              of popular products.</p>
+<p>In a recent development, most of Ruby's single-byte encodings have no capital
+Ã. Upcasing it writes two bytes, SS, but
+              the loop only bounds-checks one (to &lt; to_end).</p>
+<p>In a recent development, the output buffer is allocated as the input length plus 20
+              bytes. Each Ã adds one byte to the output, so an
+              input with 21 of them overflows the buffer by one byte.</p>
+<p id="sec-mid-69725">Recent findings suggest that the same loop is in several ISO-8859 and Windows-125x encodings
+              and has been there since Ruby 2.4.0. It is reached by
+upcase, swapcase,
+downcase(:fold) and casecmp?.</p>
+<p>UTF-8 strings take a different code path and are not affected.</p>
+<p>Fixed upstream in
+ruby/ruby@d582f8f.</p>
+<p>A one-byte heap overflow. The byte written is S
+(0x53) when upcasing or s
+(0x73) when case-folding, and it lands directly
+              after the output buffer. The attacker controls the size of the
+              buffer through the input length.</p>
+<p>Copying the result out of the buffer then reads one byte out of
+              bounds.</p>
+<p>We'll be publishing a proof of concept demonstrating remote code
+              execution on stock Rails on
+25 November 2026, or later if major vendors have not shipped a fix by then.</p>
+<p>Veria Labs found this vulnerability independently and was the
+              first to demonstrate remote code execution.</p>
+<p id="sec-end-69725">In a recent development, the
+Ruby security advisory
+also credits Stephan Lipp (Ada Logics) and Anthropic with reporting
+              the underlying primitive. Additional discoverers include
+Moritz Sanft in collaboration with OpenAI.</p>
+<p style="margin-top: 25px;">
+<a href="https://verialabs.com/ruby2shell/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="elon-musk-claims-he-regrets-midterm-spending-70238.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70238. Elon Musk claims he regrets midterm spending
+        </a>
+        
+        <a href="hakeem-jeffries-and-his-team-will-seek-to-deliver-a-upcoming-era--70237.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70237. Hakeem Jeffries and his team will seek to deliver a upcoming era for House Democrats
+        </a>
+        
+        <a href="hobbled-at-home-trump-turns-abroad-70236.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70236. Hobbled at home, Trump turns abroad
+        </a>
+        
+        <a href="latest-update-trump-calls-putin-and-xi-friends-they-have-other-pl-70235.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70235. Latest Update: Trump calls Putin and Xi friends. They have other plans.
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

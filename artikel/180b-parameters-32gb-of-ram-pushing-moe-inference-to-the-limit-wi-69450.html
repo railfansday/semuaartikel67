@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>180B Parameters, 32GB of RAM: Pushing MoE Inference to the Limit with Transformers</title>
+    <meta name="description" content="Streaming MoE experts directly from SSD gets within 6% of Strata on token generation. Industry observers note that I've been trying to rely less on online ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/180b-parameters-32gb-of-ram-pushing-moe-inference-to-the-limit-wi-69450.html">
+    <meta property="og:title" content="180B Parameters, 32GB of RAM: Pushing MoE Inference to the Limit with Transformers">
+    <meta property="og:description" content="Streaming MoE experts directly from SSD gets within 6% of Strata on token generation. Industry observers note that I've been trying to rely less on online ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/moe-expert-streaming/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/180b-parameters-32gb-of-ram-pushing-moe-inference-to-the-limit-wi-69450.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "180B Parameters, 32GB of RAM: Pushing MoE Inference to the Limit with Transformers", "image": ["https://huggingface.co/blog/assets/moe-expert-streaming/thumbnail.png"], "datePublished": "2026-11-18T00:00:00", "dateModified": "2026-11-20T23:42:22.627941", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/180b-parameters-32gb-of-ram-pushing-moe-inference-to-the-limit-wi-69450.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>180B Parameters, 32GB of RAM: Pushing MoE Inference to the Limit with Transformers</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 9 min read (1874 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Streaming MoE experts directly from SSD gets within 6% of Strata on token generation.</li><li style='margin-bottom:6px;'>Industry observers note that I've been trying to rely less on online models and run bigger ones locally.</li><li style='margin-bottom:6px;'>According to recent reports, orthrus runs on Windows 11, because my kids play games all the time.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-69450"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-69450"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-69450"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="180B Parameters, 32GB of RAM: Pushing MoE Inference to the Limit with Transformers" loading="lazy" src="https://huggingface.co/blog/assets/moe-expert-streaming/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-69450">Streaming MoE experts directly from SSD gets within 6% of Strata on token generation.</p>
+<p>Industry observers note that I've been trying to rely less on online models and run bigger ones locally. At home I have a PC with two RTX 4090s (let's call it Orthrus - the two-headed hound
+of Greek mythology), and for work I have a MacBook M5 with 32G of unified memory.</p>
+<p>According to recent reports, orthrus runs on Windows 11, because my kids play games all the time. I had a
+dual boot with Ubuntu, but their games ended up taking most of the two
+terabytes of disk.</p>
+<p>Recent findings suggest that I am also a huge fan of RMD (rooms moving development): one hour in the kitchen
+sipping my coffee, two hours at my office desk, then the sofa. A fixed desktop
+tower is not for me.</p>
+<p>My first experiment was to run Qwen 3.8 27B with llama.app on Orthrus and use
+it from my laptop through pi. That model does the coding tasks, an online
+model like Opus does the orchestration, and the second RTX runs a FIM model for
+auto-completion in Neovim.</p>
+<p>When I talked about this on social networks, I got very strong feedback: use
+Strata with Qwen3.8-Flash-Next.</p>
+<p>According to recent reports, strata is an inference engine for MoE models like Qwen. Only the hot experts
+stay in VRAM, the rest goes to RAM, or even to disk. Experts are 90%+ of a MoE
+model's weights, so a 180B model like this one can run on a GPU with much less
+memory. Like my RTX 4090!</p>
+<p>It works on a laptop too, and I stumbled on
+this blog post doing
+exactly that: Qwen3.8-Flash-Next on a 32 GB Mac M4, faster than llama.cpp, at
+13.5 tok/s.</p>
+<p>According to recent reports, that's too slow for how I use coding agents, but it's an interesting itch to
+scratch. A whole range of MoE models don't fit in a MacBook's unified memory and
+could run at a decent speed.</p>
+<p>In a recent development, before committing to Strata, I looked at what llama.cpp, vLLM and Transformers
+do when a MoE model doesn't fit. Three questions matter: where do the experts
+live, where does the expert matmul run, and what moves on each token?</p>
+<p>In a recent development, llama.cpp maps the GGUF file with mmap and can keep the experts on the
+CPU (--cpu-moe, --n-cpu-moe N, -ot "exps=CPU", or --fit on to pick for
+you). Those experts are also computed on the CPU, so only the activations
+cross PCIe, never the weights. Great when the experts fit in RAM. When they
+don't, the page cache thrashes. A GPU expert cache (--moe-cache-mib) just
+landed, but it fragments the graph (2 splits per token become 50) and loses
+~10% even when everything fits.</p>
+<p>vLLM's --cpu-offload-gb N puts N GB of weights in pinned RAM, and kernels
+read them in place over PCIe. For a MoE layer, that's only the routed experts,
+but nothing is cached: a hot expert crosses PCIe again on every token, and
+there's no disk tier. By default the offloaded weights include dense layers,
+read on every token; --cpu-offload-params experts keeps it to the experts. That fits vLLM's substantial
+batches, which touch almost every expert anyway, less so one user on one GPU.</p>
+<p>Transformers offloads through Accelerate (device_map="auto",
+offload_folder), one module at a time: hooks copy its weights to the GPU
+before forward. For a MoE, that module is a layer's whole expert bank, so
+every token copies every expert of every offloaded layer to use 8 or 10 of them. No cache, no notion of routing. And on a Mac, CPU and GPU share the same memory,
+so "offload to CPU" frees nothing.</p>
+<p>I ran all of them on Qwen3.6-35B-A3B on one A10G (24 GB), with plenty of RAM,
+and Harry Mellor reran vLLM with better flags:.</p>
+<p>It has been revealed that offloading only the experts doubles vLLM's speed, and FP8 helps on top (half
+the bytes per expert, more of the model on the GPU). vLLM's other offload
+backend, which copies groups of layers ahead of time, ran under 1 tok/s.</p>
+<p>In a recent development, if the experts fit in RAM, llama.cpp is hard to beat. If they don't, you have to
+stream only what the router picks, through a bounded cache, fast enough that the
+SSD is the bottleneck and not Python, ideally reusing the model's fast expert
+kernels. That's Qwen3.8-Flash-Next on a 32 GB Mac, and Transformers couldn't do
+it out of the box.</p>
+<p>Strata was already too slow for me on the laptop, and Transformers was not going
+to beat it anytime soon. But the Accelerate path was so far off that I wanted to
+try fixing offloading in Transformers itself, with the massive model on my laptop as
+the target, knowing it would probably stay too slow for how I work.</p>
+<p>According to recent reports, all of the code was built with AI: the Transformers PR, the model-specific
+package and the Metal kernels. My part was choosing what to try, reading the
+profiles, and deciding what to keep. Everything is in a Space:
+tarekziade/moe-expert-streaming.</p>
+<p>I started with OLMoE-1B-7B, which fits in memory, so I could compare every token
+with vanilla Transformers.</p>
+<p>It has been revealed that first version: experts on disk, an LRU cache on the device, and a Python loop
+running one expert at a time. With every expert already cached, it did 10.1
+tok/s. Vanilla did ~32. The I/O was fine, my loop was not: vanilla uses
+grouped_mm, which runs all the experts of a layer in one kernel.</p>
+<p>In a recent development, the fix, and the key idea of this project, was to turn the cache into a slot
+pool: one preallocated device tensor shared by all layers, plus a per-layer
+table from expert id to slot. Remap the router's expert ids to slots and the
+pool looks like a regular expert bank, so grouped_mm runs on it as is. No
+custom expert matmul needed. That got it to 34.6 tok/s, against 38.1 for
+vanilla.</p>
+<p id="sec-mid-69450">I then turned the standalone loader into an option of from_pretrained, in
+huggingface/transformers#50717. To try it, install Transformers from that PR:.</p>
+<p>Then, moving from OLMoE to the real target, Qwen3.8-Flash-Next:.</p>
+<p>That repo
+holds the output of the project's
+conversion script:
+the dense weights, the experts quantized to 3 bits, and the n-gram table.</p>
+<p>Experts mapped to "disk" go through the streaming path instead of Accelerate's
+offload: the loader skips their tensors and MoE layers switch to an offloaded
+implementation. Misses are read by 8 I/O threads, one contiguous read per
+expert. The next two layers' routers run early on the current hidden states to
+guess which experts to prefetch. Experts can be quantized offline so reads are
+smaller. It works for MoE models with the standard experts layout.</p>
+<p>Sources indicate that the API is still being discussed with the Transformers maintainers. The
+device_map form came out of that, and quantized experts will probably go
+through the per-layer quantization proposal of
+#50245 rather than
+their own option.</p>
+<p>Sources indicate that qwen3.8-Flash-Next has 48 layers of 512 experts (10 active), 121 GB in FP8. Streaming them isn't enough: there's also a 51 GB n-gram embedding
+table that needs its own disk path. So:.</p>
+<p>Industry observers note that the conversion takes ~5 hours. After loading, it uses ~18 GiB, and a 6K prompt
+peaks at 25.4 GiB. That's about the limit: I have to close the browser, or macOS
+starts swapping.</p>
+<p>Industry observers note that the model-specific bits (the n-gram table, Metal kernels) live in a small
+package, moe-expert-streaming,
+on top of the PR. The first version ran at about 10 tok/s.</p>
+<p>Then I installed Strata on the same M5, with the same prompts:.</p>
+<p>Sources indicate that strata 0.1.60 used IQ3_XXS experts. Both ran greedy, with thinking, MTP and
+speculative drafts off, and 1,024-token prefill chunks. The full setup and raw
+results are on the Space's
+details page.</p>
+<p>Industry observers note that I also tried vllm-metal, vLLM on
+Apple GPUs through MLX, which recently got expert offloading. It streams the
+routed experts from an MLX checkpoint through a bounded cache, like this
+project. But it can't run Qwen3.8-Flash-Next on 32 GB, for the n-gram reason
+above: only the experts are streamed, and the n-gram tables stay in memory. That's 32 GB in the MLX checkpoints on the Hub, before the ~5 GB of dense layers and any expert cache.</p>
+<p>It has been revealed that most of the time wasn't spent on experts. Here's what helped:.</p>
+<p>Here's one MoE layer for one token, as it runs now:.</p>
+<p>These are the final results after these optimizations on the same M5 with the same prompts:.</p>
+<p>That's about 6% behind Strata on short decode, with slightly faster prefill,
+all through Transformers.</p>
+<p>It has been revealed that most of what's left is host round trips, ~10 ms per token. Waking up after a
+sync is only ~1 ms of that. The rest is the GPU running dry while Python queues
+the next layer. Strata queues the whole token's work up front, and the GPU waits
+on a Metal shared event at each layer while the host reads experts. PyTorch
+doesn't expose that. I tried to fake it with a kernel spinning on a flag the CPU
+writes, and the GPU took anywhere from a second to never to see the write. The
+real fix would be a native op on PyTorch's MPS stream, with a risk of hangs, so
+I haven't built it.</p>
+<p>According to recent reports, it runs at ~14 tok/s, close to Strata, and it's still too slow for how I use
+coding agents. Orthrus keeps doing the real work.</p>
+<p>Transformers didn't beat Strata, and closing the last ~6% would take deeper
+changes in the stack, starting with control over that per-layer sync, which
+PyTorch doesn't give you today. The interesting part is how it got that
+close: streaming only the routed experts, a bounded cache that grouped_mm runs
+on as is, and a few targeted Metal kernels. There's no C++ extension in the
+project: just Python, Metal kernels compiled at runtime with
+torch.mps.compile_shader, and prebuilt kernels from the Hub. All the Metal kernels written for this experiment are now
+published on the Hub,
+and the project loads them from there.</p>
+<p>Industry observers note that beating Strata was never the only goal, though. Building this was a great way
+to learn how MoEs and LLMs work from a systems perspective: how sparse the
+routing really is, how much an expert cache buys you, where memory bandwidth
+goes per token, and how much time the host and the GPU spend waiting on each
+other. Transformers makes all of that easy to poke at, one module at a time.</p>
+<p>Recent findings suggest that the generic expert streaming implementation is in
+huggingface/transformers#50717,
+and the benchmarks are in the Space. Feedback on the approach and the API is welcome.</p>
+<p>Thanks to Pedro, Lysandre and Arthur for their excellent feedback, and to Harry
+for helping test vLLM.</p>
+<p id="sec-end-69450">Finally, thanks to Niko Veit for Strata. Strata set the bar for what's possible with expert streaming on consumer
+hardware, and having those numbers to chase is what pushed this work as far as
+it went.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/moe-expert-streaming" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-deploy-gpt-j-6b-for-inference-using-hugging-face-transfo-58497.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58497. Breaking: Deploy GPT-J 6B for inference using  Hugging Face Transformers and Amazon SageMaker
+        </a>
+        
+        <a href="accelerate-bert-inference-with-hugging-face-transformers-and-aws--58486.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58486. Accelerate BERT inference with Hugging Face Transformers and AWS Inferentia
+        </a>
+        
+        <a href="accelerated-inference-with-optimum-and-transformers-pipelines-58467.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #58467. Accelerated Inference with Optimum and Transformers Pipelines
+        </a>
+        
+        <a href="tricks-from-openai-gpt-oss-you-can-use-with-transformers-70230.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70230. Tricks from OpenAI gpt-oss YOU 🫵 can use with transformers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
