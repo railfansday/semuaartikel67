@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizing Stable Diffusion for Intel CPUs with NNCF and 🤗 Optimum</title>
+    <meta name="description" content="Latent Diffusion models are game changers when it comes to solving text-to-image generation problems. Stable Diffusion is one of the most famous examples t">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/optimizing-stable-diffusion-for-intel-cpus-with-nncf-and-optimum-81649.html">
+    <meta property="og:title" content="Optimizing Stable Diffusion for Intel CPUs with NNCF and 🤗 Optimum">
+    <meta property="og:description" content="Latent Diffusion models are game changers when it comes to solving text-to-image generation problems. Stable Diffusion is one of the most famous examples t">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/train_optimize_sd_intel/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/optimizing-stable-diffusion-for-intel-cpus-with-nncf-and-optimum-81649.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Optimizing Stable Diffusion for Intel CPUs with NNCF and 🤗 Optimum", "image": ["https://huggingface.co/blog/assets/train_optimize_sd_intel/thumbnail.png"], "datePublished": "2023-05-25T00:00:00", "dateModified": "2026-11-21T14:10:07.869532", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/optimizing-stable-diffusion-for-intel-cpus-with-nncf-and-optimum-81649.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Hardware & Chips</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Optimizing Stable Diffusion for Intel CPUs with NNCF and 🤗 Optimum</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 25 May 2023 &bull; ⏱️ 7 min read (1414 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Latent Diffusion models are game changers when it comes to solving text-to-image generation problems.</li><li style='margin-bottom:6px;'>Through the past five years, OpenVINO Toolkit encapsulated many features for high-performance inference.</li><li style='margin-bottom:6px;'>In a recent development, in this blog post, we will outline the problems of optimizing Stable Diffusion models and propose a workflow that substantially reduces the latency of such models when running on a resource-constrained HW such as CPU.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81649"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81649"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81649"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Optimizing Stable Diffusion for Intel CPUs with NNCF and 🤗 Optimum" loading="lazy" src="https://huggingface.co/blog/assets/train_optimize_sd_intel/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81649">Latent Diffusion models are game changers when it comes to solving text-to-image generation problems. Stable Diffusion is one of the most famous examples that got wide adoption in the community and industry. The idea behind the Stable Diffusion model is simple and compelling: you generate an image from a noise vector in multiple small steps refining the noise to a latent image representation. This approach works very well, but it can take a long time to generate an image if you do not have access to powerful GPUs.</p>
+<p>Through the past five years, OpenVINO Toolkit encapsulated many features for high-performance inference. Initially designed for Computer Vision models, it still dominates in this domain showing best-in-class inference performance for many contemporary models, including Stable Diffusion. However, optimizing Stable Diffusion models for resource-constraint applications requires going far beyond just runtime optimizations. And this is where model optimization capabilities from OpenVINO Neural Network Compression Framework (NNCF) come into play.</p>
+<p>In a recent development, in this blog post, we will outline the problems of optimizing Stable Diffusion models and propose a workflow that substantially reduces the latency of such models when running on a resource-constrained HW such as CPU. In particular, we achieved 5.1x inference acceleration and 4x model footprint reduction compared to PyTorch.</p>
+<p>Sources indicate that in the Stable Diffusion pipeline, the UNet model is computationally the most expensive to run. Thus, optimizing just one model brings substantial benefits in terms of inference speed.</p>
+<p>It has been revealed that however, it turns out that the traditional model optimization methods, such as post-training 8-bit quantization, do not work for this model. There are two main reasons for that. First, pixel-level prediction models, such as semantic segmentation, super-resolution, etc., are one of the most complicated in terms of model optimization because of the complexity of the task, so tweaking model parameters and the structure breaks the results in numerous ways. The second reason is that the model has a lower level of redundancy because it accommodates a lot of information while being trained on hundreds of millions of samples. That is why researchers have to employ more sophisticated quantization methods to preserve the accuracy after optimization. For example, Qualcomm used the layer-wise Knowledge Distillation method (AdaRound) to quantize Stable Diffusion models. It means that model tuning after quantization is required, anyway. If so, why not just use Quantization-Aware Training (QAT) which can tune the model and quantization parameters simultaneously in the same way the source model is trained? Thus, we tried this approach in our work using NNCF, OpenVINO, and Diffusers and coupled it with Token Merging.</p>
+<p>It has been revealed that we usually start the optimization of a model after it's trained. Here, we start from a model fine-tuned on the Pokemons dataset containing images of Pokemons and their text descriptions.</p>
+<p>We used the text-to-image fine-tuning example for Stable Diffusion from the Diffusers and integrated QAT from NNCF into the following training script. We also changed the loss function to incorporate knowledge distillation from the source model that acts as a teacher in this process while the actual model being trained acts as a student. This approach is different from the classical knowledge distillation method, where the trained teacher model is distilled into a smaller student model. In our case, knowledge distillation is used as an auxiliary method that helps improve the final accuracy of the optimizing model. We also use the Exponential Moving Average (EMA) method for model parameters excluding quantizers which allows us to make the training process more stable. We tune the model for 4096 iterations only.</p>
+<p>In a recent development, with some tricks, such as gradient checkpointing and keeping the EMA model in RAM instead of VRAM, we can run the optimization process using one GPU with 24 GB of VRAM. The whole optimization takes less than a day using one GPU!</p>
+<p>Recent findings suggest that quantization alone can bring significant enhancements by reducing model footprint, load time, memory consumption, and inference latency. But the great thing about quantization is that it can be applied along with other optimization methods leading to a cumulative speedup.</p>
+<p>Recently, Facebook Research introduced a Token Merging method for Vision Transformer models. The essence of the method is that it merges redundant tokens with important ones using one of the available strategies (averaging, taking max values, etc.). This is done before the self-attention block, which is the most computationally demanding part of Transformer models. Therefore, reducing the token dimension reduces the overall computation time in the self-attention blocks. This method has also been adapted for Stable Diffusion models and has shown promising results when optimizing Stable Diffusion pipelines for high-resolution image synthesis running on GPUs.</p>
+<p id="sec-mid-81649">We modified the Token Merging method to be compliant with OpenVINO and stacked it with 8-bit quantization when applied to the Attention UNet model. This also involves all the mentioned techniques including Knowledge Distillation, etc. As for quantization, it requires fine-tuning to be applied to restore the accuracy. We also start optimization and fine-tuning from the model trained on the Pokemons dataset. The figure below shows an overall optimization workflow.</p>
+<p>The resultant model is highly beneficial when running inference on devices with limited computational resources, such as client or edge CPUs. As it was mentioned, stacking Token Merging with quantization leads to an additional reduction in the inference latency.</p>
+<p>According to recent reports, results of image generation demo using different optimized models. Input prompt is “cartoon bird”, seed is 42. The models are with OpenVINO 2022.3 in Hugging Face Spaces using a “CPU upgrade” instance which utilizes 3rd Generation Intel® Xeon® Scalable Processors with Intel® Deep Learning Boost technology.</p>
+<p>We used the disclosed optimization workflows to get two types of optimized models, 8-bit quantized and quantized with Token Merging, and compare them to the PyTorch baseline. We also converted the baseline to vanilla OpenVINO floating-point (FP32) model for the comprehensive comparison.</p>
+<p>The picture above shows the results of image generation and some model characteristics. As you can see, just conversion to OpenVINO brings a significant decrease in the inference latency ( 1.9x ). Applying 8-bit quantization boosts inference speed further leading to 3.9x speedup compared to PyTorch. Another benefit of quantization is a significant reduction of model footprint, 0.25x of PyTorch checkpoint, which also improves the model load time. Applying Token Merging (ToME) (with a merging ratio of 0.4 ) on top of quantization brings 5.1x performance speedup while keeping the footprint at the same level. We didn't provide a thorough analysis of the visual quality of the optimized models, but, as you can see, the results are quite solid.</p>
+<p>For the results shown in this blog, we used the default number of 50 inference steps. With fewer inference steps, inference speed will be faster, but this has an effect on the quality of the resulting image. How large this effect is depends on the model and the scheduler. We recommend experimenting with different number of steps and schedulers and find what works best for your use case.</p>
+<p>Below we show how to perform inference with the final pipeline optimized to run on Intel CPUs:.</p>
+<p>You can find the training and quantization code in the Hugging Face Optimum Intel library. The notebook that demonstrates the difference between optimized and original models is available here. You can also find many models on the Hugging Face Hub under the OpenVINO organization. In addition, we have created a demo on Hugging Face Spaces that is being run on a 3rd Generation Intel Xeon Scalable processor.</p>
+<p>Sources indicate that as we showed with the Pokemon image generation task, it is possible to achieve a high level of optimization of the Stable Diffusion pipeline when using a relatively small amount of training resources. At the same time, it is well-known that training a general-purpose Stable Diffusion model is an expensive task. However, with enough budget and HW resources, it is possible to optimize the general-purpose model using the described approach and tune it to produce high-quality images. The only caveat we have is related to the token merging method that reduces the model capacity substantially. The rule of thumb here is the more complicated the dataset you have for the training, the less merging ratio you should use during the optimization.</p>
+<p id="sec-end-81649">If you enjoyed reading this post, you might also be interested in checking out this post that discusses other complementary approaches to optimize the performance of Stable Diffusion on 4th generation Intel Xeon CPUs.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/train-optimize-sd-intel" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="accelerating-stable-diffusion-inference-on-intel-cpus-81678.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81678. Accelerating Stable Diffusion Inference on Intel CPUs
+        </a>
+        
+        <a href="latest-update-fine-tuning-stable-diffusion-models-on-intel-cpus-81623.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81623. Latest Update: Fine-tuning Stable Diffusion models on Intel CPUs
+        </a>
+        
+        <a href="stable-diffusion-with-diffusers-81756.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81756. Stable Diffusion with 🧨 Diffusers
+        </a>
+        
+        <a href="japanese-stable-diffusion-81744.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81744. Japanese Stable Diffusion
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

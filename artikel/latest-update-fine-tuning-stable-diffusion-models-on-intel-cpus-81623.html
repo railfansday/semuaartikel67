@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: Fine-tuning Stable Diffusion models on Intel CPUs</title>
+    <meta name="description" content="Sources indicate that diffusion models helped popularize generative AI thanks to their uncanny ability to generate photorealistic images from text prompts.">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-fine-tuning-stable-diffusion-models-on-intel-cpus-81623.html">
+    <meta property="og:title" content="Latest Update: Fine-tuning Stable Diffusion models on Intel CPUs">
+    <meta property="og:description" content="Sources indicate that diffusion models helped popularize generative AI thanks to their uncanny ability to generate photorealistic images from text prompts.">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/stable-diffusion-finetuning-intel/screen01.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-fine-tuning-stable-diffusion-models-on-intel-cpus-81623.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: Fine-tuning Stable Diffusion models on Intel CPUs", "image": ["https://huggingface.co/blog/assets/stable-diffusion-finetuning-intel/screen01.png"], "datePublished": "2023-07-14T00:00:00", "dateModified": "2026-11-21T14:10:02.186151", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-fine-tuning-stable-diffusion-models-on-intel-cpus-81623.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Hardware & Chips</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: Fine-tuning Stable Diffusion models on Intel CPUs</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 14 Jul 2023 &bull; ⏱️ 5 min read (985 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that diffusion models helped popularize generative AI thanks to their uncanny ability to generate photorealistic images from text prompts.</li><li style='margin-bottom:6px;'>Sources indicate that like Transformer models, you can fine-tune Diffusion models to help them generate content that matches your business needs.</li><li style='margin-bottom:6px;'>Industry observers note that this post will show you how to fine-tune a Stable Diffusion model on an Intel Sapphire Rapids CPU cluster.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81623"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81623"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81623"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: Fine-tuning Stable Diffusion models on Intel CPUs" loading="lazy" src="https://huggingface.co/blog/assets/stable-diffusion-finetuning-intel/screen01.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81623">Sources indicate that diffusion models helped popularize generative AI thanks to their uncanny ability to generate photorealistic images from text prompts. These models have now found their way into enterprise use cases like synthetic data generation or content creation. The Hugging Face hub includes over 5,000 pre-trained text-to-image models. Combining them with the Diffusers library, it's never been easier to start experimenting and building image generation workflows.</p>
+<p>Sources indicate that like Transformer models, you can fine-tune Diffusion models to help them generate content that matches your business needs. Initially, fine-tuning was only possible on GPU infrastructure, but things are changing! A few months ago, Intel rolled out the fourth generation of Xeon CPUs, code-named Sapphire Rapids. Sapphire Rapids introduces the Intel Advanced Matrix Extensions (AMX), a fresh hardware accelerator for deep learning workloads. We've already demonstrated the benefits of AMX in several blog posts: fine-tuning NLP Transformers, inference with NLP Transformers, and inference with Stable Diffusion models.</p>
+<p>Industry observers note that this post will show you how to fine-tune a Stable Diffusion model on an Intel Sapphire Rapids CPU cluster. We will use textual inversion, a technique that only requires a small number of example images. We'll use only five!</p>
+<p>Our friends at Intel provided four servers hosted on the Intel Developer Cloud (IDC), a service platform for developing and running workloads in Intel®-optimized deployment environments with the latest Intel processors and performance-optimized software stacks.</p>
+<p>In a recent development, each server is powered by two Intel Sapphire Rapids CPUs with 56 physical cores and 112 threads. Here's the output of lscpu:.</p>
+<p>According to recent reports, let's first list the IP addresses of our servers in nodefile. The first line refers to the primary server.</p>
+<p>Distributed training requires password-less ssh between the primary and other nodes. Here's a good article on how to do this if you're unfamiliar with the process.</p>
+<p>According to recent reports, next, we create a newly introduced environment on each node and install the software dependencies. We notably install two Intel libraries: oneCCL, to manage distributed communication and the Intel Extension for PyTorch (IPEX) to leverage the hardware acceleration features present in Sapphire Rapids. We also add gperftools to install libtcmalloc, a high-performance memory allocation library.</p>
+<p>Next, we clone the diffusers repository on each node and install it from source.</p>
+<p>Next, we add IPEX to the fine-tuning script in diffusers/examples/textual_inversion. We import IPEX and optimize the U-Net and Variable Auto Encoder models. Please make sure this is applied to all nodes.</p>
+<p>In a recent development, the last step is downloading the training images. Ideally, we'd use a shared NFS folder, but for the sake of simplicity, we'll download the images on each node. Please ensure they're in the same directory on all nodes (/home/devcloud/dicoo).</p>
+<p>Recent findings suggest that the system setup is now complete. Let's configure the training job.</p>
+<p>According to recent reports, the Accelerate library makes it very easy to run distributed training. We need to run it on each node and answer simple questions.</p>
+<p>Here's a screenshot for the primary node. On the other nodes, you need to set the rank to 1, 2, and 3. All other answers are identical.</p>
+<p>In a recent development, finally, we need to set the environment on the primary node. It will be propagated to other nodes as the fine-tuning job starts. The first line sets the name of the network interface connected to the local network where all nodes run. You may need to adapt this usingifconfig to get the appropriate information.</p>
+<p id="sec-mid-81623">We can now launch the fine-tuning job.</p>
+<p>Recent findings suggest that we launch the fine-tuning job with mpirun, which sets up distributed communication across the nodes listed in nodefile. We'll run 16 tasks (-n) with four tasks per node (-ppn). Accelerate automatically sets up distributed training across all tasks.</p>
+<p>Here, we train for 200 steps, which should take about five minutes.</p>
+<p>Here's a screenshot of the busy cluster:.</p>
+<p>Distributed training can be tricky, especially if you're new to the discipline. A minor misconfiguration on a single node is the most likely concern: missing dependency, images stored in a different location, etc.</p>
+<p>Industry observers note that you can quickly pinpoint the troublemaker by logging in to each node and training locally. First, set the same environment as on the primary node, then run:.</p>
+<p>In a recent development, if training starts successfully, stop it and move to the next node. If training starts successfully on all nodes, return to the primary node and double-check the node file, the environment, and the mpirun command. Don't worry; you'll find the problem :).</p>
+<p>Industry observers note that after 5 minutes training, the model is saved locally. We could load it with a vanilla diffusers pipeline and predict. Instead, let's use Optimum Intel and OpenVINO to optimize the model. As discussed in a previous post, this lets you generate an image on a single CPU in less than 5 seconds!</p>
+<p>Here, we load the model, optimize it for a static shape, and save it:.</p>
+<p>Then, we load the optimized model, generate five different images and save them:.</p>
+<p>Here's a generated image. It is impressive that the model only needed five images to learn that dicoos have glasses!</p>
+<p>Industry observers note that if you'd like, you can fine-tune the model some more. Here's a lovely example generated by a 3,000-step model (about an hour of training).</p>
+<p>Thanks to Hugging Face and Intel, you can now use Xeon CPU servers to generate high-quality images adapted to your business needs. They are generally more affordable and widely available than specialized hardware such as GPUs. Xeon CPUs can also be easily repurposed for other production tasks, from web servers to databases, making them a versatile and flexible choice for your IT infrastructure.</p>
+<p>Here are some resources to help you get started:.</p>
+<p id="sec-end-81623">If you have questions or feedback, we'd love to read them on the Hugging Face forum.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/stable-diffusion-finetuning-intel" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="using-lora-for-efficient-stable-diffusion-fine-tuning-81703.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81703. Using LoRA for Efficient Stable Diffusion Fine-Tuning
+        </a>
+        
+        <a href="accelerating-stable-diffusion-inference-on-intel-cpus-81678.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81678. Accelerating Stable Diffusion Inference on Intel CPUs
+        </a>
+        
+        <a href="optimizing-stable-diffusion-for-intel-cpus-with-nncf-and-optimum-81649.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81649. Optimizing Stable Diffusion for Intel CPUs with NNCF and 🤗 Optimum
+        </a>
+        
+        <a href="accelerating-pytorch-distributed-fine-tuning-with-intel-technolog-81837.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81837. Accelerating PyTorch distributed fine-tuning with Intel technologies
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Code Llama: Llama 2 learns to code</title>
+    <meta name="description" content="Code Llama is a family of state-of-the-art, open-access versions of Llama 2 specialized on code tasks, and we’re excited to release integration in the Hugg">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-code-llama-llama-2-learns-to-code-81600.html">
+    <meta property="og:title" content="Breaking: Code Llama: Llama 2 learns to code">
+    <meta property="og:description" content="Code Llama is a family of state-of-the-art, open-access versions of Llama 2 specialized on code tasks, and we’re excited to release integration in the Hugg">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/160_codellama/thumbnail.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-code-llama-llama-2-learns-to-code-81600.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Code Llama: Llama 2 learns to code", "image": ["https://huggingface.co/blog/assets/160_codellama/thumbnail.jpg"], "datePublished": "2023-08-25T00:00:00", "dateModified": "2026-11-21T14:09:57.099941", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-code-llama-llama-2-learns-to-code-81600.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Code Llama: Llama 2 learns to code</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 25 Aug 2023 &bull; ⏱️ 8 min read (1560 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Code Llama is a family of state-of-the-art, open-access versions of Llama 2 specialized on code tasks, and we’re excited to release integration in the Hugging Face ecosystem!</li><li style='margin-bottom:6px;'>Code LLMs are an exciting development for software engineers because they can boost productivity through code completion in IDEs, take care of repetitive or annoying tasks like writing docstrings, or create unit tests.</li><li style='margin-bottom:6px;'>It has been revealed that the Code Llama release introduces a family of models of 7, 13, and 34 billion parameters.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81600"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81600"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81600"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Code Llama: Llama 2 learns to code" loading="lazy" src="https://huggingface.co/blog/assets/160_codellama/thumbnail.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81600">Code Llama is a family of state-of-the-art, open-access versions of Llama 2 specialized on code tasks, and we’re excited to release integration in the Hugging Face ecosystem! Code Llama has been released with the same permissive community license as Llama 2 and is available for commercial use.</p>
+<p>Today, we’re excited to release:.</p>
+<p>Code LLMs are an exciting development for software engineers because they can boost productivity through code completion in IDEs, take care of repetitive or annoying tasks like writing docstrings, or create unit tests.</p>
+<p>It has been revealed that the Code Llama release introduces a family of models of 7, 13, and 34 billion parameters. The base models are initialized from Llama 2 and then trained on 500 billion tokens of code data. Meta fine-tuned those base models for two different flavors: a Python specialist (100 billion additional tokens) and an instruction fine-tuned version, which can understand natural language instructions.</p>
+<p>In a recent development, the models show state-of-the-art performance in Python, C++, Java, PHP, C#, TypeScript, and Bash. The 7B and 13B base and instruct variants support infilling based on surrounding content, making them ideal for use as code assistants.</p>
+<p>Industry observers note that code Llama was trained on a 16k context window. In addition, the three model variants had additional long-context fine-tuning, allowing them to manage a context window of up to 100,000 tokens.</p>
+<p>Increasing Llama 2’s 4k context window to Code Llama’s 16k (that can extrapolate up to 100k) was possible due to recent developments in RoPE scaling. The community found that Llama’s position embeddings can be interpolated linearly or in the frequency domain, which eases the transition to a larger context window through fine-tuning. In the case of Code Llama, the frequency domain scaling is done with a slack: the fine-tuning length is a fraction of the scaled pretrained length, giving the model powerful extrapolation capabilities.</p>
+<p>Sources indicate that all models were initially trained with 500 billion tokens on a near-deduplicated dataset of publicly available code. The dataset also contains some natural language datasets, such as discussions about code and code snippets. Unfortunately, there is not more information about the dataset.</p>
+<p>In a recent development, for the instruction model, they used two datasets: the instruction tuning dataset collected for Llama 2 Chat and a self-instruct dataset. The self-instruct dataset was created by using Llama 2 to create interview programming questions and then using Code Llama to generate unit tests and solutions, which are later evaluated by executing the tests.</p>
+<p>Code Llama is available in the Hugging Face ecosystem, starting with transformers version 4.33.</p>
+<p>You can easily try the Code Llama Model (13 billion parameters!) in this Space or in the playground embedded below:.</p>
+<p>Under the hood, this playground uses Hugging Face's Text Generation Inference, the same technology that powers HuggingChat, and we'll share more in the following sections.</p>
+<p>In a recent development, if you want to try out the bigger instruct-tuned 34B model, it is now available on HuggingChat! You can try it out here: hf.co/chat. Make sure to specify the Code Llama model. You can also check this chat-based demo and duplicate it for your use – it's self-contained, so you can examine the source code and adapt it as you wish!</p>
+<p>Starting with transformers 4.33, you can use Code Llama and leverage all the tools within the HF ecosystem, such as:.</p>
+<p>When using models like Code Llama, it's crucial to take a look at the data types of the models.</p>
+<p>As mentioned above, transformers loads weights using float32 (no matter with which precision the models are stored), so it's important to specify the desired dtype when loading the models. If you want to fine-tune Code Llama, it's recommended to use bfloat16, as using float16 can lead to overflows and NaNs. If you run inference, we recommend using float16 because bfloat16 can be slower.</p>
+<p>The 7B and 13B models can be used for text/code completion or infilling. The following code snippet uses the pipeline interface to demonstrate text completion. It runs on the free tier of Colab, as long as you select a GPU runtime.</p>
+<p>This may produce output like the following:.</p>
+<p>Code Llama is specialized in code understanding, but it's a language model in its own right. You can use the same generation strategy to autocomplete comments or general text.</p>
+<p id="sec-mid-81600">Industry observers note that this is a specialized task particular to code models. The model is trained to generate the code (including comments) that best matches an existing prefix and suffix. This is the strategy typically used by code assistants: they are asked to fill the current cursor position, considering the contents that appear before and after it.</p>
+<p>This task is available in the base and instruction variants of the 7B and 13B models. It is not available for any of the 34B models or the Python versions.</p>
+<p>According to recent reports, to use this feature successfully, you need to pay close attention to the format used to train the model for this task, as it uses special separators to identify the different parts of the prompt. Fortunately, transformers' CodeLlamaTokenizer makes this very easy, as demonstrated below:.</p>
+<p>Under the hood, the tokenizer automatically splits by  to create a formatted input string that follows the original training pattern. This is more robust than preparing the pattern yourself: it avoids pitfalls, such as token glueing, that are very hard to debug.</p>
+<p>Industry observers note that the base model can be used for both completion and infilling, as described. The Code Llama release also includes an instruction fine-tuned model that can be used in conversational interfaces.</p>
+<p>To prepare inputs for this task we have to use a prompt template like the one described in our Llama 2 blog post, which we reproduce again here:.</p>
+<p>According to recent reports, note that the system prompt is optional - the model will work without it, but you can use it to further configure its behavior or style. For example, if you'd always like to get answers in JavaScript, you could state that here. After the system prompt, you need to provide all the previous interactions in the conversation: what was asked by the user and what was answered by the model. As in the infilling case, you need to pay attention to the delimiters used. The final component of the input must always be a fresh user instruction, which will be the signal for the model to provide an answer.</p>
+<p>The following code snippets demonstrate how the template works in practice.</p>
+<p>Recent findings suggest that the process is the same as in Llama 2. We haven’t used loops or generalized this example code for maximum clarity:.</p>
+<p>According to recent reports, integration of Code Llama in Transformers means that you get immediate support for advanced features like 4-bit loading. This allows you to run the big 32B parameter models on consumer GPUs like nvidia 3090 cards!</p>
+<p>Here's how you can run inference in 4-bit mode:.</p>
+<p>Text Generation Inference is a production-ready inference container developed by Hugging Face to enable easy deployment of large language models. It has features such as continuous batching, token streaming, tensor parallelism for fast inference on multiple GPUs, and production-ready logging and tracing.</p>
+<p>Sources indicate that you can try out Text Generation Inference on your own infrastructure, or you can use Hugging Face's Inference Endpoints. To deploy a Codellama 2 model, go to the model page and click on the Deploy -&gt; Inference Endpoints widget.</p>
+<p>Note: You might need to request a quota upgrade via email to api-enterprise@huggingface.co to access A100s.</p>
+<p>Sources indicate that you can learn more on how to Deploy LLMs with Hugging Face Inference Endpoints in our blog. The blog includes information about supported hyperparameters and how to stream your response using Python and Javascript.</p>
+<p>Industry observers note that HF Code Autocomplete is a VS Code extension for testing open source code completion models. The extension was developed as part of StarCoder project and was updated to support the medium-sized base model, Code Llama 13B. Find more here on how to install and run the extension with Code Llama.</p>
+<p>It has been revealed that language models for code are typically benchmarked on datasets such as HumanEval. It consists of programming challenges where the model is presented with a function signature and a docstring and is tasked to complete the function body. The proposed solution is then verified by running a set of predefined unit tests. Finally, a pass rate is reported which describes how many solutions passed all tests. The pass@1 rate describes how often the model generates a passing solution when having one shot whereas pass@10 describes how often at least one solution passes out of 10 proposed candidates.</p>
+<p>Sources indicate that while HumanEval is a Python benchmark there have been significant efforts to translate it to more programming languages and thus enable a more holistic evaluation. One such approach is MultiPL-E which translates HumanEval to over a dozen languages. We are hosting a multilingual code leaderboard based on it to allow the community to compare models across different languages to evaluate which model fits their use-case best.</p>
+<p id="sec-end-81600">Note: The scores presented in the table above were sourced from our code leaderboard at the time of publication. Scores change as latest models are released, because models are compared against one another. For more details, please refer to the leaderboard.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/codellama" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="the-age-of-machine-learning-as-code-has-arrived-81843.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81843. The Age of Machine Learning As Code Has Arrived
+        </a>
+        
+        <a href="stackllama-a-hands-on-guide-to-train-llama-with-rlhf-81675.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81675. StackLLaMA: A hands-on guide to train LLaMA with RLHF
+        </a>
+        
+        <a href="starcoder-a-state-of-the-art-llm-for-code-81663.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81663. StarCoder: A State-of-the-Art LLM for Code
+        </a>
+        
+        <a href="llama-2-is-here-get-it-on-hugging-face-81620.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81620. Llama 2 is here - get it on Hugging Face
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

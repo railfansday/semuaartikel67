@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ettin Suite: SoTA Paired Encoders and Decoders</title>
+    <meta name="description" content="What would happen if you took the ModernBERT recipe and applied it to a decoder-only model? Turns out, a state-of-the-art decoder language model that beats">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/ettin-suite-sota-paired-encoders-and-decoders-81025.html">
+    <meta property="og:title" content="Ettin Suite: SoTA Paired Encoders and Decoders">
+    <meta property="og:description" content="What would happen if you took the ModernBERT recipe and applied it to a decoder-only model? Turns out, a state-of-the-art decoder language model that beats">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/ettin/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/ettin-suite-sota-paired-encoders-and-decoders-81025.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Ettin Suite: SoTA Paired Encoders and Decoders", "image": ["https://huggingface.co/blog/assets/ettin/thumbnail.png"], "datePublished": "2025-07-16T00:00:00", "dateModified": "2026-11-21T14:08:56.295150", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/ettin-suite-sota-paired-encoders-and-decoders-81025.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Ettin Suite: SoTA Paired Encoders and Decoders</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 16 Jul 2025 &bull; ⏱️ 5 min read (1073 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>What would happen if you took the ModernBERT recipe and applied it to a decoder-only model?</li><li style='margin-bottom:6px;'>Sources indicate that we introduce a upcoming open-data training recipe to reproduce the encoder-only ModernBERT model (and actually beat it!).</li><li style='margin-bottom:6px;'>Industry observers note that this blog post introduces Ettin, the first suite of SoTA paired encoder-only and decoder-only models (17M-1B params) trained with identical data (2T tokens), architecture, and training recipes.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81025"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81025"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81025"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Ettin Suite: SoTA Paired Encoders and Decoders" loading="lazy" src="https://huggingface.co/blog/assets/ettin/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81025">What would happen if you took the ModernBERT recipe and applied it to a decoder-only model? Turns out, a state-of-the-art decoder language model that beats Llama 3.2 1B and SmolLM2!</p>
+<p>Sources indicate that we introduce a upcoming open-data training recipe to reproduce the encoder-only ModernBERT model (and actually beat it!). We then apply the exact same recipe to decoder-only models. For the first time, we have two state-of-the-art models trained in the same setup but with two different training objectives: masked language modeling (MLM), and causal language modeling (CLM).</p>
+<p>Industry observers note that this blog post introduces Ettin, the first suite of SoTA paired encoder-only and decoder-only models (17M-1B params) trained with identical data (2T tokens), architecture, and training recipes. Ettin enables true apples-to-apples comparisons between architectures and delivers state-of-the-art performance for open-data models in both categories. We then further explore whether it is possible to get a competitive encoder starting from the decoder and vice-versa.</p>
+<p>If you are interested in trying out the models, some boilerplates are available at the end of this blogpost!</p>
+<p>The LLM community has largely converged on decoder-only models like GPT, Llama, and Qwen. Their generative capabilities are impressive, but this focus is detracting attention from other categories, such as encoder-only models like BERT.</p>
+<p>Industry observers note that however, encoder BERT-like models remain the workhorses of production systems for classification, retrieval, and embedding tasks. They're faster, more memory-efficient, and often more accurate for discriminative tasks. The key difference lies in their attention patterns:.</p>
+<p>While decoder models have seen rapid innovation, encoder model development had stagnated – until recently, with efforts like ModernBERT modernizing them. But which architecture is better? Previous comparisons between encoders and decoders used different datasets, architectures, and training recipes, so it was hard to tell.</p>
+<p>In a recent development, named after the two-headed Norse giant, Ettin provides a controlled comparison by training with both architectures on identical data, identical model shapes, and identical training recipes. They only differ in attention patterns and training objectives!</p>
+<p>We build on the ModernBERT recipe, which borrowed modern techniques from decoder-only models and brought them to encoder training. This provides a strong base for training both architectures.</p>
+<p>Recent findings suggest that we train six different sizes, ranging from 17M to 1B parameters. This allows us to test the effects of scale, and provides a wide variety of models for you to use! No matter if you need a blazing fast on-device model or a powerful but slower model, we got you covered!</p>
+<p>We use a comprehensive three-phase training approach to maximize performance:.</p>
+<p>Phase 1 - Pre-training (1.7T tokens): We start with a diverse mixture of high-quality data sources, training on shorter contexts (1024 tokens) to establish strong foundational knowledge.</p>
+<p>Phase 2 - Context Extension (250B tokens): We increase context length to 8K tokens using higher-quality filtered data, allowing models to understand longer documents and more complex relationships.</p>
+<p>Phase 3 - Decay (100B tokens): We finish with premium data sources including scientific papers, textbooks, and curated content while gradually reducing the learning rate.</p>
+<p>Our encoder models gain all the benefits of ModernBERT's speed, allowing them to be significantly faster than the previous generations of encoders.</p>
+<p>Unlike ModernBERT, all our training data is public and reproducible:.</p>
+<p>You can continue to train these models on new data or propose a new recipe to further improve results!</p>
+<p>Recent findings suggest that our encoder models outperform ModernBERT across all tasks and model sizes, while using completely open training data. Since we provide a large range of sizes, you can now use ModernBERT-style models in smaller sizes (great for on-device or for fast-inference), or power up with a 1B-sized encoder that crushes the competition.</p>
+<p>Applying the same recipe to decoder models yields equally impressive results, with our models outperforming or matching established baselines such as Llama 3.2 and SmolLM2:.</p>
+<p id="sec-mid-81025">The gains are particularly strong on knowledge-intensive tasks like SciQ, reflecting the benefits of our high-quality training data mixture. These results demonstrate that our training recipe creates genuinely strong models in both architectural paradigms.</p>
+<p>Sources indicate that for the first time, we can fairly compare encoder and decoder architectures trained with identical data and recipes. The results reveal fundamental architectural advantages that persist even when all other factors are controlled:.</p>
+<p>The results show clear patterns:.</p>
+<p>Sources indicate that encoders dominate classification and retrieval: On MNLI classification, even a 150M encoder (89.2) outperforms a 400M decoder (88.2). For retrieval tasks, the gap is smaller but still noticeable - especially when decoders are not trained with MNTP.</p>
+<p>Decoders excel at generation: On generative tasks, decoders maintain consistent advantages, with the performance gap actually widening at larger model sizes.</p>
+<p>Size doesn't always matter: A 400M encoder beats a 1B decoder on classification tasks, while a 400M decoder beats a 1B encoder on generation tasks.</p>
+<p>In a recent development, due to the lack of new encoder models, works like LLM2Vec have proposed to continue pre-training decoders with MLM. We can now test the effectiveness of this strategy!</p>
+<p>We switched the objective and continued to train our models with the opposite objective for 50B additional tokens. This is what we found:.</p>
+<p>This suggests the architecture choice matters fundamentally, not just the training objective.</p>
+<p>It has been revealed that with identical training data, we can study how different objectives affect learning. For example, analyzing gender bias using the WinoGender benchmark reveals:.</p>
+<p>This opens doors for systematic studies of how training objectives influence model behavior beyond just accuracy metrics.</p>
+<p>You can use these models with just a few lines of code!</p>
+<p>For classification and retrieval tasks, use encoder models: You may want to use a fine-tuned version for these tasks as well.</p>
+<p>For text generation tasks, use decoder models:.</p>
+<p>The complete Ettin suite includes models at six different scales (for both encoders and decoders):.</p>
+<p>Industry observers note that any chance you can add the trained sentence transformer versions of these models? It'd be very useful (And I lack compute for training from scratch :)).</p>
+<p>It has been revealed that yes, we’re working with some people to get some trained embeddings versions. Hopefully you won’t have to wait too long :).</p>
+<p>Assim como aplicar uma receita de treino inovadora pode superar modelos de ponta, FondecranVIP  redefine o visual do seu dispositivo com wallpapers exclusivos e de alta qualidade, levando sua personalização a um nível superior.</p>
+<p>Thank you for an interesting study.</p>
+<p id="sec-end-81025">Do you have plans to create encoder-decoder models from these?</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ettin" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="welcome-mixtral-a-sota-mixture-of-experts-on-hugging-face-81560.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81560. Welcome Mixtral - a SOTA Mixture of Experts on Hugging Face
+        </a>
+        
+        <a href="screensuite-the-most-comprehensive-evaluation-suite-for-gui-agent-81112.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81112. ScreenSuite - The most comprehensive evaluation suite for GUI Agents!
+        </a>
+        
+        <a href="merge-2-my-five-pre-upload-tools-are-now-one-suite-80920.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #80920. Merge #2: my five pre-upload tools are now one suite
+        </a>
+        
+        <a href="future-of-marketing-briefing-consulting-firms-revive-their-market-78317.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #78317. Future of Marketing Briefing: Consulting firms revive their marketing ambitions in the C-suite the holdcos covet
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

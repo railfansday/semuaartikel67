@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating a Coding Assistant with StarCoder</title>
+    <meta name="description" content="Sources indicate that if you’re a software developer, chances are that you’ve used GitHub Copilot or ChatGPT to solve programming tasks such as translating">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/creating-a-coding-assistant-with-starcoder-81661.html">
+    <meta property="og:title" content="Creating a Coding Assistant with StarCoder">
+    <meta property="og:description" content="Sources indicate that if you’re a software developer, chances are that you’ve used GitHub Copilot or ChatGPT to solve programming tasks such as translating">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/starchat_alpha/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/creating-a-coding-assistant-with-starcoder-81661.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Creating a Coding Assistant with StarCoder", "image": ["https://huggingface.co/blog/assets/starchat_alpha/thumbnail.png"], "datePublished": "2023-05-09T00:00:00", "dateModified": "2026-11-21T14:10:10.421845", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/creating-a-coding-assistant-with-starcoder-81661.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Creating a Coding Assistant with StarCoder</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 09 May 2023 &bull; ⏱️ 11 min read (2104 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that if you’re a software developer, chances are that you’ve used GitHub Copilot or ChatGPT to solve programming tasks such as translating code from one language to another or generating a full implementation from a natural language query like “Write a Python program to find the Nth Fibonacci number”.</li><li style='margin-bottom:6px;'>In a recent development, fortunately, there are now several high-quality open-source alternatives!</li><li style='margin-bottom:6px;'>The new kid on the block is BigCode’s StarCoder, a 16B parameter model trained on one trillion tokens sourced from 80+ programming languages, GitHub challenges, Git commits, and Jupyter notebooks (all permissively licensed).</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81661"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81661"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81661"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Creating a Coding Assistant with StarCoder" loading="lazy" src="https://huggingface.co/blog/assets/starchat_alpha/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81661">Sources indicate that if you’re a software developer, chances are that you’ve used GitHub Copilot or ChatGPT to solve programming tasks such as translating code from one language to another or generating a full implementation from a natural language query like “Write a Python program to find the Nth Fibonacci number”. Although impressive in their capabilities, these proprietary systems typically come with several drawbacks, including a lack of transparency on the public data used to train them and the inability to adapt them to your domain or codebase.</p>
+<p>In a recent development, fortunately, there are now several high-quality open-source alternatives! These include SalesForce’s CodeGen Mono 16B for Python, or Replit’s 3B parameter model trained on 20 programming languages.</p>
+<p>The new kid on the block is BigCode’s StarCoder, a 16B parameter model trained on one trillion tokens sourced from 80+ programming languages, GitHub challenges, Git commits, and Jupyter notebooks (all permissively licensed). With an enterprise-friendly license, 8,192 token context length, and fast large-batch inference via multi-query attention, StarCoder is presently the best open-source choice for code-based applications.</p>
+<p>Recent findings suggest that in this blog post, we’ll show how StarCoder can be fine-tuned for chat to create a personalised coding assistant! Dubbed StarChat, we’ll explore several technical details that arise when using large language models (LLMs) as coding assistants, including:.</p>
+<p>As a teaser of the end result, try asking StarChat a few programming questions in the demo below!</p>
+<p>You can also find the code, dataset, and model used to produce the demo at the following links:.</p>
+<p>To get started, let’s take a look at how language models can be turned into conversational agents without any fine-tuning at all.</p>
+<p>According to recent reports, as shown by DeepMind and Anthropic, LLMs can be turned into conversational agents through a clever choice of prompt. These prompts typically involve a so-called “system” message that defines the character of the LLM, along with a series of dialogues between the assistant and a user.</p>
+<p>For example, here’s an excerpt from Anthropic’s HHH prompt (a whopping 6k tokens in total!):.</p>
+<p>Sources indicate that as we can see, the first part of the prompt “Below are a series...” corresponds to the system message and specifies that the assistant should have characteristics like “helpfulness” and “politeness”. The dialogue examples then condition the model to follow the multi-turn format of a conversation. When a user asks a question, the whole prompt is fed to the model and it generates an answer after the Assistant: prefix. The answer is then concatenated to the prompt and the process repeated at every turn.</p>
+<p>It has been revealed that somewhat surprisingly, this technique also works for StarCoder! This is enabled by the model’s 8k token context length, which allows one to include a wide variety of programming examples and convert the model into a coding assistant. Here’s an excerpt of the StarCoder prompt:.</p>
+<p>Here we can see how a well crafted prompt can induce coding behaviour similar to that observed in ChatGPT. You can find the full prompt here and chat with the prompted StarCoder on HuggingChat.</p>
+<p>One major drawback with dialogue-prompting is that inference can be very costly: every turn of the conversation involves thousands of tokens which will rapidly burn a hole in your wallet!</p>
+<p>It has been revealed that the obvious alternative is to fine-tune the base model on a corpus of dialogues and enable it to become “chatty”. Let’s take a look at a few interesting datasets that have recently landed on the Hub and are powering most of the open-source chatbots today.</p>
+<p>In a recent development, the open-source community is rapidly creating diverse and powerful datasets for transforming any base language model into a conversational agent that can follow instructions. Some examples that we have found to produce chatty language models include:.</p>
+<p>For the purposes of this blog post, we’ll use the OpenAssistant dataset to fine-tune StarCoder since it has a permissive license and was produced entirely by humans.</p>
+<p>The raw dataset is formatted as a collection of conversation trees, so we’ve preprocessed it so that each row corresponds to a single dialogue between the user and the assistant. To avoid deviating too far from the data that StarCoder was pretrained on, we’ve also filtered it for English dialogues.</p>
+<p>Let’s start by downloading the processed dataset from the Hub:.</p>
+<p>As we can see, the dataset contains around 21,000 English conversations. Let’s take a look at one of the training examples. Take the first example,.</p>
+<p>OK, this looks like an interesting dialogue about moral philosophy, with each turn involving a role and content field to indicate who is writing. Let’s now take a look at converting these dialogues to a standard format that simplifies the way messages are generated at inference time.</p>
+<p>It has been revealed that one way to fine-tune a model on dialogues is to simply insert the system message and roles in each training example, and then separate each dialogue with an end-of-sequence token like . For instance, the conversation above could take the form:.</p>
+<p>Although this works fine for training, it isn’t ideal for inference because the model will naturally generate unwanted turns until it produces an  token, and some post-processing or additional logic is typically required to prevent this.</p>
+<p>A more appealing approach is to use a structured format like ChatML, which wraps each turn with a set of special tokens that indicates the role of the query or response.</p>
+<p>In this format, we have the following special tokens:.</p>
+<p>Let’s write a function that wraps our running example with these tokens to see what it looks like:.</p>
+<p>Industry observers note that OK, this looks like what we need! The next step is to include these special tokens in the tokenizer’s vocabulary, so let’s download the StarCoder tokenizer and add them:.</p>
+<p>As a sanity check this works, let’s see if tokenizing the string "&lt;|assistant|&gt;" produces a single token ID:.</p>
+<p id="sec-mid-81661">Industry observers note that one additional benefit of the special chat tokens is that we can use them to mask the loss from the labels associated with the user turns of each dialogue. The reason to do this is to ensure the model is conditioned on the user parts of the dialogue, but only trained to predict the assistant parts (which is what really matters during inference). Here’s a simple function that masks the labels in place and converts all the user tokens to -100 which is subsequently ignored by the loss function:.</p>
+<p>It has been revealed that OK, we can see that all the user input IDs have been masked in the labels as desired. These special tokens have embeddings that will need to be learned during the fine-tuning process. Let’s take a look at what’s involved.</p>
+<p>It has been revealed that the StarCoder and StarCoderBase models contain 16B parameters, which means we’ll need a lot of GPU vRAM to fine-tune them — for instance, simply loading the model weights in full FP32 precision requires around 60GB vRAM! Fortunately, there are a few options available to deal with large models like this:.</p>
+<p>Since DeepSpeed is tightly integrated in 🤗 Transformers, we’ll use it to train our model. To get started, first clone BigCode’s StarCoder repo from GitHub and navigate to the chat directory:.</p>
+<p>According to recent reports, next, create a Python virtual environment using e.g. Conda:.</p>
+<p>It has been revealed that next, we install PyTorch v1.13.1. Since this is hardware-dependent, we direct you to the PyTorch Installation Page for this step. Once you've installed it, install the rest of the project dependencies:.</p>
+<p>It has been revealed that we need to be logged into both Hugging Face. To do so, run:.</p>
+<p>According to recent reports, the final step is to launch the training! If you’re lucky enough to have 8 x A100 (80GB) GPUs to run this training, you can run the following command. Training should take around 45 minutes:.</p>
+<p>In a recent development, here the config.yaml file specifies all the parameters associated with the dataset, model, and training - you can configure it here to adapt the training to a upcoming dataset. Your trained model will then be available on the Hub!</p>
+<p>Recent findings suggest that we wanted to see how our model could do with basic visualization tasks, following the famous unicorn drawing in tikz of GPT-4. To do this, we prompted our model with some coding tasks and got wonderful results! Yes, these are a little cherry picked as we only selected the completions that wrote functioning code, but the others were not far off!</p>
+<p>Example of a plot generated by StarChat.</p>
+<p>Example of a plot generated by StarChat.</p>
+<p>Example of a plot generated by StarChat.</p>
+<p>According to recent reports, evaluating coding assistants (or chatbots more generally) is tricky because the user-facing metrics we care about are often not measured in conventional NLP benchmarks. For example, we ran the base and fine-tuned StarCoderBase models through EleutherAI’s language model evaluation harness to measure their performance on the following benchmarks:.</p>
+<p>The results are shown in the table below, where we can see the fine-tuned model has improved, but not in a manner that reflects it’s conversational capabilities.</p>
+<p>So what can be done instead of relying on automatic metrics on benchmarks? To date, two main methods have been proposed:.</p>
+<p>Industry observers note that as a simple experiment, we used ChatGPT to test our StarCoder models on several programming languages. To do this, we first created a seed dataset of interesting prompts for evaluation. We used ChatGPT to initiate this process, asking it things such as:.</p>
+<p>It has been revealed that in the second case, ChatGPT actually generated more data than was asked (such as a separate field with additional contact on the bug in the initial submission). Right now, this dataset contains 115 prompts and is primarily in Python. Three quarters of the prompts are instructions asking for the user to provide code, and one quarter ask for feedback on a buggy code sample.</p>
+<p>In a recent development, in our experiments, we asked OpenAI’s models to rate the answers each on a score from 1 to 8 with a modified version of the Vicuna code prompt comparing responses. In this case, the instruction tuned StarCoder model achieved a higher score than the base model 95.6% of the time. An interesting artifact is that we definitely see that ChatGPT likes to return safer scores in the middle of the range when compared to GPT4, which is more open to giving 1s and 8s.</p>
+<p>Here's a quick example of what LLM evaluation can return as a score for a given prompt and response pair.</p>
+<p>Instruction-tuned completion (Assistant 2):.</p>
+<p>Base-model completion (Assistant 1):.</p>
+<p>We can compare this to ChatGPT’s response, which seems to miss the fact that the Assistant 1 does not actually accomplish the task. In its response it indicates the second is better, but gives it a lower score.</p>
+<p>This highlights us that while there is extremely valuable signal in AI evaluations, we have a lot to learn about how to compare models and calibrate these results with humans!</p>
+<p>Like many other language models, this alpha version of StarChat has strong to-be-addressed limitations, including a tendency to hallucinate facts and produce problematic content (especially when prompted to). In particular, the model hasn't been aligned to human preferences with techniques like RLHF or deployed with in-the-loop filtering of responses like ChatGPT. Models trained primarily on code data will also have a more skewed demographic bias commensurate with the demographics of the GitHub community, for more on this see the StarCoder dataset. For more details on the model’s limitations in terms of factuality and biases, see the model card.</p>
+<p>Sources indicate that we were surprised to learn that a code-generation model like StarCoder could be converted into a conversational agent with a diverse dataset like that from OpenAssistant. One possible explanation is that StarCoder has been trained on both code and GitHub issues, the latter providing a rich signal of natural language content. We're excited to see where the community will take StarCoder - perhaps it will power the next wave of open-source assistants 🤗.</p>
+<p>Recent findings suggest that we thank Nicolas Patry and Olivier Dehaene for their help with deploying StarChat on the Inference API and enabling blazing fast text generation. We also thank Omar Sanseviero for advice on data collection and his many valuable suggestions to improve the demo. Finally, we are grateful to Abubakar Abid and the Gradio team for creating a delightful developer experience with the newly introduced code components, and for sharing their expertise on building great demos.</p>
+<p id="sec-end-81661">To cite this work, please use the following citation:.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/starchat-alpha" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="personal-copilot-train-your-own-coding-assistant-81572.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81572. Personal Copilot: Train Your Own Coding Assistant
+        </a>
+        
+        <a href="breaking-ai-for-game-development-creating-a-farming-game-in-5-day-81712.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81712. Breaking: AI for Game Development: Creating a Farming Game in 5 Days. Part 1
+        </a>
+        
+        <a href="ai-for-game-development-creating-a-farming-game-in-5-days-part-2-81710.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81710. AI for Game Development: Creating a Farming Game in 5 Days. Part 2
+        </a>
+        
+        <a href="tech-report-how-hugging-face-accelerated-development-of-witty-wor-81688.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81688. Tech Report: How Hugging Face Accelerated Development of Witty Works Writing Assistant
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

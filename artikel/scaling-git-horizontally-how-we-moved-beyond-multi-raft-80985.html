@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scaling Git horizontally: how we moved beyond Multi-Raft</title>
+    <meta name="description" content="Before we dive deeper, let's do a quick recap on Enroute's architecture. Enroute separates compute from storage, like many modern databases. A cluster has ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/scaling-git-horizontally-how-we-moved-beyond-multi-raft-80985.html">
+    <meta property="og:title" content="Scaling Git horizontally: how we moved beyond Multi-Raft">
+    <meta property="og:description" content="Before we dive deeper, let's do a quick recap on Enroute's architecture. Enroute separates compute from storage, like many modern databases. A cluster has ">
+    <meta property="og:image" content="https://enroute.sh/blog/scaling-horizontally-how-we-moved-beyond-multi-raft/opengraph-image-fx5gi7/card?d0c3feb5081f2f2e">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/scaling-git-horizontally-how-we-moved-beyond-multi-raft-80985.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Scaling Git horizontally: how we moved beyond Multi-Raft", "image": ["https://enroute.sh/blog/scaling-horizontally-how-we-moved-beyond-multi-raft/opengraph-image-fx5gi7/card?d0c3feb5081f2f2e"], "datePublished": "2026-11-18", "dateModified": "2026-11-21T14:08:51.200086", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/scaling-git-horizontally-how-we-moved-beyond-multi-raft-80985.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Scaling Git horizontally: how we moved beyond Multi-Raft</h1>
+        <div class="meta-line">🌐 Source: <strong>Enroute</strong> &bull; 📅 18 Nov 2026 &bull; ⏱️ 5 min read (986 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Before we dive deeper, let's do a quick recap on Enroute's architecture.</li><li style='margin-bottom:6px;'>When thinking about how many repositories we can fit on a single Enroute cluster, there are really two numbers to consider:.</li><li style='margin-bottom:6px;'>While we had implemented some early optimizations already, two measurements showed where we still fell short:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-80985"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-80985"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-80985"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Scaling Git horizontally: how we moved beyond Multi-Raft" loading="lazy" src="https://enroute.sh/blog/scaling-horizontally-how-we-moved-beyond-multi-raft/opengraph-image-fx5gi7/card?d0c3feb5081f2f2e" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-80985">Before we dive deeper, let's do a quick recap on Enroute's architecture. Enroute separates compute from storage, like many modern databases. A cluster has three parts:.</p>
+<p>When thinking about how many repositories we can fit on a single Enroute cluster, there are really two numbers to consider:.</p>
+<p>While we had implemented some early optimizations already, two measurements showed where we still fell short:.</p>
+<p>Every repository's log was its own state machine on a separate Raft log. Raft keeps a leader alive with heartbeats and when it fails, replaces it with an election, so every log had its own timers, votes, pre-votes and leader. With hundreds of thousands of repositories, that machinery became the workload.</p>
+<p>According to recent reports, it turns out that mature Multi-Raft-based systems have a well-known toolbox for this, which we began to make use of as best as possible. We allowed idle logs to go to sleep, moved liveness from each log to the node, and we woke a failed node's logs only as they were needed, to prevent kicking off thousands of leader elections at the same time when a single node fails.</p>
+<p>These fixes worked. Together, they took the setup that had previously collapsed at 2,048 writers to about 14,000 pushes per second at 100,000 repositories with no failures.</p>
+<p>Recent findings suggest that however, taking a step back, it felt like we were just piling more complexity on top of the core Multi-Raft setup, which is already quite complex to start with. What's worse, this complexity was not only in code, but also directly translated into failure modes and edge cases.</p>
+<p>In short, it became obvious that continuing on this path would lead to a system that would be much harder to understand and operate, which motivated us to start looking for alternatives.</p>
+<p>In a recent development, looking at our setup at this point, most of the complexity came from the fact that we ran membership, and by extension leadership elections, on a per-repository basis. So we began looking at ways we could take leader election out of the per-repository log.</p>
+<p>There are a number of systems that put an external configuration master in charge of their replicas today. Among all of those, we liked Vertical Paxos (Lamport, Malkhi and Zhou, 2009) the best. The key insight behind it is that if something outside the log decides who's responsible for deciding its entries, the log itself needs no timers at all.</p>
+<p>To apply this to Enroute, we introduced a singular "root log" that is responsible for tracking node membership per repository, while keeping the actual repository state inside each repository's log (which we'll call "shard log") and which is decided by a "sequencer" that's appointed via the root log.</p>
+<p>On top of this, we then kept the parts from Raft that already worked well, and adopted specific pieces from Vertical Paxos.</p>
+<p id="sec-mid-80985">What we keep from Raft is everything about how a log is written:.</p>
+<p>What we adopt from Vertical Paxos is everything about how leadership changes:.</p>
+<p>In our Multi-Raft setup, every ledger node was a member of every repository's Raft group, so each log lived on all of them. That also meant adding a ledger node added a copy of every log, without any way to spread the load across more nodes.</p>
+<p>With this fresh design, thanks to the root log leader being in charge of appointing sequencers, it is straightforward to extend this responsibility to placement: The root log can now decide which ledger nodes to appoint as responsible for a certain shard log, which means we can distribute the responsibility for tracking repository metadata across a larger pool of ledger nodes.</p>
+<p>Based on this idea, the root log leader we implemented is already capable of:.</p>
+<p>Our blueprint is to extend this placement logic further in upcoming releases to improve how Enroute balances load across ledger nodes and make this process more continuous rather than purely failover-driven.</p>
+<p>In a recent development, consensus protocols can be treacherous, and so a upcoming consensus protocol naturally deserves suspicion. This is where the simpler design pays off: without an election in every log, the protocol is small enough to put under a model checker, which Raft with our fixes layered on top was not. We tested our new design in two ways.</p>
+<p>It has been revealed that model checking the code the engine runs. The core protocol is written ("sans-IO" as the cool kids say) as a state machine without I/O: messages, proposals and clock ticks become inputs, and the pending messages and disk I/O tasks are output. This made it possible for us to use Stateright to exhaustively check the actual implementation rather than just a model, which simulates every possible interleaving of sequencers, appointments, reads, crashes and lost unsynced writes (within small bounds).</p>
+<p>Jepsen against real processes. Here, our previous investment in setting up a Jepsen suite paid off. It drives Git clients while it partitions, kills and pauses nodes, with every ledger on LazyFS to simulate disk failures, while Elle checks ref reads for strict serializability. While working on our fresh consensus engine, it found two smaller non-safety-critical bugs not in the engine itself, but in how it integrated with the rest of the system (which is why the Stateright model checks didn't pick it up earlier). Luckily, both were easy to fix.</p>
+<p>To find out how well these improvements worked, we tested our old implementation (0.3.0) against the upcoming shard log based one (0.4.0), and grew each cluster in steps up to 100,000 repositories, and 0.4.0 on to 300,000.</p>
+<p>The real win however doesn't even show in these numbers: Enroute's consensus layer now has far fewer moving parts, which makes it much easier to understand, operate and extend in the future as we continue our scaling journey.</p>
+<p id="sec-end-80985">With the newly won headroom on the ledger tier, here are the directions we're thinking of taking it next:.</p>
+<p style="margin-top: 25px;">
+<a href="https://enroute.sh/blog/scaling-horizontally-how-we-moved-beyond-multi-raft" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="scaling-up-bert-inference-on-cpu-part-1-81856.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81856. Scaling-up BERT Inference on CPU (Part 1)
+        </a>
+        
+        <a href="scaling-up-bert-like-model-inference-on-modern-cpu-part-2-81839.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81839. Scaling up BERT-like model Inference on modern CPU  - Part 2
+        </a>
+        
+        <a href="introducing-ai-vs-ai-a-deep-reinforcement-learning-multi-agents-c-81698.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81698. Introducing ⚔️ AI vs. AI ⚔️ a deep reinforcement learning multi-agents competition system
+        </a>
+        
+        <a href="latest-update-deprecation-of-git-authentication-using-password-81601.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81601. Latest Update: Deprecation of Git Authentication using password
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

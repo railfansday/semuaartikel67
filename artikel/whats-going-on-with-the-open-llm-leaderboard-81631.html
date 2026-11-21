@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's going on with the Open LLM Leaderboard?</title>
+    <meta name="description" content="Recently an interesting discussion arose on Twitter following the release of Falcon 🦅 and its addition to the Open LLM Leaderboard, a public leaderboard co">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/whats-going-on-with-the-open-llm-leaderboard-81631.html">
+    <meta property="og:title" content="What's going on with the Open LLM Leaderboard?">
+    <meta property="og:description" content="Recently an interesting discussion arose on Twitter following the release of Falcon 🦅 and its addition to the Open LLM Leaderboard, a public leaderboard co">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/evaluating-mmlu-leaderboard/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/whats-going-on-with-the-open-llm-leaderboard-81631.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "What's going on with the Open LLM Leaderboard?", "image": ["https://huggingface.co/blog/assets/evaluating-mmlu-leaderboard/thumbnail.png"], "datePublished": "2023-06-23T00:00:00", "dateModified": "2026-11-21T14:10:03.756779", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/whats-going-on-with-the-open-llm-leaderboard-81631.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>What's going on with the Open LLM Leaderboard?</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 23 Jun 2023 &bull; ⏱️ 11 min read (2127 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recently an interesting discussion arose on Twitter following the release of Falcon 🦅 and its addition to the Open LLM Leaderboard, a public leaderboard comparing open access large language models.</li><li style='margin-bottom:6px;'>The discussion centered around one of the four evaluations displayed on the leaderboard: a benchmark for measuring Massive Multitask Language Understanding (shortname: MMLU).</li><li style='margin-bottom:6px;'>The community was surprised that MMLU evaluation numbers of the current top model on the leaderboard, the LLaMA model 🦙, were significantly lower than the numbers in the published LLaMa paper.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81631"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81631"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81631"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="What's going on with the Open LLM Leaderboard?" loading="lazy" src="https://huggingface.co/blog/assets/evaluating-mmlu-leaderboard/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81631">Recently an interesting discussion arose on Twitter following the release of Falcon 🦅 and its addition to the Open LLM Leaderboard, a public leaderboard comparing open access large language models.</p>
+<p>The discussion centered around one of the four evaluations displayed on the leaderboard: a benchmark for measuring Massive Multitask Language Understanding (shortname: MMLU).</p>
+<p>The community was surprised that MMLU evaluation numbers of the current top model on the leaderboard, the LLaMA model 🦙, were significantly lower than the numbers in the published LLaMa paper.</p>
+<p>So we decided to dive in a rabbit hole to understand what was going on and how to fix it 🕳🐇.</p>
+<p>It has been revealed that in our quest, we discussed with both the great @javier-m who collaborated on the evaluations of LLaMA and the amazing @slippylolo from the Falcon team. This being said, all the errors in the below should be attributed to us rather than them of course!</p>
+<p>Along this journey with us you’ll learn a lot about the ways you can evaluate a model on a single evaluation and whether or not to believe the numbers you see online and in papers.</p>
+<p>Sources indicate that ready? Then buckle up, we’re taking off 🚀.</p>
+<p>First, note that the Open LLM Leaderboard is actually just a wrapper running the open-source benchmarking library Eleuther AI LM Evaluation Harness created by the EleutherAI non-profit AI research lab famous for creating The Pile and training GPT-J, GPT-Neo-X 20B, and Pythia. A team with serious credentials in the AI space!</p>
+<p>This wrapper runs evaluations using the Eleuther AI harness on the spare cycles of Hugging Face’s compute cluster, and stores the results in a dataset on the hub that are then displayed on the leaderboard online space.</p>
+<p>For the LLaMA models, the MMLU numbers obtained with the Eleuther AI LM Evaluation Harness significantly differ from the MMLU numbers reported in the LLaMa paper.</p>
+<p>Well it turns out that the LLaMA team adapted another code implementation available online: the evaluation code proposed by the original UC Berkeley team which developed the MMLU benchmark available at https://github.com/hendrycks/test and that we will call here the "Original implementation".</p>
+<p>When diving further, we found yet another interesting implementation for evaluating on the very same MMLU dataset: the evalution code provided in Stanford’s CRFM very comprehensive evaluation benchmark Holistic Evaluation of Language Models that we will call here the HELM implementation.</p>
+<p>Sources indicate that both the EleutherAI Harness and Stanford HELM benchmarks are interesting because they gather many evaluations in a single codebase (including MMLU), and thus give a wide view of a model’s performance. This is the reason the Open LLM Leaderboard is wrapping such “holistic” benchmarks instead of using individual code bases for each evaluation.</p>
+<p>To settle the case, we decided to run these three possible implementations of the same MMLU evaluation on a set of models to rank them according to these results:.</p>
+<p>(Note that the Harness implementation has been recently updated - more in this at the end of our post).</p>
+<p>You can find the full evaluation numbers at the end of the post.</p>
+<p>These different implementations of the same benchmark give widely different numbers and even change the ranking order of the models on the leaderboard!</p>
+<p>Let’s try to understand where this discrepancy comes from 🕵️But first, let’s briefly understand how we can automatically evaluate behaviors in modern LLMs.</p>
+<p>In a recent development, MMLU is a multiple choice question test, so a rather simple benchmark (versus open-ended questions) but as we’ll see, this still leaves a lot of room for implementation details and differences. The benchmark consists of questions with four possible answers covering 57 general knowledge domains grouped in coarse grained categories: “Humanities”, “Social Sciences”, “STEM”, etc.</p>
+<p>For each question, only one of the provided answers is the correct one. Here is an example:.</p>
+<p>Note: you can very easily explore more of this dataset in the dataset viewer on the hub.</p>
+<p>Sources indicate that large language models are simple models in the AI model zoo. They take a string of text as input (called a “prompt”), which is cut into tokens (words, sub-words or characters, depending on how the model is built) and fed in the model. From this input, they generate a distribution of probability for the next token, over all the tokens they know (so called the “vocabulary” of the model): you can therefore get how `probable’ any token is as a continuation of the input prompt.</p>
+<p>We can use these probabilities to choose a token, for instance the most probable (or we can introduce some slight noise with a sampling to avoid having “too mechanical” answers). Adding our selected token to the prompt and feeding it back to the model allows to generate another token and so on until whole sentences are created as continuations of the input prompt:.</p>
+<p>This is how ChatGPT or Hugging Chat generate answers.</p>
+<p>In summary, we have two main ways to get information out of a model to evaluate it:.</p>
+<p>Armed with this knowledge, let's dive into our three implementations of MMLU, to find out what input is sent to models, what is expected as outputs, and how these outputs are compared.</p>
+<p id="sec-mid-81631">Let’s compare an example of prompt each benchmark sends to the models by each implementation for the same MMLU dataset example:.</p>
+<p>Industry observers note that the differences between them can seem small, did you spot them all? Here they are:.</p>
+<p>In a recent development, let’s start with how the original MMLU implementation extracts the predictions of the model. In the original implementation we compare the probabilities predicted by the model, on the four answers only:.</p>
+<p>This can be beneficial for the model in some case, for instance, as you can see here:.</p>
+<p>Industry observers note that in this case, the model got a +1 score for ranking the correct answer highest among the 4 options. But if we take a look at the full vocabulary it would have rather generated a word outside of our four options: the word “Zygote” (this is more of an example than a real use case 🙂).</p>
+<p>How can we make sure that the model does as few as possible of these types of errors?</p>
+<p>Sources indicate that we can use a “few shots” approach in which we provide the model with one or several examples in the prompt, with their expected answers as well. Here is how it looks:.</p>
+<p>Here, the model has one example of the expected behavior and is thus less likely to predict answers outside of the expected range of answers.</p>
+<p>Since this improves performance, MMLU is typically evaluated in 5 shots (prepending 5 examples to each prompt) in all our evaluations: the original implementation, EleutherAI LM Harness and HELM. (Note: Across benchmarks, though the same 5 examples are used, their order of introduction to the model can vary, which is also a possible source of difference, that we will not investigate here. You also obviously have to pay attention to avoid leaking some answers in the few shot examples you use…).</p>
+<p>HELM: Let’s now turn to the HELM implementation. While the few-shot prompt is generally similar, the way the model is evaluated is quite different from the original implementation we’ve just seen: we use the next token output probabilities from the model to select a text generation and we compare it to the text of the expected answer as displayed here:.</p>
+<p>In this case, if our "Zygote" token was instead the highest probability one (as we’ve seen above), the model answer ("Zygote") would be wrong and the model would not score any points for this question:.</p>
+<p>Harness: Now we finally turn to the - EleutherAI Harness implementation as of January 2023 which was used to compute the first numbers for the leaderboard. As we will see, we’ve got here yet another way to compute a score for the model on the very same evaluation dataset (note that this implementation has been recently updated - more on this at the end).</p>
+<p>Sources indicate that in this case, we are using the probabilities again but this time the probabilities of the full answer sequence, with the letter followed by the text of the answer, for instance “C. The second pharyngeal arch”. To compute the probability for a full answer we get the probability for each token (like we saw above) and gather them. For numerical stability we gather them by summing the logarithm of the probabilities and we can decide (or not) to compute a normalization in which we divide the sum by the number of tokens to avoid giving too much advantage to longer answers (more on this later). Here is how it looks like:.</p>
+<p>Here is a table summary of the answers provided and generated by the model to summarize what we’ve seen up to now:.</p>
+<p>Now let’s compare the model scores on these three possible ways to evaluate the models:.</p>
+<p>We can see that for the same dataset, both absolute scores and model rankings (see the first figure) are very sensitive to the evaluation method we decide to use.</p>
+<p>In a recent development, let's say you've trained yourself a perfect reproduction of the LLaMA 65B model and evaluated it with the harness (score 0.488, see above). You're now comparing it to the published number (evaluated on the original MMLU implementation so with a score 0.637). With such a 30% difference in score you're probably thinking: "Oh gosh, I have completly messed up my training 😱". But nothing could be further from the truth, these are just numbers which are not at all comparable even if they're both labelled as "MMLU score" (and evaluated on the very same MMLU dataset).</p>
+<p>Now, is there a "best way" to evaluate a model among all the ones we've seen? It's a tricky question. Different models may fare differently when evaluated one way or another as we see above when the rankings change. To keep this as fair as possible, one may be tempted to select an implementation where the average score for all tested models is the highest so that we "unlock" as many capabilities as possible from the models. In our case, that would mean using the log-likelihood option of the original implementation. But as we saw above, using the log-likelihood is also giving some indications to the model in some way by restricting the scope of possible answers, and thus is helping the less powerful models maybe too much. Also log-likelihood is easy to access for open-source models but is not always exposed for closed source API models.</p>
+<p>And you, reader, what do you think? This blog post is already long so it's time to open the discussion and invite your comments. Please come discuss this topic in the following discussion thread of the Open LLM Leaderboard: https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard/discussions/82.</p>
+<p>A key takeaway lesson from our journey is that evaluations are strongly tied to their implementations–down to minute details such as prompts and tokenization. The mere indication of "MMLU results" gives you little to no information about how you can compare these numbers to others you evaluated on another library.</p>
+<p>This is why open, standardized, and reproducible benchmarks such as the EleutherAI Eval Harness or Stanford HELM are invaluable to the community. Without them, comparing results across models and papers would be impossible, stifling research on improving LLMs.</p>
+<p>Sources indicate that post scriptum: In the case of the Open LLM Leaderboard we’ve decided to stick to using community maintained evaluation libraries. Thankfully during the writing of this blog post, the amazing community around the EleutherAI Harness, and in particular ollmer
+have done an amazing work updating the evaluation of MMLU in the harness to make it similar to the original implementation and match these numbers.</p>
+<p>Recent findings suggest that we are presently updating the full leaderboard with the updated version of the EleutherAI Eval Harness, so expect to see scores coming from the Eleuther Harness v2 coming up in the next few weeks! (Running all the models again will take some time, stay tuned :hugs:).</p>
+<p>We are very grateful to Xavier Martinet, Aurélien Rodriguez and Sharan Narang from the LLaMA team for helpful suggestions in this blog post as well as having answered all our questions.</p>
+<p>Here are the commit hashes of the various code implementations used in this blog post.</p>
+<p id="sec-end-81631">This is a great explanation of why benchmarking methodology and implementation details matter when comparing LLM performance. The differences in MMLU scores across evaluation frameworks show that standardized and reproducible testing is essential for fair comparisons. The same principle applies to AI agent benchmarking, where evaluating complete workflows is just as crucial as measuring model accuracy. This resource on Evaluating LLM agents is also worth exploring for a deeper understanding of AI agent evaluation.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/open-llm-leaderboard-mmlu" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="open-llm-leaderboard-drop-deep-dive-81566.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81566. Open LLM Leaderboard: DROP deep dive
+        </a>
+        
+        <a href="introducing-the-open-ko-llm-leaderboard-leading-the-korean-llm-ev-81533.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81533. Introducing the Open Ko-LLM Leaderboard: Leading the Korean LLM Evaluation Ecosystem
+        </a>
+        
+        <a href="the-open-medical-llm-leaderboard-benchmarking-large-language-mode-81496.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81496. The Open Medical-LLM Leaderboard: Benchmarking Large Language Models in Healthcare
+        </a>
+        
+        <a href="introducing-the-open-arabic-llm-leaderboard-81485.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81485. Introducing the Open Arabic LLM Leaderboard
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inference for PROs</title>
+    <meta name="description" content="Industry observers note that hugging Face PRO consumers now have access to exclusive API endpoints for a curated list of powerful models that benefit from ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/inference-for-pros-81587.html">
+    <meta property="og:title" content="Inference for PROs">
+    <meta property="og:description" content="Industry observers note that hugging Face PRO consumers now have access to exclusive API endpoints for a curated list of powerful models that benefit from ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/inference_pro/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/inference-for-pros-81587.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Inference for PROs", "image": ["https://huggingface.co/blog/assets/inference_pro/thumbnail.png"], "datePublished": "2023-09-22T00:00:00", "dateModified": "2026-11-21T14:09:54.011540", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/inference-for-pros-81587.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Inference for PROs</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 22 Sep 2023 &bull; ⏱️ 6 min read (1144 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that hugging Face PRO consumers now have access to exclusive API endpoints for a curated list of powerful models that benefit from ultra-fast inference powered by text-generation-inference.</li><li style='margin-bottom:6px;'>In addition to thousands of public models available in the Hub, PRO people get free access and higher rate limits to the following state-of-the-art models:.</li><li style='margin-bottom:6px;'>According to recent reports, inference for PROs makes it easy to experiment and prototype with latest models without having to deploy them on your own infrastructure.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81587"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81587"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81587"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Inference for PROs" loading="lazy" src="https://huggingface.co/blog/assets/inference_pro/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81587">Industry observers note that hugging Face PRO consumers now have access to exclusive API endpoints for a curated list of powerful models that benefit from ultra-fast inference powered by text-generation-inference. This is a benefit on top of the free inference API, which is available to all Hugging Face users to facilitate testing and prototyping on 200,000+ models. PRO users enjoy higher rate limits on these models, as well as exclusive access to some of the best models available today.</p>
+<p>In addition to thousands of public models available in the Hub, PRO people get free access and higher rate limits to the following state-of-the-art models:.</p>
+<p>According to recent reports, inference for PROs makes it easy to experiment and prototype with latest models without having to deploy them on your own infrastructure. It gives PRO customers access to ready-to-use HTTP endpoints for all the models listed above. It’s not meant to be used for heavy production applications - for that, we recommend using Inference Endpoints. Inference for PROs also allows using applications that depend upon an LLM endpoint, such as using a VS Code extension for code completion, or have your own version of Hugging Chat.</p>
+<p>Using Inference for PROs is as simple as sending a POST request to the API endpoint for the model you want to run. You'll also need to get a PRO account authentication token from your token settings page and use it in the request. For example, to generate text using Meta Llama 3 8B Instruct in a terminal session, you'd do something like:.</p>
+<p>Which would print something like this:.</p>
+<p>You can also use many of the familiar transformers generation parameters, like temperature or max_new_tokens:.</p>
+<p>For more details on the generation parameters, please take a look at Controlling Text Generation below.</p>
+<p>To send your requests in Python, you can take advantage of InferenceClient, a convenient utility available in the huggingface_hub Python library:.</p>
+<p>InferenceClient is a helpful wrapper that allows you to make calls to the Inference API and Inference Endpoints easily:.</p>
+<p>Industry observers note that in addition to Python, you can also use JavaScript to integrate inference calls inside your JS or node apps. Take a look at huggingface.js to get started!</p>
+<p>Models prepared to follow chat conversations are trained with very particular and specific chat templates that depend on the model used. You need to be careful about the format the model expects and replicate it in your queries.</p>
+<p>The following example was taken from our Llama 2 blog post, that describes in full detail how to query the model for conversation:.</p>
+<p>This example highlights the structure of the first message in a multi-turn conversation. Note how the &lt;&gt; delimiter is used to provide the system prompt, which tells the model how we expect it to behave. Then our query is inserted between [INST] delimiters.</p>
+<p>According to recent reports, if we wish to continue the conversation, we have to append the model response to the sequence, and issue a new followup instruction afterwards. This is the general structure of the prompt template we need to use for Llama 2:.</p>
+<p>This same format can be used with Code Llama Instruct to engage in technical conversations with a code-savvy assistant!</p>
+<p>Please, refer to our Llama 2 blog post for more details.</p>
+<p>It has been revealed that code models like Code Llama can be used for code completion using the same generation strategy we used in the previous examples: you provide a starting string that may contain code or comments, and the model will try to continue the sequence with plausible content. Code models can also be used for infilling, a more specialized task where you provide prefix and suffix sequences, and the model will predict what should go in between. This is great for applications such as IDE extensions. Let's see an example using Code Llama:.</p>
+<p>As you can see, the format used for infilling follows this pattern:.</p>
+<p>For more details on how this task works, please take a look at https://huggingface.co/blog/codellama#code-completion.</p>
+<p id="sec-mid-81587">SDXL is also available for PRO customers. The response returned by the endpoint consists of a byte stream representing the generated image. If you use InferenceClient, it will automatically decode to a PIL image for you:.</p>
+<p>For more details on how to control generation, please take a look at this section.</p>
+<p>All text generation models now support the Messages API, so they are compatible with OpenAI client libraries, including LangChain and LlamaIndex. The following snippet demonstrates how to use the official openai client library with Llama 3.1 70B:.</p>
+<p>For more details about the use of the Messages API, please check this post.</p>
+<p>Text generation is a rich topic, and there exist several generation strategies for different purposes. We recommend this excellent overview on the subject. Many generation algorithms are supported by the text generation endpoints, and they can be configured using the following parameters:.</p>
+<p>In addition to the sampling parameters above, you can also control general aspects of the generation with the following:.</p>
+<p>If you want finer-grained control over images generated with the SDXL endpoint, you can use the following parameters:.</p>
+<p>For additional details on text-to-image generation, we recommend you check the diffusers library documentation.</p>
+<p>If you run the same generation multiple times, you’ll see that the result returned by the API is the same (even if you are using sampling instead of greedy decoding). This is because recent results are cached. To force a different response each time, we can use an HTTP header to tell the server to run a new generation each time: x-use-cache: 0.</p>
+<p>If you are using InferenceClient, you can simply append it to the headers client property:.</p>
+<p>According to recent reports, token streaming is the mode in which the server returns the tokens one by one as the model generates them. This enables showing progressive generations to the user rather than waiting for the whole generation. Streaming is an essential aspect of the end-user experience as it reduces latency, one of the most critical aspects of a smooth experience.</p>
+<p>To stream tokens with InferenceClient, simply pass stream=True and iterate over the response.</p>
+<p>To use the generate_stream endpoint with curl, you can add the -N/--no-buffer flag, which disables curl default buffering and demonstrates data as it arrives from the server.</p>
+<p>Does this affect the free Inference API?</p>
+<p>According to recent reports, no. We still expose thousands of models through free APIs that allow people to prototype and explore model capabilities swiftly.</p>
+<p>Does this affect Enterprise customers?</p>
+<p>Users with an Enterprise subscription also benefit from accelerated inference API for curated models.</p>
+<p>Can I use my own models with PRO Inference API?</p>
+<p id="sec-end-81587">The free Inference API already supports a wide range of small and medium models from a variety of libraries (such as diffusers, transformers, and sentence transformers). If you have a custom model or custom inference logic, we recommend using Inference Endpoints.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/inference-pro" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="how-we-sped-up-transformer-inference-100x-for-api-customers-81869.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81869. How we sped up transformer inference 100x for 🤗 API customers
+        </a>
+        
+        <a href="scaling-up-bert-inference-on-cpu-part-1-81856.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81856. Scaling-up BERT Inference on CPU (Part 1)
+        </a>
+        
+        <a href="few-shot-learning-in-practice-gpt-neo-and-the-accelerated-inferen-81854.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81854. Few-shot learning in practice: GPT-Neo and the 🤗 Accelerated Inference API
+        </a>
+        
+        <a href="scaling-up-bert-like-model-inference-on-modern-cpu-part-2-81839.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81839. Scaling up BERT-like model Inference on modern CPU  - Part 2
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

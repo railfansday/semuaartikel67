@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Comparing the Performance of LLMs: A Deep Dive into Roberta, Llama 2, and Mistral for Disaster Tweets Analysis with Lora</title>
+    <meta name="description" content="In a recent development, in the fast-moving world of Natural Language Processing (NLP), we often find ourselves comparing different language models to see ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-comparing-the-performance-of-llms-a-deep-dive-into-ro-81570.html">
+    <meta property="og:title" content="Tech Report: Comparing the Performance of LLMs: A Deep Dive into Roberta, Llama 2, and Mistral for Disaster Tweets Analysis with Lora">
+    <meta property="og:description" content="In a recent development, in the fast-moving world of Natural Language Processing (NLP), we often find ourselves comparing different language models to see ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/Lora-for-sequence-classification-with-Roberta-Llama-Mistral/Thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-comparing-the-performance-of-llms-a-deep-dive-into-ro-81570.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Comparing the Performance of LLMs: A Deep Dive into Roberta, Llama 2, and Mistral for Disaster Tw", "image": ["https://huggingface.co/blog/assets/Lora-for-sequence-classification-with-Roberta-Llama-Mistral/Thumbnail.png"], "datePublished": "2023-11-07T00:00:00", "dateModified": "2026-11-21T14:09:50.433955", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-comparing-the-performance-of-llms-a-deep-dive-into-ro-81570.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Comparing the Performance of LLMs: A Deep Dive into Roberta, Llama 2, and Mistral for Disaster Tweets Analysis with Lora</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 07 Nov 2023 &bull; ⏱️ 8 min read (1581 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, in the fast-moving world of Natural Language Processing (NLP), we often find ourselves comparing different language models to see which one works best for specific tasks.</li><li style='margin-bottom:6px;'>It has been revealed that in this blog, we used PEFT (Parameter-Efficient Fine-Tuning) technique: LoRA (Low-Rank Adaptation of Large Language Models) for fine-tuning the pre-trained model on the sequence classification task.</li><li style='margin-bottom:6px;'>The main objective of this blog post is to implement LoRA fine-tuning for sequence classification tasks using three pre-trained models from Hugging Face: meta-llama/Llama-2-7b-hf, mistralai/Mistral-7B-v0.1, and roberta-large.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81570"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81570"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81570"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Comparing the Performance of LLMs: A Deep Dive into Roberta, Llama 2, and Mistral for Disaster Tweets Analysis with Lora" loading="lazy" src="https://huggingface.co/blog/assets/Lora-for-sequence-classification-with-Roberta-Llama-Mistral/Thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81570">In a recent development, in the fast-moving world of Natural Language Processing (NLP), we often find ourselves comparing different language models to see which one works best for specific tasks. This blog post is all about comparing three models: RoBERTa, Mistral-7b, and Llama-2-7b. We used them to tackle a common problem - classifying tweets about disasters. It is important to note that Mistral and Llama 2 are large models with 7 billion parameters. In contrast, RoBERTa-large (355M parameters) is a relatively smaller model used as a baseline for the comparison study.</p>
+<p>It has been revealed that in this blog, we used PEFT (Parameter-Efficient Fine-Tuning) technique: LoRA (Low-Rank Adaptation of Large Language Models) for fine-tuning the pre-trained model on the sequence classification task. LoRa is designed to significantly reduce the number of trainable parameters while maintaining strong downstream task performance.</p>
+<p>The main objective of this blog post is to implement LoRA fine-tuning for sequence classification tasks using three pre-trained models from Hugging Face: meta-llama/Llama-2-7b-hf, mistralai/Mistral-7B-v0.1, and roberta-large.</p>
+<p>Note: For reproducing the reported results, please check the pinned versions in the wandb reports.</p>
+<p>In a recent development, roBERTa (Robustly Optimized BERT Approach) is an advanced variant of the BERT model proposed by Meta AI research team. BERT is a transformer-based language model using self-attention mechanisms for contextual word representations and trained with a masked language model objective. Note that BERT is an encoder only model used for natural language understanding tasks (such as sequence classification and token classification).</p>
+<p>In a recent development, roBERTa is a popular model to fine-tune and appropriate as a baseline for our experiments. For more information, you can check the Hugging Face model card.</p>
+<p>Llama 2 models, which stands for Large Language Model Meta AI, belong to the family of large language models (LLMs) introduced by Meta AI. The Llama 2 models vary in size, with parameter counts ranging from 7 billion to 65 billion.</p>
+<p>Recent findings suggest that llama 2 is an auto-regressive language model, based on the transformer decoder architecture. To generate text, Llama 2 processes a sequence of words as input and iteratively predicts the next token using a sliding window. Llama 2 architecture is slightly different from models like GPT-3. For instance, Llama 2 employs the SwiGLU activation function rather than ReLU and opts for rotary positional embeddings in place of absolute learnable positional embeddings.</p>
+<p>The recently released Llama 2 introduced architectural refinements to better leverage very long sequences by extending the context length to up to 4096 tokens, and using grouped-query attention (GQA) decoding.</p>
+<p>Mistral 7B v0.1, with 7.3 billion parameters, is the first LLM introduced by Mistral AI. The main novel techniques used in Mistral 7B's architecture are:.</p>
+<p>PEFT, Parameter Efficient Fine-Tuning, is a collection of techniques (p-tuning, prefix-tuning, IA3, Adapters, and LoRa) designed to fine-tune large models using a much smaller set of training parameters while preserving the performance levels typically achieved through full fine-tuning.</p>
+<p>According to recent reports, loRA, Low-Rank Adaptation, is a PEFT method that shares similarities with Adapter layers. Its primary objective is to reduce the model's trainable parameters. LoRA's operation involves 
+learning a low rank enhancement matrix while keeping the pre-trained weights frozen.</p>
+<p>RoBERTa has a limitatiom of maximum sequence length of 512, so we set the MAX_LEN=512 for all models to ensure a fair comparison.</p>
+<p>We will load the dataset from Hugging Face:.</p>
+<p>Recent findings suggest that now, let's split the dataset into training and validation datasets. Then add the test set:.</p>
+<p>Here's an overview of the dataset:.</p>
+<p>Let's check the data distribution:.</p>
+<p>Target distribution in the train dataset.</p>
+<p>As the classes are not balanced, we will compute the positive and negative weights and use them for loss calculation later:.</p>
+<p>Then, we compute the maximum length of the column text:.</p>
+<p>Let's take a look to one row example of training data:.</p>
+<p>Sources indicate that the data comprises a keyword, a location and the text of the tweet. For the sake of simplicity, we select the text feature as the only input to the LLM.</p>
+<p>In a recent development, at this stage, we prepared the train, validation, and test sets in the HuggingFace format expected by the pre-trained LLMs. The next step is to define the tokenized dataset for training using the appropriate tokenizer to transform the text feature into two Tensors of sequence of token ids and attention masks. As each model has its specific tokenizer, we will need to define three different datasets.</p>
+<p>We start by defining the RoBERTa dataloader:.</p>
+<p>Note: The RoBERTa tokenizer has been trained to treat spaces as part of the token. As a result, the first word of the sentence is encoded differently if it is not preceded by a white space. To ensure the first word includes a space, we set add_prefix_space=True. Also, to maintain consistent pre-processing for all three models, we set the parameter to 'True' for Llama 2 and Mistral 7b.</p>
+<p>By applying the preprocessing function to the first example of our training dataset, we have the tokenized inputs (input_ids) and the attention mask:.</p>
+<p>It has been revealed that note: we deleted the undesired columns from our data: id, keyword, location and text. We have deleted the text because we have already converted it into the inputs ids and the attention mask:.</p>
+<p>We can have a look into our tokenized training dataset:.</p>
+<p>You can follow the same steps for preparing the data for Mistral 7B and Llama 2 models:.</p>
+<p>Note that Llama 2 and Mistral 7B don't have a default pad_token_id. So, we use the eos_token_id for padding as well.</p>
+<p>Now that we have prepared the tokenized datasets, the next section will showcase how to load the pre-trained LLMs checkpoints and how to set the LoRa weights.</p>
+<p id="sec-mid-81570">We load the pre-trained RoBERTa model with a sequence classification head using the Hugging Face AutoModelForSequenceClassification class:.</p>
+<p>We import LoRa configuration and set some parameters for RoBERTa classifier:.</p>
+<p>Recent findings suggest that the code below uses the values recommended by the Lora paper. Later in this post we will perform hyperparameter tuning of these parameters using wandb.</p>
+<p>We can see that the number of trainable parameters represents only 0.64% of the RoBERTa model parameters:.</p>
+<p>Let's load the pre-trained Mistral-7B model with a sequence classification head:.</p>
+<p>For Mistral 7B, we have to add the padding token id as it is not defined by default.</p>
+<p>For Mistral 7B model, we need to specify the target_modules (the query and value vectors from the attention modules):.</p>
+<p>The number of trainable parameters reprents only 0.024% of the Mistral model parameters:.</p>
+<p>Let's load pre-trained Llama 2 model with a sequence classification header.</p>
+<p>For Llama 2, we have to add the padding token id as it is not defined by default.</p>
+<p>We define LoRa for Llama 2 with the same parameters as for Mistral:.</p>
+<p>The number of trainable parameters reprents only 0.12% of the Llama 2 model parameters:.</p>
+<p>At this point, we defined the tokenized dataset for training as well as the LLMs setup with LoRa layers. The following section will introduce how to launch training using the HuggingFace Trainer class.</p>
+<p>First, we define the performance metrics we will use to compare the three models: F1 score, recall, precision and accuracy:.</p>
+<p>It has been revealed that as mentioned at the beginning of this post, we have an imbalanced distribution between positive and negative classes. We need to train our models with a weighted cross-entropy loss to account for that. The Trainer class doesn't support providing a custom loss as it expects to get the loss directly from the model's outputs.</p>
+<p>So, we need to define our custom WeightedCELossTrainer that overrides the compute_loss method to calculate the weighted cross-entropy loss based on the model's predictions and the input labels:.</p>
+<p>Let's set the training arguments and the trainer for the three models.</p>
+<p>First notable step is to move the models to the GPU device for training.</p>
+<p>Then, we set the training arguments:.</p>
+<p>Finally, we define the RoBERTa trainer by providing the model, the training arguments and the tokenized datasets:.</p>
+<p>Similar to RoBERTa, we initialize the WeightedCELossTrainer as follows:.</p>
+<p>Note that we needed to enable half-precision training by setting fp16 to True. The main reason is that Mistral-7B is large, and its weights cannot fit into one GPU memory (48GB) with full float32 precision.</p>
+<p>Similar to Mistral 7B, we define the trainer as follows:.</p>
+<p>We have used Wandb Sweep API to run hyperparameter tunning with Bayesian search strategy (30 runs). The hyperparameters tuned are the following.</p>
+<p>For more information, you can check the Wandb experiment report in the resources sections.</p>
+<p>In this blog post, we compared the performance of three large language models (LLMs) - RoBERTa, Mistral 7b, and Llama 2 - for disaster tweet classification using LoRa. From the performance results, we can see that RoBERTa is outperforming Mistral 7B and Llama 2 by a large margin. This raises the question about whether we really need a complex and large LLM for tasks like short-sequence binary classification?</p>
+<p>One learning we can draw from this study is that one should account for the specific project requirements, available resources, and performance needs to choose the LLMs model to use.</p>
+<p>Also, for relatively simple prediction tasks with short sequences base models such as RoBERTa remain competitive.</p>
+<p>Finally, we showcase that LoRa method can be applied to both encoder (RoBERTa) and decoder (Llama 2 and Mistral 7B) models.</p>
+<p>You can find the code script in the following Github project.</p>
+<p id="sec-end-81570">You can check the hyper-param search results in the following Weight&amp;Bias reports:.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/Lora-for-sequence-classification-with-Roberta-Llama-Mistral" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-deep-dive-vision-transformers-on-hugging-face-optimum-81759.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81759. Tech Report: Deep Dive: Vision Transformers On Hugging Face Optimum Graphcore
+        </a>
+        
+        <a href="tech-report-an-introduction-to-deep-reinforcement-learning-81803.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81803. Tech Report: An Introduction to Deep Reinforcement Learning
+        </a>
+        
+        <a href="tech-report-deep-q-learning-with-space-invaders-81787.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81787. Tech Report: Deep Q-Learning with Space Invaders
+        </a>
+        
+        <a href="tech-report-fine-tune-llama-2-with-dpo-81608.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81608. Tech Report: Fine-tune Llama 2 with DPO
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

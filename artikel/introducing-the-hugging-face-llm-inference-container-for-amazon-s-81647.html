@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing the Hugging Face LLM Inference Container for Amazon SageMaker</title>
+    <meta name="description" content="Industry observers note that this is an example on how to deploy the open-source LLMs, like BLOOM to Amazon SageMaker for inference using the latest Huggin">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/introducing-the-hugging-face-llm-inference-container-for-amazon-s-81647.html">
+    <meta property="og:title" content="Introducing the Hugging Face LLM Inference Container for Amazon SageMaker">
+    <meta property="og:description" content="Industry observers note that this is an example on how to deploy the open-source LLMs, like BLOOM to Amazon SageMaker for inference using the latest Huggin">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/145_sagemaker-huggingface-llm/thumbnail.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/introducing-the-hugging-face-llm-inference-container-for-amazon-s-81647.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Introducing the Hugging Face LLM Inference Container for Amazon SageMaker", "image": ["https://huggingface.co/blog/assets/145_sagemaker-huggingface-llm/thumbnail.jpg"], "datePublished": "2023-05-31T00:00:00", "dateModified": "2026-11-21T14:10:07.392009", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/introducing-the-hugging-face-llm-inference-container-for-amazon-s-81647.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Introducing the Hugging Face LLM Inference Container for Amazon SageMaker</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 31 May 2023 &bull; ⏱️ 4 min read (826 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that this is an example on how to deploy the open-source LLMs, like BLOOM to Amazon SageMaker for inference using the latest Hugging Face LLM Inference Container.</li><li style='margin-bottom:6px;'>You can find the code for the example also in the notebooks repository.</li><li style='margin-bottom:6px;'>It has been revealed that hugging Face LLM DLC is a new purpose-built Inference Container to easily deploy LLMs in a secure and managed environment.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81647"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81647"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81647"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Introducing the Hugging Face LLM Inference Container for Amazon SageMaker" loading="lazy" src="https://huggingface.co/blog/assets/145_sagemaker-huggingface-llm/thumbnail.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81647">Industry observers note that this is an example on how to deploy the open-source LLMs, like BLOOM to Amazon SageMaker for inference using the latest Hugging Face LLM Inference Container. We will deploy the 12B Pythia Open Assistant Model, an open-source Chat LLM trained with the Open Assistant dataset.</p>
+<p>You can find the code for the example also in the notebooks repository.</p>
+<p>It has been revealed that hugging Face LLM DLC is a new purpose-built Inference Container to easily deploy LLMs in a secure and managed environment. The DLC is powered by Text Generation Inference (TGI), an open-source, purpose-built solution for deploying and serving Large Language Models (LLMs). TGI enables high-performance text generation using Tensor Parallelism and dynamic batching for the most popular open-source LLMs, including StarCoder, BLOOM, GPT-NeoX, Llama, and T5. Text Generation Inference is already used by customers such as IBM, Grammarly, and the Open-Assistant initiative implements optimization for all supported model architectures, including:.</p>
+<p>Officially supported model architectures are right now:.</p>
+<p>With the new Hugging Face LLM Inference DLCs on Amazon SageMaker, AWS customers can benefit from the same technologies that power highly concurrent, low latency LLM experiences like HuggingChat, OpenAssistant, and Inference API for LLM models on the Hugging Face Hub.</p>
+<p>We are going to use the sagemaker python SDK to deploy BLOOM to Amazon SageMaker. We need to make sure to have an AWS account configured and the sagemaker python SDK installed.</p>
+<p>In a recent development, if you are going to use Sagemaker in a local environment, you need access to an IAM Role with the required permissions for Sagemaker. You can find here more about it.</p>
+<p>Sources indicate that compared to deploying regular Hugging Face models, we first need to retrieve the container uri and provide it to our HuggingFaceModel model class with a image_uri pointing to the image. To retrieve the new Hugging Face LLM DLC in Amazon SageMaker, we can use the get_huggingface_llm_image_uri method provided by the sagemaker SDK. This method allows us to retrieve the URI for the desired Hugging Face LLM DLC based on the specified backend, session, region, and version. You can find the available versions here.</p>
+<p>In a recent development, note: Quotas for Amazon SageMaker can vary between accounts. If you receive an error indicating you've exceeded your quota, you can increase them through the Service Quotas console.</p>
+<p>In a recent development, to deploy Open Assistant Model to Amazon SageMaker we create a HuggingFaceModel model class and define our endpoint configuration including the hf_model_id, instance_type etc. We will use a g5.12xlarge instance type, which has 4 NVIDIA A10G GPUs and 96GB of GPU memory.</p>
+<p>Note: We could also optimize the deployment for cost and use g5.2xlarge instance type and enable int-8 quantization.</p>
+<p>After we have created the HuggingFaceModel we can deploy it to Amazon SageMaker using the deploy method. We will deploy the model with the ml.g5.12xlarge instance type. TGI will automatically distribute and shard the model across all GPUs.</p>
+<p id="sec-mid-81647">According to recent reports, sageMaker will now create our endpoint and deploy the model to it. This can take 5-10 minutes.</p>
+<p>After our endpoint is deployed we can run inference on it using the predict method from the predictor. We can use different parameters to control the generation, defining them in the parameters attribute of the payload. As of today TGI supports the following parameters:.</p>
+<p>You can find the open api specification of TGI in the swagger documentation.</p>
+<p>The OpenAssistant/pythia-12b-sft-v8-7k-steps is a conversational chat model meaning we can chat with it using the following prompt:.</p>
+<p>lets give it a first try and ask about some cool ideas to do in the summer:.</p>
+<p>Now we will show how to use generation parameters in the parameters attribute of the payload. In addition to setting custom temperature, top_p, etc, we also stop generation after the turn of the bot.</p>
+<p>We can also create a gradio application to chat with our model. Gradio is a python library that allows you to quickly create customizable UI components around your machine learning models. You can find more about gradio here.</p>
+<p>Recent findings suggest that awesome! 🚀 We have successfully deployed Open Assistant Model to Amazon SageMaker and run inference on it. Additionally, we have built a quick gradio application to chat with our model.</p>
+<p>Now, it's time for you to try it out yourself and build Generation AI applications with the upcoming Hugging Face LLM DLC on Amazon SageMaker.</p>
+<p>To clean up, we can delete the model and endpoint.</p>
+<p>The latest Hugging Face LLM Inference DLC enables customers to easily and securely deploy open-source LLMs on Amazon SageMaker. The easy-to-use API and deployment process allows customers to build scalable AI chatbots and virtual assistants with state-of-the-art models like Open Assistant. Overall, this new DLC is going to empower developers and businesses to leverage the latest advances in natural language generation.</p>
+<p id="sec-end-81647">Thanks for reading! If you have any questions, feel free to contact me on Twitter or LinkedIn.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/sagemaker-huggingface-llm" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="introducing-the-hugging-face-embedding-container-for-amazon-sagem-81468.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81468. Introducing the Hugging Face Embedding Container for Amazon SageMaker
+        </a>
+        
+        <a href="deploy-gpt-j-6b-for-inference-using-hugging-face-transformers-and-81829.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81829. Deploy GPT-J 6B for inference using  Hugging Face Transformers and Amazon SageMaker
+        </a>
+        
+        <a href="the-partnership-amazon-sagemaker-and-hugging-face-81860.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81860. The Partnership: Amazon SageMaker and Hugging Face
+        </a>
+        
+        <a href="deploy-hugging-face-models-easily-with-amazon-sagemaker-81852.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81852. Deploy Hugging Face models easily with Amazon SageMaker
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

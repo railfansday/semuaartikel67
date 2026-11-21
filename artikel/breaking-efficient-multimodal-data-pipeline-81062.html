@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Efficient MultiModal Data Pipeline</title>
+    <meta name="description" content="You've got everything ready - data, model, a beefy GPU setup. You hit &quot;run&quot; and... wait. And wait some more. Your GPUs are barely breaking a sweat while yo">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-efficient-multimodal-data-pipeline-81062.html">
+    <meta property="og:title" content="Breaking: Efficient MultiModal Data Pipeline">
+    <meta property="og:description" content="You've got everything ready - data, model, a beefy GPU setup. You hit &quot;run&quot; and... wait. And wait some more. Your GPUs are barely breaking a sweat while yo">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/mmdp/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-efficient-multimodal-data-pipeline-81062.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Efficient MultiModal Data Pipeline", "image": ["https://huggingface.co/blog/assets/mmdp/thumbnail.png"], "datePublished": "2025-07-08T00:00:00", "dateModified": "2026-11-21T14:09:00.643124", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-efficient-multimodal-data-pipeline-81062.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Efficient MultiModal Data Pipeline</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 08 Jul 2025 &bull; ⏱️ 5 min read (1024 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>You've got everything ready - data, model, a beefy GPU setup.</li><li style='margin-bottom:6px;'>According to recent reports, sound familiar?</li><li style='margin-bottom:6px;'>In this post we build an efficient pipeline in five stages.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81062"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81062"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81062"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Efficient MultiModal Data Pipeline" loading="lazy" src="https://huggingface.co/blog/assets/mmdp/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81062">You've got everything ready - data, model, a beefy GPU setup. You hit "run" and... wait. And wait some more. Your GPUs are barely breaking a sweat while your wallet's getting lighter by the hour.</p>
+<p>According to recent reports, sound familiar? We've been there. After some detective work on our nanoVLM project, we discovered the real culprit wasn't our model or hardware, it was our data pipeline being incredibly wasteful.</p>
+<p>In this post we build an efficient pipeline in five stages. In each stage we add or remove from the previous step and comment on what went right and what did not.</p>
+<p>According to recent reports, to make it easier to follow the data preparation tasks, we created a separate repo laser-focused on the data pipeline only. We hope this will be much easier to understand that reading the code once integrated with the nanoVLM repository. In addition, this could be useful to bootstrap other data pipelines!</p>
+<p>Repository: https://github.com/ariG23498/mmdp.</p>
+<p>According to recent reports, to follow along, all you need to do is clone the repository. It contains the final data preparation tasks, but it's designed to showcase each step of the way.</p>
+<p>Before optimizing anything, we need to understand what we are working with. Our multimodal dataset has images, text prompts, and responses.</p>
+<p>Getting familiar with your training data is crucial for success. The previous script indicates a random sample each time you run it; you may want to copy the snippet to a notebook and run it multiple times to get a feeling about the data.</p>
+<p>Our first training attempt used the obvious (and very frequent) approach:.</p>
+<p>In a recent development, the results were painful. Look at this visualization:.</p>
+<p>See all that gray? That's padding. That's the GPU processing absolutely nothing while you pay for compute time. We were wasting roughly 60% of our batch on empty tokens.</p>
+<p>Recent findings suggest that our next move was simple. Set a global maximum length and stick to it. If a sample was too long, we'd just drop it.</p>
+<p>According to recent reports, as you might have noticed that the batch now has one sample less. This is due to the filtering process. This helped, but we were still padding everything to the same fixed length regardless of actual content. Better than before, but still wasteful.</p>
+<p>Now we’re ready to rethink batching entirely. Padding is the enemy, and we need a strategy to minimize it while maximizing how much data we can fit into each batch. Enter the knapsack problem, a classic from computer science that’s perfect for this.</p>
+<p>In a recent development, imagine you’re packing a backpack for a hike. It can only hold so much weight, and you want to cram in as many useful items as possible. In our case:.</p>
+<p>To test this idea, we start with a toy dataset: just a list of numbers from 1 to 25, each representing a sequence length. This lets us experiment without the complexity of images and text.</p>
+<p>It has been revealed that most PyTorch datasets are map-style (you access them with dataset[i]). But for dynamic batching, we need something more flexible. So, we built an iterable-style dataset by subclassing torch.utils.data.IterableDataset. This lets us generate batches on the fly and handle tricks like sharding data across multiple workers:.</p>
+<p>In a recent development, packing sequences can be slow, especially if we’re sorting or shuffling. To keep things moving, we use a producer-consumer pattern using Python queues:.</p>
+<p>The producer thread packs batches and puts them in a queue, while the main thread pulls them out as needed. This overlap keeps the pipeline flowing smoothly.</p>
+<p id="sec-mid-81062">First, we try a simple greedy packing strategy:.</p>
+<p>According to recent reports, this walks through the data sequentially, adding items to a pack until it’s full, then starting a fresh one. It’s fast but not perfect. Here’s what the batches look like:.</p>
+<p>Notice how later batches get sparse? We’re leaving gaps.</p>
+<p>Let’s try a smarter approach: bin-packing (specifically, First Fit Decreasing):.</p>
+<p>Recent findings suggest that this sorts sequences by length (longest first) and tries to fit each one into the first pack that has room. If none fits, it starts a upcoming pack. The result?</p>
+<p>According to recent reports, these batches are much tighter, with less wasted space. It’s like playing Tetris with your data, fitting pieces together snugly.</p>
+<p>Now for the real deal, applying knapsack packing to our multimodal dataset.</p>
+<p>We’re back to images, prompts, and responses, and we need to pack them efficiently while respecting both token limits and image budgets. Image budgeting is done so that images per sample are balanced. We would like to avoid the case where one GPU needs to process way more images than another.</p>
+<p>In a recent development, our newly introduced ConstantLengthDataset class handles the heavy lifting. Here’s how it works, compared to Stage 4:.</p>
+<p>The ConstantLengthDataset does it all:.</p>
+<p>Look at that! The gray (padding) is minimal, and the batches are dense with useful data. It’s like packing a suitcase so well you can still zip it up without sitting on it.</p>
+<p>The image might seem unintuive at the first glance, but let us look at the image side by side with constrained padding.</p>
+<p>Here you will notice that the samples in knapsack are more evenly distributed. We also do not run into the problem of having
+less samples in the batch due to filtering.</p>
+<p>What started as a simple "why is training so slow?" investigation led to a complete rethink of how we handle multimodal data.</p>
+<p>The balanced knapsack strategy for data pipeline comes from the Eagle 2: Building Post-Training Data Strategies from Scratch for Frontier Vision-Language Models paper from NVIDIA.</p>
+<p>Happy training (and may your GPUs stay busy)!</p>
+<p>According to recent reports, thank you for the great work! Can I suggest a few things? 🤗.</p>
+<p>But again, really nice work on this blog post and on Picotron guys!</p>
+<p>These are absolutely great pointer. Would you like to add your suggestions to the blog post directly? That way we could have you as one of the authors of the blog post (with due credits.).</p>
+<p id="sec-end-81062">You can edit this page: https://github.com/huggingface/blog/blob/main/mmdp.md.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/mmdp" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-efficient-table-pre-training-without-real-data-an-i-81790.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81790. Latest Update: Efficient Table Pre-training without Real Data: An Introduction to TAPEX
+        </a>
+        
+        <a href="breaking-smolvla-efficient-vision-language-action-model-trained-o-81126.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81126. Breaking: SmolVLA: Efficient Vision-Language-Action Model trained on Lerobot Community Data
+        </a>
+        
+        <a href="breaking-neomme-an-efficient-multimodal-native-and-multilingual-e-69679.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #69679. Breaking: NeoMME: an efficient Multimodal-native and Multilingual Encoder
+        </a>
+        
+        <a href="my-journey-to-a-serverless-transformers-pipeline-on-google-cloud-81861.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81861. My Journey to a serverless transformers pipeline on Google Cloud
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

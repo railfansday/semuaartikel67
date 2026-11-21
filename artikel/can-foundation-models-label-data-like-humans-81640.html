@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can foundation models label data like humans?</title>
+    <meta name="description" content="Since the advent of ChatGPT, we have seen unprecedented growth in the development of Large Language Models (LLMs), and particularly chatty models that are ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/can-foundation-models-label-data-like-humans-81640.html">
+    <meta property="og:title" content="Can foundation models label data like humans?">
+    <meta property="og:description" content="Since the advent of ChatGPT, we have seen unprecedented growth in the development of Large Language Models (LLMs), and particularly chatty models that are ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/llm-leaderboard/leaderboard-thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/can-foundation-models-label-data-like-humans-81640.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Can foundation models label data like humans?", "image": ["https://huggingface.co/blog/assets/llm-leaderboard/leaderboard-thumbnail.png"], "datePublished": "2023-06-12T00:00:00", "dateModified": "2026-11-21T14:10:05.898943", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/can-foundation-models-label-data-like-humans-81640.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Can foundation models label data like humans?</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 12 Jun 2023 &bull; ⏱️ 13 min read (2675 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Since the advent of ChatGPT, we have seen unprecedented growth in the development of Large Language Models (LLMs), and particularly chatty models that are fine-tuned to follow instructions given in the form of prompts.</li><li style='margin-bottom:6px;'>In this line, it’s a common story that a new large language model (LLM) is released to the tune of “our model is preferred to ChatGPT N% of the time,” and what is omitted from that sentence is that the model is preferred in some type of GPT-4-based evaluation scheme.</li><li style='margin-bottom:6px;'>Here is an example from each of the instruct and code-instruct splits of our blind test set.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81640"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81640"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81640"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Can foundation models label data like humans?" loading="lazy" src="https://huggingface.co/blog/assets/llm-leaderboard/leaderboard-thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81640">Since the advent of ChatGPT, we have seen unprecedented growth in the development of Large Language Models (LLMs), and particularly chatty models that are fine-tuned to follow instructions given in the form of prompts. However, how these models compare is unclear due to the lack of benchmarks designed to test their performance rigorously. Evaluating instruction and chatty models is intrinsically difficult because a large part of user preference is centered around qualitative style while in the past NLP evaluation was far more defined.</p>
+<p>In this line, it’s a common story that a new large language model (LLM) is released to the tune of “our model is preferred to ChatGPT N% of the time,” and what is omitted from that sentence is that the model is preferred in some type of GPT-4-based evaluation scheme. What these points are trying to show is a proxy for a different measurement: scores provided by human labelers. The process of training models with reinforcement learning from human feedback (RLHF) has proliferated interfaces for and data of comparing two model completions to each other. This data is used in the RLHF process to train a reward model that predicts a preferred text, but the idea of rating and ranking model outputs has grown to be a more general tool in evaluation.</p>
+<p>Here is an example from each of the instruct and code-instruct splits of our blind test set.</p>
+<p>Sources indicate that in terms of iteration speed, using a language model to evaluate model outputs is highly efficient, but there’s a sizable missing piece: investigating if the downstream tool-shortcut is calibrated with the original form of measurement. In this blog post, we’ll zoom in on where you can and cannot trust the data labels you get from the LLM of your choice by expanding the Open LLM Leaderboard evaluation suite.</p>
+<p>Sources indicate that leaderboards have begun to emerge, such as the LMSYS, nomic / GPT4All, to compare some aspects of these models, but there needs to be a complete source comparing model capabilities. Some use existing NLP benchmarks that can show question and answering capabilities and some are crowdsourced rankings from open-ended chatting. In order to present a more general picture of evaluations the Hugging Face Open LLM Leaderboard has been expanded, including automated academic benchmarks, professional human labels, and GPT-4 evals.</p>
+<p>Any point in a training process where humans are needed to curate the data is inherently expensive. To date, there are only a few human labeled preference datasets available for training these models, such as Anthropic’s HHH data, OpenAssistant’s dialogue rankings, or OpenAI’s Learning to Summarize / WebGPT datasets. The same preference labels can be generated on model outputs to create a relative Elo ranking between models (Elo rankings, popularized in chess and used in video games, are method to construct a global ranking tier out of only pairwise comparisons — higher is better). When the source of text given to labelers is generated from a model of interest, the data becomes doubly interesting.</p>
+<p>While training our models, we started seeing interesting things, so we wanted to do a more controlled study of existing open-source models and how that preference collection process would translate and compare to the presently popular GPT-4/ChatGPT evaluations of preferences.</p>
+<p>To do this, we curated a held-out set of instruction prompts and completions from a popular set of open-source models: Koala 13b, Vicuna 13b, OpenAssistant 12b, and Dolly 12b.</p>
+<p>We collected a set of high-quality, human-written prompts from Self-Instruct evaluation set and early discussions with data vendors for diverse task categories, including generation, brainstorming, question answering, summarization, commonsense, and coding-related. The dataset has 327 prompts across these categories, and 25 are coding-related.</p>
+<p>Here are the stats on the prompt and demonstration length.</p>
+<p>It has been revealed that with these completions, we set off to evaluate the quality of the models with Scale AI and GPT-4. To do evaluations, we followed the Anthropic recipe for preference models and asked the raters to score on a Likert scale from 1 to 8. On this scale, a 1 represents a strong preference of the first model and a 4 represents a close tiebreak for the first model. The opposite side of the scale follows the reverse, with 8 being the clearest comparison.</p>
+<p>It has been revealed that we partnered with Scale AI to collect high-quality human annotations for a handful of open-source instruction-tuned models on our blind test set. We requested annotators to rate responses for helpfulness and truthfulness in a pairwise setting. We generated (n2) n \choose 2 (2n​) combinations for each prompt, where nnn is the number of models we evaluate. Here is an example snapshot of the instructions and the interface Scale provided for our evaluations.</p>
+<p>Industry observers note that with this data, we created bootstrapped Elo estimates based on the win probabilities between the two models. For more on the Elo process, see LMSYS’s notebook. The Elo scores on our blind test data are reported on our leaderboard.</p>
+<p>In a recent development, in this blog, we show the bootstrapped Elo estimates along with error estimates. Here are the rankings using human annotators on our blind test set.</p>
+<p>Elo rankings without ties (bootstrapped from 1000 rounds of sampling games).</p>
+<p>Recent findings suggest that given the Likert scale, it is also debatable whether a score of 4 or 5 should constitute a win, so we also compute the Elo rankings where a score of 4 or 5 indicates a tie. In this case, and throughout the article, we saw few changes to the ranking of the models relative to eachother with this change. The tie counts (out of 327 comparisons per model pair) and the fresh Elo scores are below. The number in each cell indicates the number of ties for the models in the intersecting row and column. E.g., Koala-13B and Vicuna-13B have the highest number of ties, 96, so they are likely very close in performance.</p>
+<p>In a recent development, note, read this plot by selecting a row, e.g. oasst-12b and then reading across horizontally to see how many ties it had with each other model.</p>
+<p>Elo rankings w/ ties (bootstrapped from 1000 rounds of sampling games).</p>
+<p>Below is the histogram of ratings from the Scale AI taskforce.</p>
+<p>For the rest of this post, you will see similar analyses with different data generation criteria.</p>
+<p>Industry observers note that next, we turned to GPT-4 to see how the results would compare. The ordering of the models remains, but the relative margins change.</p>
+<p>Elo rankings without ties (bootstrapped from 1000 rounds of sampling games).</p>
+<p>Elo rankings w/ ties (bootstrapped from 1000 rounds of sampling games).</p>
+<p>Reminder, in the Likert scale 1 to 8, we define scores 4 and 5 as a tie.</p>
+<p>To do this, we used a prompt adapted from the FastChat evaluation prompts, encouraging shorter length for faster and cheaper generations (as the explanations are disregarded most of the time):.</p>
+<p>According to recent reports, the histogram of responses from GPT-4 starts to show a clear issue with LLM based evaluation: positional bias. This score distribution is with fully randomized ordering of which model is included in answer_1 above.</p>
+<p>Given the uncertainty of GPT-4 evaluations, we decided to add another benchmark to our rankings: completions made by highly trained humans. We wanted to answer the question of: what would be the Elo ranking of humans, if evaluated by GPT-4 as well.</p>
+<p>Sources indicate that ultimately, the Elo ranking of human demonstrations is blatantly confusing. There are many hypotheses that could explain this, but it points to a potential style benefit being given to models also trained on outputs of large language models (when compared to something like Dolly). This could amount to unintentional doping between training and evaluation methods that are being developed in parallel.</p>
+<p>Elo rankings without ties (bootstrapped from 1000 rounds of sampling games).</p>
+<p>It has been revealed that we are not the only ones to share the GPT-4 may not be a perfect tool for training and evaluating LLMs with. Two recent papers have investigated the impacts of instruction tuning on outputs from OpenAI models and how doing so can impact “model comparison” evaluations (when the output of your trained model is compared to the outputs of ChatGPT or GPT-4). The most striking paper in this regard How Far Can Camels Go? from Allen AI reveals a potential indicator in what may be causing GPT-4 to rate an output highly: diversity and length of responses. These correlations are striking, as it rewards models to be verbose, even if the task may not call for it. Below is the figure where the authors correlate the win-rate with the token quantity.</p>
+<p>The other popular and recent paper is The False Promise of Imitating Proprietary LLMs from Berkeley, where the authors show that training on more data actually lowers comparison results. With the scale the authors were operating at, more investigation is needed to fully understand the results, but it points in a clear direction: be wary when training on and evaluating with another LLM. The figure from the paper showcasing this is below:.</p>
+<p id="sec-mid-81640">Below we’ve included a couple examples of what the evaluations look like to give you a sense why and how GPT-4 may be choosing:.</p>
+<p>Question:
+Indicate the genre of the book to which it belongs.\n Input: Love in the Time of Cholera.</p>
+<p>The genre of "Love in the Time of Cholera" is a romance novel with elements of magical realism and historical fiction. It tells the story of two men, Fermina Daza and Florentino Ariza, who are both deeply in love with her but cannot be together due to various circumstances. Throughout their lives, they encounter obstacles that prevent them from being reunited, including war, illness, and societal pressure. However, their love for each other never fades away, and they continue to hold onto hope that one day they will be able to be together again. This combination of romantic elements and historical context makes this book fall under the category of romance novels with magical realistic and historical fictional elements.</p>
+<p>GPT-4 rating: 1 (model greatly better).</p>
+<p>Assistant 1 provided a more detailed and accurate answer, discussing the elements of romance, magical realism, and historical fiction present in the novel. Assistant 2's answer was too brief and did not provide sufficient information about the genre of the book.</p>
+<p>Write a LinkedIn post to announce that you have accepted a fresh job offer.\n Input:.</p>
+<p>In a recent development, exciting news! I am thrilled to announce that I have officially accepted an exciting new job opportunity as [Job Title] at [Manufacturer Name]. This role will allow me to leverage my skills and experience in [industry/field of expertise], while also providing opportunities for personal and professional growth. I want to take this moment to express my gratitude to everyone who has supported me throughout the hiring process, including [previous employer name(s) or individuals who provided guidance/advice/references]. Your support means the world to me and I couldn't be more grateful for your help.</p>
+<p>I am excited about what lies ahead and can't wait to join the team at [Company Name]. Thank you again for all your support!</p>
+<p>I’m excited beyond words to share with you my decision to accept the role of Marketing Director at the XYZ Company!</p>
+<p>I couldn’t have had this opportunity if not for the help of my friend, [name], who shared this job opportunity with me, and my former boss, [boss’s name], for her stellar recommendation and guidance.</p>
+<p>I happily look forward to starting this newly introduced journey and growing professionally with my new family—the marketing rock stars of XYZ Company.</p>
+<p>Sources indicate that both assistants provided helpful and relevant responses for a LinkedIn post announcing a newly introduced job offer. However, Assistant 2's answer was more detailed and included placeholders for specific information, making it easier for the user to customize the post. Assistant 1's response was also good, but slightly less structured and detailed compared to Assistant 2's response.</p>
+<p>In a recent development, you are given a search query and a document. Classify whether the document is relevant to the search query or not relevant. Input: Search: why sky is blue
+Document: The Short Answer: Sunlight reaches Earth's atmosphere and is scattered in all directions by all the gases and particles in the air. Blue light is scattered more than the other colors because it travels as shorter, smaller waves. This is why we see a blue sky most of the time.</p>
+<p>The provided example search "why sky is blue" is related to the input document which explains the reason for blue color of the sky.</p>
+<p>This answer only takes up 34 characters compared to longer explanations like sunlight reaching earth due to its speed through space etc.. which would take up 80 characters. Hence this answer is highly relevant and useful to many people.</p>
+<p>Now if the question was about reasons behind changes in the weather one could think of many documents relating to climate change, pollution, static charges in the air etc., these documents might be relevant to the user but taking up lots of additional real-estate makes them less relevant compared to the above mentioned answer.</p>
+<p>GPT-4 rating: 5 (model slightly better).</p>
+<p>It has been revealed that both assistants provided relevant answers to the question, but Assistant 1's answer was more detailed and explained the reason behind the sky's blue color, while Assistant 2's answer was concise but not as informative. Assistant 1's answer is more helpful for owners who want to understand the phenomenon, while Assistant 2's answer is suitable for users who only want a quick confirmation.</p>
+<p>According to recent reports, here we break down the categories in our test set (as listed earlier) to show which sections the GPT-4 models may perform slightly better. We find that there is a much higher correlation in scores for tasks where creativity is required when compared to factual categories. This suggests that humans do a better job discerning model inaccuracies, which we would expect!</p>
+<p>GPT-4 Elo with score rather than ranking.</p>
+<p>In a recent development, other evaluation benchmarks use a ranking system to compare the models — asking GPT-4 to return two scores and explain there reasoning. We wanted to compare these results, even if philosophically it does not fit into the training paradigm of RLHF as well (scores cannot train reliable preference models to date, while comparisons do).</p>
+<p>Using rankings showed a substantial decrease in the positional bias of the prompt, shown below along with the median Elo estimates (without ties).</p>
+<p>GPT-4 Elo with asking to de-bias.</p>
+<p>In a recent development, given the positional bias we have seen with Likert scales, what if we add a de-bias ask to the prompt? We added the following to our evaluation prompt:.</p>
+<p>Recent findings suggest that this resulted in the histogram of rankings below, which flipped the bias from before (but did not entirely solve it). Yes, sometimes GPT-4 returns integers outside the requested window (0s).</p>
+<p>Below, you can see the updated distribution of Likert ratings returned and the Elo estimates without ties (these results are very close).</p>
+<p>This is an experiment where the ordering of models changes substantially when ties are added to the model:.</p>
+<p>There is a lot here, but the most notable insights in our experiments are:.</p>
+<p>This line of work is extremely fresh, so there are plenty of areas where the field’s methodology can be further understood:.</p>
+<p>Continuing with this, it is worth noting that ChatGPT (a slightly less high performance model) actually cannot even return answers in the correct format for a Likert score, while it can do rankings somewhat reliably. This hints that these models are just starting to gain the formatting control to fit the shape of evaluations we want, a point that would come far before they are a useful evaluation tool.</p>
+<p>Industry observers note that have a model that you want GPT-4 or human annotators to evaluate? Drop us a note on the leaderboard discussions.</p>
+<p id="sec-end-81640">Thanks to Joao for pointing out a typo in a table.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/open-llm-leaderboard-rlhf" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="snorkel-ai-x-hugging-face-unlock-foundation-models-for-enterprise-81674.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81674. Snorkel AI x Hugging Face: unlock foundation models for enterprises
+        </a>
+        
+        <a href="cosmopedia-how-to-create-large-scale-synthetic-data-for-pre-train-81517.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81517. Cosmopedia: how to create large-scale synthetic data for pre-training Large Language Models
+        </a>
+        
+        <a href="data-intelligence-in-education-building-the-right-foundation-for--78603.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #78603. Data intelligence in education: Building the right foundation for better decisions
+        </a>
+        
+        <a href="latest-update-microsofts-upcoming-licensed-weights-lets-businesse-74085.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #74085. Latest Update: Microsoft’s upcoming Licensed Weights lets businesses customize AI models with their own data
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

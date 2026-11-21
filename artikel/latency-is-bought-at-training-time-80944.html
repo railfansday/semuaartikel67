@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latency Is Bought At Training Time</title>
+    <meta name="description" content="As humanoid control strips out the conversion step between a person’s movement and a robot’s joints, the hard work moves upstream into the motion data thos">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latency-is-bought-at-training-time-80944.html">
+    <meta property="og:title" content="Latency Is Bought At Training Time">
+    <meta property="og:description" content="As humanoid control strips out the conversion step between a person’s movement and a robot’s joints, the hard work moves upstream into the motion data thos">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fnexscient.ai%2Fwp-content%2Fuploads%2F2026%2F11%2Flatency-is-bought-at-training-time-21e0bc02c14e.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latency-is-bought-at-training-time-80944.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latency Is Bought At Training Time", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fnexscient.ai%2Fwp-content%2Fuploads%2F2026%2F11%2Flatency-is-bought-at-training-time-21e0bc02c14e.jpg"], "datePublished": "2026-11-21T14:00:58", "dateModified": "2026-11-21T14:08:46.479704", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latency-is-bought-at-training-time-80944.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latency Is Bought At Training Time</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 21 Nov 2026 &bull; ⏱️ 4 min read (773 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>As humanoid control strips out the conversion step between a person’s movement and a robot’s joints, the hard work moves upstream into the motion data those systems learn from.</li><li style='margin-bottom:6px;'>Watch someone in a headset drive a humanoid robot and the first thing you notice is the delay.</li><li style='margin-bottom:6px;'>Industry observers note that most of the beat is spent on translation.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-80944"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-80944"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-80944"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latency Is Bought At Training Time" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fnexscient.ai%2Fwp-content%2Fuploads%2F2026%2F11%2Flatency-is-bought-at-training-time-21e0bc02c14e.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-80944">As humanoid control strips out the conversion step between a person’s movement and a robot’s joints, the hard work moves upstream into the motion data those systems learn from.</p>
+<p>Watch someone in a headset drive a humanoid robot and the first thing you notice is the delay. The arm goes up, and a beat later the machine’s arm goes up. That beat decides whether an operator can catch a slipping box or stop a machine before it leans past the point of recovery.</p>
+<p>Industry observers note that most of the beat is spent on translation. Human bodies and robot bodies do not match: limb lengths differ, joints swing through different ranges, weight sits in different places. Teleoperation systems usually bridge that difference with online retargeting, converting a human pose into a robot pose while the person is still moving. The conversion costs time, and it can hand the controller a target the machine physically cannot hold.</p>
+<p>A recent preprint, Beyond Retargeting, takes the blunt route around that problem and removes the conversion. Its authors describe a policy that maps raw human motion straight to robot joint commands in a single forward pass, with no kinematic adaptation happening live. They pair it with a learned codebook of whole-body motion primitives, essentially a vocabulary of plausible movements, so that noisy or partial observations get projected onto something the robot can actually do and missing body parts get filled back in. Tested on a Unitree G1 in simulation and on hardware, driven by virtual reality, optical motion capture, text-generated motion and ordinary single-camera video, they report better latency and robustness than the baselines they compare against.</p>
+<p>I think the headline hides the real trade. Removing a step at run time does not delete the work; it pushes it into training, where the model has to absorb in advance every bodily difference it used to compute on the fly. To me that makes responsiveness a property of the dataset as much as of the controller: the split second saved in a demo was purchased months earlier, in recorded human movement spanning different body shapes, speeds and sensor conditions. I would watch how gracefully systems like this hold up when the person driving them resembles nobody in the training corpus.</p>
+<p id="sec-mid-80944">Sources indicate that snapping a strange observation onto the nearest plausible prototype is a safety feature when the library of prototypes is wide, and a failure mode when it is thin. A crouch nobody ever recorded becomes the closest thing that was recorded, and the robot performs that instead, confidently. Coverage of the motion library, not cleverness in the projection, sets the boundary of what the machine can be asked to do. The same logic applies across input channels: a clean optical capture and a shaky phone video of the identical movement have to land in the same place, which is a question about recording and labeling standards long before it is a question about architecture.</p>
+<p>Corpora like that are a production problem more than a research problem, built from trained people, written standards and review passes that treat the thousandth record exactly like the first. Through Flipside, our Philippines-based operating subsidiary, we now own trained, managed, quality-controlled human capacity capable of meeting demanding production standards rather than renting it, together with established production pipelines, quality-management systems and institutional knowledge.[1] We are building this infrastructure with a particular opportunity in mind: embodied intelligence.[1].</p>
+<p>Nothing in retargeting-free control reduces the need to watch real human beings move. The primitives come from captured motion. The text-to-motion generators that supply one of the input channels were themselves trained on captured motion. Even the claim that a system is robust is a claim about a distribution, and somebody assembled that distribution, decided what belonged in it and checked that the labels meant the same thing twice.</p>
+<p>What I find clarifying about this line of work is that it makes the dependency impossible to hide. When a translation step sits between the person and the machine, you can tell yourself the step will absorb the mess. Take the step out and the mess arrives at the joints.</p>
+<p>In a recent development, I think the field keeps arriving at the same answer from different directions. Every technique that makes a robot quicker or steadier in the moment is a technique that spends data earlier, and models are getting cheaper to train and easier to copy while the recorded account of how human bodies actually move is neither. The scarce thing was never the policy. It was the ground truth underneath it.</p>
+<p id="sec-end-80944">For disclosures, see this article on our website: https://nexscient.ai/latency-is-bought-at-training-time/#disclosure.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/nexscient/latency-is-bought-at-training-time-5eoi" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-mauricio-pochettino-pictured-taking-manchester-united-tr-72470.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #72470. Breaking: Mauricio Pochettino pictured taking Manchester United training for the first time
+        </a>
+        
+        <a href="latest-update-mauricio-pochettino-gets-straight-to-work-upcoming--72059.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #72059. Latest Update: Mauricio Pochettino gets straight to work: Upcoming Man United boss meets struggling stars for the first time and vows to shift losing mentality as he takes training with players back from international duty
+        </a>
+        
+        <a href="training-hard-and-biding-his-time-dele-alli-has-not-given-up-on-f-70873.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #70873. Training hard and biding his time, Dele Alli has not given up on football yet
+        </a>
+        
+        <a href="breaking-distributed-training-train-bartt5-for-summarization-usin-81858.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81858. Breaking: Distributed Training: Train BART/T5 for Summarization using 🤗 Transformers and Amazon SageMaker
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

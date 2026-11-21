@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: Vibecoding an inference chip</title>
+    <meta name="description" content="Sources indicate that or rather, I vibe-coded an FPGA into running an LLM. And it… just worked. One of the more entertaining things about programming recen">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-vibecoding-an-inference-chip-74436.html">
+    <meta property="og:title" content="Industry News: Vibecoding an inference chip">
+    <meta property="og:description" content="Sources indicate that or rather, I vibe-coded an FPGA into running an LLM. And it… just worked. One of the more entertaining things about programming recen">
+    <meta property="og:image" content="https://ankitg.me/assets/fpga-board.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-vibecoding-an-inference-chip-74436.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: Vibecoding an inference chip", "image": ["https://ankitg.me/assets/fpga-board.png"], "datePublished": "2026-11-20T18:15:16", "dateModified": "2026-11-21T14:01:46.237414", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-vibecoding-an-inference-chip-74436.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Hardware & Chips</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: Vibecoding an inference chip</h1>
+        <div class="meta-line">🌐 Source: <strong>Ankitg</strong> &bull; 📅 20 Nov 2026 &bull; ⏱️ 11 min read (2270 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that or rather, I vibe-coded an FPGA into running an LLM.</li><li style='margin-bottom:6px;'>One of the more entertaining things about programming recently is that coding agents let me work in entirely new domains by giving me access to new programming languages and paradigms.</li><li style='margin-bottom:6px;'>I overheard some founders recently talk about how FPGAs work.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-74436"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-74436"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-74436"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: Vibecoding an inference chip" loading="lazy" src="https://ankitg.me/assets/fpga-board.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-74436">Sources indicate that or rather, I vibe-coded an FPGA into running an LLM. And it… just worked.</p>
+<p>One of the more entertaining things about programming recently is that coding agents let me work in entirely new domains by giving me access to new programming languages and paradigms. Lately, that has meant hacking on hardware, now that writing low-level software is much easier. So, in this blog post, I’m going to try to recount the experience of vibe coding an FPGA, going through a series of “oh shit” moments several times, and giving myself a new appreciation for what’s possible if you have a large token budget (thanks YC) and interesting problems to point the models at.</p>
+<p>I overheard some founders recently talk about how FPGAs work. I’ll admit I was relatively naive about them. I’d never really experimented with them in my startup or in college, so I knew little about them before. The basic idea I was familiar with: you can program a circuit into a reprogrammable chip. So rather than having a general purpose computing architecture (like a CPU) you can have a reprogrammable one, i.e. the configuration loaded onto the chip determines how its logic and routing are connected, and that (in theory) enables performance advantages. I also know that it took a mountain of C++ to write and involved manually analyzing waveforms for simulation and verification. I had never done this before though and it seemed cumbersome.</p>
+<p>That’s about what I knew going into this.</p>
+<p>According to recent reports, naturally, my ML brain thought “could we use these for AI inference”. I’m not the first to think this — there are a few repos attempting to port ML models to FPGAs on Github. But I hadn’t actually seen a writeup on whether coding agents are good at writing the low level C++ and Verilog code to program them and verifying the outputs so that they actually run accurately. (Spoiler alert, they are incredible at programming them.).</p>
+<p>So I decided I needed to get my hands on one. AWS has F2 instances with FPGA hardware, and that seemed easier than going and buying physical hardware, so I asked Codex to spin up a reservation and got cooking. It had a relatively limited memory of 16 GB of FPGA HBM. Around the same time, I was working with the DeepGrove founders who were discussing their new ternary weight architecture that is well suited for memory limited cases. It’s SOTA on Mac hardware with actual agentic tool calling, so I figured why not, let’s see if I can get this working on an FPGA and fast enough to be useful.</p>
+<p>What followed was a cloud agent running in Conductor for several days with me mostly just encouraging it periodically while it both (1) got a model fully running and (2) increased its speed by 33× from the first full-model bit-exact baseline to get it to a real-time relevant speed. It was one of the most mind blowing autoresearch loops I’ve run, ultimately writing roughly 3M lines across the experiment history and parsing 30M lines of output files, burning only $10,000 in Claude and OpenAI tokens to run hundreds of experiments. Most of the code is C++ and some Verilog. It’s been probably a decade since the last time I wrote any serious amount of C++ and I’ve never written Verilog. I honestly don’t know the first thing about Verilog. Most of my prompts were not particularly clever: they consisted mostly of me saying things like “you’re a superintelligent model, time to be more creative” and “let’s go for 2x faster, you got this”. Sometimes I brought some ML knowhow like “hey it’s time to consider speculative decoding” or “why is that running on CPU, you should port it”. But for the most part, it was just vibes and I’m pretty sure that with enough time the model would have figured out those things. Also, it seemed that both Astra and Opus (fresh Fable wasn’t out yet) were pretty capable at this and I could use them interchangeably. I’m sure someone has a good benchmark for which is smarter but both passed my smart-enough threshold.</p>
+<p>Measured benchmark tokens/s · select a step to see what changed.</p>
+<p>A head loader that reads both of its memory banks at once (+17.3%, measured on and off on one image), a runtime expert-prefetch policy, and the router-job timing fix; run one clock step lower (225/425 MHz) after a soak test found random faults at 231.25.</p>
+<p>The chart follows the measured optimization sequence: 6 → 213 tokens/s, or 33× the baseline.</p>
+<p>It has been revealed that at one point, around when it got to 10 TPS, I messaged the DeepGrove founders about this, and they replied surprised that it was working so easily, saying they had tried this a few months back and the models were not quite good enough to be particularly effective. They sent me a prompt that summarizes some of their lessons and I copy-pasted it into my session to see if it’d matter. It was essentially the most significant piece of actual guidance I added to this session. The prompt is reproduced below.</p>
+<p>here is what someone else did for a dense bs=1 decode optimized fpga implementation for a dense qwen style model with ternary weights. you should take this with a grain of salt and pick things that you believe are acutally useful to add to your blueprint. Please also dont do things if you dont think is useful that take a lot of times like runnning really long test of a cycle accurate simulation etc or like physical design since those can take like hours. here are some ideas please pick and choose use this as context and not somehting that you shoudl be strictly guided by somethings that could help. prioritiize speed of like getting this up and running though..</p>
+<p>The coding agent diligently considered these asks, but it didn’t seem to make all that much of a difference qualitatively. Indeed, when I asked it later to read all of the logs and determine which of these instructions it actually used, it said:.</p>
+<p>Sources indicate that its biggest design ideas were already in my plan before you pasted it. You pasted it on Oct 29 at 21:50 UTC: 4,741 characters describing what someone else did for a dense, batch-1, ternary FPGA decoder. Within 70 seconds I had sorted it into ten ideas to adopt and five to reject, and written that into every design agent’s brief. The shorter remark from your friend Edward, about using lookup tables as logic gates, came 24 minutes earlier and left nothing on the speed line.</p>
+<p>Design ideas I adopted: mostly confirmation.</p>
+<p>Already planned: streaming weights straight into the compute lanes, running rows in parallel, and reading the attention cache in bursts were all in the design brief I’d released 35–40 minutes earlier.</p>
+<p>Recent findings suggest that ideas I rejected: all five numerics shortcuts. Lower-precision activations, a deferred norm, an 8-bit KV cache, online softmax and 16-bit probabilities each change the output bits. That is where their design got its efficiency, and your bit-exact rule ruled it out.</p>
+<p>Process advice: this changed things right away.</p>
+<p>What you asked: not to do things that take hours.</p>
+<p>What I stopped: a simulation that had run for about 24 hours, and two 250 MHz builds.</p>
+<p>What I switched to: a short loop of C tests, synthesis and a logic-depth check, with one place-and-route per integration.</p>
+<p>Likely gain: it got hardware results sooner.</p>
+<p>Possible cost, which I can’t prove: two hangs that only RTL simulation could show reached the board the next day, and the massive integration lost 38 hours to them.</p>
+<p>One real find it triggered. While checking their memory ideas, I found AWS’s own reference memory design, which reaches 426 GB/s across all 32 memory channels. The memory subsystem was built from it.</p>
+<p>Recent findings suggest that in other words, for most of the actual design ideas it is unclear but there is good reason to believe the model would have figured them out, especially because it came up with them many cycles later after several compaction cycles. But the process advice was useful immediately for getting to hardware results sooner and increasing iteration speed. In other words, the humans are still useful at defining how to iterate fast and what correctness looks like, and the agents are great to manage the exploration.</p>
+<p>In a recent development, here are the changes the autoresearch loop found. Interestingly, it’s mostly a series of modest improvements that compound 1.5x ish every time, rather than one or two giant ones.</p>
+<p>Baseline: the first full-model bit-exact FPGA image (R8), served with host-side prefix caching.</p>
+<p>Host software only: per-command overhead fell from ~10 ms to 0.9 ms (persistent register mapping, streaming reads, no per-command SDK calls or fsyncs).</p>
+<p>1.25× this step · 1.25× from baseline.</p>
+<p>A 128-lane attention engine that reads the KV cache in bursts instead of a word at a time, keeping the reference's exact summation order.</p>
+<p>1.74× this step · 2.18× from baseline.</p>
+<p>A parallel MoE router with an exact GCC-sort tie-breaker plus a streaming output head with built-in argmax; moderate-effort routing let it run at 250 MHz.</p>
+<p id="sec-mid-74436">1.46× this step · 3.19× from baseline.</p>
+<p>A glue engine that parallelizes norms, RoPE, quantization and copies between engines in certified exact orders.</p>
+<p>1.47× this step · 4.70× from baseline.</p>
+<p>The full new pipeline (streaming ternary projection lanes + a new sequencer replacing R8's control path), after fixing two hangs that only appeared in hardware.</p>
+<p>1.63× this step · 7.65× from baseline.</p>
+<p>Exact speculative decoding: the host drafts tokens by prompt lookup and the FPGA verifies several in one pass.</p>
+<p>1.04× this step · 7.97× from baseline.</p>
+<p>Fixed a relay that moved router weights between dies at 1/6 speed: router stall per layer 43,862 → 12,292 cycles.</p>
+<p>1.14× this step · 9.08× from baseline.</p>
+<p>Head shadow v2 (start the next token on a provisional guess; catch misses early) plus cross-die timing fixes, enabling 237.5 MHz kernel / 450 MHz memory.</p>
+<p>1.62× this step · 14.68× from baseline.</p>
+<p>Exact speculative decoding with a real draft model: a cut-down Maple on the F2's host CPUs drafts ahead, and the FPGA verifies every token.</p>
+<p>1.12× this step · 16.42× from baseline.</p>
+<p>Doubled the memory ports from 4 to 8 (two projection lanes, output head striped across banks): 1.39× per clock, but congestion cut the clock to 181/375 MHz.</p>
+<p>1.03× this step · 16.91× from baseline.</p>
+<p>Hid the attention engine's KV fetches behind its compute, and replaced the router's 2,048-step serial sum with an exact order-independent one (12,292 → 2,338 cycles per layer).</p>
+<p>1.24× this step · 20.98× from baseline.</p>
+<p>Lossless 5-trit weight packing (−20% weight bytes), shorter serial steps, and moving the output head to the far die, which relieved congestion and allowed 225/400 MHz.</p>
+<p>1.27× this step · 26.63× from baseline.</p>
+<p>Re-speculation after head-shadow misses, speculative MoE expert prefill during the router, and a die rebalance (without the unused DDR controller) that ran 231.25/450 MHz on both boots.</p>
+<p>1.08× this step · 28.63× from baseline.</p>
+<p>A head loader that reads both of its memory banks at once (+17.3%, measured on and off on one image), a runtime expert-prefetch policy, and the router-job timing fix; run one clock step lower (225/425 MHz) after a soak test found random faults at 231.25.</p>
+<p>1.16× this step · 33.13× from baseline.</p>
+<p>In a recent development, it’s difficult to do a 1:1 comparison across these configurations. I didn’t run the same autoresearch loop on every alternative, and I assume there is more performance to extract if I did. The point is to show how slow the FPGA was in its first implementation, and how far the optimization loop took it.</p>
+<p>According to recent reports, the measurements below are from November 15 on AWS, replaying the same 8-chat × 3-turn benchmark. Prices are the on-demand rates recorded with that experiment. “Exact turns” counts outputs that matched the pinned CPU reference. The GPU implementations are included for context but did not satisfy the same bit-exact criterion but are pretty close in practice.</p>
+<p>This is one generation starting with a 16-token prompt and continuing until the 8,192-token context is full: 8,176 generated tokens. The five middle columns show decode speed in tokens/s at the indicated context length for several generations of iteration. The last column is wall-clock time for the whole run/.</p>
+<p>* For r8 and r9, the first two columns come from separate, shorter runs generating 2,032 tokens. The other columns come from the full-context run.</p>
+<p>r9 improves short-context speed, while the complete long-context run is roughly tied with r8.</p>
+<p>These examples come from the final r9 image.</p>
+<p>246 tokens · 229.7 tokens/s · 1.16 s end to end.</p>
+<p>140 tokens · 220.0 tokens/s · 0.76 s end to end.</p>
+<p>System prompt: “You are a helpful assistant. Think briefly before you answer, then reply clearly and concisely.”.</p>
+<p id="sec-end-74436">According to recent reports, this was a fun project. I’m not sure I’m ever going to use this specific chip architecture in this specific way, and I’m certainly not claiming that an 8,192-token-context model running on an FPGA is the way I’d recommend anyone use something like this in production. But it’s pretty epic that this just works. Capability like this completely shifts the overton window for what a committed team of engineers can work on. It should mean that entirely new types of ideas (scientific discoveries, products, startups) are possible if you can point the models in the right direction. I’m excited to see what everyone builds.</p>
+<p style="margin-top: 25px;">
+<a href="https://ankitg.me/blog/vibecoding-inference-chip/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-bamba-inference-efficient-hybrid-mamba2-model-81356.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81356. Industry News: Bamba: Inference-Efficient Hybrid Mamba2 Model
+        </a>
+        
+        <a href="industry-news-nasas-fresh-ai-space-chip-could-let-spacecraft-thin-81247.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81247. Industry News: NASA’s fresh AI space chip could let spacecraft think for themselves
+        </a>
+        
+        <a href="industry-news-newly-introduced-programmable-photonic-chip-can-con-81221.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81221. Industry News: Newly introduced programmable photonic chip can control how fast light moves
+        </a>
+        
+        <a href="industry-news-congress-must-hold-lutnick-to-the-latest-china-chip-77290.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #77290. Industry News: Congress Must Hold Lutnick To the Latest China Chip Rule
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

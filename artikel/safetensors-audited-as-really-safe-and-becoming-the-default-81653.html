@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐶Safetensors audited as really safe and becoming the default</title>
+    <meta name="description" content="Hugging Face, in close collaboration with EleutherAI and Stability AI, has ordered an external security audit of the safetensors library, the results of wh">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/safetensors-audited-as-really-safe-and-becoming-the-default-81653.html">
+    <meta property="og:title" content="🐶Safetensors audited as really safe and becoming the default">
+    <meta property="og:description" content="Hugging Face, in close collaboration with EleutherAI and Stability AI, has ordered an external security audit of the safetensors library, the results of wh">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/142_safetensors_official/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/safetensors-audited-as-really-safe-and-becoming-the-default-81653.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "🐶Safetensors audited as really safe and becoming the default", "image": ["https://huggingface.co/blog/assets/142_safetensors_official/thumbnail.png"], "datePublished": "2023-05-23T00:00:00", "dateModified": "2026-11-21T14:10:08.640659", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/safetensors-audited-as-really-safe-and-becoming-the-default-81653.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>🐶Safetensors audited as really safe and becoming the default</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 23 May 2023 &bull; ⏱️ 4 min read (724 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Hugging Face, in close collaboration with EleutherAI and Stability AI, has ordered
+an external security audit of the safetensors library, the results of which allow
+all three organizations to move toward making the library the default format
+for saved models.</li><li style='margin-bottom:6px;'>The full results of the security audit, performed by Trail of Bits, 
+can be found here: Report.</li><li style='margin-bottom:6px;'>The following blog post explains the origins of the library, why these audit results are vital,
+and the next steps.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81653"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81653"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81653"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="🐶Safetensors audited as really safe and becoming the default" loading="lazy" src="https://huggingface.co/blog/assets/142_safetensors_official/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81653">Hugging Face, in close collaboration with EleutherAI and Stability AI, has ordered
+an external security audit of the safetensors library, the results of which allow
+all three organizations to move toward making the library the default format
+for saved models.</p>
+<p>The full results of the security audit, performed by Trail of Bits, 
+can be found here: Report.</p>
+<p>The following blog post explains the origins of the library, why these audit results are vital,
+and the next steps.</p>
+<p>🐶Safetensors is a library
+  for saving and loading tensors in the most common frameworks (including PyTorch, TensorFlow, JAX, PaddlePaddle, and NumPy).</p>
+<p>For a more concrete explanation, we'll use PyTorch.</p>
+<p>It also has a number of cool features compared to other formats, most notably that loading files is safe, as we'll see later.</p>
+<p>When you're using transformers, if safetensors is installed, then those files will already
+be used preferentially in order to prevent complications, which means that.</p>
+<p>is likely to be the only thing needed to run safetensors files safely.</p>
+<p>Recent findings suggest that going forward and thanks to the validation of the library, safetensors will now be installed in transformers by
+default. The next step is saving models in safetensors by default.</p>
+<p>We are thrilled to see that the safetensors library is already seeing use in the ML ecosystem, including:.</p>
+<p>The creation of this library was driven by the fact that PyTorch uses pickle under
+the hood, which is inherently unsafe. (Sources: 1, 2, video, 3).</p>
+<p>With pickle, it is possible to write a malicious file posing as a model 
+that gives full control of a user's computer to an attacker without the user's knowledge,
+allowing the attacker to steal all their bitcoins 😓.</p>
+<p>While this vulnerability in pickle is widely known in the computer security world (and is acknowledged in the PyTorch docs), it’s not common knowledge in the broader ML community.</p>
+<p>Since the Hugging Face Hub is a platform where anyone can upload and share models, it is important to make efforts 
+to prevent consumers from getting infected by malware.</p>
+<p id="sec-mid-81653">We are also taking steps to make sure the existing PyTorch files are not malicious, but the best we can do is flag suspicious-looking files.</p>
+<p>Of course, there are other file formats out there, but
+none seemed to meet the full set of ideal requirements our team identified.</p>
+<p>In addition to being safe, safetensors allows lazy loading and generally faster loads (around 100x faster on CPU).</p>
+<p>Sources indicate that lazy loading means loading only part of a tensor in an efficient manner. This particular feature enables arbitrary sharding with efficient inference libraries, such as text-generation-inference, to load LLMs (such as LLaMA, StarCoder, etc.) on various types of hardware
+with maximum efficiency.</p>
+<p>Because it loads so fast and is framework agnostic, we can even use the format
+to load models from the same file in PyTorch or TensorFlow.</p>
+<p>Sources indicate that since safetensors main asset is providing safety guarantees, we wanted to make sure
+it actually delivered. That's why Hugging Face, EleutherAI, and Stability AI teamed up to get an external
+security audit to confirm it.</p>
+<p>In the name of openness and transparency, all companies agreed to make the report
+fully public.</p>
+<p>One import thing to note is that the library is written in Rust. This adds
+an extra layer of security
+coming directly from the language itself.</p>
+<p>While it is impossible to 
+prove the absence of flaws, this is a major step in giving reassurance that safetensors
+is indeed safe to use.</p>
+<p>For Hugging Face, EleutherAI, and Stability AI, the master blueprint is to shift to using this format by default.</p>
+<p>EleutherAI has added support for evaluating models stored as safetensors in their LM Evaluation Harness and is working on supporting the format in their GPT-NeoX distributed training library.</p>
+<p>Within the transformers library we are doing the following:.</p>
+<p>As for safetensors itself, we're looking into adding more advanced features for LLM training,
+which has its own set of issues with current formats.</p>
+<p>Finally, we initiative to release a 1.0 in the near future, with the large user base of transformers providing the final testing step. The format and the lib have had very few modifications since their inception,
+which is a good sign of stability.</p>
+<p id="sec-end-81653">We're glad we can bring ML one step closer to being safe and efficient for all!</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/safetensors-security-audit" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-the-nlp-course-is-becoming-the-llm-course-81280.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81280. Latest Update: The NLP Course is becoming the LLM Course
+        </a>
+        
+        <a href="4-phases-of-becoming-a-great-leader-81140.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81140. 4 phases of becoming a great leader
+        </a>
+        
+        <a href="tech-report-a-tempo-slider-thats-off-by-default-half-time-double--80931.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #80931. Tech Report: A tempo slider that's off by default: half time, double time and a 90 BPM starting point
+        </a>
+        
+        <a href="latest-update-scientists-just-discovered-what-coffee-really-does--80766.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #80766. Latest Update: Scientists just discovered what coffee really does to your gut and brain
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeCoder vs. Closed-source Code Assistants</title>
+    <meta name="description" content="For decades, software developers have designed methodologies, processes, and tools that help them improve code quality and increase productivity. For insta">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/safecoder-vs-closed-source-code-assistants-81595.html">
+    <meta property="og:title" content="SafeCoder vs. Closed-source Code Assistants">
+    <meta property="og:description" content="For decades, software developers have designed methodologies, processes, and tools that help them improve code quality and increase productivity. For insta">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/safecoder-vs-closed-source-code-assistants/image.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/safecoder-vs-closed-source-code-assistants-81595.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "SafeCoder vs. Closed-source Code Assistants", "image": ["https://huggingface.co/blog/assets/safecoder-vs-closed-source-code-assistants/image.png"], "datePublished": "2023-09-11T00:00:00", "dateModified": "2026-11-21T14:09:55.856913", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/safecoder-vs-closed-source-code-assistants-81595.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>SafeCoder vs. Closed-source Code Assistants</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 11 Sep 2023 &bull; ⏱️ 5 min read (920 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>For decades, software developers have designed methodologies, processes, and tools that help them improve code quality and increase productivity.</li><li style='margin-bottom:6px;'>In "How Google Tests Software" (Addison-Wesley, 2012), Google reports that fixing a bug during system tests - the final testing stage - is 1000x more expensive than fixing it at the unit testing stage.</li><li style='margin-bottom:6px;'>For all the hype surrounding generative AI, code generation seems a promising way to help developers deliver better code fast.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81595"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81595"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81595"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="SafeCoder vs. Closed-source Code Assistants" loading="lazy" src="https://huggingface.co/blog/assets/safecoder-vs-closed-source-code-assistants/image.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81595">For decades, software developers have designed methodologies, processes, and tools that help them improve code quality and increase productivity. For instance, agile, test-driven development, code reviews, and CI/CD are now staples in the software industry.</p>
+<p>In "How Google Tests Software" (Addison-Wesley, 2012), Google reports that fixing a bug during system tests - the final testing stage - is 1000x more expensive than fixing it at the unit testing stage. This puts much pressure on developers - the first link in the chain - to write quality code from the get-go.</p>
+<p>For all the hype surrounding generative AI, code generation seems a promising way to help developers deliver better code fast. Indeed, early studies show that managed services like GitHub Copilot or Amazon CodeWhisperer help developers be more productive.</p>
+<p>According to recent reports, however, these services rely on closed-source models that can't be customized to your technical culture and processes. Hugging Face released SafeCoder a few weeks ago to fix this. SafeCoder is a code assistant solution built for the enterprise that gives you state-of-the-art models, transparency, customizability, IT flexibility, and privacy.</p>
+<p>In this post, we'll compare SafeCoder to closed-source services and highlight the benefits you can expect from our solution.</p>
+<p>SafeCoder is at the moment built on top of the StarCoder models, a family of open-source models designed and trained within the BigCode collaborative project.</p>
+<p>Recent findings suggest that starCoder is a 15.5 billion parameter model trained for code generation in over 80 programming languages. It uses innovative architectural concepts, like Multi-Query Attention (MQA), to improve throughput and reduce latency, a technique also present in the Falcon and adapted for LLaMa 2 models.</p>
+<p>It has been revealed that starCoder has an 8192-token context window, helping it take into account more of your code to generate upcoming code. It can also do fill-in-the-middle, i.e., insert within your code, instead of just appending new code at the end.</p>
+<p>Lastly, like HuggingChat, SafeCoder will introduce new state-of-the-art models over time, giving you a seamless upgrade path.</p>
+<p>Unfortunately, closed-source code assistant services don't share information about the underlying models, their capabilities, and their training data.</p>
+<p>It has been revealed that in line with the Chinchilla Scaling Law, SafeCoder is a compute-optimal model trained on 1 trillion (1,000 billion) code tokens. These tokens are extracted from The Stack, a 2.7 terabyte dataset built from permissively licensed open-source repositories. All efforts are made to honor opt-out requests, and we built a tool that lets repository owners check if their code is part of the dataset.</p>
+<p>In the spirit of transparency, our research paper discloses the model architecture, the training process, and detailed metrics.</p>
+<p>Unfortunately, closed-source services stick to vague information, such as "[the model was trained on] billions of lines of code." To the best of our knowledge, no metrics are available.</p>
+<p id="sec-mid-81595">The StarCoder models have been specifically designed to be customizable, and we have already built different versions:.</p>
+<p>We also shared the fine-tuning code on GitHub.</p>
+<p>In a recent development, every company has its preferred languages and coding guidelines, i.e., how to write inline documentation or unit tests, or do's and don'ts on security and performance. With SafeCoder, we can help you train models that learn the peculiarities of your software engineering process. Our team will help you prepare high-quality datasets and fine-tune StarCoder on your infrastructure. Your data will never be exposed to anyone.</p>
+<p>Unfortunately, closed-source services cannot be customized.</p>
+<p>According to recent reports, safeCoder relies on Docker containers for fine-tuning and deployment. It's easy to run on-premise or in the cloud on any container management service.</p>
+<p>In addition, SafeCoder includes our Optimum hardware acceleration libraries. Whether you work with CPU, GPU, or AI accelerators, Optimum will kick in automatically to help you save time and money on training and inference. Since you control the underlying hardware, you can also tune the cost-performance ratio of your infrastructure to your needs.</p>
+<p>Unfortunately, closed-source services are only available as managed services.</p>
+<p>Recent findings suggest that security is always a top concern, all the more when source code is involved. Intellectual property and privacy must be protected at all costs.</p>
+<p>Whether you run on-premise or in the cloud, SafeCoder is under your complete administrative control. You can apply and monitor your security checks and maintain strong and consistent compliance across your IT platform.</p>
+<p>SafeCoder doesn't spy on any of your data. Your prompts and suggestions are yours and yours only. SafeCoder doesn't call home and send telemetry data to Hugging Face or anyone else. No one but you needs to know how and when you're using SafeCoder. SafeCoder doesn't even require an Internet connection. You can (and should) run it fully air-gapped.</p>
+<p>According to recent reports, closed-source services rely on the security of the underlying cloud. Whether this works or not for your compliance posture is your call. For enterprise consumers, prompts and suggestions are not stored (they are for individual users). However, we regret to point out that GitHub collects  "user engagement data" with no possibility to opt-out. AWS does the same by default but lets you opt out.</p>
+<p>We're very excited about the future of SafeCoder, and so are our customers. No one should have to compromise on state-of-the-art code generation, transparency, customization, IT flexibility, security, and privacy. We believe SafeCoder delivers them all, and we'll keep working hard to make it even better.</p>
+<p id="sec-end-81595">If you’re interested in SafeCoder for your company, please contact us. Our team will contact you shortly to learn more about your use case and discuss requirements.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/safecoder-vs-closed-source-code-assistants" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="the-age-of-machine-learning-as-code-has-arrived-81843.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81843. The Age of Machine Learning As Code Has Arrived
+        </a>
+        
+        <a href="starcoder-a-state-of-the-art-llm-for-code-81663.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81663. StarCoder: A State-of-the-Art LLM for Code
+        </a>
+        
+        <a href="industry-news-announcing-the-open-source-ai-game-jam-81646.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81646. Industry News: Announcing the Open Source AI Game Jam 🎮
+        </a>
+        
+        <a href="open-source-text-generation-llm-ecosystem-at-hugging-face-81622.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81622. Open-Source Text Generation & LLM Ecosystem at Hugging Face
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

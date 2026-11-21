@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Back to The Future: Evaluating AI Agents on Predicting Future Events</title>
+    <meta name="description" content="Most current AI benchmarks focus on answering questions about the past, either by testing models on existing knowledge (in a static manner, such as HLE or ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-back-to-the-future-evaluating-ai-agents-on-predicting-81020.html">
+    <meta property="og:title" content="Tech Report: Back to The Future: Evaluating AI Agents on Predicting Future Events">
+    <meta property="og:description" content="Most current AI benchmarks focus on answering questions about the past, either by testing models on existing knowledge (in a static manner, such as HLE or ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/futurebench/leaderboard.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-back-to-the-future-evaluating-ai-agents-on-predicting-81020.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Back to The Future: Evaluating AI Agents on Predicting Future Events", "image": ["https://huggingface.co/blog/assets/futurebench/leaderboard.png"], "datePublished": "2025-07-17T00:00:00", "dateModified": "2026-11-21T14:08:55.595843", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-back-to-the-future-evaluating-ai-agents-on-predicting-81020.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Back to The Future: Evaluating AI Agents on Predicting Future Events</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 17 Jul 2025 &bull; ⏱️ 9 min read (1875 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Most current AI benchmarks focus on answering questions about the past, either by testing models on existing knowledge (in a static manner, such as HLE or GPQA, or augmented, like BrowseComp or GAIA) or previously solved problems (like PaperBench, DABStep, or most coding evaluations).</li><li style='margin-bottom:6px;'>Forecasting future events is a complex and holistic task: it requires sophisticated reasoning, synthesis, weighing probabilities and genuine understanding, rather than pattern matching against or searching existing information.</li><li style='margin-bottom:6px;'>Beyond its inherent importance, this forecasting-based approach also solves many methodological problems faced by current evaluations and benchmarks.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81020"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81020"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81020"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Back to The Future: Evaluating AI Agents on Predicting Future Events" loading="lazy" src="https://huggingface.co/blog/assets/futurebench/leaderboard.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81020">Most current AI benchmarks focus on answering questions about the past, either by testing models on existing knowledge (in a static manner, such as HLE or GPQA, or augmented, like BrowseComp or GAIA) or previously solved problems (like PaperBench, DABStep, or most coding evaluations). However, we believe that more valuable AI, and ultimately AGI, will be distinguished by its ability to use this past to forecast interesting aspects of the future, rather than merely reciting old facts.</p>
+<p>Forecasting future events is a complex and holistic task: it requires sophisticated reasoning, synthesis, weighing probabilities and genuine understanding, rather than pattern matching against or searching existing information. Evaluating models on their ability to predict future outcomes, whether in science, economics, geopolitics, or technology tests the kind of intelligence that creates real-world value.</p>
+<p>Beyond its inherent importance, this forecasting-based approach also solves many methodological problems faced by current evaluations and benchmarks. Traditional benchmarks that measure accuracy on fixed test sets are inevitably affected by possible data contamination, and without access to the full reproducible training pipeline of a model, it's hard to trust the results. The most serious evaluation efforts now keep their test sets completely private, creating a frustrating arms race between evaluators and potential "gaming the leaderboard" mechanics (Singh et al., 2025).</p>
+<p>It has been revealed that forecasting makes contamination impossible by design, as you can't train on data that doesn't yet exist! This creates a level playing field where success depends on reasoning capability rather than memorization.</p>
+<p>Sources indicate that perhaps most importantly, predictions about the future are inherently verifiable. We can wait and see who was right, creating an objective, time-stamped measure of model performance.</p>
+<p>We therefore propose evaluating agents on their ability to predict future events (Ye et al., 2024; Karger et al., 2025). FutureBench draws from real-world prediction markets and emerging news to create interesting prediction tasks grounded in actual future outcomes. We collect events from platforms and live news coverages and manifold markets, filtering them to focus on emerging events worth predicting. Using an agent-based approach, we curate scenarios that require genuine reasoning rather than simple pattern matching. Think geopolitical developments, market movements, or technology adoption trends - events where informed analysis actually matters.</p>
+<p>This is the obvious question, and it's at the heart of what makes this benchmark interesting! We believe the answer cannot be a simple “yes” or a “no”, as it mostly depends on the actual questions; there are always crucial caveats to consider. Humans constantly use their ability to weigh current information to predict future events. Aren't most career moves, relationship choices, or even business strategies essentially bets on future outcomes?</p>
+<p>It has been revealed that some predictions involve irreducible uncertainty (Will it rain on December 17th, 2027 at noon?), but many don't. When a skilled analyst predicts a manufacturer's quarterly earnings or a policy expert forecasts election outcomes, they're using available information to make informed decisions. This is precisely what we're asking AI agents to do with FutureBench! The task isn't to get agents to fortune-tell, but rather to synthesize information and reason under stronger uncertainty than most other benchmarks.</p>
+<p>It has been revealed that the agent's prediction quality directly reflects its ability to search relevant information, synthesize complex data, and reason about cause-and-effect relationships. These are precisely the capabilities we want to measure in real-world applications.</p>
+<p>Tools like DeepResearch are already used for market analysis and strategic planning. The quality of information collection strongly correlates with decision-making effectiveness. FutureBench is inspired by this evaluation process and tries to compute agents’ quality with objective, verifiable outcomes.</p>
+<p>In a recent development, building a benchmark that tests real prediction capabilities requires a steady stream of meaningful questions. We've developed two complementary approaches that capture different types of future events:.</p>
+<p>Recent findings suggest that our first approach uses AI to mine current events for prediction opportunities. We deploy a smolagents-based agent to scrape a few major news websites, analyze front-page articles, and generate prediction questions about their likely outcomes. The agent reads through and identifies interesting articles and formulates specific, time-bound questions from their content, for example "Will the Federal Reserve cut interest rates by at least 0.25% by July 1st, 2025?".</p>
+<p>We guide this process with carefully crafted prompts that specify what makes a good prediction question—events that are meaningful, verifiable, and uncertain extraction time.</p>
+<p>It has been revealed that the agent typically generates 5 questions per scraping session, with a time horizon of a single week, meaning that we assume we’ll know the answer to the question after seven days. This gives us a natural pipeline of fresh evaluation material tied to real-world events.</p>
+<p>Industry observers note that our second source draws from Polymarket. These questions come from a prediction market platform where real participants make forecasts about future events. We currently ingest around 8 questions per week.</p>
+<p>However, the raw data needs filtering. We apply strong filtering to remove general questions regarding temperature and some questions regarding the stock and crypto markets, which would otherwise be too numerous for practical use in our benchmark. In addition to this, polymarket questions have less constraints regarding the final “realization” time, the actual outcome of the event could be available only next month or by the end of the year. These are still very relevant questions, but the data collection of the outcome is more sparse.</p>
+<p>Here's an example of what comes out of our question generation pipeline:.</p>
+<p>Recent findings suggest that the next question is, what does this type of benchmark allow us to measure? The framework operates on three distinct levels, allowing us to isolate exactly what we're measuring:.</p>
+<p>Level 1: Framework Comparison
+Keep the underlying LLMs and tools constant while varying frameworks. How does a LangChain-based agent compare to one built with CrewAI when both use GPT-4 and the same search tools? This isolates the impact of different agentic frameworks.</p>
+<p>Level 2: Tool Performance
+Fix the LLM and framework while comparing different implementations. Which search tool (for example Tavily, Google, Bing) leads to better predictions than other search engines, holding everything else constant? This reveals which tools actually provide value. How much value do tools bring in general with respect to models without tools?</p>
+<p>It has been revealed that level 3: Model Capabilities
+Hold the framework and tools constant while testing different LLMs. Given access to the same set of tools, does DeepSeek-V3 use them as effectively as GPT-4? This measures pure reasoning ability. This systematic approach lets us understand exactly where performance gains and losses occur in the agent pipeline.</p>
+<p>The benchmark also serves as a robust test of instruction following. Agents must respect specific formatting requirements and generate actions that can be correctly parsed and executed. In practice, this often reveals where smaller language models struggle with complex multi-step reasoning.</p>
+<p id="sec-mid-81020">Industry observers note that 🚀 Try it yourself! Explore the live leaderboard: FutureBench Interactive Leaderboard.</p>
+<p>We use SmolAgents as a baseline agent framework for all the questions. We also compute performance on the base models. For the prediction task itself, the agents get access to a focused toolkit:.</p>
+<p>This intentionally lean setup forces agents to be strategic about information gathering while still providing the tools needed for informed predictions.</p>
+<p>We compare different models using smolagents as a baseline (you can find the leaderboard on our HF Space). We also run the standard language models without internet access to estimate a general prior. As expected, we see agentic models performing better than simple language models; stronger models show more stable prediction quality. Overall we also find interesting patterns in how different models try to approach a question:.</p>
+<p>It has been revealed that running this benchmark has revealed insights into how different models approach information gathering. One striking difference is with respect to scraping. GPT-4.1 appears to rely more on search results. Claude3.7 and 4 explore the web space in more detail and tend to use web scraping more frequently; this thorough approach also means collecting many more input tokens during the research process, thus increasing the cost.</p>
+<p>Models show interesting approaches to making predictions, for example, to answer the  question "Will annual inflation increase by 2.6 or more in June?":.</p>
+<p>The DeepSeekV3 agent analyzed June 2025 inflation prospects by searching recent CPI data (finding current inflation at 2.4-2.8%), considered tariff impacts as upward pressure, and concluded inflation would exceed the 2.6% threshold.</p>
+<p>Claude3.7 analyzed June 2025 inflation through comprehensive research (11 searches vs DeepSeekV3's 3), systematically gathering May 2025 CPI data (2.4% year-over-year), identifying decelerating monthly trends (0.2%→0.1%), weighing tariff pressures against Fed restrictive policy, calculating precise 0.2% gap needed, and concluded recent deceleration made reaching 2.6% threshold unlikely, answering "No.".</p>
+<p>GPT4.1 analyzed June 2025 inflation through targeted searches for market consensus and forecasts, identified May 2025 CPI at 2.4% (below 2.5% expectations), noted weak 0.1% monthly increases, found no forecaster predictions of 2.6%+ for June, and concluded the jump from 2.4% to 2.6% was unlikely given recent below-expectation trends.</p>
+<p>Interestingly, Claude was the only model that tried to access the Bureau of Labor Statistics website to scrape it directly, which failed because it is a .gov website and we do not allow this type of action.</p>
+<p>Industry observers note that the models exhibit distinct reasoning patterns in their outputs. GPT's analysis focused on consensus forecasts as the key signal for future events rather than extrapolating from current data, while Claude's approach exhibited rigorous analytical structure with its systematic pro/con framework and quantitative gap analysis, and DeepSeekV3's output displayed explicit acknowledgment of data limitations and systematic methodology adjustments when initial approaches encountered constraints.</p>
+<p>According to recent reports, these behavioral differences reveal interesting patterns in how different models approach information gathering. The variations in web usage and token consumption suggest that models have distinct strategies for tackling prediction tasks, which FutureBench can help us measure and understand.</p>
+<p>One challenge is that evaluation can be expensive due to the large number of input tokens. For example, Claude tends to visit web pages frequently, thus accumulating many input tokens. In a multi-turn loop, this can make the number of input tokens skyrocket very rapidly. This increases the cost of any subsequent generation, even though most tokens are eventually cached.</p>
+<p>It has been revealed that futureBench is an evolving benchmark, as we discover latest findings and better patterns, we’ll keep incorporating them. We would love feedback from the community to understand how to better source questions, which experiments to run and which data is the most interesting to analyze.</p>
+<p>Singh, S., Nan, Y., Wang, A., D'souza, D., Kapoor, S., Ustun, A., Koyejo, S., Deng, Y., Longpre, S., Smith, N., Ermiş, B.H., Fadaee, M., &amp; Hooker, S. (2025). The Leaderboard Illusion. ArXiv, abs/2504.20879.</p>
+<p>Recent findings suggest that karger, E., Bastani, H., Yueh-Han, C., Jacobs, Z., Halawi, D., Zhang, F., &amp; Tetlock, P.E. (2025). ForecastBench: A Dynamic Benchmark of AI Forecasting Capabilities. ICLR.</p>
+<p>Ye, C., Hu, Z., Deng, Y., Huang, Z., Ma, M.D., Zhu, Y., &amp; Wang, W. (2024). MIRAI: Evaluating LLM Agents for Event Forecasting. ArXiv, abs/2407.01231.</p>
+<p>https://education.apple.com/story/250014579.</p>
+<p>I created a prompt that can beat professional forecasts (at least on 12 short-term forecasts I tested). It uses forecasting best practices to significantly beat straightforward requests for a prediction.</p>
+<p>Substack including prompt:https://substack.com/home/post/p-167561929.</p>
+<p>LinkedIn summary:https://www.linkedin.com/posts/darrenmclennan_your-ai-crystal-ball-forecasting-with-generative-activity-7348335147798208513-qgB8?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAAtJlIBGolERx31QnYg2GmhaO9t_P7qe7M.</p>
+<p id="sec-end-81020">Other fun predictions:https://www.linkedin.com/posts/darrenmclennan_superforecasting-generativeai-promptengineering-activity-7351999635730644992-Gze0?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAAtJlIBGolERx31QnYg2GmhaO9t_P7qe7M.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/futurebench" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-predicting-and-detecting-failures-how-azure-strengthe-81673.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81673. Tech Report: Predicting and detecting failures: How Azure strengthens reliability for mission-critical workloads
+        </a>
+        
+        <a href="tech-report-ai-agents-are-here-what-now-81345.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81345. Tech Report: AI Agents Are Here. What Now?
+        </a>
+        
+        <a href="tech-report-why-is-macaulay-culkin-coming-back-to-home-alone-79974.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #79974. Tech Report: Why Is Macaulay Culkin Coming Back to Home Alone?
+        </a>
+        
+        <a href="tech-report-the-best-back-to-school-books-for-every-age-and-stage-79397.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #79397. Tech Report: The Best Back-to-School Books For Every Age and Stage
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

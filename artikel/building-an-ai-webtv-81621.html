@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building an AI WebTV</title>
+    <meta name="description" content="The AI WebTV is an experimental demo to showcase the latest advancements in automatic video and music synthesis. 👉 Watch the stream now by going to the AI ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/building-an-ai-webtv-81621.html">
+    <meta property="og:title" content="Building an AI WebTV">
+    <meta property="og:description" content="The AI WebTV is an experimental demo to showcase the latest advancements in automatic video and music synthesis. 👉 Watch the stream now by going to the AI ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/156_ai_webtv/thumbnail.gif">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/building-an-ai-webtv-81621.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Building an AI WebTV", "image": ["https://huggingface.co/blog/assets/156_ai_webtv/thumbnail.gif"], "datePublished": "2023-07-17T00:00:00", "dateModified": "2026-11-21T14:10:01.693989", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/building-an-ai-webtv-81621.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Building an AI WebTV</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 17 Jul 2023 &bull; ⏱️ 6 min read (1208 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>The AI WebTV is an experimental demo to showcase the latest advancements in automatic video and music synthesis.</li><li style='margin-bottom:6px;'>👉 Watch the stream now by going to the AI WebTV Space.</li><li style='margin-bottom:6px;'>If you are using a mobile device, you can view the stream from the Twitch mirror.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81621"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81621"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81621"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Building an AI WebTV" loading="lazy" src="https://huggingface.co/blog/assets/156_ai_webtv/thumbnail.gif" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81621">The AI WebTV is an experimental demo to showcase the latest advancements in automatic video and music synthesis.</p>
+<p>👉 Watch the stream now by going to the AI WebTV Space.</p>
+<p>If you are using a mobile device, you can view the stream from the Twitch mirror.</p>
+<p>The motivation for the AI WebTV is to demo videos generated with open-source text-to-video models such as Zeroscope and MusicGen, in an entertaining and accessible way.</p>
+<p>You can find those open-source models on the Hugging Face hub:.</p>
+<p>The individual video sequences are purposely made to be short, meaning the WebTV should be seen as a tech demo/showreel rather than an actual show (with an art direction or programming).</p>
+<p>The AI WebTV works by taking a sequence of video shot prompts and passing them to a text-to-video model to generate a sequence of takes.</p>
+<p>Additionally, a base theme and idea (written by a human) are passed through a LLM (in this case, ChatGPT), in order to generate a variety of individual prompts for each video clip.</p>
+<p>Here's a diagram of the current architecture of the AI WebTV:.</p>
+<p>The WebTV is implemented in NodeJS and TypeScript, and uses various services hosted on Hugging Face.</p>
+<p>The central video model is Zeroscope V2, a model based on ModelScope.</p>
+<p>Zeroscope is comprised of two parts that can be chained together:.</p>
+<p>👉  You will need to use the same prompt for both the generation and upscaling.</p>
+<p>Industry observers note that to make a quick prototype, the WebTV runs Zeroscope from two duplicated Hugging Face Spaces running Gradio, which are called using the @gradio/client NPM package. You can find the original spaces here:.</p>
+<p>Other spaces deployed by the community can also be found if you search for Zeroscope on the Hub.</p>
+<p>👉  Public Spaces may become overcrowded and paused at any time. If you intend to deploy your own system, please duplicate those Spaces and run them under your own account.</p>
+<p>Spaces using Gradio have the ability to expose a REST API, which can then be called from Node using the @gradio/client module.</p>
+<p>Once an individual take (a video clip) is upscaled, it is then passed to FILM (Frame Interpolation for Large Motion), a frame interpolation algorithm:.</p>
+<p>During post-processing, we also add music generated with MusicGen:.</p>
+<p>Note: there are multiple tools you can use to create a video stream. The AI WebTV presently uses FFmpeg to read a playlist made of mp4 videos files and m4a audio files.</p>
+<p>Here is an example of creating such a playlist:.</p>
+<p>This will generate the following playlist content:.</p>
+<p>Sources indicate that FFmpeg is then used again to read this playlist and send a FLV stream to a RTMP server. FLV is an old format but still popular in the world of real-time streaming due to its low latency.</p>
+<p id="sec-mid-81621">There are many different configuration options for FFmpeg, for more information in the official documentation.</p>
+<p>For the RTMP server, you can find open-source implementations on GitHub, such as the NGINX-RTMP module.</p>
+<p>The AI WebTV itself uses node-media-server.</p>
+<p>💡 You can also directly stream to one of the Twitch RTMP entrypoints. Check out the Twitch documentation for more details.</p>
+<p>Here are some examples of the generated content.</p>
+<p>The first thing we notice is that applying the second pass of Zeroscope XL significantly improves the quality of the image. The impact of frame interpolation is also clearly visible.</p>
+<p>Something truly fascinating about text-to-video models is their ability to emulate real-life phenomena they have been trained on.</p>
+<p>We've seen it with large language models and their ability to synthesize convincing content that mimics human responses, but this takes things to a whole new dimension when applied to video.</p>
+<p>A video model predicts the next frames of a scene, which might include objects in motion such as fluids, people, animals, or vehicles. Today, this emulation isn't perfect, but it will be interesting to evaluate future models (trained on larger or specialized datasets, such as animal locomotion) for their accuracy when reproducing physical phenomena, and also their ability to simulate the behavior of agents.</p>
+<p>💡 It will be interesting to see these capabilities explored more in the future, for instance by training video models on larger video datasets covering more phenomena.</p>
+<p>According to recent reports, wrong direction: the model sometimes has trouble with movement and direction. For instance, here the clip seems to be played in reverse. Also the modifier keyword green was not taken into account.</p>
+<p>Industry observers note that rendering errors on realistic scenes: sometimes we can see artifacts such as moving vertical lines or waves. It is unclear what causes this, but it may be due to the combination of keywords used.</p>
+<p>According to recent reports, text or objects inserted into the image: the model sometimes injects words from the prompt into the scene, such as "IMAX". Mentioning "Canon EOS" or "Drone footage" in the prompt can also make those objects appear in the video.</p>
+<p>In the following example, we notice the word "llama" inserts a llama but also two occurrences of the word llama in flames.</p>
+<p>Here are some early recommendations that can be made from the previous observations:.</p>
+<p>You may already know that if you don’t prompt a specific aspect of the image with Stable Diffusion, things like the color of clothes or the time of the day might become random, or be assigned a generic value such as a neutral mid-day light.</p>
+<p>It has been revealed that the same is true for video models: you will want to be specific about things. Examples include camera and character movement, their orientation, speed and direction. You can leave it unspecified for creative purposes (idea generation), but this might not always give you the results you want (e.g., entities animated in reverse).</p>
+<p>If you plan to create sequences of multiple videos, you will want to make sure you add as many details as possible in each prompt, otherwise you may lose vital details from one sequence to another, such as the color.</p>
+<p>💡 This will also improve the quality of the image since the prompt is used for the upscaling part with Zeroscope XL.</p>
+<p>Frame interpolation is a powerful tool which can repair small rendering errors and turn many defects into features, especially in scenes with a lot of animation, or where a cartoon effect is acceptable. The FILM algorithm will smoothen out elements of a frame with previous and following events in the video clip.</p>
+<p>This works great to displace the background when the camera is panning or rotating, and will also give you creative freedom, such as control over the number of frames after the generation, to make slow-motion effects.</p>
+<p>We hope you enjoyed watching the AI WebTV stream and that it will inspire you to build more in this space.</p>
+<p>As this was a first trial, a lot of things were not the focus of the tech demo: generating longer and more varied sequences, adding audio (sound effects, dialogue), generating and orchestrating complex scenarios, or letting a language model agent have more control over the pipeline.</p>
+<p id="sec-end-81621">Some of these ideas may make their way into future updates to the AI WebTV, but we also can’t wait to see what the community of researchers, engineers and builders will come up with!</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ai-webtv" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-simple-considerations-for-simple-people-building-fa-81864.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81864. Industry News: Simple considerations for simple people building fancy neural networks
+        </a>
+        
+        <a href="tech-report-building-a-playlist-generator-with-sentence-transform-81775.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81775. Tech Report: Building a Playlist Generator with Sentence Transformers
+        </a>
+        
+        <a href="building-cost-efficient-enterprise-rag-applications-with-intel-ga-81488.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81488. Building Cost-Efficient Enterprise RAG applications with Intel Gaudi 2 and Intel Xeon
+        </a>
+        
+        <a href="ethics-and-society-newsletter-6-building-better-ai-the-importance-81460.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81460. Ethics and Society Newsletter #6: Building Better AI: The Importance of Data Quality
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

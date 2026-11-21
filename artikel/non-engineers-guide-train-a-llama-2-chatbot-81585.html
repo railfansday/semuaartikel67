@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-engineers guide: Train a LLaMA 2 chatbot</title>
+    <meta name="description" content="In a recent development, in this tutorial we will show you how anyone can build their own open-source ChatGPT without ever writing a single line of code! W">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/non-engineers-guide-train-a-llama-2-chatbot-81585.html">
+    <meta property="og:title" content="Non-engineers guide: Train a LLaMA 2 chatbot">
+    <meta property="og:description" content="In a recent development, in this tutorial we will show you how anyone can build their own open-source ChatGPT without ever writing a single line of code! W">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/78_ml_director_insights/tuto.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/non-engineers-guide-train-a-llama-2-chatbot-81585.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Non-engineers guide: Train a LLaMA 2 chatbot", "image": ["https://huggingface.co/blog/assets/78_ml_director_insights/tuto.png"], "datePublished": "2023-09-28T00:00:00", "dateModified": "2026-11-21T14:09:53.473136", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/non-engineers-guide-train-a-llama-2-chatbot-81585.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Non-engineers guide: Train a LLaMA 2 chatbot</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 28 Sep 2023 &bull; ⏱️ 7 min read (1499 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, in this tutorial we will show you how anyone can build their own open-source ChatGPT without ever writing a single line of code!</li><li style='margin-bottom:6px;'>Well, machine learning, especially LLMs (Large Language Models), has witnessed an unprecedented surge in popularity, becoming a critical tool in our personal and business lives.</li><li style='margin-bottom:6px;'>According to recent reports, at Hugging Face, we’ve been quietly working to pave the way for this inclusive future.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81585"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81585"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81585"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Non-engineers guide: Train a LLaMA 2 chatbot" loading="lazy" src="https://huggingface.co/blog/assets/78_ml_director_insights/tuto.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81585">In a recent development, in this tutorial we will show you how anyone can build their own open-source ChatGPT without ever writing a single line of code! We’ll use the LLaMA 2 base model, fine tune it for chat with an open-source instruction dataset and then deploy the model to a chat app you can share with your friends. All by just clicking our way to greatness. 😀.</p>
+<p>Why is this important? Well, machine learning, especially LLMs (Large Language Models), has witnessed an unprecedented surge in popularity, becoming a critical tool in our personal and business lives. Yet, for most outside the specialized niche of ML engineering, the intricacies of training and deploying these models appears beyond reach. If the anticipated future of machine learning is to be one filled with ubiquitous personalized models, then there's an impending challenge ahead: How do we empower those with non-technical backgrounds to harness this technology independently?</p>
+<p>According to recent reports, at Hugging Face, we’ve been quietly working to pave the way for this inclusive future. Our suite of tools, including services like Spaces, AutoTrain, and Inference Endpoints, are designed to make the world of machine learning accessible to everyone.</p>
+<p>To showcase just how accessible this democratized future is, this tutorial will show you how to use Spaces, AutoTrain and ChatUI to build the chat app. All in just three simple steps, sans a single line of code. For context I’m also not an ML engineer, but a member of the Hugging Face GTM team. If I can do this then you can too! Let's dive in!</p>
+<p>Spaces from Hugging Face is a service that provides easy to use GUI for building and deploying web hosted ML demos and apps. The service allows you to promptly build ML demos using Gradio or Streamlit front ends, upload your own apps in a docker container, or even select a number of pre-configured ML applications to deploy instantly.</p>
+<p>We’ll be deploying two of the pre-configured docker application templates from Spaces, AutoTrain and ChatUI.</p>
+<p>You can read more about Spaces here.</p>
+<p>Industry observers note that autoTrain is a no-code tool that lets non-ML Engineers, (or even non-developers 😮) train state-of-the-art ML models without the need to code. It can be used for NLP, computer vision, speech, tabular data and even now for fine-tuning LLMs like we’ll be doing today.</p>
+<p>You can read more about AutoTrain here.</p>
+<p>ChatUI is exactly what it sounds like, it’s the open-source UI built by Hugging Face that provides an interface to interact with open-source LLMs. Notably, it's the same UI behind HuggingChat, our 100% open-source alternative to ChatGPT.</p>
+<p>You can read more about ChatUI here.</p>
+<p>1.1 Go to huggingface.co/spaces and select “Create new Space”.</p>
+<p>1.2 Give your Space a name and select a preferred usage license if you strategy to make your model or Space public.</p>
+<p>1.3 In order to deploy the AutoTrain app from the Docker Template in your deployed space select Docker &gt; AutoTrain.</p>
+<p>In a recent development, 1.4 Select your “Space hardware” for running the app. (Note: For the AutoTrain app the free CPU basic option will suffice, the model training later on will be done using separate compute which we can choose later).</p>
+<p>According to recent reports, 1.5 Add your “HF_TOKEN” under “Space secrets” in order to give this Space access to your Hub account. Without this the Space won’t be able to train or save a fresh model to your account. (Note: Your HF_TOKEN can be found in your Hugging Face Profile under Settings &gt; Access Tokens, make sure the token is selected as “Write”).</p>
+<p>1.6 Select whether you want to make the “Private” or “Public”, for the AutoTrain Space itself it’s recommended to keep this Private, but you can always publicly share your model or Chat App later on.</p>
+<p>Recent findings suggest that 1.7 Hit “Create Space” et voilà! The new Space will take a couple of minutes to build after which you can open the Space and start using AutoTrain.</p>
+<p id="sec-mid-81585">In a recent development, 2.1 Once you’re AutoTrain space has released you’ll see the GUI below. AutoTrain can be used for several different kinds of training including LLM fine-tuning, text classification, tabular data and diffusion models. As we’re focusing on LLM training today select the “LLM” tab.</p>
+<p>2.2 Choose the LLM you want to train from the “Model Choice” field, you can select a model from the list or type the name of the model from the Hugging Face model card, in this example we’ve used Meta’s Llama 2 7b foundation model, learn more from the model card here. (Note: LLama 2 is gated model which requires you to request access from Meta before using, but there are plenty of others non-gated models you could choose like Falcon).</p>
+<p>Sources indicate that 2.3 In “Backend” select the CPU or GPU you want to use for your training. For a 7b model an “A10G Large” will be major enough. If you choose to train a larger model you’ll need to make sure the model can fully fit in the memory of your selected GPU. (Note: If you want to train a larger model and need access to an A100 GPU please email api-enterprise@huggingface.co).</p>
+<p>2.4 Of course to fine-tune a model you’ll need to upload “Training Data”. When you do, make sure the dataset is correctly formatted and in CSV file format. An example of the required format can be found here. If your dataset contains multiple columns, be sure to select the “Text Column” from your file that contains the training data. In this example we’ll be using the Alpaca instruction tuning dataset, more information about this dataset is available here. You can also download it directly as CSV from here.</p>
+<p>2.5 Optional: You can upload “Validation Data” to test your newly trained model against, but this isn’t required.</p>
+<p>2.6 A number of advanced settings can be configured in AutoTrain to reduce the memory footprint of your model like changing precision (“FP16”), quantization (“Int4/8”) or whether to employ PEFT (Parameter Efficient Fine Tuning). It’s recommended to use these as is set by default as it will reduce the time and cost to train your model, and only has a small impact on model performance.</p>
+<p>2.7 Similarly you can configure the training parameters in “Parameter Choice” but for now let’s use the default settings.</p>
+<p>2.8 Now everything is set up, select “Add Job” to add the model to your training queue then select “Start Training” (Note: If you want to train multiple models versions with different hyper-parameters you can add multiple jobs to run simultaneously).</p>
+<p>It has been revealed that 2.9 After training has started you’ll see that a fresh “Space” has been created in your Hub account. This Space is running the model training, once it’s complete the new model will also be shown in your Hub account under “Models”. (Note: To view training progress you can view live logs in the Space).</p>
+<p>Recent findings suggest that 2.10 Go grab a coffee, depending on the size of your model and training data this could take a few hours or even days. Once completed a new model will appear in your Hugging Face Hub account under “Models”.</p>
+<p>3.1 Follow the same process of setting up a new Space as in steps 1.1 &gt; 1.3, but select the ChatUI docker template instead of AutoTrain.</p>
+<p>3.2 Select your “Space Hardware” for our 7b model an A10G Small will be sufficient to run the model, but this will vary depending on the size of your model.</p>
+<p>3.3 If you have your own Mongo DB you can provide those details in order to store chat logs under “MONGODB_URL”. Otherwise leave the field blank and a local DB will be created automatically.</p>
+<p>In a recent development, 3.4 In order to run the chat app using the model you’ve trained you’ll need to provide the “MODEL_NAME” under the “Space variables” section. You can find the name of your model by looking in the “Models” section of your Hugging Face profile, it will be the same as the “Project name” you used in AutoTrain. In our example it’s “2legit2overfit/wrdt-pco6-31a7-0”.</p>
+<p>3.4 Under “Space variables” you can also change model inference parameters including temperature, top-p, max tokens generated and others to change the nature of your generations. For now let’s stick with the default settings.</p>
+<p>According to recent reports, 3.5 Now you are ready to hit “Create” and launch your very own open-source ChatGPT. Congratulations! If you’ve done it right it should look like this.</p>
+<p>If you’re feeling inspired, but still need technical support to get started, feel free to reach out and apply for support here. Hugging Face offers a paid Expert Advice service that might be able to help.</p>
+<p id="sec-end-81585">Sources indicate that thank you for writing a beginners guide for non-programmers. Unfortunately, it's not up-to-date by the time I got to it. I would really like to see more articles for the absolute beginners that often get left by the wayside.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/Llama2-for-non-engineers" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="stackllama-a-hands-on-guide-to-train-llama-with-rlhf-81675.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81675. StackLLaMA: A hands-on guide to train LLaMA with RLHF
+        </a>
+        
+        <a href="how-to-train-a-new-language-model-from-scratch-using-transformers-81877.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81877. How to train a new language model from scratch using Transformers and Tokenizers
+        </a>
+        
+        <a href="tech-report-fit-more-and-train-faster-with-zero-via-deepspeed-and-81868.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81868. Tech Report: Fit More and Train Faster With ZeRO via DeepSpeed and FairScale
+        </a>
+        
+        <a href="breaking-distributed-training-train-bartt5-for-summarization-usin-81858.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81858. Breaking: Distributed Training: Train BART/T5 for Summarization using 🤗 Transformers and Amazon SageMaker
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

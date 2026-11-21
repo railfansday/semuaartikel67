@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: Instruction-tuning Stable Diffusion with InstructPix2Pix</title>
+    <meta name="description" content="It has been revealed that this post explores instruction-tuning to teach Stable Diffusion to follow instructions to translate or process input images. With">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-instruction-tuning-stable-diffusion-with-instructpi-81654.html">
+    <meta property="og:title" content="Latest Update: Instruction-tuning Stable Diffusion with InstructPix2Pix">
+    <meta property="og:description" content="It has been revealed that this post explores instruction-tuning to teach Stable Diffusion to follow instructions to translate or process input images. With">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/instruction_tuning_sd/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-instruction-tuning-stable-diffusion-with-instructpi-81654.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: Instruction-tuning Stable Diffusion with InstructPix2Pix", "image": ["https://huggingface.co/blog/assets/instruction_tuning_sd/thumbnail.png"], "datePublished": "2023-05-23T00:00:00", "dateModified": "2026-11-21T14:10:08.877084", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-instruction-tuning-stable-diffusion-with-instructpi-81654.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: Instruction-tuning Stable Diffusion with InstructPix2Pix</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 23 May 2023 &bull; ⏱️ 8 min read (1608 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that this post explores instruction-tuning to teach Stable Diffusion to follow instructions to translate or process input images.</li><li style='margin-bottom:6px;'>This idea of teaching Stable Diffusion to follow user instructions to perform edits on input images was introduced in InstructPix2Pix: Learning to Follow Image Editing Instructions.</li><li style='margin-bottom:6px;'>Our code, pre-trained models, and datasets can be found here.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81654"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81654"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81654"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: Instruction-tuning Stable Diffusion with InstructPix2Pix" loading="lazy" src="https://huggingface.co/blog/assets/instruction_tuning_sd/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81654">It has been revealed that this post explores instruction-tuning to teach Stable Diffusion to follow instructions to translate or process input images. With this method, we can prompt Stable Diffusion using an input image and an “instruction”, such as - Apply a cartoon filter to the natural image.</p>
+<p>This idea of teaching Stable Diffusion to follow user instructions to perform edits on input images was introduced in InstructPix2Pix: Learning to Follow Image Editing Instructions. We discuss how to extend the InstructPix2Pix training strategy to follow more specific instructions related to tasks in image translation (such as cartoonization) and low-level image processing (such as image deraining). We cover:.</p>
+<p>Our code, pre-trained models, and datasets can be found here.</p>
+<p>Instruction-tuning is a supervised way of teaching language models to follow instructions to solve a task. It was introduced in Fine-tuned Language Models Are Zero-Shot Learners (FLAN) by Google. From recent times, you might recall works like Alpaca and FLAN V2, which are good examples of how beneficial instruction-tuning can be for various tasks.</p>
+<p>Recent findings suggest that the figure below highlights a formulation of instruction-tuning (also called “instruction-finetuning”). In the FLAN V2 paper, the authors take a pre-trained language model (T5, for example) and fine-tune it on a dataset of exemplars, as shown in the figure below.</p>
+<p>With this approach, one can create exemplars covering many different tasks, which makes instruction-tuning a multi-task training objective:.</p>
+<p>Using a similar philosophy, the authors of FLAN V2 conduct instruction-tuning on a mixture of thousands of tasks and achieve zero-shot generalization to unseen tasks:.</p>
+<p>Our motivation behind this work comes partly from the FLAN line of work and partly from InstructPix2Pix. We wanted to explore if it’s possible to prompt Stable Diffusion with specific instructions and input images to process them as per our needs.</p>
+<p>The pre-trained InstructPix2Pix models are good at following general instructions, but they may fall short of following instructions involving specific transformations:.</p>
+<p>But we can still leverage the findings from InstructPix2Pix to suit our customizations.</p>
+<p>Recent findings suggest that on the other hand, paired datasets for tasks like cartoonization, image denoising, image deraining, etc. are available publicly, which we can use to build instruction-prompted datasets taking inspiration from FLAN V2. Doing so allows us to transfer the instruction-templating ideas explored in FLAN V2 to this work.</p>
+<p>According to recent reports, in our early experiments, we prompted InstructPix2Pix to perform cartoonization and the results were not up to our expectations. We tried various inference-time hyperparameter combinations (such as image guidance scale and the number of inference steps), but the results still were not compelling. This motivated us to approach the problem differently.</p>
+<p>As hinted in the previous section, we wanted to benefit from both worlds:.</p>
+<p>(1) training methodology of  InstructPix2Pix and
+(2) the flexibility of creating instruction-prompted dataset templates from FLAN.</p>
+<p>It has been revealed that we started by creating an instruction-prompted dataset for the task of cartoonization. Figure 5 presents our dataset creation pipeline:.</p>
+<p>Our final dataset for cartoonization can be found here. For more details on how the dataset was prepared, refer to this directory. We experimented with this dataset by fine-tuning InstructPix2Pix and got promising results (more details in the “Training experiments and results” section).</p>
+<p>We then proceeded to see if we could generalize this approach to low-level image processing tasks such as image deraining, image denoising, and image deblurring.</p>
+<p>Recent findings suggest that we focus on the common low-level image processing tasks explored in MAXIM. In particular, we conduct our experiments for the following tasks: deraining, denoising, low-light image enhancement, and deblurring.</p>
+<p>We took different number of samples from the following datasets for each task and constructed a single dataset with prompts added like so:.</p>
+<p>Industry observers note that datasets mentioned above typically come as input-output pairs, so we do not have to worry about the ground-truth. Our final dataset is available here. The final dataset looks like so:.</p>
+<p>According to recent reports, overall, this setup helps draw parallels from the FLAN setup, where we create a mixture of different tasks. This also helps us train a single model one time, performing well to the different tasks we have in the mixture. This varies significantly from what is typically done in low-level image processing. Works like MAXIM introduce a single model architecture capable of modeling the different low-level image processing tasks, but training happens independently on the individual datasets.</p>
+<p>We based our training experiments on this script. Our training logs (including validation samples and training hyperparameters) are available on Weight and Biases:.</p>
+<p>When training, we explored two options:.</p>
+<p id="sec-mid-81654">In our experiments, we found out that the first option helps us adapt to our datasets faster (in terms of generation quality).</p>
+<p>For more details on the training and hyperparameters, we encourage you to check out our code and the respective run pages on Weights and Biases.</p>
+<p>For testing the instruction-tuned cartoonization model, we compared the outputs as follows:.</p>
+<p>According to recent reports, to gather these results, we sampled images from the validation split of ImageNette. We used the following prompt when using our model and the pre-trained InstructPix2Pix model: “Generate a cartoonized version of the image”. For these two models, we kept the image_guidance_scale and guidance_scale to 1.5 and 7.0, respectively, and number of inference steps to 20. Indeed more experimentation is needed around these hyperparameters to study how they affect the results of the pre-trained InstructPix2Pix model, in particular.</p>
+<p>More comparative results are available here. Our code for comparing these models is available here.</p>
+<p>Industry observers note that our model, however, fails to produce the expected outputs for the classes from ImageNette, which it has not seen enough during training. This is somewhat expected, and we believe this could be mitigated by scaling the training dataset.</p>
+<p>For low-level image processing (our model), we follow the same inference-time hyperparameters as above:.</p>
+<p>For deraining, our model provides compelling results when compared to the ground-truth and the output of the pre-trained InstructPix2Pix model:.</p>
+<p>However, for low-light image enhancement, it leaves a lot to be desired:.</p>
+<p>In a recent development, this failure, perhaps, can be attributed to our model not seeing enough exemplars for the task and possibly from better training. We notice similar findings for deblurring as well:.</p>
+<p>It has been revealed that we believe there is an opportunity for the community to explore how much the task mixture for low-level image processing affects the end results. Does increasing the task mixture with more representative samples help improve the end results? We leave this question for the community to explore further.</p>
+<p>You can try out the interactive demo below to make Stable Diffusion follow specific instructions:.</p>
+<p>Sources indicate that in the world of image editing, there is a disconnect between what a domain expert has in mind (the tasks to be performed) and the actions needed to be applied in editing tools (such as Lightroom). Having an easy way of translating natural language goals to low-level image editing primitives would be a seamless user experience. With the introduction of mechanisms like InstructPix2Pix, it’s safe to say that we’re getting closer to that realm.</p>
+<p>However, challenges still remain:.</p>
+<p>We acknowledge that our experiments are preliminary. We did not go deep into ablating the apparent factors in our experiments. Hence, here we enlist a few open questions that popped up during our experiments:.</p>
+<p>What happens we scale up the datasets? How does that impact the quality of the generated samples? We experimented with a handful of examples. For comparison, InstructPix2Pix was trained on more than 30000 samples.</p>
+<p>What is the impact of training for longer, especially when the task mixture is broader? In our experiments, we did not conduct hyperparameter tuning, let alone an ablation on the number of training steps.</p>
+<p>How does this approach generalize to a broader mixture of tasks commonly done in the “instruction-tuning” world? We only covered four tasks for low-level image processing: deraining, deblurring, denoising, and low-light image enhancement. Does adding more tasks to the mixture with more representative samples help the model generalize to unseen tasks or, perhaps, a combination of tasks (example: “Deblur the image and denoise it”)?</p>
+<p>Recent findings suggest that does using different variations of the same instruction on-the-fly help improve performance? For cartoonization, we randomly sampled an instruction from the set of ChatGPT-generated synonymous instructions during dataset creation. But what happens when we perform random sampling during training instead?</p>
+<p>Recent findings suggest that for low-level image processing, we used fixed instructions. What happens when we follow a similar methodology of using synonymous instructions for each task and input image?</p>
+<p>Industry observers note that what happens when we use ControlNet training setup, instead? ControlNet also allows adapting a pre-trained text-to-image diffusion model to be conditioned on additional images (such as semantic segmentation maps, canny edge maps, etc.). If you’re interested, then you can use the datasets presented in this post and perform ControlNet training referring to this post.</p>
+<p>In this post, we presented our exploration of “instruction-tuning” of Stable Diffusion. While pre-trained InstructPix2Pix are good at following general image editing instructions, they may break when presented with more specific instructions. To mitigate that, we discussed how we prepared our datasets for further fine-tuning InstructPix2Pix and presented our results. As noted above, our results are still preliminary. But we hope this work provides a basis for the researchers working on similar problems and they feel motivated to explore the open questions further.</p>
+<p>In a recent development, thanks to Alara Dirik and Zhengzhong Tu for the helpful discussions. Thanks to Pedro Cuenca and Kashif Rasul for their helpful reviews on the post.</p>
+<p id="sec-end-81654">To cite this work, please use the following citation:.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/instruction-tuning-sd" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="using-lora-for-efficient-stable-diffusion-fine-tuning-81703.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81703. Using LoRA for Efficient Stable Diffusion Fine-Tuning
+        </a>
+        
+        <a href="latest-update-fine-tuning-stable-diffusion-models-on-intel-cpus-81623.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81623. Latest Update: Fine-tuning Stable Diffusion models on Intel CPUs
+        </a>
+        
+        <a href="stable-diffusion-with-diffusers-81756.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81756. Stable Diffusion with 🧨 Diffusers
+        </a>
+        
+        <a href="japanese-stable-diffusion-81744.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81744. Japanese Stable Diffusion
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

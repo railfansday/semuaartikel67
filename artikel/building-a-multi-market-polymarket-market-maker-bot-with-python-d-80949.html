@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Multi-Market Polymarket Market Maker Bot with Python — Day 18</title>
+    <meta name="description" content="How to trade BTC, ETH, SOL, and XRP markets simultaneously while managing shared capital, portfolio exposure, and execution risk. Recent findings suggest t">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/building-a-multi-market-polymarket-market-maker-bot-with-python-d-80949.html">
+    <meta property="og:title" content="Building a Multi-Market Polymarket Market Maker Bot with Python — Day 18">
+    <meta property="og:description" content="How to trade BTC, ETH, SOL, and XRP markets simultaneously while managing shared capital, portfolio exposure, and execution risk. Recent findings suggest t">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F9ie5ftvkx1wzhwumvdta.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/building-a-multi-market-polymarket-market-maker-bot-with-python-d-80949.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Building a Multi-Market Polymarket Market Maker Bot with Python — Day 18", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F9ie5ftvkx1wzhwumvdta.png"], "datePublished": "2026-11-21T14:00:53", "dateModified": "2026-11-21T14:08:47.332911", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/building-a-multi-market-polymarket-market-maker-bot-with-python-d-80949.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Business & Policy</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Building a Multi-Market Polymarket Market Maker Bot with Python — Day 18</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 21 Nov 2026 &bull; ⏱️ 9 min read (1769 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>How to trade BTC, ETH, SOL, and XRP markets simultaneously while managing shared capital, portfolio exposure, and execution risk.</li><li style='margin-bottom:6px;'>Recent findings suggest that building a market-making bot for a single Polymarket market is one challenge.</li><li style='margin-bottom:6px;'>Imagine your Python bot is already monitoring BTC 5-minute Up/Down markets.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-80949"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-80949"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-80949"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Building a Multi-Market Polymarket Market Maker Bot with Python — Day 18" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F9ie5ftvkx1wzhwumvdta.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-80949">How to trade BTC, ETH, SOL, and XRP markets simultaneously while managing shared capital, portfolio exposure, and execution risk.</p>
+<p>Recent findings suggest that building a market-making bot for a single Polymarket market is one challenge. Running the same strategy across multiple markets introduces an entirely different set of engineering problems.</p>
+<p>Imagine your Python bot is already monitoring BTC 5-minute Up/Down markets.</p>
+<p>Industry observers note that everything works reasonably well. Your bot receives order book updates, calculates quotes, places orders, and tracks inventory.</p>
+<p>The obvious solution is to create four independent trading workers.</p>
+<p>All four workers may be using the same trading capital, and their positions may be exposed to the same market movements.</p>
+<p>Without centralized coordination, your bot can overallocate funds, accumulate excessive exposure, or submit orders that violate portfolio-wide risk limits.</p>
+<p>In Day 18 of our Polymarket Market Maker Bot series, we'll explore how to build a coordinated multi-market trading architecture using Python.</p>
+<p>A single-market bot has a relatively straightforward architecture.</p>
+<p>When you expand to multiple markets, simply duplicating this architecture isn't enough.</p>
+<p>Each strategy needs its own market-specific state, but certain resources must be shared across the entire trading system.</p>
+<p>A better architecture looks like this:.</p>
+<p>Each market strategy independently handles:.</p>
+<p>Meanwhile, shared services handle:.</p>
+<p>This separation allows you to expand without losing control of your overall portfolio.</p>
+<p>Suppose your trading account contains 100 USDC.</p>
+<p>You configure four trading bots:.</p>
+<p>You only have $100, but your strategies collectively expect to use $160.</p>
+<p>This creates a capital allocation problem.</p>
+<p>And the situation becomes more complicated when you include open orders.</p>
+<p>A strategy might have only $10 in filled positions but another $20 committed to pending buy orders.</p>
+<p>Those orders may execute at any moment.</p>
+<p>If multiple strategies independently assume that the same funds are available, the trading system can exceed its intended budget.</p>
+<p>The solution is simple in principle:.</p>
+<p>Every market must request capital from one shared capital manager before submitting fresh orders.</p>
+<p>We'll start with a $100 trading budget.</p>
+<p>Our illustrative allocation is:.</p>
+<p>These values demonstrate the architecture rather than a recommended trading allocation.</p>
+<p>Using Decimal is preferable to ordinary floating-point arithmetic for financial accounting.</p>
+<p>The advantage of this approach is flexibility.</p>
+<p>If your account budget increases or decreases, the allocation function can recalculate the market budgets automatically.</p>
+<p>However, allocation alone doesn't prevent overspending.</p>
+<p>We also need to track reserved capital.</p>
+<p>Let's assume BTC has a $40 allocation.</p>
+<p>In a real prediction-market system, the accounting must distinguish collateral committed to buy orders from YES/NO tokens reserved for sell orders.</p>
+<p>Filled positions, outstanding orders, and account balances must also be reconciled against exchange state.</p>
+<p>For now, we'll implement a simplified reservation manager.</p>
+<p>This is an educational implementation, not a complete production ledger.</p>
+<p>According to recent reports, in production, reservations must be atomic across concurrent workers. A shared database transaction or another concurrency-safe reservation mechanism is necessary to prevent two workers from spending the same available balance.</p>
+<p>You must also reconcile order fills, cancellations, settlement events, and exchange balances.</p>
+<p>Now let's separate the trading state of each market.</p>
+<p>Every market needs its own inventory and order tracking.</p>
+<p>We can now create separate instances:.</p>
+<p>Each strategy can calculate its own quotes using its market's order book and inventory.</p>
+<p>For example, the BTC strategy doesn't need to know how the ETH strategy calculates quotes.</p>
+<p>But it does need permission from the shared risk system before executing an order.</p>
+<p>That brings us to the most important component.</p>
+<p>Imagine your bot right now has the following estimated exposures:.</p>
+<p>Suppose your portfolio-wide exposure limit is $70.</p>
+<p>Even if each individual strategy remains below its own market limit, the combined portfolio already exceeds the intended maximum.</p>
+<p>A centralized risk manager must prevent additional exposure from being approved.</p>
+<p>The trade would increase portfolio exposure from $60 to $75.</p>
+<p>Because the limit is $70, the trade is rejected.</p>
+<p>This example assumes that the proposed order increases exposure by the specified amount. A real risk engine must distinguish exposure-increasing trades from exposure-reducing trades.</p>
+<p>It must also consider existing orders, collateral requirements, and the actual payoff structure of YES/NO positions.</p>
+<p>The risk manager should be the final authority before an order reaches the execution layer.</p>
+<p>Here's another vital issue.</p>
+<p>BTC, ETH, SOL, and XRP are separate markets, but their underlying asset prices may respond to common market events.</p>
+<p>For example, a sudden cryptocurrency market selloff could affect several assets simultaneously.</p>
+<p>If your bot holds positions that lose value under the same scenario, the portfolio may suffer multiple losses at once.</p>
+<p>Correlation describes the degree of linear relationship between two variables.</p>
+<p>Its coefficient ranges from -1 to +1.</p>
+<p>Consider these hypothetical values:.</p>
+<p>These numbers are examples, not live market measurements.</p>
+<p>This produces a correlation matrix for the sample returns.</p>
+<p>For a production system, five observations are nowhere near enough.</p>
+<p>You should use a larger historical dataset, align timestamps, handle missing data, and monitor rolling correlations.</p>
+<p>There's also an important distinction:.</p>
+<p>Correlation between cryptocurrency prices is not necessarily the same as correlation between prediction-market token returns or strategy profits.</p>
+<p>For Polymarket risk management, you should evaluate the actual YES/NO positions and the outcomes that affect their value.</p>
+<p>When several strategies run simultaneously, you need a consolidated portfolio view.</p>
+<p>A useful monitoring system should track:.</p>
+<p>Let's build a simple illustrative report.</p>
+<p id="sec-mid-80949">Calculate a simple gross exposure indicator:.</p>
+<p>This is a simplified accounting indicator, not a complete measure of economic risk.</p>
+<p>For example, matched YES and NO positions may have different settlement characteristics than unmatched directional positions.</p>
+<p>A production dashboard should display gross commitments, collateral usage, net exposure, and scenario-based risk separately.</p>
+<p>Correlation analysis helps identify relationships between markets.</p>
+<p>But correlation alone cannot tell you how your portfolio will behave during extreme conditions.</p>
+<p>That's where stress testing becomes useful.</p>
+<p>Suppose we have the following illustrative positions:.</p>
+<p>We can estimate the change in value under this simplified scenario.</p>
+<p>This illustrates a general valuation shock.</p>
+<p>It does not directly model how Polymarket binary contracts settle.</p>
+<p>A proper prediction-market stress engine should evaluate different YES/NO price and resolution scenarios, including trading fees and existing open-order commitments.</p>
+<p>The important point is that you must test how the whole portfolio responds to adverse scenarios, not just each strategy individually.</p>
+<p>So far, we've assigned fixed capital weights:.</p>
+<p>One market may have deeper liquidity, while another may experience higher volatility or worse execution quality.</p>
+<p>You may want to adapt capital allocations based on measurable market conditions.</p>
+<p>Here's a basic scoring function:.</p>
+<p>Calculate normalized allocation weights:.</p>
+<p>These scores are hypothetical, and this formula is not a validated trading model.</p>
+<p>Before using dynamic allocation in production, you need to establish hard minimum and maximum limits, evaluate historical performance, and prevent excessive rebalancing.</p>
+<p>Most importantly, dynamic allocation must never bypass the central risk manager.</p>
+<p>Our architecture is ready for multiple independent strategy instances.</p>
+<p>Now we need a way to process them concurrently.</p>
+<p>Python's asyncio library is useful for handling multiple market data streams and network operations.</p>
+<p>Each market runs as an independent asynchronous task.</p>
+<p>In a real implementation, the workers would process WebSocket updates, update order books, calculate quotes, and submit proposed orders to shared risk and execution services.</p>
+<p>A reliable multi-market bot also needs:.</p>
+<p>One failed market worker should not crash the entire trading system.</p>
+<p>Likewise, a disconnected or stale market feed should prevent unsafe order submission for the affected market.</p>
+<p>Let's combine the components into one coordinated architecture.</p>
+<p>The order flow should work like this:.</p>
+<p>Each market worker maintains an up-to-date view of its order book.</p>
+<p>The strategy determines its desired price and size.</p>
+<p>The central risk manager evaluates market and portfolio limits.</p>
+<p>The capital manager atomically reserves the collateral or inventory needed for the order.</p>
+<p>The execution layer communicates with the exchange.</p>
+<p>Fills, cancellations, and failures enhancement the shared portfolio state.</p>
+<p>The dashboard reflects current inventory, commitments, and risk.</p>
+<p>This architecture is more maintainable than duplicating a complete independent trading system for every market.</p>
+<p>Before expanding your bot, watch out for these mistakes.</p>
+<p>Several strategies assume the same funds are available.</p>
+<p>Solution: Use centralized, concurrency-safe reservations.</p>
+<p>Risk calculations include filled positions but overlook pending orders.</p>
+<p>Solution: Include open-order commitments in risk checks.</p>
+<p>Several positions lose value under the same broader market event.</p>
+<p>Solution: Monitor cross-market exposure and run portfolio stress scenarios.</p>
+<p>Adding ten markets before validating two creates unnecessary complexity.</p>
+<p>Solution: Expand gradually and verify reliability at every stage.</p>
+<p>The bot restarts with incomplete knowledge of outstanding exchange orders.</p>
+<p>Solution: Reconcile balances, orders, and positions before resuming trading.</p>
+<p>If you already have a working single-market Polymarket bot, here's a reasonable sequence for extending it.</p>
+<p>You don't need to build every component at once.</p>
+<p>Start by making two markets operate safely under a shared budget.</p>
+<p>Then add complexity only when the system demonstrates that it can handle the existing workload reliably.</p>
+<p>Building a multi-market Polymarket bot isn't just about running more trading strategies.</p>
+<p>It's about designing a system that understands the entire portfolio.</p>
+<p>Each market should have its own strategy state, but all markets must share consistent capital accounting, execution coordination, and risk controls.</p>
+<p>In this tutorial, we explored how to:.</p>
+<p>The central architectural principle is straightforward:.</p>
+<p>Independent strategies. Shared capital. Centralized risk. Coordinated execution.</p>
+<p>That's the foundation for moving from a collection of trading scripts toward a more robust multi-market trading platform.</p>
+<p>In the next tutorial, we'll focus on:.</p>
+<p>Polymarket Market Maker Bot: Real-Time Monitoring, Alerting, and Trading Operations Dashboard.</p>
+<p>We'll explore how to build a dashboard that monitors:.</p>
+<p>The goal is to make your trading infrastructure observable, measurable, and easier to operate.</p>
+<p>If you're following this Python Polymarket market-making series, check out the development resources:.</p>
+<p>An open-source and Strong Strategy collection of Polymarket trading bot and Polymarket arbitrage bot and Polymarket TWAP trading bot in Python for high-performance automated trading on polymarket crypto 5min and 15min markets.</p>
+<p>Recent findings suggest that this repository is primarily intended for educational and research purposes. It includes strategy concepts, implementation approaches, and selected performance screenshots to help developers understand how different automated trading strategies can be designed and tested.</p>
+<p>The repository does not provide a complete production-ready trading bot source code. Instead, it provides strategy descriptions and research materials that you can use as a foundation for developing your own system.</p>
+<p>If you are interested in building a Polymarket Trading Bot, you can follow my tutorials and use the concepts in this repository to develop your own implementation.</p>
+<p>For people who prefer a ready-to-deploy solution or require custom strategy development, commercial bot development and customization are also available.</p>
+<p>Telegram Community:
+https://telegram.me/BenjaminCup.</p>
+<p>Follow along as we continue building a more complete Python-based Polymarket trading system.</p>
+<p id="sec-end-80949">Tags: #python #blockchain #web3 #trading.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/benjamin_cup/building-a-multi-market-polymarket-market-maker-bot-with-python-day-18-410" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="how-to-fetch-live-polymarket-kalshi-prediction-market-odds-in-pyt-69408.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #69408. How to Fetch Live Polymarket & Kalshi Prediction Market Odds in Python (Zero API Keys)
+        </a>
+        
+        <a href="industry-news-the-rise-of-the-multi-market-agent-why-local-expert-76521.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #76521. Industry News: The rise of the multi-market agent: Why local expertise is going global
+        </a>
+        
+        <a href="amazons-18b-bet-on-anthropic-tops-200b-for-a-moment-in-the-claude-76370.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #76370. Amazon’s $18B bet on Anthropic tops $200B, for a moment, in the Claude maker’s historic market debut
+        </a>
+        
+        <a href="gold-and-silver-wipe-out-more-than-bitcoins-entire-market-cap-in--76300.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #76300. Gold and Silver Wipe Out More Than Bitcoin's Entire Market Cap in One Day
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Build an Accessible Gold Value Calculator in Vanilla JavaScript</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. Sources indicate that 7 Day Free Tria">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-to-build-an-accessible-gold-value-calculator-in-vanilla-javas-81101.html">
+    <meta property="og:title" content="How to Build an Accessible Gold Value Calculator in Vanilla JavaScript">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. Sources indicate that 7 Day Free Tria">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_gold_calculator_cover_9feab46b8b.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-to-build-an-accessible-gold-value-calculator-in-vanilla-javas-81101.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How to Build an Accessible Gold Value Calculator in Vanilla JavaScript", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_gold_calculator_cover_9feab46b8b.png"], "datePublished": "2026-11-10T03:47:01", "dateModified": "2026-11-21T14:09:04.199621", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-to-build-an-accessible-gold-value-calculator-in-vanilla-javas-81101.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How to Build an Accessible Gold Value Calculator in Vanilla JavaScript</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 10 Nov 2026 &bull; ⏱️ 6 min read (1241 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>Sources indicate that 7 Day Free Trial.</li><li style='margin-bottom:6px;'>Ask anyone selling an old chain or a broken ring what they want to know, and it's one thing: what is this worth?</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81101"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81101"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81101"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How to Build an Accessible Gold Value Calculator in Vanilla JavaScript" loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_gold_calculator_cover_9feab46b8b.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81101">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>Weekly. Free. One click to leave.</p>
+<p>Sources indicate that 7 Day Free Trial. Cancel Anytime.</p>
+<p>Ask anyone selling an old chain or a broken ring what they want to know, and it's one thing: what is this worth? A small calculator can answer that in a second, but most of the ones you find online get the details wrong. They ignore troy ounces, treat 14K as 58.5% one day and 58.3% the next, or show a "value" that no buyer will ever pay.</p>
+<p>Industry observers note that in this tutorial, we'll build a gold value calculator that gets those details right. It runs on plain HTML and JavaScript, updates as the user types, works with a screen reader, keeps its state in a shareable URL and pulls a live spot price through a small Node.js endpoint. The calculation lives in one pure function, so we can test it in a few lines.</p>
+<p>Every gold calculator comes down to three inputs: how much the item weighs, how much of that weight is actually gold, and what pure gold is trading for today.</p>
+<p>Purity is measured in karats, out of 24. A 14K ring is 14 parts gold and 10 parts other metals, so it's 14 ÷ 24 = 58.3% gold. You'll also see 14K stamped as "585", which is the hallmark many manufacturers use for the same alloy. For a calculator, the karat fraction is the safer default:.</p>
+<p>Sources indicate that the second detail most tutorials miss is the unit. Gold spot prices are quoted in USD per troy ounce, which is 31.1035 grams, not the 28.35-gram ounce on a kitchen scale. Jewelers also use pennyweight (dwt), which is 1.5552 grams. If your calculator multiplies grams by a per-ounce price without converting, every result is wrong by a factor of 31.</p>
+<p>Put together, the formula looks like this:.</p>
+<p>For example, with gold at $2,400 per troy ounce, 10 grams of 14K gold contains 5.83 grams of pure gold, which is worth $449.85 at melt.</p>
+<p>That $449.85 is the value of the gold content alone. Refiners and buyers pay a percentage of it, because refining, assaying and handling cost money. Depending on the buyer, the item and the market, the payout can sit well below melt value.</p>
+<p>According to recent reports, that gap is why good production tools separate the two numbers. A dedicated scrap jewelry gold calculator, like the one The Alloy Market offers, lets sellers estimate what their gold is worth from its weight and karat before they send anything in. Our calculator does the same job with a payout field: leave it at 100% to see melt value, or enter a buyer's rate to see a realistic offer.</p>
+<p>Start with real form controls and a visible  for each one. Placeholder text is not a label: it disappears as soon as the user types, and screen readers handle it inconsistently. The W3C forms tutorial covers the rules in detail.</p>
+<p>A few choices here matter more than they look:.</p>
+<p>According to recent reports, A little CSS gives touch-friendly controls. Keeping inputs at 16px (1rem) also stops iOS Safari from zooming in when a field gets focus.</p>
+<p>Sources indicate that the biggest problem with most calculator snippets is that the math is buried inside an event handler, mixed with getElementById calls. You can't test it, and you can't reuse it on a server. Put the calculation and validation in their own module instead:.</p>
+<p>Industry observers note that both functions take plain values and return plain values. They don't know a DOM exists, which means the same file can run in the browser, in Node.js and in your test runner.</p>
+<p>Notice that we don't round inside the calculation. Rounding happens once, at display time. Rounding in the middle of a chain of multiplications is a classic way to end up a few cents off.</p>
+<p id="sec-mid-81101">In a recent development, now connect the form to the module. Listening for the input event on the form itself catches changes from every field, including the dropdowns, so there's no need to wire up each control separately.</p>
+<p>With the markup, CSS and script in place, here's the finished calculator showing our 10 g, 14K example with an 80% buyer payout:.</p>
+<p>Here's what this code is doing:.</p>
+<p>Recent findings suggest that asking users to type the spot price works, but prefilling it is friendlier. Don't call a metals price API straight from the browser, though. Your API key would be visible to anyone who opens DevTools, and every visitor would spend one of your API calls.</p>
+<p>Instead, put a small endpoint in front of your price provider and cache the result. This example uses Express and the fetch built into Node.js 18 and later:.</p>
+<p>Three things keep this endpoint dependable:.</p>
+<p>According to recent reports, on the page, the loadSpot() function from Step 3 fills the field and reveals the time of the price. The field stays editable, so a seller who has a quote from a specific buyer can type that instead.</p>
+<p>Industry observers note that A seller comparing offers might want to send their numbers to a family member, or come back to them tomorrow. Because every input has a name, turning the form into a query string is one line with URLSearchParams.</p>
+<p>The syncUrl() function in Step 3 runs on every change and uses history.replaceState instead of pushState, so typing doesn't fill the back button with dozens of entries. On load, restoreFromUrl() puts the values back. A link like this opens with the form already filled in:.</p>
+<p>It has been revealed that this is also the progressive enhancement story. If JavaScript fails to load, the form still submits as a GET request. Your server can read the same parameters, import the same gold.js and render the result in HTML.</p>
+<p>Because goldValue() is a pure function, testing it needs no browser and no mocks. Node.js ships with a built-in test runner, so there's nothing to install:.</p>
+<p>According to recent reports, run it with node --test. (Add "type": "module" to your package.json so Node treats the files as ES modules.) The troy ounce test is the one worth keeping forever: if anyone "simplifies" the conversion later, it fails immediately.</p>
+<p>A quick checklist for putting this calculator on a real store:.</p>
+<p>A gold calculator looks like a ten-line script, but the details are what make it useful: converting troy ounces properly, separating melt value from payout, keeping the math testable and making the result accessible and shareable. The same pattern of a pure calculation module, a thin DOM layer and a cached server endpoint works for any calculator where the price depends on several inputs, from shipping estimates to currency conversion.</p>
+<p>Industry observers note that mathematically, 14K is 14 ÷ 24 = 58.3%. Many manufacturers stamp 14K jewelry "585" and alloy it to that standard, so both numbers are common. Pick one, state it in the dropdown, and use it consistently.</p>
+<p>According to recent reports, let the user choose. Most people weigh jewelry in grams, but spot prices are quoted per troy ounce, so the calculator should accept either and convert internally.</p>
+<p>Sources indicate that yes. Drop Step 4 and let users type the spot price, or have a scheduled job write the current price into a static JSON file. Everything else runs entirely in the browser.</p>
+<p id="sec-end-81101">7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/how-to-build-an-accessible-gold-value-calculator-in-vanilla-javascript/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-build-a-hardware-diagnostic-log-with-vanilla-javasc-81205.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81205. Industry News: Build a Hardware Diagnostic Log with Vanilla JavaScript
+        </a>
+        
+        <a href="how-to-build-an-accessible-customer-reviews-section-with-html-and-81213.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81213. How to Build an Accessible Customer Reviews Section with HTML and CSS
+        </a>
+        
+        <a href="future-value-calculator-how-to-project-your-investments-80238.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #80238. Future Value Calculator: How to Project Your Investments
+        </a>
+        
+        <a href="introducing-the-private-hub-a-newly-introduced-way-to-build-with--81766.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81766. Introducing the Private Hub: A Newly introduced Way to Build With Machine Learning
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

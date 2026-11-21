@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accelerate a World of LLMs on Hugging Face with NVIDIA NIM</title>
+    <meta name="description" content="AI builders want a choice of the latest large language models (LLM) architectures and specialized variants for use in AI agents and other apps, but handlin">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/accelerate-a-world-of-llms-on-hugging-face-with-nvidia-nim-81014.html">
+    <meta property="og:title" content="Accelerate a World of LLMs on Hugging Face with NVIDIA NIM">
+    <meta property="og:description" content="AI builders want a choice of the latest large language models (LLM) architectures and specialized variants for use in AI agents and other apps, but handlin">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/nvidia/multi-llm-nim.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/accelerate-a-world-of-llms-on-hugging-face-with-nvidia-nim-81014.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Accelerate a World of LLMs on Hugging Face with NVIDIA NIM", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/nvidia/multi-llm-nim.png"], "datePublished": "2025-07-21T18:01:30", "dateModified": "2026-11-21T14:08:54.732131", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/accelerate-a-world-of-llms-on-hugging-face-with-nvidia-nim-81014.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Hardware & Chips</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Accelerate a World of LLMs on Hugging Face with NVIDIA NIM</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 21 Jul 2025 &bull; ⏱️ 3 min read (652 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>AI builders want a choice of the latest large language models (LLM) architectures and specialized variants for use in AI agents and other apps, but handling all the diversity can slow testing and deployment pipelines.</li><li style='margin-bottom:6px;'>It has been revealed that NVIDIA AI customers and ecosystem partners leverage NVIDIA NIM inference microservices to streamline deployment of the latest AI models on NVIDIA accelerated infrastructure, including LLMs, multi-modal and domain-specific models from NVIDIA, Meta, Mistral AI, Google and hundreds more innovative model builders.</li><li style='margin-bottom:6px;'>NIM now provides a single docker container for deploying a broad range of LLMs supported by leading inference frameworks from NVIDIA and the community including NVIDIA TensorRT-LLM, vLLM and SGLang.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81014"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81014"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81014"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Accelerate a World of LLMs on Hugging Face with NVIDIA NIM" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/nvidia/multi-llm-nim.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81014">AI builders want a choice of the latest large language models (LLM) architectures and specialized variants for use in AI agents and other apps, but handling all the diversity can slow testing and deployment pipelines. In particular, managing and optimizing different inference software frameworks to achieve best performance across varied LLMs and serving requirements is a time-consuming bottleneck to getting performant AI apps in the hands of end-owners.</p>
+<p>It has been revealed that NVIDIA AI customers and ecosystem partners leverage NVIDIA NIM inference microservices to streamline deployment of the latest AI models on NVIDIA accelerated infrastructure, including LLMs, multi-modal and domain-specific models from NVIDIA, Meta, Mistral AI, Google and hundreds more innovative model builders. We’ve seen customers and partners deliver more innovation, faster, with a simplified, reliable approach to model deployment, and today we’re excited to unlock over 100,000 LLMs on Hugging Face for rapid, reliable deployment with NIM.</p>
+<p>NIM now provides a single docker container for deploying a broad range of LLMs supported by leading inference frameworks from NVIDIA and the community including NVIDIA TensorRT-LLM, vLLM and SGLang. When an LLM is provided to the NIM container, it performs several steps for deployment and performance optimization, without manual configuration:.</p>
+<p>In a recent development, table 1. NVIDIA NIM LLM adaptation phases and functionality.</p>
+<p>The single NIM container supports common LLM weight formats, including:.</p>
+<p>It has been revealed that to use NIM, ensure your environment has NVIDIA GPUs with appropriate drivers (CUDA 12.1+), Docker installed, an NVIDIA NGC Account and API Key for NIM Docker images, and a Hugging Face account and API token for models requiring authentication. Learn more about environment prerequisites in the NIM documentation.</p>
+<p>Environment setup involves setting environment variables and creating a persistent cache directory. Ensure the nim_cache directory has correct Unix permissions, ideally owned by the same Unix user launching the Docker container, to prevent permission concerns. Commands use -u $(id -u) to manage this.</p>
+<p>For ease of use, let’s store some of the frequently used information in environment variables.</p>
+<p>Deploying an LLM from Hugging Face is demonstrated with Codestral-22B:.</p>
+<p>For locally downloaded models, point NIM_MODEL_NAME to the path and mount the directory:.</p>
+<p id="sec-mid-81014">It has been revealed that while deploying a model, feel free to inspect the output logs to get a sense of the choices NIM made during model deployment. Deployed models are available at http://localhost:8000, with API endpoints at http://localhost:8000/docs.</p>
+<p>Recent findings suggest that additional arguments are available by the underlying engine. You can inspect the full list of such arguments by running nim-run --help in the container, as shown below.</p>
+<p>To inspect compatible backends or choose a specific one, use list-model-profiles:.</p>
+<p>It has been revealed that this command shows compatible profiles, including for LoRA adapters. To deploy with a specific backend like vLLM, use the NIM_MODEL_PROFILE environment variable, using the output supplied by list-model-profiles:.</p>
+<p>In a recent development, NIM facilitates deploying quantized models. It automatically detects the quantization format (e.g., GGUF, AWQ) and selects the appropriate backend using standard deployment commands:.</p>
+<p>For advanced owners, NIM offers customization through environment variables such as NIM_MAX_MODEL_LEN for context length. For large LLMs, NIM_TENSOR_PARALLEL_SIZE enables multi-GPU deployment. Ensure --shm-size= is passed to Docker for multi-GPU communication.</p>
+<p>According to recent reports, the NIM container supports a broad range of LLMs supported by NVIDIA TensorRT-LLM, vLLM and SGLang, including popular LLMs and specialized variants on Hugging Face. For more details on supported LLMs, see the documentation.</p>
+<p>Recent findings suggest that NIM is designed to simplify AI model deployment on NVIDIA accelerated infrastructure, speeding innovation and time to value for high performance AI builders and enterprise AI teams. We look forward to engagement and feedback from the Hugging Face Community.</p>
+<p>Get started with a developer example in an NVIDIA-hosted computing environment at build.nvidia.com.</p>
+<p id="sec-end-81014">I tried your command, even though the docker login succeeded and i can see nim-llm in the container registry, it doesn't seem to allow access:.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/nvidia/multi-llm-nim" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="serverless-inference-with-hugging-face-and-nvidia-nim-81440.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81440. Serverless Inference with Hugging Face and NVIDIA NIM
+        </a>
+        
+        <a href="accelerate-bert-inference-with-hugging-face-transformers-and-aws--81818.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81818. Accelerate BERT inference with Hugging Face Transformers and AWS Inferentia
+        </a>
+        
+        <a href="habana-labs-and-hugging-face-partner-to-accelerate-transformer-mo-81812.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81812. Habana Labs and Hugging Face Partner to Accelerate Transformer Model Training
+        </a>
+        
+        <a href="deploy-llms-with-hugging-face-inference-endpoints-81626.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81626. Deploy LLMs with Hugging Face Inference Endpoints
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

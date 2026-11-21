@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey to 1 Million Gradio Users!</title>
+    <meta name="description" content="5 years ago, we launched Gradio as a simple Python library to let researchers at Stanford easily demo computer vision models with a web interface. Sources ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/journey-to-1-million-gradio-users-81278.html">
+    <meta property="og:title" content="Journey to 1 Million Gradio Users!">
+    <meta property="og:description" content="5 years ago, we launched Gradio as a simple Python library to let researchers at Stanford easily demo computer vision models with a web interface. Sources ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/gradio-1m/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/journey-to-1-million-gradio-users-81278.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Journey to 1 Million Gradio Users!", "image": ["https://huggingface.co/blog/assets/gradio-1m/thumbnail.png"], "datePublished": "2025-04-04T00:00:00", "dateModified": "2026-11-21T14:09:18.086149", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/journey-to-1-million-gradio-users-81278.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Business & Policy</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Journey to 1 Million Gradio Users!</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 04 Apr 2025 &bull; ⏱️ 6 min read (1182 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>5 years ago, we launched Gradio as a simple Python library to let researchers at Stanford easily demo computer vision models with a web interface.</li><li style='margin-bottom:6px;'>Sources indicate that today, Gradio is used by >1 million developers each month to build and share AI web apps.</li><li style='margin-bottom:6px;'>How did Gradio keep growing in the very crowded field of open-source Python libraries?</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81278"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81278"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81278"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Journey to 1 Million Gradio Users!" loading="lazy" src="https://huggingface.co/blog/assets/gradio-1m/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81278">5 years ago, we launched Gradio as a simple Python library to let researchers at Stanford easily demo computer vision models with a web interface.</p>
+<p>Sources indicate that today, Gradio is used by &gt;1 million developers each month to build and share AI web apps. This includes some of the most popular open-source projects of all time, like Automatic1111, Oobabooga’s Text Generation WebUI, Dall-E Mini, and LLaMA-Factory.</p>
+<p>How did we get here? How did Gradio keep growing in the very crowded field of open-source Python libraries? I get this question a lot from folks who are building their own open-source libraries. This post distills some of the lessons that I have learned over the past few years:.</p>
+<p>1. Invest in good primitives, not high-level abstractions.</p>
+<p>It has been revealed that when we first launched Gradio, we offered only one high-level class (gr.Interface), which created a complete web app from a single Python function. We rapidly realized that developers wanted to create other kinds of apps (e.g. multi-step workflows, chatbots, streaming applications), but as we started listing out the apps owners wanted to build, we realized what we needed to do: go lower.</p>
+<p>Instead of building many high-level classes to support different use cases, we built a low-level API called Gradio Blocks that let customers assemble applications from modular components, events, and layouts. Despite generally being more work to use, gr.Blocks today represents 80% of the usage of Gradio—including the highly popular apps mentioned above.</p>
+<p>With a small team, a focus on low-level abstractions has necessarily meant that we could not chase many tempting, high-level abstractions. But this focus saved us from two common pitfalls:.</p>
+<p>Customization-maintenance trap: high-level abstractions are easy to use, but users request extra parameters to customize them, which in turn leads to increased maintenance burden since every abstraction and parameter needs to be implemented, maintained, and tested to avoid bugs.</p>
+<p>The productivity illusion: using high-level abstractions seems like less work, until a user needs functionality that is not supported (which can be hard to predict at the beginning of a project), forcing the developer to do a costly rewrite.</p>
+<p>The first problem wastes our time as maintainers of Gradio, while the second problem wastes our people’ time. To this day, Gradio only includes two high-level abstractions (gr.Interface and gr.ChatInterface) which themselves are built with Blocks.</p>
+<p>The advantage of having good primitives is even more dramatic in the age of AI-assisted coding, where we find that LLMs are generally good at combing through documentation and building complex applications out of primitives (see all the games being built with three.js for example). It doesn’t take much extra time to write low-level code if the AI is writing the code for you.</p>
+<p id="sec-mid-81278">Sources indicate that the best ambassador for your library is not you, but an enthusiastic user. It follows, then, that you should find ways for customers to share your library or its products as part of their workflow. Gradio’s early growth was fueled by our “share links” feature (which created a temporary public link for your Gradio app in a single line of code). Instead of having to worry about packaging or hosting their code on a web server with the right kind of compute, Gradio users could share their apps with colleagues immediately.</p>
+<p>After joining Hugging Face, we also benefited from being the standard UI for Hugging Face Spaces—widely used by the machine learning research community. The most viral Spaces drew millions of visitors, exposing developers to Gradio, who in turn shared and built their own Gradio apps, using those same Spaces (whose code was publicly available) as a resource to learn how to use Gradio.</p>
+<p>Recent findings suggest that 3. Build for a (growing) niche use case.</p>
+<p>In a recent development, early on, we faced a critical decision: should Gradio be a general-purpose Python web framework, or should we focus specifically on building machine learning web apps? We chose the latter, and this has made all the difference.</p>
+<p>It has been revealed that in the crowded ecosystem of Python web libraries, we are frequently asked, "How is Gradio different from X?" Our concise answer—that Gradio is optimized for machine learning web apps—is memorable and fundamentally accurate. Each Gradio app ships with features particularly suited to ML workflows, such as a built-in queue that can manage long-running ML tasks efficiently, even with thousands of concurrent users. The components we have designed are specifically tailored to ML use cases. On the other hand, for a long time, Gradio did not even include features like link buttons, simply because our core users never needed it. By narrowing our focus, Gradio quickly became the go-to choice among machine learning developers—the default "UI for AI.".</p>
+<p>Of course, we benefited tremendously from choosing a niche that itself was growing. The recent headwinds that have propelled all things AI-related benefited us tremendously and we likely would not have experienced the same kind of growth if we had focused on data science or dashboards for example.</p>
+<p>According to recent reports, 4. Your only roadmap should be rapid iteration.</p>
+<p>Unlike some other libraries, Gradio doesn’t publish roadmaps. Instead, we track emerging trends in machine learning and ship accordingly. In open-source software generally, and AI specifically, shipping features based on the needs of the community (and deprecating features that are no longer needed) is key to continuous growth. As a concrete example, in the early versions of Gradio we built specific functionality to allow developers to show the “interpretation” of their machine learning models—as this was a very popular use case around 2020-21. As interest in interpretation waned, we deprecated this and instead poured our efforts into audio/video streaming and chat-related features.</p>
+<p>Sources indicate that our internal process is decentralized as well. Each of the 11 engineers and developer advocates on the Gradio team is encouraged to identify impactful ideas, prototype rapidly, engage directly with the open-source community via GitHub, Hugging Face, and social media. Each team member brings these ideas back to the team and we continuously build and rebuild consensus around what ideas are likely to be impactful as we keep growing the most impactful directions.</p>
+<p>5. Maximize ways consumers can consume your library's outputs.</p>
+<p>When you create a Gradio app and “launch()” it, you get a web application running in your browser. But that’s not all -- you also get an API endpoint for each Python function, as well as automatically-generated documentation for each endpoint. These endpoints can be consumed via Python or JavaScript Clients that our team has built, or directly using cURL.</p>
+<p id="sec-end-81278">Sources indicate that the reason that we do this is because we want each minute that a developer spends with Gradio to be maximally useful. A single Gradio app should run locally or be deployed without any code changes on Hugging Face Spaces or on your server, or integrate into larger applications programmatically, or even be harnessed by AI agents through MCPs (more on that soon!). By focusing on maximum usability, we hope that developers can continue to get more and more out of the Gradio library.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/gradio-1m" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="my-journey-to-a-serverless-transformers-pipeline-on-google-cloud-81861.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81861. My Journey to a serverless transformers pipeline on Google Cloud
+        </a>
+        
+        <a href="using-mixing-hugging-face-models-with-gradio-20-81855.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81855. Using & Mixing Hugging Face Models with Gradio 2.0
+        </a>
+        
+        <a href="showcase-your-projects-in-spaces-using-gradio-81846.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81846. Showcase Your Projects in Spaces using Gradio
+        </a>
+        
+        <a href="gradio-is-joining-hugging-face-81831.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81831. Gradio is joining Hugging Face!
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

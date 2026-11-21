@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine-tuning Llama 2 70B using PyTorch FSDP</title>
+    <meta name="description" content="According to recent reports, in this blog post, we will look at how to fine-tune Llama 2 70B using PyTorch FSDP and related best practices. We will be leve">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/fine-tuning-llama-2-70b-using-pytorch-fsdp-81593.html">
+    <meta property="og:title" content="Fine-tuning Llama 2 70B using PyTorch FSDP">
+    <meta property="og:description" content="According to recent reports, in this blog post, we will look at how to fine-tune Llama 2 70B using PyTorch FSDP and related best practices. We will be leve">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/160_fsdp_llama/thumbnail.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/fine-tuning-llama-2-70b-using-pytorch-fsdp-81593.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Fine-tuning Llama 2 70B using PyTorch FSDP", "image": ["https://huggingface.co/blog/assets/160_fsdp_llama/thumbnail.jpg"], "datePublished": "2023-09-13T00:00:00", "dateModified": "2026-11-21T14:09:55.453926", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/fine-tuning-llama-2-70b-using-pytorch-fsdp-81593.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Fine-tuning Llama 2 70B using PyTorch FSDP</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 13 Sep 2023 &bull; ⏱️ 6 min read (1273 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, in this blog post, we will look at how to fine-tune Llama 2 70B using PyTorch FSDP and related best practices.</li><li style='margin-bottom:6px;'>Fully Sharded Data Parallelism (FSDP) is a paradigm in which the optimizer states, gradients and parameters are sharded across devices.</li><li style='margin-bottom:6px;'>Minimum required is 1.Number of GPUs per node: 8GPU type: A100GPU memory: 80GBintra-node connection: NVLinkRAM per node: 1TBCPU cores per node: 96inter-node connection: Elastic Fabric Adapter.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81593"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81593"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81593"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Fine-tuning Llama 2 70B using PyTorch FSDP" loading="lazy" src="https://huggingface.co/blog/assets/160_fsdp_llama/thumbnail.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81593">According to recent reports, in this blog post, we will look at how to fine-tune Llama 2 70B using PyTorch FSDP and related best practices. We will be leveraging Hugging Face Transformers, Accelerate and TRL. We will also learn how to use Accelerate with SLURM.</p>
+<p>Fully Sharded Data Parallelism (FSDP) is a paradigm in which the optimizer states, gradients and parameters are sharded across devices. During the forward pass, each FSDP unit performs an all-gather operation to get the complete weights, computation is performed followed by discarding the shards from other devices. After the forward pass, the loss is computed followed by the backward pass. In the backward pass, each FSDP unit performs an all-gather operation to get the complete weights, with computation performed to get the local gradients. These local gradients are averaged and sharded across the devices via a reduce-scatter operation so that each device can revision the parameters of its shard. For more information on what PyTorch FSDP is, please refer to this blog post: Accelerate Large Model Training using PyTorch Fully Sharded Data Parallel.</p>
+<p>Number of nodes: 2. Minimum required is 1.Number of GPUs per node: 8GPU type: A100GPU memory: 80GBintra-node connection: NVLinkRAM per node: 1TBCPU cores per node: 96inter-node connection: Elastic Fabric Adapter.</p>
+<p>We encountered three main challenges when trying to fine-tune LLaMa 70B with FSDP:.</p>
+<p>FSDP wraps the model after loading the pre-trained model. If each process/rank within a node loads the Llama-70B model, it would require 70*4*8 GB ~ 2TB of CPU RAM, where 4 is the number of bytes per parameter and 8 is the number of GPUs on each node. This would result in the CPU RAM getting out of memory leading to processes being terminated.</p>
+<p>Saving entire intermediate checkpoints using FULL_STATE_DICT with CPU offloading on rank 0 takes a lot of time and often results in NCCL Timeout errors due to indefinite hanging during broadcasting. However, at the end of training, we want the whole model state dict instead of the sharded state dict which is only compatible with FSDP.</p>
+<p>We need to improve the speed and reduce the VRAM usage to train faster and save compute costs.</p>
+<p>Let’s look at how to solve the above challenges and fine-tune a 70B model!</p>
+<p>Before we get started, here's all the required resources to reproduce our results:.</p>
+<p>Codebase:
+https://github.com/pacman100/DHS-LLM-Workshop/tree/main/chat_assistant/sft/training with flash-attn V2.</p>
+<p>FSDP config: https://github.com/pacman100/DHS-LLM-Workshop/blob/main/chat_assistant/training/configs/fsdp_config.yaml.</p>
+<p>SLURM script launch.slurm: https://gist.github.com/pacman100/1cb1f17b2f1b3139a63b764263e70b25.</p>
+<p>Model: meta-llama/Llama-2-70b-chat-hf.</p>
+<p>Dataset: smangrul/code-chat-assistant-v1 (mix of LIMA+GUANACO with proper formatting in a ready-to-train format).</p>
+<p>Industry observers note that first follow these steps to install Flash Attention V2:  Dao-AILab/flash-attention: Fast and memory-efficient exact attention (github.com). Install the latest nightlies of PyTorch with CUDA ≥11.8. Install the remaining requirements as per DHS-LLM-Workshop/code_assistant/training/requirements.txt. Here, we will be installing 🤗 Accelerate and 🤗 Transformers from the main branch.</p>
+<p>PRs huggingface/transformers#25107 and huggingface/accelerate#1777 solve the first challenge and requires no code changes from user side. It does the following:.</p>
+<p id="sec-mid-81593">Below is the output snippet on a 7B model on 2 GPUs measuring the memory consumed and model parameters at various stages. We can observe that during loading the pre-trained model rank 0 &amp; rank 1 have CPU total peak memory of 32744 MB and 1506 MB , respectively. Therefore, only rank 0 is loading the pre-trained model leading to efficient usage of CPU RAM. The whole logs at be found here.</p>
+<p>It is addressed via choosing SHARDED_STATE_DICT state dict type when creating FSDP config. SHARDED_STATE_DICT saves shard per GPU separately which makes it quick to save or resume training from intermediate checkpoint. When FULL_STATE_DICT is used, first process (rank 0) gathers the whole model on CPU and then saving it in a standard format.</p>
+<p>Let’s create the accelerate config via below command:.</p>
+<p>According to recent reports, the resulting config is available here: fsdp_config.yaml. Here, the sharding strategy is FULL_SHARD. We are using TRANSFORMER_BASED_WRAP for auto wrap policy and it uses _no_split_module  to find the Transformer block name for nested FSDP auto wrap. We use  SHARDED_STATE_DICT to save the intermediate checkpoints and optimizer states in this format recommended by the PyTorch team. Make sure to enable broadcasting module parameters from rank 0 at the start as mentioned in the above paragraph on addressing Challenge 1. We are enabling bf16 mixed precision training.</p>
+<p>For final checkpoint being the whole model state dict, below code snippet is used:.</p>
+<p>According to recent reports, flash Attention and enabling gradient checkpointing are required for faster training and reducing VRAM usage to enable fine-tuning and save compute costs. The codebase presently uses monkey patching and the implementation is at chat_assistant/training/llama_flash_attn_monkey_patch.py.</p>
+<p>FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness introduces a way to compute exact attention while being faster and memory-efficient by leveraging the knowledge of the memory hierarchy of the underlying hardware/GPUs - The higher the bandwidth/speed of the memory, the smaller its capacity as it becomes more expensive.</p>
+<p>Sources indicate that if we follow the blog Making Deep Learning Go Brrrr From First Principles, we can figure out that Attention module on current hardware is memory-bound/bandwidth-bound. The reason being that Attention mostly consists of elementwise operations as shown below on the left hand side. We can observe that masking, softmax and dropout operations take up the bulk of the time instead of matrix multiplications which consists of the bulk of FLOPs.</p>
+<p>This is precisely the problem that Flash Attention addresses. The idea is to remove redundant HBM reads/writes. It does so by keeping everything in SRAM, perform all the intermediate steps and only then write the final result back to HBM, also known as Kernel Fusion. Below is an illustration of how this overcomes the memory-bound bottleneck.</p>
+<p>Tiling is used during forward and backward passes to chunk the NxN softmax/scores computation into blocks to overcome the limitation of SRAM memory size. To enable tiling, online softmax algorithm is used. Recomputation is used during backward pass in order to avoid storing the entire NxN softmax/score matrix during forward pass. This greatly reduces the memory consumption.</p>
+<p>For a simplified and in depth understanding of Flash Attention, please refer the blog posts ELI5: FlashAttention and Making Deep Learning Go Brrrr From First Principles along with the original paper FlashAttention: Fast and Memory-Efficient Exact Attention
+with IO-Awareness.</p>
+<p>Industry observers note that to run the training using Accelerate launcher with SLURM, refer this gist launch.slurm. Below is an equivalent command showcasing how to use Accelerate launcher to run the training. Notice that we are overriding main_process_ip , main_process_port , machine_rank , num_processes  and num_machines values of the fsdp_config.yaml. Here, another important point to note is that the storage is stored between all the nodes.</p>
+<p>Fine-tuning completed in ~13.5 hours and below is the training loss plot.</p>
+<p>Crucial Note:
+Here, if you are using only a single node with 8 A100 80GB GPUs, then paged_adamw_32bit optimizer from bitsandbytes is required. For more information about paged optimizers, please refer https://huggingface.co/docs/bitsandbytes/main/en/optimizers#paged-optimizers.</p>
+<p>Below is an example conversation using the above model:.</p>
+<p>The whole conversation is formatted as below:.</p>
+<p id="sec-end-81593">Industry observers note that we successfully fine-tuned 70B Llama model using PyTorch FSDP in a multi-node multi-gpu setting while addressing various challenges. We saw how 🤗 Transformers and 🤗 Accelerates now supports efficient way of initializing large models when using FSDP to overcome CPU RAM getting out of memory. This was followed by recommended practices for saving/loading intermediate checkpoints and how to save the final model in a way to readily use it. To enable faster training and reducing GPU memory usage, we outlined the importance of Flash Attention and Gradient Checkpointing. Overall, we can see how a simple config using 🤗 Accelerate enables finetuning of such large models in a multi-node multi-gpu setting.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ram-efficient-pytorch-fsdp" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="accelerating-pytorch-distributed-fine-tuning-with-intel-technolog-81837.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81837. Accelerating PyTorch distributed fine-tuning with Intel technologies
+        </a>
+        
+        <a href="using-lora-for-efficient-stable-diffusion-fine-tuning-81703.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81703. Using LoRA for Efficient Stable Diffusion Fine-Tuning
+        </a>
+        
+        <a href="parameter-efficient-fine-tuning-using-peft-81695.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81695. Parameter-Efficient Fine-Tuning using 🤗 PEFT
+        </a>
+        
+        <a href="tech-report-fine-tuning-clip-with-remote-sensing-satellite-images-81844.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81844. Tech Report: Fine tuning CLIP with Remote Sensing (Satellite) images and captions
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

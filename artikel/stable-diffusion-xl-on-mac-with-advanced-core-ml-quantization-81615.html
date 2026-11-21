@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stable Diffusion XL on Mac with Advanced Core ML Quantization</title>
+    <meta name="description" content="In a recent development, stable Diffusion XL was released yesterday and it’s awesome. It can generate large (1024x1024) high quality images; adherence to p">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/stable-diffusion-xl-on-mac-with-advanced-core-ml-quantization-81615.html">
+    <meta property="og:title" content="Stable Diffusion XL on Mac with Advanced Core ML Quantization">
+    <meta property="og:description" content="In a recent development, stable Diffusion XL was released yesterday and it’s awesome. It can generate large (1024x1024) high quality images; adherence to p">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/stable-diffusion-xl-coreml/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/stable-diffusion-xl-on-mac-with-advanced-core-ml-quantization-81615.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Stable Diffusion XL on Mac with Advanced Core ML Quantization", "image": ["https://huggingface.co/blog/assets/stable-diffusion-xl-coreml/thumbnail.png"], "datePublished": "2023-07-27T00:00:00", "dateModified": "2026-11-21T14:10:00.337282", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/stable-diffusion-xl-on-mac-with-advanced-core-ml-quantization-81615.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Stable Diffusion XL on Mac with Advanced Core ML Quantization</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 27 Jul 2023 &bull; ⏱️ 6 min read (1298 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, stable Diffusion XL was released yesterday and it’s awesome.</li><li style='margin-bottom:6px;'>The downside is that the model is much bigger, and therefore slower and more difficult to run on consumer hardware.</li><li style='margin-bottom:6px;'>The past few months have shown that people are very clearly interested in running ML models locally for a variety of reasons, including privacy, convenience, easier experimentation, or unmetered use.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81615"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81615"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81615"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Stable Diffusion XL on Mac with Advanced Core ML Quantization" loading="lazy" src="https://huggingface.co/blog/assets/stable-diffusion-xl-coreml/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81615">In a recent development, stable Diffusion XL was released yesterday and it’s awesome. It can generate large (1024x1024) high quality images; adherence to prompts has been improved with some latest tricks; it can effortlessly produce very dark or very bright images thanks to the latest research on noise schedulers; and it’s open source!</p>
+<p>The downside is that the model is much bigger, and therefore slower and more difficult to run on consumer hardware. Using the latest release of the Hugging Face diffusers library, you can run Stable Diffusion XL on CUDA hardware in 16 GB of GPU RAM, making it possible to use it on Colab’s free tier.</p>
+<p>The past few months have shown that people are very clearly interested in running ML models locally for a variety of reasons, including privacy, convenience, easier experimentation, or unmetered use. We’ve been working hard at both Apple and Hugging Face to explore this space. We’ve shown how to run Stable Diffusion on Apple Silicon, or how to leverage the latest advancements in Core ML to improve size and performance with 6-bit palettization.</p>
+<p>For Stable Diffusion XL we’ve done a few things:.</p>
+<p>Everything is open source and available today, let’s get on with it.</p>
+<p>As part of this release, we published two different versions of Stable Diffusion XL in Core ML.</p>
+<p>Either model can be tested using Apple’s Swift command-line inference app, or Hugging Face’s demo app. This is an example of the latter using the fresh Stable Diffusion XL pipeline:.</p>
+<p>It has been revealed that as with previous Stable Diffusion releases, we expect the community to come up with novel fine-tuned versions for different domains, and many of them will be converted to Core ML. You can keep an eye on this filter in the Hub to explore!</p>
+<p>Stable Diffusion XL works on Apple Silicon Macs running the public beta of macOS 14. It right now uses the ORIGINAL attention implementation, which is intended for CPU + GPU compute units. Note that the refiner stage has not been ported yet.</p>
+<p>For reference, these are the performance figures we achieved on different devices:.</p>
+<p>It has been revealed that last month we discussed 6-bit palettization, a post-training quantization method that converts 16-bit weights to just 6-bit per parameter. This achieves an vital reduction in model size, but going beyond that is tricky because model quality becomes more and more impacted as the number of bits is decreased.</p>
+<p>It has been revealed that one option to decrease model size further is to use training time quantization, which consists of learning the quantization tables while we fine-tune the model. This works great, but you need to run a fine-tuning phase for every model you want to convert.</p>
+<p>According to recent reports, we explored a different alternative instead: mixed-bit palettization. Instead of using 6 bits per parameter, we examine the model and decide how many quantization bits to use per layer. We make the decision based on how much each layer contributes to the overall quality degradation, which we measure by comparing the PSNR between the quantized model and the original model in float16 mode, for a set of a few inputs. We explore several bit depths, per layer: 1 (!), 2, 4 and 8. If a layer degrades significantly when using, say, 2 bits, we move to 4 and so on. Some layers might be kept in 16-bit mode if they are critical to preserving quality.</p>
+<p>According to recent reports, using this method, we can achieve effective quantizations of, for example, 2.8 bits on average, and we measure the impact on degradation for every combination we try. This allows us to be better informed about the best quantization to use for our target quality and size budgets.</p>
+<p>To illustrate the method, let’s consider the following quantization “recipes” that we got from one of our analysis runs (we’ll explain later how they were generated):.</p>
+<p id="sec-mid-81615">According to recent reports, what this tells us is that the original model quality, as measured by PSNR in float16, is about 82 dB. Performing a naïve 8-bit linear quantization drops it to 66 dB. But then we have a recipe that compresses to 6.55 bits per parameter, on average, while keeping PSNR at 80 dB. The second and third recipes further reduce the model size, while still sustaining a PSNR larger than that of the 8-bit linear quantization.</p>
+<p>For visual examples, these are the results on prompt a high quality photo of a surfing dog running each one of the three recipes with the same seed:.</p>
+<p>This technique is great for Stable Diffusion XL because we can keep about the same UNet size even though the number of parameters tripled with respect to the previous version. But it's not exclusive to it! You can apply the method to any Stable Diffusion Core ML model.</p>
+<p>Industry observers note that the following plot shows the signal strength (PSNR in dB) versus model size reduction (% of float16 size) for stabilityai/stable-diffusion-xl-base-1.0. The {1,2,4,6,8}-bit curves are generated by progressively palettizing more layers using a palette with a fixed number of bits. The layers were ordered in ascending order of their isolated impact to end-to-end signal strength, so the cumulative compression's impact is delayed as much as possible. The mixed-bit curve is based on falling back to a higher number of bits as soon as a layer's isolated impact to end-to-end signal integrity drops below a threshold. Note that all curves based on palettization outperform linear 8-bit quantization at the same model size except for 1-bit.</p>
+<p>Mixed-bit palettization runs in two phases: analysis and application.</p>
+<p>Industry observers note that the goal of the analysis phase is to find points in the mixed-bit curve (the brown one above all the others in the figure) so we can choose our desired quality-vs-size tradeoff. As mentioned in the previous section, we iterate through the layers and select the lowest bit depths that yield results above a given PSNR threshold. We repeat the process for various thresholds to get different quantization strategies. The result of the process is thus a set of quantization recipes, where each recipe is just a JSON dictionary detailing the number of bits to use for each layer in the model. Layers with few parameters are ignored and kept in float16 for simplicity.</p>
+<p>The application phase simply goes over the recipe and applies palettization with the number of bits specified in the JSON structure.</p>
+<p>Analysis is a lengthy process and requires a GPU (mps or cuda), as we have to run inference multiple times. Once it’s done, recipe application can be performed in a few minutes.</p>
+<p>We provide scripts for each one of these phases:.</p>
+<p>According to recent reports, if you’ve previously converted Stable Diffusion models to Core ML, the process for XL using the command line converter is very similar. There’s a upcoming flag to indicate whether the model belongs to the XL family, and you have to use --attention-implementation ORIGINAL if that’s the case.</p>
+<p>For an introduction to the process, check the instructions in the repo or one of our previous blog posts, and make sure you use the flags above.</p>
+<p>After converting Stable Diffusion or Stable Diffusion XL models to Core ML, you can optionally apply mixed-bit palettization using the scripts mentioned above.</p>
+<p>Because the analysis process is slow, we have prepared recipes for the most popular models:.</p>
+<p>You can download and apply them locally to experiment.</p>
+<p>In addition, we also applied the three best recipes from the Stable Diffusion XL analysis to the Core ML version of the UNet, and published them here. Feel free to play with them and see how they work for you!</p>
+<p id="sec-end-81615">Finally, as mentioned in the introduction, we created a complete Stable Diffusion XL Core ML pipeline that uses a 4.5-bit recipe.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/stable-diffusion-xl-coreml" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="faster-stable-diffusion-with-core-ml-on-iphone-ipad-and-mac-81636.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81636. Faster Stable Diffusion with Core ML on iPhone, iPad, and Mac
+        </a>
+        
+        <a href="using-stable-diffusion-with-core-ml-on-apple-silicon-81722.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81722. Using Stable Diffusion with Core ML on Apple Silicon
+        </a>
+        
+        <a href="swift-diffusers-fast-stable-diffusion-for-mac-81690.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81690. Swift 🧨Diffusers - Fast Stable Diffusion for Mac
+        </a>
+        
+        <a href="stable-diffusion-with-diffusers-81756.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81756. Stable Diffusion with 🧨 Diffusers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

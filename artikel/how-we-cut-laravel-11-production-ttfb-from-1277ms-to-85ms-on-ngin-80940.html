@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How We Cut Laravel 11 Production TTFB from 1,277ms to 85ms on Nginx & PHP 8.3 FPM</title>
+    <meta name="description" content="When running a high-traffic bilingual (Arabic RTL / English LTR) Laravel 11 application serving enterprise B2B portals and diagnostic tools, server respons">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-we-cut-laravel-11-production-ttfb-from-1277ms-to-85ms-on-ngin-80940.html">
+    <meta property="og:title" content="How We Cut Laravel 11 Production TTFB from 1,277ms to 85ms on Nginx & PHP 8.3 FPM">
+    <meta property="og:description" content="When running a high-traffic bilingual (Arabic RTL / English LTR) Laravel 11 application serving enterprise B2B portals and diagnostic tools, server respons">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Febzlokvkcejoos8zyxmd.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-we-cut-laravel-11-production-ttfb-from-1277ms-to-85ms-on-ngin-80940.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How We Cut Laravel 11 Production TTFB from 1,277ms to 85ms on Nginx & PHP 8.3 FPM", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Febzlokvkcejoos8zyxmd.png"], "datePublished": "2026-11-21T14:01:14", "dateModified": "2026-11-21T14:08:46.141844", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-we-cut-laravel-11-production-ttfb-from-1277ms-to-85ms-on-ngin-80940.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How We Cut Laravel 11 Production TTFB from 1,277ms to 85ms on Nginx & PHP 8.3 FPM</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 21 Nov 2026 &bull; ⏱️ 1 min read (289 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>When running a high-traffic bilingual (Arabic RTL / English LTR) Laravel 11 application serving enterprise B2B portals and diagnostic tools, server response time (TTFB — Time to First Byte) directly dictates both Core Web Vitals (LCP) and search engine crawl efficiency.</li><li style='margin-bottom:6px;'>Here is the exact production engineering checklist our team at MTM4WEB used to bring median TTFB down from 1,277ms (with 9s spikes) to 60–120ms on a live Nginx + PHP 8.3-FPM stack.</li><li style='margin-bottom:6px;'>On many HestiaCP / cPanel reverse-proxy setups, static files inside public_html/public accidentally pass through a rewrite or backend hop if the Nginx location block doesn't resolve the /public root directly.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-80940"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-80940"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-80940"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How We Cut Laravel 11 Production TTFB from 1,277ms to 85ms on Nginx &amp; PHP 8.3 FPM" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Febzlokvkcejoos8zyxmd.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-80940">When running a high-traffic bilingual (Arabic RTL / English LTR) Laravel 11 application serving enterprise B2B portals and diagnostic tools, server response time (TTFB — Time to First Byte) directly dictates both Core Web Vitals (LCP) and search engine crawl efficiency.</p>
+<p>Here is the exact production engineering checklist our team at MTM4WEB used to bring median TTFB down from 1,277ms (with 9s spikes) to 60–120ms on a live Nginx + PHP 8.3-FPM stack.</p>
+<p>On many HestiaCP / cPanel reverse-proxy setups, static files inside public_html/public accidentally pass through a rewrite or backend hop if the Nginx location block doesn't resolve the /public root directly.</p>
+<p>Serving static assets (.css, .js, .webp, .woff2) directly from Nginx with long immutable cache headers eliminates unnecessary backend worker contention:.</p>
+<p>When pm = ondemand is used with a low pm.max_children = 5, concurrent bursts (especially when search engine crawlers and consumers hit the site simultaneously) force requests to queue while FPM forks upcoming children.</p>
+<p id="sec-mid-80940">Switching to a warm dynamic pool keeps workers ready in RAM:.</p>
+<p>Never leave production running uncached configuration or debug listeners:.</p>
+<p>Combined with PHP 8.3 OPcache (opcache.enable=1, opcache.memory_consumption=256), route resolution and config lookup drop to single-digit milliseconds.</p>
+<p>If your application logs visitor analytics to MySQL on every request via middleware, bots probing 404 URLs or polling AJAX endpoints will flood your database with synchronous INSERT queries. Guard your middleware so it only logs real HTML 200 OK pageviews and skips /api/* and error responses.</p>
+<p>Instead of manually updating hundreds of database rows after batch-converting legacy PNG/JPG assets to WebP with cwebp -q 82, you can transparently upgrade your Eloquent model accessor:.</p>
+<p id="sec-end-80940">You can test your own server's TTFB, HTTP compression headers, and DNS health using our free engineering tools:.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/mtm4web/how-we-cut-laravel-11-production-ttfb-from-1277ms-to-85ms-on-nginx-php-83-fpm-1pdh" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="optimizing-your-llm-in-production-81591.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81591. Optimizing your LLM in production
+        </a>
+        
+        <a href="rocket-money-x-hugging-face-scaling-volatile-ml-models-in-product-81588.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81588. Rocket Money x Hugging Face: Scaling Volatile ML Models in Production​
+        </a>
+        
+        <a href="ai-devops-and-the-cost-of-hosting-from-idea-to-production-for-0-81398.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81398. AI, DevOps and the Cost of Hosting: From Idea to Production for $0
+        </a>
+        
+        <a href="tiny-nanolaser-could-cut-computer-energy-use-in-half-81197.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81197. Tiny nanolaser could cut computer energy use in half
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Dive into Text-to-Video Models</title>
+    <meta name="description" content="Video samples generated with ModelScope. Text-to-video is next in line in the long list of incredible advances in generative models. As self-descriptive as">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/a-dive-into-text-to-video-models-81662.html">
+    <meta property="og:title" content="A Dive into Text-to-Video Models">
+    <meta property="og:description" content="Video samples generated with ModelScope. Text-to-video is next in line in the long list of incredible advances in generative models. As self-descriptive as">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/140_text-to-video/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/a-dive-into-text-to-video-models-81662.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "A Dive into Text-to-Video Models", "image": ["https://huggingface.co/blog/assets/140_text-to-video/thumbnail.png"], "datePublished": "2023-05-08T00:00:00", "dateModified": "2026-11-21T14:10:10.678787", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/a-dive-into-text-to-video-models-81662.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>A Dive into Text-to-Video Models</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 08 May 2023 &bull; ⏱️ 9 min read (1829 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Text-to-video is next in line in the long list of incredible advances in generative models.</li><li style='margin-bottom:6px;'>According to recent reports, in this blog post, we will discuss the past, present, and future of text-to-video models.</li><li style='margin-bottom:6px;'>Examples of videos generated from various text description inputs, image taken from Make-a-Video.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81662"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81662"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81662"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="A Dive into Text-to-Video Models" loading="lazy" src="https://huggingface.co/blog/assets/140_text-to-video/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81662">Video samples generated with ModelScope.</p>
+<p>Text-to-video is next in line in the long list of incredible advances in generative models. As self-descriptive as it is, text-to-video is a fairly upcoming computer vision task that involves generating a sequence of images from text descriptions that are both temporally and spatially consistent. While this task might seem extremely similar to text-to-image, it is notoriously more difficult. How do these models work, how do they differ from text-to-image models, and what kind of performance can we expect from them?</p>
+<p>According to recent reports, in this blog post, we will discuss the past, present, and future of text-to-video models. We will start by reviewing the differences between the text-to-video and text-to-image tasks, and discuss the unique challenges of unconditional and text-conditioned video generation. Additionally, we will cover the most recent developments in text-to-video models, exploring how these methods work and what they are capable of. Finally, we will talk about what we are working on at Hugging Face to facilitate the integration and use of these models and share some cool demos and resources both on and outside of the Hugging Face Hub.</p>
+<p>Examples of videos generated from various text description inputs, image taken from Make-a-Video.</p>
+<p>According to recent reports, with so many recent developments, it can be difficult to keep up with the current state of text-to-image generative models. Let's do a quick recap first.</p>
+<p>Recent findings suggest that just two years ago, the first open-vocabulary, high-quality text-to-image generative models emerged. This first wave of text-to-image models, including VQGAN-CLIP, XMC-GAN, and GauGAN2, all had GAN architectures. These were quickly followed by OpenAI's massively popular transformer-based DALL-E in early 2021, DALL-E 2 in April 2022, and a fresh wave of diffusion models pioneered by Stable Diffusion and Imagen. The huge success of Stable Diffusion led to many productionized diffusion models, such as DreamStudio and RunwayML GEN-1, and integration with existing products, such as Midjourney.</p>
+<p>Recent findings suggest that despite the impressive capabilities of diffusion models in text-to-image generation, diffusion and non-diffusion based text-to-video models are significantly more limited in their generative capabilities. Text-to-video are typically trained on very short clips, meaning they require a computationally expensive and slow sliding window approach to generate long videos. As a result, these models are notoriously difficult to deploy and scale and remain limited in context and length.</p>
+<p>It has been revealed that the text-to-video task faces unique challenges on multiple fronts. Some of these main challenges include:.</p>
+<p>In the next section, we will discuss the timeline of developments in the text-to-video domain and the various methods proposed to address these challenges separately. On a higher level, text-to-video works propose one of these:.</p>
+<p>It has been revealed that let's take a look at how text-to-video generation works and the latest developments in this field. We will explore how text-to-video models have evolved, following a similar path to text-to-image research, and how the specific challenges of text-to-video generation have been tackled so far.</p>
+<p>Like the text-to-image task, early work on text-to-video generation dates back only a few years. Early research predominantly used GAN and VAE-based approaches to auto-regressively generate frames given a caption (see Text2Filter and TGANs-C). While these works provided the foundation for a upcoming computer vision task, they are limited to low resolutions, short-range, and singular, isolated motions.</p>
+<p>Initial text-to-video models were extremely limited in resolution, context and length, image taken from TGANs-C.</p>
+<p>Taking inspiration from the success of large-scale pretrained transformer models in text (GPT-3) and image (DALL-E), the next surge of text-to-video generation research adopted transformer architectures. Phenaki, Make-A-Video, NUWA, VideoGPT and CogVideo all propose transformer-based frameworks, while works such as TATS propose hybrid methods that combine VQGAN for image generation and a time-sensitive transformer module for sequential generation of frames. Out of this second wave of works, Phenaki is particularly interesting as it enables generating arbitrary long videos conditioned on a sequence of prompts, in other words, a story line. Similarly, NUWA-Infinity proposes an autoregressive over autoregressive generation mechanism for infinite image and video synthesis from text inputs, enabling the generation of long, HD quality videos. However, neither Phenaki or NUWA models are publicly available.</p>
+<p id="sec-mid-81662">Phenaki features a transformer-based architecture, image taken from here.</p>
+<p>Sources indicate that the third and current wave of text-to-video models features predominantly diffusion-based architectures. The remarkable success of diffusion models in diverse, hyper-realistic, and contextually rich image generation has led to an interest in generalizing diffusion models to other domains such as audio, 3D, and, more recently, video. This wave of models is pioneered by Video Diffusion Models (VDM), which extend diffusion models to the video domain, and MagicVideo, which proposes a framework to generate video clips in a low-dimensional latent space and reports huge efficiency gains over VDM. Another notable mention is Tune-a-Video, which fine-tunes a pretrained text-to-image model with a single text-video pair and enables changing the video content while preserving the motion. The continuously expanding list of text-to-video diffusion models that followed include Video LDM, Text2Video-Zero, Runway Gen1 and Gen2, and NUWA-XL.</p>
+<p>Recent findings suggest that text2Video-Zero is a text-guided video generation and manipulation framework that works in a fashion similar to ControlNet. It can directly generate (or edit) videos based on text inputs, as well as combined text-pose or text-edge data inputs. As implied by its name, Text2Video-Zero is a zero-shot model that combines a trainable motion dynamics module with a pre-trained text-to-image Stable Diffusion model without using any paired text-video data. Similarly to Text2Video-Zero, Runway’s Gen-1 and Gen-2 models enable synthesizing videos guided by content described through text or images. Most of these works are trained on short video clips and rely on autoregressive generation with a sliding window to generate longer videos, inevitably resulting in a context gap. NUWA-XL addresses this issue and proposes a “diffusion over diffusion” method to train models on 3376 frames. Finally, there are open-source text-to-video models and frameworks such as Alibaba / DAMO Vision Intelligence Lab’s ModelScope and Tencel’s VideoCrafter, which haven't been published in peer-reviewed conferences or journals.</p>
+<p>Like other vision-language models, text-to-video models are typically trained on large paired datasets videos and text descriptions. The videos in these datasets are typically split into short, fixed-length chunks and often limited to isolated actions with a few objects. While this is partly due to computational limitations and partly due to the difficulty of describing video content in a meaningful way, we see that developments in multimodal video-text datasets and text-to-video models are often entwined. While some work focuses on developing better, more generalizable datasets that are easier to learn from, works such as Phenaki explore alternative solutions such as combining text-image pairs with text-video pairs for the text-to-video task. Make-a-Video takes this even further by proposing using only text-image pairs to learn what the world looks like and unimodal video data to learn spatio-temporal dependencies in an unsupervised fashion.</p>
+<p>These large datasets experience similar complications to those found in text-to-image datasets. The most commonly used text-video dataset, WebVid, consists of 10.7 million pairs of text-video pairs (52K video hours) and contains a fair amount of noisy samples with irrelevant video descriptions. Other datasets try to overcome this issue by focusing on specific tasks or domains. For example, the Howto100M dataset consists of 136M video clips with captions that describe how to perform complex tasks such as cooking, handcrafting, gardening, and fitness step-by-step. Similarly, the QuerYD dataset focuses on the event localization task such that the captions of videos describe the relative location of objects and actions in detail. CelebV-Text is a large-scale facial text-video dataset of over 70K videos to generate videos with realistic faces, emotions, and gestures.</p>
+<p>Using Hugging Face Diffusers, you can easily download, run and fine-tune various pretrained text-to-video models, including Text2Video-Zero and ModelScope by Alibaba / DAMO Vision Intelligence Lab. We are currently working on integrating other exciting works into Diffusers and 🤗 Transformers.</p>
+<p>At Hugging Face, our goal is to make it easier to use and build upon state-of-the-art research. Head over to our hub to see and play around with Spaces demos contributed by the 🤗 team, countless community contributors and research authors. At the moment, we host demos for VideoGPT, CogVideo, ModelScope Text-to-Video, and Text2Video-Zero with many more to come. To see what we can do with these models, let's take a look at the Text2Video-Zero demo. This demo not only illustrates text-to-video generation but also enables multiple other generation modes for text-guided video editing and joint conditional video generation using pose, depth and edge inputs along with text prompts.</p>
+<p>Apart from using demos to experiment with pretrained text-to-video models, you can also use the Tune-a-Video training demo to fine-tune an existing text-to-image model with your own text-video pair. To try it out, upload a video and enter a text prompt that describes the video. Once the training is done, you can upload it to the Hub under the Tune-a-Video community or your own username, publicly or privately. Once the training is done, simply head over to the Run tab of the demo to generate videos from any text prompt.</p>
+<p>It has been revealed that all Spaces on the 🤗 Hub are Git repos you can clone and run on your local or deployment environment. Let’s clone the ModelScope demo, install the requirements, and run it locally.</p>
+<p>And that's it! The Modelscope demo is now running locally on your computer. Note that the ModelScope text-to-video model is supported in Diffusers and you can directly load and use the model to generate new videos with a few lines of code.</p>
+<p>Industry observers note that finally, there are various open source projects and models that are not on the hub. Some notable mentions are Phil Wang’s (aka lucidrains) unofficial implementations of Imagen, Phenaki, NUWA, Make-a-Video and Video Diffusion Models. Another exciting project by ExponentialML builds on top of 🤗 diffusers to finetune ModelScope Text-to-Video.</p>
+<p>In a recent development, text-to-video research is progressing exponentially, but existing work is still limited in context and faces many challenges. In this blog post, we covered the constraints, unique challenges and the current state of text-to-video generation models. We also saw how architectural paradigms originally designed for other tasks enable giant leaps in the text-to-video generation task and what this means for future research. While the developments are impressive, text-to-video models still have a long way to go compared to text-to-image models. Finally, we also indicated how you can use these models to perform various tasks using the demos available on the Hub or as a part of 🤗 Diffusers pipelines.</p>
+<p>Recent findings suggest that that was it! We are continuing to integrate the most impactful computer vision and multi-modal models and would love to hear back from you. To stay up to date with the latest news in computer vision and multi-modal research, you can follow us on Twitter: @adirik, @a_e_roberts, @osanseviero, @risingsayak and @huggingface.</p>
+<p id="sec-end-81662">This man gets up and starts to pop lock to planet rock a song from yhe 80s.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/text-to-video" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="a-dive-into-vision-language-models-81700.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81700. A Dive into Vision-Language Models
+        </a>
+        
+        <a href="ethics-and-society-newsletter-4-bias-in-text-to-image-models-81630.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81630. Ethics and Society Newsletter #4: Bias in Text-to-Image Models
+        </a>
+        
+        <a href="tts-arena-benchmarking-text-to-speech-models-in-the-wild-81527.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81527. TTS Arena: Benchmarking Text-to-Speech Models in the Wild
+        </a>
+        
+        <a href="state-of-open-video-generation-models-in-diffusers-81334.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81334. State of open video generation models in Diffusers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

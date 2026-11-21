@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: How Long Prompts Block Other Requests - Optimizing LLM Performance</title>
+    <meta name="description" content="Industry observers note that in the previous part of our series on LLM performance, we looked into the differences between the prefill and decode phases du">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-how-long-prompts-block-other-requests-optimizing-ll-81092.html">
+    <meta property="og:title" content="Latest Update: How Long Prompts Block Other Requests - Optimizing LLM Performance">
+    <meta property="og:description" content="Industry observers note that in the previous part of our series on LLM performance, we looked into the differences between the prefill and decode phases du">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/tngtech/llm-performance-blocked-by-long-prompts.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-how-long-prompts-block-other-requests-optimizing-ll-81092.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: How Long Prompts Block Other Requests - Optimizing LLM Performance", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/tngtech/llm-performance-blocked-by-long-prompts.png"], "datePublished": "2025-06-12T08:00:13", "dateModified": "2026-11-21T14:09:03.392446", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-how-long-prompts-block-other-requests-optimizing-ll-81092.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: How Long Prompts Block Other Requests - Optimizing LLM Performance</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 12 Jun 2025 &bull; ⏱️ 5 min read (994 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that in the previous part of our series on LLM performance, we looked into the differences between the prefill and decode phases during token generation.</li><li style='margin-bottom:6px;'>Since individual decode steps are not compute-intensive, one can increase throughput by batching decodes of multiple requests.</li><li style='margin-bottom:6px;'>This sequential scheduling of prefill chunks for different requests poses a challenge: whenever a request with a very long prompt is scheduled for prefill, any subsequent request has to wait for the duration of the long prefill before its processing starts; a long prompt blocks the prefill-queue.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81092"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81092"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81092"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: How Long Prompts Block Other Requests - Optimizing LLM Performance" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/tngtech/llm-performance-blocked-by-long-prompts.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81092">Industry observers note that in the previous part of our series on LLM performance, we looked into the differences between the prefill and decode phases during token generation. In short: for the first output token (prefill step), the entire prompt needs to be processed, which can be parallelized efficiently and can saturate GPU utilization. For all later output tokens (decode steps), only a single additional token needs to be processed, which is less compute-intensive but must be done sequentially. When many requests are processed concurrently, any strategy that aims for low latency needs to run prefill steps for newly arriving requests while the decode steps of previously scheduled requests are still ongoing. Concurrent processing of upcoming as well as running requests therefore requires careful balancing between the prefill and decode stages, which presents two major challenges, which we will discuss in the following. One is a readily solvable problem, while the other one constitutes a more fundamental flaw.</p>
+<p>Since individual decode steps are not compute-intensive, one can increase throughput by batching decodes of multiple requests. For prefill, however, this approach does not work. Because of the parallelized processing of all prompt tokens, a single prefill step can already saturate GPU utilization. Consequently, in the default chunked-prefill strategy of vLLM, each prefill chunk contains only prompt tokens of a single request. The next request in line has to wait until the previous prefill phase has been finished before its own prefill phase can start.</p>
+<p>This sequential scheduling of prefill chunks for different requests poses a challenge: whenever a request with a very long prompt is scheduled for prefill, any subsequent request has to wait for the duration of the long prefill before its processing starts; a long prompt blocks the prefill-queue. (Note that the sequential processing of prefills is the default characteristic of chunked-prefill and only appears when there already is a concurrent request in its decode phase; hence the name "partial prefill".).</p>
+<p>Industry observers note that unfortunately, this challenge can neither be solved with vLLM-side priority scheduling (see the first article of this series) nor with a more sophisticated upstream scheduler. The reason is that the long prompt can be scheduled before any subsequent requests exist, so there is nothing the scheduler could wait for.</p>
+<p>A straightforward solution would be to process prefill chunks of different requests in parallel. This might not be resource-optimized, as single-request prefill chunks could already saturate compute-power. Any additional prefill executed in parallel would likely prolong the prefill duration a bit and slow down any concurrent decode-requests even further. This would be acceptable if it reduced the latency of short requests and made the system appear more responsive. This approach fails, however, when the next request in line has a long prompt too. In such a case, two compute-intensive prefills would be batched together and result in a severe slowdown.</p>
+<p>In one of the latest vLLM updates, an improved strategy has been implemented: it allows for parallel prefills of different requests but with a limit to the number of concurrently processed long prompt requests. An example configuration could enable batching of prefills for four requests, but only one of them may be longer than 10,000 prompt tokens. With such a configuration, the behavior for longer requests is still the same as before: long prompts are processed sequentially. Short requests, however, no longer need to wait for the long prefill of a previous request to finish; short prompts can take a fast lane. These requests no longer suffer from long waiting times and show much lower time-to-first-token metrics.</p>
+<p id="sec-mid-81092">According to recent reports, of course, parallel prefills can only reduce waiting times; but the time-per-output-token remains elevated during the concurrent long-prefill operation. In this regard, request-parallel prefills show the same behavior and performance as standard chunked-prefill, just with a shorter time-to-first-token.</p>
+<p>Whenever prefill and decode of different requests are executed in the same GPU operation, it takes longer than for an isolated decode step. The user experiences an interruption or a slowing down of the token generation by a subsequent request. In particular, a single request with a long prompt is sufficient to slow down all previously scheduled requests that are already in their decode phases.</p>
+<p>This is a fundamental flaw in the concurrent processing of prefill and decode on the same GPUs, because there is little you can do:.</p>
+<p>The difference between ideal concurrent processing (which would be no different from isolated requests), actual concurrent processing, and a disaggregated prefill strategy is shown by the following measurements:.</p>
+<p>Separating prefill and decode eliminates the slowing-down of token generation in presence of other requests to a large extent, which makes it a very attractive strategy. It comes at the price of a second full-size vLLM deployment (e.g. for Llama-3.3-70B, you would need four H100 GPUs for a prefill worker and another four H100 GPUs for a decode worker if you wanted to support a maximum context length of 130k tokens). Another disadvantage is the uneven GPU utilization: because prefill is compute-intensive but decode is not, the prefill worker will likely saturate GPU utilization before the decode worker does. On the other hand, large clusters could consist of different numbers of prefill and decode workers (depending on load patterns), in order to optimize resource utilization.</p>
+<p>Sources indicate that disaggregated prefill is not intended to increase total throughput, rather total "goodput" (i.e. the rate of requests that satisfy latency targets). Consequently, it is not the best use of GPU resources if your application is not sensitive to latency of individual requests.</p>
+<p id="sec-end-81092">Another caveat: the disaggregated prefill feature in vLLM is still experimental, and some optimizations and features are not accessible yet. For example, there are currently lower limits on context length, and the decode worker doesn't use CUDA graphs consistently, causing the slower decode of the long-prompt request in the figure above. Fortunately, these are not fundamental obstacles and are likely going to be solved in future versions of vLLM.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/tngtech/llm-performance-blocked-by-long-prompts" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="prefill-and-decode-for-concurrent-requests-optimizing-llm-perform-81241.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81241. Prefill and Decode for Concurrent Requests - Optimizing LLM Performance
+        </a>
+        
+        <a href="industry-news-efficient-request-queueing-optimizing-llm-performan-81282.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81282. Industry News: Efficient Request Queueing – Optimizing LLM Performance
+        </a>
+        
+        <a href="optimizing-your-llm-in-production-81591.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81591. Optimizing your LLM in production
+        </a>
+        
+        <a href="bringing-the-artificial-analysis-llm-performance-leaderboard-to-h-81490.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81490. Bringing the Artificial Analysis LLM Performance Leaderboard to Hugging Face
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

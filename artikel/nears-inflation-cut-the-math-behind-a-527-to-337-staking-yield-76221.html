@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEAR’s Inflation Cut: The Math Behind a 5.27% to 3.37% Staking Yield</title>
+    <meta name="description" content="AI-assisted summary, reviewed by NullTX editors. HSP-029 lowers NEAR’s issuance cap from 2.5% to 1.6% over 24 months. The cap formula, the epoch step and t">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/nears-inflation-cut-the-math-behind-a-527-to-337-staking-yield-76221.html">
+    <meta property="og:title" content="NEAR’s Inflation Cut: The Math Behind a 5.27% to 3.37% Staking Yield">
+    <meta property="og:description" content="AI-assisted summary, reviewed by NullTX editors. HSP-029 lowers NEAR’s issuance cap from 2.5% to 1.6% over 24 months. The cap formula, the epoch step and t">
+    <meta property="og:image" content="https://cdn.nulltx.com/uploads/1794949524573-rl9nig8tyus.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/nears-inflation-cut-the-math-behind-a-527-to-337-staking-yield-76221.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "NEAR’s Inflation Cut: The Math Behind a 5.27% to 3.37% Staking Yield", "image": ["https://cdn.nulltx.com/uploads/1794949524573-rl9nig8tyus.jpg"], "datePublished": "2026-11-17T21:11:00.193Z", "dateModified": "2026-11-21T14:03:28.365632", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/nears-inflation-cut-the-math-behind-a-527-to-337-staking-yield-76221.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>NEAR’s Inflation Cut: The Math Behind a 5.27% to 3.37% Staking Yield</h1>
+        <div class="meta-line">🌐 Source: <strong>Nulltx</strong> &bull; 📅 17 Nov 2026 &bull; ⏱️ 6 min read (1285 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>HSP-029 lowers NEAR’s issuance cap from 2.5% to 1.6% over 24 months.</li><li style='margin-bottom:6px;'>Most headlines on NEAR’s newly introduced inflation schedule stop at “2.5% to 1.6%.” Stakers feel a different number.</li><li style='margin-bottom:6px;'>According to recent reports, house of Stake ratified HSP-029 on November 16, after the Security Council’s 14-day veto window passed without a veto.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-76221"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-76221"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-76221"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="NEAR’s Inflation Cut: The Math Behind a 5.27% to 3.37% Staking Yield" loading="lazy" src="https://cdn.nulltx.com/uploads/1794949524573-rl9nig8tyus.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-76221">AI-assisted summary, reviewed by NullTX editors.</p>
+<p>HSP-029 lowers NEAR’s issuance cap from 2.5% to 1.6% over 24 months. The cap formula, the epoch step and the yield math show what that does to stakers.</p>
+<p>Most headlines on NEAR’s newly introduced inflation schedule stop at “2.5% to 1.6%.” Stakers feel a different number. They earn about 5.27% today and will earn roughly 3.37% once the cut finishes, and a single line of arithmetic accounts for the gap.</p>
+<p>According to recent reports, house of Stake ratified HSP-029 on November 16, after the Security Council’s 14-day veto window passed without a veto. The proposal touches one parameter, the maximum annual issuance rate, which drops from 2.5% to 1.6% over 24 months. It is the second cut in just over a year, coming after the October 2025 halving from 5%.</p>
+<p>Industry observers note that everything else stays put. Issuance still splits 90% to staking participants and 10% to the protocol treasury. There is no fresh spending program, no validator subsidy and no automatic trigger that could push issuance back up. The full proposal models 11.8 million NEAR of issuance avoided over two years and 66.1 million over six, measured against leaving the cap at 2.5%.</p>
+<p>The schedule is a straight line with no stair steps:.</p>
+<p>cap(t) = 2.5% − 0.9% × min(t, 24) / 24.</p>
+<p>Sources indicate that here t is the number of months since the reduction begins. The 0.9% is the total drop (2.5 minus 1.6), and dividing it by 24 gives a monthly step of 0.0375 percentage points, or 3.75 basis points. The min(t, 24) term caps the ramp at month 24, and the cap sits at 1.6% from there on.</p>
+<p>According to recent reports, NEAR applies the step every epoch rather than once a month. An epoch lasts about 12 hours, so the cap slips by roughly 0.0006 percentage points each time, far too little to notice on any given day. There are no step dates to mark on a calendar. Sampled every six months, the line looks like this:.</p>
+<p>The yield column uses the math in the next section. It drops about 0.08 percentage points a month, evenly, with no cliff.</p>
+<p>Newly introduced tokens go mostly to stakers, so the staked pool splits the reward, and a smaller pool earns more per token. That gives a working formula:.</p>
+<p>gross yield ≈ 0.9 × issuance cap ÷ staking ratio.</p>
+<p>The 0.9 is the staker share of issuance. Using the proposal’s figures, 0.9 × 2.5% ÷ 0.4271 comes to 5.27%, where 42.71% is the staking ratio reported when the proposal went to vote. Put in the 1.6% cap and 0.9 × 1.6% ÷ 0.4271 gives 3.37%, the same number the proposal publishes. Anyone can check the headline yields on a calculator.</p>
+<p>Recent findings suggest that the formula has two limits. It uses the cap, but realized issuance runs a little lower because transaction fees are burned. HSP-029 measured 2.45% in September, which puts today’s yield near 5.16%. The staking ratio also moves. When more people stake, the same rewards spread over more tokens and yield falls further, and when people unstake it climbs. The 3.37% figure assumes today’s ratio holds.</p>
+<p id="sec-mid-76221">Recent findings suggest that stakers feel it first. By the proposal’s own math, someone staking 1,000 NEAR ends up with about 20 fewer tokens after two years than if the cap had stayed at 2.5%. The numbers back that up: yield averages about 4.32% across the ramp, roughly 0.95 points under today’s rate for two years.</p>
+<p>Recent findings suggest that holders who don’t stake come out ahead. More than half of NEAR’s supply sits unstaked, and every new token dilutes those holdings. Trimming the cap by 0.9 percentage points trims that dilution by the same amount each year. Stakers give up some reward so that everyone else gives up less value.</p>
+<p>Validators get an easier path than in 2025, when the halving cut staking rewards from about 9% to 4.75% in a single upgrade. Operators now have 24 months to blueprint. NEAR’s analysis finds that most validator revenue comes from commission on delegated stake, so service quality and fee competition shape income more than the issuance rate does.</p>
+<p>In a recent development, recent history explains the setup. When the 2025 halving shipped, an earlier community poll had missed the two-thirds threshold, and critics mentioned the core team pushed the change through anyway. HSP-029 sidesteps that argument by design.</p>
+<p>Industry observers note that two separate approvals are required. Token holders voting through veNEAR set the direction, and that vote closed November 2 with 99.96% in favor and none against. Validators then decide on their own whether to adopt the protocol upgrade that makes the cap binding. The author, Sal Ternullo of SVRN, opened discussion on October 7, and the process ran through the Screening Committee and Security Council in public. Raising issuance again would take a fresh proposal and another round of validator adoption, so nothing can be added quietly later.</p>
+<p>Ratification does not change issuance yet. A one-quarter grace period comes first, giving wallets, exchanges, custodians and staking providers time to patch their disclosures. NEAR One then releases the upgrade and validators choose whether to adopt it, with the reduction starting about a quarter after ratification. On schedule, that means a start in early 2027 and a 1.6% cap around early 2029.</p>
+<p>Three things are worth tracking. Validator adoption of the upgrade comes first, because the cap stays at 2.5% until enough validators run it. The staking ratio comes next, since it moves yield regardless of the formula. Last are the quarterly transparency reports NEAR has promised, which compare realized issuance with the schedule.</p>
+<p>Recent findings suggest that price is a separate question. Lower issuance eases supply pressure, but nothing in it creates demand. The cap will follow its published line down, and yield will follow the cap.</p>
+<p>Recent findings suggest that disclosure: This is not trading or investment advice. Always do your research before buying any cryptocurrency or investing in any services. Follow us on X @nulltxnews.</p>
+<p>According to recent reports, paying a Bittensor subnet with gamma burns its alpha token. Here is how gamma gets minted, how the lower-price rule works and why the credit can never be converted back.Pay a Bittensor subnet for an AI answer with gamma, and your payment vanishes. The alpha token behind it gets burned, the credit gets spent, and nobody can redeem either one.One Wallet Replac….</p>
+<p>FinCEN's November 6 order cuts US financial institutions off from MEXC Global, barring any transmittal of funds to or from the exchange. The order spells out what is banned, what MEXC is accused of, and how the exchange has answered.MEXC notes user assets remain secure. The FinCEN order never suggested otherwise, and the gap between the exchange's reassurance….</p>
+<p>In a recent development, zetaChain's Governance Proposal 2 would halt its L1 around Dec 9, mint ZETA 1:1 on Solana and burn about 55M ZETA in monthly installments. Voting closes Nov 7.Headlines are calling it a 55 million ZETA burn. Read the proposal's own schedule, though, and nothing close to 55 million disappears on the day the chain halts. The figure is real, but it arrives in t….</p>
+<p>eZAR opened its rand-pegged token to the public on November 2 with R303 million in circulation. Its reserve yield is the feature that puts the stablecoin label to the test.Most stablecoin introduces promise a token that never moves. eZAR's disclosures say its holders can make money or lose it. The rand-pegged token went live to the public on November 2, and it….</p>
+<p>One email a week with our newly introduced explainers and the news behind them.</p>
+<p id="sec-end-76221">More explainers and analysis from NullTX.</p>
+<p style="margin-top: 25px;">
+<a href="https://nulltx.com/nears-inflation-cut-the-math-behind-a-527-to-337-staking-yield" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="near-token-recovers-to-326-as-governance-finalizes-16-inflation-c-76447.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #76447. NEAR Token Recovers to $3.26 as Governance Finalizes 1.6% Inflation Cut
+        </a>
+        
+        <a href="industry-news-large-scale-near-deduplication-behind-bigcode-81655.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81655. Industry News: Large-scale Near-deduplication Behind BigCode
+        </a>
+        
+        <a href="the-shockingly-simple-math-behind-social-security-79799.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #79799. The Shockingly Simple Math Behind Social Security
+        </a>
+        
+        <a href="certik-and-columbia-university-bring-math-proofs-to-the-gpu-code--69421.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #69421. CertiK and Columbia University Bring Math Proofs to the GPU Code Behind Every Large AI Model
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

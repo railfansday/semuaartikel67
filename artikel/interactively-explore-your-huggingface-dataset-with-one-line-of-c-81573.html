@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactively explore your Huggingface dataset with one line of code</title>
+    <meta name="description" content="The Hugging Face datasets library not only provides access to more than 70k publicly available datasets, but also offers very convenient data preparation p">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/interactively-explore-your-huggingface-dataset-with-one-line-of-c-81573.html">
+    <meta property="og:title" content="Interactively explore your Huggingface dataset with one line of code">
+    <meta property="og:description" content="The Hugging Face datasets library not only provides access to more than 70k publicly available datasets, but also offers very convenient data preparation p">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/scalable-data-inspection/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/interactively-explore-your-huggingface-dataset-with-one-line-of-c-81573.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Interactively explore your Huggingface dataset with one line of code", "image": ["https://huggingface.co/blog/assets/scalable-data-inspection/thumbnail.png"], "datePublished": "2023-10-25T00:00:00", "dateModified": "2026-11-21T14:09:51.059842", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/interactively-explore-your-huggingface-dataset-with-one-line-of-c-81573.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Interactively explore your Huggingface dataset with one line of code</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 25 Oct 2023 &bull; ⏱️ 4 min read (734 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>The Hugging Face datasets library not only provides access to more than 70k publicly available datasets, but also offers very convenient data preparation pipelines for custom datasets.</li><li style='margin-bottom:6px;'>Renumics Spotlight allows you to create interactive visualizations to identify critical clusters in your data.</li><li style='margin-bottom:6px;'>Spotlight allows to leverage model results such as predictions and embeddings to gain a deeper understanding in data segments and model failure modes:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-81573"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-81573"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-81573"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Interactively explore your Huggingface dataset with one line of code" loading="lazy" src="https://huggingface.co/blog/assets/scalable-data-inspection/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-81573">The Hugging Face datasets library not only provides access to more than 70k publicly available datasets, but also offers very convenient data preparation pipelines for custom datasets.</p>
+<p>Renumics Spotlight allows you to create interactive visualizations to identify critical clusters in your data. Because Spotlight understands the data semantics within Hugging Face datasets, you can get started with just one line of code:.</p>
+<p>Spotlight allows to leverage model results such as predictions and embeddings to gain a deeper understanding in data segments and model failure modes:.</p>
+<p>Data inspection is a very key task in almost all ML development stages, but it can also be very time consuming.</p>
+<p>“Manual inspection of data has probably the highest value-to-prestige ratio of any activity in machine learning.” — Greg Brockman.</p>
+<p>Spotlight helps you to make data inspection more scalable along two dimensions: Setting up and maintaining custom data inspection workflows and finding relevant data samples and clusters to inspect. In the following sections we show some examples based on Hugging Face datasets.</p>
+<p>The datasets library has several features that makes it an ideal tool for working with ML datasets: It stores tabular data (e.g. metadata, labels) along with unstructured data (e.g. images, audio) in a common Arrows table. Datasets also describes crucial data semantics through features (e.g. images, audio) and additional task-specific metadata.</p>
+<p>According to recent reports, spotlight directly works on top of the datasets library. This means that there is no need to copy or pre-process the dataset for data visualization and inspection. Spotlight loads the tabular data into memory to allow for efficient, client-side data analytics. Memory-intensive unstructured data samples (e.g. audio, images, video) are loaded lazily on demand. In most cases, data types and label mappings are inferred directly from the dataset. Here, we visualize the CIFAR-100 dataset with one line of code:.</p>
+<p>In cases where the data types are ambiguous or not specified, the Spotlight API allows to manually assign them:.</p>
+<p>Exploring raw unstructured datasets often yield little insights. Leveraging model results such as predictions or embeddings can help to uncover critical data samples and clusters. Spotlight has several visualization options (e.g. similarity map, confusion matrix) that specifically make use of model results.</p>
+<p>It has been revealed that we recommend storing your prediction results directly in a Hugging Face dataset. This not only allows you to take advantage of the batch processing capabilities of the datasets library, but also keeps label mappings.</p>
+<p id="sec-mid-81573">Sources indicate that we can use the transformers library to compute embeddings and predictions on the CIFAR-100 image classification problem. We install the libraries via pip:.</p>
+<p>Now we can compute the enrichment:.</p>
+<p>If you don’t want to perform the full inference run, you can alternatively download pre-computed model results for CIFAR-100 to follow this tutorial:.</p>
+<p>We can now use the results to interactively explore relevant data samples and clusters in Spotlight:.</p>
+<p>Visualization layouts can be interactively changed, saved and loaded in the GUI: You can select different widget types and configurations. The Inspector widget allows to represent multimodal data samples including text, image, audio, video and time series data.</p>
+<p>According to recent reports, you can also define layouts through the Python API. This option is especially useful for building custom data inspection and curation workflows including EDA, model debugging and model monitoring tasks.</p>
+<p>In combination with the data issues widget, the Python API offers a great way to integrate the results of existing scripts (e.g. data quality checks or model monitoring) into a scalable data inspection workflow.</p>
+<p>You can use Spotlight directly on your local NLP, audio, CV or multimodal dataset. If you would like to showcase your dataset or model results on the Hugging Face hub, you can use Hugging Face spaces to launch a Spotlight visualization for it.</p>
+<p>Recent findings suggest that we have already prepared example spaces for many popular NLP, audio and CV datasets on the hub. You can simply duplicate one of these spaces and specify your dataset in the HF_DATASET variable.</p>
+<p>You can optionally choose a dataset that contains model results and other configuration options such as splits, subsets or dataset revisions.</p>
+<p>With Spotlight you can create interactive visualizations and leverage data enrichments to identify critical clusters in your Hugging Face datasets. In this blog, we have seen both an audio ML and a computer vision example.</p>
+<p id="sec-end-81573">You can use Spotlight directly to explore and curate your NLP, audio, CV or multimodal dataset:.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/scalable-data-inspection" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="optimum-nvidia-unlocking-blazingly-fast-llm-inference-in-just-1-l-81564.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81564. Optimum-NVIDIA Unlocking blazingly fast LLM inference in just 1 line of code
+        </a>
+        
+        <a href="breaking-unlocking-the-conversion-of-web-screenshots-into-html-co-81522.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81522. Breaking: Unlocking the conversion of Web Screenshots into HTML Code with the WebSight Dataset
+        </a>
+        
+        <a href="grand-theft-auto-started-as-a-broken-racing-game-no-one-liked-the-77541.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #77541. Grand Theft Auto Started as a Broken Racing Game No One Liked. Then the Code Malfunctioned—Brilliantly.
+        </a>
+        
+        <a href="retrieval-augmented-generation-with-huggingface-transformers-and--81865.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #81865. Retrieval Augmented Generation with Huggingface Transformers and Ray
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
