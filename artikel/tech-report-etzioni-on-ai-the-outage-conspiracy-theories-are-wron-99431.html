@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Etzioni on AI: The outage conspiracy theories are wrong — our rush to patch and upgrade is the culprit</title>
+    <meta name="description" content="by Oren Etzioni on Nov 22, 2026 at 7:04 amNovember 22, 2026 at 7:06 am. In a recent development, in less than a week, Microsoft email went dark around the ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-etzioni-on-ai-the-outage-conspiracy-theories-are-wron-99431.html">
+    <meta property="og:title" content="Tech Report: Etzioni on AI: The outage conspiracy theories are wrong — our rush to patch and upgrade is the culprit">
+    <meta property="og:description" content="by Oren Etzioni on Nov 22, 2026 at 7:04 amNovember 22, 2026 at 7:06 am. In a recent development, in less than a week, Microsoft email went dark around the ">
+    <meta property="og:image" content="https://cdn.geekwire.com/wp-content/uploads/2026/11/faa-ground-stop-departure-board-toronto.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-etzioni-on-ai-the-outage-conspiracy-theories-are-wron-99431.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Etzioni on AI: The outage conspiracy theories are wrong — our rush to patch and upgrade is the cu", "image": ["https://cdn.geekwire.com/wp-content/uploads/2026/11/faa-ground-stop-departure-board-toronto.jpg"], "datePublished": "2026-11-22T15:04:53+00:00", "dateModified": "2026-11-24T03:45:05.049821", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-etzioni-on-ai-the-outage-conspiracy-theories-are-wron-99431.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Etzioni on AI: The outage conspiracy theories are wrong — our rush to patch and upgrade is the culprit</h1>
+        <div class="meta-line">🌐 Source: <strong>Geekwire</strong> &bull; 📅 22 Nov 2026 &bull; ⏱️ 4 min read (844 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>by Oren Etzioni on Nov 22, 2026 at 7:04 amNovember 22, 2026 at 7:06 am.</li><li style='margin-bottom:6px;'>In a recent development, in less than a week, Microsoft email went dark around the world, the FAA halted every departure in the country, Chase payments stalled, Apple’s services faltered and the NSA’s internal network went down.</li><li style='margin-bottom:6px;'>Attackers typically announce when they’ve hit you.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-99431"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-99431"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-99431"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Etzioni on AI: The outage conspiracy theories are wrong — our rush to patch and upgrade is the culprit" loading="lazy" src="https://cdn.geekwire.com/wp-content/uploads/2026/11/faa-ground-stop-departure-board-toronto.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-99431">by Oren Etzioni on Nov 22, 2026 at 7:04 amNovember 22, 2026 at 7:06 am.</p>
+<p>In a recent development, in less than a week, Microsoft email went dark around the world, the FAA halted every departure in the country, Chase payments stalled, Apple’s services faltered and the NSA’s internal network went down. Sen. Josh Hawley remarked that if this was all a coincidence, “it’s like the greatest coincidence in the history of the world.” Yet intelligence and law enforcement officials told Congress they’ve found no evidence that anyone was attacking us.</p>
+<p>Attackers typically announce when they’ve hit you. Terrorists claim credit. Criminals issue ransom notes and often brag as well: the hackers who crippled MGM’s casino systems in 2023 told TechCrunch within days. None of this month’s outages came with any of that.</p>
+<p>Industry observers note that could a state actor be flexing its cyber capabilities to warn us? China’s Volt Typhoon hackers kept access to U.S. critical infrastructure for at least five years before anyone made it public, positioning themselves to disrupt it in a future crisis. However, hackers who are that patient don’t blow their cover by knocking out the world’s email. A warning shot also works only if the target knows who fired it, and we don’t have a credible suspect for a shooter here.</p>
+<p>Each outage has a separate origin tracing back to the organization’s own systems: a upcoming router a contractor was installing for the FAA, a bug Microsoft shipped in July, a software bug at Chase, an internal update at Apple, a patch at the NSA. To stage that, a single attacker would have to break into three companies and two federal agencies, disguise every intrusion as a routine mistake and leave nothing for investigators to find.</p>
+<p>In a recent development, A far more credible root cause is the patch treadmill set at too high a speed: AI is finding security holes faster than anyone can safely fix them, and the rush to patch and upgrade is making everything more fragile. Think of an immune system in overdrive. It fights off infection, and sometimes it attacks healthy tissue. This month’s outages were a flare-up.</p>
+<p>On Nov. 17, the startup Calif disclosed Java4Shell, a critical flaw in Java, the software platform used by government agencies and about 90% of Fortune 500 companies. Calif found it with OpenAI’s GPT-6 Cyber model. Oracle shipped a patch the same day, and a federal alert urged organizations to “immediately patch.”.</p>
+<p id="sec-mid-99431">Last month the same startup used OpenAI models to find a flaw in PHP, the programming language behind an estimated 70% of websites, and Director of National Intelligence Jay Clayton tied the NSA’s outage to the patching that followed. Microsoft alone fixed 1,413 vulnerabilities in October, more than its previous record for an entire year.</p>
+<p>AI is forcing faster fixes. Microsoft CEO Satya Nadella says his company’s outage came from a dormant bug, but he warned this week that AI-driven patching could bring more instability. AI has “allowed us to find these bugs and fix these bugs, but that means you’ve got to then patch them, and that creates instability,” he told CNBC.</p>
+<p>A patch for a critical bank system might once have been tested for a week, he stated at the New York Times DealBook Summit. Now it “needs to go instantly from being available to being patched in production because it’s being exploited in the wild.”.</p>
+<p>Recent findings suggest that the FBI warned on Nov. 13 that criminals and state-backed hackers are already using ARTEX, an open-source AI tool built for testing a tech giant’s own defenses, with some intrusions going from first targeting to administrator-level access in under three hours. So the patching can’t slow down. Nobody would give up their immune system to avoid a flare-up.</p>
+<p>It will get worse before it gets better. Calif’s CEO, Thai Duong, expects Java4Shell to threaten systems that don’t upgrade for the next five to 10 years.</p>
+<p>It has been revealed that meanwhile, the AI that finds flaws like this one is spreading. Open-weight models, which anyone can download and run without safeguards, trail the most advanced models on cyber tasks by only four to seven months, according to the UK AI Security Institute. Every month will bring more bugs, more emergency patches and more flare-ups.</p>
+<p>Sources indicate that there’s a finite amount of code in Windows, iOS and Chrome, and every bug AI finds and fixes there is one an attacker can’t use. Partners in Anthropic’s Project Glasswing, a program to secure critical software before AI can be turned against it, found more than 10,000 high- or critical-severity bugs in its first month.</p>
+<p id="sec-end-99431">According to recent reports, former Microsoft security staffer Angela Gunn sees a hopeful sign: more and more unrelated researchers are turning up the same bugs, which suggests the supply is finite. Fixing still lags finding, but the giants have the money and people to catch up. Within a year or two, I expect Windows, iOS and Chrome to be more secure than they’ve ever been.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.geekwire.com/2026/etzioni-on-ai-the-outage-conspiracy-theories-are-wrong-our-rush-to-patch-and-upgrade-is-the-culprit/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-our-transformers-code-agent-beats-the-gaia-benchmark-104627.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104627. Tech Report: Our Transformers Code Agent beats the GAIA benchmark 🏅
+        </a>
+        
+        <a href="breaking-our-push-notifications-arrived-silent-empty-and-wrong-ab-103934.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #103934. Breaking: Our push notifications arrived silent, empty, and wrong about the time. Three bugs, one night.
+        </a>
+        
+        <a href="tech-report-2026-holiday-gift-guide-how-our-editors-played-santa--103224.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #103224. Tech Report: 2026 Holiday Gift Guide: How Our Editors Played Santa For Our Contributors
+        </a>
+        
+        <a href="our-editors-ride-tested-virginia-techs-top-rated-road-and-gravel--103216.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #103216. Our Editors Ride-Tested Virginia Tech’s Top-Rated Road and Gravel Helmets—Including a $60 Pick That Punches Way Above Its Price
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

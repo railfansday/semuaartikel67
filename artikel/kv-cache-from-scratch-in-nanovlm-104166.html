@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KV Cache from scratch in nanoVLM</title>
+    <meta name="description" content="We have implemented KV Caching from scratch in our nanoVLM repository (a small codebase to train your own Vision Language Model with pure PyTorch). This ga">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/kv-cache-from-scratch-in-nanovlm-104166.html">
+    <meta property="og:title" content="KV Cache from scratch in nanoVLM">
+    <meta property="og:description" content="We have implemented KV Caching from scratch in our nanoVLM repository (a small codebase to train your own Vision Language Model with pure PyTorch). This ga">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/kv-cache/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/kv-cache-from-scratch-in-nanovlm-104166.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "KV Cache from scratch in nanoVLM", "image": ["https://huggingface.co/blog/assets/kv-cache/thumbnail.png"], "datePublished": "2025-06-04T00:00:00", "dateModified": "2026-11-24T03:49:22.012369", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/kv-cache-from-scratch-in-nanovlm-104166.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>KV Cache from scratch in nanoVLM</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 04 Jun 2025 &bull; ⏱️ 5 min read (1015 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>We have implemented KV Caching from scratch in our nanoVLM repository (a small codebase to train your own Vision Language Model with pure PyTorch).</li><li style='margin-bottom:6px;'>In a recent development, autoregressive language models generate text by sampling one token at a time.</li><li style='margin-bottom:6px;'>This step-by-step generation is inherently sequential:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-104166"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-104166"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-104166"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="KV Cache from scratch in nanoVLM" loading="lazy" src="https://huggingface.co/blog/assets/kv-cache/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-104166">We have implemented KV Caching from scratch in our nanoVLM repository (a small codebase to train your own Vision Language Model with pure PyTorch). This gave us a 38% speedup in generation. In this blog post we cover KV Caching and all our experiences while implementing it. The lessons learnt are general and can be applied to all autoregressive language model generations. Implementing from scratch on a small codebase is a great learning experience, come along for the ride!</p>
+<p>In a recent development, autoregressive language models generate text by sampling one token at a time. During inference, the model processes a given input sequence, predicts the next token, appends it to the sequence, and repeats this process until some stopping criterion:.</p>
+<p>This step-by-step generation is inherently sequential:.</p>
+<p>Sources indicate that this repetition also leads to computational redundancy. In this post, we explore KV Caching, an optimisation technique that mitigates this inefficiency.</p>
+<p>Before diving into caching, let’s revisit how attention operates in transformer models. A Transformer language model consists of stacked layers, each composed of:.</p>
+<p>To understand where KV Caching helps, we focus on the self-attention mechanism, specifically within a single attention head.</p>
+<p>Let’s walk through a simple PyTorch implementation to visualise the key computations.</p>
+<p>For a sequence of T T T input embeddings represented as X∈RT×D X \in \mathbb{R}^{T \times D} X∈RT×D, self-attention is computed as:.</p>
+<p>Attention(X;Q,K,V)=softmax(QK⊤⋅Mdk)V
+\text{Attention}(X; Q, K, V) = \text{softmax}\left( \frac{QK^\top \cdot M}{\sqrt{d_k}} \right)V
+Attention(X;Q,K,V)=softmax(dk​​QK⊤⋅M​)V.</p>
+<p>Here’s a minimal PyTorch equivalent using a causal mask:.</p>
+<p>According to recent reports, in autoregressive generation, the model generates one token at a time. With each step, it recomputes Q Q Q, K K K, and V V V for the entire sequence, even though the earlier tokens haven’t changed.</p>
+<p>These checks show that for all but the newest token, K K K and V V V are identical to previously computed values.</p>
+<p>Industry observers note that most of the attention computation is repeated needlessly. This gets more expensive as sequences grow.</p>
+<p>To eliminate this inefficiency, we use KV Caching:.</p>
+<p>This changes generation from full-sequence re-computation to a lightweight, incremental upgrade.</p>
+<p>✅ In practice, this cache is a per-layer dictionary with keys "key" and "value", each of shape (batch_size, num_heads, seq_len_cached, head_dim).</p>
+<p>This is the foundation of how modern LLMs can generate long outputs efficiently.</p>
+<p>Now that we understand the theory behind KV Caching, let’s see how it’s implemented in practice inside our nanoVLM repository. This is an ideal testbed, as it's a super concise and self-contained codebase.</p>
+<p>KV caching is enabled across three key components in our model:.</p>
+<p>In the LanguageModelGroupedAttention class, we modify the forward function to accept and patch a cache of keys and values (block_kv_cache).</p>
+<p id="sec-mid-104166">Previously, the model recomputed K K K and V V V at every generation step. Now we only compute Knew K_{\text{newly introduced}} Knew​, Vnew V_{\text{new}} Vnew​ for the current token, and append them to the cached values.</p>
+<p>It has been revealed that in the LanguageModel class, we introduce layer-wise cache tracking. The start_pos argument helps the model compute correct rotary positional encodings for newly generated tokens.</p>
+<p>The biggest architectural change is in the generate() method of the VisionLanguageModel.</p>
+<p>We split generation into two stages:.</p>
+<p>By separating these phases, we avoid redundant computation and dramatically speed up inference, especially for long prompts.</p>
+<p>According to recent reports, KV caching eliminates unnecessary computation during autoregressive generation, enabling faster and more efficient inference, especially in long sequences and real-time applications. This is a trade-off between speed and memory, and its drawbacks can be more complex code and restricting fancier inference schemes, like beam-search, etc. KV caching is a popular method for speeding up LLM inference, making it possible to run them on consumer hardware, and now you know how it works too!</p>
+<p>Special thanks to Tushar Dhar for their comment and helping us make the blog better.</p>
+<p>Thanks  for this great article! I'm learning a lot from the nanoVLM project.I'm not an expert in gen ai but I noticed the attention calculation example seems to be missing the scaling √(d_k). Is this intentional for simplification?</p>
+<p>From my understanding this scaling prevents the dot product growing too large and control the softmax region.</p>
+<p>Would you like to raise a PR to the blog post with the changes to the code?</p>
+<p>Here is the source for the blog post: https://github.com/huggingface/blog/blob/main/kv-cache.md.</p>
+<p>Nice read, I found the prefill and decode explanation very intuitive. Good job 👏.</p>
+<p>made this visual representation of what happens inside the attention mechanism when using kv caching.thought i'd share it with the community 🤗.</p>
+<p>Recent findings suggest that hi Team,kv_cache only for text? Is it doing for images in this Articles.</p>
+<p>caching results can be used for diffusion applications as well, although not similar to KV caching since kv caching is optimized for next token prediction while in diffusion the full sequence already exists.the short answer to your question is yes kv caching is only for next token prediction but there are other caching techniques out there for other taskstry checking what PrunaAI has been doing to optimize diffusion models, here's a link to one of their previous presentations :  LINKEDIN_POST.</p>
+<p>Hi,Thanks for helping me understand KV caching,.</p>
+<p>I just had a clarifying question,in the diagram for this attention matrix (mentioned above in the article):.</p>
+<p>Recent findings suggest that original (5×5):                     Extended (6×6):■ ■ ■ ■ ■   -&gt;                   ■ ■ ■ ■ ■ □■ ■ ■ ■ ■       -&gt;              ■ ■ ■ ■ ■ □■ ■ ■ ■ ■    -&gt;              ■ ■ ■ ■ ■ □■ ■ ■ ■ ■    -&gt;                       ■ ■ ■ ■ ■ □■ ■ ■ ■ ■     -&gt;                          ■ ■ ■ ■ ■ □....................... □ □ □ □ □ □.</p>
+<p>you say that :"□ = Recomputed unnecessarily".</p>
+<p>But is that not the part we need to compute and the white ones are recomputed unnecessarily,I might be taking the wording the wrong way I feel so needed to askThanks anyways! great read! 🤗.</p>
+<p id="sec-end-104166">You are absolutely right! Thanks for catching it. We have updated the blog and also credited you for the comment. 🤗 https://github.com/huggingface/blog/pull/3593.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/kv-cache" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-how-to-train-a-fresh-language-model-from-scratch-usin-105102.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #105102. Tech Report: How to train a fresh language model from scratch using Transformers and Tokenizers
+        </a>
+        
+        <a href="training-codeparrot-from-scratch-105058.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #105058. Training CodeParrot 🦜 from Scratch
+        </a>
+        
+        <a href="breaking-unlocking-longer-generation-with-key-value-cache-quantiz-104676.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104676. Breaking: Unlocking Longer Generation with Key-Value Cache Quantization
+        </a>
+        
+        <a href="industry-news-ai-agents-design-an-entirely-fresh-cpu-architecture-104481.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104481. Industry News: AI agents design an entirely fresh CPU architecture from scratch, startup claims
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

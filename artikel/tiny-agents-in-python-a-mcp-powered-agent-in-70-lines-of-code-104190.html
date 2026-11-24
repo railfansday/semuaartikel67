@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiny Agents in Python: a MCP-powered agent in ~70 lines of code</title>
+    <meta name="description" content="NEW: tiny-agents now supports AGENTS.md standard. 🥳. Inspired by Tiny Agents in JS, we ported the idea to Python 🐍 and extended the huggingface_hub client ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tiny-agents-in-python-a-mcp-powered-agent-in-70-lines-of-code-104190.html">
+    <meta property="og:title" content="Tiny Agents in Python: a MCP-powered agent in ~70 lines of code">
+    <meta property="og:description" content="NEW: tiny-agents now supports AGENTS.md standard. 🥳. Inspired by Tiny Agents in JS, we ported the idea to Python 🐍 and extended the huggingface_hub client ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/python-tiny-agents/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tiny-agents-in-python-a-mcp-powered-agent-in-70-lines-of-code-104190.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tiny Agents in Python: a MCP-powered agent in ~70 lines of code", "image": ["https://huggingface.co/blog/assets/python-tiny-agents/thumbnail.png"], "datePublished": "2025-05-23T00:00:00", "dateModified": "2026-11-24T03:49:23.949648", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tiny-agents-in-python-a-mcp-powered-agent-in-70-lines-of-code-104190.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tiny Agents in Python: a MCP-powered agent in ~70 lines of code</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 23 May 2025 &bull; ⏱️ 10 min read (1985 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>NEW: tiny-agents now supports AGENTS.md standard.</li><li style='margin-bottom:6px;'>Inspired by Tiny Agents in JS, we ported the idea to Python 🐍 and extended the huggingface_hub client SDK to act as a MCP Client so it can pull tools from MCP servers and pass them to the LLM during inference.</li><li style='margin-bottom:6px;'>According to recent reports, MCP (Model Context Protocol) is an open protocol that standardizes how Large Language Models (LLMs) interact with external tools and APIs.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-104190"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-104190"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-104190"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tiny Agents in Python: a MCP-powered agent in ~70 lines of code" loading="lazy" src="https://huggingface.co/blog/assets/python-tiny-agents/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-104190">NEW: tiny-agents now supports AGENTS.md standard. 🥳.</p>
+<p>Inspired by Tiny Agents in JS, we ported the idea to Python 🐍 and extended the huggingface_hub client SDK to act as a MCP Client so it can pull tools from MCP servers and pass them to the LLM during inference.</p>
+<p>According to recent reports, MCP (Model Context Protocol) is an open protocol that standardizes how Large Language Models (LLMs) interact with external tools and APIs. Essentially, it removed the need to write custom integrations for each tool, making it simpler to plug upcoming capabilities into your LLMs.</p>
+<p>In this blog post, we'll show you how to get started with a tiny Agent in Python connected to MCP servers to unlock powerful tool capabilities. You'll see just how easy it is to spin up your own Agent and start building!</p>
+<p>Spoiler : An Agent is essentially a while loop built right on top of an MCP Client!</p>
+<p>This section walks you through how to use existing Tiny Agents. We'll cover the setup and the commands to get an agent running.</p>
+<p>First, you need to install the latest version of huggingface_hub with the mcp extra to get all the necessary components.</p>
+<p>Now, let's run an agent using the CLI!</p>
+<p>The coolest part is that you can load agents directly from the Hugging Face Hub tiny-agents Dataset, or specify a path to your own local agent configuration!</p>
+<p>If you don't provide a path to a specific agent configuration, our Tiny Agent will connect by default to the following two MCP servers:.</p>
+<p>The following example shows a web-browsing agent configured to use the Qwen/Qwen2.5-72B-Instruct model via Nebius inference provider, and it comes equipped with a playwright MCP server, which lets it use a web browser! The agent config is loaded specifying its path in the tiny-agents/tiny-agents Hugging Face dataset.</p>
+<p>It has been revealed that when you run the agent, you'll see it load, listing the tools it has discovered from its connected MCP servers. Then, it's ready for your prompts!</p>
+<p>do a Web Search for HF inference providers on Brave Search and open the first result and then give me the list of the inference providers supported on Hugging Face.</p>
+<p>Industry observers note that you can also use Gradio Spaces as MCP servers! The following example uses Qwen/Qwen2.5-72B-Instruct model via Nebius inference provider, and connects to a FLUX.1 [schnell] image generation HF Space as an MCP server. The agent is loaded from its configuration in the tiny-agents/tiny-agents dataset on the Hugging Face Hub.</p>
+<p>Generate a 1024x1024 image of a tiny astronaut hatching from an egg on the surface of the moon.</p>
+<p>Now that you've seen how to run existing Tiny Agents, the following sections will dive deeper into how they work and how to build your own.</p>
+<p>Recent findings suggest that each agent's behavior (its default model, inference provider, which MCP servers to connect to, and its initial system prompt) is defined by an agent.json file. You can also provide a custom PROMPT.md in the same directory for a more detailed system prompt. Here is an example:.</p>
+<p>In a recent development, agent.json
+The model and provider fields specify the LLM and inference provider used by the agent. The servers array defines the MCP servers the agent will connect to. In this example, a "stdio" MCP server is configured. This type of server runs as a local process. The Agent starts it using the specified command and args, and then communicates with it via stdin/stdout to discover and execute available tools.</p>
+<p>You can find more details about Hugging Face Inference Providers here.</p>
+<p>Modern LLMs are built for function calling (or tool use), which enables people to easily build applications tailored to specific use cases and real-world tasks.</p>
+<p>According to recent reports, A function is defined by its schema, which informs the LLM what it does and what input arguments it expects. The LLM decides when to use a tool, the Agent then orchestrates running the tool and feeding the result back.</p>
+<p>InferenceClient implements the same tool calling interface as the OpenAI Chat Completions API, which is the established standard for inference providers and the community.</p>
+<p>According to recent reports, the MCPClient is the heart of our tool-use functionality. It's now part of huggingface_hub and uses the AsyncInferenceClient to communicate with LLMs.</p>
+<p>The full MCPClient code is in here if you want to follow along using the actual code 🤓.</p>
+<p>Key responsibilities of the MCPClient:.</p>
+<p>​​Here’s a glimpse of how it connects to an MCP server (the add_mcp_server method):.</p>
+<p>It supports stdio servers for local tools (like accessing your file system), and http servers for remote tools! It's also compatible with sse, which is the previous standard for remote tools.</p>
+<p>Recent findings suggest that the MCPClient's process_single_turn_with_tools method is where the LLM interaction happens. It sends the conversation history and available tools to the LLM via AsyncInferenceClient.chat.completions.create(..., stream=True).</p>
+<p>First, the method determines all tools the LLM should be aware of for the current turn – this includes tools from MCP servers and any special "exit loop" tools for agent control; then, it makes a streaming call to the LLM:.</p>
+<p>As chunks arrive from the LLM, the method iterates through them. Each chunk is immediately yielded, then we reconstruct the complete text response and any tool calls.</p>
+<p>Once the stream is complete, if the LLM requested any tool calls (now fully reconstructed in final_tool_calls), the method processes each one:.</p>
+<p>Industry observers note that it first checks if the tool called exits the loop (exit_loop_tool). If not, it finds the correct MCP session responsible for that tool and calls session.call_tool(). The result (or error response) is then formatted, added to the conversation history, and yielded so the Agent is aware of the tool's output.</p>
+<p>According to recent reports, with the MCPClient doing all the job for tool interactions, our Agent class becomes wonderfully simple. It inherits from MCPClient and adds the conversation management logic.</p>
+<p>The Agent class is tiny and focuses on the conversational loop, the code can be found here.</p>
+<p>In a recent development, when an Agent is created, it takes an agent config (model, provider, which MCP servers to use, system prompt) and initializes the conversation history with the system prompt. The load_tools() method then iterates through the server configurations (defined in agent.json) and calls add_mcp_server (from the parent MCPClient) for each one, populating the agent's toolbox.</p>
+<p>Industry observers note that the Agent.run() method is an asynchronous generator that processes a single user input. It manages the conversation turns, deciding when the agent's current task is complete.</p>
+<p>There are a lot of cool ways to explore and expand upon the MCP Client and the Tiny Agent 🔥 
+Here are some ideas to get you started:.</p>
+<p>Pull requests and contributions are welcome! Again, everything here is open source! 💎❤️.</p>
+<p>It has been revealed that it doesn't work. I got this error.</p>
+<p id="sec-mid-104190">63 │   │   os._exit(130)                                                                                                                                                 ││    64 │                                                                                                                                                                     ││    65 │   try:                                                                                                                                                              ││ ❱  66 │   │   loop.add_signal_handler(signal.SIGINT, _sigint_handler)                                                                                                       ││    67 │   │                                                                                                                                                                 ││    68 │   │   async with Agent(                                                                                                                                             ││    69 │   │   │   provider=config["provider"],                                                                                                                              ││                                                                                                                                                                             ││ ╭──────────────────────────────────────────────────────────────────────────────── locals ─────────────────────────────────────────────────────────────────────────────────╮ ││ │             abort_event =                                                                                     │ ││ │              agent_path = '.\agent_playwright\'                                                                                                                       │ ││ │                  config = {                                                                                                                                             │ ││ │                           │   'model': 'Qwen/Qwen2.5-72B-Instruct',                                                                                                     │ ││ │                           │   'provider': 'nebius',                                                                                                                     │ ││ │                           │   'servers': [{'type': 'stdio', 'config': {'command': 'npx', 'args': ['@playwright/mcp']}}]                                                 │ ││ │                           }                                                                                                                                             │ ││ │            first_sigint = True                                                                                                                                          │ ││ │                    loop =                                                                                      │ ││ │ original_sigint_handler = functools.partial(&gt;, main_task=        │ ││ │                           exception=NotImplementedError()&gt;)                                                                                                             │ ││ │                  prompt = None                                                                                                                                          │ ││ │                 servers = [{'type': 'stdio', 'config': {'command': 'npx', 'args': ['@playwright/mcp']}}]                                                                │ ││ ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │.</p>
+<p>Hi @hevangel ,Very sorry for the inconvenience, we've fixed the issue and released a patch for that: https://github.com/huggingface/huggingface_hub/releases/tag/v0.32.1could you upgrade your huggingface_hub version please?</p>
+<p>let us know if you see any other unexpected behavior!</p>
+<p>It is a very cool Idea,I have converted your JavaScript version to Python,It is a simple Loop + LiteLLM + MCP + Hook System for extendability.</p>
+<p>https://github.com/askbudi/tinyagent.</p>
+<p>At the moment it supports the following Hooks:.</p>
+<p>The core Tiny Agent only depends on Litellm :D, nothing else.</p>
+<p>I thought it would be cool if anyone could personalize their own Tinyagent based on what they need, for example adding memory layer, or storage in PG.And here it is possible to chat with this repo and add functionality you need for your specific project.</p>
+<p>https://askdev.ai/github/askbudi/tinyagent.</p>
+<p>Hi @insightfactory ,very nice! don't hesitate to check and contribute (we love contributions from the community!) to our tiny-agents Python implementation as well: https://github.com/huggingface/huggingface_hub/tree/main/src/huggingface_hub/inference/_mcp :).</p>
+<p>Hello, there seems to be a problem with huggingface_hub[mcp] 0.32.3 which invariably  produces.</p>
+<p>downgrading to 0.32.1 seems to fix the problem.</p>
+<p>According to recent reports, concerning using local llm, an example of an agent.json config using ollama would be very much appreciated. I have been trying with configs likeEDIT: this config is indeed the proper way to set ollama.</p>
+<p>with tiny-agent.js but it produces an error.</p>
+<p>EDIT: concern partially resolved see https://github.com/huggingface/huggingface.js/issues/1502.</p>
+<p>and with tiny-agent python it produces an error apparently due to the missing provider key.</p>
+<p>Hi @sylvain471 ,Thanks for reporting this!Do you happen to have a reproducible example for the first error using huggingface_hub==0.32.3? If possible, could you also share the agent config you used when the error occurred?</p>
+<p>As for local LLMs, support was introduced in huggingface_hub&gt;=0.32.2, so it's expected that older versions would raise an error.</p>
+<p>Sources indicate that hi @celinah ,I made a minimal example with a reproducible example at https://github.com/sdelahaies/tiny-agent-mcp.git, but after some tests it seems that the problem comes from the python version: on my setup uv venv installs python  3.13.1 with which the example failed, with uv venv --python 3.11 it works.As for the version 0.32.1, I had to tweak the agent class for local LLM to work, but I lost track of these change running all my tests... anyway my conclusion is to downgrade the python versionthanks!</p>
+<p>In a recent development, yes indeed, the bug appears only on python &gt;= 3.12. We fixed it and released a patch, see my comment here: https://huggingface.co/blog/python-tiny-agents#683eca4750b8f035fa0407b9.</p>
+<p>I extend my TinyAgent Implementation, and create CodeTinyAgent, it is similar to Smolagents, (Thinking in Python) but in 50ish lines of Code,I also extend Modal Functions a bit to become stateful. CodeTinyAgent executes Python code in the cloud.</p>
+<p>Live Version:https://huggingface.co/spaces/Agents-MCP-Hackathon/TinyCodeAgent.</p>
+<p>Source:https://github.com/askbudi/TinyCodeAgent.</p>
+<p>that's very cool @insightfactory !</p>
+<p>This is my agent.json{    "model": "qwen3:4b",    "endpointUrl": "http://localhost:11434/",    "provider": "auto",    "servers": [        {            "type": "sse",            "config": {                "url": "http://127.0.0.1:7860/gradio_api/mcp/sse"            }        }    ]}.</p>
+<p>Error during agent run: Repo id must use alphanumeric chars or '-', '_', '.', '--' and '..' are forbidden, '-' and '.' cannot start or end the name, max length is 96: 'qwen3:4b'.</p>
+<p>I am using libraries with python 3.13, huggingface-hub 0.33.0.</p>
+<p>can you remove the provider: "auto" line?</p>
+<p>{  "model": "llama2:latest",  "provider": "ollama",  "api_base": "http://localhost:11434",  "servers": []}.</p>
+<p>!tiny-agents run /content/my-agent/agent.json.</p>
+<p>Agent loaded with 0 tools:»  hi.</p>
+<p>Sources indicate that error during agent run: Provider 'ollama' not supported. Available values:'auto' or any provider from ['black-forest-labs', 'cerebras', 'cohere','fal-ai', 'featherless-ai', 'fireworks-ai', 'groq', 'hf-inference','hyperbolic', 'nebius', 'novita', 'nscale', 'openai', 'replicate', 'sambanova','together'].Passing 'auto' (default value) will automatically select the firstprovider available for the model, sorted by the user's order inhttps://hf.co/settings/inference-providers.Traceback (most recent call last):  File"/usr/local/lib/python3.11/dist-packages/huggingface_hub/inference/_mcp/cli.py",line 178, in run_agent    async for chunk in agent.run(user_input, abort_event=abort_event):  File"/usr/local/lib/python3.11/dist-packages/huggingface_hub/inference/_mcp/agent.py", line 84, in run    async for item in self.process_single_turn_with_tools(  File"/usr/local/lib/python3.11/dist-packages/huggingface_hub/inference/mcp/mcp_client.py", line 261, in process_single_turn_with_tools    response = await self.client.chat.completions.create(               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  File"/usr/local/lib/python3.11/dist-packages/huggingface_hub/inference/generated/async_client.py", line 925, in chat_completion    provider_helper = get_provider_helper(                      ^^^^^^^^^^^^^^^^^^^^  File"/usr/local/lib/python3.11/dist-packages/huggingface_hub/inference/providers/init.py", line 198, in get_provider_helper    raise ValueError(ValueError: Provider 'ollama' not supported. Available values: 'auto' or anyprovider from ['black-forest-labs', 'cerebras', 'cohere', 'fal-ai','featherless-ai', 'fireworks-ai', 'groq', 'hf-inference', 'hyperbolic','nebius', 'novita', 'nscale', 'openai', 'replicate', 'sambanova','together'].Passing 'auto' (default value) will automatically select the firstprovider available for the model, sorted by the user's order inhttps://hf.co/settings/inference-providers.</p>
+<p>pip install "huggingface_hub[mcp]&gt;=0.32.0".</p>
+<p>!tiny-agents run celinah/web-browser.</p>
+<p>!tiny-agents run julien-c/flux-schnell-generator.</p>
+<p>https://github.com/werruww/suc-tiny-agents/blob/main/suc_tiny_agents.ipynb.</p>
+<p>how run with ollama , llama cpp?example??????</p>
+<p>https://github.com/werruww/suc_tiny-agents-ollama/blob/main/suc_tiny_agents_ollama.ipynb.</p>
+<p id="sec-end-104190">Industry observers note that is this working in current Python? I try and get this error....</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/python-tiny-agents" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tiny-agents-an-mcp-powered-agent-in-50-lines-of-code-104228.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104228. Tiny Agents: an MCP-powered agent in 50 lines of code
+        </a>
+        
+        <a href="open-sourcing-knowledge-distillation-code-and-weights-of-sd-small-104837.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104837. Open-sourcing Knowledge Distillation Code and Weights of SD-Small and SD-Tiny
+        </a>
+        
+        <a href="tech-report-our-transformers-code-agent-beats-the-gaia-benchmark-104627.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104627. Tech Report: Our Transformers Code Agent beats the GAIA benchmark 🏅
+        </a>
+        
+        <a href="breaking-tiny-robots-powered-by-light-can-hunt-down-and-collect-b-104551.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104551. Breaking: Tiny robots powered by light can hunt down and collect bacteria
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

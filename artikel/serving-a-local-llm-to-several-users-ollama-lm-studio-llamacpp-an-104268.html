@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serving a Local LLM to Several Users: Ollama, LM Studio, llama.cpp and vLLM Benchmarked</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. It has been revealed that weekly. Free. One click to leave. 7 Day Free ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/serving-a-local-llm-to-several-users-ollama-lm-studio-llamacpp-an-104268.html">
+    <meta property="og:title" content="Serving a Local LLM to Several Users: Ollama, LM Studio, llama.cpp and vLLM Benchmarked">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. It has been revealed that weekly. Free. One click to leave. 7 Day Free ">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_cover_fb7158b00d.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/serving-a-local-llm-to-several-users-ollama-lm-studio-llamacpp-an-104268.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Serving a Local LLM to Several Users: Ollama, LM Studio, llama.cpp and vLLM Benchmarked", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_cover_fb7158b00d.jpg"], "datePublished": "2026-11-17T14:17:46", "dateModified": "2026-11-24T03:49:30.443477", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/serving-a-local-llm-to-several-users-ollama-lm-studio-llamacpp-an-104268.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Serving a Local LLM to Several Users: Ollama, LM Studio, llama.cpp and vLLM Benchmarked</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 17 Nov 2026 &bull; ⏱️ 9 min read (1880 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>When one person chats with a local model, it barely matters which server you run.</li><li style='margin-bottom:6px;'>This article puts those numbers side by side and shows which setting to change for your app.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-104268"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-104268"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-104268"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Serving a Local LLM to Several Users: Ollama, LM Studio, llama.cpp and vLLM Benchmarked" loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_cover_fb7158b00d.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-104268">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>It has been revealed that weekly. Free. One click to leave.</p>
+<p>7 Day Free Trial. Cancel Anytime.</p>
+<p>When one person chats with a local model, it barely matters which server you run. On one RTX 3090 with the same model file, Ollama, LM Studio and llama.cpp wrote text within about 10 percent of each other, because all three run llama.cpp underneath. That changes when your app sends several requests at once. With four requests, the best setup produced more than three times as much text as the worst, and the cause was a default setting, not the engine. With 32 requests, vLLM produced 2.5 times as much text as the best llama.cpp setup I tested.</p>
+<p>This article puts those numbers side by side and shows which setting to change for your app.</p>
+<p>Recent findings suggest that I ran every test on one machine. The full write-ups, with every command and the raw results, are on homebrewserver.club.</p>
+<p>Every server got the same requests:.</p>
+<p>Sources indicate that ollama, LM Studio and llama.cpp loaded the exact same GGUF files, checked by SHA-256. vLLM cannot run GGUF files well, so it loaded a 4-bit AWQ file of the same model (9.1 GB). Answer quality was not compared.</p>
+<p>Sources indicate that the tests ran between 8 and 16 November 2026, and speeds on this machine varied by a few percent from one day to the next. Treat a gap under about 5% as a tie. All of this is one consumer GPU and one model family, so read the numbers as a guide to how the servers behave, not as a ranking for your hardware.</p>
+<p>This is the short prompt with a 512-token answer.</p>
+<p>Sources indicate that ollama and LM Studio both start llama.cpp's llama-server program for each model they load. Ollama has done this since version 0.30, and a comment in its source code claims so. On Linux, LM Studio's CUDA runtime is a folder with llama.cpp libraries and a llama-server binary.</p>
+<p>Ollama logs the command it starts when you set OLLAMA_DEBUG=1. When llama.cpp was started by hand with that exact command, in a run next to Ollama, its speed matched Ollama's within 1%. So Ollama adds no speed cost of its own. LM Studio was 5 to 10% slower in this test. The test did not separate whether that came from its llama.cpp build or its other start options.</p>
+<p>For one user, the gap between Ollama and LM Studio was about 0.4 s on a 512-token answer from the 9B model. You would notice it in long answers, and hardly in a chat window.</p>
+<p>Industry observers note that A web app rarely sends one request at a time. A chat page, a background summary job and an agent can all call the same model at the same moment. The next test sent four requests at once, each asking for 256 tokens, and measured the total output per second.</p>
+<p>A slot is one request that the server works on at the same time as others. llama-server sets the number of slots with -np (short for --parallel), and Ollama and LM Studio pass their own setting through to it.</p>
+<p>In a recent development, with one slot, the server answers the four requests one after another, so the total stays at the speed of a single request. That is Ollama's default. With four slots, the server puts the four requests through the model together, and the total rose to more than twice that of one slot. That is the default in LM Studio and llama.cpp. vLLM was the fastest at four requests, but it was tested only with the 9B model. Its lead grows with more requests, as the section after next shows.</p>
+<p>For your app, this means that the fourth user of a default Ollama server waits for the first three answers to finish before their own answer starts.</p>
+<p>Industry observers note that the obvious fix is OLLAMA_NUM_PARALLEL=4. It worked for the 9B model, though in one of three rounds Ollama still answered at the speed of a single request. With the 27B model, it made Ollama slower than its default.</p>
+<p>The cause is how each server sizes the context, the memory that holds each request's prompt and answer. Ollama picks the context from the GPU's memory: 32,768 tokens on a 24 GB card, according to its docs. With four slots, it gives each slot its own 32,768 tokens, so it started llama-server with a 131,072-token context. The Ollama FAQ says the memory needed grows with the number of parallel requests multiplied by the context length.</p>
+<p>According to recent reports, that context did not fit next to the 27B model in 24 GB. ollama ps indicated 16% of the model on the CPU, and the total speed fell to 33.1 tokens per second.</p>
+<p>In a recent development, LM Studio and llama.cpp handle it differently. Their four slots share one pool of context:.</p>
+<p>Recent findings suggest that the price of LM Studio's default is a short context. Four requests sharing 8,192 tokens leave little room for long documents or a long chat history. If your app sends long prompts, load the model with a larger context.</p>
+<p>Recent findings suggest that in Ollama, setting a smaller context with OLLAMA_CONTEXT_LENGTH next to OLLAMA_NUM_PARALLEL should avoid the spill to the CPU. The test did not try this, so measure it on your own card.</p>
+<p id="sec-mid-104268">Recent findings suggest that the last test went further, from 1 to 32 requests at once, with the 9B model. It compared vLLM, a server built to serve one model to many users, with llama.cpp at its defaults and with more slots. Ollama and LM Studio were tested only up to four requests, so they are not in this table.</p>
+<p>All figures are total tokens per second.</p>
+<p>In a recent development, with its defaults, llama-server chose four slots by itself, so it worked on four requests and queued the rest. Its total stayed near 330 tokens per second from 4 requests to 32. Setting -np 16 or -np 32 roughly doubled the total at 16 requests.</p>
+<p>vLLM's lead came from each request running faster inside a large batch. At 32 requests, each vLLM request generated about 61 tokens per second, against about 27 on llama.cpp with 32 slots. vLLM's README names the two techniques behind this: PagedAttention, which stores each request's working memory in small blocks, and continuous batching, which adds newly introduced requests to the batch the GPU is already working on.</p>
+<p>Industry observers note that total output tells you how much work the server does. The wait for the first word tells you how the app feels to the user behind the last request:.</p>
+<p>Sources indicate that for a web app, that is 22.5 seconds of spinner before any text appears. Long prompts make every wait longer, on both servers. With eight requests of about 4,120 tokens each, the last request waited 7.9 s on vLLM and 8.8 s on llama.cpp with 32 slots.</p>
+<p>If you set the slots yourself, the llama-server README lists three options that work together:.</p>
+<p>Sources indicate that if you run an older llama.cpp, update first. Four requests at once ran 14 to 22% faster on v1.0.0 than on the build from five days earlier, while one request stayed the same. The most likely reason is a fresh CUDA kernel in v1.0 for steps of 2 to 24 tokens on RTX 30-series and newer cards.</p>
+<p>vLLM's throughput comes with two costs that matter on a shared machine.</p>
+<p>According to recent reports, it reserves most of the GPU. By default, vLLM takes 92% of the card's memory before it loads anything, and fills what the model does not need with cache. With a desktop and a browser holding about 2 GiB, vLLM refused to start:.</p>
+<p>Setting --gpu-memory-utilization 0.6 alone was not enough with this model, because the default limit of 256 sequences needed more cache than fit. Adding --max-num-seqs 32 fixed it. With both settings, vLLM held 12.7 GiB and kept the same speeds. llama.cpp works the other way: it sizes its cache from -c and -np and never asked for more than 15.1 GiB in this test.</p>
+<p>Recent findings suggest that it starts slowly. llama-server answered requests 2 to 5 s after its container started. vLLM compiles the model before it serves anything. That took 72 s with its compile cache already on disk, and 173 s on the first start without it. Changing a vLLM argument triggered a fresh compile.</p>
+<p>Sources indicate that it also needs a different model file. vLLM loads Hugging Face safetensors, so a 4-bit model is a separate AWQ or GPTQ upload. The AWQ file here was 9.1 GB against 5.7 GB for the GGUF, because its recipe leaves some layers unquantized. Check the file size, not only "4-bit", when you size a model for your card.</p>
+<p>Recent findings suggest that all four servers have an OpenAI-compatible API under /v1, so the same client code works with each one. You change the base URL and the model name. These are the ports used in the tests:.</p>
+<p>In Node.js with the openai package, that looks like the sketch below. The measurements came from a Python test client, and this snippet was not part of them:.</p>
+<p>In a recent development, qwen3.5 thinks before it answers unless you turn it off. The tests sent "chat_template_kwargs": {"enable_thinking": false} in the request body to vLLM and llama.cpp.</p>
+<p>It has been revealed that none of the servers asked for a password in these tests. llama-server also warned at start-up that its CORS rule allowed all origins. Bind the port to 127.0.0.1, as in the table, and set --api-key on llama.cpp or vLLM if anything else on your network can reach it.</p>
+<p>Before you choose, count how many requests your app really sends at the same moment. Log the timestamps for a day, or count the parallel calls your agent makes per user action. If that number is one, any of these servers will do. If it is four or more, the slot setting will change your consumers' wait more than the choice of engine.</p>
+<p>Not for one request with the same settings. Ollama runs llama.cpp's own server, and the two were within 1% when started with the same command. llama.cpp was faster with four requests at once, because it starts four slots by default and Ollama starts one.</p>
+<p>In a recent development, ollama gives each parallel request its own full context. With four slots on a 24 GB card, that was 131,072 tokens, which pushed 16% of a 27B model onto the CPU. A smaller context may avoid that, but this test did not measure it.</p>
+<p>It has been revealed that when many requests arrive together. At 32 requests, vLLM produced 2.5 times the output of llama.cpp with 32 slots and kept every first-word wait under a second. For one request at a time, llama.cpp was 5% faster and started in seconds instead of more than a minute.</p>
+<p>It has been revealed that usually not. All four serve OpenAI-compatible endpoints under /v1, so you change the base URL and the model name.</p>
+<p id="sec-end-104268">Recent findings suggest that 7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/serving-a-local-llm-to-several-users-ollama-lm-studio-llama-cpp-and-vllm-benchmarked/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="ggml-and-llamacpp-join-hf-to-ensure-the-long-term-progress-of-loc-93173.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93173. GGML and llama.cpp join HF to ensure the long-term progress of Local AI
+        </a>
+        
+        <a href="latest-update-llamacpp-v100-a-stronger-foundation-for-the-local-a-92713.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92713. Latest Update: llama.cpp v1.0.0 : A stronger foundation for the local AI ecosystem
+        </a>
+        
+        <a href="welcome-llama-3-metas-new-open-llm-104704.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104704. Welcome Llama 3 - Meta's new open LLM
+        </a>
+        
+        <a href="industry-news-introducing-multi-backends-trt-llm-vllm-support-for-104382.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104382. Industry News: Introducing multi-backends (TRT-LLM, vLLM) support for Text Generation Inference
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

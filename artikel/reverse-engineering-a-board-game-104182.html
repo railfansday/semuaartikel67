@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Engineering a Board Game</title>
+    <meta name="description" content="Recent findings suggest that I recently received a game called âHitsterâ as a gift. Itâs a board game where you try to identify songs and guess thing">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/reverse-engineering-a-board-game-104182.html">
+    <meta property="og:title" content="Reverse Engineering a Board Game">
+    <meta property="og:description" content="Recent findings suggest that I recently received a game called âHitsterâ as a gift. Itâs a board game where you try to identify songs and guess thing">
+    <meta property="og:image" content="https://wuemeli.com/img/og-image.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/reverse-engineering-a-board-game-104182.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Reverse Engineering a Board Game", "image": ["https://wuemeli.com/img/og-image.png"], "datePublished": "2026-10-05T00:00:00.000Z", "dateModified": "2026-11-24T03:49:23.331204", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/reverse-engineering-a-board-game-104182.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Reverse Engineering a Board Game</h1>
+        <div class="meta-line">🌐 Source: <strong>Wuemeli</strong> &bull; 📅 05 Oct 2026 &bull; ⏱️ 4 min read (771 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that I recently received a game called âHitsterâ as a gift.</li><li style='margin-bottom:6px;'>Sadly, the app requires an Apple Music or Spotify subscription.</li><li style='margin-bottom:6px;'>Industry observers note that on the front of each card, youâll find the artist or band name, the year the song came out, and the song title.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-104182"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-104182"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-104182"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Reverse Engineering a Board Game" loading="lazy" src="https://wuemeli.com/img/og-image.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-104182">Recent findings suggest that I recently received a game called âHitsterâ as a gift. Itâs a board game where you try to identify songs and guess things like when they came out, who the artist or band is, etc. Each card has a QR code that you scan using the Hitster app, which then plays the music through Spotify or Apple Music.</p>
+<p>Sadly, the app requires an Apple Music or Spotify subscription. In this blog post, Iâll go down the rabbit hole of reverse engineering the Android app and bypassing their very, very sloppy attempt at hiding the data.</p>
+<p>First, we need to understand how the game works.</p>
+<p>Industry observers note that on the front of each card, youâll find the artist or band name, the year the song came out, and the song title. On the back, thereâs a QR code. Scanning it takes you to a URL with two things in its path: the gameâs region (DE in my case) and the card ID. The music then starts playing in the app or through Spotify.</p>
+<p>This means thereâs a mapping from Card ID â Spotify Track. There are also multiple card versions per region, so the card ID alone isnât enough to identify a song. Card ID 1 might be âWet Dreamâ in the UK, but âTage wie dieseâ in Germany.</p>
+<p>After getting the appâs APK from some sketchy Android APK download website, I used jadx to get the decompiled Java code.</p>
+<p>According to recent reports, after digging around for a bit, I found a few JSON files under res/raw. One of them was named gameset_database_4.json, and it seemed to be encrypted.</p>
+<p>It has been revealed that I ran a tool to identify the format, and it came back as Base64. Thatâs an encoding, so I decoded it first. The result still wasnât readable, and I guessed it was encrypted with AES or something similar.</p>
+<p>Iâd never reverse engineered an Android app before, so I just searched globally for AES. And guess what? There was a file called k43.java with the entire decryption process laid out in front of me:.</p>
+<p>So letâs walk through this step by step.</p>
+<p>Industry observers note that the function f takes two strings as inputs. The first, str, contains the Base64-encoded data, which it decodes:.</p>
+<p>It then checks whether the decoded data is at least 28 bytes long:.</p>
+<p>Next, it passes a bunch of data to the function o, which handles the final stage of decryption:.</p>
+<p>The first argument is the first 12 bytes of the decoded data. Thatâs our IV, or nonce. The second argument is the entire decoded byte array.</p>
+<p>The third argument is where things get interesting. It takes the total length minus 28 and passes that, along with str2, to the function m. Those 28 bytes account for the 12-byte nonce and the 16-byte authentication tag.</p>
+<p>Inside m, the remaining length is converted to a string and joined with str2. That combined string is then hashed using SHA-256 to produce the AES key.</p>
+<p id="sec-mid-104182">It has been revealed that so str2 isnât the AES key itself. Itâs the secret string used to derive it, and we havenât found it yet.</p>
+<p>Finally, o does the actual decryption:.</p>
+<p>It sets up AES-GCM with the derived key and nonce, then decrypts the data after the first 12 bytes.</p>
+<p>Thatâs the decryption process figured out. Now we just need the secret string.</p>
+<p>I was doing this in a Discord call in the Rust Language Community server, and someone pointed out that I should look for a byte array with a length of 32 bytes.</p>
+<p>Sources indicate that I first searched for byte[32], but didnât find anything useful. I then tried this pattern:.</p>
+<p>That led me to m17.java, which contained these two super cool arrays:.</p>
+<p>We then tried to figure out how to turn these into something useful. After a bit of experimenting, someone suggested XORing the two arrays together. We interpreted the resulting bytes as text and got this:.</p>
+<p>Using this string, I wrote a little decryptor in Rust:.</p>
+<p>That gave us this awesome test.txt file with around 31,000 lines of mappings from card IDs to Apple Music and Spotify tracks, plus ISRCs, across multiple regions.</p>
+<p>We then looked around the code a little more and found out that all of this wasnât really needed.</p>
+<p>If weâd searched for an HTTPS URL first, we wouldâve landed on this:.</p>
+<p>https://hitster.jumboplay.com/hitster-assets/.</p>
+<p>And with a little imagination, we tried:.</p>
+<p>https://hitster.jumboplay.com/hitster-assets/gameset_database.json.</p>
+<p>There was the entire thing. No encryption.</p>
+<p id="sec-end-104182">We spent around 18 hours chasing a file that, in the end, wasnât even a real secret.</p>
+<p style="margin-top: 25px;">
+<a href="https://wuemeli.com/blog/reversing-hitster-game/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="ai-makes-reverse-engineering-mainstream-software-amp-malware-far--92779.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92779. AI Makes Reverse Engineering Mainstream Software &amp; Malware Far Easier
+        </a>
+        
+        <a href="canopycore-reverse-engineering-archive-for-diddy-kong-pilot-gba-92659.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92659. CanopyCore – Reverse-engineering archive for Diddy Kong Pilot (GBA)
+        </a>
+        
+        <a href="latest-update-ai-for-game-development-creating-a-farming-game-in--104935.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104935. Latest Update: AI for Game Development: Creating a Farming Game in 5 Days. Part 1
+        </a>
+        
+        <a href="ai-for-game-development-creating-a-farming-game-in-5-days-part-2-104933.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104933. AI for Game Development: Creating a Farming Game in 5 Days. Part 2
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

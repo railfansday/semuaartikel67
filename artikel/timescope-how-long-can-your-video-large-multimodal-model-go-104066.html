@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeScope: How Long Can Your Video Large Multimodal Model Go?</title>
+    <meta name="description" content="TimeScope is an open-source benchmark designed to measure how well vision-language models understand long videos. By adding short “needle” clips into video">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/timescope-how-long-can-your-video-large-multimodal-model-go-104066.html">
+    <meta property="og:title" content="TimeScope: How Long Can Your Video Large Multimodal Model Go?">
+    <meta property="og:description" content="TimeScope is an open-source benchmark designed to measure how well vision-language models understand long videos. By adding short “needle” clips into video">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/timescope/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/timescope-how-long-can-your-video-large-multimodal-model-go-104066.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "TimeScope: How Long Can Your Video Large Multimodal Model Go?", "image": ["https://huggingface.co/blog/assets/timescope/thumbnail.png"], "datePublished": "2025-07-23T00:00:00", "dateModified": "2026-11-24T03:49:15.011726", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/timescope-how-long-can-your-video-large-multimodal-model-go-104066.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>TimeScope: How Long Can Your Video Large Multimodal Model Go?</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 23 Jul 2025 &bull; ⏱️ 5 min read (1003 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>TimeScope is an open-source benchmark designed to measure how well vision-language models understand long videos.</li><li style='margin-bottom:6px;'>Recent advances in multimodal AI have produced models claiming to understand hour-long videos.</li><li style='margin-bottom:6px;'>Sources indicate that text benchmarks such as HELM and RULER have exposed the fragility of long-context claims, showing that models often struggle when tasks demand more than simple retrieval, like reasoning or aggregation at long context lengths.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-104066"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-104066"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-104066"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="TimeScope: How Long Can Your Video Large Multimodal Model Go?" loading="lazy" src="https://huggingface.co/blog/assets/timescope/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-104066">TimeScope is an open-source benchmark designed to measure how well vision-language models understand long videos. By adding short “needle” clips into videos ranging from 1 minute to 8 hours, it evaluates three skills:.</p>
+<p>Recent advances in multimodal AI have produced models claiming to understand hour-long videos. This trend mirrors progress in long-context language models, which excel at reasoning over lengthy text. Following this, vision-language systems now advertise context windows that can handle thousands of frames. But these claims require a closer look: do these models truly demonstrate understanding of the sequence of events? Are they limited to surface-level retrieval \ recognition? It's crucial to ask if their capabilities are being overstated.</p>
+<p>Sources indicate that text benchmarks such as HELM and RULER have exposed the fragility of long-context claims, showing that models often struggle when tasks demand more than simple retrieval, like reasoning or aggregation at long context lengths. In the video domain, however, we're still playing catch-up. The most common test, Video Needle in a Haystack (VideoNIAH), injects static images as "needles" into videos, effectively measuring visual search rather than true temporal dynamics. As a result, even top-tier models advertising massive frame capacities are rarely trained beyond ~256 frames and see sharp drops on benchmarks like Video-MME when pushed further.</p>
+<p>This measurement gap leaves us wondering: What does it really mean for a model to "understand" long videos? To address this, we're excited to introduce TimeScope, a new open-source benchmark hosted on Hugging Face. TimeScope probes the limits of long-video capabilities by inserting several short (~5-10 second) video clips—our "needles"—into base videos ranging from 1 minute to 8 hours. With three distinct task types, it evaluates not just retrieval but synthesis, localization, and fine-grained motion analysis, providing a more holistic view of temporal comprehension.</p>
+<p>The promise of long-video AI is transformative — enabling agents to summarize hours of footage, detect subtle anomalies, and answer complex questions about extended narratives. Integrated into robotics, these models could analyze prolonged operations, adapt in real time, and push autonomous decision-making. Just as powerful is the vision of a personal assistant that understands daily life and offers continuous, actionable feedback.</p>
+<p>In practice, this leads to overstated capabilities. Models might claim to process 10,000+ frames, but training data often caps at 256 frames per clip, leading to degraded performance on longer inputs. We've seen this in evaluations where increasing frame sampling rates tanks accuracy on tasks requiring temporal insight.</p>
+<p>TimeScope flips the script by emphasizing three pillars of long-video understanding:.</p>
+<p>TimeScope’s key idea is using short video clips as “needles,” and instead of just spotting the needle, it pushes models to deeply understand the whole video. We start with a long base video (e.g., a documentary, lecture, or ambient footage) and insert one or more hand-curated short video needles (5-10 seconds each) at random positions. These needles contain the key information needed to solve the task, forcing models to process the entire input without shortcuts like sparse sampling.</p>
+<p>Figure 1: Overview of TimeScope's needle insertion process. A long base video (1 min to 8 hours) serves as the haystack, into which we splice short video needles (~5-10 seconds). Tasks require detecting, synthesizing, or analyzing content from these needles, embedded at varying depths.</p>
+<p>We evaluate across three needle types, each targeting a different aspect of long-video comprehension:.</p>
+<p>This tests basic retrieval and understanding of a localized event. Questions are put so that sampling a relevant frame from the needle should suffice—like asking about a shorter part in a longer video.</p>
+<p id="sec-mid-104066">Example:What mode of transportation is shown in the video?</p>
+<p>According to recent reports, here, we embed multiple text-based needles (e.g., 2-4 short clips displaying "secret words" via on-screen text) at different points in the video. The model must identify all words and report them in chronological order, simulating tasks like extracting timestamps or key facts from dispersed scenes. This requires scanning the full timeline and understanding relative positioning.</p>
+<p>For questions focusing on motion or sequences within a short clip, single-frame sampling won't cut it—the model needs to perceive dynamics across frames. This probes whether long-context handling preserves temporal fidelity.</p>
+<p>Industry observers note that example:How many times did the man swing his axe? (a) one (b) two (c) three (d) four (e) five (f) six.</p>
+<p>With different video lengths and varying needle placements, TimeScope measures how much video a model can really handle—and highlights that performance drops as the video gets longer.</p>
+<p>Recent findings suggest that to kick things off, we ran TimeScope on a suite of leading vision-language models, from open-source favorites to the juggernauts like Gemini 2.5-Pro. The results underscore the benchmark’s value: even models that claim to handle long videos well still struggle with real long-video tasks. These findings reveal clear patterns—performance cliffs around certain durations, strengths in static retrieval versus weaknesses in motion analysis—and pave the way for targeted improvements in model training. For detailed results and visualizations, check out our Hugging Face Space embedded above.</p>
+<p>Model size isn’t everything. Qwen 2.5-VL 3B and 7B, as well as InternVL 2.5 models at 2B, 4B, and 8B parameters, exhibit nearly indistinguishable long-video curves to their smaller counterparts. All of them plateau at roughly the same context length, showing that simply scaling parameters does not automatically grant a longer temporal horizon.</p>
+<p>According to recent reports, gemini 2.5-Pro is in a league of its own. It is the only model that maintains strong accuracy on videos longer than one hour.</p>
+<p>Trade-offs across tasks matter. Qwen 2.5-VL shines in the Information-Synthesis (OCR) task—identifying and ordering dispersed text snippets—yet it falls behind on Fine-Grained Temporal Perception, where precise motion counting is required.</p>
+<p>TimeScope demonstrates that “hour-long video understanding” is still more slogan than reality. By revealing where even state-of-the-art models stumble on temporal reasoning, information synthesis, and motion perception, the benchmark invites us to rethink how we train and evaluate multimodal systems.</p>
+<p>We hope this benchmark helps the community make steady, measurable progress toward models that better understand video over time.</p>
+<p id="sec-end-104066">We are open-sourcing all components of TimeScope:.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/timescope-video-lmm-benchmark" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="introducing-nvidia-nemotron-3-nano-omni-long-context-multimodal-i-93107.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93107. Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents
+        </a>
+        
+        <a href="industry-news-accelerate-large-model-training-using-pytorch-fully-105028.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #105028. Industry News: Accelerate Large Model Training using PyTorch Fully Sharded Data Parallel
+        </a>
+        
+        <a href="accelerate-large-model-training-using-deepspeed-105004.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #105004. Accelerate Large Model Training using DeepSpeed
+        </a>
+        
+        <a href="introducing-contextual-how-well-can-your-multimodal-model-jointly-104735.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104735. Introducing ConTextual: How well can your Multimodal model jointly reason over text and image in text-rich scenes?
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

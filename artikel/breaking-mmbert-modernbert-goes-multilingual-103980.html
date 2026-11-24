@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: mmBERT: ModernBERT goes Multilingual</title>
+    <meta name="description" content="In a recent development, this blog post introduces mmBERT, a state-of-the-art massively multilingual encoder model trained on 3T+ tokens of text in over 18">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-mmbert-modernbert-goes-multilingual-103980.html">
+    <meta property="og:title" content="Breaking: mmBERT: ModernBERT goes Multilingual">
+    <meta property="og:description" content="In a recent development, this blog post introduces mmBERT, a state-of-the-art massively multilingual encoder model trained on 3T+ tokens of text in over 18">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/mmbert/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-mmbert-modernbert-goes-multilingual-103980.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: mmBERT: ModernBERT goes Multilingual", "image": ["https://huggingface.co/blog/assets/mmbert/thumbnail.png"], "datePublished": "2025-09-09T00:00:00", "dateModified": "2026-11-24T03:49:10.195189", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-mmbert-modernbert-goes-multilingual-103980.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: mmBERT: ModernBERT goes Multilingual</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 09 Sep 2025 &bull; ⏱️ 7 min read (1351 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, this blog post introduces mmBERT, a state-of-the-art massively multilingual encoder model trained on 3T+ tokens of text in over 1800 languages.</li><li style='margin-bottom:6px;'>If you are interested in trying out the models yourself, some example boilerplate is available at the end of this blogpost!</li><li style='margin-bottom:6px;'>In a recent development, mmBERT was trained on a carefully curated multilingual dataset totaling over 3T tokens across three distinct training phases.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-103980"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-103980"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-103980"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: mmBERT: ModernBERT goes Multilingual" loading="lazy" src="https://huggingface.co/blog/assets/mmbert/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-103980">In a recent development, this blog post introduces mmBERT, a state-of-the-art massively multilingual encoder model trained on 3T+ tokens of text in over 1800 languages. It shows significant performance and speed improvements over previous multilingual models, being the first to improve upon XLM-R, while also developing new strategies for effectively learning low-resource languages. mmBERT builds upon ModernBERT for a blazingly fast architecture, and adds novel components to enable efficient multilingual learning.</p>
+<p>If you are interested in trying out the models yourself, some example boilerplate is available at the end of this blogpost!</p>
+<p>In a recent development, mmBERT was trained on a carefully curated multilingual dataset totaling over 3T tokens across three distinct training phases. The foundation of our training data consists of three primary open-source and high-quality web crawls that enable both multilingual coverage and data quality:.</p>
+<p>DCLM and Filtered DCLM provides the highest quality English content available, serving as the backbone for strong English performance (with the filtered data coming from Dolmino). This dataset represents state-of-the-art web filtering techniques and forms a crucial component. Due to the high quality of this data, we use a signficantly higher proportion of English than previous generation multilingual encoder models (up to 18%).</p>
+<p>It has been revealed that fineWeb2 delivers broad multilingual web content covering over 1,800 languages. This dataset enables our extensive multilingual coverage while maintaining reasonable quality standards across diverse language families and scripts.</p>
+<p>In a recent development, fineWeb2-HQ consists of a filtered subset of FineWeb2 focusing on 20 high-resource languages. This filtered version provides higher-quality multilingual content that bridges the gap between English-only filtered data and broad multilingual coverage.</p>
+<p>The training data also incorporates specialized corpora from Dolma, MegaWika v2, ProLong and more: code repositories (StarCoder, ProLong), academic content (ArXiv, PeS2o), reference materials (Wikipedia, textbooks), and community discussions (StackExchange), along with instruction and mathematical datasets.</p>
+<p>In a recent development, the key innovation in our data approach is the progressive language inclusion strategy shown in Figure 1. At each phase we progressively sample from a flatter distribution (i.e. closer to uniform), while also adding new languages. This means that high resource languages like Russian start off with a high percentage of the data (i.e. 9%) and then in the last phase of training end around half of that. We start with 60 high-resource languages during pre-training, expand to 110 languages during mid-training, and finally include all 1,833 languages from FineWeb2 during the decay phase. This allows us to maximize the impact of limited low-resource language data without excess reptitions and while maintaining high overall data quality.</p>
+<p>mmBERT builds upon the ModernBERT architecture but introduces several key innovations for multilingual learning:.</p>
+<p>We use the same core architecture as ModernBERT-base with 22 layers and 1152 intermediate dimensions, but switch to the Gemma 2 tokenizer to better handle multilingual text. The base model has 110M non-embedding parameters (307M total due to the larger vocabulary), while the small variant has 42M non-embedding parameters (140M total).</p>
+<p>Our training follows a carefully designed three-phase schedule:.</p>
+<p>It has been revealed that inverse Mask Ratio Schedule: Instead of using a fixed masking rate, we progressively reduce the mask ratio from 30% → 15% → 5% across training phases. This allows the model to learn basic representations with higher masking early on, then focus on more nuanced understanding with lower masking rates.</p>
+<p>Sources indicate that annealed Language Learning: We dynamically adjust the temperature for multilingual data sampling from τ=0.7 → 0.5 → 0.3. This creates a progression from high-resource language bias toward more uniform sampling, enabling the model to build a strong multilingual foundation before learning low-resource languages.</p>
+<p>Sources indicate that progressive Language Addition: Rather than training on all languages simultaneously, we strategically add languages at each phase (60 → 110 → 1,833). This maximizes learning efficiency by avoiding excessive epochs on limited low-resource data while still achieving strong performance.</p>
+<p>Model Merging: We train three different variants during the decay phase (English-focused, 110-language, and all-language) and use TIES merging to combine their strengths into the final model.</p>
+<p>English Performance: On the English GLUE benchmark (Table 1), mmBERT base achieves strong performance, substantially outperforming other multilingual models like XLM-R (multilingual RoBERTa) base and mGTE base, while remaining competitive to English-only models despite less than 25% of the mmBERT training data being English.</p>
+<p>Industry observers note that multilingual Performance: mmBERT shows significant improvements on XTREME benchmark compared to XLM-R as demonstrated in Table 2. Notable gains include strong performance on XNLI classification, substantial improvements in question answering tasks like TyDiQA, and competitive results across PAWS-X and XCOPA for cross-lingual understanding.</p>
+<p id="sec-mid-103980">The model performs well across most categories, with the exception of some structured prediction tasks like NER and POS tagging, likely due to tokenizer differences that affect word boundary detection. On these categories, it performs about the same as the previous generation, but can be applied to more languages.</p>
+<p>English Retrieval: Even though mmBERT is designed for massively multilingual settings, in the MTEB v2 English benchmarks (Table 3), mmBERT shows significant gains over previous multilingual models and even ties the capabilities of English-only models like ModernBERT!</p>
+<p>Multilingual Retrieval: mmBERT shows consistent improvements on MTEB v2 multilingual benchmarks compared to other models (Table 4).</p>
+<p>Code Retrieval: Due to the modern tokenizer (based on Gemma 2) mmBERT also indicates strong coding performance (Table 5), making mmBERT suitable for any type of textual data. The only model that outperforms it is EuroBERT, which was able to use the non-publicly accessible Stack v2 dataset.</p>
+<p>Industry observers note that one of mmBERT's most significant novel features is demonstrating that low-resource languages can be effectively learned during the short decay phase of training. We validated this approach by testing on languages only introduced during the final 100B token decay phase.</p>
+<p>In a recent development, dramatic Performance Gains: Testing on TiQuaD (Tigrinya) and FoQA (Faroese), we observed substantial improvements when these languages were included in the decay phase, as shown in Figure 2. The results demonstrate the effectiveness of our progressive language learning approach.</p>
+<p>Competitive with Large Models: Despite only seeing these languages in the final training phase, mmBERT achieves performance levels that exceed much larger models. On Faroese question answering where LLMs have been benchmarked, mmBERT outperforms Google Gemini 2.5 Pro and OpenAI o3.</p>
+<p>Recent findings suggest that rapid Learning Mechanism: The success of decay-phase language learning stems from the model's ability to leverage its strong multilingual foundation built during earlier phases. When exposed to latest languages, the model can promptly adapt existing cross-lingual representations rather than learning from scratch.</p>
+<p>Model Merging Benefits: The final mmBERT models successfully retain most of the decay-phase improvements while benefiting from the English-focused and high-resource variants through TIES merging.</p>
+<p>mmBERT delivers substantial efficiency gains over previous multilingual encoder models through architectural improvements inherited from ModernBERT:.</p>
+<p>It has been revealed that throughput Performance: mmBERT processes text significantly faster than existing multilingual models across various sequence lengths, as demonstrated in Figure 3. Both the small and base models show substantial speed improvements over previous multilingual encoders.</p>
+<p>Modern Architecture Benefits: The efficiency gains come from two main technical improvements:.</p>
+<p>Recent findings suggest that sequence Length Scaling: Unlike older models limited to 512 tokens, mmBERT handles up to 8,192 tokens efficiently while maintaining high throughput. This makes it suitable for longer document processing tasks that are increasingly common in multilingual applications.</p>
+<p>Energy Efficiency: The combination of better throughput and modern architecture results in lower computational costs for inference, making mmBERT more practical for production deployments where multilingual support is needed at scale.</p>
+<p>These efficiency improvements make mmBERT not just more accurate than previous multilingual encoders, but also significantly more practical for real usage.</p>
+<p>You can use these models with just a few lines of code!</p>
+<p>can someone point me to how can i use the mmBERT model for BERTscore , a translation eval metric.</p>
+<p id="sec-end-103980">Hi @StephennFernandes ! It's been a while since I used BERTScore, but wherever you see another BERT model (or XLM-R or similar) feel free to replace the model name with mmBERT. I would suggest checking out https://github.com/Tiiiger/bert_score for more details and perhaps raising an concern there if it's unclear.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/mmbert" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="visual-document-retrieval-goes-multilingual-104391.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104391. Visual Document Retrieval Goes Multilingual
+        </a>
+        
+        <a href="tech-report-introducing-the-worlds-largest-open-multilingual-lang-105000.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #105000. Tech Report: Introducing The World's Largest Open Multilingual Language Model: BLOOM
+        </a>
+        
+        <a href="fine-tune-whisper-for-multilingual-asr-with-transformers-104958.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104958. Fine-Tune Whisper For Multilingual ASR with 🤗 Transformers
+        </a>
+        
+        <a href="ethics-and-society-newsletter-5-hugging-face-goes-to-washington-a-104805.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104805. Ethics and Society Newsletter #5: Hugging Face Goes To Washington and Other Summer 2023 Musings
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementing MCP Servers in Python: An AI Shopping Assistant with Gradio</title>
+    <meta name="description" content="According to recent reports, python Developers, want to give your LLM superpowers? Gradio is the fastest way to do it! With Gradio's Model Context Protocol">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/implementing-mcp-servers-in-python-an-ai-shopping-assistant-with--104051.html">
+    <meta property="og:title" content="Implementing MCP Servers in Python: An AI Shopping Assistant with Gradio">
+    <meta property="og:description" content="According to recent reports, python Developers, want to give your LLM superpowers? Gradio is the fastest way to do it! With Gradio's Model Context Protocol">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/gradio-vton-mcp/AiAssistantTitle.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/implementing-mcp-servers-in-python-an-ai-shopping-assistant-with--104051.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Implementing MCP Servers in Python: An AI Shopping Assistant with Gradio", "image": ["https://huggingface.co/blog/assets/gradio-vton-mcp/AiAssistantTitle.png"], "datePublished": "2025-07-31T00:00:00", "dateModified": "2026-11-24T03:49:14.219531", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/implementing-mcp-servers-in-python-an-ai-shopping-assistant-with--104051.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Implementing MCP Servers in Python: An AI Shopping Assistant with Gradio</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 31 Jul 2025 &bull; ⏱️ 3 min read (670 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, python Developers, want to give your LLM superpowers?</li><li style='margin-bottom:6px;'>For Python developers, Gradio makes implementing powerful MCP servers a breeze, offering features like:.</li><li style='margin-bottom:6px;'>Sources indicate that imagine this: you hate shopping because it takes too much time, and you dread trying on clothes yourself.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-104051"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-104051"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-104051"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Implementing MCP Servers in Python: An AI Shopping Assistant with Gradio" loading="lazy" src="https://huggingface.co/blog/assets/gradio-vton-mcp/AiAssistantTitle.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-104051">According to recent reports, python Developers, want to give your LLM superpowers? Gradio is the fastest way to do it! With Gradio's Model Context Protocol (MCP) integration, your LLM can plug directly into the thousands of AI models and Spaces hosted on the Hugging Face Hub. By pairing the general reasoning capabilities of LLMs with the specialized abilities of models found on Hugging Face, your LLM can go beyond simply answering text questions to actually solving problems in your daily life.</p>
+<p>For Python developers, Gradio makes implementing powerful MCP servers a breeze, offering features like:.</p>
+<p>Sources indicate that imagine this: you hate shopping because it takes too much time, and you dread trying on clothes yourself. What if an LLM could handle this for you? In this post, we'll create an LLM-powered AI assistant that can browse online clothing stores, find specific garments, and then use a virtual try-on model to show you how those clothes would look on you. See the demo below:.</p>
+<p>To bring our AI shopping assistant to life, we'll combine three key components:.</p>
+<p>It has been revealed that IDM-VTON Diffusion Model: This AI model is responsible for the virtual try-on functionality. It can edit existing photos to make it appear as if a person is wearing a different garment. We'll be using the Hugging Face Space for IDM-VTON, accessible here.</p>
+<p>Sources indicate that gradio: Gradio is an open-source Python library that makes it easy to build AI-powered web applications and, crucially for our project, to create MCP servers. Gradio will act as the bridge, allowing our LLM to call the IDM-VTON model and other tools.</p>
+<p>Visual Studio Code's AI Chat Feature: We'll use VS Code's built-in AI chat, which supports adding arbitrary MCP servers, to interact with our AI shopping assistant. This will provide a user-friendly interface for issuing commands and viewing the virtual try-on results.</p>
+<p>Recent findings suggest that the core of our AI shopping assistant is the Gradio MCP server. This server will expose one main tool:.</p>
+<p>Here's the Python code for our Gradio MCP server:.</p>
+<p>By setting mcp_server=True in the launch() method, Gradio automatically converts our Python functions into MCP tools that LLMs can understand and use. The docstrings of our functions are used to generate descriptions of the tools and their parameters.</p>
+<p id="sec-mid-104051">Recent findings suggest that the original IDM-VTON space was implemented with Gradio 4.x which precedes the automatic MCP functionality. So in this demo, we'll be building a Gradio interface that queries the original space via the Gradio API client.</p>
+<p>Finally, run this script with python.</p>
+<p>In a recent development, to connect our Gradio MCP server to VS Code's AI chat, we'll need to edit the mcp.json file. This configuration tells the AI chat where to find our MCP server and how to interact with it.</p>
+<p>Recent findings suggest that you can find this file by typing MCP in the command panel and selecting MCP: Open User Configuration. Once you open it, make sure the following servers are present:.</p>
+<p>The playwright MCP server will let our AI assistant browse the web.</p>
+<p>Make sure the URL of the vton server matches the url printed to the console in the previous section. To run the playwright MCP server, you need to have node installed.</p>
+<p>Now we can start interacting with our AI shopping assistant. Open a latest chat in VS Code, and you can ask the assistant something like "Browse the Uniqlo website for blue t-shirts, and show me what I would look like in three of them, using my photo at [your-image-url].".</p>
+<p>See the above video for an example!</p>
+<p>The combination of Gradio, MCP, and powerful AI models like IDM-VTON opens up exciting possibilities for creating intelligent and helpful AI assistants. By following the steps outlined in this blog post, you can build your own assistant to solve the problems you care most about!</p>
+<p id="sec-end-104051">In a recent development, excellent read! It looks like AI is taking over every app and website, as every app/website is integrating AI features.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/gradio-vton-mcp" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-upskill-your-llms-with-gradio-mcp-servers-104112.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104112. Latest Update: Upskill your LLMs With Gradio MCP Servers
+        </a>
+        
+        <a href="five-substantial-improvements-to-gradio-mcp-servers-104086.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104086. Five Substantial Improvements to Gradio MCP Servers
+        </a>
+        
+        <a href="top-4-mcp-servers-for-marketers-features-use-cases-and-limitation-104689.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104689. Top 4 MCP Servers for Marketers: Features, Use Cases, and Limitations
+        </a>
+        
+        <a href="how-to-build-an-mcp-server-with-gradio-104219.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104219. How to Build an MCP Server with Gradio
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

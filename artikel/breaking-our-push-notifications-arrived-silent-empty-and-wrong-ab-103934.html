@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Our push notifications arrived silent, empty, and wrong about the time. Three bugs, one night.</title>
+    <meta name="description" content="Recent findings suggest that here is what was actually wrong. Three separate bugs, found one at a time, because each fix revealed the next one. Bug 1: the ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-our-push-notifications-arrived-silent-empty-and-wrong-ab-103934.html">
+    <meta property="og:title" content="Breaking: Our push notifications arrived silent, empty, and wrong about the time. Three bugs, one night.">
+    <meta property="og:description" content="Recent findings suggest that here is what was actually wrong. Three separate bugs, found one at a time, because each fix revealed the next one. Bug 1: the ">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F42e66nvefoat7k3g0vfi.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-our-push-notifications-arrived-silent-empty-and-wrong-ab-103934.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Our push notifications arrived silent, empty, and wrong about the time. Three bugs, one night.", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F42e66nvefoat7k3g0vfi.png"], "datePublished": "2026-11-24T03:38:07", "dateModified": "2026-11-24T03:49:08.330465", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-our-push-notifications-arrived-silent-empty-and-wrong-ab-103934.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Our push notifications arrived silent, empty, and wrong about the time. Three bugs, one night.</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 3 min read (687 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that here is what was actually wrong.</li><li style='margin-bottom:6px;'>The app only asks for notification permission when you turn a toggle on.</li><li style='margin-bottom:6px;'>Recent findings suggest that the fix was a phone tap, not code: flip Weather alerts off and back on, which fires the prompt, tap Allow.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-103934"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-103934"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-103934"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Our push notifications arrived silent, empty, and wrong about the time. Three bugs, one night." loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F42e66nvefoat7k3g0vfi.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-103934">Recent findings suggest that here is what was actually wrong. Three separate bugs, found one at a time, because each fix revealed the next one.</p>
+<p>Bug 1: the permission prompt never fired.</p>
+<p>The app only asks for notification permission when you turn a toggle on. The toggles were already on — carried over from the previous build — so the prompt never appeared, and the phone had no permission to show anything. The send still reported alerts_sent: 1, errors: [], because from the server's side everything worked. The failure was invisible to every log we had.</p>
+<p>Recent findings suggest that the fix was a phone tap, not code: flip Weather alerts off and back on, which fires the prompt, tap Allow. The next notification arrived in the shade. But it arrived silent, with no title and no body.</p>
+<p>Bug 2: one line in the server payload turned a data message into an empty system notification.</p>
+<p>This was the real one. Our shared sender built the FCM message like this:.</p>
+<p>android: { priority: "high", notification: { channel_id } }.</p>
+<p>In a recent development, that notification block changes what the message is. With it present, FCM treats the message as a notification message: when the app is backgrounded, the system displays it itself — and our payload carries no title or body, so the system displayed nothing. The app's own onMessageReceived, the code that builds the real notification with the title, the body, and the tap-to-Weather deep link, never ran.</p>
+<p id="sec-mid-103934">Industry observers note that the fix was deleting the block. Pure data-only now; the app picks its own channel from the message kind. We deployed the sender (news-weather-alerts v10, news-email-send v57), re-fired the warning, and at 3:11 in the morning the verdict came back: "Yes it buzzed." Full text in the shade — "StarBrook Weather — Freeze Warning — Oklahoma City, OK, until 3:30 PM CT" — and tapping it opened the Weather screen. Arrive, text, buzz, tap: all four proven on a real phone.</p>
+<p>Except the time in that notification was wrong.</p>
+<p>Bug 3: the push used the wrong NWS field for "until".</p>
+<p>The notification said "until 3:30 PM." The app's own Weather banner said "until November 24 at 8:00 AM." We assumed the app was stale. It wasn't — the push was wrong.</p>
+<p>Industry observers note that the National Weather Service alert carries two different fields: expires (when the alert product drops off the feed — 3:30 PM) and ends (when the freeze itself ends — 8:00 AM the next day). The push used expires. The fix: props.ends || props.expires, plus a helper that adds the weekday when the end isn't today, so the newly introduced wording reads "until Tue 8:00 AM." Deployed as news-weather-alerts v11 and re-fired. (One footnote: the ?dry_run=true flag on that re-fire didn't take effect — it sent for real. The phone got a second freeze warning at 3 in the morning. Test flags deserve the same skepticism as test data.).</p>
+<p>The bug the phone found that the server couldn't see.</p>
+<p>The off-and-on toggle flip exposed one more: a race in the app itself. The toggle setter wrote the newly introduced preference to DataStore fire-and-forget, while the re-registration read the preference immediately — fast enough to read the stale value and re-register without weather. The server row had to be fixed by hand that night. The app fix (Build #25) made the four toggle setters plain suspend passthroughs and runs write → permission prompt → re-register in a single coroutine, and the same race got fixed on the Settings ZIP save while we were in there. That build also fixed a settings screen where the Culture chip rendered vertically and the Save button hid under the floating Portal star. Build #25 shipped that evening, and Build #26 is live now.</p>
+<p>What the night actually taught us.</p>
+<p id="sec-end-103934">In a recent development, starBrook News is free, no paywall, no ads, no account needed to read. The notifications are one toggle: on means news pushes and weather pushes. The app is in beta; the build that carries these fixes is live now.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/matthew_douglas_2fa684680/our-push-notifications-arrived-silent-empty-and-wrong-about-the-time-three-bugs-one-night-48me" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="deal-of-the-week-get-one-of-our-editors-all-time-favorite-tents-f-102557.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #102557. Deal of the Week: Get One of Our Editors’ All-Time Favorite Tents for 50 Percent Off Now
+        </a>
+        
+        <a href="breaking-threert-real-time-ray-tracing-for-threejs-103695.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #103695. Breaking: ThreeRT: Real-Time Ray Tracing for three.js
+        </a>
+        
+        <a href="industry-news-a-30-day-beginner-fitness-blueprint-that-wont-overw-103249.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #103249. Industry News: A 30-Day Beginner Fitness Blueprint That Won’t Overwhelm You (One Quest at a Time)
+        </a>
+        
+        <a href="three-cats-one-rabies-outbreak-what-happens-next-102271.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #102271. Three Cats, One Rabies Outbreak: What Happens Next?
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

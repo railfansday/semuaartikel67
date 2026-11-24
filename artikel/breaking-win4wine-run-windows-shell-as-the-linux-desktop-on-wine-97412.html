@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Win4wine – Run Windows Shell as the Linux Desktop on Wine</title>
+    <meta name="description" content="Linux のデスクトップを、Windows XP のシェルで。. 個人の実験的なプロジェクトです。 日常の作業環境として使えるほど完成してはいません。 動作を確かめているのは、新しくインストールした Debian 13 に導入スクリプトで入れた場合だけです。 すでに使っている環境（ほかのデスクトップ環境やデ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-win4wine-run-windows-shell-as-the-linux-desktop-on-wine-97412.html">
+    <meta property="og:title" content="Breaking: Win4wine – Run Windows Shell as the Linux Desktop on Wine">
+    <meta property="og:description" content="Linux のデスクトップを、Windows XP のシェルで。. 個人の実験的なプロジェクトです。 日常の作業環境として使えるほど完成してはいません。 動作を確かめているのは、新しくインストールした Debian 13 に導入スクリプトで入れた場合だけです。 すでに使っている環境（ほかのデスクトップ環境やデ">
+    <meta property="og:image" content="https://opengraph.githubassets.com/4b9d893f68777bb30682cb7e0ff53a02414fe6dee34bfe947ba273c379e0324b/mikuta0407/win4wine">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-win4wine-run-windows-shell-as-the-linux-desktop-on-wine-97412.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Win4wine – Run Windows Shell as the Linux Desktop on Wine", "image": ["https://opengraph.githubassets.com/4b9d893f68777bb30682cb7e0ff53a02414fe6dee34bfe947ba273c379e0324b/mikuta0407/win4wine"], "datePublished": "2026-11-23T12:28:11", "dateModified": "2026-11-24T03:43:52.792348", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-win4wine-run-windows-shell-as-the-linux-desktop-on-wine-97412.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">📈 Bullish</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Win4wine – Run Windows Shell as the Linux Desktop on Wine</h1>
+        <div class="meta-line">🌐 Source: <strong>Github</strong> &bull; 📅 23 Nov 2026 &bull; ⏱️ 1 min read (123 words, ⚡ Quick Read)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>個人の実験的なプロジェクトです。 日常の作業環境として使えるほど完成してはいません。
+動作を確かめているのは、新しくインストールした Debian 13 に導入スクリプトで入れた場合だけです。
+すでに使っている環境（ほかのデスクトップ環境やディスプレイマネージャが入っているものなど）への導入は試していません。
+試すときは、仮想マシンや試験用のマシンをおすすめします。.</li><li style='margin-bottom:6px;'>Windows XP の explorer.exe を、パッチを当てた Wine の上で Linux のデスクトップシェルとして動かすプロジェクトです。
+タスクバー、スタートメニュー、デスクトップ、フォルダウィンドウは XP 本物のものです。Linux のアプリも、XP の枠とタスクバーで扱えます。.</li><li style='margin-bottom:6px;'>Microsoft のファイルは同梱していません。お手元の XP の ISO から、必要なファイルだけを取り出して使います。.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-97412"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-97412"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-97412"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Win4wine – Run Windows Shell as the Linux Desktop on Wine" loading="lazy" src="https://opengraph.githubassets.com/4b9d893f68777bb30682cb7e0ff53a02414fe6dee34bfe947ba273c379e0324b/mikuta0407/win4wine" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-97412">Linux のデスクトップを、Windows XP のシェルで。.</p>
+<p>個人の実験的なプロジェクトです。 日常の作業環境として使えるほど完成してはいません。
+動作を確かめているのは、新しくインストールした Debian 13 に導入スクリプトで入れた場合だけです。
+すでに使っている環境（ほかのデスクトップ環境やディスプレイマネージャが入っているものなど）への導入は試していません。
+試すときは、仮想マシンや試験用のマシンをおすすめします。.</p>
+<p>Windows XP の explorer.exe を、パッチを当てた Wine の上で Linux のデスクトップシェルとして動かすプロジェクトです。
+タスクバー、スタートメニュー、デスクトップ、フォルダウィンドウは XP 本物のものです。Linux のアプリも、XP の枠とタスクバーで扱えます。.</p>
+<p>Microsoft のファイルは同梱していません。お手元の XP の ISO から、必要なファイルだけを取り出して使います。.</p>
+<p>XP の ISO が無い方は、XP のシェルの代わりに ReactOS のシェル（Windows 2000 風のクラシックの見た目）でも
+試せます。ReactOS は自由なソフトウェアなので、導入スクリプトが公式のリリースから取得します（docs/reactos.md）。.</p>
+<p>Windows 7 の ISO があれば、Windows 7 のシェル（Windows 7 ベーシックの見た目）でも試せます。まだ実験的な試作です（docs/windows7.md）。.</p>
+<p id="sec-mid-97412">XP の ISO が無いときは、ReactOS のシェルで試せます（ISO は要りません）。.</p>
+<p>ログイン画面でセッション「ReactOS Shell (Wine, X11)」を選びます。.</p>
+<p>Windows 7 のシェル（実験的）は、Windows 7 SP1 x64 の ISO から作ります。.</p>
+<p>ログイン画面でセッション「Windows 7 Shell (Wine, X11)」を選びます。.</p>
+<p>詳しい手順とオプションは 🔗 導入手順（INSTALL.md） にあります。Wine をソースからビルドするので、4 コアで 1 時間半ほどかかります。
+テーマ（XP のクラシックなど）と文字の大きさは、後から変えられます（見た目と文字の大きさを変える）。.</p>
+<p id="sec-end-97412">LGPL-2.1-or-later（Wine と同じ）です。対象はこのリポジトリのコードとパッチだけです。
+ただし wayland/patches/labwc/ は labwc と同じ GPL-2.0-only、wayland/patches/wlroots/ は wlroots と同じ MIT です。
+Windows XP と Windows 7 のファイルと、スクリーンショットに写っている XP と Windows 7 の画面の著作権は Microsoft にあります。
+ReactOS のシェルで使う ReactOS のファイルは、ReactOS のライセンス（GPL-2.0-or-later、DLL の多くは LGPL-2.1-or-later）に従います。.</p>
+<p style="margin-top: 25px;">
+<a href="https://github.com/mikuta0407/win4wine" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-attackers-crash-claudes-office-party-flaw-to-run-ma-92796.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #92796. Industry News: Attackers Crash Claude's 'Office Party' Flaw to Run Malicious Code on Linux
+        </a>
+        
+        <a href="run-a-chatgpt-like-chatbot-on-a-single-gpu-with-rocm-104880.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104880. Run a Chatgpt-like Chatbot on a Single GPU with ROCm
+        </a>
+        
+        <a href="industry-news-releasing-swift-transformers-run-on-device-llms-in--104832.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104832. Industry News: Releasing Swift Transformers: Run On-Device LLMs in Apple Devices
+        </a>
+        
+        <a href="run-comfyui-workflows-for-free-with-gradio-on-hugging-face-spaces-104772.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104772. Run ComfyUI workflows for free with Gradio on Hugging Face Spaces
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lua for data representation</title>
+    <meta name="description" content="my major advocacy is that lua is a very good general purpose language. this is not an opinion shared by all. lua’s major design goal was extending and embe">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/lua-for-data-representation-104093.html">
+    <meta property="og:title" content="Lua for data representation">
+    <meta property="og:description" content="my major advocacy is that lua is a very good general purpose language. this is not an opinion shared by all. lua’s major design goal was extending and embe">
+    <meta property="og:image" content="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/lua-for-data-representation-104093.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Lua for data representation", "image": ["https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk"], "datePublished": "2026-11-24T00:22:05", "dateModified": "2026-11-24T03:49:16.634577", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/lua-for-data-representation-104093.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Lua for data representation</h1>
+        <div class="meta-line">🌐 Source: <strong>Citrons</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 6 min read (1111 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>my major advocacy is that lua is a very good general purpose language.</li><li style='margin-bottom:6px;'>lua’s syntax provides many niceties.</li><li style='margin-bottom:6px;'>here is a function that for any string, creates the correct multiline string to represent it:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-104093"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-104093"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-104093"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Lua for data representation" loading="lazy" src="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-104093">my major advocacy is that lua is a very good general purpose language. this is not an opinion shared by all. lua’s major design goal was extending and embedding into existing programs. I think the simplicity and flexibility in design persued towards the end of that goal extends to make lua a very good language in general. that said, it does its job quite well as an embedding language, and one of its more interesting use cases (and actually, one of its oldest use cases) is as a data or configuration format.</p>
+<p>lua’s syntax provides many niceties. for instance, lua has an infinite family of multiline strings: the most basic one starts with [[ and ends with ]]. however, any amount of equal signs can be put between the two square brackets: print([======[hello, world]======]). the only way to close a [===[ is with an accompanying ]===], not with a ]] or a ]==], or a ]====].</p>
+<p>here is a function that for any string, creates the correct multiline string to represent it:.</p>
+<p>local function stringize(str)
+    local equal_signs = ""
+    for e in str:gmatch("](=*)]") do
+        if #e &gt;= #equal_signs then
+            equal_signs = e .. "="
+        end
+    end
+    return ("[%s[%s]%s]"):format(equal_signs, str, equal_signs)
+end
+
+of course, you can just use string.format with %q, but multiline strings usually provide nicer looking and more compact results. these strings are very good for representing lua code as strings in other lua code.</p>
+<p>According to recent reports, anyway, download this file. if you want to consume massive amounts of memory and possibly crash your computer, run it in cpython. if you want to see “hello, world” printed 5 million times, run it in lua. lua’s parser is designed to handle massive files with stride, which is fairly unique and quite necessary if lua is to be used for this purpose.</p>
+<p>design and implementation choices like these come together to suit lua for this purpose. I’ve seen 3 main styles of using lua code to represent data or configuration. I think lua manages to accomodate each of them well, and each have their appropriate use.</p>
+<p>In a recent development, chunks are much like function bodies. they have return values. so, one thing that one can do is just return a big table from a lua program.</p>
+<p>Recent findings suggest that return {
+    foo = "bar",
+    list = {1, 2, 3},
+    rule_of_thirds = true,
+}
+
+if you’re using this style, you can omit the return and then prepend it when you load the lua files. this makes any trailing statements syntactically invalid because the return statement must be the last statement in the block. keep in mind, though, that this does not prevent arbitrary code because function literals can be used instead.</p>
+<p>return (function() arbitrary_code() end)()
+
+trying to strip out function literals to make this technique safer is fraught and defeats the general elegance of this technique. one can fairly readily use JSON instead.</p>
+<p>what is often missed about lua is that it’s subtly full of metaprogrammability. for instance, lua globals are just stored in a table, and which table is used can be controlled by the code itself. this table is known as the “environment”. an environment may be passed to load as an argument. the way this can be used is that you can load a chunk with an empty environment and then capture the values it sets as globals.</p>
+<p>-- config.lua
+foo = "bar"
+list = {1, 2, 3}
+rule_of_thirds = true
+
+then, you can get a table with all the configuration as simply as this:.</p>
+<p id="sec-mid-104093">local config = {}
+assert(loadfile("config.lua", "t", config))().</p>
+<p>lua has a bit of sugar that allows you to shed the parenthesis on function calls to make them look cleaner. an imperative style is a very suitable means to represent data in lua, and it’s very powerful.</p>
+<p>path "/path/to/things"
+
+config {
+    foo = "bar",
+    list = {1, 2, 3},
+    rule_of_thirds = true,
+}
+
+lipsum [[
+    Voluptatibus laudantium et omnis ut debitis. Similique omnis molestias
+    consequuntur. Praesentium corporis omnis nihil et quidem dolore. Veritatis
+    fugiat eaque corporis eligendi officiis praesentium. Libero quo vero
+    temporibus impedit sit inventore assumenda
+]]
+
+programming in lua provides a real world example of this.</p>
+<p>the major problem with using an entire programming language to represent data is that untrusted data can be readily crafted to be malicious. indeed, I would not use this technique for untrusted data. with that in mind, it is possible to solve or mitigate the potential vulnerabilities.</p>
+<p>Industry observers note that the main technique for sandboxing lua is controlling the environment. when using lua for data representation, an empty enivronment is the most appropriate (or, an environment that only exposes data constructors). this prevents any I/O or access to the larger program’s state. preventing access to all standard library functions is safest. there are a few standard library functions that have consequences you might not expect.</p>
+<p>another concern is denial of service. this is trickier to prevent. it’s fairly trivial to construct a lua chunk which does not return (while true do end). debug.sethook can mitigate this somewhat. even so, it’s probably possible to construct something that uses excessive amounts of memory. that said, denial of service is significantly less problematic than the vulnerabilities that are completely avoided by depriving the untrusted code of any standard library functions.</p>
+<p>finally, make sure to reject lua bytecode. untrusted lua bytecode is not safe and may cause arbitrary nasal demons in the lua interpreter. load can accept both bytecode and lua source by default. however, passing "t" for the mode parameter prevents this.</p>
+<p>clearly, it’s silly to bring in the entire lua interpreter where you would just use JSON or INI. where this use case of lua shines is when you’re already using lua for a project (and then you already have this powerful data description language), or when you need something with a lot of power or flexibility.</p>
+<p>It has been revealed that these mini languages can be extended to arbitrary complexity and nuance. unlike JSON, you can add arbitrary type constructors, or anything at all. you can build any kind of language you want, and that’s how lua is designed to be used, and it’s actually approximately the story of how it was invented.</p>
+<p>In a recent development, if you’re anything like me, this will sound a little familiar. indeed, many have said similar things about lisp and forth. both of those languages have very different approaches but reach the same conclusion of “inventing your own language”. I believe lua belongs in their pantheon.</p>
+<p id="sec-end-104093">In a recent development, python? js? ruby? what the hell are those? all I care about is LUA.</p>
+<p style="margin-top: 25px;">
+<a href="https://citrons.xyz/journal/2025-07-23" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-introducing-the-data-measurements-tool-an-interacti-105061.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #105061. Latest Update: Introducing the Data Measurements Tool: an Interactive Tool for Looking at Datasets
+        </a>
+        
+        <a href="industry-news-accelerate-large-model-training-using-pytorch-fully-105028.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #105028. Industry News: Accelerate Large Model Training using PyTorch Fully Sharded Data Parallel
+        </a>
+        
+        <a href="tech-report-efficient-table-pre-training-without-real-data-an-int-105014.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #105014. Tech Report: Efficient Table Pre-training without Real Data: An Introduction to TAPEX
+        </a>
+        
+        <a href="breaking-how-to-train-your-model-dynamically-using-adversarial-da-104997.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104997. Breaking: How to train your model dynamically using adversarial data
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

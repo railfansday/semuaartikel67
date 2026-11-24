@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: (LoRA) Fine-Tuning FLUX.1-dev on Consumer Hardware</title>
+    <meta name="description" content="It has been revealed that in our previous post, Exploring Quantization Backends in Diffusers, we dived into how various quantization techniques can shrink ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-lora-fine-tuning-flux1-dev-on-consumer-hardware-104139.html">
+    <meta property="og:title" content="Tech Report: (LoRA) Fine-Tuning FLUX.1-dev on Consumer Hardware">
+    <meta property="og:description" content="It has been revealed that in our previous post, Exploring Quantization Backends in Diffusers, we dived into how various quantization techniques can shrink ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/flux-qlora/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-lora-fine-tuning-flux1-dev-on-consumer-hardware-104139.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: (LoRA) Fine-Tuning FLUX.1-dev on Consumer Hardware", "image": ["https://huggingface.co/blog/assets/flux-qlora/thumbnail.png"], "datePublished": "2025-06-19T00:00:00", "dateModified": "2026-11-24T03:49:20.291166", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-lora-fine-tuning-flux1-dev-on-consumer-hardware-104139.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: (LoRA) Fine-Tuning FLUX.1-dev on Consumer Hardware</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 19 Jun 2025 &bull; ⏱️ 9 min read (1735 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that in our previous post, Exploring Quantization Backends in Diffusers, we dived into how various quantization techniques can shrink diffusion models like FLUX.1-dev, making them significantly more accessible for inference without drastically compromising performance.</li><li style='margin-bottom:6px;'>Recent findings suggest that performing inference is cool, but to make these models truly our own, we also need to be able to fine-tune them.</li><li style='margin-bottom:6px;'>We aim to fine-tune black-forest-labs/FLUX.1-dev to adopt the artistic style of Alphonse Mucha, using a small dataset.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-104139"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-104139"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-104139"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: (LoRA) Fine-Tuning FLUX.1-dev on Consumer Hardware" loading="lazy" src="https://huggingface.co/blog/assets/flux-qlora/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-104139">It has been revealed that in our previous post, Exploring Quantization Backends in Diffusers, we dived into how various quantization techniques can shrink diffusion models like FLUX.1-dev, making them significantly more accessible for inference without drastically compromising performance. We saw how bitsandbytes, torchao, and others reduce memory footprints for generating images.</p>
+<p>Recent findings suggest that performing inference is cool, but to make these models truly our own, we also need to be able to fine-tune them. Therefore, in this post, we tackle efficient fine-tuning of these models with peak memory use under ~10 GB of VRAM on a single GPU. This post will guide you through fine-tuning FLUX.1-dev using QLoRA with the diffusers library. We'll showcase results from an NVIDIA RTX 4090. We'll also highlight how FP8 training with torchao can further optimize speed on compatible hardware.</p>
+<p>We aim to fine-tune black-forest-labs/FLUX.1-dev to adopt the artistic style of Alphonse Mucha, using a small dataset.</p>
+<p>The model consists of three main components:.</p>
+<p>In our QLoRA approach, we focus exclusively on fine-tuning the transformer component. The text encoders and VAE remain frozen throughout training.</p>
+<p>We used a diffusers training script (slightly modified from here designed for DreamBooth-style LoRA fine-tuning of FLUX models. Also, a shortened version to reproduce the results in this blogpost (and used in the Google Colab) is available here. Let's examine the crucial parts for QLoRA and memory efficiency:.</p>
+<p>According to recent reports, loRA (Low-Rank Adaptation) Deep Dive: LoRA makes model training more efficient by keeping track of the weight updates with low-rank matrices. Instead of updating the full weight matrix W W W, LoRA learns two smaller matrices A A A and B B B. The revision to the weights for the model is ΔW=BA \Delta W = B A ΔW=BA, where A∈Rr×k A \in \mathbb{R}^{r \times k} A∈Rr×k and B∈Rd×r B \in \mathbb{R}^{d \times r} B∈Rd×r. The number r r r (called rank) is much smaller than the original dimensions, which means less parameters to update. Lastly, α \alpha α is a scaling factor for the LoRA activations. This affects how much LoRA affects the updates, and is often set to the same value as the r r r or a multiple of it. It helps balance the influence of the pre-trained model and the LoRA adapter. For a general introduction to the concept, check out our previous blog post: Using LoRA for Efficient Stable Diffusion Fine-Tuning.</p>
+<p>Industry observers note that QLoRA: The Efficiency Powerhouse: QLoRA enhances LoRA by first loading the pre-trained base model in a quantized format (typically 4-bit via bitsandbytes), drastically cutting the base model's memory footprint. It then trains LoRA adapters (usually in FP16/BF16) on top of this quantized base. This dramatically lowers the VRAM needed to hold the base model.</p>
+<p>For instance, in the DreamBooth training script for HiDream 4-bit quantization with bitsandbytes reduces the peak memory usage of a LoRA fine-tune from ~60GB down to ~37GB with negligible-to-none quality degradation. The very same principle is what we apply here to fine-tune FLUX.1 on a consumer-grade hardware.</p>
+<p>It has been revealed that 8-bit Optimizer (AdamW):
+Standard AdamW optimizer maintains first and second moment estimates for each parameter in 32-bit (FP32), which consumes a lot of memory. The 8-bit AdamW uses block-wise quantization to store optimizer states in 8-bit precision, while maintaining training stability. This technique can reduce optimizer memory usage by ~75% compared to standard FP32 AdamW. Enabling it in the script is straightforward:.</p>
+<p>Gradient Checkpointing:
+During forward pass, intermediate activations are typically stored for backward pass gradient computation. Gradient checkpointing trades computation for memory by only storing certain checkpoint activations and recomputing others during backpropagation.</p>
+<p>Recent findings suggest that cache Latents:
+This optimization technique pre-processes all training images through the VAE encoder before the beginning of the training. It stores the resulting latent representations in memory. During the training, instead of encoding images on-the-fly, the cached latents are directly used. This approach offers two main benefits:.</p>
+<p>Setting up 4-bit Quantization (BitsAndBytesConfig):.</p>
+<p>This section demonstrates the QLoRA configuration for the base model:.</p>
+<p>Defining LoRA Configuration (LoraConfig):
+Adapters are added to the quantized transformer:.</p>
+<p>Only these LoRA parameters become trainable.</p>
+<p>Before we launch the QLoRA fine-tune we can save a huge chunk of VRAM and wall-clock time by caching outputs of text encoders once.</p>
+<p>At training time the dataloader simply reads the cached embeddings instead of re-encoding the caption, so the CLIP/T5 encoder never has to sit in GPU memory.</p>
+<p>By combining this with cached VAE latents (--cache_latents) you whittle the active model down to just the quantized transformer + LoRA adapters, keeping the whole fine-tune comfortably under 10 GB of GPU memory.</p>
+<p>For this demonstration, we leveraged an NVIDIA RTX 4090 (24GB VRAM) to explore its performance. The full training command using accelerate is shown below.</p>
+<p>It has been revealed that configuration for RTX 4090:
+On our RTX 4090, we used a train_batch_size of 1, gradient_accumulation_steps of 4, mixed_precision="bf16", gradient_checkpointing=True, use_8bit_adam=True, a LoRA rank of 4, and resolution of 512x768. Latents were cached with cache_latents=True.</p>
+<p>Training Time (RTX 4090):
+Fine-tuning for 700 steps on the Alphonse Mucha dataset took approximately 41 minutes on the RTX 4090 with train_batch_size of 1 and resolution of 512x768.</p>
+<p>According to recent reports, output Quality:
+The ultimate measure is the generated art. Here are samples from our QLoRA fine-tuned model on the derekl35/alphonse-mucha-style dataset:.</p>
+<p>Recent findings suggest that this table compares the primary bf16 precision results. The goal of the fine-tuning was to teach the model the distinct style of Alphonse Mucha.</p>
+<p>The fine-tuned model nicely captured Mucha's iconic art nouveau style, evident in the decorative motifs and distinct color palette. The QLoRA process maintained excellent fidelity while learning the upcoming style.</p>
+<p>The results are nearly identical, showing that QLoRA performs effectively with both fp16 and bf16 mixed precision.</p>
+<p>For people with NVIDIA GPUs possessing compute capability 8.9 or greater (such as the H100, RTX 4090), even greater speed efficiencies can be achieved by leveraging FP8 training via the torchao library.</p>
+<p>Industry observers note that we fine-tuned FLUX.1-dev LoRA on an H100 SXM GPU slightly modifieddiffusers-torchao training scripts. The following command was used:.</p>
+<p>The training run had a peak memory usage of 36.57 GB and completed in approximately 20 minutes.</p>
+<p>Qualitative results from this FP8 fine-tuned model are also available:.</p>
+<p id="sec-mid-104139">Key steps to enable FP8 training with torchao involve:.</p>
+<p>For a more detailed guide and code snippets, please refer to this gist and the diffusers-torchao repository.</p>
+<p>After training your LoRA adapters, you have two main approaches for inference.</p>
+<p>One approach is to load your trained LoRA adapters on top of the base model.</p>
+<p>For when you want maximum efficiency with a single style, you can merge the LoRA weights into the base model.</p>
+<p>While we showcased results on an RTX 4090, the same code can be run on more accessible hardware like the T4 GPU available in Google Colab for free.</p>
+<p>It has been revealed that on a T4, you can expect the fine-tuning process to take significantly longer around 4 hours for the same number of steps. This is a trade-off for accessibility, but it makes custom fine-tuning possible without high-end hardware. Be mindful of usage limits if running on Colab, as a 4-hour training run might push them.</p>
+<p>Sources indicate that QLoRA, coupled with the diffusers library, significantly democratizes the ability to customize state-of-the-art models like FLUX.1-dev. As demonstrated on an RTX 4090, efficient fine-tuning is well within reach, yielding high-quality stylistic adaptations. Furthermore, for users with the latest NVIDIA hardware, torchao enables even faster training through FP8 precision.</p>
+<p>Sharing your fine-tuned LoRA adapters is a fantastic way to contribute to the open-source community. It allows others to easily try out your styles, build on your work, and helps create a vibrant ecosystem of creative AI tools.</p>
+<p>It has been revealed that if you've trained a LoRA for FLUX.1-dev, we encourage you to share it. The easiest way is to add the --push_to_hub flag to the training script. Alternatively, if you have already trained a model and want to upload it, you can use the following snippet.</p>
+<p>According to recent reports, check out our Mucha LoRA and the TorchAO FP8 LoRA. You can find both, plus other adapters, in this collection.</p>
+<p>We can't wait to see what you create!</p>
+<p>In a recent development, hi! Great blog post, thank you for your work.</p>
+<p>The link to the script train_dreambooth_lora_flux_nano.py(in this section) is not working - perhaps the branch on which it was developed is not merged yet ?</p>
+<p>It's not merged yet ! https://github.com/huggingface/diffusers/pull/11743We will merge it soon ;).</p>
+<p>Typo: CLIP is not a text encoder :PThis is good.</p>
+<p>In a recent development, hi all, I managed to make it run on a dataset of numerical art of my own (mostly 512x512 flame fractals), and am glad to share the LoRA - happy to get some feedback on it ! I'll enhancement the model card soon ...</p>
+<p>Thank you team for the great work, easy to use !</p>
+<p>According to recent reports, awesome! glad to hear it worked well with your flame fractal dataset, results in model card looks cool.</p>
+<p>In a recent development, I don't remember you being this cocky. This is how you lose respect.</p>
+<p>The script was already available since October 2024, just made a more detailed version :P.</p>
+<p>i know, my research group provided it ;).</p>
+<p>https://github.com/huggingface/diffusers/tree/main/examples/research_projects/flux_lora_quantization.</p>
+<p>Was provided by SimpleTuner group?</p>
+<p>Recent findings suggest that it's called Terminus Research, for what it's worth, but we contributed the original flux training script, which was then redone for inclusion by Linoy, with modifications. and then we ensured PEFT and Diffusers worked with quantised training on LoRA.</p>
+<p>Recent findings suggest that ✅ 1. Do these instructions work with Flux Schnell?✅ 2. Can you export the merged model as a .safetensors file after merging a LoRA?✅ 3. Does a LoRA merge increase the size-on-disk of the model? 4. I recently bought a refurbed RTX 3090 for AI workloads, will these instruction still work on the RTX 3090 or should I return it for a RTX 4090?</p>
+<p>An LLM I asked stated yes for three but I wanted to ask the experts.</p>
+<p>I would say it should work for Schnell but you might have to change the loss function a bit to account for the fact it's a timestep-distilled model.</p>
+<p>I don't think LoRA merge should increase the final state dict size.</p>
+<p id="sec-end-104139">The numbers shouldn't change much.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/flux-qlora" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="using-lora-for-efficient-stable-diffusion-fine-tuning-104926.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104926. Using LoRA for Efficient Stable Diffusion Fine-Tuning
+        </a>
+        
+        <a href="fine-tuning-20b-llms-with-rlhf-on-a-24gb-consumer-gpu-104905.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104905. Fine-tuning 20B LLMs with RLHF on a 24GB consumer GPU
+        </a>
+        
+        <a href="tech-report-make-llm-fine-tuning-2x-faster-with-unsloth-and-trl-104775.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104775. Tech Report: Make LLM Fine-tuning 2x faster with Unsloth and 🤗 TRL
+        </a>
+        
+        <a href="beyond-lora-can-you-beat-the-most-popular-fine-tuning-technique-93056.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #93056. Beyond LoRA: Can you beat the most popular fine-tuning technique?
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScreenEnv: Deploy your full stack Desktop Agent</title>
+    <meta name="description" content="TL;DR: ScreenEnv is a powerful Python library that lets you create isolated Ubuntu desktop environments in Docker containers for testing and deploying GUI ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/screenenv-deploy-your-full-stack-desktop-agent-104100.html">
+    <meta property="og:title" content="ScreenEnv: Deploy your full stack Desktop Agent">
+    <meta property="og:description" content="TL;DR: ScreenEnv is a powerful Python library that lets you create isolated Ubuntu desktop environments in Docker containers for testing and deploying GUI ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/screenenv/screenenv.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/screenenv-deploy-your-full-stack-desktop-agent-104100.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "ScreenEnv: Deploy your full stack Desktop Agent", "image": ["https://huggingface.co/blog/assets/screenenv/screenenv.png"], "datePublished": "2025-07-10T00:00:00", "dateModified": "2026-11-24T03:49:17.302420", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/screenenv-deploy-your-full-stack-desktop-agent-104100.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>ScreenEnv: Deploy your full stack Desktop Agent</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 10 Jul 2025 &bull; ⏱️ 3 min read (613 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>TL;DR: ScreenEnv is a powerful Python library that lets you create isolated Ubuntu desktop environments in Docker containers for testing and deploying GUI Agents (aka Computer Use agents).</li><li style='margin-bottom:6px;'>Imagine you need to automate desktop tasks, test GUI applications, or build an AI agent that can interact with software.</li><li style='margin-bottom:6px;'>Recent findings suggest that screenEnv changes this by providing a sandboxed desktop environment that runs in a Docker container.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-104100"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-104100"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-104100"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="ScreenEnv: Deploy your full stack Desktop Agent" loading="lazy" src="https://huggingface.co/blog/assets/screenenv/screenenv.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-104100">TL;DR: ScreenEnv is a powerful Python library that lets you create isolated Ubuntu desktop environments in Docker containers for testing and deploying GUI Agents (aka Computer Use agents). With built-in support for the Model Context Protocol (MCP), it's never been easier to deploy desktop agents that can see, click, and interact with real applications.</p>
+<p>Imagine you need to automate desktop tasks, test GUI applications, or build an AI agent that can interact with software. This used to require complex VM setups and brittle automation frameworks.</p>
+<p>Recent findings suggest that screenEnv changes this by providing a sandboxed desktop environment that runs in a Docker container. Think of it as a complete virtual desktop session that your code can fully control - not just clicking buttons and typing text, but managing the entire desktop experience including launching applications, organizing windows, handling files, executing terminal commands, and recording the entire session.</p>
+<p>ScreenEnv provides two complementary ways to integrate with your agents and backend systems, giving you flexibility to choose the approach that best fits your architecture:.</p>
+<p>Perfect for custom agent frameworks, existing backends, or when you need fine-grained control:.</p>
+<p>Ideal for AI systems that support the Model Context Protocol:.</p>
+<p>This dual approach means ScreenEnv adapts to your existing infrastructure rather than forcing you to change your agent architecture.</p>
+<p>Recent findings suggest that screenenv natively supports smolagents, making it easy to build your own custom Desktop Agent for automation. Here’s how to create your own AI-powered Desktop Agent in just a few steps:.</p>
+<p>Pick the backend VLM you want to power your agent.</p>
+<p>Inherit from DesktopAgentBase and implement the _setup_desktop_tools method to build your own action space!</p>
+<p id="sec-mid-104100">If you encounter acces denied docker error, you can try to run the agent with sudo -E python -m test.py or add your user to the docker group.</p>
+<p>💡 For a comprehensive implementation, see this CustomDesktopAgent source on GitHub.</p>
+<p>Recent findings suggest that screenEnv aims to expand beyond Linux to support Android, macOS, and Windows, unlocking true cross-platform GUI automation. This will enable developers and researchers to build agents that generalize across environments with minimal setup.</p>
+<p>These advancements pave the way for creating reproducible, sandboxed environments ideal for benchmarking and evaluation.</p>
+<p>Repository: https://github.com/huggingface/screenenv.</p>
+<p>This is really cool, would love to play around with this and see if can get running on Mac OS w/ a local MCP server and tool call implementations.</p>
+<p>In a recent development, where are the existing tool call implementations for clicking, screenshots, etc. implemented?</p>
+<p>I.e., I see a method for left_click in the sandbox class, but these are all making requests to the  IP address from the Docker Provider (?):.</p>
+<p>I can see the Docker image amhma/ubuntu-desktop:22.04-0.0.1-dev is used, but the server code (if that lives there) and Dockerfile would that would be very helpful (especially to rebuild and run with an aarch64 Linux image).</p>
+<p>Recent findings suggest that hi @tc-wolf .Thanks for your interest! We’re actively working toward open-sourcing the Docker image. Once we have a stable version ready to share.However, you can already use the Docker image on Mac with the arm64 architecture. The image supports both amd64 and arm64 (aarch64). Have you already tested it on your macOS?</p>
+<p id="sec-end-104100">It has been revealed that amazing work as always, thank you to the HuggingFace team!Is there any sort of roadmap or discord community server for this library?I am presently working on a multi-agent system (with smolagents) for computer-use. Usually my test-suite runs locally, and I was just looking for a way to make it run in conteneurized environments for consistency and reproducibility, so this is perfect!I would love to get in closer contact with the team working on this and contribute.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/screenenv" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="build-full-stack-android-apps-with-gemini-in-google-ai-studio-104210.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104210. Build full-stack Android apps with Gemini in Google AI Studio
+        </a>
+        
+        <a href="affirm-analytics-lead-full-stack-101736.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #101736. Affirm: Analytics Lead, Full Stack
+        </a>
+        
+        <a href="affirm-analytics-lead-full-stack-101719.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #101719. Affirm: Analytics Lead, Full Stack
+        </a>
+        
+        <a href="senior-software-engineer-full-stack-ios-backend-at-raya-101656.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #101656. Senior Software Engineer, Full Stack (iOS & Backend) at Raya
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

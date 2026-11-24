@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Stop Blaming Users for Phishing: Domain Security Fundamentals for Self-Hosters</title>
+    <meta name="description" content="According to recent reports, every time a phishing attack makes the news, the conversation collapses into the same tired take: &quot;people just need better tra">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-stop-blaming-users-for-phishing-domain-security-funda-103926.html">
+    <meta property="og:title" content="Tech Report: Stop Blaming Users for Phishing: Domain Security Fundamentals for Self-Hosters">
+    <meta property="og:description" content="According to recent reports, every time a phishing attack makes the news, the conversation collapses into the same tired take: &quot;people just need better tra">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fcodewithromi.com%2Fcontent%2Fimages%2F2026%2F09%2Fstop-blaming-users-for-phishing-domain-security-fundamentals-for-self-hosters.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-stop-blaming-users-for-phishing-domain-security-funda-103926.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Stop Blaming Users for Phishing: Domain Security Fundamentals for Self-Hosters", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fcodewithromi.com%2Fcontent%2Fimages%2F2026%2F09%2Fstop-blaming-users-for-phishing-domain-security-fundamentals-for-self-hosters.png"], "datePublished": "2026-11-24T03:39:04", "dateModified": "2026-11-24T03:49:08.133228", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-stop-blaming-users-for-phishing-domain-security-funda-103926.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Stop Blaming Users for Phishing: Domain Security Fundamentals for Self-Hosters</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 6 min read (1140 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, every time a phishing attack makes the news, the conversation collapses into the same tired take: "people just need better training." That framing is wrong, and it lets the real culprits off the hook.</li><li style='margin-bottom:6px;'>According to recent reports, when you expose a service to the internet, you inherit every weakness in the domain trust model.</li><li style='margin-bottom:6px;'>According to recent reports, the browser URL bar is the one signal people are told to trust, and it is surprisingly easy to abuse.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-103926"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-103926"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-103926"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Stop Blaming Users for Phishing: Domain Security Fundamentals for Self-Hosters" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fcodewithromi.com%2Fcontent%2Fimages%2F2026%2F09%2Fstop-blaming-users-for-phishing-domain-security-fundamentals-for-self-hosters.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-103926">According to recent reports, every time a phishing attack makes the news, the conversation collapses into the same tired take: "people just need better training." That framing is wrong, and it lets the real culprits off the hook. Phishing is a structural problem rooted in how domains are trusted, displayed, and verified. If you run self-hosted services, understanding those fundamentals is not optional. It is the difference between a hardened stack and one that hands attackers a free ride.</p>
+<p>According to recent reports, when you expose a service to the internet, you inherit every weakness in the domain trust model. An attacker does not need to break your app. They can register a lookalike domain, spin up a clone of your login page, and let confused owners hand over credentials. Your Vaultwarden, Nextcloud, or Gitea instance can be perfectly patched and still lose users to a domain that looks like yours at a glance.</p>
+<p>According to recent reports, the browser URL bar is the one signal people are told to trust, and it is surprisingly easy to abuse. Homograph attacks, subdomain tricks, and lookalike TLDs all exploit the gap between "looks legit" and "is legit." Technical defenses on your domain close that gap more reliably than any awareness poster.</p>
+<p>Domain hijacking is the most direct phishing enabler. An attacker who controls your registrar account controls your DNS, which means they control where your domain points. Before anything else, treat your registrar login as a critical asset.</p>
+<p>Registrar lock is a single checkbox that blocks most automated transfer attacks. There is no reason not to enable it.</p>
+<p>A huge percentage of phishing uses spoofed sender addresses. Publishing SPF, DKIM, and DMARC records tells receiving mail servers what to do with mail that claims to come from your domain. Without them, anyone can send email that appears to be from you@yourdomain.com.</p>
+<p>Sources indicate that SPF specifies which servers are allowed to send mail for your domain. Add a TXT record to your DNS zone:.</p>
+<p>Sources indicate that replace [your-mail-provider] with the include value from your mail provider's documentation. The -all at the end is a hard fail: it tells receivers that any server not listed is not authorized to send for your domain. Whether that mail is actually rejected is up to the receiving server's policy, which is where DMARC comes in. Publish only one SPF record per domain, and stay within SPF's limit of 10 DNS lookups, because every include counts toward it. Consult your provider's docs for the exact include string.</p>
+<p>DKIM adds a cryptographic signature to outgoing mail. Your mail provider generates the key pair and gives you a TXT record to publish. The record name looks like:.</p>
+<p>Industry observers note that the selector name and public key value come from your mail provider. Copy them exactly.</p>
+<p>Recent findings suggest that DMARC tells receivers what to do when a message fails both the SPF and DKIM alignment checks, and where to send aggregate reports that show which servers are sending mail as your domain. Start in monitor mode, then tighten the policy once you are confident your legitimate mail passes:.</p>
+<p id="sec-mid-103926">When reports show only your expected mail sources passing, move to p=quarantine and eventually p=reject. Reject is the goal. It means spoofed mail from your domain gets dropped outright.</p>
+<p>Industry observers note that DNSSEC adds cryptographic signatures to your DNS responses. Without it, an attacker positioned between a resolver and your DNS zone can return forged records, redirecting your domain to a server they control without touching your registrar account. This is DNS spoofing or cache poisoning. DNSSEC lets validating resolvers detect those forged answers and refuse them, although it does not encrypt DNS and only protects users whose resolver actually validates.</p>
+<p>It has been revealed that enabling DNSSEC is a two-part process: your DNS provider signs your zone, and you publish a DS record at your registrar to chain the trust. Most major DNS providers (Cloudflare, Route 53, and others) have a one-click or simple toggle to enable signing. Your registrar then needs the DS record to complete the chain. Check both your DNS provider and registrar docs for the exact steps, because the UI differs across platforms.</p>
+<p>One caveat: if your DNS provider and registrar are different services, make sure both support DNSSEC before enabling it. A broken DNSSEC chain is worse than no DNSSEC.</p>
+<p>HTTPS with a valid certificate is table stakes at this point. But you can go further with HTTP Strict Transport Security. Once a browser has seen the HSTS header, it will always connect to your domain over HTTPS for the max-age period, even if a user types just the hostname.</p>
+<p>Add this header to your reverse proxy or web server config:.</p>
+<p>In a recent development, if you are confident all subdomains are HTTPS-only, you can submit your domain to the HSTS preload list at hstspreload.org. To qualify, the header on your base domain must also include the preload directive, for example Strict-Transport-Security: max-age=63072000; includeSubDomains; preload, with a max-age of at least 31536000, and plain HTTP must redirect to HTTPS. Preloaded domains are hardcoded into browsers as HTTPS-only, so there is no initial plain HTTP request an attacker could intercept and redirect. Treat it as a long-term commitment: removal is possible but slow, so only submit when you are sure every subdomain, including internal-only homelab ones, serves HTTPS.</p>
+<p>You cannot control what domains other people register, but you can watch for ones that target yours. Certificate Transparency logs are public, and publicly trusted TLS certificates are logged there, since major browsers require it. Tools like crt.sh let you search for certificates issued to domains similar to yours.</p>
+<p>For ongoing monitoring, tools like dnstwist (open source, installable with pip install dnstwist[full] or runnable as the elceef/dnstwist Docker image, with a hosted version at dnstwist.it) generate permutations of your domain name and check which ones are in use. Running it periodically against your domain surfaces lookalikes before your users encounter them. If you find one that is clearly impersonating your service, most registrars and hosting providers have abuse reporting processes.</p>
+<p>In a recent development, phishing is not a user education problem waiting for a training solution. It is a trust infrastructure problem, and the controls exist to address it at the technical layer. For self-hosted services, the stack is straightforward: lock your registrar account, publish SPF, DKIM, and DMARC, enable DNSSEC, enforce HTTPS with HSTS, and monitor for lookalike domains.</p>
+<p>Sources indicate that none of these steps are exotic. Most take under an hour to implement. They will not stop every attack, but they close the easiest and most commonly abused vectors attackers use against domains exactly like yours. Start with registrar lock and DMARC in monitor mode today, then work through the rest of the list.</p>
+<p id="sec-end-103926">Originally published at codewithromi.com.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/theeromi/stop-blaming-users-for-phishing-domain-security-fundamentals-for-self-hosters-1imo" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-stop-treating-css-container-queries-like-traditional--103619.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #103619. Tech Report: Stop Treating CSS Container Queries Like Traditional Media Queries
+        </a>
+        
+        <a href="tech-report-trumps-assurance-to-nvidias-board-over-national-secur-99468.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #99468. Tech Report: Trump’s ‘assurance’ to Nvidia’s board over national security: Protection from a major source of legal danger?
+        </a>
+        
+        <a href="tech-report-how-the-surge-in-ai-discovered-bugs-is-straining-micr-99445.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #99445. Tech Report: How the surge in AI-discovered bugs is straining Microsoft security and threatening tech stability
+        </a>
+        
+        <a href="latest-update-shiba-inu-dev-flags-security-concerns-as-pumpfun-mi-99254.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #99254. Latest Update: Shiba Inu Dev Flags Security Concerns as Pump.Fun Migration Asks Users for Private Keys
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
