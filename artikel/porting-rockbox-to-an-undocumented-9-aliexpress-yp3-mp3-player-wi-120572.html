@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porting Rockbox to an Undocumented $9 Aliexpress 'YP3' MP3 Player with LLMs</title>
+    <meta name="description" content="Recent findings suggest that rockbox is a wonderful old custom firmware project for a variety of MP3 players and iPods. Flashing rockbox to my Sansa E200 w">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/porting-rockbox-to-an-undocumented-9-aliexpress-yp3-mp3-player-wi-120572.html">
+    <meta property="og:title" content="Porting Rockbox to an Undocumented $9 Aliexpress 'YP3' MP3 Player with LLMs">
+    <meta property="og:description" content="Recent findings suggest that rockbox is a wonderful old custom firmware project for a variety of MP3 players and iPods. Flashing rockbox to my Sansa E200 w">
+    <meta property="og:image" content="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/porting-rockbox-to-an-undocumented-9-aliexpress-yp3-mp3-player-wi-120572.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Porting Rockbox to an Undocumented $9 Aliexpress 'YP3' MP3 Player with LLMs", "image": ["https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk"], "datePublished": "2026-11-14T08:55:00+00:00", "dateModified": "2026-11-25T16:35:22.471864", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/porting-rockbox-to-an-undocumented-9-aliexpress-yp3-mp3-player-wi-120572.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Porting Rockbox to an Undocumented $9 Aliexpress 'YP3' MP3 Player with LLMs</h1>
+        <div class="meta-line">🌐 Source: <strong>Jayd</strong> &bull; 📅 14 Nov 2026 &bull; ⏱️ 11 min read (2143 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that rockbox is a wonderful old custom firmware project for
+a variety of MP3 players and iPods.</li><li style='margin-bottom:6px;'>Recent findings suggest that it seems like in 2026 there aren’t any cheap MP3 players that Rockbox supports 
+though.</li><li style='margin-bottom:6px;'>TL;DR: it ported Rockbox to a 512 KiB player, I was barely involved.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-120572"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-120572"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-120572"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Porting Rockbox to an Undocumented $9 Aliexpress 'YP3' MP3 Player with LLMs" loading="lazy" src="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-120572">Recent findings suggest that rockbox is a wonderful old custom firmware project for
+a variety of MP3 players and iPods. Flashing rockbox to my Sansa E200
+was a seminal moment for me: computers were everywhere, and if they didn’t do
+cool things, it was because no one had bothered to program them to do so. Looking
+back, that played no small part in my choice of career.</p>
+<p>Recent findings suggest that it seems like in 2026 there aren’t any cheap MP3 players that Rockbox supports 
+though. Reverse engineering an embedded platform like this is one of the hardest
+things I can think of, and I had decided to pay the big bucks for one of those
+delicious subsidized token plans to try and push it as hard as I could, and
+I did have a dirt cheap $9 Aliexpress MP3 player lying around.</p>
+<p>TL;DR: it ported Rockbox to a 512 KiB player, I was barely involved. Then, I had it build a re-usable toolkit/set of skills for future ports based on
+what worked from the first attempt approach, and Claude was able to get Rockbox 
+running on another MP3 player (TS47) in 4 hours.</p>
+<p>I made a quick website for the project: https://rockslop.jayd.ml.</p>
+<p>Here is the porting toolkit: auto-rockbox.</p>
+<p>It has been revealed that this is an unbranded player, sold under a variety of fake consonant soup brands
+on Amazon as well as Aliexpress. You can order them wholesale from Alibaba for
+less than $7 or so each.</p>
+<p>In a recent development, it calls itself a yp3_2.0.43 in the “About” menu as. This appears to be a listing for a YP3 - the original is gone. I paid $9.71 for mine, shipped.</p>
+<p>NOTE: Before you run off and buy one, I have another rockbox port that is probably
+a week or two out, it is booting and stable, just needs more acceptance testing. This device is extremely similar but has 4 MiB PSRAM, so it has fewer compromises.</p>
+<p>I also have a stack of other random MP3 players I intend to repeat this with.</p>
+<p>See the project website: https://rockslop.jayd.ml.</p>
+<p>If anyone gets credit for this rockbox port, it’s ilyakurdyukov - they figured out how to get it into ROM Download
+mode (Down + USB), and wrote a utility to dump / write flash. Then I could be
+a little slop kiddie and not have to use a soldering iron.</p>
+<p>See the YP3 page on the project
+website for more info.</p>
+<p>It has 512KiB of SRAM, and the smallest existing Rockbox target was 2 MiB, I was
+already scrolling Aliexpress for another one, but the LLM mentioned “trust me bro I 
+can make it happen” and I decided to try its luck.</p>
+<p>Industry observers note that after about a week it was booting a build of Rockbox on a crash diet - every
+single buffer had been cut to the bone, but it could start and play audio. Tuning, bug fixing, etc took another month or so.</p>
+<p>I am not aware of anything that isn’t working hardware wise.</p>
+<p>Recent findings suggest that the main feature you lose is concurrency while playing music and plugins. Codecs
+and plugins are already loaded and swapped around at runtime with normal Rockbox,
+but on this player there is one shared 128 KiB arena for both, so starting a 
+plugin stops music playback.</p>
+<p>The database has a newly introduced variant that is disk only and has synchronous, blocking
+updates (ie the player highlights a loading screen and stops music when it refreshes
+and doesn’t refresh in background). I think it also cut the “songs by letter”
+menu.</p>
+<p>The database requests memory for its menus at runtime, and depending on the
+size of your theme it can refuse to open the menus.</p>
+<p>Industry observers note that overnight Claude reverse engineered the bluetooth stack and wrote a bluetooth 
+HAL for Rockbox. I asked it before I went to bed and it was working in the
+morning.</p>
+<p>No binary blobs are shipped: the bt stack is burned into chip ROM (not flash),
+and the YP3 bluetooth driver calls into the stack.</p>
+<p>Sources indicate that most of the codecs run from SRAM as normal. MP3, AAC, WMA, Vorbis and Opus, 
+however, wouldn’t fit in our arena nicely, so they run from flash.</p>
+<p>But, our XIP flash is dirt slow, so lots of very careful profiling was done to 
+move hot code loops back into SRAM. This kind of profiling had to be done
+all over Rockbox to get hot loops into SRAM - font rendering, alpha blending,
+scrolling, etc. This is where most of the “weeks of polishing” went.</p>
+<p>Sources indicate that largely comparable to stock. I hooked the player up to the PC’s line in or
+fake bluetooth sink and set it to repeat Daft Punks Random Access Memories. A 
+script on the PC detected when it cut out.</p>
+<p>Stock: 21.29 hours wired, 20.07 on Bluetooth.</p>
+<p>Rockbox: 20.07 hours wired, 19.3 on Bluetooth.</p>
+<p>There was some variation in the battery voltage at start, and this was just
+one run, so expect some variation.</p>
+<p>Battery life is surprisingly impressive on this player,.</p>
+<p>According to recent reports, I’m one of those software guys, I can’t solder or find UART pads to save my life. This was an entirely software only port; I haven’t ever opened mine up.</p>
+<p>It has been revealed that I hooked up ghidra-mcp and let it start pulling the firmware apart. It figured
+out how to inject tasks into the running RTOS (FreeRTOS) in bootloader mode. This allowed it to probe the hardware and even write drivers before attempting a
+Rockbox boot.</p>
+<p>Sources indicate that to be clear: this is 100% vibecoded. I have only glanced at some of the code 
+it wrote. I contributed my approach to development and testing, was the PM and 
+QA person, and the agent’s little meat robot to reboot it when it crashed or 
+wander around my house with headphones on while it tuned the bluetooth radio. I haven’t doneC and firmware development for years.</p>
+<p>In a recent development, initially I let the same agent do the reverse engineering as implementation. Later I had it go through and rip out anything that wasn’t a hardware fact (ie
+a register) and re-did the drivers with a cleanroom setup. One dirty agent with
+Ghidra, one referee agent in between to make sure nothing leaks, and the implementation
+agent. Subsequent ports used a variation of this setup from the beginning.</p>
+<p>The most work I have done personally on this project is writing this blog post.</p>
+<p>Webcam mic for bringing up the speaker.</p>
+<p id="sec-mid-120572">(had to yell at Claude when it decided to start playing tones at 2 AM).</p>
+<p>Headphone jack plugged into Line In on my PC (finally, I used it!!).</p>
+<p>This allowed it to test and tune audio output.</p>
+<p>This port was started with Codex/Sol 5.6. It was making progress, but was incredibly
+risk averse and slow. It took it 5 days or so and dozens of manual resets on my
+part until it felt ready to flash something and boot it.</p>
+<p>According to recent reports, I should have told it how to figure out how to arm the watchdog and reboot into
+download mode itself sooner. Codex got it to showing the rockbox logo with buggy
+drivers stubbed out, but had clearly lost its mind in the meantime. I hadn’t 
+been paying attention too closely, but as it had spun around it had:.</p>
+<p>This flashing script - and many other tool scripts - would check the sha256
+of the documentation files they depended on to ensure nothing had changed.</p>
+<p>Industry observers note that it’s kind of beautiful in its own insane way: this seems to be an attempt to
+work around multiple agents and memory limits. Madness though.</p>
+<p>Recent findings suggest that claude immediately threw that garbage away and wrote like a few python scripts
+to use instead. Auto mode in claude code helped too.</p>
+<p>The subsequent TS17 port went from me plugging it in to a usable alpha build
+in about 4 hours with Opus 5.5 (there was little to re-use from the YP3 other 
+than scripts and skills).</p>
+<p>Recent findings suggest that this is one of the most valuable things it did. Rockbox has an existing one-way USB 
+serial driver for logs. I had that extended to have dozens of little commands to
+drive the player, everything from injecting keypresses to taking screenshots to 
+debugging the bluetooth radio.</p>
+<p>This was critical for completely hands off development - I had it build a torture
+test suite in Python that would monkey-test the player for hours, pressing
+buttons at random. Many bugs were found doing this - including some in Rockbox
+upstream. At this point the player has hundreds of hours of bench testing under
+Rockbox - I could just leave it running and Claude would patiently watch the
+test logs for new failures to diagnose and fix.</p>
+<p>An agent can reboot to recovery, flash firmware, reboot into Rockbox, run tests,
+see what is on the screen, hear what it is doing, completely on its own. Most of
+the development of this project happened while I was asleep.</p>
+<p>For audio (and battery endurance testing) Claude had me set up a 3.5 mm splitter 
+with one end going into the PC’s Line In and the other going into real 
+headphones to provide an actual load.</p>
+<p>Then I had it build a test suite and file that plays a variety of sweeps and 
+test tones. I used an Apple lightning adapter to use as the ground truth for this
+setup, then used it to compare audio levels and frequency response.</p>
+<p>My PC’s sound card is not high sensitivity equipment, but this is enough of a 
+sanity check for me.</p>
+<p>More charts that I don’t understand.</p>
+<p>There were two tricky things to work out that Claude struggled to fix. The exact power off sequence took quite a few tries, probably because it was the 
+only thing I had to be there to test, it couldn’t just work on it for hours 
+overnight.</p>
+<p>Industry observers note that the other crazy bug was that the FM radio sounded terrible. You
+could tune to a station, but the sound was distorted and clipped. Claude spent
+forever trying to figure out why, but eventually I noticed that the frequency
+it was tuned to did not match the station identifier over the air.</p>
+<p>It has been revealed that it turns out the tuner had been set up with a slightly wrong clock source, so it
+was ~4 MhZ off. It just so happened to work out that when I tuned it to my test
+station, it could kind of lock on to another one, but sounded terrible.</p>
+<p>I told Claude to port as many games as it could to Rockbox.</p>
+<p>It has been revealed that this release adds THREE HUNDRED AND FIFTY SEVEN new plugins. That is not a 
+typo: 357. Most of these are ports, a few are originals. Given the quantity here
+I haven’t done enough QA here.</p>
+<p>Industry observers note that this is going to get its own blog post because it is deeply amusing. A ~1 million
+param model running on your MP3 player. Almost coherent, fine tuned to be aloof
+and dismissive of humanity. Weights are streamed from SD card. Crazy.</p>
+<p>Recent findings suggest that A little tracker/chiptune editor for Rockbox. I haven’t had a ton of time to 
+test this one. Probably needs ergonomic improvements.</p>
+<p>It has been revealed that rockbox’s existing mpegplayer didn’t fit on the YP3 and I didn’t want to hack
+it up too much, so I had Claude write a upcoming one, with a nicer pixel art UI,
+MKV support. AVI, MKV, MP4; MPEG-1/2, MJPEG.</p>
+<p>There are too many to list. Here is the full set of ports.</p>
+<p>We got to stupid plugin numbers by writing compat shims/libraries for several 
+popular open source players:.</p>
+<p>Yes, you can pair a PS4 controller or keyboard to Rockbox. I wanted to see how 
+much we could do with the existing Bluetooth stack.</p>
+<p>I had it port some themes from the Rockbox website to work on this screensize, 
+add a bluetooth status icon, and it generated 5 original themes: Ukiyo (my 
+favorite), Asterism, Chaldani, Lavenia, Cyanotype.</p>
+<p>Note: This is a WIP screenshot, there have been bug fixes &amp; some of these got
+cut because of unclear licensing.</p>
+<p>Note that heavy themes can cause some issues, so I would suggest sticking with
+lightweight ones.</p>
+<p>Well, reverse engineering a completely undocumented chipset was one of the 
+hardest things I could think of to do, and Claude can ace it. I’m planning on
+porting Rockbox to a bunch of other cheap MP3 players.</p>
+<p>There are lots of clones that look like each other. The YP3 specifically:.</p>
+<p id="sec-end-120572">Also, these screens are made of cheese, you’ll want a screen protector.</p>
+<p style="margin-top: 25px;">
+<a href="https://jayd.ml/2026/11/14/rockbox-on-yp3.html" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="porting-the-ndk-endless-tunnel-to-ios-a-masterclass-in-cross-plat-128315.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128315. Porting the NDK “Endless Tunnel” to iOS: A Masterclass in Cross-Platform C++
+        </a>
+        
+        <a href="porting-fairseq-wmt19-translation-system-to-transformers-128300.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128300. Porting fairseq wmt19 translation system to transformers
+        </a>
+        
+        <a href="latest-update-fine-tuning-20b-llms-with-rlhf-on-a-24gb-consumer-g-128101.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128101. Latest Update: Fine-tuning 20B LLMs with RLHF on a 24GB consumer GPU
+        </a>
+        
+        <a href="latest-update-making-llms-even-more-accessible-with-bitsandbytes--128067.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128067. Latest Update: Making LLMs even more accessible with bitsandbytes, 4-bit quantization and QLoRA
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

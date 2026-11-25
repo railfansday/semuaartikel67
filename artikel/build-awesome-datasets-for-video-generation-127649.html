@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build awesome datasets for video generation</title>
+    <meta name="description" content="(This post was authored by hlky and Sayak). Tooling for image generation datasets is well established, with img2dataset being a fundamental tool used for l">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/build-awesome-datasets-for-video-generation-127649.html">
+    <meta property="og:title" content="Build awesome datasets for video generation">
+    <meta property="og:description" content="(This post was authored by hlky and Sayak). Tooling for image generation datasets is well established, with img2dataset being a fundamental tool used for l">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/vid_ds_scripts/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/build-awesome-datasets-for-video-generation-127649.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Build awesome datasets for video generation", "image": ["https://huggingface.co/blog/assets/vid_ds_scripts/thumbnail.png"], "datePublished": "2025-02-12T00:00:00", "dateModified": "2026-11-25T16:42:07.448795", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/build-awesome-datasets-for-video-generation-127649.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Build awesome datasets for video generation</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 12 Feb 2025 &bull; ⏱️ 4 min read (735 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Tooling for image generation datasets is well established, with img2dataset being a fundamental tool used for large scale dataset preparation, and complemented with various community guides, scripts and UIs that cover smaller scale initiatives.</li><li style='margin-bottom:6px;'>Our ambition is to make tooling for video generation datasets equally established, by creating open video dataset scripts suited for small scale, and leveraging video2dataset for large scale use cases.</li><li style='margin-bottom:6px;'>“If I have seen further it is by standing on the shoulders of giants”.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-127649"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-127649"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-127649"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Build awesome datasets for video generation" loading="lazy" src="https://huggingface.co/blog/assets/vid_ds_scripts/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-127649">(This post was authored by hlky and Sayak).</p>
+<p>Tooling for image generation datasets is well established, with img2dataset being a fundamental tool used for large scale dataset preparation, and complemented with various community guides, scripts and UIs that cover smaller scale initiatives.</p>
+<p>Our ambition is to make tooling for video generation datasets equally established, by creating open video dataset scripts suited for small scale, and leveraging video2dataset for large scale use cases.</p>
+<p>“If I have seen further it is by standing on the shoulders of giants”.</p>
+<p>Industry observers note that in this post, we provide an overview of the tooling we are developing to make it easy for the community to build their own datasets for fine-tuning video generation models. If you cannot wait to get started already, we welcome you to check out the codebase here.</p>
+<p>Typically, video generation is conditioned on natural language text prompts such as: "A cat walks on the grass, realistic style". Then in a video, there are a number of qualitative aspects for controllability and filtering, like so:.</p>
+<p>According to recent reports, video generation models are only as good as the data they are trained on. Therefore, these aspects become crucial when curating the datasets for training/fine-tuning.</p>
+<p>Our 3 stage pipeline draws inspiration from works like Stable Video Diffusion, LTX-Video, and their data pipelines.</p>
+<p>Like video2dataset we opt to use yt-dlp for downloading videos.</p>
+<p>We create a script Video to Scenes to split long videos into short clips.</p>
+<p>Industry observers note that florence-2 microsoft/Florence-2-large to run Florence-2 tasks , ,  and  on extracted frames. This provides different captions, object recognition and OCR that can be used for filtering in various ways.</p>
+<p>We can bring in any other captioner in this regard. We can also caption the entire video (e.g., with a model like Qwen2.5) as opposed to captioning individual frames.</p>
+<p>It has been revealed that in the dataset for the model finetrainers/crush-smol-v0, we opted for captions from Qwen2VL and we filtered on pwatermark &lt; 0.1 and aesthetic &gt; 5.5. This highly restrictive filtering resulted in 47 videos out of 1493 total.</p>
+<p>Let's review the example frames from pwatermark -.</p>
+<p id="sec-mid-127649">Two with text have scores of 0.69 and 0.61.</p>
+<p>The "toy car with a bunch of mice in it" scores 0.60 then 0.17 as the toy car is crushed.</p>
+<p>All example frames were filtered by pwatermark &lt; 0.1. pwatermark is effective at detecting text/watermarks however the score gives no indication whether it is a text overlay or a toy car's license plate. Our filtering required all scores to be below the threshold, an average across frames would be a more effective strategy for pwatermark with a threshold of around 0.2 - 0.3.</p>
+<p>Let's review the example frames from aesthetic scores -.</p>
+<p>The pink castle initially scores 5.5 then 4.44 as it is crushed.</p>
+<p>The action figure scores lower at 4.99 dropping to 4.84 as it is crushed.</p>
+<p>The shard of glass scores low at 4.04.</p>
+<p>In our filtering we required all scores to be below the threshold, in this case using the aesthetic score from the first frame only would be a more effective strategy.</p>
+<p>In a recent development, if we review finetrainers/crush-smol we can notice that many of the objects being crushed are round or rectangular and colorful which is similar to our findings in the example frames. Aesthetic scores can be useful yet have a bias that will potentially filter out good data when used with extreme thresholds like &gt; 5.5. It may be more effective as a filter for bad content than good with a minimum threshold of around 4.25 - 4.5.</p>
+<p>Here we provide some visual examples for each filter as well as the captions from Florence-2.</p>
+<p>We have created various datasets with the tooling in an attempt to generate cool video effects, similar to the Pika Effects:.</p>
+<p>Industry observers note that we then used these datasets to fine-tune the CogVideoX-5B model using finetrainers. Below is an example output from finetrainers/crush-smol-v0:.</p>
+<p>Recent findings suggest that we hope this tooling gives you a headstart to create small and high-quality video datasets for your own custom applications. We will continue to add more useful filters to the repository, so, please keep an eye out. Your contributions are also more than welcome 🤗.</p>
+<p>Thanks to Pedro Cuenca for his extensive reviews on the post.</p>
+<p id="sec-end-127649">Has anyone tested adding noise on to the MLP for aesthetics?</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/vid_ds_scripts" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="data-is-better-together-enabling-communities-to-collectively-buil-127930.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127930. Data is better together: Enabling communities to collectively build better datasets together using Argilla and Hugging Face Spaces
+        </a>
+        
+        <a href="scaling-robotics-datasets-with-video-encoding-127823.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127823. Scaling robotics datasets with video encoding
+        </a>
+        
+        <a href="argilla-24-easily-build-fine-tuning-and-evaluation-datasets-on-th-127780.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127780. Argilla 2.4: Easily Build Fine-Tuning and Evaluation Datasets on the Hub — No Code Required
+        </a>
+        
+        <a href="introducing-the-synthetic-data-generator-build-datasets-with-natu-127748.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127748. Introducing the Synthetic Data Generator - Build Datasets with Natural Language
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

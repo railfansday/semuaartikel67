@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ternary Bonsai 2.5 27B</title>
+    <meta name="description" content="Today, we’re introducing Ternary Bonsai 2.5 27B, an upgrade to Ternary Bonsai 2 27B with substantially stronger agentic coding, multi-turn tool use, and mu">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/ternary-bonsai-25-27b-120615.html">
+    <meta property="og:title" content="Ternary Bonsai 2.5 27B">
+    <meta property="og:description" content="Today, we’re introducing Ternary Bonsai 2.5 27B, an upgrade to Ternary Bonsai 2 27B with substantially stronger agentic coding, multi-turn tool use, and mu">
+    <meta property="og:image" content="https://cdn.prod.website-files.com/699604cc2b9dd89bdbda0608/6a6d0e0bc0d5f9a97a5164c0_69cc089669ab0df26e921aac_prism-og-img%2520(2).png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/ternary-bonsai-25-27b-120615.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Ternary Bonsai 2.5 27B", "image": ["https://cdn.prod.website-files.com/699604cc2b9dd89bdbda0608/6a6d0e0bc0d5f9a97a5164c0_69cc089669ab0df26e921aac_prism-og-img%2520(2).png"], "datePublished": "2026-11-24T20:08:03", "dateModified": "2026-11-25T16:35:25.249167", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/ternary-bonsai-25-27b-120615.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Ternary Bonsai 2.5 27B</h1>
+        <div class="meta-line">🌐 Source: <strong>Prismml</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 3 min read (579 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Today, we’re introducing Ternary Bonsai 2.5 27B, an upgrade to Ternary Bonsai 2 27B with substantially stronger agentic coding, multi-turn tool use, and multi-step task execution.</li><li style='margin-bottom:6px;'>Industry observers note that with Ternary Bonsai 2 27B, we brought stronger reasoning, visual understanding, and tool use to local devices.</li><li style='margin-bottom:6px;'>Agentic workflows are particularly sensitive to model degradation: small errors can compound across successive tool calls and derail an entire task.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-120615"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-120615"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-120615"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Ternary Bonsai 2.5 27B" loading="lazy" src="https://cdn.prod.website-files.com/699604cc2b9dd89bdbda0608/6a6d0e0bc0d5f9a97a5164c0_69cc089669ab0df26e921aac_prism-og-img%2520(2).png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-120615">Today, we’re introducing Ternary Bonsai 2.5 27B, an upgrade to Ternary Bonsai 2 27B with substantially stronger agentic coding, multi-turn tool use, and multi-step task execution. Based on Qwen3.8 27B, it retains the previous release’s 5.9 GB model footprint while significantly improving the capabilities developers need to build agents that work with private files and tools on-device. The result is by far the strongest AI model of its memory footprint for agentic workloads.</p>
+<p>Industry observers note that with Ternary Bonsai 2 27B, we brought stronger reasoning, visual understanding, and tool use to local devices. Since then, we’ve focused on making the model more effective across long sequences of tool calls: interpreting results, adjusting when a step fails, and maintaining the task’s objective through the whole interaction. This release also continues our work to make Bonsai more practical by addressing excessive thinking and repetitive loops in the previous model. Compared with Ternary Bonsai 2, Ternary Bonsai 2.5 completes tasks in fewer turns, uses fewer tokens, and delivers results faster and more accurately.</p>
+<p>Agentic workflows are particularly sensitive to model degradation: small errors can compound across successive tool calls and derail an entire task. Ternary Bonsai 2.5 significantly narrows the performance gap to the full-precision base model while retaining its compact footprint. Preserving this behavior through longer tasks is an vital milestone in improving the intelligence density of models.</p>
+<p>It has been revealed that we evaluated Ternary Bonsai 2.5 27B against both Ternary Bonsai 2 27B and the full-precision Qwen 3.8 27B base model, as reported in the full whitepaper. We see marked improvements in agentic execution, coding, and multi-turn tool use, as shown in the table below.</p>
+<p>In a recent development, on a single NVIDIA H100, Ternary Bonsai 2.5 27B achieves a generation speed of 291 tokens/s with MTP and processes a 2,000-token prompt at 3,200 tokens/s. Even on a consumer-grade RTX 4090, it delivers 204 tokens/s with MTP and a prompt processing speed of approximately 3,060 tokens/s. The demos below follow complete local workflows, from the initial request through intermediate decisions to the final result.</p>
+<p>For products, this creates room to build assistance directly into the applications where work already happens: a coding assistant working through issues in a private repository, a document application that prepares reviewable summaries, or a desktop assistant that handles recurring analysis. Local deployment lets those products process sensitive material on the user’s device. Ternary Bonsai 2.5 27B strengthens the model capabilities behind that experience while keeping the compact footprint that makes it practical.</p>
+<p id="sec-mid-120615">Ternary Bonsai 2.5 27B runs on NVIDIA and Intel GPUs via llama.cpp and on Apple devices (Mac, iPhone, iPad) via MLX.</p>
+<p>Model weights are available today under the Apache 2.0 License.</p>
+<p>Full technical details of our compression, evaluation, and benchmarking processes are available in our whitepaper.</p>
+<p>We work with teams to tailor Bonsai models to their applications, from post-training on domain-specific data to optimizing inference for target hardware. If you’re building AI products with tight memory, latency, or power requirements, we’d love to explore how Bonsai can help. Reach out at sales@prismml.com.</p>
+<p>PrismML emerged from a team of Caltech researchers and was founded with support from Khosla Ventures, Cerberus, and Google, with continuing support from Samsung. We've spent years tackling one of the field's hardest problems: compressing neural networks without sacrificing their reasoning ability.</p>
+<p id="sec-end-120615">If you want to help build the next generation of state-of-the-art AI, we'd love to hear from you. Check out our careers page.</p>
+<p style="margin-top: 25px;">
+<a href="https://prismml.com/news/bonsai-2-5-27b" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="prismmls-bonsai-25-brings-better-coding-and-tool-use-to-on-device-120559.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #120559. PrismML’s Bonsai 2.5 brings better coding and tool use to on-device AI
+        </a>
+        
+        <a href="predicting-and-detecting-failures-how-azure-strengthens-reliabili-128321.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128321. Predicting and detecting failures: How Azure strengthens reliability for mission-critical workloads
+        </a>
+        
+        <a href="the-hidden-problems-behind-website-to-crm-integrations-and-how-to-128320.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128320. The Hidden Problems Behind Website-to-CRM Integrations (and How to Prevent Them)
+        </a>
+        
+        <a href="tech-report-top-5-ai-animation-generators-in-2026-features-streng-128319.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128319. Tech Report: Top 5 AI Animation Generators in 2026: Features, Strengths, and Limits
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Inference on Edge: A Fun and Easy Guide to run LLMs via React Native on your Phone!</title>
+    <meta name="description" content="Sources indicate that as LLMs continue to evolve, they are becoming smaller and smarter, enabling them to run directly on your phone. Take, for instance, t">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/llm-inference-on-edge-a-fun-and-easy-guide-to-run-llms-via-react--127573.html">
+    <meta property="og:title" content="LLM Inference on Edge: A Fun and Easy Guide to run LLMs via React Native on your Phone!">
+    <meta property="og:description" content="Sources indicate that as LLMs continue to evolve, they are becoming smaller and smarter, enabling them to run directly on your phone. Take, for instance, t">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/llm_inference_on_edge/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/llm-inference-on-edge-a-fun-and-easy-guide-to-run-llms-via-react--127573.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "LLM Inference on Edge: A Fun and Easy Guide to run LLMs via React Native on your Phone!", "image": ["https://huggingface.co/blog/assets/llm_inference_on_edge/thumbnail.png"], "datePublished": "2025-03-07T00:00:00", "dateModified": "2026-11-25T16:42:03.143107", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/llm-inference-on-edge-a-fun-and-easy-guide-to-run-llms-via-react--127573.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>LLM Inference on Edge: A Fun and Easy Guide to run LLMs via React Native on your Phone!</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 07 Mar 2025 &bull; ⏱️ 20 min read (4048 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that as LLMs continue to evolve, they are becoming smaller and smarter, enabling them to run directly on your phone.</li><li style='margin-bottom:6px;'>In a recent development, in this blog, we will guide you through creating a mobile app that allows you to chat with these powerful models locally.</li><li style='margin-bottom:6px;'>By the end of this guide, you will have a fully functional app that allows you to interact with your favorite models.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-127573"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-127573"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-127573"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="LLM Inference on Edge: A Fun and Easy Guide to run LLMs via React Native on your Phone!" loading="lazy" src="https://huggingface.co/blog/assets/llm_inference_on_edge/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-127573">Sources indicate that as LLMs continue to evolve, they are becoming smaller and smarter, enabling them to run directly on your phone. Take, for instance, the DeepSeek R1 Distil Qwen 2.5 with 1.5 billion parameters, this model really demonstrates how advanced AI can now fit into the palm of your hand!</p>
+<p>In a recent development, in this blog, we will guide you through creating a mobile app that allows you to chat with these powerful models locally. The complete code for this tutorial is available in our EdgeLLM repository. If you've ever felt overwhelmed by the complexity of open-source projects, fear not! Inspired by the Pocket Pal app, we will help you build a straightforward React Native application that downloads LLMs from the Hugging Face hub, ensuring everything remains private and runs on your device. We will utilize llama.rn, a binding for llama.cpp, to load GGUF files efficiently!</p>
+<p>This tutorial is designed for anyone who:.</p>
+<p>By the end of this guide, you will have a fully functional app that allows you to interact with your favorite models.</p>
+<p>Before we dive into building our app, let's talk about which models work well on mobile devices and what to consider when selecting them.</p>
+<p>When running LLMs on mobile devices, size matters significantly:.</p>
+<p>In a recent development, when downloading GGUF models, you'll encounter various quantization formats. Understanding these can help you choose the right balance between model size and performance:.</p>
+<p>Here are some models that perform well on mobile devices:.</p>
+<p>To find additional GGUF models on Hugging Face:.</p>
+<p>In a recent development, when selecting a model, consider both the parameter count and the quantization level. For example, a 7B model with Q2_K quantization might run better than a 2B model with Q8_0 quantization. So if you can fit a small model comfortably on your device try to use a bigger quantized model instead, it might have a better performance.</p>
+<p>React Native is a popular framework for building mobile applications using JavaScript and React. It allows developers to create apps that run on both Android and iOS platforms while sharing a significant amount of code, which speeds up the development process and reduces maintenance efforts.</p>
+<p>Before you can start coding with React Native, you need to set up your environment properly.</p>
+<p>Node.js: Node.js is a JavaScript runtime that allows you to run JavaScript code. It is essential for managing packages and dependencies in your React Native project. You can install it from Node.js downloads.</p>
+<p>react-native-community/cli: This command installs the React Native command line interface (CLI), which provides tools to create, build, and manage your React Native projects. Run the following command to install it:.</p>
+<p>To run your app during development, you will need an emulator or a simulator:.</p>
+<p>If you are on Windows or Linux:.</p>
+<p>If you are curious about the difference between simulators and emulators, you can read this article: Difference between Emulator and Simulator, but to put it simply, emulators replicate both hardware and software, while simulators only replicate software.</p>
+<p>For setting up Android Studio, follow this excellent tutorial by Expo : Android Studio Emulator Guide.</p>
+<p>You can find the full code for this project in the EdgeLLM repo here, there are two folders:.</p>
+<p>First, we need to initiate the app using @react-native-community/cli:.</p>
+<p>App folders are organized as follows:.</p>
+<p>To run the project, and see how it looks like on your own virtual device, follow these steps:.</p>
+<p>Navigate to the Project Directory:.</p>
+<p>Navigate to the iOS Folder and Install:.</p>
+<p>Start the Metro Bundler:
+Run the following command in the project folder (EdgeLLMPlus or EdgeLLMBasic):.</p>
+<p>Launch the App on iOS or Android Simulator:
+Open another terminal and run:.</p>
+<p>This will build and launch the app on your emulator/simulator to test the project before we start coding.</p>
+<p>According to recent reports, running a React Native application requires either an emulator/simulator or a physical device. We'll focus on using an emulator since it provides a more streamlined development experience with your code editor and debugging tools side by side.</p>
+<p>We start by ensuring our development environment is ready, we need to be in the project folder and run the following commands:.</p>
+<p>In a new terminal, we will launch the app on our chosen platform:.</p>
+<p>This should build and launch the app on your emulator/simulator.</p>
+<p>First, let's install the required packages. We aim to load models from the Hugging Face Hub and run them locally. To achieve this, we need to install :.</p>
+<p>Let's run the app on our emulator/simulator as we indicated before so we can start the development.</p>
+<p>We will start by deleting everything from the App.tsx file, and creating an empty code structure like the following :.</p>
+<p>Inside the return statement of the App function we define the UI rendered, and outside we define the logic, but all code will be inside the App function.</p>
+<p>We will have a screen that looks like this:.</p>
+<p>The text "Hello World" is not displayed properly because we are using a simple View component, we need to use a SafeAreaView component to display the text correctly, we will deal with that in the next sections.</p>
+<p>Now let's think about what our app needs to track for now:.</p>
+<p>Here's how we implement these states using React's useState hook (we will need to import it from react).</p>
+<p>This will be added to the App.tsx file inside the App function but outside the return statement as it's part of the logic.</p>
+<p>The Message type defines the structure of chat messages, specifying that each message must have a role (either 'user' or 'assistant' or 'system') and content (the actual message text).</p>
+<p>Now that we have our basic state management set up, we need to think about how to:.</p>
+<p>Let's tackle these one by one in the next sections...</p>
+<p>Let's start by defining the model formats our app is going to support and their repositories. Of course llama.rn is a binding for llama.cpp so we need to load GGUF files. To find GGUF repositories for the models we want to support, we can use the search bar on Hugging Face and search for GGUF files for a specific model, or use the script quantize_gguf.py provided here to quantize the model ourselves and upload the files to our hub repository.</p>
+<p>Sources indicate that the HF_TO_GGUF object maps user-friendly model names to their corresponding Hugging Face repository paths. For example:.</p>
+<p>The modelFormats array contains the list of model options that will be displayed to users in the selection screen, we chose Llama 3.2 1B Instruct, DeepSeek R1 Distill Qwen 1.5B, Qwen 2 0.5B Instruct and SmolLM2 1.7B Instruct as they are the most popular small models.</p>
+<p>Next, let's create a way to fetch and display available GGUF model files from the hub for our selected model format.</p>
+<p>When a user selects a model format, we make an API call to Hugging Face using the repository path we mapped in our HF_TO_GGUF object. We're specifically looking for files that end with '.gguf' extension, which are our quantized model files.</p>
+<p>Once we receive the response, we extract just the filenames of these GGUF files and store them in our availableGGUFs state using setAvailableGGUFs. This allows us to show owners a list of available GGUF model variants they can download.</p>
+<p>Note: Ensure to import axios and Alert at the top of your file if not already imported.</p>
+<p>It has been revealed that we need to test that the function is working correclty, let's add a button to the UI to trigger the function, instead of View we will use a SafeAreaView (more on that later) component, and we will display the available GGUF files in a ScrollView component. the onPress function is triggered when the button is pressed:.</p>
+<p>This should look something like this :.</p>
+<p>Note: For the whole code until now you can check the first_checkpoint branch in the EdgeLLMBasic folder here.</p>
+<p>According to recent reports, now let's implement the model download functionality in the handleDownloadModel function which should be called when the user clicks on the download button. This will download the selected GGUF file from Hugging Face and store it in the app's Documents directory:.</p>
+<p>In a recent development, we could have implemented the api requests inside the handleDownloadModel function, but we will keep it in a separate file to keep the code clean and readable. handleDownloadModel calls the downloadModel function, located in src/api, which accepts three parameters: modelName, downloadUrl, and a progress callback function. This callback is triggered during the download process to revision the progress. Before downloading we need to have the selectedModelFormat state set to the model format we want to download.</p>
+<p>Inside the downloadModel function we use the RNFS module, part of the react-native-fs library, to access the device's file system. It allows developers to read, write, and manage files on the device's storage. In this case, the model is stored in the app's Documents folder using RNFS.DocumentDirectoryPath, ensuring that the downloaded file is accessible to the app. The progress bar is updated accordingly to reflect the current download status and the progress bar component is defined in the components folder.</p>
+<p id="sec-mid-127573">Let's create src/api/model.ts and copy the code from the src/api/model.ts file in the repo. The logic should be simple to understand. The same goes for the progress bar component in the src/components folder, it's a simple colored View where the width is the progress of the download.</p>
+<p>Now we need to test the handleDownloadModel function, let's add a button to the UI to trigger the function, and we will display the progress bar. This will be added under the ScrollView we added before.</p>
+<p>Industry observers note that in the UI we show a list of the supported model formats and a button to download the model, when the user chooses the model format and clicks on the button the progress bar should be displayed and the download should start. In the test we hardcoded the model to download Llama-3.2-1B-Instruct-Q2_K.gguf, so we need to select Llama-3.2-1B-Instruct as a model format for the function to work, we should have something like:.</p>
+<p>Note: For the whole code until now you can check the second_checkpoint branch in the EdgeLLMBasic folder here.</p>
+<p>Next, we will implement a function to load the downloaded model into a Llama context, as detailed in the llama.rn documentation available here. If a context is already present, we will release it, set the context to null, and reset the conversation to its initial state. Subsequently, we will utilize the initLlama function to load the model into a latest context and upgrade our state with the newly initialized context.</p>
+<p>We need to call the loadModel function when the user clicks on the download button, so we need to add it inside the handleDownloadModel function right after the download is complete if it's successful.</p>
+<p>Note: For the whole code until now you can check the third_checkpoint branch in the EdgeLLMBasic folder here.</p>
+<p>With the model now loaded into our context, we can proceed to implement the conversation logic. We'll define a function called handleSendMessage, which will be triggered when the user submits their input. This function will update the conversation state and send the updated conversation to the model via context.completion. The response from the model will then be used to further update the conversation, which means that the conversation will be updated twice in this function.</p>
+<p>To test the handleSendMessage function we need to add an input text field and a button to the UI to trigger the function, and we will display the conversation in the ScrollView component.</p>
+<p>Recent findings suggest that if everything is implemented correctly, we should be able to send messages to the model and see the conversation in the ScrollView component, it's not beautiful of course but it's a good start, we will improve the UI later. The result should look like this:.</p>
+<p>Note: For the whole code until now you can check the fourth_checkpoint branch in the EdgeLLMBasic folder here.</p>
+<p>Sources indicate that now that we have the core functionality implemented, we can focus on the UI. The UI is straightforward, consisting of a model selection screen with a list of models and a chat interface that includes a conversation history and a user input field. During the model download phase, a progress bar is displayed. We intentionally avoid adding many screens to keep the app simple and focused on its core functionality. To keep track of which part of the app is being used, we will use a an other state variable called currentPage, it will be a string that can be either modelSelection or conversation. We add it to the App.tsx file.</p>
+<p>For the css we will use the same styles as in the EdgeLLMBasic repo, you can copy the styles from there.</p>
+<p>We will start by working on the model selection screen in the App.tsx file, we will add a list of model formats (you need to do the necessary imports and delete the previous code in the SafeAreaView component we used for testing):.</p>
+<p>We use SafeAreaView to ensure that the app is displayed correctly on devices with different screen sizes and orientations as we did in the previous section, and we use ScrollView to allow the user to scroll through the model formats. We also use modelFormats.map to map over the modelFormats array and display each model format as a button with a style that changes when the model format is selected. We also use the currentPage state to display the model selection screen only when the currentPage state is set to modelSelection, this is done by using the &amp;&amp; operator. The TouchableOpacity component is used to allow the user to select a model format by pressing on it.</p>
+<p>Now let's define handleFormatSelection in the App.tsx file:.</p>
+<p>We store the selected model format in the state and clear the previous list of GGUF files from other selections, and then we fetch the newly introduced list of GGUF files for the selected format. The screen should look like this on your device:.</p>
+<p>Next, let's add the view to show the list of GGUF files already available for the selected model format, we will add it below the model format selection section.</p>
+<p>We need to only show the list of GGUF files if the selectedModelFormat state is not null, which means a model format is selected by the user.</p>
+<p>Sources indicate that we need to define handleGGUFSelection in the App.tsx file as a function that will trigger an alert to confirm the download of the selected GGUF file. If the user clicks on Yes, the download will start, else the selected GGUF file will be cleared.</p>
+<p>handleDownloadAndNavigate is a simple function that will download the selected GGUF file by calling handleDownloadModel (implemented in the previous sections) and navigate to the conversation screen after the download is complete.</p>
+<p>Now after clicking on a GGUF file, we should have an alert to confirm or cancel the download :.</p>
+<p>We can add a simple ActivityIndicator to the view to display a loading state when the available GGUF files are being fetched. For that we will need to import ActivityIndicator from react-native and define isFetching as a boolean state variable that will be set to true in the start of the fetchAvailableGGUFs function and false when the function is finished as you can see here in the code, and add the ActivityIndicator to the view just before the {availableGGUFs.map((file, index) =&gt; (...))}  to display a loading state when the available GGUF files are being fetched.</p>
+<p>The app should look like this for a brief moment when the GGUF files are being fetched:.</p>
+<p>Industry observers note that now we should be able to see the different GGUF files available for each model format when we click on it, and we should see the alert when clicking on a GGUF confirming if we want to download the model. Next we need to add the progress bar to the model selection screen, we can do it by importing the ProgressBar component from src/components/ProgressBar.tsx in the App.tsx file as we did before, and we will add it to the view just after the {availableGGUFs.map((file, index) =&gt; (...))}  to display the progress bar when the model is being downloaded.</p>
+<p>Sources indicate that the download progress bar will now be positioned at the bottom of the model selection screen. However, this means that customers may need to scroll down to view it. To address this, we will modify the display logic so that the model selection screen is only shown when the currentPage state is set to 'modelSelection' and the added condition that there is no ongoing model download.</p>
+<p>After confirming a model download we should have a screen like this :.</p>
+<p>Note: For the whole code until now you can check the fifth_checkpoint branch in the EdgeLLMBasic folder here.</p>
+<p>Now that we have the model selection screen, we can start working on the conversation screen with the chat interface. This screen will be displayed when currentPage is set to conversation. We will add a conversation history and a user input field to the screen. The conversation history will be displayed in a scrollable view, and the user input field will be displayed at the bottom of the screen out of the scrollable view to stay visible. Each message will be displayed in a different color depending on the role of the message (user or assistant).</p>
+<p>We need to add just under the model selection screen the view for the conversation screen:.</p>
+<p>We use different styles for the user messages and the model messages, and we use the conversation.slice(1) to remove the first message from the conversation, which is the system message.</p>
+<p>We can now add the user input field at the bottom of the screen and the send button (they should not be inside the ScrollView). As I mentioned before, we will use the handleSendMessage function to send the user message to the model and update the conversation state with the model response.</p>
+<p>When the user clicks on the send button, the handleSendMessage function will be called and the isGenerating state will be set to true. The send button will then be disabled and the text will change to 'Generating...'. When the model finishes generating the response, the isGenerating state will be set to false and the text will change back to 'Send'.</p>
+<p>Note: For the whole code until now you can check the main branch in the EdgeLLMBasic folder here.</p>
+<p>The conversation page should now look like this:.</p>
+<p>In a recent development, congratulations you've just built the core functionality of your first AI chatbot, the code is available here ! You can now start adding more features to the app to make it more user friendly and efficient.</p>
+<p>The app is now fully functional, you can download a model, select a GGUF file, and chat with the model, but the user experience is not the best. In the EdgeLLMPlus repo, I've added some other features, like on the fly generation, automatic scrolling, the inference speed tracking, the thought process of the model like deepseek-qwen-1.5B,... we will not go into details here as it will make the blog too long, we will go through some of the ideas and how to implement them but the whole code is available in the repo.</p>
+<p>According to recent reports, the app generates responses incrementally, producing one token at a time rather than delivering the entire response in a single batch. This approach enhances the user experience, allowing users to begin reading the response as it is being formed. We achieve this by utilizing a callback function within context.completion, which is triggered after each token is generated, enabling us to upgrade the conversation state accordingly.</p>
+<p>Recent findings suggest that auto Scrolling ensures that the latest messages or tokens are always visible to the user by automatically scrolling the chat view to the bottom as new content is added. To implement that we need we use a reference to the ScrollView to allow programatic control over the scroll position, and we use the scrollToEnd method to scroll to the bottom of the ScrollView when a new message is added to the conversation state. We also define an autoScrollEnabled state variable that will be set to false when the user scrolls up more than 100px from the bottom of the ScrollView.</p>
+<p>Recent findings suggest that inference Speed Tracking is a feature that tracks the time taken to generate each token and displays under each message generated by the model. This feature is easy to implement because the CompletionResult object returned by the context.completion function contains a timings property which is a dictionary containing many metrics about the inference process. We can use the predicted_per_second metric to track the speed of the model.</p>
+<p>Recent findings suggest that the thought process is a feature that displays the thought process of the model like deepseek-qwen-1.5B. The app identifies special tokens like  and  to handle the model's internal reasoning or "thoughts." When a  token is encountered, the app enters a "thought block" where it accumulates tokens that represent the model's reasoning. Once the closing  token is detected, the accumulated thought is extracted and associated with the message, allowing people to toggle the visibility of the model's reasoning. To implement this we need to add a thought and showThought property to the Message type. message.thought will store the reasoning of the model and message.showThought will be a boolean that will be set to true when the user clicks on the message to toggle the visibility of the thought.</p>
+<p>Recent findings suggest that the app uses the react-native-markdown-display package to render markdown in the conversation. This package allows us to render code in a better format.</p>
+<p>We added a checkDownloadedModels function to the App.tsx file that will check if the model is already downloaded on the device, if it's not we will download it, if it is we will load it into the context directly, and we added some elements in the UI to show if a model is already downloaded or not.</p>
+<p>We added two notable buttons in the UI, the stop button and the back button. The stop button will stop the generation of the response and the back button will navigate to the model selection screen. For that, We added a handleStopGeneration function to the App.tsx file that will stop the generation of the response by calling context.stop and set the isGenerating state to false. We also added a handleBack function to the App.tsx file that will navigate to the model selection screen by setting the currentPage state to modelSelection.</p>
+<p>For debugging we use Chrome DevTools as in web development :.</p>
+<p>3. Find your source files4. Set breakpoints by clicking on line numbers5. Use debugging controls (top right corner):.</p>
+<p>This will log the output in the console of Chrome DevTools.</p>
+<p>To enhance the user experience, we can add some features like:.</p>
+<p>I'm sure you can think of some really cool features to add to the app, feel free to implement them and share them with the community 🤗.</p>
+<p>I would like to thank the following people for reviewing this blog post and providing valuable feedback:.</p>
+<p>Their expertise and suggestions helped improve the quality and accuracy of this guide.</p>
+<p>You now have a working React Native app that can:.</p>
+<p>This implementation serves as a foundation for building more sophisticated AI-powered mobile applications. Remember to consider device capabilities when selecting models and tuning parameters.</p>
+<p>Sources indicate that would be great for you to give us a better idea of size on disk for this. Uploading to Play/IOS store considerations. Maybe integration from pytorch into tensorflow to take advantage of the M chip in Pixel to really make this stuff scream, using a tool like google-ai-edge/ai-edge-torch. Great start.</p>
+<p>Downloading the model after installation is a great idea, as it keeps the app lightweight and gives consumers the flexibility to choose the model that best suits their needs.</p>
+<p>Hi can I convert VLMs into GGUF?</p>
+<p id="sec-end-127573">very helpfull , most of this small models are good in english only , you guys can implement a translation feature model like ML kit to translate to multiple language but i tried it the context is missing since i am translating word to word it miss context, any idea to do that ?</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/llm-inference-on-edge" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="introducing-the-hugging-face-llm-inference-container-for-amazon-s-128063.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128063. Introducing the Hugging Face LLM Inference Container for Amazon SageMaker
+        </a>
+        
+        <a href="deploy-llms-with-hugging-face-inference-endpoints-128041.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128041. Deploy LLMs with Hugging Face Inference Endpoints
+        </a>
+        
+        <a href="releasing-swift-transformers-run-on-device-llms-in-apple-devices-128023.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128023. Releasing Swift Transformers: Run On-Device LLMs in Apple Devices
+        </a>
+        
+        <a href="tech-report-optimum-nvidia-unlocking-blazingly-fast-llm-inference-127974.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127974. Tech Report: Optimum-NVIDIA Unlocking blazingly fast LLM inference in just 1 line of code
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

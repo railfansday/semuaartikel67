@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: How to Auto-Approve Pull Requests Safely: Testing It on a Real Repo</title>
+    <meta name="description" content="Hello everyone! Today, we can no longer imagine modern application development without artificial intelligence. Every day, thanks to GPT or Claude, we writ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-how-to-auto-approve-pull-requests-safely-testing-it-127304.html">
+    <meta property="og:title" content="Latest Update: How to Auto-Approve Pull Requests Safely: Testing It on a Real Repo">
+    <meta property="og:description" content="Hello everyone! Today, we can no longer imagine modern application development without artificial intelligence. Every day, thanks to GPT or Claude, we writ">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fse3ue7o2no34tjllzsae.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-how-to-auto-approve-pull-requests-safely-testing-it-127304.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: How to Auto-Approve Pull Requests Safely: Testing It on a Real Repo", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fse3ue7o2no34tjllzsae.png"], "datePublished": "2026-11-25T16:39:01", "dateModified": "2026-11-25T16:41:45.796403", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-how-to-auto-approve-pull-requests-safely-testing-it-127304.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: How to Auto-Approve Pull Requests Safely: Testing It on a Real Repo</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 25 Nov 2026 &bull; ⏱️ 8 min read (1582 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Today, we can no longer imagine modern application development without artificial intelligence.</li><li style='margin-bottom:6px;'>It has been revealed that and AI agents can now do more than just write code.</li><li style='margin-bottom:6px;'>But there is still one step where a person usually has to get involved: someone needs to review and approve that PR.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-127304"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-127304"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-127304"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: How to Auto-Approve Pull Requests Safely: Testing It on a Real Repo" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fse3ue7o2no34tjllzsae.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-127304">Hello everyone! Today, we can no longer imagine modern application development without artificial intelligence. Every day, thanks to GPT or Claude, we write thousands of lines of code.</p>
+<p>It has been revealed that and AI agents can now do more than just write code. They can work on tasks, make changes in a repository and even open pull requests. It feels a bit like a software factory: you give an agent a task, and it comes back with a PR.</p>
+<p>But there is still one step where a person usually has to get involved: someone needs to review and approve that PR. And when agents can create changes much faster, the approval process can become a bottleneck.</p>
+<p>Recent findings suggest that so what should you do? Can we automatically approve simple changes without letting every PR through? In this article, I want to test Qodo's approval workflows on a real repository. We'll look at both sides: a PR that can be automatically approved and a PR that should stay with a human reviewer.</p>
+<p>Yes, I may be stating the obvious, but using artificial intelligence to check code can help a reviewer spot things they might otherwise miss.</p>
+<p>Yes, but you might object to this and say, why would AI need to check what AI has written? Well, an agent can make mistakes too, and the person who gave it the task still needs a way to check the result. Let me give you a simple example: an agent might use class instead of className in JSX.</p>
+<p>According to recent reports, depending on your project's configuration, a linter may catch this. But not every problem is as simple as a typo, and a reviewer still has to look at the change and decide what to do with it.</p>
+<p>Sources indicate that now let's think about this problem on a larger scale. Whether you work at a organization or maintain an open-source project, you may have many PRs coming in from both people and agents. Some are small and routine, while others need a closer look from a person.</p>
+<p>So, in the next chapter, I would like to test a way to handle both!</p>
+<p>Recent findings suggest that today, it’s as simple as it gets, especially considering how much the industry has evolved recently. There are many companies that provide AI code review services.</p>
+<p>In my recent article, I already looked at the popular services available for this purpose and explained why I chose Qodo.</p>
+<p>In a recent development, in it, I examined all aspects in detail and compared the services based on what I consider to be the main selection criteria in this field. You can also take a look at it.</p>
+<p>In short, Qodo goes beyond ordinary AI code review: it's a Code Governance platform that combines review, standards, cross-repo analysis and agentic workflows in one product.</p>
+<p>According to recent reports, once you've set it up for your repository, Qodo can review your PRs. But what happens after that review? Let's find out!</p>
+<p>According to recent reports, installing Qodo is extremely simple and won’t take much time. Just go to this page and connect the app to your repository.</p>
+<p>After that, all that remains is to register on the website. The registration process there is as simple as can be.</p>
+<p>In a recent development, after that, you can choose a plan or opt for a trial. I won’t be covering that process in this article; let’s move on to the features.</p>
+<p>Sources indicate that if you’ve worked with tools like these, you know that they simply generate a report on what’s in the code and what could be improved. This is helpful for a reviewer, but a significant gap remains: someone still has to approve the pull request so that a maintainer can merge it. And that’s where things get really interesting.</p>
+<p>In a recent development, if you have ever worked on a project or are right now working on one, you’ve probably noticed that the Approve process often repeats itself. As a reviewer, you follow the same verification script, whether you think about it or not.</p>
+<p>Recent findings suggest that so, the main idea is that you can define rules for when a PR can be automatically approved. For example, a small change might be a good candidate, while a change in a sensitive part of the project might still need a person to look at it.</p>
+<p>It is vital to note that an approval is not the same as an auto-merge. Whether a PR can be merged also depends on the repository's settings and other required checks.</p>
+<p>Sources indicate that if you’ve done everything correctly, then by navigating to the Workflows tab, you’ll see a list of your workflows (what a surprise). Let’s add our first workflow here:.</p>
+<p>It has been revealed that I’ll call it simply "My new workflow", but you can name it whatever you like. Next, I’ll add the conditions under which my pull request will be automatically approved. To do this, I’ll click the Add condition button and set up my own rules for GitHub.</p>
+<p id="sec-mid-127304">Once configured, simply click the Create workflow button. Note that there is also an active toggle; if enabled, your workflow will immediately begin running for all subsequent pull requests.</p>
+<p>Now that our workflow has been created, we can activate it and check whether Qodo is able to approve it.</p>
+<p>I will create a simple pull request as a test, adding social media links to the website.</p>
+<p>After that, Qodo, which we added earlier, will start working for me, and if everything is fine with the code, it will let me know that it’s ready for merging.</p>
+<p>According to recent reports, and hurray, our code was approved! But that doesn't mean the PR has been merged or that other repository checks can be ignored.</p>
+<p>Okay, but what if a PR shouldn't be automatically approved? This is just as important as the first test. We don't want to set up a workflow that treats every change in the same way.</p>
+<p>In a recent development, for the second test, I'll configure a Guard for a case that should require a person to review the PR. Then I'll create another test PR that matches that case.</p>
+<p>In a recent development, to begin, let’s create a Guard. To do this, click the Approval guards button:.</p>
+<p>Sources indicate that now, let’s configure Guard. There are only a few settings, so the whole process takes just about five minutes. You can select the scope for your repositories and, if you wish, specify certain users whose contributions should never be subject to Auto Approve by Qodo, even when the code is perfectly fine. This can be particularly useful when dealing with code generated by an AI bot.</p>
+<p>If everything is done correctly, the following will appear:.</p>
+<p>According to recent reports, now, let’s try applying these changes to the pull request I created earlier. Qodo has approved it, but what happens if I add further changes in a subsequent commit using my own account?</p>
+<p>I added the changes (just changed “twitter” to “x”); there’s no error in them. Since I'd added a Guard for my account after the first approval, the upcoming commit triggered a re-check, and the PR now matched the Guard:.</p>
+<p>Qodo withdrew its approval, even though the code is fine, and that’s because I’ve now configured it so that it no longer happens from my account.</p>
+<p>And in the future, my pull requests will no longer be auto-approved. This is a very useful feature, let's say, when configuring it for code generated by bots, or when a upcoming employee joins the company.</p>
+<p>And that’s not all! If someone commits an incorrect code, the approval will also be removed, for example.</p>
+<p>I was thinking about how this could work in a software factory, where AI agents work on tasks, write code and open pull requests. That's great, but someone still needs to approve those PRs. Approval workflows and Guards can help make that process more manageable:.</p>
+<p>So, instead of checking every PR in exactly the same way, you can decide which changes need your attention and which ones can follow the rules you've already set.</p>
+<p>Recent findings suggest that in this article, we tried out Qodo's approval workflows on a real repository. For the first test, I created a simple PR that added social media links to the website, and Qodo approved it based on the workflow conditions.</p>
+<p>Sources indicate that but automatic approval isn't something I'd want to use for every PR. I sometimes use AI agents to help me write code, and even when the result looks good at first glance, I still want to check what the agent has actually changed. That's why I also configured an Approval Guard for contributions from a specific user.</p>
+<p>Of course, the result depends on the rules you configure. An approval also doesn't mean that a PR has been merged or that other required checks have passed. So before relying on a workflow, it's worth testing both the cases you want to approve automatically and the ones you want to keep for a human reviewer.</p>
+<p>For me, that's the most interesting part: you can automate some of the routine without giving up control over the changes that you want to review yourself.</p>
+<p>It has been revealed that thanks for reading this article! ❤️.</p>
+<p id="sec-end-127304">I'd love to hear your thoughts on this plugin in the comments!</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/anthonymax/how-to-auto-approve-pull-requests-safely-testing-it-on-a-real-repo-3do" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-introducing-pull-requests-and-discussions-128213.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128213. Latest Update: Introducing Pull Requests and Discussions 🥳
+        </a>
+        
+        <a href="breaking-these-are-the-real-cars-you-wish-were-in-grand-theft-aut-123146.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #123146. Breaking: These Are The Real Cars You Wish Were In 'Grand Theft Auto 6'
+        </a>
+        
+        <a href="breaking-efficient-table-pre-training-without-real-data-an-introd-128214.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128214. Breaking: Efficient Table Pre-training without Real Data: An Introduction to TAPEX
+        </a>
+        
+        <a href="azure-cobalt-200-vms-now-available-proven-on-real-workloads-and-b-127980.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127980. Azure Cobalt 200 VMs now available, proven on real workloads and built for the agentic era
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

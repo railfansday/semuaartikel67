@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is gradient checkpointing, and when should you use it?</title>
+    <meta name="description" content="Gradient checkpointing, also called activation checkpointing, saves GPU memory in training by keeping only a few activations from the forward pass and reco">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/what-is-gradient-checkpointing-and-when-should-you-use-it-127323.html">
+    <meta property="og:title" content="What is gradient checkpointing, and when should you use it?">
+    <meta property="og:description" content="Gradient checkpointing, also called activation checkpointing, saves GPU memory in training by keeping only a few activations from the forward pass and reco">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fpwj1p2138hmu38dd4fug.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/what-is-gradient-checkpointing-and-when-should-you-use-it-127323.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "What is gradient checkpointing, and when should you use it?", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fpwj1p2138hmu38dd4fug.png"], "datePublished": "2026-11-25T16:38:33", "dateModified": "2026-11-25T16:41:46.403757", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/what-is-gradient-checkpointing-and-when-should-you-use-it-127323.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>What is gradient checkpointing, and when should you use it?</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 25 Nov 2026 &bull; ⏱️ 8 min read (1500 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Gradient checkpointing, also called activation checkpointing, saves GPU memory in training by keeping only a few activations from the forward pass and recomputing the rest during the backward pass.</li><li style='margin-bottom:6px;'>No, and the shared word causes real confusion.</li><li style='margin-bottom:6px;'>A training checkpoint is a saved copy of the weights, optimizer state and data position, written every few hundred steps so a run can resume after a failure.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-127323"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-127323"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-127323"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="What is gradient checkpointing, and when should you use it?" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fpwj1p2138hmu38dd4fug.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-127323">Gradient checkpointing, also called activation checkpointing, saves GPU memory in training by keeping only a few activations from the forward pass and recomputing the rest during the backward pass. Nodus turns it on by default in its sft fine-tuning runtime: in our Qwen3-8B estimate it cuts activation memory more than 10x, and published measurements put the cost at 20 to 36% more step time. Use it when activations are what overflow your GPU, and leave it off when the model already fits with a batch size that keeps the GPU busy.</p>
+<p>No, and the shared word causes real confusion. Gradient checkpointing is a memory trick inside one training step. Nothing is written to disk, and nothing survives a crash.</p>
+<p>A training checkpoint is a saved copy of the weights, optimizer state and data position, written every few hundred steps so a run can resume after a failure. If that is what you are looking for, read our guide to automatic checkpointing and resume.</p>
+<p>The two often sit side by side in one config. The Nodus sft runtime has gradientCheckpointing, default true, described as "recompute activations to save GPU memory". It also has saveSteps, default 200, the number of steps between recovery checkpoints. One saves memory, the other saves progress.</p>
+<p>Recent findings suggest that gradient checkpointing and activation checkpointing are the same technique. PyTorch's torch.utils.checkpoint docs call it activation checkpointing, and recent Hugging Face Transformers releases have renamed their methods to match.</p>
+<p>Sources indicate that it throws away most of what the forward pass would normally keep. In ordinary training, every intermediate tensor a layer produces stays in memory until the backward pass uses it to compute gradients. With checkpointing, only the input to each checkpointed block is kept. When the backward pass reaches that block, it runs the block's forward again to rebuild what it needs.</p>
+<p>In a recent development, the idea comes from Chen et al.'s 2016 paper, Training Deep Nets with Sublinear Memory Cost. Split an n-layer network into about sqrt(n) segments and keep only the segment boundaries. Memory then grows with sqrt(n) instead of n, for "the computational cost of an extra forward pass per mini-batch". The paper reports a 1,000-layer residual network going from 48 GB to 7 GB with 30% more running time.</p>
+<p>The extra time has a simple ceiling. Korthikanti et al. at NVIDIA note in Reducing Activation Recomputation in Large Transformer Models that the backward pass needs about twice the FLOPs of the forward pass. A normal step is therefore 1 forward plus 2 forward-equivalents of backward, or 3 units. Recomputing everything adds 1 more, so 4 / 3 = 1.33, at most about 33% more compute.</p>
+<p>On a transformer, often 90% or more of the activation memory. We worked it out for Qwen3-8B, using the per-layer formulas from Korthikanti et al. Their formulas are for GPT-style layers, so treat the results as estimates for Qwen3's gated MLP and grouped-query attention.</p>
+<p>The inputs are from the Qwen3-8B config: hidden size h = 4,096 and L = 36 layers. We assume one 8,192-token sequence (s = 8,192, b = 1) in 16-bit precision, with a fused attention kernel. One unit of s x b x h bytes is then 8,192 x 4,096 = 33,554,432 bytes, about 33.6 MB.</p>
+<p>In a recent development, korthikanti et al. put the stored input of a checkpointed layer at 2 x s x b x h bytes, against 34 x s x b x h for a full layer. When we count peak memory, we add the activations of the block being recomputed: 34 units for one layer, 6 x 34 for a 6-layer segment. Every layer works out to 2.4 GB of stored inputs plus 1.1 GB for the layer being rebuilt.</p>
+<p>Checkpointing every layer cuts this example's activations from 41.1 GB to 3.6 GB.</p>
+<p>The table holds a detail the sqrt(n) rule hides. Chen's rule assumes the cost of storing a segment boundary is about the same as the cost inside a layer. In a transformer, a layer's input is 2 units and its insides are 34, about 17x more.</p>
+<p>The best number of segments is then near sqrt(17 x 36), about 25, not 6. In practice, checkpointing every layer (3.6 GB) or segments of 2 layers (18 segments, about 3.5 GB) is close to the minimum. That is why Hugging Face checkpoints every decoder layer by default rather than using sqrt(n) segments.</p>
+<p>Wrap each block's call in torch.utils.checkpoint.checkpoint and pass use_reentrant=False. The PyTorch docs recommend the non-reentrant variant and warn that a future release will raise an error when use_reentrant is not passed explicitly.</p>
+<p>In a recent development, for an nn.Sequential model, checkpoint_sequential(model, segments, x, use_reentrant=False) splits it into segments for you. We ran both forms on PyTorch 2.15 on CPU with a 12-block MLP stack. The gradients matched the plain version exactly, with a maximum difference of 0.0. That checks correctness, not speed or memory, which you should measure on your own GPU with torch.cuda.max_memory_allocated().</p>
+<p>According to recent reports, the non-reentrant variant also avoids an old trap. The docs say the reentrant variant needs at least one input and output with requires_grad=True, or the checkpointed part gets no gradients. That bites LoRA runs, where the frozen base model's inputs do not require gradients. The non-reentrant version has no such requirement.</p>
+<p id="sec-mid-127323">Keep the recomputed forward identical to the first one. The docs warn that if a global variable or other state changes between the two calls, you can get an error or silently wrong gradients. Dropout is handled for you, because preserve_rng_state defaults to True.</p>
+<p>Recent findings suggest that one call on the model, or one flag on the trainer. In the Transformers v5.24.1 model docs, the method is activation_checkpointing_enable(). The old gradient_checkpointing_enable() still works as a deprecated alias until v6, and older releases only have the old name.</p>
+<p>In a recent development, the upcoming method takes every_n_layers, which checkpoints only every n-th decoder layer and lets the rest keep their activations. That is the 22.9 GB row in our table, with roughly half the recompute cost. It also takes offload, which holds the saved inputs in pinned CPU memory and makes each step slower.</p>
+<p>On Nodus, the sft runtime sets gradientCheckpointing: true for you. You only touch it to turn it off:.</p>
+<p>According to recent reports, expect 20 to 36% longer steps with every layer checkpointed. The Hugging Face GPU training guide quotes about 20%. Chen et al. measured 30% on their residual network. Korthikanti et al. write that full recomputation can add as much as 30 to 40% to compute time, and they measured 36% on their largest models.</p>
+<p>Most measurements land near the 33% ceiling that one extra forward pass implies.</p>
+<p>Measured overheads can sit below 33% because the non-reentrant variant stops recomputing once it has what it needs, and because some step time is not compute.</p>
+<p>Sources indicate that turn it on when activations are the part that does not fit. Here is the order we use.</p>
+<p>Leave it off for inference. There is no backward pass, so there is nothing to recompute. Serving memory goes to the KV cache instead, which our 70B VRAM guide sizes.</p>
+<p>Sources indicate that usually yes, at current list prices. On the Nodus pricing page, the H100 SXM 80 GB is listed at $2.60/hr and the H200 SXM 141 GB at $3.593/hr. Take a fine-tuning job that would need 10 GPU-hours on an H100 if it fit without checkpointing.</p>
+<p>Prices checked November 25, 2026.</p>
+<p>At list prices, checkpointing on an H100 beats moving to an H200 unless the H200 also runs your step faster.</p>
+<p>The break-even is the price ratio: $3.593 / $2.60 = 1.38. If checkpointing slows your step by less than 38%, it is cheaper than the larger GPU at the same speed. In practice the H200 is often faster per step too, which lowers that break-even, so measure one step on each before committing a long run.</p>
+<p>It has been revealed that no. It recomputes the same values, so gradients match up to normal GPU floating-point nondeterminism, and our CPU test matched exactly. That is why Nodus can leave it on by default in the sft runtime without changing what you train.</p>
+<p>In a recent development, yes. Sharding splits weights, gradients and optimizer state across GPUs, while checkpointing shrinks activations on each GPU, so the two stack. Use sharding when model state is too big and checkpointing when activations are.</p>
+<p>It is the middle ground from Korthikanti et al.: recompute only the attention parts that are cheap to rebuild but large to store. With sequence parallelism, they cut recomputation overhead by over 90%. Fused attention kernels such as FlashAttention already avoid storing the attention score matrix, which gives a similar saving.</p>
+<p>Start with every layer, then back off if you have memory to spare. Checkpointing every 2nd layer roughly halves the recompute cost and still saves memory, as the 22.9 GB row highlights.</p>
+<p id="sec-end-127323">Originally published on the Nodus blog.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/viswaretas_kotra/what-is-gradient-checkpointing-and-when-should-you-use-it-5c6b" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="ask-dr-paola-help-should-i-use-an-allergen-neutralizing-spray-nov-125597.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #125597. Ask Dr. Paola – HELP! Should I Use An Allergen-Neutralizing Spray? (November 2, 2026)
+        </a>
+        
+        <a href="industry-news-7-surfaces-you-should-never-use-ice-melt-on-125360.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #125360. Industry News: 7 Surfaces You Should Never Use Ice Melt On
+        </a>
+        
+        <a href="pdrnaka-salmon-spermis-the-buzziest-skincare-ingredient-of-the-ye-124311.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #124311. PDRN—AKA Salmon Sperm—Is the Buzziest Skincare Ingredient of the Year. Should You Use It, Though?
+        </a>
+        
+        <a href="ahrefs-vs-semrush-which-seo-tool-should-you-use-115884.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #115884. Ahrefs vs SEMrush: Which SEO Tool Should You Use?
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

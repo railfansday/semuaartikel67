@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flat/non-higher-order construction of ANF via mutable holes</title>
+    <meta name="description" content="This post will describe an algorithm for constructing an ANF/similar IR from a functional-like base language with no closure usage, and with no related exc">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/flatnon-higher-order-construction-of-anf-via-mutable-holes-127416.html">
+    <meta property="og:title" content="Flat/non-higher-order construction of ANF via mutable holes">
+    <meta property="og:description" content="This post will describe an algorithm for constructing an ANF/similar IR from a functional-like base language with no closure usage, and with no related exc">
+    <meta property="og:image" content="https://blueberrywren.dev/wren_glasses.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/flatnon-higher-order-construction-of-anf-via-mutable-holes-127416.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Flat/non-higher-order construction of ANF via mutable holes", "image": ["https://blueberrywren.dev/wren_glasses.png"], "datePublished": "2026-11-25T06:11:39", "dateModified": "2026-11-25T16:41:51.745407", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/flatnon-higher-order-construction-of-anf-via-mutable-holes-127416.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Flat/non-higher-order construction of ANF via mutable holes</h1>
+        <div class="meta-line">🌐 Source: <strong>Blueberrywren</strong> &bull; 📅 25 Nov 2026 &bull; ⏱️ 4 min read (836 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>This post will describe an algorithm for constructing an ANF/similar IR from a functional-like base language with no closure usage,
+and with no related excess space requirements.</li><li style='margin-bottom:6px;'>Thanks to Ryan Brewer and rpjohnst for their inspiration on this.</li><li style='margin-bottom:6px;'>If you are only interested in code, please skip to Implementation.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-127416"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-127416"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-127416"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Flat/non-higher-order construction of ANF via mutable holes" loading="lazy" src="https://blueberrywren.dev/wren_glasses.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-127416">This post will describe an algorithm for constructing an ANF/similar IR from a functional-like base language with no closure usage,
+and with no related excess space requirements. This algorithm is as far as I know not new, and has apparently been known in
+imperative compilation for a while. However, I admittedly have no source for this, nor
+have I seen it described for functional-like languages.</p>
+<p>Thanks to Ryan Brewer and rpjohnst for their inspiration on this.</p>
+<p>If you are only interested in code, please skip to Implementation.</p>
+<p>First, let us describe our input and output languages. Our input language will look like this:.</p>
+<p>This is meant to echo some simple functional programming language, and contains all the elements needed to demonstrate the algorithm.</p>
+<p>According to recent reports, our output language will look like a lexically-scoped flat ANF-style construction, with all lets at the toplevel. The goal is to convert from our input ml to this language.</p>
+<p>The notable addition is the Hole constructor in anf, the purpose of which will be described now.</p>
+<p>Imagine we are trying to convert the term.</p>
+<p>According to recent reports, when we arrive at the body of x, we have a conundrum. We need to put the conversion of y before x,
+so that using y is well-scoped. Hence, we must convert y before we can continue. How do we use this conversion, though? x's content needs to be put in the anf field of y's Let, so it's not clear how to both convert y before x and
+to use x's finished conversion in y.</p>
+<p>Industry observers note that one "traditional" method of solving this is via continuations, where y is passed a closure representing "what to do next", after it
+converts its body. We can then put x's content in that closure, which will be invoked later. This has two main flaws:.</p>
+<p>Recent findings suggest that recall that we left a Hole of anf option ref field in our anf type. I will denote a hole like this: [·]. The central idea is that our conversion of any given ml fragment will return:.</p>
+<p>Consider this simplified example:.</p>
+<p>When we convert x, this signals for the conversion of y. There are two steps to converting a let - we
+must first convert the "head" (2), and then the "body" (y).</p>
+<p id="sec-mid-127416">Converting the head will result in something of form.</p>
+<p>Recent findings suggest that note that the hole is left to be filled later. This way, the conversion of y's head need know nothing about its environment. We represent this in code via the Hole constructor, which contains a reference to a fragment that either may be empty (None)
+or filled (Some ...). The conversion of the body can then proceed by first generating the expected addition, binding it to nm so it may be referenced later:.</p>
+<p>In a recent development, we now need to get this fragment into the proper lexical scope. We can do this by plugging it into the hole left by the conversion of the head:.</p>
+<p>Then, returning this fragment, the name bound (y), and the reference to the inner hole, we can continue converting x;
+First, convert the head, using the name returned by the conversion of y:.</p>
+<p>And finally plug it into the hole returned by y.</p>
+<p>We are left with a final hole we can plug with Done to be explicit about the end of a control flow path. One disadvantage of this strategy is that it does generate many unneeded names. Most of these can be avoided by carefully special
+casing certain lets, and the rest can be eliminated via a simple folding pass.</p>
+<p>Below is a sample implementation of this algorithm, in OCaml.</p>
+<p>I recommend toying with the conversion yourself, using utop or similar. In the following, I will "clean up" the output slightly, as to not make it unreadable.</p>
+<p>If we use our first example term:.</p>
+<p>Industry observers note that we can then plug the returned hole, as described. Via some inspection, we can verify this is indeed correct, and conforms to our ANF-like form, as expected.</p>
+<p>As mentioned earlier, the large amount of duplicate names can be mitigated through strategies such as
+special casing let _ =  and folding passes.</p>
+<p>Industry observers note that clearly, the algorithm does not use closures, or any indirect jumps. It does not allocate any more than needed for the representation of
+the output program; there is no excessive closure allocation. I do not currently have a good way to test performance on real-world large inputs,
+but I have no reason to believe it would not perform better than an equivalent higher-order version.</p>
+<p id="sec-end-127416">I believe this method should be extendable to CPS as well, although I have not tried as of the moment. The "usual" higher-order CPS
+conversion described in e.g. "Compiling with continuations, continued" looks quite similar to the higher-order presentation
+of ANF conversion, so I would be interested in whether it can be similarly massaged into a mutable form.</p>
+<p style="margin-top: 25px;">
+<a href="https://blueberrywren.dev/blog/anf-mutable/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="romano-varela-via-gi-a-gennaio-inter-ecco-perch-non-ha-ancora-aff-119453.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #119453. Romano: "Varela via già a gennaio? Inter, ecco perché non ha ancora affondato. Non si esclude..."
+        </a>
+        
+        <a href="tech-report-fit-more-and-train-faster-with-zero-via-deepspeed-and-128297.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128297. Tech Report: Fit More and Train Faster With ZeRO via DeepSpeed and FairScale
+        </a>
+        
+        <a href="nystrmformer-approximating-self-attention-in-linear-time-and-memo-128189.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128189. Nyströmformer: Approximating self-attention in linear time and memory via the Nyström method
+        </a>
+        
+        <a href="non-engineers-guide-train-a-llama-2-chatbot-127997.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127997. Non-engineers guide: Train a LLaMA 2 chatbot
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

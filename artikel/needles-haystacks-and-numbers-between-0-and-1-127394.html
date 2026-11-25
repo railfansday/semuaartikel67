@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Needles, Haystacks, and Numbers Between 0 and 1</title>
+    <meta name="description" content="Given the increasingly hostile supply chain environment the entire software community is working within, the Rust Foundation is sponsoring exploratory work">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/needles-haystacks-and-numbers-between-0-and-1-127394.html">
+    <meta property="og:title" content="Needles, Haystacks, and Numbers Between 0 and 1">
+    <meta property="og:description" content="Given the increasingly hostile supply chain environment the entire software community is working within, the Rust Foundation is sponsoring exploratory work">
+    <meta property="og:image" content="https://rustfoundation.org/wp-content/uploads/2026/11/Needles-Haystacks-and-Numbers-Between-0-and-1.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/needles-haystacks-and-numbers-between-0-and-1-127394.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Needles, Haystacks, and Numbers Between 0 and 1", "image": ["https://rustfoundation.org/wp-content/uploads/2026/11/Needles-Haystacks-and-Numbers-Between-0-and-1.png"], "datePublished": "2026-11-25T07:03:53", "dateModified": "2026-11-25T16:41:50.654042", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/needles-haystacks-and-numbers-between-0-and-1-127394.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Needles, Haystacks, and Numbers Between 0 and 1</h1>
+        <div class="meta-line">🌐 Source: <strong>Rustfoundation</strong> &bull; 📅 25 Nov 2026 &bull; ⏱️ 6 min read (1132 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Given the increasingly hostile supply chain environment the entire software community is working within, the Rust Foundation is sponsoring exploratory work on using decision models to automatically scan crates as they are published, and flag potentially malicious crates for human review.</li><li style='margin-bottom:6px;'>We’ve had the scanner running on the crate firehose for a little more than a week at this point, and here’s what we’ve learned so far.</li><li style='margin-bottom:6px;'>Sources indicate that decision models have become prominent in the last 2-3 months as an alternative to the LLM-based chat interfaces that have dominated AI tasks in the last few years.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-127394"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-127394"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-127394"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Needles, Haystacks, and Numbers Between 0 and 1" loading="lazy" src="https://rustfoundation.org/wp-content/uploads/2026/11/Needles-Haystacks-and-Numbers-Between-0-and-1.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-127394">Given the increasingly hostile supply chain environment the entire software community is working within, the Rust Foundation is sponsoring exploratory work on using decision models to automatically scan crates as they are published, and flag potentially malicious crates for human review.</p>
+<p>We’ve had the scanner running on the crate firehose for a little more than a week at this point, and here’s what we’ve learned so far.</p>
+<p>Sources indicate that decision models have become prominent in the last 2-3 months as an alternative to the LLM-based chat interfaces that have dominated AI tasks in the last few years. Rather than providing open-ended natural language output, decision models are naturally constrained to choosing from a restricted set of answers, or providing scores against a question. Critically, they are also much faster and cheaper than LLMs, which makes it feasible to feed every crate in without bankrupting the Rust Foundation.</p>
+<p>Almost as soon as decision models became generally available, we started experimenting with feeding crates in: developing and refining prompts, figuring out how to break up crates to fit them in a restrictive context window while still getting reasonable results, extrapolating the crate publication growth curve to estimate the cost that would be involved in running this against the entire crates.io firehose, and looking at the results to see if they are reliable enough to justify the human review required.</p>
+<p>After performing that analysis against a corpus of approximately 1,000 crate files — some known to be malicious from previous takedowns, some known to be good, and some randomly chosen from crates published in October — we decided that the results were cheap and effective enough to be worth a longer (and more expensive) experiment: namely, running every crate published in November and December through the decision model.</p>
+<p>Before getting into the early results, let’s talk about what we’re not doing on this project.</p>
+<p>No automated actions are taken as a result of these scans. Effectively, we’re treating findings the same way as any normal third-party report of a potentially malicious crate: a crates.io team member and/or a member of the Rust Foundation’s security initiative will review the crate file, and if action is deemed necessary, the normal takedown process takes place. As ever, this process involves the crates.io team (for the mechanics of the takedown), Rust security response working group (for any security-related consulting), and RustSec (for advisories to notify users of the takedown).</p>
+<p>Recent findings suggest that the scanning service also doesn’t retain the crate file content once the initial scan is complete. Only the crate name, version number, a list of the file names within the crate, and the score are kept. If we do future comparative work, it will only be on crates that remain available at that time.</p>
+<p>Recent findings suggest that as of the writing of this blog post, we have scanned every crate file published between the 11th and 21st of November1, inclusive. We intend to go back to November 1st, and continue until at least December 31st.</p>
+<p>So far, we’ve scanned 135,548 crate files.</p>
+<p>We’re asking the decision model to give a score in the range 0.0..1.0 that the crate is malicious — not whether it is buggy, or has unintended security concerns, but simply whether it appears to be actively malicious, with some extremely limited2 context provided from previous malware campaigns that we’ve seen.</p>
+<p>Calibrating the threshold for where a human should be involved is an ongoing process. Based on the initial analysis, we set the threshold — which is, of course, going to be highly model and prompt specific — at 0.35, suspecting that that threshold would likely return more false positives than we desired. (We were not wrong.).</p>
+<p id="sec-mid-127394">Here are the thresholds we’ve tried so far:.</p>
+<p>Given this, it appears that a threshold at or above 0.7 for this particular combination of model and prompt is likely to provide the sort of behaviour we want: relatively low background noise for the humans who need to review the findings, but still finding the malware.</p>
+<p>Of course, this only covers what we find. It’s essentially impossible for us to quantify false negatives in any automated way: there are simply too many crates to review them manually, malicious crates are too infrequent for a random sampling approach to work, and the cost involved in using frontier LLMs is prohibitive.</p>
+<p>In a recent development, on a longer time horizon, we should be able to get a sense of false negatives based on the other reports crates.io receives. We are grateful to the broader security ecosystem of companies, non-profits, and individuals who perform their own checks and make those reports! Commonly used crates tend to receive reports rapidly, but it’s not uncommon for several months to pass for crates that see no usage.</p>
+<p>We’ll do an in-depth look back and evaluation of the false negative rate in January as we will hopefully have more data by then.</p>
+<p>On a micro level, there is significant scope for experimentation with prompt and model over the coming weeks and months.</p>
+<p>We’ve already observed specific failure modes for this particular combination: because the model has no real reasoning capability, it tends to over-score crates that contain significant embedded data that isn’t source code, as it simply can’t analyse what that data is or does.3.</p>
+<p>While we don’t have the financial resources to run parallel prompt and model combinations on the entire crate corpus during the experiment period, we will likely send some subsets of crates to other combinations to see if we can improve the scoring behaviour further.</p>
+<p>If the outcome of this experiment is that we see value in continuing to scan crates in this way, we will likely seek partnerships and/or sponsorship in early 2027 to fund the operation and further development of this work, including going back through the full historical corpus.</p>
+<p>Finally, on a macro level, we believe that there will be opportunities to match this sort of data with other security signals derived without the use of AI. Crate provenance data, metadata derived from maintainer actions, and capability analysis of the crates themselves are all active areas of research, both within the Rust Foundation, across ecosystems under the auspices of organisations such as OpenSSF and Alpha-Omega, and in for-profit companies.</p>
+<p>Being able to take those signals and integrate them holistically opens up opportunities for more rapid responses to malware, especially in combination with ongoing work at the crates.io level such as RFC 4016 (Registry withholding), which is at the moment in its final comment period.</p>
+<p id="sec-end-127394">Ultimately, regardless of the success of this particular experiment, we believe that work like this is crucial to the security and success of Rust, and of software development as a whole, and we’re excited to continue this work.</p>
+<p style="margin-top: 25px;">
+<a href="https://rustfoundation.org/media/needles-haystacks-and-numbers-between-0-and-1/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="cleverbridge-admits-attackers-stole-customers-credit-card-and-cvv-127482.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127482. Cleverbridge admits attackers stole customers' credit card and CVV numbers. Yep, you read that right
+        </a>
+        
+        <a href="online-forms-in-india-arent-going-to-stop-asking-for-tiny-files-a-127295.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127295. Online forms in India aren't going to stop asking for tiny files any time soon. Compress PDFs to an exact KB target, resize photos and signatures to the numbers in the notification, check that everything is still readable, and keep your personal documents
+        </a>
+        
+        <a href="tech-report-the-surprising-connection-between-grief-and-gratitude-127095.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127095. Tech Report: The Surprising Connection Between Grief and Gratitude
+        </a>
+        
+        <a href="between-psyche-and-cyborg-carl-jungs-legacy-and-the-countercultur-127082.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127082. Between Psyche and Cyborg: Carl Jung’s Legacy and the Countercultural Courage to Reclaim the Deeply Human in a Posthuman Age
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

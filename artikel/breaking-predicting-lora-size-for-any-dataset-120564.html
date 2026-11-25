@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Predicting LoRA size for any dataset</title>
+    <meta name="description" content="Recent findings suggest that at Engram, we train lots of models. We train models for individual users and update them when information changes. A major foc">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-predicting-lora-size-for-any-dataset-120564.html">
+    <meta property="og:title" content="Breaking: Predicting LoRA size for any dataset">
+    <meta property="og:description" content="Recent findings suggest that at Engram, we train lots of models. We train models for individual users and update them when information changes. A major foc">
+    <meta property="og:image" content="https://engram.com/_next/static/media/og.0j-w_d5pzme3m.jpg?dpl=dpl_GCLvFwRSxoRUZRnsjhnQcLryLcr4">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-predicting-lora-size-for-any-dataset-120564.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Predicting LoRA size for any dataset", "image": ["https://engram.com/_next/static/media/og.0j-w_d5pzme3m.jpg?dpl=dpl_GCLvFwRSxoRUZRnsjhnQcLryLcr4"], "datePublished": "2026-11-24", "dateModified": "2026-11-25T16:35:21.899032", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-predicting-lora-size-for-any-dataset-120564.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Predicting LoRA size for any dataset</h1>
+        <div class="meta-line">🌐 Source: <strong>Engram</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 15 min read (2917 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that at Engram, we train lots of models.</li><li style='margin-bottom:6px;'>LoRA has become the predominant approach for customizing models in industry.</li><li style='margin-bottom:6px;'>In practice, smaller LoRAs enjoy a number of systems advantages, being lighter to load4, 5, faster to generate text from6, and easier to store on disk.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-120564"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-120564"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-120564"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Predicting LoRA size for any dataset" loading="lazy" src="https://engram.com/_next/static/media/og.0j-w_d5pzme3m.jpg?dpl=dpl_GCLvFwRSxoRUZRnsjhnQcLryLcr4" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-120564">Recent findings suggest that at Engram, we train lots of models. We train models for individual users and update them when information changes. A major focus of our research is how to customize and adapt models efficiently at scale.</p>
+<p>This post focuses on LoRA1. LoRA has become the predominant approach for customizing models in industry. While there exists a large body of knowledge on how to set the hyperparameters and train LoRA effectively2, 3, it’s still unclear how to set LoRA’s rank. Although it’s agreed-upon that LoRA underperforms full-finetuning on larger datasets, it’s not clear when this is the case. How big does a dataset have to be to require a larger LoRA?</p>
+<p>In practice, smaller LoRAs enjoy a number of systems advantages, being lighter to load4, 5, faster to generate text from6, and easier to store on disk. For larger models, rank-1 can store quite a lot; some datasets, like RL data, can be represented in a small number of bits and often fit within a rank-one LoRA adapter (or smaller!7, 8, 9).</p>
+<p>In this post, we develop a predictive theory and practical approach for sizing LoRA adapters to a new dataset. The idea is simple: the size of the LoRA required depends on how many bits it takes to encode the dataset under the base model. We use this idea to derive an exact formula for how many bits a single LoRA adapter can learn as a function of its rank.</p>
+<p>We then extend our idea to measure the capacity of LoRA on full transformers. Since theory can’t predict the nonlinear behavior of deep transformers, we turn to an empirical solution: we generate synthetic datasets of exactly NNN bits under the base model and train on them to measure LoRA’s capacity. Our capacity predictions hold up on real datasets: across a variety of settings, we can accurately determine the necessary rank of the adapter.</p>
+<p>We begin this post with a basic primer on the connection between information theory and language modeling. Remember that our goal is to find the smallest adapter that fits a given dataset. To do that, we need to measure adapters and datasets in the same unit: bits.</p>
+<p>Language models assign probabilities to strings:.</p>
+<p>A language model is, at its core, a text compressor10: a model that assigns high probability to data can encode it efficiently. And we’ve known this since the 1950s! By Shannon’s source coding theorem11, a model’s quality (its perplexity, or cross-entropy) corresponds directly to its effectiveness as a compressor. The number of bits needed to encode a string xxx under a model θ\thetaθ is its negative log-likelihood:.</p>
+<p>Here’s an example of what it’s like to view training loss as bits. Given some fixed-size training dataset, we can directly convert loss to bits learned by θ\thetaθ12:.</p>
+<p>Generating exactly N bits using an LLM.</p>
+<p>Sources indicate that to measure the capacity of LLMs being trained with adapters, we need to generate data with a controllable number of bits. Prior work in this space creates data of fixed size with random generative processes, like randomly generated tables of facts13 or random strings of tokens.</p>
+<p>Sources indicate that to generate truly random data from an LLM, we leverage a tool called arithmetic coding. Arithmetic coding gives us the ability to transform probability distributions into codes; it represents the entire code using a single floating point number in [0,1)[0, 1)[0,1) that we can turn into a sequence using pθp_\thetapθ​.</p>
+<p>We take this one step further. A pretrained open-source model like Qwen or Inkling already provides likelihoods for text, so we can run arithmetic coding in reverse: start from NNN random bits and decode them into text. The result is a sample from pθp_\thetapθ​ whose code length under the model is NNN bits. One can think of this as an implementation of Neural Linguistic Steganography14 using randomly selected codes.</p>
+<p>Sources indicate that here’s an example of arithmetic coding in use. The following panel allows you to generate strings with exact bit counts under SmolLM2:.</p>
+<p>In a recent development, code lengths come out slightly longer than the number of encoded bits because tokens are indivisible. In this example, queen is worth eleven bits (surprising!), while little carries just two bits. Later in this post we will generate many strings like this to build a dataset of exactly known size, then train an adapter on it to measure how many bits it can learn.</p>
+<p>Given a matrix WWW to adapt, LoRA works by training two matrices whose product is a low-rank enhancement to WWW:.</p>
+<p>In a recent development, here WWW is an m×nm \times nm×n matrix being adapted and AAA and BBB are the matrices trained via LoRA. Since rrr is often much smaller than mmm and nnn, the total number of parameters trained by the LoRA is typically much smaller than training all of WWW.</p>
+<p>The parameter α\alphaα is a rank-independent scaling factor; in this work, we fix α=256\alpha=256α=256 to avoid conflating rank with learning rate.</p>
+<p>According to recent reports, prior work has estimated that the capacity of full transformer training scales roughly linearly with parameter count15, 16, 17. We don’t intuitively expect this to be true with LoRA, since some dimensions influence the model outputs more than others. Instead, we expect diminishing returns to capacity as rank increases. This is exactly what we see in practice, and it turns out we can predict the capacity curve quite cleanly using a simple statistical model.</p>
+<p>Suppose we sample data from a model and then adapt one of its weight matrices to memorize that data. How much can we expect to increase the log-likelihood (and hence decrease the code length) with a rank-rrr adapter? To second-order, log⁡pθ(x)\log p_\theta(x)logpθ​(x) looks like an inverted bowl in parameter space. How high we can climb on that bowl can be determined from the gradient and Hessian at the point θ\thetaθ, and these are both random functions of the training data xxx. Since the data is sampled from pθp_\thetapθ​, the statistics of the gradient and Hessian are determined by the Fisher information matrix, which greatly simplifies the calculations.</p>
+<p>After some algebra, we find that the capacity of a rank-rrr adapter is approximately,.</p>
+<p>In a recent development, where σi(Z)\sigma_i(Z)σi​(Z) is the iii-th singular value of the random matrix ZZZ. The capacity grows roughly linearly at low rank,.</p>
+<p>Sources indicate that but it plateaus as the rank increases and the singular values decrease. At full rank, the capacity is mn2ln⁡2\tfrac{mn}{2\ln 2}2ln2mn​ bits, recovering a classical result from Wilks’ theorem in statistics18.</p>
+<p>For an 800M parameter Qwen3.5 model, which has 512×1024512 \times 1024512×1024 linear layers in its attention value projections (v_proj), the theory predicts about 378k bits, or 0.48 bits-per-parameter at full rank and 1.3-1.4 bits-per-parameter at low rank.</p>
+<p>When we measure capacity using actual training, this prediction turns out to be quite accurate; C(r)C(r)C(r), the blue curve, is accurate at every rank:.</p>
+<p>Recent findings suggest that theory predicts around 0.5-1.4 bpp when perturbing individual weight matrices. What about full transformers? When we adapt several matrices jointly, the capacity is more than the sum of its parts. We see super-additive scaling of capacity thanks to complementary interactions from adapting multiple weights at once19.</p>
+<p>While the theory above cannot explain these super-additive effects yet, we do have a way to generate a dataset of a fixed size (measured above) and a way to measure how much a model learns from data (by checking its loss).</p>
+<p>Extrapolating to the infinite-training regime. We fit a function to estimate the asymptote of the loss curve under infinite training, similar to20. This modeling allows us to train for a fixed number of steps and predict the asymptote of the loss under high compute, rather than perform the full training. It also allows us to avoid constantly sweeping learning rates, since different learning rates converge to the same capacity under infinite training.</p>
+<p>We find a simple log-logistic curve fits our training runs well:.</p>
+<p>Here TTT is the number of training steps, τ\tauτ is the step where the adapter has stored half its eventual bits, and ccc sets how sharp the rise is; we fit this on runs of 1k steps and up, and report bits∞\text{bits}_\inftybits∞​ as the adapter’s capacity.</p>
+<p>Recent findings suggest that naively, one might expect the total capacity to be the sum of each adapter’s capacity, and hence the bits stored per parameter to remain roughly constant as we adapt more and more layers. However, as we increase the number of layers, total capacity actually rises from 1.5 bits-per-parameter to 3.3:.</p>
+<p>For a fixed-depth model, we see that increasing the LoRA rank also increases total capacity. Our technique for generating data for θ\thetaθ across sizes allows us to easily measure the capacity of LoRAs across ranks:.</p>
+<p>We can also easily study how capacity interacts with training. Although the majority of our results assume capacity in the infinite-training regime, we can swiftly model how even in the case of LoRA, capacity rises with the number of training steps21. This finding is intuitive, since training for longer stores more bits:.</p>
+<p>According to recent reports, to test how much models forget about what they already know, we can measure likelihood on samples from the base model; this gives us a measurement of the total number of bits the model forgets during the training process. Across all the models trained for this post, we observe a remarkably predictable trend where models forget roughly as much as they learn:.</p>
+<p id="sec-mid-120564">According to recent reports, this finding implies that training is quite efficient: as we add new information to a model, it forgets a comparable amount. A model that learns 10 KB of new information might forget 12 KB of old information. This setting provides a clean testbed for future research to investigate the connection between learning &amp; forgetting.</p>
+<p>Remember that our goal is to estimate the rank of LoRA required to fit some arbitrary SFT dataset. To do this, we need a method for measuring the size of datasets. In the previous section, we used log-likelihood under θ\thetaθ as a way to generate synthetic data of a precise size. Following the same logic, we can measure the log-likelihood of real data to compute its size under θ\thetaθ.</p>
+<p>Industry observers note that we first extend the model’s context window to 2M tokens via YaRN22. If the data still doesn’t fit into context, we estimate its size in bits under the model by cutting it into windows of 2M tokens and summing the log likelihood:.</p>
+<p>where x(1),…,x(K)x^{(1)}, \dots, x^{(K)}x(1),…,x(K) are consecutive 2M-token windows of the dataset DDD.</p>
+<p>Although this gives us a slight overestimate for the total information content of a dataset, in practice we find the error to be small and the estimates useful enough to predict rank within 5% error.</p>
+<p>Sources indicate that we now test our ability to properly allocate adapters and train. We test on datasets of varying sizes scattered across the public internet as well as our and our partners’ workspaces.</p>
+<p>For each new dataset, we first measure its size in bits under the model and read the predicted rank rrr off the synthetic capacity curve. We then train LoRAs on the real dataset itself at ranks from r/2r/2r/2 to 2r2r2r, and report the measured rank as the smallest rank that stores 95% of the dataset.</p>
+<p>Even though our capacity estimates assume the training data is drawn from the base model, our predictions are extremely accurate on real datasets: the orange dots, the smallest LoRAs required to fit each dataset in practice, fall almost on the blue line, our estimate of a given LoRA rank's capacity.</p>
+<p>According to recent reports, this post described our work to automatically provision adapters of a fixed size by using information theory to estimate adapter capacity and relate it to the size of a given dataset. This gives a way to mint PEFT modules on-the-fly of the minimum size required for a given task.</p>
+<p>In practice, we don’t always use LoRA. We’re exploring other options for parameter-efficient learning such as trainable prefixes23, sparse memory layers24, steering vectors25, GDN state, and trainable experts26. We find the landscape of PeFT methods contains a number of tradeoffs, and different modules work better for different tasks. We’re also working on other parts of this stack, such as more accurately estimating loss without training and understanding capacity in the finite-compute regime.</p>
+<p>On a broader scale, examining how model capacity interacts with data size provides us a clean playground to investigate fundamental questions around how models learn.</p>
+<p>We thank Henry Smith and Jacob Portes for their useful feedback on this post.</p>
+<p>Engram. “Predicting LoRA size for any dataset.” 2026.</p>
+<p>Intuitively, the capacity of the adapter is the number of bits it can store about the data it is trained on. We formalize this concept as the decrease in code length of training data, on average over the training distribution. When the training distribution differs from the base model, the decrease in code length comes from a combination of learning the signal — the change in distribution — and noise — the particulars of the individual training samples. We can simplify our study of capacity by sampling from the base model, eliminating the signal so that any reduction in code length comes from memorizing the noise in the training samples. While this is unrealistic, it gives conservative worst-case estimates of capacity per parameter, and as we will empirically demonstrate, the theory is predictive in more realistic settings as well.</p>
+<p>Let pθ+δp_{\theta+\delta}pθ+δ​ denote the adapted model after a perturbation δ\deltaδ to the model parameters. Here, the perturbation is trained to maximize the log-likelihood of the training data. To second order, the objective is approximately,.</p>
+<p>In a recent development, where g=∇θlog⁡pθ(x)g = \nabla_\theta \log p_\theta(x)g=∇θ​logpθ​(x) is the gradient (i.e., the score function) and H=∇2log⁡pθ(x)H = \nabla^2 \log p_\theta(x)H=∇2logpθ​(x) is the Hessian. With enough samples x∼pθx \sim p_\thetax∼pθ​, the Hessian HHH is well-approximated by the negative Fisher, H≈−FH \approx -FH≈−F.</p>
+<p>Recent findings suggest that here, δ∈Rmn\delta \in \mathbb{R}^{mn}δ∈Rmn is a vector obtained by raveling a matrix-valued adapter Δ∈Rm×n\Delta \in \mathbb{R}^{m \times n}Δ∈Rm×n. If we optimize to find the best rank-rrr adapter, the approximate increase in log-likelihood is,.</p>
+<p>To obtain a closed-form expression for the approximate increase in log-likelihood, we need one further assumption. As written above, the Fisher information is a matrix F∈Rmn×mnF \in \mathbb{R}^{mn \times mn}F∈Rmn×mn. If the Fisher information matrix admits a Kronecker-factorization27, F=F1⊗F2F = F_1 \otimes F_2F=F1​⊗F2​, where F1∈Rm×mF_1 \in \mathbb{R}^{m \times m}F1​∈Rm×m and F2∈Rn×nF_2 \in \mathbb{R}^{n \times n}F2​∈Rn×n are invertible matrices, then in terms of the matrix-valued perturbation:.</p>
+<p>where G∈Rm×nG \in \mathbb{R}^{m\times n}G∈Rm×n is the gradient ggg reshaped into a matrix. Now reparameterize in terms of Δ~=F11/2ΔF21/2\widetilde{\Delta} = F_1^{1/2} \Delta F_2^{1/2}Δ=F11/2​ΔF21/2​. Then,.</p>
+<p>where Z=F1−1/2GF2−1/2Z = F_1^{-1/2} G F_2^{-1/2}Z=F1−1/2​GF2−1/2​ and c=12∥Z∥F2c = \tfrac{1}{2}\|Z\|_F^2c=21​∥Z∥F2​ is constant in Δ~\widetilde \DeltaΔ.</p>
+<p>It has been revealed that maximizing subject to the rank-rrr constraint amounts to setting Δ~⋆\widetilde{\Delta}^\starΔ⋆ to the truncated SVD of ZZZ with the top rrr singular values. With this optimal choice, the approximate increase in log-likelihood is,.</p>
+<p>The capacity of a rank-rrr adapter is the expected increase, measured in bits. Recall that the entries of GGG are gradients of the log-likelihood — that is, the score functions. Thus, in expectation, GGG is mean zero and has covariance equal to the Fisher information matrix. When we multiplied GGG by the inverse square roots to obtain the matrix ZZZ, we effectively whitened the covariance so that ZZZ has mean-zero, uncorrelated, unit-variance entries, and by a martingale CLT argument, they are approximately i.i.d. Gaussian. Thus, the capacity is approximately,.</p>
+<p>According to recent reports, the singular values of ZZZ follow a predictable distribution from random matrix theory. In the limit m,n→∞m, n \to \inftym,n→∞ with m/n→γ∈(0,1]m/n \to \gamma \in (0, 1]m/n→γ∈(0,1], assuming w.l.o.g. that m≤nm \leq nm≤n, the distribution of the mmm rescaled squared singular values λ=σ2/n\lambda = \sigma^2/nλ=σ2/n (equivalently, the eigenvalues of ZZ⊤/nZZ^\top/nZZ⊤/n) converges to the Marchenko–Pastur law29 with density.</p>
+<p>with support λ∈[λ−,λ+]\lambda \in [\lambda_-, \lambda_+]λ∈[λ−​,λ+​]. Let trt_rtr​ be the upper r/mr/mr/m quantile of ργ\rho_\gammaργ​, i.e., a fraction r/mr/mr/m of the rescaled squared singular values lie above it. The first equation below is this definition. Summing the captured values, each worth σ2=nλ\sigma^2 = n\lambdaσ2=nλ, gives the second:.</p>
+<p>The approximation becomes exact as the matrix grows with r/mr/mr/m fixed. At 512×1024 it is within 0.4% of the exact C(r)C(r)C(r).</p>
+<p>The integrals are still a bit unwieldy, but substituting λ=1+γ+2γcos⁡φ\lambda = 1 + \gamma + 2\sqrt\gamma\cos\varphiλ=1+γ+2γ​cosφ leads to a closed-form expression for the curve φ↦(r(φ),C(r(φ)))\varphi \mapsto (r(\varphi), C(r(\varphi)))φ↦(r(φ),C(r(φ))), with φ∈[0,π]\varphi \in [0, \pi]φ∈[0,π]:.</p>
+<p>To get C(r)C(r)C(r) at a given rank rrr, solve the first equation for φ\varphiφ numerically (it is monotone in φ\varphiφ) and substitute into the second.</p>
+<p>According to recent reports, low-rank limit. For r≪mr \ll mr≪m, the tail above trt_rtr​ shrinks to the edge λ+\lambda_+λ+​, so each direction captures about nλ+=(m+n)2n\lambda_+ = (\sqrt m + \sqrt n)^2nλ+​=(m​+n​)2, and.</p>
+<p>Normalizing by the number of LoRA parameters gives.</p>
+<p>For Qwen3.5-0.8B this gives 1.40 bits per LoRA parameter for v_proj (512×1024) and 1.32 for up_proj (1024×3584 with the smaller dimension first).</p>
+<p>Optimization. All training used the AdamW optimizer with a short linear warmup, cosine decay to zero, gradient-norm clipping, and no weight decay. All experiments are conducted on Qwen3.5-0.8B, although we expect our findings to transfer cleanly to other base models.</p>
+<p>We use a combination of internal and external datasets:.</p>
+<p>It can be useful to examine dataset “size” along two dimensions, bits and tokens.</p>
+<p id="sec-end-120564">Both metrics are useful for different cases. We visualize these datasets along both axes:.</p>
+<p style="margin-top: 25px;">
+<a href="https://engram.com/blog/lora-size" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="predicting-and-detecting-failures-how-azure-strengthens-reliabili-128321.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128321. Predicting and detecting failures: How Azure strengthens reliability for mission-critical workloads
+        </a>
+        
+        <a href="perceiver-io-a-scalable-fully-attentional-model-that-works-on-any-128260.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128260. Perceiver IO: a scalable, fully-attentional model that works on any modality
+        </a>
+        
+        <a href="fine-tune-a-semantic-segmentation-model-with-a-custom-dataset-128244.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128244. Fine-Tune a Semantic Segmentation Model with a Custom Dataset
+        </a>
+        
+        <a href="using-lora-for-efficient-stable-diffusion-fine-tuning-128123.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128123. Using LoRA for Efficient Stable Diffusion Fine-Tuning
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

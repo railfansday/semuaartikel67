@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing AutoRound: Intel’s Advanced Quantization for LLMs and VLMs</title>
+    <meta name="description" content="Sources indicate that as large language models (LLMs) and vision-language models (VLMs) continue to grow in size and complexity, deploying them efficiently">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/introducing-autoround-intels-advanced-quantization-for-llms-and-v-127467.html">
+    <meta property="og:title" content="Introducing AutoRound: Intel’s Advanced Quantization for LLMs and VLMs">
+    <meta property="og:description" content="Sources indicate that as large language models (LLMs) and vision-language models (VLMs) continue to grow in size and complexity, deploying them efficiently">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/autoround/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/introducing-autoround-intels-advanced-quantization-for-llms-and-v-127467.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Introducing AutoRound: Intel’s Advanced Quantization for LLMs and VLMs", "image": ["https://huggingface.co/blog/assets/autoround/thumbnail.png"], "datePublished": "2025-04-29T00:00:00", "dateModified": "2026-11-25T16:41:55.774948", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/introducing-autoround-intels-advanced-quantization-for-llms-and-v-127467.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Hardware & Chips</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Introducing AutoRound: Intel’s Advanced Quantization for LLMs and VLMs</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 29 Apr 2025 &bull; ⏱️ 4 min read (718 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that as large language models (LLMs) and vision-language models (VLMs) continue to grow in size and complexity, deploying them efficiently becomes increasingly challenging.</li><li style='margin-bottom:6px;'>According to recent reports, autoRound is a weight-only post-training quantization (PTQ) method developed by Intel.</li><li style='margin-bottom:6px;'>In a recent development, despite its strong performance, AutoRound is fast and lightweight — quantizing a 72B model takes just 37 minutes on an A100 GPU under light mode.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-127467"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-127467"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-127467"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Introducing AutoRound: Intel’s Advanced Quantization for LLMs and VLMs" loading="lazy" src="https://huggingface.co/blog/assets/autoround/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-127467">Sources indicate that as large language models (LLMs) and vision-language models (VLMs) continue to grow in size and complexity, deploying them efficiently becomes increasingly challenging. Quantization offers a solution by reducing model size and inference latency. Intel's AutoRound emerges as a cutting-edge quantization tool that balances accuracy, efficiency, and compatibility.</p>
+<p>According to recent reports, autoRound is a weight-only post-training quantization (PTQ) method developed by Intel. It uses signed gradient descent to jointly optimize weight rounding and clipping ranges, enabling accurate low-bit quantization (e.g., INT2 - INT8) with minimal accuracy loss in most scenarios. For example, at INT2, it outperforms popular baselines by up to 2.1x higher in relative accuracy. The image below provides an overview of the core algorithm in AutoRound. For more details, please refer to our paper.</p>
+<p>In a recent development, despite its strong performance, AutoRound is fast and lightweight — quantizing a 72B model takes just 37 minutes on an A100 GPU under light mode. It also supports mixed-bit tuning, lm-head quantization, GPTQ/AWQ/GGUF format exporting, and flexible tuning recipes.</p>
+<p>Recent findings suggest that autoRound delivers highly promising results, particularly in low-bit quantization scenarios. Evaluations across a variety of tasks show that it outperforms popular methods by a wide margin at 2-bit precision (source). At 4 bits, AutoRound continues to hold a competitive edge in most cases, as demonstrated on the Low-Bit Open LLM Leaderboard.</p>
+<p>LLMs: AutoRound supports nearly all popular LLM architectures, including well-known models like Qwen, LLaMA, and DeepSeek. Ready-to-use quantized models are available on Hugging Face through collections such as OPEA, Kaitchup, and fbaldassarri.</p>
+<p>According to recent reports, VLMs: AutoRound supports over 10 vision-language models (VLMs), including Mistral-Small-3.1, Gemma3, and more. You can find the full list in the README, and ready-to-use quantized models are available in the OPEA Hugging Face collection. For models not yet supported, you can still apply our RTN method with --iters 0. No tuning is required, but some accuracy loss is expected.</p>
+<p>In a recent development, autoRound requires only 200 tuning steps and a small calibration dataset (as few as 128 samples) to achieve high accuracy. This efficiency translates to faster quantization times and reduced resource consumption compared to other int2 methods, which are more computationally intensive.</p>
+<p>At the moment, only offline mode is supported to generate quantized models.</p>
+<p>AutoRound also offers another two recipes, auto-round-best and auto-round-light, designed for optimal accuracy and improved speed, respectively.</p>
+<p id="sec-mid-127467">It has been revealed that for 2 bits, we recommend using auto-round-best or auto-round. For a comparison of the three recipes, please refer to the table below.</p>
+<p>W4G128 Average Accuracy of 13 tasks (mmlu-pro, if_eval, gsm8k, etc) and Time Cost Results (Testing was conducted on the Nvidia A100 80G using the version of PyTorch 2.6.0 with enable_torch_compile):.</p>
+<p>This setting offers a better trade-off between accuracy and tuning cost, and is recommended in all scenarios.</p>
+<p>For the best/light settings of AutoRound for API usage or mixed-bit configurations, please refer to AutoRound README.</p>
+<p>Industry observers note that autoRound automatically selects the best available backend based on the installed libraries and prompts the user to install additional libraries when a better backend is found. For more details, please refer to HF README or AutoRound README.</p>
+<p>Most GPTQ/AWQ models can be converted to the AutoRound format for better compatibility and support with Intel devices. Please note that the quantization config will be changed if the model is serialized.</p>
+<p>AutoRound offers a meaningful improvement step forward in post-training quantization for large language and vision-language models. By combining high accuracy, exceptional efficiency, and broad compatibility with popular models, devices, and export formats, AutoRound makes low-bit quantization both practical and powerful. Whether you're deploying LLMs at scale or experimenting with edge inference on VLMs, AutoRound provides the tools and flexibility you need to achieve optimal performance with minimal overhead. We invite you to try it out and join the growing community pushing the boundaries of efficient AI deployment.</p>
+<p>Sources indicate that contributions to AutoRound are welcome and greatly appreciated! Whether it's fixing bugs, improving documentation, adding new features, or suggesting improvements, your help is always valued.</p>
+<p>If you encounter any problems with auto-round, please open an problem on the AutoRound repository.</p>
+<p id="sec-end-127467">We would like to thank the open-source low-precision libraries including AutoGPTQ, AutoAWQ, GPTQModel, Triton, Marlin and ExLLaMAV2, whose CUDA kernels are used in AutoRound.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/autoround" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-making-llms-even-more-accessible-with-bitsandbytes--128067.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128067. Latest Update: Making LLMs even more accessible with bitsandbytes, 4-bit quantization and QLoRA
+        </a>
+        
+        <a href="introducing-agentsjs-give-tools-to-your-llms-using-javascript-128032.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128032. Introducing Agents.js: Give tools to your LLMs using JavaScript
+        </a>
+        
+        <a href="stable-diffusion-xl-on-mac-with-advanced-core-ml-quantization-128030.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128030. Stable Diffusion XL on Mac with Advanced Core ML Quantization
+        </a>
+        
+        <a href="latest-update-introducing-the-livecodebench-leaderboard-holistic--127903.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127903. Latest Update: Introducing the LiveCodeBench Leaderboard - Holistic and Contamination-Free Evaluation of Code LLMs
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

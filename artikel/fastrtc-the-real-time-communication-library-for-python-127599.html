@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastRTC: The Real-Time Communication Library for Python</title>
+    <meta name="description" content="In the last few months, many fresh real-time speech models have been released and entire companies have been founded around both open and closed source mod">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/fastrtc-the-real-time-communication-library-for-python-127599.html">
+    <meta property="og:title" content="FastRTC: The Real-Time Communication Library for Python">
+    <meta property="og:description" content="In the last few months, many fresh real-time speech models have been released and entire companies have been founded around both open and closed source mod">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/fastrtc/fastrtc_logo.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/fastrtc-the-real-time-communication-library-for-python-127599.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "FastRTC: The Real-Time Communication Library for Python", "image": ["https://huggingface.co/blog/assets/fastrtc/fastrtc_logo.jpg"], "datePublished": "2025-02-25T00:00:00", "dateModified": "2026-11-25T16:42:04.457138", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/fastrtc-the-real-time-communication-library-for-python-127599.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>FastRTC: The Real-Time Communication Library for Python</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 25 Feb 2025 &bull; ⏱️ 4 min read (742 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In the last few months, many fresh real-time speech models have been released and entire companies have been founded around both open and closed source models.</li><li style='margin-bottom:6px;'>Despite the explosion on the model and funding side, it's still difficult to build real-time AI applications that stream audio and video, especially in Python.</li><li style='margin-bottom:6px;'>In a recent development, that's why we're excited to announce FastRTC, the real-time communication library for Python.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-127599"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-127599"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-127599"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="FastRTC: The Real-Time Communication Library for Python" loading="lazy" src="https://huggingface.co/blog/assets/fastrtc/fastrtc_logo.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-127599">In the last few months, many fresh real-time speech models have been released and entire companies have been founded around both open and closed source models. To name a few milestones:.</p>
+<p>Despite the explosion on the model and funding side, it's still difficult to build real-time AI applications that stream audio and video, especially in Python.</p>
+<p>In a recent development, that's why we're excited to announce FastRTC, the real-time communication library for Python. The library is designed to make it super easy to build real-time audio and video AI applications entirely in Python!</p>
+<p>Sources indicate that in this blog post, we'll walk through the basics of FastRTC by building real-time audio applications. At the end, you'll understand the core features of FastRTC:.</p>
+<p>We'll start by building the "hello world" of real-time audio: echoing back what the user claims. In FastRTC, this is as simple as:.</p>
+<p>Sources indicate that the next level is to use an LLM to respond to the user. FastRTC comes with built-in speech-to-text and text-to-speech capabilities, so working with LLMs is really easy. Let's change our echo function accordingly:.</p>
+<p>We're using the SambaNova API since it's fast. The get_stt_model() will fetch Moonshine Base and get_tts_model() will fetch Kokoro from the Hub, both of which have been further optimized for on-device CPU inference. But you can use any LLM/text-to-speech/speech-to-text API or even a speech-to-speech model. Bring the tools you love - FastRTC just handles the real-time communication layer.</p>
+<p>According to recent reports, if instead of stream.ui.launch(), you call stream.fastphone(), you'll get a free phone number to call into your stream. Note, a Hugging Face token is required. Increased limits for PRO accounts.</p>
+<p>You'll see something like this in your terminal:.</p>
+<p>You can then call the number and it will connect you to your stream!</p>
+<p>Thank you for checking out FastRTC!</p>
+<p>Can fastphone() accept an Indian phone number?</p>
+<p>We're working on getting a whatsapp number.</p>
+<p>📻 🎙️ Hey, I generated an AI podcast about this blog post, check it out!</p>
+<p id="sec-mid-127599">This podcast is generated via ngxson/kokoro-podcast-generator, using DeepSeek-R1 and Kokoro-TTS.</p>
+<p>Sources indicate that I have a question for concurrency when use tts_model and stt_model. How does each type of model handle multiple requests at the same time. (e.g. batching technique ? cpu-only threading ....) @freddyaboulton.</p>
+<p>It has been revealed that hi @MRU4913  ! Each stream is an independent event in the event loop. But you can limit how many streams run concurrently very easily. There is a parameter in the Stream class.</p>
+<p>It has been revealed that taking a while to connect. Are you on a VPN? Anyone else stuck with this error (I am not using VPN)? This only happens on Gemini examples.</p>
+<p>Hi @Nirav-Madhani  - I am not sure. Let me see. Feel free to clone and run locally in the meantime.</p>
+<p>Would be very cool if you can also add a example with Azure OpenAI-API.</p>
+<p>Recent findings suggest that hi @MechanicCoder  - please feel free to add an example here if you’d like. It should be straightforward- take the example in this blog post and replace the LLM with the api call for the LLM on Azure you like.</p>
+<p>Hey, have a working example...should I send you a repo link?</p>
+<p>Can I connect something like FreeSWITCH and have its RTC directly parsed by fastRTC?</p>
+<p>Recent findings suggest that I have not tried this myself but I think so. The FastRTC server is completely open so you can integrate with any telephony/webrtc client.</p>
+<p>Please open a PR to add a guide on how to do this: https://github.com/freddyaboulton/fastrtc/blob/main/docs/userguide/audio.md.</p>
+<p>Also feel free to join the HF discord and ask questions in the fastrtc-channels: https://discord.gg/TSWU7HyaYu.</p>
+<p>According to recent reports, hi, I'm new to WebRTC applications, and one of my main questions is: how does the process of capturing audio work? I mean, in demos, you always take the audio directly from the microphone, but I'd like to know if it's possible to get the input audio from a specific port (for example, a listening port where RTP packets are arriving). I guess I need to better understand how WebRTC communications work...Thank you!</p>
+<p>According to recent reports, can you tell me a bit more about the use case @JuanRoyo  ? WebRTC requires a "handshake" to happen between the two clients. This handshake is taken care of by the webrtc/offer route of the FastRTC server. So you can just send a post request there. See this js code snippet:.</p>
+<p id="sec-end-127599">https://fastrtc.org/userguide/api/.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/fastrtc" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-hugging-face-and-cloudflare-partner-to-make-real-time-sp-127499.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127499. Breaking: Hugging Face and Cloudflare Partner to Make Real-Time Speech and Video Seamless with FastRTC
+        </a>
+        
+        <a href="real-time-ai-sound-generation-on-arm-a-personal-tool-for-creative-127387.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127387. Real-Time AI Sound Generation on Arm: A Personal Tool for Creative Freedom
+        </a>
+        
+        <a href="threert-real-time-ray-tracing-for-threejs-127129.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127129. ThreeRT: Real-Time Ray Tracing for three.js
+        </a>
+        
+        <a href="industry-news-turn-on-real-time-card-alerts-catch-fraud-the-day-i-126218.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #126218. Industry News: Turn On Real-Time Card Alerts – Catch Fraud the Day It Happens
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

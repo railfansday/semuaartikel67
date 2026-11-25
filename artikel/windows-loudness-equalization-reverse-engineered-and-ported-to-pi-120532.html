@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Loudness Equalization, reverse-engineered and ported to PipeWire</title>
+    <meta name="description" content="Sources indicate that windows' Loudness Equalization for PipeWire, reverse engineered from WMALFXGFXDSP.dll. It evens out the volume of each application, s">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/windows-loudness-equalization-reverse-engineered-and-ported-to-pi-120532.html">
+    <meta property="og:title" content="Windows Loudness Equalization, reverse-engineered and ported to PipeWire">
+    <meta property="og:description" content="Sources indicate that windows' Loudness Equalization for PipeWire, reverse engineered from WMALFXGFXDSP.dll. It evens out the volume of each application, s">
+    <meta property="og:image" content="https://opengraph.githubassets.com/944c7e00825081e4a0224fe79cdd74473dd5318a393c55e266d10f0270481d0e/xoxorwr/pw-loudness-eq">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/windows-loudness-equalization-reverse-engineered-and-ported-to-pi-120532.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Windows Loudness Equalization, reverse-engineered and ported to PipeWire", "image": ["https://opengraph.githubassets.com/944c7e00825081e4a0224fe79cdd74473dd5318a393c55e266d10f0270481d0e/xoxorwr/pw-loudness-eq"], "datePublished": "2026-11-25T11:34:25", "dateModified": "2026-11-25T16:35:19.850454", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/windows-loudness-equalization-reverse-engineered-and-ported-to-pi-120532.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">📈 Bullish</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Windows Loudness Equalization, reverse-engineered and ported to PipeWire</h1>
+        <div class="meta-line">🌐 Source: <strong>Github</strong> &bull; 📅 25 Nov 2026 &bull; ⏱️ 2 min read (350 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that windows' Loudness Equalization for PipeWire, reverse engineered from WMALFXGFXDSP.dll.</li><li style='margin-bottom:6px;'>To install only one part, use make -C modules/loudness, make -C modules/limiter or make -C app.</li><li style='margin-bottom:6px;'>Open Loudness Equalization from your application menu, or run pw-loudness-eq.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-120532"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-120532"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-120532"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Windows Loudness Equalization, reverse-engineered and ported to PipeWire" loading="lazy" src="https://opengraph.githubassets.com/944c7e00825081e4a0224fe79cdd74473dd5318a393c55e266d10f0270481d0e/xoxorwr/pw-loudness-eq" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-120532">Sources indicate that windows' Loudness Equalization for PipeWire, reverse engineered from WMALFXGFXDSP.dll. It evens out the volume of each application, so quiet and loud parts play at a similar level.</p>
+<p>Requires PipeWire ≥ 1.4, and GTK 3 for the window.</p>
+<p>To install only one part, use make -C modules/loudness, make -C modules/limiter or make -C app. To uninstall, run sudo make uninstall and restart the same services.</p>
+<p>Open Loudness Equalization from your application menu, or run pw-loudness-eq.</p>
+<p>The settings live in a PipeWire metadata object, so they can also be scripted:.</p>
+<p>Changes apply immediately and are kept across restarts.</p>
+<p>Industry observers note that defaults are in /usr/share/pipewire/pipewire.conf.d/60-loudness-eq.conf. To override them, copy it to ~/.config/pipewire/pipewire.conf.d/.</p>
+<p id="sec-mid-120532">Settings changed at runtime are saved in ~/.local/state/pw-loudness-eq/state.conf and take precedence over this file.</p>
+<p>The loudness module sets audioconvert.filter-graph.90 on each app's playback stream, so the plugin runs inside that stream, before its volume and before mixing, like a Windows stream effect.</p>
+<p>In a recent development, the limiter module does what Windows' audio engine does on every playback device: after the mix and the software volume, it runs the output through a look-ahead limiter. It's always on, independent of Loudness Equalization, as on Windows.</p>
+<p>Not processed: JACK clients, streams with more than 8 channels, and Flatpak apps that use PipeWire directly (those going through PulseAudio are processed).</p>
+<p>A broadband automatic gain control. Despite the name, it doesn't equalize the spectrum.</p>
+<p>The boost can push pure tones such as a whistle well above full scale; the limiter catches that.</p>
+<p>Ported from CAudioLimiter in AudioEng.dll. audiodg.exe puts it on every render device, after its effects, before the device.</p>
+<p id="sec-end-120532">It has been revealed that on Windows the device's software volume comes before the limiter; in PipeWire it comes after the device's filter graphs. So the plugin gets the volume of each channel (kept in sync by the module), measures peaks on the signal as it will be after the volume, and applies only its gain. Once PipeWire applies the volume, the result is the same as Windows'. Hardware volume comes after the limiter on both.</p>
+<p style="margin-top: 25px;">
+<a href="https://github.com/xoxorwr/pw-loudness-eq" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="how-an-ex-mckinsey-partner-reverse-engineered-a-500bn-wealth-mana-116949.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116949. How an ex-McKinsey partner reverse engineered a $500bn wealth manager
+        </a>
+        
+        <a href="industry-news-how-consumer-ai-companions-handle-context-windows-p-127715.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127715. Industry News: How Consumer AI Companions Handle Context Windows, Persistent Memory, and Voice Latency
+        </a>
+        
+        <a href="how-to-test-android-apps-on-windows-a-practical-guide-to-emulator-127652.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127652. How to Test Android Apps on Windows: A Practical Guide to Emulators and APK Testing
+        </a>
+        
+        <a href="latest-cpu-benchmark-tool-promises-40-years-of-compatibility-with-127618.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127618. Latest CPU benchmark tool promises 40 years of compatibility, with support as far back as i386, Windows 95
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

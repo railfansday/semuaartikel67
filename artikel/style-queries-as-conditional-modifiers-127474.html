@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Queries as Conditional Modifiers</title>
+    <meta name="description" content="Sources indicate that this article is adapted from a lesson in Writing Resilient CSS, the newest module in Kevin’s course, CSS Demystified. The module cove">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/style-queries-as-conditional-modifiers-127474.html">
+    <meta property="og:title" content="Style Queries as Conditional Modifiers">
+    <meta property="og:description" content="Sources indicate that this article is adapted from a lesson in Writing Resilient CSS, the newest module in Kevin’s course, CSS Demystified. The module cove">
+    <meta property="og:image" content="https://css-tricks.com/wp-content/uploads/2022/10/container-style-queries.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/style-queries-as-conditional-modifiers-127474.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Style Queries as Conditional Modifiers", "image": ["https://css-tricks.com/wp-content/uploads/2022/10/container-style-queries.png"], "datePublished": "2026-11-25T07:06:34-07:00", "dateModified": "2026-11-25T16:41:56.330853", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/style-queries-as-conditional-modifiers-127474.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Style Queries as Conditional Modifiers</h1>
+        <div class="meta-line">🌐 Source: <strong>Css-tricks</strong> &bull; 📅 25 Nov 2026 &bull; ⏱️ 6 min read (1282 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that this article is adapted from a lesson in Writing Resilient CSS, the newest module in Kevin’s course, CSS Demystified.</li><li style='margin-bottom:6px;'>Sources indicate that modifiers have been with us for a long time, often with modifier classes, but also with attribute selectors.</li><li style='margin-bottom:6px;'>For a lot of use cases, either of those approaches work great, but when it comes to layout, a lot of the time we want the context of where the element is being used to control things.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-127474"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-127474"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-127474"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Style Queries as Conditional Modifiers" loading="lazy" src="https://css-tricks.com/wp-content/uploads/2022/10/container-style-queries.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-127474">Sources indicate that this article is adapted from a lesson in Writing Resilient CSS, the newest module in Kevin’s course, CSS Demystified. The module covers configuration options with custom properties, math functions, relative colors, :has(), style queries, and more, all put to work in practical, reusable patterns. The course is 32% off until December 2, 2026.</p>
+<p>Sources indicate that modifiers have been with us for a long time, often with modifier classes, but also with attribute selectors. Some common examples are things like different versions of alerts and buttons.</p>
+<p>For a lot of use cases, either of those approaches work great, but when it comes to layout, a lot of the time we want the context of where the element is being used to control things.</p>
+<p>A card is a nice example of this, where we might have several versions.</p>
+<p>Industry observers note that the issue here is, if I’m using .card--compact, I probably want to do that for all the cards within a section. That can be annoying to apply to each card, but that’s rendered moot since most people are doing some sort of looping in a template like this these days.</p>
+<p>And this works great, as long as we always want the cards to be compact.</p>
+<p>However, you might put this together and send it off to the design team for approval, only for them not to like that when the compact cards are lower down the page, the smaller padding isn’t needed to create visual separation between the two sections. Instead of helping with the hierarchy, it’s simply creating a strange visual inconsistency.</p>
+<p>We could use something like a resize observer to try and deal with this, but we have a better tool at our disposal: Container Style Queries, which are now Baseline Newly Available.</p>
+<p>While they all start with container, for the rest of this article I interchangeable use container query or size query for a container size query, and style query for what we’re talking about here.</p>
+<p>Before we get into the good stuff, a quick look at the basics of style queries.</p>
+<p>It has been revealed that you’re probably familiar with size queries, which work similar to @media but look at the size of a container, rather than the viewport. Container style queries use the same @container at-rule as container size queries, but instead of looking at a size, they look at the value of a custom property.</p>
+<p>This reads as, “if the nearest container has --theme: high-contrast, style the .card like this.”.</p>
+<p>A couple of notable notes about them:.</p>
+<p>Recent findings suggest that just like with size queries, style queries look at an ancestor, not the element itself. That means this won’t work:.</p>
+<p>The custom property needs to be set on something above the card. Sometimes this can be annoying, and it always tends to catch people out, but because of how I use them, I don’t find this to be much of a limitation.</p>
+<p>It has been revealed that if() is also on the way, and allows for style queries as well, but if() is able to see the value of custom properties on the element it’s being used. The significant difference is it can only be used for a single property, while style queries can be used for rules with multiple properties.</p>
+<p>Sources indicate that let’s take a look at a card again, first with a modifier like we might do now. To change it up, we’ll use an attribute modifier instead of a class.</p>
+<p>Switching this up to use a style query, we could do something like this instead:.</p>
+<p id="sec-mid-127474">Sources indicate that if we’re in the mindset of how we’re used to using modifiers, this feels like a lot more work with no real payoff, but now, anything that can set a custom property can switch it: a media query, a container query, a :has() selector, or a parent section. The styles for the alternative layout are written once, and there are lots of ways to switch them on, making it so much more versatile.</p>
+<p>Industry observers note that one easy win here is if you’re working with a CMS. Now, the author of the page can chose from an option, which just sets one custom property value for a section of the page, and the appropriate styles kick in.</p>
+<p>Where I feel like this has the most potential is when dealing with conditional styles like the sidebar we looked at earlier, where we can enable the compact card layout however we want:.</p>
+<p>Here’s an overflow grid pattern I use quite a bit:.</p>
+<p>The problem is that it always overflows, even if I don’t have enough children to warrant it. Like here, the first row, the third card is just barely overflowing, making it awkward more than anything.</p>
+<p>One solution is to use a container query and :has(), where we let the items fill the space when there are fewer than five of them, and there’s enough space:.</p>
+<p>And this works really well! But sometimes, we might need to make some bigger changes depending on where the elements are being used.</p>
+<p>Sources indicate that let’s say, for example, our page has a hero component that goes to two columns on larger screens, with a heading on one side and a set of featured articles in an overflow grid on the other. The container query is making sure the overflow is on in the narrow space, but horizontal scrolling there seems a little awkward.</p>
+<p>When the split happens, I’d rather the grid scrolled vertically instead, and we can leverage style queries to pull this off.</p>
+<p>First, we give the overflow grid a configuration option for its direction, defaulting to columns:.</p>
+<p>Now the split can change when it goes to two columns:.</p>
+<p>Sources indicate that and this works, but the result isn’t great. The grid is still sized for horizontal scrolling, so we end up with a tall, awkward column, and no overflow at all.</p>
+<p>Sources indicate that this is where style queries come in. The overflow grid can “listen” for the direction change and adjust its own styles to match.</p>
+<p>It has been revealed that the split section isn’t styling the overflow grid directly, which is possible, but always awkard, and leads to fragile code bases. Instead, we created some configurable settings on that grid, and simply adjusted them as needed.</p>
+<p>I don’t think style queries mean it’s time to throw out modifier classes (or data modifiers). They still work great, especially since a style query can’t look at the element it’s styling. If I simply want my button to be an accent button, or a pill shape, then a modifier makes a lot of sense.</p>
+<p>On top of that, a regular media query or container query, or even an intrinsic pattern might get the job done, and that’s great too.</p>
+<p>According to recent reports, where style queries shine is when the condition and the styles need to live in different places, or when one condition needs to affect several things at once, like the split above. Instead of a layout reaching in and styling its children, it changes a few settings, and each component decides how to respond.</p>
+<p>That’s a big part of what I think of as writing resilient CSS: components that keep working, and adapt sensibly, no matter where they end up.</p>
+<p id="sec-end-127474">This article is adapted from a lesson in Writing Resilient CSS, the newest module in my course, CSS Demystified. The module covers configuration options with custom properties, math functions, relative colors, :has(), style queries, and more, all put to work in practical, reusable patterns. The course is 32% off until December 2, 2026.</p>
+<p style="margin-top: 25px;">
+<a href="https://css-tricks.com/css-style-queries-as-conditional-modifiers/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-give-leftover-mashed-potatoes-a-caramelized-crispy--127273.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127273. Industry News: Give Leftover Mashed Potatoes A Caramelized, Crispy Side With A British-Style Classic
+        </a>
+        
+        <a href="stop-treating-css-container-queries-like-traditional-media-querie-126913.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #126913. Stop Treating CSS Container Queries Like Traditional Media Queries
+        </a>
+        
+        <a href="what-nike-shoe-matches-your-running-style-126545.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #126545. What Nike Shoe Matches Your Running Style?
+        </a>
+        
+        <a href="piolets-dor-insider-how-the-jury-works-style-debates-and-future-p-126191.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #126191. Piolets d'Or Insider: How the Jury Works, Style Debates, and Future Plans
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

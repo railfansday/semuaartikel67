@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing Training Cluster as a Service - a new collaboration with NVIDIA</title>
+    <meta name="description" content="Today at GTC Paris, we are excited to announce Training Cluster as a Service in collaboration with NVIDIA, to make large GPU clusters more easily accessibl">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/introducing-training-cluster-as-a-service-a-new-collaboration-wit-127380.html">
+    <meta property="og:title" content="Introducing Training Cluster as a Service - a new collaboration with NVIDIA">
+    <meta property="og:description" content="Today at GTC Paris, we are excited to announce Training Cluster as a Service in collaboration with NVIDIA, to make large GPU clusters more easily accessibl">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/nvidia-training-cluster/nvidia-training-cluster-thumbnail-compressed.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/introducing-training-cluster-as-a-service-a-new-collaboration-wit-127380.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Introducing Training Cluster as a Service - a new collaboration with NVIDIA", "image": ["https://huggingface.co/blog/assets/nvidia-training-cluster/nvidia-training-cluster-thumbnail-compressed.png"], "datePublished": "2025-06-11T00:00:00", "dateModified": "2026-11-25T16:41:49.600935", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/introducing-training-cluster-as-a-service-a-new-collaboration-wit-127380.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Hardware & Chips</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Introducing Training Cluster as a Service - a new collaboration with NVIDIA</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 11 Jun 2025 &bull; ⏱️ 4 min read (705 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Today at GTC Paris, we are excited to announce Training Cluster as a Service in collaboration with NVIDIA, to make large GPU clusters more easily accessible for research organizations all over the world, so they can train the foundational models of tomorrow in every domain.</li><li style='margin-bottom:6px;'>According to recent reports, many Gigawatt-size GPU supercluster projects are being built to train the next gen of AI models.</li><li style='margin-bottom:6px;'>Recent findings suggest that how do we then connect AI compute capacity with the researchers who need it?</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-127380"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-127380"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-127380"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Introducing Training Cluster as a Service - a new collaboration with NVIDIA" loading="lazy" src="https://huggingface.co/blog/assets/nvidia-training-cluster/nvidia-training-cluster-thumbnail-compressed.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-127380">Today at GTC Paris, we are excited to announce Training Cluster as a Service in collaboration with NVIDIA, to make large GPU clusters more easily accessible for research organizations all over the world, so they can train the foundational models of tomorrow in every domain.</p>
+<p>According to recent reports, many Gigawatt-size GPU supercluster projects are being built to train the next gen of AI models. This can make it seem that the compute gap between the “GPU poor” and the “GPU rich” is quickly widening. But the GPUs are out there, as hyperscalers, regional and AI-native cloud providers all quickly expand their capacity.</p>
+<p>Recent findings suggest that how do we then connect AI compute capacity with the researchers who need it? How do we enable universities, national research labs and companies all over the world to build their own models?</p>
+<p>This is what Hugging Face and NVIDIA are tackling with Training Cluster as a Service - providing GPU cluster accessibility, with the flexibility to only pay for the duration of training runs.</p>
+<p>To get started, any of the 250,000 organizations on Hugging Face can request the GPU cluster size they need, when they need it.</p>
+<p>To get started, you can request a GPU cluster on behalf of your organization at hf.co/training-cluster.</p>
+<p>Training Cluster as a Service integrates key components from NVIDIA and Hugging Face into a complete solution:.</p>
+<p>Once your GPU cluster request is accepted, Hugging Face and NVIDIA will collaborate to source, price, provision and set up your GPU cluster per your size, region and duration requirements.</p>
+<p>The Telethon Institute of Genomics and Medicine - TIGEM for short - is a research center dedicated to understanding the molecular mechanisms behind rare genetic diseases and developing novel treatments. Training newly introduced AI models is a new path to predict the effect of pathogenic variants and for drug repositioning.</p>
+<p>According to recent reports, AI offers upcoming ways to research the causes of rare genetic diseases and to develop treatments, but our domain requires training new models. Training Cluster as a Service made it easy to procure the GPU capacity we needed, at the right time.</p>
+<p>-- Diego di Bernardo, Coordinator of the Genomic Medicine program at TIGEM.</p>
+<p>Numina is a non-profit organization building open-source, open-dataset AI for reasoning in math - and won the 2024 AIMO progress prize.</p>
+<p id="sec-mid-127380">We are tracking well on our objective to build open alternatives to the best closed-source models, such as Deepmind's AlphaProof. Computing resources is our bottleneck today - with Training Cluster as a Service we will be able to reach our goal!</p>
+<p>-- Yann Fleureau, cofounder of Project Numina.</p>
+<p>Mirror Physics is a startup creating frontier AI systems for chemistry and materials science.</p>
+<p>Industry observers note that together with the MACE team, we're working to push the limits of AI for chemistry. With Training Cluster as a Service, we're producing high-fidelity chemical models at unprecedented scale. This is going to be a significant step forward for the field.</p>
+<p>-- Sam Walton Norwood, CEO and founder at Mirror.</p>
+<p>Training Cluster as a Service is a latest collaboration between Hugging Face and NVIDIA to make AI compute more readily available to the global community of AI researchers.</p>
+<p>Recent findings suggest that access to large-scale, high-performance compute is essential for building the next generation of AI models across every domain and language. Training Cluster as a Service will remove barriers for researchers and companies, unlocking the ability to train the most advanced models and push the boundaries of what’s possible in AI.</p>
+<p>-- Clément Delangue, cofounder and CEO of Hugging Face.</p>
+<p>Integrating DGX Cloud Lepton with Hugging Face’s Training Cluster as a Service gives developers and researchers a seamless way to access high-performance NVIDIA GPUs across a broad network of cloud providers. This collaboration makes it easier for AI researchers and organizations to scale their AI training workloads while using familiar tools on Hugging Face.</p>
+<p>-- Alexis Bjorlin, vice president of DGX Cloud at NVIDIA.</p>
+<p>We are excited to collaborate with NVIDIA to offer Training Cluster as a Service to Hugging Face organizations - you can get started today at hf.co/training-cluster.</p>
+<p id="sec-end-127380">Today at GTC Paris, NVIDIA announced many upcoming contributions for Hugging Face users, from agents to robots!</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/nvidia-training-cluster" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="faster-training-and-inference-habana-gaudi2-vs-nvidia-a100-80gb-128138.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128138. Faster Training and Inference: Habana Gaudi®2 vs Nvidia A100 80GB
+        </a>
+        
+        <a href="introducing-huggingface-blog-for-chinese-speakers-fostering-colla-128086.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128086. Introducing HuggingFace blog for Chinese speakers: Fostering Collaboration with the Chinese AI community
+        </a>
+        
+        <a href="latest-update-introducing-nvidia-nemotron-3-nano-omni-long-contex-116369.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116369. Latest Update: Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents
+        </a>
+        
+        <a href="tech-report-distributed-training-train-bartt5-for-summarization-u-128286.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #128286. Tech Report: Distributed Training: Train BART/T5 for Summarization using 🤗 Transformers and Amazon SageMaker
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
