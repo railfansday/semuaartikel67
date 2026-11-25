@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: A Deep Dive into JVM Start-up (2025)</title>
+    <meta name="description" content="When you start a Java application, there might be an inclination to believe that the only code being executed is the Java byte code passed to the JVM, i.e.">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-a-deep-dive-into-jvm-start-up-2025-116181.html">
+    <meta property="og:title" content="Breaking: A Deep Dive into JVM Start-up (2025)">
+    <meta property="og:description" content="When you start a Java application, there might be an inclination to believe that the only code being executed is the Java byte code passed to the JVM, i.e.">
+    <meta property="og:image" content="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-a-deep-dive-into-jvm-start-up-2025-116181.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: A Deep Dive into JVM Start-up (2025)", "image": ["https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg"], "datePublished": "2026-11-24T22:05:30", "dateModified": "2026-11-25T01:57:23.831365", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-a-deep-dive-into-jvm-start-up-2025-116181.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: A Deep Dive into JVM Start-up (2025)</h1>
+        <div class="meta-line">🌐 Source: <strong>Inside</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 15 min read (3069 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>When you start a Java application, there might be an inclination to believe that the only code being executed is the Java byte code passed to the JVM, i.e.</li><li style='margin-bottom:6px;'>To keep this walk-through of JVM start-up from venturing into "boil the ocean" territory, there are a few constraints I will be using to describe the process:.</li><li style='margin-bottom:6px;'>I will be describing the JVM start-up process as it behaves with JDK 23.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-116181"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-116181"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-116181"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: A Deep Dive into JVM Start-up (2025)" loading="lazy" src="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-116181">When you start a Java application, there might be an inclination to believe that the only code being executed is the Java byte code passed to the JVM, i.e. the  .class files that have been compiled by javac. The reality is that during start-up, the JVM goes through a complex series of steps to create a veritable universe for running a Java application. In this article we will walk through the steps the JVM goes through from $ java to printing Hello World. If you'd prefer video format, you can also watch this video on the Java YouTube channel:.</p>
+<p>To keep this walk-through of JVM start-up from venturing into "boil the ocean" territory, there are a few constraints I will be using to describe the process:.</p>
+<p>I will be describing the JVM start-up process as it behaves with JDK 23. You can see the JVM specification for Java SE 23 here.</p>
+<p>In a recent development, I will be using the HotSpot JVM implementation as my example. This is by far the most widely used JVM implementation, with many popular JDK distributions using the HotSpot JVM or a derivative of it. Alternative JMV implementations might have a slightly different internal behaviour.</p>
+<p>Finally the primary code example I will be using to describe the JVM start-up process will be HelloWorld, even though this is as simple an application as you can write, it will still exercise all the key areas of the JVM start-up process.</p>
+<p>Recent findings suggest that despite these constraints, upon reading this article, you should have a reasonably comprehensive understanding of the processes the JVM goes through during start-up and why they are necessary. This knowledge could be helpful when debugging your application should issues occur during start-up, and in some niche cases improving start-up performance. Though we will cover this a bit more towards the end of the article.</p>
+<p>When a user executes the java command, this starts the JVM start-up process by calling the JNI (Java Native Interface) function JNI_CreateJavaVM(), you can see the code for this function here. This JNI function performs several important processes itself.</p>
+<p>Sources indicate that the first step in the JVM start-up process is validating the user input: JVM arguments, artifact to be executed, and classpath. The below logging output demonstrates this validation process occurring:.</p>
+<p>💡Note: You can see this logging as well by using in the JVM arg -Xlog:all=trace.</p>
+<p>In a recent development, after validating the user input, the next step is to detect available system resources: processors, system memory, and system services that the JVM might use. The availability of system resources could impact decisions the JVM makes based on its internal heuristics. For example, the garbage collector the JVM selects by default will depend on the availability of CPU and system memory, however many of the JVM's internal heuristics can be overridden through the use of explicit JVM arguments.</p>
+<p>Sources indicate that after understanding available system resources, the JVM will begin to prepare the environment. Here the HotSpot JVM implementation generates hsprefdata (HotSpot performance data). This data is used by tools like JConsole and VisualVM to inspect and profile a JVM. This data is typically stored in a system's /tmp directory. The below is just one example of the JVM creating this profiling data, this it will continue for some time during start-up, concurrent with other processes.</p>
+<p>In a recent development, an important step in the start-up of the JVM is the selection of the garbage collector (GC). Which GC is being used could have substantial impacts on the performance of an application. By default the JVM has two GCs it will choose from, Serial GC and G1 GC, unless otherwise directed.</p>
+<p>As of JDK 23, the JVM will select the G1 GC by default, unless the system has less than 1792 MB of available system memory, and/or only a single processor, in which case Serial GC is selected. Of course other GCs might be available including: Parallel GC, ZGC, and others depending upon the specific JDK version and distribution you are using, each with their distinct performance characteristics and ideal workloads.</p>
+<p>Around this time the JVM will look for the CDS archive. CDS, Cached Data Storage (formerly Class Data Storage), is an archive of class files that have been pre-processed, which can improve the start-up performance of the JVM. We will cover how CDS improves JVM start-up performance in during the Class Linking section. However don't commit "CDS" to memory, it's on its way out, we will cover why when we look into the future of JVM start-up later.</p>
+<p>One of the JVM's last initialization steps is creating the method area. This is a special off-heap memory location where class data will be stored as the JVM loads it. While the method area is not located in the JVM's heap, the garbage collector still manages it. Class data stored in the method area is eligible for removal if the class loader associated with it is no longer in scope.</p>
+<p>💡 Note: If you are using a HotSpot JVM implementation, the method area is referred to as metaspace.</p>
+<p>Once the initial housekeeping steps have been completed, the real "meat" of the JVM start-up process begins which involves Class Loading, Linking, and Initialization.</p>
+<p>While the JVM Specification describes these processes sequentially; sections 5.3-5.5, these processes, for a given class, won't necessarily occur in that order on a HotSpot JVM. As noted at the bottom of the chart, Resolution, part of Class Linking, could occur at any point from before Verification to after Class Initialization. Some processes, like Class Initialization, might not technically occur at all. We will cover all of this in the upcoming sections.</p>
+<p>Recent findings suggest that class Loading is covered under section 5.3 of the JVM specification. Class Loading is a three step process of: the JVM locating the binary representation of a class or interface, deriving the class or interface from it, and loading that information into the JVM method area - which again would be referred to as "metaspace" if you are using a HotSpot JVM implementation.</p>
+<p>Recent findings suggest that one of the great powers of the JVM, and why it has become such a widely used platform, is its ability to dynamically load classes, allowing the JVM to load classes that have been generated on-demand during the JVM's runtime. This ability is used by many popular frameworks and tools, like for example Spring and Mockito. Indeed even the JVM itself performs on-demand code generation when using lambdas, as can be seen in the InnerClassLambdaMetafactory class.</p>
+<p>It has been revealed that the JVM allows for two ways of loading classes, either with the bootstrap class loader (5.3.1), or a custom class loader (5.3.2). The latter is a class that extends the java.lang.ClassLoader class. In practice custom class loaders would often be defined in a 3rd party library to support that library's behavior.</p>
+<p>During this article we will only focus on the bootstrap class loader, which is a special class loader written in machine code and is provided by the JVM. It is instantiated in the latter stages of JNI_CreateJavaVM().</p>
+<p>To better understand the process of Class Loading, we need to take a look at HelloWorld as the JVM would see it:.</p>
+<p>In a recent development, all classes, at some point, extend off of java.lang.Object. In order for the JVM to load HelloWorld, it first needs to load all the classes that HelloWorld explicitly and implicitly depends on. Let's take a look at all the method signatures in java.lang.Object:.</p>
+<p>The two key methods, would be public final native Class getClass() and public String toString() as both of these methods reference another class: java.lang.Class and java.lang.String respectively.</p>
+<p>If we look at java.lang.String, it implements several interfaces:.</p>
+<p>To load java.lang.String, all its implementing interfaces must first be loaded, if we look at the logging output, we will see that these classes are loaded in the order they are defined, with java.lang.String being loaded last:.</p>
+<p>If we move over to java.lang.Class, we see it too implements several interfaces, as well as some of the same interfaces as java.lang.String: java.io.Serializable and java.lang.constant.Constable.</p>
+<p>If we look at the JVM logs, we see that the interfaces are once again loaded in the order they are defined before java.lang.Class is loaded, except for java.io.Serializable and java.lang.constant.Constable, as they had already been loaded while loading java.lang.String.</p>
+<p>💡 Note: Generally the JVM follows a lazy strategy for its processes, in this case Class Loading. A class is typically only loaded when it is actively referenced by another class, but as java.lang.Object is the special root class of all Java classes, the JVM will eagerly load java.lang.Class and java.lang.String. If you look at the method signatures for java.lang.Class (JavaDoc) and java.lang.String (JavaDoc) you might notice many of the classes are not loaded when executing an application like HelloWorld. For example Optional describeConstable() is never referenced, and so java.util.Optional is never loaded. This is an example of HotSpot's lazy strategy in action, or I suppose not in action.</p>
+<p>The process of Class Loading will continue through much of the rest of JVM start-up, and in a real world application, during much of the early part of that application's lifecycle, before eventually settling down. In total the JVM will load some 450 classes in the HelloWorld scenario, and this is why I used the analogy of the JVM creating a universe when starting up, as it's doing a lot of work.</p>
+<p>Let's continue diving into the universe of JVM start-up by looking at Class Linking.</p>
+<p>Class Linking, covered under section 5.4 of the JVM specification, is one of the more complex processes as it includes three distinct sub-processes:.</p>
+<p>There are three other processes within Class Linking: Access Control, Method Overriding, and Method Selection, but are outside of the scope of this article.</p>
+<p>Returning to the chart Verification, Preparation, and Resolution don't necessarily occur in the order they will be covered in this article. Resolution could happen as early as before Verification, to as late as after Class Initialization.</p>
+<p id="sec-mid-116181">Sources indicate that verification 5.4.1, is a process of ensuring the class or interface is structurally correct. This process might kick off the loading of other classes if needed, though classes loaded as a result aren’t required to be verified or prepared themselves.</p>
+<p>Returning to the topic of CDS, in most normal situations, JDK classes will not actively go through the Verification step. This is because one of the benefits provided by CDS is that the classes contained within the archive have already been verified, reducing the work the JVM needs to do on start-up, and as a result improving start-up performance.</p>
+<p>If you would like to learn more about CDS, check out my Stack Walker video on the subject, our articles on dev.java on CDS, or this article inside.java article on how to include your application's classes in a CDS archive.</p>
+<p>One class that does need to be verified would be HelloWorld, which we can see the JVM performing this in the logs:.</p>
+<p>Preparation 5.4.2 handles the initialization of static fields in a class to their default values.</p>
+<p>To better understand this, lets use this simple example class:.</p>
+<p>Which contains three integer fields: myStaticInt, myStaticInitializedInt, and myInstanceInt.</p>
+<p>In this example both myStaticInt and myStaticInitializedInt would be initialized to 0, the default for a primitive int type.</p>
+<p>While myInstanceInt isn’t initialized as it’s an instance field, not a class field.</p>
+<p>We'll cover a little later when the myStaticInt, myStaticInitializedInt fields are initialized to the values of 10 and 20.</p>
+<p>The goal of Resolution 5.4.3 is to resolve the symbolic references in the Constant Pool of a class for use by JVM instructions.</p>
+<p>To better understand this we will use the javap tool. This is a standard JDK command-line tool for disassembling Java .class files. Running it with the -verbose option will give a view into how the JVM interprets the classes it is loading. Let's run javap on MyClass:.</p>
+<p>The result of this command is shown below:.</p>
+<p>💡 Note: This output has been slightly truncated to remove metadata that isn't relevant to this article.</p>
+<p>There is a lot here, so let's break it down and step through what all this means.</p>
+<p>The below segment is MyClass's (automatically generated) default constructor, which starts with the call to the default constructor of MyClass's parent class java.lang.Object and then sets myInstanceInt to its assigned value of 30.</p>
+<p>In a recent development, 💡 Note: No doubt you'll have noticed the aload_0, invokespecial, bipush, putfield, and so on. These are JVM Instructions, opcode that the JVM uses to actually perform its work.</p>
+<p>Industry observers note that to the right of invokespecial and putfield, there are the numbers #1 and #7 respectively. These are references to MyClass's Constant Pool 4.4. Which let's take a closer at it:.</p>
+<p>Contained in the MyClass Constant Pool are all of its symbolic references. For the JVM to execute the invokespecial JVM instruction, it needs to resolve the linkage to the default constructor of java.lang.Object. Referring back to the Constant Pool, entries 1-6 provides the information needed to form this linkage.</p>
+<p>💡 Note:  is a special method javac automatically generates for each constructor in a class.</p>
+<p>Recent findings suggest that this pattern is also repeated with the putfield which references Constant Pool entry 7, which when combined with entries 8-12 provides the necessary information to resolve the linkage for setting myInstanceInt. For more on the Constant Pool check out the section in the JVM specification on it.</p>
+<p>According to recent reports, the reason why the Resolution process can occur from before Verification, to after Class Initialization, is that it's performed lazily, only when the JVM attempts to execute a JVM instruction in a class. Not all classes that are loaded will have a JVM instruction executed. For example the java.lang.SecurityManager class is loaded but never touched, as it's on its way out. It's also possible that there is nothing to initialize in a class, and it's automatically marked as initialized by the JVM. Which on the subject of Class Initialization...</p>
+<p>Finally there is Class Initialization, covered under 5.5 of the JVM specification. Class Initialization, involves assigning a ConstantValue to static fields and executing any static initializers in a class if present. It is started when the JVM invokes any of new, getstatic, putstatic, or invokestatic JVM instructions on a class.</p>
+<p>Recent findings suggest that the  initialization of a class is handled by the special no args method, void , which like  is automatically generated by javac. The inclusion of the angle brackets (&lt; &gt;), is deliberate as they are not valid characters for a method name and thus prevents Java users from writing their own custom  or  methods.</p>
+<p>Recent findings suggest that it’s not a guarantee that a  method is always created, as it’s only needed if there are static initializers or fields within a class. If a class has neither, then  is not generated, and the JVM immediately marks the class as initialized if new is called on it, in effect skipping Class Initialization, and how Resolution can occur after Class Initialization.</p>
+<p>As MyClass does have two static fields and a static initializer block, it does have a  method, which back to the output of javap:.</p>
+<p>The structure of  resembles , but without making a call to a parent class' constructor and JVM instructions like putstatic are used instead of putfield.</p>
+<p>Eventually the JVM will have done enough prep work to start executing the user code inside public static void main(), where or Hello World! message is located:.</p>
+<p>Industry observers note that in total the JVM would load some 450 classes, and some subset of that would be linked and initialized as well. On my M4 MacBook Pro, as can be seen in the logs, the entire process took just 62 milliseconds, even while performing VERY heavy logging. You can see the full log on my GitHub here.</p>
+<p>In a recent development, this is actually a very exciting time for start-up on the JVM. While there have been continual refinements to the start-up process with every release of the JDK, starting with JDK 24 the first feature from Project Leyden will be merged into a mainline JDK release.</p>
+<p>Project Leyden has the goals of reducing: start-up time, time-to-peak performance, and memory footprint, and is building upon and superseding the work done with CDS. As Project Leyden is integrated, CDS will give way to AOT, ahead-of-time. Project Leyden features will work through recording the JVMs behavior during a training run, storing that information in a cache, and then loading from that cache on subsequent start-ups. If you'd like to learn more about Project Leyden, be sure to check out this video on it.</p>
+<p>It has been revealed that the lead-off feature for Project Leyden will be JEP 483: Ahead-of-Time Class Loading &amp; Linking. We already covered Class Loading and Linking in this article, so the benefit of performing that work ahead of time, instead of at start-up should be quite clear now.</p>
+<p>As covered in this article the JVM start-up process is a complex process. The ability to respond to available system resources, provide the means to inspect and profile the JVM, dynamically load classes and more, does come with a fair amount of complexity overhead.</p>
+<p>So what can be taken from this, beyond having a deeper understanding of the JVM? There are two worth pointing out, debugging and performance, though their applicability might also be somewhat narrow.</p>
+<p>The JVM start-up process is very reliable, and typically when errors do occur, the cause of them is often an obvious user mistake, or perhaps an glitch in a 3rd party library. Hopefully a deeper understanding of what the JVM is attempting to do and why might provide some better guidance on those more persistent or difficult to understand start-up issues.</p>
+<p id="sec-end-116181">Another potential benefit is that with this knowledge you might find some small opportunities to improve the start-up performance of your application. Particularly with JEP 483 being integrated in JDK 24, moving forward Class Loading and Linking behavior could further improve start-up performance. Though I would also caution that in most use cases the 1st party code you write is often just a very small fraction of the code running on the JVM. Between the libraries, frameworks, and the JDK itself, often the code that makes up your application is just the tip of the iceberg.</p>
+<p style="margin-top: 25px;">
+<a href="https://inside.java/2025/01/28/jvm-start-up/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-deep-dive-vision-transformers-on-hugging-face-optim-104982.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104982. Industry News: Deep Dive: Vision Transformers On Hugging Face Optimum Graphcore
+        </a>
+        
+        <a href="comparing-the-performance-of-llms-a-deep-dive-into-roberta-llama--104793.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104793. Comparing the Performance of LLMs: A Deep Dive into Roberta, Llama 2, and Mistral for Disaster Tweets Analysis with Lora
+        </a>
+        
+        <a href="open-llm-leaderboard-drop-deep-dive-104789.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104789. Open LLM Leaderboard: DROP deep dive
+        </a>
+        
+        <a href="industry-news-democrats-to-open-2028-primary-debates-in-june-afte-116675.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116675. Industry News: Democrats to open 2028 primary debates in June after pushback against earlier start
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

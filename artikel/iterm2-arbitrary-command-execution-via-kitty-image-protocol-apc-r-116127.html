@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTerm2 Arbitrary Command Execution via Kitty Image Protocol APC Response Injection</title>
+    <meta name="description" content="iTerm2’s Kitty image protocol implementation has an arbitrary command execution vulnerability in the file transmit error response path. An APC escape seque">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/iterm2-arbitrary-command-execution-via-kitty-image-protocol-apc-r-116127.html">
+    <meta property="og:title" content="iTerm2 Arbitrary Command Execution via Kitty Image Protocol APC Response Injection">
+    <meta property="og:description" content="iTerm2’s Kitty image protocol implementation has an arbitrary command execution vulnerability in the file transmit error response path. An APC escape seque">
+    <meta property="og:image" content="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/iterm2-arbitrary-command-execution-via-kitty-image-protocol-apc-r-116127.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "iTerm2 Arbitrary Command Execution via Kitty Image Protocol APC Response Injection", "image": ["https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk"], "datePublished": "2026-11-21T00:00:00+00:00", "dateModified": "2026-11-25T01:57:20.317161", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/iterm2-arbitrary-command-execution-via-kitty-image-protocol-apc-r-116127.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>iTerm2 Arbitrary Command Execution via Kitty Image Protocol APC Response Injection</h1>
+        <div class="meta-line">🌐 Source: <strong>Github</strong> &bull; 📅 21 Nov 2026 &bull; ⏱️ 5 min read (949 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>iTerm2’s Kitty image protocol implementation has an arbitrary command execution vulnerability in the file transmit error response path.</li><li style='margin-bottom:6px;'>Three independent issues combine into a single exploit chain: (1) the APC handler lacks the trust check present in OSC handlers, (2) the Kitty file transmit error path preserves literal newlines from NSError.localizedDescription, and (3) the response is unconditionally written to PTY stdin.</li><li style='margin-bottom:6px;'>It has been revealed that when the VT100 parser receives an APC sequence, it calls executeAPC:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-116127"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-116127"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-116127"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="iTerm2 Arbitrary Command Execution via Kitty Image Protocol APC Response Injection" loading="lazy" src="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-116127">iTerm2’s Kitty image protocol implementation has an arbitrary command execution vulnerability in the file transmit error response path. An APC escape sequence embedded in any file is consumed by the VT100 parser and does not appear in the cat output itself, but the Kitty file transmit error response preserves literal newlines from a crafted file path and writes them to PTY stdin — the shell interprets these newlines as command separators, resulting in arbitrary command execution. This is a logic bug — no memory corruption or race condition required — and is 100% reproducible. It works on a default iTerm2 installation with no configuration changes, and triggers on all shells including bash, zsh, and fish.</p>
+<p>Three independent issues combine into a single exploit chain: (1) the APC handler lacks the trust check present in OSC handlers, (2) the Kitty file transmit error path preserves literal newlines from NSError.localizedDescription, and (3) the response is unconditionally written to PTY stdin.</p>
+<p>It has been revealed that when the VT100 parser receives an APC sequence, it calls executeAPC:. At [A], it checks for tmux mode — if active, it returns early. At [B], it checks only whether the string starts with “G”, and at [C] creates a Kitty image command and passes it to the delegate. Compared to OSC sequence handling, the terminalIsTrusted check is completely absent. Any APC that reaches the VT100 parser is unconditionally executed regardless of source.</p>
+<p>Recent findings suggest that no trust check exists in the delegate chain either. At [A], the command is passed directly to kittyImageController.</p>
+<p>When the Kitty image controller receives a t=f (file transmit) command, it decodes the base64 payload and uses it as a file path. At [A], URL.resourceValues() checks whether the file exists — if it doesn’t, an exception is thrown. At [B], the filenameIsSafe() blocklist check exists, but this code is only reachable after resourceValues() succeeds, so it never executes for non-existent files. At [C], the catch block embeds error.localizedDescription directly into the error message. macOS’s NSError.localizedDescription preserves literal newlines (0x0A) in filenames without escaping them.</p>
+<p>The response containing the error message is written to PTY stdin. At [A], the default verbosity .normal always sends the response — it is sent regardless of whether it is an error. At [B], the response is wrapped in APC format (ESC_G...ESC\) and passed to the delegate.</p>
+<p>Sources indicate that at the end of the delegate chain, [A] the response data is written to the PTY via screenSendReportData:. This function sends data through the same path as keyboard input, so the shell interprets this data as if the user typed it.</p>
+<p>Sources indicate that the developer confirmed and fixed the vulnerability across two commits. Adding a terminalIsTrusted check to the APC handler would not have protected default installations — terminalIsTrusted is simply the inverse of the advanced setting “Disable potentially insecure escape sequences,” which is off by default (the terminal is trusted by default). The response sanitization is what closes the hole for everyone.</p>
+<p id="sec-mid-116127">In a recent development, the first fix adds sanitizedResponseMessage(_:) to KittyImageController.swift. It replaces every C0 control character (0x00–0x1F, including ESC, CR, LF) and DEL (0x7F) with a space before the response is framed and sent. The error payload in respondToTransmit() and respondToDisplay() is passed through this sanitizer. a53b1bc.</p>
+<p>The follow-up commit extracts a shared sanitizer stringByReplacingControlCharactersWithSpace on NSString, extending coverage to C1 characters (0x80–0x9F) while preserving Unicode format characters (Cf) such as ZWJ and bidi marks. It replaces the per-file sanitizer and is applied to three report paths: Kitty image, Kitty drag-and-drop (OSC 72), and title reporting. 2a63835.</p>
+<p>The Kitty drag-and-drop sanitizer was changed from stripping only CR/LF to stripping all control characters, and the title report sanitizer was hardened the same way.</p>
+<p>The attack vector is embedding APC escape sequence bytes into a malicious file. When the entire file content is output to the terminal (e.g., via cat), the raw bytes are delivered to the terminal and processed by the VT100 parser. This works on all shells — bash, zsh, fish, etc. — the shell type is irrelevant.</p>
+<p>Industry observers note that the APC sequence (starting with ESC _, ending with ESC \) is consumed by iTerm2’s VT100 parser and is invisible in the cat output — the file appears to be a normal document. However, when the exploit triggers, the error response injected into PTY stdin produces visible garbled shell errors on the terminal. The injected command executes between these garbled lines, so the command execution itself is visible to the user. Concealment of this output was not explored in this research.</p>
+<p>The core of the attack relies on two facts: macOS NSError.localizedDescription preserves literal newlines in filenames, and the error message uses curly quotes instead of ASCII double-quotes.</p>
+<p>Why ASCII double-quotes are not used: If ASCII " is included in the file path, it appears as-is in the error message. When delivered to the shell via PTY, bash enters double-quote mode upon encountering ", and newlines no longer act as command separators. macOS’s NSError.localizedDescription uses Unicode curly quotes (“, ”), which are not special characters in bash and do not trigger quote mode.</p>
+<p>The file path set by the attacker (before base64 encoding):.</p>
+<p id="sec-end-116127">APC bytes can be embedded in any file type — .md, .txt, .log, .csv, configuration files, source code, etc. The only requirement is that the file content is output to the terminal via cat. The following example uses a README.md, but any file that a user might cat is a valid vector. The APC itself is invisible in cat output (consumed by the VT100 parser), but the error response injected into PTY stdin appears as garbled shell errors alongside the executed command.</p>
+<p style="margin-top: 25px;">
+<a href="https://ii4gsp.github.io/iterm2-rce/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="asynchronous-robot-inference-decoupling-action-prediction-and-exe-116668.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116668. Asynchronous Robot Inference: Decoupling Action Prediction and Execution
+        </a>
+        
+        <a href="vulnerability-could-let-hacker-hijack-electric-trailer-braking-sy-116548.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116548. Vulnerability could let hacker hijack electric trailer braking system remotely via Bluetooth, apply any amount of force remotely
+        </a>
+        
+        <a href="training-design-for-text-to-image-models-lessons-from-ablations-116490.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116490. Training Design for Text-to-Image Models: Lessons from Ablations
+        </a>
+        
+        <a href="industry-news-prx-part-3-training-a-text-to-image-model-in-24h-116454.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116454. Industry News: PRX Part 3 — Training a Text-to-Image Model in 24h!
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

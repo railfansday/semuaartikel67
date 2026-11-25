@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: A faster algorithm for extracting hexadecimal digits of π</title>
+    <meta name="description" content="Sources indicate that this post introduces a fresh algorithm for extracting hexadecimal digits of \(\pi\) without computing the preceding digits. It beats ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-a-faster-algorithm-for-extracting-hexadecimal-digits-of-116121.html">
+    <meta property="og:title" content="Breaking: A faster algorithm for extracting hexadecimal digits of π">
+    <meta property="og:description" content="Sources indicate that this post introduces a fresh algorithm for extracting hexadecimal digits of \(\pi\) without computing the preceding digits. It beats ">
+    <meta property="og:image" content="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-a-faster-algorithm-for-extracting-hexadecimal-digits-of-116121.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: A faster algorithm for extracting hexadecimal digits of π", "image": ["https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk"], "datePublished": "2026-11-24T23:53:03", "dateModified": "2026-11-25T01:57:19.902639", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-a-faster-algorithm-for-extracting-hexadecimal-digits-of-116121.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: A faster algorithm for extracting hexadecimal digits of π</h1>
+        <div class="meta-line">🌐 Source: <strong>Stylewarning</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 9 min read (1736 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that this post introduces a fresh algorithm for extracting hexadecimal
+digits of \(\pi\) without computing the preceding digits.</li><li style='margin-bottom:6px;'>The key is a relationship among the four powers of two in this identity:.</li><li style='margin-bottom:6px;'>The common denominator \(M=2k+1\) means we can add four remainders and
+divide once.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-116121"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-116121"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-116121"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: A faster algorithm for extracting hexadecimal digits of π" loading="lazy" src="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-116121">Sources indicate that this post introduces a fresh algorithm for extracting hexadecimal
+digits of \(\pi\) without computing the preceding digits. It beats the
+standard term-by-term evaluations of Bailey–Borwein–Plouffe (BBP), Bellard, and Huvent
+on operation
+count. Even against Huvent’s eight-term formula,
+the savings at large offsets are about 61% fewer divisions and 38% fewer
+full modular exponentiations.</p>
+<p>The key is a relationship among the four powers of two in this identity:.</p>
+<p>The common denominator \(M=2k+1\) means we can add four remainders and
+divide once. The surprise is that we don’t have to compute those remainders
+independently either. As we will see, the gaps between them stay small multiples
+of \(k\) plus
+constants, so one starting power and the step \(2^k\bmod M\) let us reach
+the others by multiplication.</p>
+<p>Recent findings suggest that even better, working modulo \(3M\) lets the same two exponentiations serve
+both \(M\) and \(3M\). Eight powers of two over two different denominators
+can share two full exponentiations and a single division. For every million
+hexadecimal places skipped, that saves about a million full exponentiations
+compared with Huvent, before any machine-specific optimization enters into it.</p>
+<p>It has been revealed that to see where the savings come from, recall the BBP
+trick. To skip \(n\) hex digits, shift \(\pi\) left by \(d=4n\) bits and
+take the fractional part. For a term \(2^E/N\) with \(E\ge 0\), we only
+need \((2^E\bmod N)/N\) because the difference is an integer which
+doesn’t contribute to the fractional part. So even at
+\(d=4{,}000{,}000\) we never have to construct a four-million-bit numerator. The terms with negative exponents still count; they decay geometrically, so
+we can sum their tails directly, keeping enough guard bits to settle the last
+digit we want.</p>
+<p>Last time, I counted the work by counting fractions. Bellard’s formula
+advances 10 bits for every seven fractions; Huvent’s formula advances 12
+bits for every eight. After finding Huvent’s formula independently, I’ve
+feverishly tried to find one with a better ratio, without success. So I
+looked toward ways of optimizing existing series.</p>
+<p>According to recent reports, one clue tipped me off. There’s a choice hiding in the last step of
+Bellard’s derivation. He has
+one sum in powers of \(1/4\) and another in powers of \(1/1024\). Since
+\(4^5=1024\), splitting the first sum into five progressions lets him write
+both sums in powers of \(1/1024\). What if, instead of lining up the powers,
+we lined up the denominators?</p>
+<p>Lining up denominators seemed hard with the many-term series of Bellard and
+Huvent. One good place I found to try this is a series Euler
+wrote down in 1779. Craig-Wood
+used it to extract hexadecimal digits1. In the
+original notation there are six rows:.</p>
+<p>Takahashi
+writes this straightforwardly as two sums:.</p>
+<p>Notice what we’re dividing by. Since \(4m+2=2(2m+1)\), we can halve the
+numerator of the middle fraction and leave \(2m+1\) in the denominator. As \(m\) runs over the nonnegative integers, \(2m+1\) gives every positive
+odd integer. The other two progressions, \(4m+1\) and \(4m+3\), split that
+same list between them. So each odd denominator appears twice in each sum.</p>
+<p>For example, consider the denominator 13. The first progression hits it at \(m=3\); the middle one hits it
+at \(m=6\), where the original denominator was 26. That’s two contributions
+from the sum in powers of \(1/64\) and two from the sum in powers of
+\(1/1024\). The powers are different, but all four numerators can be added
+before we divide by 13. We can collect terms this way for every odd denominator.</p>
+<p>It has been revealed that to derive the boxed formula directly, we can start
+with a multiplication of Gaussian integers: \((3-i)^2(7-i)=50(1-i)\). Taking complex arguments gives Hutton’s arctangent identity
+from the 18th century:.</p>
+<p>It has been revealed that bellard lists this identity as equation (7). His logarithm trick works on
+both angles: \(1-(1+i)/4=(3-i)/4\), and \(1-(1+i)/8=(7-i)/8\). So if we put.</p>
+<p>Sources indicate that then \(I_2=\arctan(1/3)\), \(I_3=\arctan(1/7)\), and we want \(\pi=8I_2+4I_3\). Every time \(j\) goes up by four, \((1+i)^j/2^{uj}\) is multiplied by
+\(-4/2^{4u}\). That’s \(-1/64\) in the first sum and \(-1/1024\) in the second.</p>
+<p>For an odd denominator \(N=2k+1\), the two contributions in each logarithm
+come from \(j=N\) and \(j=2N\). All further doublings give multiples of
+four, where \((1+i)^j\) is real and contributes nothing. At \(j=N\) the imaginary
+part of \((1+i)^N\) is \((-1)^{\lfloor k/2\rfloor}2^k\); at \(j=2N\)
+we’re looking at \((2i)^N=(-1)^k 2^N i\). At \(j=N\), the first logarithm
+multiplies the imaginary part by \(8/2^{2(2k+1)}\), giving the numerator
+term \((-1)^{\lfloor k/2\rfloor}2^{1-3k}\). Collect the other three contributions in the same way and we have the
+boxed formula.</p>
+<p>After the shift by \(d\), that is, multiplying the sum by \(2^d\),
+the four exponents, in the order we wrote them, are.</p>
+<p id="sec-mid-116121">According to recent reports, call a power active if its exponent is nonnegative. The slowest-decaying exponent
+is \(E_1\), which stays nonnegative up to \(k=\lfloor(d+1)/3\rfloor\). That’s about \(d/3\) odd
+denominators, and we divide just once for each one. Even the largest modulus
+is only \(2d/3+O(1)\), compared with about \(d\) for Bellard or
+Huvent, and \(2d\) for the original BBP formula.</p>
+<p>As for the remainders \(r_j=2^{E_j}\bmod N\), notice that the middle two exponents
+differ by \(k\). If we already have
+\(r_3\) and \(x=2^k\bmod N\), then \(r_2\) is just
+\(xr_3\bmod N\). In fact, we can step from the smallest exponent up to the largest:.</p>
+<p>Sources indicate that start at the smallest active power. We pay for one full exponentiation to
+get it and one to get \(x\); the rest are a handful of multiplications. Past
+\(k\approx d/5\) only \(E_1\) is active, so don’t bother computing \(x\).2
+That’s two exponentiations for the first \(d/5\) denominators and one for the
+remaining \(d/3-d/5\), or about \(8d/15\) altogether.</p>
+<p>There’s one more thing we can do with 13. Suppose we’re going to compute
+remainders modulo 39 anyway. A remainder modulo 39 is good modulo 13 too,
+and \(A/13+B/39=(3A+B)/39\), so we only need a single division by 39.</p>
+<p>To avoid counting a denominator twice, we start a pair only at an odd \(M\)
+that isn’t divisible by three. If \(3M\) is in range, we handle it together with \(M\);
+otherwise we handle \(M\) alone. So 39 gets handled with 13, and we don’t also
+pair 39 with 117. Multiples of nine, like 117, get their own turn.</p>
+<p>It has been revealed that the two numerators can share the exponentiations, too. The index for
+\(M=2k+1\) is \(k\); for \(3M\) it’s \(3k+1\). For 13 and 39 those indices
+are 6 and 19: once we have \(2^6\bmod 39\), we get \(2^{19}\bmod 39\) just
+by cubing and doubling. In general, all eight exponents have the same
+\(d\), so their differences are small multiples of \(k\) plus constants. We compute just two powers modulo \(3M\): the smallest active power across
+the pair and the step \(2^k\). Multiplication gives us the rest. The largest
+exponent for \(3M\) is \(d-2-9k\), so it drops out near \(k=d/9\), before
+\(M\) stops needing the step near \(k=d/5\). Whenever there’s a partner,
+\(M\) would already need two exponentiations on its own.</p>
+<p>Industry observers note that in any nine consecutive odd
+denominators, three are divisible by three. One of those is divisible by
+nine and keeps its own turn, while the other two are absorbed into
+their smaller partners. That leaves seven trips through the loop instead of nine,
+both where we need one exponentiation and where we need two. Multiplying the
+counts above by \(7/9\) gives about \(7d/27\) divisions and
+\(56d/135\) full exponentiations, compared to \(2d/3\) of each for Huvent.</p>
+<p>Here is how the formulas compare in bits of offset per operation:.</p>
+<p>Industry observers note that I implemented both the algorithm of this post and Huvent using AVX-512
+IFMA. Here’s how long each took to extract 12 hex digits on my computer.</p>
+<p>These are median times except at a trillion digits, where I timed each
+method once. The percentages use unrounded times: 62.3% faster in the last
+row means 38.4% less elapsed time.</p>
+<p>Sources indicate that returning to the pair 13 and 39, while 39 is active, I never reduce modulo
+13: changing the numerator for 13 by a multiple of 13 changes its tripled
+contribution by a multiple of 39. So I do all the squaring and multiplying
+modulo 39. Since 39 is odd, I can compute its inverse modulo a power of two
+once and reuse it for every Montgomery multiplication in the pair. I triple
+the numerator for 13, add the one for 39, and convert back from Montgomery
+form just once for the final division.</p>
+<p>According to recent reports, there’s a nice trick inside each exponentiation, too. Suppose a Montgomery
+reduction leaves \(-14\) modulo 39. Normally I’d add 39 to get 25. But if
+I’m going to square it next, 14 is just as good: \(14^2\equiv25^2\pmod{39}\). Even if the current exponent bit calls for doubling first, the next square
+still erases the sign. So for all but the last bit, I use vector absolute
+values instead of correcting the sign. On the last bit I do the usual
+reduction, since the numerator needs the actual residue rather than its negative. That change made the exponentiation loop about 8% faster on Zen 5.</p>
+<p>In a recent development, each vector lane handles a different odd modulus. I batch moduli with
+the same set of active powers so that one
+lane doesn’t sit idle while another steps through three extra residues. The hardware multiplies 52-bit inputs, so the largest modulus matters:
+ours is about \(2d/3\), compared with \(d\) for Huvent. That lets
+us reach about 50% farther into \(\pi\) before we need wider arithmetic.</p>
+<p>I originally went looking for a series with fewer fractions per bit. If you evaluate every fraction separately, Euler’s series actually needs more
+fractions per bit than Huvent’s, so it has been easy to pass over. Sharing the modular arithmetic across common and paired denominators is what
+makes it faster, and I suspect similar tricks apply to other BBP-type series.</p>
+<p>His implementation
+evaluates 21 fractions separately for every 30 bits of offset. ↩︎.</p>
+<p id="sec-end-116121">Recent findings suggest that there’s a way to thin out the far end of the loop even more. At \(j=4m+3\), the real and imaginary parts of \((1+i)^j\) are opposites. Add the real part of each logarithm and the two slow powers cancel for
+\(N\equiv3\pmod4\). We still have to subtract the real logarithms we
+added, using series for \(\log(1+2^{-2})\), \(\log(1+2^{-3})\), and
+\(\log(1-2^{-4})\). That leaves half as many moduli above \(d/2\), at
+the cost of more streams of powers to juggle below it. ↩︎.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.stylewarning.com/posts/faster-digit-extraction/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="say-hello-to-hf-a-faster-friendlier-hugging-face-cli-116656.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116656. Say hello to `hf`: a faster, friendlier Hugging Face CLI ✨
+        </a>
+        
+        <a href="20x-faster-trl-fine-tuning-with-rapidfire-ai-116570.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116570. 20x Faster TRL Fine-tuning with RapidFire AI
+        </a>
+        
+        <a href="breaking-up-to-32x-faster-inference-with-lfm25-dspark-116187.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116187. Breaking: Up to 3.2x Faster Inference with LFM2.5-DSpark
+        </a>
+        
+        <a href="ai-programming-tutor-how-to-use-ai-to-learn-programming-faster-115949.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #115949. AI Programming Tutor: How to Use AI to Learn Programming Faster
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

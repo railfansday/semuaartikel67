@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shared CXL memory pools come with steep software tax that could stall multi-server scaling</title>
+    <meta name="description" content="Sources indicate that researchers at the University of Texas at Arlington and Intel measured what happens when four servers share one pool of CXL memory on">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/shared-cxl-memory-pools-come-with-steep-software-tax-that-could-s-116560.html">
+    <meta property="og:title" content="Shared CXL memory pools come with steep software tax that could stall multi-server scaling">
+    <meta property="og:description" content="Sources indicate that researchers at the University of Texas at Arlington and Intel measured what happens when four servers share one pool of CXL memory on">
+    <meta property="og:image" content="https://cdn.mos.cms.futurecdn.net/oKm72GAg88vciWfFVLddfT-1600-80.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/shared-cxl-memory-pools-come-with-steep-software-tax-that-could-s-116560.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Shared CXL memory pools come with steep software tax that could stall multi-server scaling", "image": ["https://cdn.mos.cms.futurecdn.net/oKm72GAg88vciWfFVLddfT-1600-80.jpg"], "datePublished": "2026-11-24T11:30:00Z", "dateModified": "2026-11-25T01:57:44.733227", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/shared-cxl-memory-pools-come-with-steep-software-tax-that-could-s-116560.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Shared CXL memory pools come with steep software tax that could stall multi-server scaling</h1>
+        <div class="meta-line">🌐 Source: <strong>Tomshardware</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 8 min read (1592 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that researchers at the University of Texas at Arlington and Intel measured what happens when four servers share one pool of CXL memory on real hardware.</li><li style='margin-bottom:6px;'>It has been revealed that locks work like traffic signals for shared data: a server has to claim the lock before it changes something in the pool, and the other servers wait until it releases it.</li><li style='margin-bottom:6px;'>According to recent reports, the setup comprises four 86-core Intel Xeon 6787P servers with 256GB of DRAM each, connected over PCIe 5.0 to one CXL memory box.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-116560"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-116560"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-116560"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Shared CXL memory pools come with steep software tax that could stall multi-server scaling" loading="lazy" src="https://cdn.mos.cms.futurecdn.net/oKm72GAg88vciWfFVLddfT-1600-80.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-116560">Sources indicate that researchers at the University of Texas at Arlington and Intel measured what happens when four servers share one pool of CXL memory on real hardware. In a presentation shared at Supercomputer 2026 (SC26), they found that because the hardware doesn’t automatically keep shared data updated across servers, necessary software overhead adds a 3-5µ (microsecond) delay per lock, each time servers access the same data. These minute delays effectively cancel out the benefits — a finding that comes as CXL memory pools are being proposed as a potential AI KV cache solution.</p>
+<p>It has been revealed that locks work like traffic signals for shared data: a server has to claim the lock before it changes something in the pool, and the other servers wait until it releases it. This way, no two servers overwrite the same data at the same time. Within a given server, the CPU’s hardware handles that handoff in a fraction of a microsecond, but across these servers, software is in charge of enforcement.</p>
+<p>According to recent reports, the setup comprises four 86-core Intel Xeon 6787P servers with 256GB of DRAM each, connected over PCIe 5.0 to one CXL memory box. The switch, which UT Arlington’s Peiran Du called “the only commercially available product we can use,” caps their setup at four servers. The catch is that there is no cross-host cache coherence or atomic operations on “a real four-host CXL shared-memory system.”.</p>
+<p>Recent findings suggest that this means no synced CPU caches and no hardware atomics between servers to build locks on, so software has to handle both. Writers publish their cached copy out to the pool and wait for it to finish, while readers throw out stale copies before reading, with the locks built from plain reads and writes, such as Lamport’s fast mutex. CXL 3.0 defines a hardware fix for the caches, called Back-Invalidate, but the researchers hadn’t received vendor confirmation that their platform supports it.</p>
+<p>Aside from the lock acquisition penalty, which is “roughly an order of magnitude higher than local hardware spin locks,” there is a visibility cost: “one-way cross-host visibility is about 1 µs.” This is 0.94 µs, one way, compared to 1.91 µs for an RDMA write on their 400Gb/s InfiniBand, so the link isn’t the cause. A local compare-and-swap takes about 100 ns and, across servers, a lock’s median is 3.7 µs if uncontended, but 132 µs at the 95th percentile with several servers on one lock.</p>
+<p>Recent findings suggest that the result: breadth-first search (BFS), a standard graph algorithm and a common benchmark, “gains nothing from adding a second host,” and was actually slower on four servers than on one, at 0.74s versus 0.55s. This was mostly not from the locks and barriers, which were only about 3.5% of its runtime, but due to the repeated flushing of shared state at every level.</p>
+<p>On the other hand, throughput for a hash table — using independent buckets and per-host allocators — grew almost linearly when adding hosts. Triangle counting, another standard graph benchmark, also had a runtime reduction of more than half when scaling from one to four hosts.</p>
+<p>Those costs matter, in part, because shared CXL pools are emerging as a fresh home for KV cache — an AI model’s stored record of a conversation’s state — once it outgrows GPU memory and a server’s own DRAM. The CXL Consortium’s SC26 session description says cloud providers and GPU makers “have highlighted CXL memory pooling as an effective approach for improving KV cache access.”.</p>
+<p>According to recent reports, SK hynix, which makes CXL memory modules, highlighted a design that hands KV cache between GPU servers through a shared pool and claims 2.6x faster time to first token than standard RDMA setups. Its abstract also claims 3.0x lower P99 latency and 1.9x higher throughput. Micron, at SC26’s CXL Pavilion, showed its Abaco reference design of pooled CXL memory shared across rack servers and GPUs. It claimed 10x to 30x agentic AI gains, with famfs support for apps like Nvidia’s Dynamo.</p>
+<p>According to recent reports, the need is real, even if efficiency gains have led to less cache needed per token. Vikram Sharma Mailthody of Nvidia Research mentioned at SC26’s Emerging Storage panel that his own analysis of open models on Hugging Face demonstrates KV per token falling “by 50% every twelve months” with “up to 78 times reduction so far,” giving the example that 128K context took “about 64 gigabytes” three years ago and now takes less than one. But context lengths are heading toward millions of tokens, and “the product of those two will keep increasing,” he said.</p>
+<p id="sec-mid-116560">Industry observers note that agents also add to the demand. Earlier in the conference, a workshop talk by Argonne National Laboratory and RIT researchers, based on public AI serving traces, highlighted that a “session calls again ~2 min later, once its tools return: a 160 GiB recency cache keeps 1% of its context,” needing the GPU to recompute the rest, or about 99%. Recomputation is significantly slower and more demanding, and memory is needed to cache more.</p>
+<p>That makes it a capacity problem more than a speed problem. “Memory capacity is becoming a dominant factor. Memory latencies have not been seen as a primary problem yet,” Mailthody noted. An agent’s context only has to survive a gap of a couple of minutes. It’s also ideal for any KV cache solution to be as inexpensive as possible, and given that a 128GB DIMM costs more than four times that of a 64GB DIMM last year. According to Intel’s Anil Godbole on SC26’s CXL panel, being able to add capacity past the DIMM slot limit — including reusing DDR4 — bolsters the case for CXL even further.</p>
+<p>It doesn’t hurt that the KV cache handoff is write-once, read-many, which is the type of pattern that actually scaled in testing, although UT Arlington did not specifically test KV cache. Researchers behind OCEAN, a CXL emulator, backed this idea in the same paper session as UT Arlington, saying that software coherence is fine for read-heavy work, with hardware essential as writes climb. Its abstract reports that hardware coherence, at least in emulation, can give an 11x improvement at full coverage on Tigon database workloads.</p>
+<p>Sources indicate that limitations still exist, which is why SK hynix, for one, is relying on “novel locking and coherence protocols” for its design. Hardware isn’t quite there yet, and Back-Invalidate might “be pretty costly,” Du noted, suggesting that both hardware and software coherence may be required.</p>
+<p>Recent findings suggest that micron, which built prototype KV cache sharing into Nvidia’s Dynamo, noted two primary failure cases in a CXL Consortium presentation last month: where the writer’s data never reaches the pool, and where the reader never sees the updates. The first can be fixed by producers flushing before blocks are published, so unflushed blocks can never be found. The second is fixed with a consumer flush, that is, invalidation of their cached lines, before reading. These are the fixes and costs that UT Arlington was measuring.</p>
+<p>According to recent reports, micron cut its flushing cost by flushing each slot only once, which works because KV cache is content-addressed — a slot in the pool that hasn’t changed stays coherent after its first flush. Micron’s presentation also notes that neither failure causes a crash. Instead, the read returns plausible-looking data, and the output is wrong in subtle ways, with the wrong tokens on some requests under cache pressure.</p>
+<p>According to recent reports, working against CXL as a solution is the fact that the memory pooling only reaches within a rack today, Godbole mentioned; it doesn’t span a full data center. Marvell and Penguin Solutions, in collaboration and in addition to others like Lightelligence, have shown or revealed memory expansion and pooling over optical links, which could stretch pooling past a single rack. CXL is also “not the protocol to ferry such significant data,” Godbole added, as it’s built for smaller reads and writes, 64 bytes at a time, closer to how a CPU uses RAM. For bulk transfers, he said, RDMA is more efficient.</p>
+<p>A research system called Beluga, in a paper published on arXiv a year ago, had KV cache in “a commercial CXL switch-based memory pool” with time to first token cut by 89.6% and throughput raised 7.35x compared with an RDMA-based setup once its cache was filled. This suggests some optimization could improve the usefulness of the technology, too.</p>
+<p>CXL is clearly a hit or miss with how it is actually used being a main concern, with “a gap between the [CXL] spec and the implementation from different vendors,” according to UT Arlington’s Jia Rao. SK hynix’s second-generation CMM-DDR5, at 256GB and using CXL 3.2, has only been shown, and the device its KV cache design uses to select what to send is still what the firm’s Younghoon Min called a “research prototype.” These are early times, and the enterprise landscape is simultaneously changing promptly.</p>
+<p>According to recent reports, on paper, shared CXL pools do fit the KV handoff idea, but until a commercial switch ships with confirmed coherence across servers, the best we have is KV cache numbers from vendor demos and research prototypes. Back-Invalidate should cut the software overhead UT Arlington measured, but Du expects it to add delays of its own; production systems would likely need a combination of hardware coherence and software approaches like Micron’s.</p>
+<p id="sec-end-116560">Shane Downing is a Contributing Writer for Tom’s Hardware, covering consumer storage, PC hardware, and AI.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.tomshardware.com/pc-components/dram/shared-cxl-memory-pools-come-with-steep-software-tax-that-could-stall-multi-server-scaling-ut-arlington-shares-real-world-test-that-measured-four-servers-sharing-the-same-pool-at-sc26" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="gds-krsche-announcement-could-come-next-week-how-he-will-operate--107721.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #107721. GdS: Krösche announcement could come next week – how he will operate at Milan
+        </a>
+        
+        <a href="forgotten-chelsea-star-could-be-xabi-alonsos-solution-if-moises-c-107290.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #107290. Forgotten Chelsea star could be Xabi Alonso's solution if Moises Caicedo injury fears come true
+        </a>
+        
+        <a href="ai-server-makers-hike-prices-up-to-45-months-after-contracts-are--104372.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104372. AI server makers hike prices up to 45% months after contracts are signed as RAM shortage triples memory-heavy CPU node costs
+        </a>
+        
+        <a href="building-the-hugging-face-mcp-server-116670.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116670. Building the Hugging Face MCP Server
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coldcard Postmortem Notes Weak Seeds, Not Hacked Devices, Drove Bitcoin Thefts</title>
+    <meta name="description" content="Coinkite on Tuesday published its full postmortem on the Coldcard seed-generation flaw that let thieves drain bitcoin from customer wallets starting in Jul">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/coldcard-postmortem-notes-weak-seeds-not-hacked-devices-drove-bit-110853.html">
+    <meta property="og:title" content="Coldcard Postmortem Notes Weak Seeds, Not Hacked Devices, Drove Bitcoin Thefts">
+    <meta property="og:description" content="Coinkite on Tuesday published its full postmortem on the Coldcard seed-generation flaw that let thieves drain bitcoin from customer wallets starting in Jul">
+    <meta property="og:image" content="https://bitcoinmagazine.com/wp-content/uploads/2026/11/Coldcard-Postmortem-Says-Weak-Seeds-Not-Hacked-Devices-Drove-Bitcoin-Thefts.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/coldcard-postmortem-notes-weak-seeds-not-hacked-devices-drove-bit-110853.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Coldcard Postmortem Notes Weak Seeds, Not Hacked Devices, Drove Bitcoin Thefts", "image": ["https://bitcoinmagazine.com/wp-content/uploads/2026/11/Coldcard-Postmortem-Says-Weak-Seeds-Not-Hacked-Devices-Drove-Bitcoin-Thefts.jpg"], "datePublished": "2026-11-24T11:20:00-05:00", "dateModified": "2026-11-25T01:52:31.063976", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/coldcard-postmortem-notes-weak-seeds-not-hacked-devices-drove-bit-110853.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Coldcard Postmortem Notes Weak Seeds, Not Hacked Devices, Drove Bitcoin Thefts</h1>
+        <div class="meta-line">🌐 Source: <strong>Bitcoinmagazine</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 4 min read (708 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Coinkite on Tuesday published its full postmortem on the Coldcard seed-generation flaw that let thieves drain bitcoin from customer wallets starting in July, saying no device was hacked and that the stolen keys were rebuilt offline from weak seeds.</li><li style='margin-bottom:6px;'>23 and modeled on a National Transportation Safety Board accident report, lays out how the defect shipped in Coldcard firmware from March 29, 2021, through July 30, 2026, and why years of outside reviews missed it.</li><li style='margin-bottom:6px;'>Recent findings suggest that “The losses are real and, for some customers, life-changing.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-110853"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-110853"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-110853"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Coldcard Postmortem Notes Weak Seeds, Not Hacked Devices, Drove Bitcoin Thefts" loading="lazy" src="https://bitcoinmagazine.com/wp-content/uploads/2026/11/Coldcard-Postmortem-Says-Weak-Seeds-Not-Hacked-Devices-Drove-Bitcoin-Thefts.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-110853">Coinkite on Tuesday published its full postmortem on the Coldcard seed-generation flaw that let thieves drain bitcoin from customer wallets starting in July, saying no device was hacked and that the stolen keys were rebuilt offline from weak seeds.</p>
+<p>The 18-page report, dated Nov. 23 and modeled on a National Transportation Safety Board accident report, lays out how the defect shipped in Coldcard firmware from March 29, 2021, through July 30, 2026, and why years of outside reviews missed it.</p>
+<p>Recent findings suggest that “The losses are real and, for some customers, life-changing. No report or firmware enhancement can undo that. We are sorry,” Coinkite wrote.</p>
+<p>Recent findings suggest that A seed is the list of recovery words that controls a bitcoin wallet, and it is only as safe as the randomness used to create it. Coldcard devices were supposed to draw that randomness from the hardware random number generator built into their STM32 chip.</p>
+<p>Instead, a firmware setting switched that hardware source off, and a safeguard in Coinkite’s libNgU code library failed to catch it. Seed generation quietly fell back to Yasmarang, a predictable software generator built into MicroPython, the programming environment the firmware runs on.</p>
+<p>Recent findings suggest that nothing crashed, and the devices produced normal-looking seed words. Coinkite estimates affected seeds carried roughly 40 bits of effective security on the older Mk2 and Mk3 models and about 72 bits on the Mk4, Mk5 and Q, against an intended 128 bits. That shrinks the pool of possible seeds enough for attackers to search it offline.</p>
+<p>According to recent reports, the report notes Coinkite’s release checks confirmed the hardware code was present, but never confirmed that seed generation actually reached it. At least 15 independent review efforts since 2021 also missed the flaw, including two paid third-party reviews and an AI-assisted firmware review this year that produced 85 candidate findings.</p>
+<p id="sec-mid-110853">Industry observers note that unexpected transactions from affected seeds began July 29. Coinkite said it identified the defect the next day, after people discovered thefts, and shipped fixed firmware for every supported release track on July 31.</p>
+<p>As of Nov. 18, Coinkite had received about 300 loss-related support tickets tied to 242 customer accounts, or about 0.21% of its estimated Coldcard user base. The company’s blog post cites 236 accounts. Because Coldcard is self-custodial, Coinkite can only count losses that customers report, and it says the true number is likely higher.</p>
+<p>The report cites Galaxy Research figures showing 1,778.84 BTC stolen from more than 8,600 addresses, worth about $107 million at today’s price. Galaxy pegged losses above $115 million in August, based on prices when the coins were taken, and white hats later moved some exposed coins into a recovery trust.</p>
+<p>In a recent development, who found and exploited the flaw is still unknown, and law enforcement is investigating. The report calls AI-assisted discovery “a plausible hypothesis, not an attribution,” noting that the first thefts came two days after the full model weights of the AI model Kimi K3 were released. Bitcoin Core developers ended long embargoes last month for bugs that AI tools can easily rediscover.</p>
+<p>Coinkite mentioned an independent review by Keylabs, published Oct. 15, found the defect “fully closed” in Mk5 firmware 5.6.2 and 5.6.3 and Q firmware 1.5.2Q and 1.5.3Q. That review did not cover Coldcard’s Edge releases, a preview track for developers and early adopters.</p>
+<p>According to recent reports, newer Coldcard firmware now requires users to add their own randomness, through key presses, dice rolls or coin flips, and mixes it with three hardware sources. The device also checks at startup that seed generation reaches the hardware generator, and stops if it does not.</p>
+<p>Sources indicate that but a firmware upgrade does not repair a seed that was already created on affected firmware. Coinkite told owners whose seeds were made on affected firmware to install verified fixed firmware, create a fresh seed and move their coins. Seeds made with at least 50 private dice rolls were not weakened.</p>
+<p id="sec-end-110853">Three of the report’s 15 recommendations to Coinkite remain open, including whether to compensate affected customers. The company noted it has “no decision” on a proposal yet and asked whoever holds the stolen bitcoin to return it through [email protected].</p>
+<p style="margin-top: 25px;">
+<a href="https://bitcoinmagazine.com/news/coldcard-postmortem-seed-flaw" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-trump-notes-no-iran-deal-needed-after-conflict-drov-112185.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #112185. Latest Update: Trump notes no Iran deal needed after conflict drove GOP’s midterm losses
+        </a>
+        
+        <a href="arthur-hayes-notes-anthropic-ipo-could-determine-bitcoins-next-mo-111241.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #111241. Arthur Hayes Notes Anthropic IPO Could Determine Bitcoin’s Next Move
+        </a>
+        
+        <a href="industry-news-coldcard-bitcoin-exploit-revisited-how-a-hidden-fla-110717.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #110717. Industry News: Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits
+        </a>
+        
+        <a href="coldcard-reveals-how-bitcoin-wallet-flaw-went-undetected-for-over-110713.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #110713. Coldcard reveals how Bitcoin wallet flaw went undetected for over 5 years
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

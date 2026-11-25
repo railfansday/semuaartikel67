@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splitting USB-C: USB 3 and USB 2 on one port</title>
+    <meta name="description" content="I started building restorekit.org dongles a few months ago at the Recurse Center. They are small inline USB-C boards that sit between a host computer and a">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/splitting-usb-c-usb-3-and-usb-2-on-one-port-109091.html">
+    <meta property="og:title" content="Splitting USB-C: USB 3 and USB 2 on one port">
+    <meta property="og:description" content="I started building restorekit.org dongles a few months ago at the Recurse Center. They are small inline USB-C boards that sit between a host computer and a">
+    <meta property="og:image" content="https://frankchiarulli.com/blog/splitting-usb-c/opengraph-image?1da773d5ba88c69c">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/splitting-usb-c-usb-3-and-usb-2-on-one-port-109091.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Splitting USB-C: USB 3 and USB 2 on one port", "image": ["https://frankchiarulli.com/blog/splitting-usb-c/opengraph-image?1da773d5ba88c69c"], "datePublished": "2026-11-24T14:54:10", "dateModified": "2026-11-25T01:51:18.274443", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/splitting-usb-c-usb-3-and-usb-2-on-one-port-109091.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Splitting USB-C: USB 3 and USB 2 on one port</h1>
+        <div class="meta-line">🌐 Source: <strong>Frankchiarulli</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 6 min read (1129 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>I started building restorekit.org dongles a few months ago at the Recurse Center.</li><li style='margin-bottom:6px;'>Recent findings suggest that the original board, the Dongle-Lite, is USB 2 only.</li><li style='margin-bottom:6px;'>I recently learned from timo at Twocanoes that newer Macs support USB 3 speeds for recovery.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-109091"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-109091"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-109091"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Splitting USB-C: USB 3 and USB 2 on one port" loading="lazy" src="https://frankchiarulli.com/blog/splitting-usb-c/opengraph-image?1da773d5ba88c69c" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-109091">I started building restorekit.org dongles a few months ago at the Recurse Center. They are small inline USB-C boards that sit between a host computer and a target mac. They set the target mac into DFUDevice Firmware Patch: Apple's lowest-level recovery mode built into the boot ROM, so even a bricked Mac can be reflashed. mode over USB-PDUSB Power Delivery: the communication protocol over the CC wire used to negotiate power, roles, and vendor-defined commands. without having to touch the target at all, and work with an open-source toolkit for restoring macs without the need for another mac.</p>
+<p>Recent findings suggest that the original board, the Dongle-Lite, is USB 2 only. A single USB 2 hub (CH334F) connects both the dongle’s MCU and the target mac through a single cable, while a PD PHYPhysical-layer transceiver chip that encodes and decodes USB Power Delivery packets on the CC wire. (FUSB302B) sends Apple’s DFU commands on the CC line.</p>
+<p>I recently learned from timo at Twocanoes that newer Macs support USB 3 speeds for recovery. I obviously immediately wanted to support this on the hub for faster recovery, but the problem was cost. At first I designed a “proper” USB 3 board using a GL3510 USB 3 hub and a pair of TI SuperSpeed muxes (HD3SS3220 and HD3SS3212). It basically doubled the parts count, and BOMBill of Materials: the full list of components and quantities required to assemble one board. cost, required me to increase the size of PCB to ~100 mm, and topped out at 5 Gbps transfers between host and target (USB 3.1 Gen 1).</p>
+<p>I really didn’t want to make a board that cost more than twice the Dongle-Lite just to get USB 3 speeds.</p>
+<p>In a recent development, so with the 2nd version Dongle-Pro, I tried a kinda crazy USB-C experiment: drop the USB 3 hub completely, keep a cheap USB 2 hub on D+/D-, and route the USB 3 SuperSpeedUSB 3.x's dedicated high-speed TX/RX differential pairs, physically separate from USB 2's D+/D- wires. lanes as a straight passthrough from host to target on the same USB-C port. The idea being that in theory the USB 3 and 2 controllers on a USB-C are completely independent, and should work simultaneously.</p>
+<p>Since high-speed USB 3 is super prone to interference I didn’t really have a choice other than to purchase a view boards and test it out.</p>
+<p>In a recent development, well… I just got the boards in from JLC and… THEY WORK! They establish a full 10 Gbps USB 3.2 Gen 2 connection while connecting the dongle’s USB 2 hub and MCU over the exact same port. After some aggressive cost optimization, the 10 Gbps board also ended up cheaper and smaller than the USB 2 Dongle-Lite.</p>
+<p>Like I mentioned earlier, USB-C is not a single data bus. Inside a standard USB-C port, USB 2 and USB 3 sit on completely different sets of pins:.</p>
+<p>Every USB-C port has two mirrored 12-pin rows: A1 through A12 on top, and B12 through B1 on the bottom, so a cable works rotated either way.</p>
+<p>Sources indicate that this continues to the computer’s xHCIExtensible Host Controller Interface: the USB controller inside your computer that manages both USB 2 and USB 3.x root ports. controller: a single physical USB-C port is actually wired to two independent root ports: a USB 2 port and a USB 3 port.</p>
+<p>Industry observers note that A standard USB 3 hub chip like the GL3510 is actually just two hubs in 1 package (a USB 2 hub and a USB 3 hub). On my first iteration of the Dongle-Pro, everything ran through that chip even though the dongle’s own MCU only speaks USB 2 Full Speed (12 Mbps) and has no need for the USB 3 speed.</p>
+<p>On the Dongle-Pro v2, the two buses are split apart:.</p>
+<p>This sounded like it would work to me on paper, but there were a few things I thought could go wrong:.</p>
+<p>When the boards arrived, I immediately plugged one into my mac, plugged an iPhone into the target port, and inspected the bus with system_profiler SPUSBHostDataType and ioreg -p IOUSB.</p>
+<p id="sec-mid-109091">Here is what macOS sees on a single physical USB-C port (AppleT8132USBXHCI@01000000):.</p>
+<p>The raw system_profiler SPUSBHostDataType output indicates both sides active at once:.</p>
+<p>Recent findings suggest that 0x01100000 is the USB 2 half of the physical port, and 0x01200000 is the SuperSpeed half of the same port. The iPhone enumerated straight through both passive CH9441P muxes at 10 Gb/s (USB 3.2 Gen 2), while the CH334P hub and Dongle-Pro-v2 MCU enumerate at 480 Mb/s and 12 Mb/s on D+/D-.</p>
+<p>Splitting the bus required one interesting change in the host SDK (restorekit).</p>
+<p>On the Dongle-Lite, whatever device you plugged into the dongle always indicated up as a child of the dongle’s hub. That made it easy to tell which target Mac belonged to which dongle when you plugged in several at once.</p>
+<p>On the Dongle-Pro v2, that breaks whenever the target connects at USB 3. Just like iPhone@01200000 above, a SuperSpeed target bypasses the CH334P hub completely and shows up as a sibling directly on the host’s root hub.</p>
+<p>Turns out the OS already tracks which USB 2 and USB 3 root ports share the same physical port and it exposes it directly:.</p>
+<p>So restorekit can still know with 100% certainty which 10 Gbps device is plugged into which dongle.</p>
+<p>I originally planned to have a Dongle-Lite and significantly more expensive USB 3 Pro, but that means having to maintain two hardware lines, so if I could cut the cost of the USB 3 version to be comparably priced to the original Dongle-Lite it felt like a no brainer.</p>
+<p>After I removed the GL3510 USB 3 hub from the original design, I went through the rest of the board to see what else I could cut:.</p>
+<p>Running the three BOMs against JLCPCB pricing:.</p>
+<p>Recent findings suggest that (Parts and Extended feeder fees from JLCPCB’s catalog, excluding PCB fab and placement fees. V2 wins on fab cost too since it is 40% smaller than the Lite and 60% smaller than Pro v1, packing three boards into one 81 x 48 mm panel.).</p>
+<p>These swaps resulted in a 72% BOM reduction from original Dongle-Pro while doubling the SuperSpeed link rate from 5 Gbps to 10 Gbps, and a 42% BOM reduction compared to the Dongle-Lite.</p>
+<p>According to recent reports, if you are building an inline USB-C tool where your MCU only needs a slow control channel and the host just needs fast passthrough to the downstream device, you might not need a USB 3 hub. USB-C gives you two independent buses in the same port.</p>
+<p id="sec-end-109091">Next up: A flash drive with USB 3.2 Gen 2 + 2 speeds?</p>
+<p style="margin-top: 25px;">
+<a href="https://www.frankchiarulli.com/blog/splitting-usb-c/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="unofficial-gta-6-pc-port-effort-suffers-setback-as-rockstar-seemi-109482.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #109482. Unofficial GTA 6 PC port effort suffers setback as Rockstar seemingly takes down Project Leonida, one of the internet's biggest recompilation projects
+        </a>
+        
+        <a href="sygra-the-one-stop-framework-for-building-data-for-llms-and-slms-116624.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116624. SyGra: The One-Stop Framework for Building Data for LLMs and SLMs
+        </a>
+        
+        <a href="sharges-disk-pro-2-usb-hub-and-actively-cooled-m2-enclosure-drops-116591.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116591. Sharge's Disk Pro 2 USB hub and actively cooled M.2 enclosure drops to its lowest-ever price
+        </a>
+        
+        <a href="rockstar-shuts-down-discord-server-trying-to-make-gta-6-pc-port-116588.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116588. Rockstar shuts down Discord server trying to make GTA 6 PC port
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

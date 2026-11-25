@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hierarchical Bayesian Neural Networks: When Structure Meets Flexibility</title>
+    <meta name="description" content="In a previous post, we showed that Bayesian hierarchical models (BHMs) win when group structure is describable, Bayesian neural networks (BNNs) win when th">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/hierarchical-bayesian-neural-networks-when-structure-meets-flexib-109076.html">
+    <meta property="og:title" content="Hierarchical Bayesian Neural Networks: When Structure Meets Flexibility">
+    <meta property="og:description" content="In a previous post, we showed that Bayesian hierarchical models (BHMs) win when group structure is describable, Bayesian neural networks (BNNs) win when th">
+    <meta property="og:image" content="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/hierarchical-bayesian-neural-networks-when-structure-meets-flexib-109076.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Hierarchical Bayesian Neural Networks: When Structure Meets Flexibility", "image": ["https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk"], "datePublished": "2026-11-23T02:10:39", "dateModified": "2026-11-25T01:51:17.424479", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/hierarchical-bayesian-neural-networks-when-structure-meets-flexib-109076.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Hierarchical Bayesian Neural Networks: When Structure Meets Flexibility</h1>
+        <div class="meta-line">🌐 Source: <strong>Statwonk</strong> &bull; 📅 23 Nov 2026 &bull; ⏱️ 2 min read (449 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a previous post,
+                    we showed that Bayesian hierarchical models (BHMs) win when group structure is describable,
+                    Bayesian neural networks (BNNs) win when the signal is complex, and their ensemble hedges
+                    across both scenarios.</li><li style='margin-bottom:6px;'>It has been revealed that but what about the case where your data has both — known group structure and
+                    complex nonlinear signal?</li><li style='margin-bottom:6px;'>In a recent development, enter the hierarchical Bayesian neural network (HBNN) — a model that combines
+                    partial pooling over groups with a flexible neural network function class.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-109076"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-109076"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-109076"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Hierarchical Bayesian Neural Networks: When Structure Meets Flexibility" loading="lazy" src="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-109076">In a previous post,
+                    we showed that Bayesian hierarchical models (BHMs) win when group structure is describable,
+                    Bayesian neural networks (BNNs) win when the signal is complex, and their ensemble hedges
+                    across both scenarios.</p>
+<p>It has been revealed that but what about the case where your data has both — known group structure and
+                    complex nonlinear signal? Neither the BHM nor the BNN is ideal:.</p>
+<p>In a recent development, enter the hierarchical Bayesian neural network (HBNN) — a model that combines
+                    partial pooling over groups with a flexible neural network function class. This post adds the HBNN
+                    to our comparison and reveals when each of the four approaches excels.</p>
+<p>The HBNN adds partially-pooled group intercepts to the neural network. The non-centered
+                    parameterization lets Stan explore the posterior efficiently:.</p>
+<p>Sources indicate that line by line, this is a BNN with one addition: alpha[g[n]] — a group-specific
+                    intercept drawn from a learned population distribution. The neural network learns the shared
+                    nonlinear signal f(x), and the hierarchical intercepts capture group-level shifts. Each component does what it's best at.</p>
+<p>The signal is linear and the heterogeneity is in group-specific intercepts and slopes. The BHM is
+                    perfectly specified — its functional form matches the DGP exactly. The HBNN's
+                    neural network component adds unnecessary flexibility here, making it a close second but slightly
+                    less efficient due to the additional parameters.</p>
+<p id="sec-mid-109076">It has been revealed that no group-level heterogeneity — the group labels are noise. Both the BHM and the HBNN waste
+                    capacity estimating group intercepts that don't exist, but the BNN focuses entirely on learning
+                    the nonlinear signal. The HBNN is close because partial pooling drives the unnecessary group
+                    intercepts toward zero, but the BNN's simpler parameterization gives it an edge.</p>
+<p>It has been revealed that now the data has both group-specific offsets and a complex nonlinear signal. This is the scenario the HBNN was built for:.</p>
+<p>↓ Lower CRPS = lower out-of-sample prediction error (winner).</p>
+<p>The HBNN isn't always the best model — it's the best model
+                        when the data has the structure it's designed for. That's the No Free Lunch theorem
+                        in action: every model has a niche, and the art is matching the model to the problem.</p>
+<p>Recent findings suggest that in domains like portfolio optimization, clinical trials, and
+                    marketing mix modeling, the data often has exactly this structure: known grouping
+                    variables (sectors, treatment arms, channels) with complex nonlinear effects. The HBNN
+                    architecture — encoding the structure you know and learning the rest — represents a principled
+                    middle ground between pure specification and pure flexibility.</p>
+<p id="sec-end-109076">According to recent reports, the complete R script is available at
+                    hbnn_comparison_reprex.R. It requires cmdstanr, scoringRules, and tidyverse. Runtime is
+                    approximately 4–5 minutes.</p>
+<p style="margin-top: 25px;">
+<a href="https://statwonk.com/hierarchical-bayesian-neural-network.html" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="i-built-a-bayesian-neural-network-from-one-neuron-and-football-sh-115966.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #115966. I Built a Bayesian Neural Network From One Neuron and Football Shots
+        </a>
+        
+        <a href="simple-considerations-for-simple-people-building-fancy-neural-net-105089.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #105089. Simple considerations for simple people building fancy neural networks
+        </a>
+        
+        <a href="neural-super-sampling-is-here-116645.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116645. Neural Super Sampling is here!
+        </a>
+        
+        <a href="webworm-apt-slithers-into-networks-with-customized-softether-vpn-115954.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #115954. Webworm APT Slithers Into Networks With Customized SoftEther VPN
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

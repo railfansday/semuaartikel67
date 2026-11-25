@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Weekly Roundup: GPT-6.1 Terra on Bedrock, Step Functions as agent tools, and more (November 2, 2026)</title>
+    <meta name="description" content="The agentic releases that stayed with me last week had nothing to do with how capable a model is. They were about reach. AWS Step Functions, which already ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/aws-weekly-roundup-gpt-61-terra-on-bedrock-step-functions-as-agen-116218.html">
+    <meta property="og:title" content="AWS Weekly Roundup: GPT-6.1 Terra on Bedrock, Step Functions as agent tools, and more (November 2, 2026)">
+    <meta property="og:description" content="The agentic releases that stayed with me last week had nothing to do with how capable a model is. They were about reach. AWS Step Functions, which already ">
+    <meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2023/08/13/AWS-WIR-default.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/aws-weekly-roundup-gpt-61-terra-on-bedrock-step-functions-as-agen-116218.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "AWS Weekly Roundup: GPT-6.1 Terra on Bedrock, Step Functions as agent tools, and more (November 2, 2026)", "image": ["https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2023/08/13/AWS-WIR-default.png"], "datePublished": "2026-11-02T08:45:48-08:00", "dateModified": "2026-11-25T01:57:26.741214", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/aws-weekly-roundup-gpt-61-terra-on-bedrock-step-functions-as-agen-116218.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>AWS Weekly Roundup: GPT-6.1 Terra on Bedrock, Step Functions as agent tools, and more (November 2, 2026)</h1>
+        <div class="meta-line">🌐 Source: <strong>Amazon</strong> &bull; 📅 02 Nov 2026 &bull; ⏱️ 7 min read (1428 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>The agentic releases that stayed with me last week had nothing to do with how capable a model is.</li><li style='margin-bottom:6px;'>It has been revealed that the other thread was cost.</li><li style='margin-bottom:6px;'>HeadlinesOpenAI GPT-6.1 Terra is now generally available on Amazon Bedrock, and what interests me is where it sits rather than what it tops.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-116218"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-116218"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-116218"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="AWS Weekly Roundup: GPT-6.1 Terra on Bedrock, Step Functions as agent tools, and more (November 2, 2026)" loading="lazy" src="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2023/08/13/AWS-WIR-default.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-116218">The agentic releases that stayed with me last week had nothing to do with how capable a model is. They were about reach. AWS Step Functions, which already orchestrates over 220 AWS services, can now be handed to an agent as a tool, so workflows teams already trust became callable without a rewrite. In the same week, the AI blog published how one engagement platform exposed roughly 400 internal API operations the same way. Neither story involves rebuilding anything, only describing what exists and letting the agent find it.</p>
+<p>It has been revealed that the other thread was cost. OpenAI’s newest Terra model reached Amazon Bedrock priced well below the model beside it, and two post-quantum releases landed for a deadline nobody can put on a calendar yet. Now, let’s get into this week’s AWS news….</p>
+<p>HeadlinesOpenAI GPT-6.1 Terra is now generally available on Amazon Bedrock, and what interests me is where it sits rather than what it tops. Terra is the everyday-workload line of the GPT-6 family. In OpenAI’s Agents’ Last Exam evaluation it scored 15 percentage points higher than GPT-5.6 Terra, performed on par with GPT-6 Astra, and completed tasks more than three times faster than both. Those are OpenAI’s figures, not an independent test. The price is what I would check first: input and output tokens are at least 50% lower than GPT-6.1 Sol and GPT-5.6 Terra. It takes up to 1 million input tokens with text and image input, and you can reach it from the Bedrock APIs or ChatGPT Work and Codex.</p>
+<p>According to recent reports, AWS Step Functions workflows are now available as AI agent tools through Amazon Bedrock AgentCore Gateway, which connects agents to tools over the Model Context Protocol (MCP). The division of labor is the idea: the agent decides when to run a workflow and what input to pass; Step Functions runs each step exactly as you defined it. A support agent can trigger a refund, and the eligibility check, the manager approval, and the credit still happen in that order every time, because the ordering was never the model’s to improvise. Your existing Standard and Express workflows qualify as connector targets, and agents can also look up runs. It’s available in all Regions where AgentCore Gateway is, at standard rates.</p>
+<p>Last week’s launches
+         Here are some launches and updates from this past week that caught my attention:.</p>
+<p>AWS Key Management Service now supports ML-KEM for post-quantum key encapsulation – You can now establish a shared secret with a post-quantum algorithm using AWS KMS keys, with private keys in FIPS 140-3 Level 3 validated HSMs. All three NIST FIPS 203 parameter sets are supported through Encapsulate, which produces a random 32-byte shared secret and its ciphertext, and Decapsulate, which recovers it. The threat is harvest now, decrypt later: an adversary records today’s key exchange and recovers the secret once quantum computers are powerful enough. It’s available everywhere KMS runs except the Middle East (UAE and Bahrain) and China Regions. Amazon Aurora PostgreSQL added post-quantum TLS key exchange the same week, on versions 18 and higher.</p>
+<p>Industry observers note that AWS IAM Identity Center now supports cross-Region trusted identity propagation – You can now carry a user’s identity with their request to AWS services in another Region. This removes a genuine architectural constraint: trusted identity propagation used to require every service accessing that identity to sit in the same Region, which left two unappealing options, broad IAM roles that cannot distinguish individual users, or consolidating all your services into a single Region. Now the identity travels with the request automatically, so you grant access by user and group membership and audit who accessed what. It’s available at no additional cost everywhere IAM Identity Center runs.</p>
+<p>Amazon ECS now supports GPU sharing with NVIDIA Multi-Process Service (MPS) – You can now run multiple Amazon ECS tasks concurrently on a single NVIDIA GPU, the practical answer to work that only ever uses a fraction of one, like small-model inference and multi-model serving. You declare the GPU memory each container needs and can optionally cap its share of GPU compute, and ECS places tasks on GPUs with available capacity as your services scale, with no code changes. It works on ECS Managed Instances and ECS on Amazon EC2, and on Managed Instances it watches the MPS control daemon and replaces the instance if it turns unhealthy. It’s available in all commercial and AWS GovCloud (US) Regions.</p>
+<p>Recent findings suggest that AWS Lambda supports Seekable OCI (SOCI) lazy loading for Lambda Managed Instances – You can now have AWS Lambda fetch only the files needed at each stage of startup instead of pulling a whole container image first, which AWS puts at up to 70% off container startup time. You create a SOCI index, push it to Amazon ECR, point the image URI at the indexed tag, and Lambda detects it automatically. The technique also reached Amazon SageMaker AI training and processing jobs, with benchmarks: lazy loading held at 3 to 11 seconds regardless of image size, against a median 3 minutes 42 seconds for a 13.2 GB image, a range they report as 8x to 46x.</p>
+<p>Amazon EKS Auto Mode now supports Kubernetes Gateway API – You can now declare how traffic reaches your applications with Gateway and HTTPRoute resources on Amazon EKS without installing a separate controller, and EKS Auto Mode provisions and manages the underlying AWS load balancing infrastructure. You get HTTP and gRPC routing, cross-namespace routing, weighted traffic splitting, header-based routing, and automatic TLS certificate discovery through AWS Certificate Manager. Existing Ingress workloads keep working alongside them, so this is additive rather than a migration. Gateway API support is included with EKS Auto Mode; standard load balancing charges apply.</p>
+<p id="sec-mid-116218">For a full list of AWS announcements, be sure to keep an eye on the What’s Newly introduced with AWS page.</p>
+<p>Other AWS news
+         Here are some additional posts and resources that you might find interesting:.</p>
+<p>Industry observers note that how Nubank automated disaster recovery with the AWS DevOps Agent – Nubank serves more than 140 million customers across Brazil, Mexico, and Colombia, and classifies over 300 business flows as critical, each tested on a regulator’s schedule. Nubank reports that handing evidence collection and report writing to the AWS DevOps Agent cut a test cycle from about 4.3 hours to roughly 40 minutes, and quadrupled flow coverage in 2026 to more than 160. One execution terminated more than 900 EKS instances under synthetic traffic with AWS Fault Injection Service, producing the evidence its regulator needed.</p>
+<p>How MoEngage turned over 400 APIs into agent tools with AgentCore Gateway – Roughly 400 internal REST API operations, built by 25 teams, sitting in private VPCs across seven Regions, with tenant identity that could never become a parameter the model gets to set. MoEngage estimates the managed path saved about six months of platform engineering. The detail worth stealing: a full tool listing would have crossed 20,000 tokens per connection, so agents search for tools by describing a task instead of receiving the catalog.</p>
+<p>In a recent development, reducing petabyte-scale S3 storage costs with evidence-based lifecycle rules – The hard part isn’t deciding to act, it’s knowing which data has gone cold and where it can safely live. This uses S3 Storage Lens groups and Storage Class Analysis to prove access patterns before moving anything. In the engagement described, 5.8 PB of logs in Amazon S3 Standard at approximately $241,000 per month indicated an access ratio below 0.1% past 90 days, and a 90-day transition to Glacier Instant Retrieval cut the bill by roughly 70%, a figure the author ties to that workload.</p>
+<p>AWS re:Invent – re:Invent returns to Las Vegas from November 30 to December 4, with more than 2,200 sessions. The event catalog is live and reserved seating is open, so register and claim your spots before they fill up.</p>
+<p>AWS Community Days – Community-led conferences planned and delivered by community leaders. The 2026 season is winding down as re:Invent approaches, so check the hub for what’s still on.</p>
+<p>According to recent reports, join the AWS Builder Center to connect with builders, share solutions, and access content that supports your development. Browse here for upcoming AWS-led in-person and virtual events and developer-focused events.</p>
+<p>It has been revealed that that’s all for this week. Check back next Monday for another Weekly Roundup!</p>
+<p id="sec-end-116218">In a recent development, this post is part of our Weekly Roundup series. Check back each week for a quick roundup of interesting news and announcements from AWS!</p>
+<p style="margin-top: 25px;">
+<a href="https://aws.amazon.com/blogs/aws/aws-weekly-roundup-gpt-6-1-terra-on-bedrock-step-functions-as-agent-tools-and-more-november-2-2026/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-aws-weekly-roundup-amazon-bedrock-managed-agents-po-116243.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116243. Industry News: AWS Weekly Roundup: Amazon Bedrock Managed Agents powered by OpenAI, Q3 service availability updates, Kiro workflows, and more (October 5, 2026)
+        </a>
+        
+        <a href="latest-update-aws-weekly-roundup-aws-lambda-web-functions-amazon--116233.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116233. Latest Update: AWS Weekly Roundup: AWS Lambda Web Functions, Amazon S3 on the Vercel Marketplace, and more (October 19, 2026)
+        </a>
+        
+        <a href="aws-weekly-roundup-agentcore-runtime-v2-amazon-dynamodb-bulk-put--116211.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116211. AWS Weekly Roundup: AgentCore Runtime V2, Amazon DynamoDB bulk put items, and more (November 9, 2026)
+        </a>
+        
+        <a href="tech-report-aws-weekly-roundup-aws-nitro-sandboxes-aws-emulator-a-116204.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116204. Tech Report: AWS Weekly Roundup: AWS Nitro Sandboxes, AWS Emulator, and more (November 16, 2026)
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I checked Clojure's core with Lean and found 17 unreported bugs</title>
+    <meta name="description" content="I read Koukyosyumei's article &quot;èåãªRustè£½OSSãLean 4ã§å½¢å¼æ¤è¨¼ãã¦ã¿ããããã¡ããã¡ããã°ãè¦ã¤ãã£ãè©±&quot; (in Japanese; th">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/i-checked-clojures-core-with-lean-and-found-17-unreported-bugs-116048.html">
+    <meta property="og:title" content="I checked Clojure's core with Lean and found 17 unreported bugs">
+    <meta property="og:description" content="I read Koukyosyumei's article &quot;èåãªRustè£½OSSãLean 4ã§å½¢å¼æ¤è¨¼ãã¦ã¿ããããã¡ããã¡ããã°ãè¦ã¤ãã£ãè©±&quot; (in Japanese; th">
+    <meta property="og:image" content="https://s.conao3.com/og/blog/2026/e4f733.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/i-checked-clojures-core-with-lean-and-found-17-unreported-bugs-116048.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "I checked Clojure's core with Lean and found 17 unreported bugs", "image": ["https://s.conao3.com/og/blog/2026/e4f733.png"], "datePublished": "2026-11-24T12:16:00-05:00", "dateModified": "2026-11-25T01:57:16.153659", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/i-checked-clojures-core-with-lean-and-found-17-unreported-bugs-116048.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>I checked Clojure's core with Lean and found 17 unreported bugs</h1>
+        <div class="meta-line">🌐 Source: <strong>Conao3</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 8 min read (1534 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>I read Koukyosyumei's article "èåãªRustè£½OSSãLean 4ã§å½¢å¼æ¤è¨¼ãã¦ã¿ããããã¡ããã¡ããã°ãè¦ã¤ãã£ãè©±" (in Japanese; the title means "I formally verified well-known Rust OSS with Lean 4 and found a lot of bugs").</li><li style='margin-bottom:6px;'>Many people have used Clojure's persistent data structures since around 1.0, so I expected no bugs to remain.</li><li style='margin-bottom:6px;'>hirosassa/lean-verify describes a procedure for modeling a small function in Lean 4 and checking it for all inputs, so I applied it to the part of Clojure's core written in Java.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-116048"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-116048"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-116048"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="I checked Clojure's core with Lean and found 17 unreported bugs" loading="lazy" src="https://s.conao3.com/og/blog/2026/e4f733.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-116048">I read Koukyosyumei's article "èåãªRustè£½OSSãLean 4ã§å½¢å¼æ¤è¨¼ãã¦ã¿ããããã¡ããã¡ããã°ãè¦ã¤ãã£ãè©±" (in Japanese; the title means "I formally verified well-known Rust OSS with Lean 4 and found a lot of bugs"). The author ported well-known Rust projects into a form they could prove in Lean 4, and where a proof failed, they found a bug in the original code.</p>
+<p>Many people have used Clojure's persistent data structures since around 1.0, so I expected no bugs to remain. Still, I wanted to see whether Lean would find something there too.</p>
+<p>hirosassa/lean-verify describes a procedure for modeling a small function in Lean 4 and checking it for all inputs, so I applied it to the part of Clojure's core written in Java.</p>
+<p>Recent findings suggest that I modeled integer and bit arithmetic in Lean and searched for counterexamples. I checked the collections with differential testing against the java.util collections, and for Java interop I compared the same call with and without a type hint.</p>
+<p>I found 17 bugs that I could not find in Clojure's JIRA or on ask.clojure.org. They include reduce on vector-of, the hash collision node of the HAMT, and calls to functional interfaces without a type hint.</p>
+<p>The HAMT itself indicated no mismatch in 3 million operations of differential testing, and the vector tree showed none around its boundaries. The bugs sat in separate code outside the trees, and in places where two mechanisms meet, such as = and hashing.</p>
+<p>I used Clojure 1.12.7, released on 2026-11-18, and JDK 21. The links to the source point to the clojure-1.12.7 tag.</p>
+<p>The lean-verify procedure picks one function and models it as a Lean definition. You write a property that compares it with a naive specification computed at a wider width, and bv_decide searches for a counterexample.</p>
+<p>If you model Java's long and int as BitVec 64 and BitVec 32, the wraparound of addition and multiplication maps onto BitVec operations. So do the rounding of / toward zero and the sign of %.</p>
+<p>Industry observers note that when Lean found a counterexample, I turned the value into a Clojure input and reproduced it in the original code. I then modeled the fixed code in Lean and proved the same property. Lean can only take small functions that reduce to integer and bit arithmetic, so I checked the large persistent data structures with differential testing.</p>
+<p>According to recent reports, each test applies the same random sequence of operations to PersistentHashMap and to java.util.HashMap and compares the results. For the HAMT, the keys mix partial collisions at each 5-bit level with fully identical hashes, and I ran 1,500 operations for each of 2,000 seeds.</p>
+<p>According to recent reports, for vectors, I compared against ArrayList around 32, 1056, 32800, and 1048608, where the tree gains a level. The operations were conj, pop, assoc, and their transient versions.</p>
+<p>According to recent reports, I checked whether anyone had reported each bug before. I searched Clojure's JIRA through its REST API and ask.clojure.org through web search and the site's own search, and found no matching report.</p>
+<p>vector-of is a vector that stores its values in primitive arrays. Clojure implements it in gvec.clj, written in Clojure and separate from PersistentVector. If you drop from one and then reduce it, the call never returns once the vector has 65505 or more elements.</p>
+<p>The cause is line 79 of gvec.clj, where the seq's reduce computes the start of the next 32-element chunk.</p>
+<p>According to recent reports, the code uses 0xffe0 to clear the low 5 bits and round down to a multiple of 32, but the mask also clears bit 16 and everything above it. With 65505 elements, the last chunk starts at index 65504. After that chunk, the start of the next one should be 65536, but the mask turns it into 0, so reduce goes back to the start and reads the vector again and again.</p>
+<p>The 0xffe0 mask has stayed in place since the 2010 commit that added internal-reduce. In Lean, I wrote the property that from a position a that is a multiple of 32, the next chunk starts at a + 32.</p>
+<p>impl_ok fails with the counterexample a = 1073741792, and #eval stepImpl 65504 returns 0 as well. fix_ok uses (bit-not 0x1f) as the mask, and its proof goes through under the assumption that a is a multiple of 32 below 0x7fffffe0.</p>
+<p>Sources indicate that clojure's hash-map is a HAMT: it splits the key's hash into 5-bit pieces and uses them to walk down the tree. Keys whose 32-bit hashes are identical share a HashCollisionNode at the bottom of the tree, and the node finds a key among them with =.</p>
+<p>Sources indicate that hashCollisionNode.without builds the new node with one key removed. It should give the new node its own hash, this.hash, but it passes the parameter hash instead.</p>
+<p>Recent findings suggest that the parameter hash is the hash of the key you pass to dissoc. If you dissoc with a key that is = to the stored key but has a different hash, the node records the wrong hash.</p>
+<p id="sec-mid-116048">In Clojure, a vector is = to a Java ArrayList with the same elements, but the two hash differently. CLJ-1372 tracks this mismatch.</p>
+<p>In the example below, I chose a and b so that both ArrayList keys hash to 1003.</p>
+<p>Sources indicate that when you print m3, you can see the key b, but (get m3 b) returns nil. After the dissoc, the node records 1867155179, the hash of [0 42]. The next assoc then concludes that a, with hash 1003, does not collide with the node, and splits the two into separate branches.</p>
+<p>A lookup of b follows the branch for 1003 and finds only a there, so it never reaches b. In this example the collision node sits on the first level of the tree, so the key passed to dissoc needs the same low 5 bits as 1003, and 1867155179 has them.</p>
+<p>disj on a hash-set has the same bug, while the path through the transient dissoc! does not.</p>
+<p>Sources indicate that I changed that line in the 1.12.7 PersistentHashMap.java to this.hash and compiled it. With the patched class ahead of the jar on the classpath, the same example returned :B for (get m3 b).</p>
+<p>Recent findings suggest that since Clojure 1.12, you can pass a Clojure function directly where a Java method takes a functional interface. CLJ-2864 removed the logic that read the function's return value as a Clojure truthy value.</p>
+<p>In prior alphas, the FI adapter returns inserted Clojure truthy return logic when adapting a Clojure function to an FI with boolean return.</p>
+<p>It has been revealed that the compiler follows this for calls where it knows the type. A call without a type hint goes through reflection and uses Reflector.coerceAdapterReturn. That method still applies RT.booleanCast to a boolean return value, so the same .removeIf call gives a different result depending on the type hint.</p>
+<p>Wrapping the list in identity hides the type of l, so the call goes through reflection.</p>
+<p>A set used as a function returns the element itself. In the call with a known type, the adapter cannot turn the Long into a Boolean and throws. The reflective call reads the return value as true and removes the elements.</p>
+<p>Clojure 1.12 added IDrop implementations that make drop faster. The ones for string seqs and vector seqs add the current position and n as ints and then compare the sum with the length. StringSeq.drop for string seqs is one of them.</p>
+<p>It has been revealed that the Lean model gave the counterexample i = 2147483646 and n = 2147483647. I changed the check to compare n with the remaining length s.length() - i. Under the assumptions 0 &lt; i &lt; s.length()= and 0 &lt; n, Lean proved that the fixed check matches the naive specification for every 32-bit input.</p>
+<p>For assoc on the result of subvec, SubVector.assocN does not reject a negative index.</p>
+<p>Sources indicate that the call overwrites an element of the underlying vector outside the subvec, and returns a subvec that looks unchanged. CLJ-962 fixed the same bug in nth, but assoc still has it.</p>
+<p>The other 12 bugs have a smaller impact, and I reproduced each of them on Clojure 1.12.7.</p>
+<p>Sources indicate that persistentHashMap and PersistentHashSet matched java.util.HashMap over 3 million operations that mixed persistent and transient updates. The tests also covered maps before an patch staying unchanged, ArrayNode splits and merges, and collision nodes down to depth 7.</p>
+<p>PersistentTreeMap matched java.util.TreeMap and kept the red-black tree invariants. Vectors matched ArrayList around every tree boundary I tested.</p>
+<p>On the numeric side, Lean proved for 64 bits that the check Numbers uses to pick the fast path for addition and subtraction agrees with the overflow check.</p>
+<p>In a recent development, for multiplication, bv_decide timed out at 16 bits, so I checked 8 and 10 bits. I proved up to 32 bits that clojure.core/mod matches the floored remainder.</p>
+<p id="sec-end-116048">In a recent development, every property I proved in Lean holds for the model shown in this article. I checked that each model means the same thing as the Java code by comparing it with the source and with the reproduced behavior.</p>
+<p style="margin-top: 25px;">
+<a href="https://s.conao3.com/blog/2026/e4f733" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="accelerating-qwen3-8b-agent-on-intel-core-ultra-with-depth-pruned-116619.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116619. Accelerating Qwen3-8B Agent on Intel® Core™ Ultra with Depth-Pruned Draft Models
+        </a>
+        
+        <a href="sota-ocr-with-core-ml-and-dotsocr-116617.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116617. SOTA OCR with Core ML and dots.ocr
+        </a>
+        
+        <a href="latest-update-these-are-the-four-cheapest-32gb-ddr5-memory-kits-w-116416.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116416. Latest Update: These are the four cheapest 32GB DDR5 memory kits we’ve found
+        </a>
+        
+        <a href="catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-so-116325.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116325. Catch Go bugs that fuzzing misses with Gemini and a constraint solver
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

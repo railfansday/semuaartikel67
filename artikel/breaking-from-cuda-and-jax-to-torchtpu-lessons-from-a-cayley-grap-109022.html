@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: From CUDA and Jax to TorchTPU: Lessons from a Cayley Graph Solver</title>
+    <meta name="description" content="Industry observers note that some time ago, I shared a blog post about working with Cayley graphs, where I solved combinatorial puzzles using AI coding age">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-from-cuda-and-jax-to-torchtpu-lessons-from-a-cayley-grap-109022.html">
+    <meta property="og:title" content="Breaking: From CUDA and Jax to TorchTPU: Lessons from a Cayley Graph Solver">
+    <meta property="og:description" content="Industry observers note that some time ago, I shared a blog post about working with Cayley graphs, where I solved combinatorial puzzles using AI coding age">
+    <meta property="og:image" content="https://andlukyane.com/images/cayley_torchtpu/2026-11-24_09-02-21.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-from-cuda-and-jax-to-torchtpu-lessons-from-a-cayley-grap-109022.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: From CUDA and Jax to TorchTPU: Lessons from a Cayley Graph Solver", "image": ["https://andlukyane.com/images/cayley_torchtpu/2026-11-24_09-02-21.jpg"], "datePublished": "2026-11-24T00:00:00+00:00", "dateModified": "2026-11-25T01:51:14.258521", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-from-cuda-and-jax-to-torchtpu-lessons-from-a-cayley-grap-109022.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: From CUDA and Jax to TorchTPU: Lessons from a Cayley Graph Solver</h1>
+        <div class="meta-line">🌐 Source: <strong>Andlukyane</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 14 min read (2728 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that some time ago, I shared a blog post about working with Cayley graphs, where I solved combinatorial puzzles using AI coding agents, PyTorch on GPUs, and JAX on TPUs.</li><li style='margin-bottom:6px;'>Recent findings suggest that the short version: getting TorchTPU to work was easy; getting it to work efficiently was considerably harder.</li><li style='margin-bottom:6px;'>According to recent reports, after optimizing eager execution, rewriting attention, eliminating dynamic tensor shapes, fixing a subtle deduplication bug, and investigating an attention-routing regression, the results changed substantially.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-109022"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-109022"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-109022"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: From CUDA and Jax to TorchTPU: Lessons from a Cayley Graph Solver" loading="lazy" src="https://andlukyane.com/images/cayley_torchtpu/2026-11-24_09-02-21.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-109022">Industry observers note that some time ago, I shared a blog post about working with Cayley graphs, where I solved combinatorial puzzles using AI coding agents, PyTorch on GPUs, and JAX on TPUs. Recently, Google released TorchTPU, a native PyTorch backend for TPUs, and I wanted to see how well it works on the same task: whether a PyTorch-native TPU stack could match my A100 training pipeline and my JAX beam search in speed and solution quality, or maybe even beat them.</p>
+<p>Recent findings suggest that the short version: getting TorchTPU to work was easy; getting it to work efficiently was considerably harder. My initial training port was 1.65x slower than the A100 implementation, while the first TPU beam search was 5.7x slower than its JAX counterpart.</p>
+<p>According to recent reports, after optimizing eager execution, rewriting attention, eliminating dynamic tensor shapes, fixing a subtle deduplication bug, and investigating an attention-routing regression, the results changed substantially. Training reached comparable wall-clock performance to the A100, and the optimized TorchTPU beam search became 25% faster per level than JAX on the same eight-chip v6e machine, producing the same total solution length across six test puzzles.</p>
+<p>Along the way, the investigation improved the solver itself and resulted in an upstream TorchTPU GitHub issue that led to attention-routing fixes.</p>
+<p>The code is available on Kaggle notebooks running on a free TPU v5e-8:.</p>
+<p>As in the previous post, the code and the experiments were done by coding agents (Claude Code and Codex): I decided what to port, what to measure, and how to judge the results, and they did the implementation and the profiling.</p>
+<p>The CayleyPy Professor Tetraminx competition requires finding the shortest sequence of moves that solves 1000 scrambled puzzles. Formally, it is a shortest-path problem in a Cayley graph (each puzzle state is a node, and each of the 24 possible moves is an edge) with an 88-sticker state.</p>
+<p>My solver uses beam search guided by a learned neural heuristic — a 3.4M-parameter PieceTransformer. Instead of treating the 88 stickers individually, it groups them into 50 physical pieces, turns each piece into a token, adds a class token (51 tokens in total), and runs four small transformer layers with eight heads of size 32. At the end, an all-neighbours Q head (a head that predicts, for each of the 24 moves, the distance to solved after that move) outputs 24 numbers. So the beam scores all 24 children of a state with one forward pass on the parent.</p>
+<p>For training, the signal is a mix of cheap random walks and exact ground truth:.</p>
+<p>On the A100, one epoch takes 142.7 seconds. My best checkpoint is epoch 1500 of a 2000-epoch run, about 80 hours in total.</p>
+<p>In a recent development, torchTPU is not PyTorch/XLA: there is no LazyTensor tracing, no xm.mark_step(), and no xla_device(). Instead, TorchTPU lowers ATen ops directly to StableHLO and runs through PJRT and libtpu (PyTorch’s core ops are translated straight into XLA’s input format and executed by the TPU runtime). Once you import torch, "tpu" works as a device string just like "cuda".</p>
+<p>Three rules matter in practice:.</p>
+<p>Sources indicate that I ran the first port on a Cloud TPU machine with four v6e chips, using DDP with one process per chip and a global batch of 512, so each epoch saw exactly the same number of samples as on the A100. Before the code could run on the TPU at all, I had to remove four GPU idioms (masked_select in the loss, boolean-mask indexing when expanding labels, 12 .item() metric reads per step, and sampling training anchors on the CPU instead of keeping the 0.19 GB anchor table in TPU memory). This first working version took 234.8 seconds per epoch, 1.65x slower than the A100. I was able to bring it down to 132 seconds with two changes.</p>
+<p>In a recent development, the first win was practically free: turning on fused eager (TORCH_TPU_DEFER_AND_FUSE=1). Only the model’s forward and backward pass ran under torch.compile; the rest of the trainer (the random-walk sampler with its 40-iteration loop, label expansion, the loss, and the metrics) ran in eager mode, one op at a time. In default eager mode, that data pipeline took 61.3 ms per step. Wrapping it in torch.compile brought it down to 29.7 ms, while fused eager, which fuses the ops at run time without any code changes, got it to 13.1 ms. The pipeline is many tiny ops, and on this workload they fused better than they compiled; I didn’t profile why, since the cheaper option was also the faster one. Setting that single environment variable dropped the epoch time from 234.8 s to 176.5 s.</p>
+<p>According to recent reports, still, 176.5 s was slower than the A100, and the GPU profile didn’t help. On the A100, the input stage and embedding gradient took 67% of the step; on the TPU, the same stage took only 0.96 ms (0.8%), and the model was spending ~90% of its time in attention.</p>
+<p>A roofline at the model’s own shapes explained why. A square 8192³ GEMM hits 361 TFLOP/s on one v6e chip, and the model’s QKV and FFN GEMMs hit 212–259 TFLOP/s, while attention ran at 3.0 TFLOP/s. With T = 51 and head_dim = 32, every attention matmul is 51x32x51 on a 128x128 matrix unit (MXU) — roughly 2.5% tile occupancy. Padding head_dim to 128 or T to 64 actually made things slower (0.83x and 0.81x). As a result, attention is about 3% of the model’s FLOPs but about 90% of its time on the TPU.</p>
+<p>Recent findings suggest that if you want to keep the same model (for a fair comparison), you need to keep the same shapes and find other improvements. Standard scaled_dot_product_attention (SDPA) expects (B, H, T, Dh), so the QKV tensor has to be permuted to move the heads to the second dimension. Rewriting attention with torch.einsum keeps the heads in their original dimension and avoids the permutes:.</p>
+<p>According to recent reports, the fp32 softmax is there for numerics. On the TPU, the einsum and SDPA versions disagreed by a relative 3.3e-3, so I checked both against a float64 reference on the CPU: both were about 4.6e-3 away from it, because the TPU’s matrix unit uses a single-pass bf16 multiply even for “fp32” matmuls unless you raise torch.tpu.precision. In bf16, keeping only the softmax in fp32 closed the remaining gap between the two versions.</p>
+<p>In a recent development, this change was almost rejected. The agent first measured it on the forward pass only, where it looked slower (einsum 5.51 ms vs SDPA 4.56 ms), and discarded it on that basis. Thankfully, I decided to check the full forward+backward pass: the profiler attributed much of the backward-pass overhead to layout conversions around SDPA’s saved tensors, which cost far more than the forward pass saved. Across forward+backward, one layer dropped from 25.14 ms to 14.85 ms (1.69x faster). That pushed the whole epoch down to 132.0 s — 1.08x faster than the A100.</p>
+<p>Sources indicate that the most confusing bug was in checkpointing. Saving a checkpoint only from rank 0 is a standard pattern:.</p>
+<p>According to recent reports, under fused eager, the tensors in state_dict are still deferred. When rank 0 reads them, it executes a graph that includes this step’s DDP collectives, while the other ranks are already waiting at the next barrier. The checkpoint file would grow to 1.1 MB, then 2.2 MB, and freeze forever while every rank sat busy. The fix is to move the tensors to the CPU on every rank and write the file on one:.</p>
+<p>The trap only fires in the mode that gives the speedup, which made it harder to find.</p>
+<p>On Kaggle’s free v5e-8 (eight chips, 64 samples per chip), the training notebook run 186 epochs in 7.41 hours, with a median of 142.4 seconds per epoch against the A100’s 144.2 over the same epochs.</p>
+<p>Over epochs 177-186, the training loss averaged 15.131 on the v5e-8 and 15.132 on the A100, and top-1 accuracy was 0.488 against 0.483. On exact labels, the TPU checkpoint at epoch 186 is on par with the A100 checkpoint at epoch 200: its best predicted move is truly optimal for 99.0% of states, against 98.9%. The best checkpoint trained eight times longer and is still better.</p>
+<p id="sec-mid-109022">In a recent development, with training done, the second half was porting my beam search solver (KhoruzhiiSolver, the CUDA beam searcher from the previous post) to TorchTPU. Training needed targeted fixes; the solver needed a rewrite. It relied on torch.unique for deduplication, boolean-mask indexing, and dynamic tensor shapes (cand.index_select(0, unique_pos[:B])), none of which works well on a TPU.</p>
+<p>So I wrote beam_tpu.py from scratch in pure PyTorch with fixed shapes across every step. Instead of dropping duplicates, I sort candidates by hash, flag adjacent matches, and assign duplicate scores +inf so topk simply never picks them:.</p>
+<p>To share a 1M-wide beam across chips, each chip holds an equal share of the beam slots, and a child’s owner chip is determined by its hash. Every step runs the Q-head forward on local parents, routes children to their owners via all_to_all_single, deduplicates globally on each owner, and runs topk for the next level. States are stored as int8, and the tree bookkeeping stays outside the compiled step so the level counter doesn’t trigger a recompilation.</p>
+<p>Recent findings suggest that the search doesn’t go all the way to the solved state: it stops as soon as a beam state appears in the exact depth-6 BFS table (27.8M states), and the table supplies the optimal last six moves. In the first TorchTPU version, this endgame tail (a Zobrist hash and a searchsorted over the table for each level, each ending in .item()) ran as eager ops on the TPU and took ~176 s after a 73 s solve. The JAX driver had always done it in NumPy on the host, so I did the same: identical moves on 3000 checked states, at under a millisecond per state. Running the model over fixed-size chunks inside a single scan didn’t change the step speed, but it kept one copy of the model in the compiled graph instead of one per chunk, shrinking the cached compiled code from 363 to 162 MiB.</p>
+<p>I first tested an August pre-release of TorchTPU on six hard scrambles (1M beam, 4x v6e). It matched my JAX kernel on path length (186 vs 185 moves, every path replay-verified) but was 5.7x slower (1973 s vs 345 s). The profile showed that cross-chip all_to_all cost only 0.6 ms per step, while model inference took ~83% of the time. Then I moved to the public torch_tpu==0.2.0 on Kaggle, and the results were surprising: the gap narrowed to 2.8x per beam level, but quality dropped, with TorchTPU finding 194 moves where JAX reproduced its 185.</p>
+<p>Because Kaggle has a long TPU queue, I moved to Cloud TPU v6e to debug the 8 moves lost between the pre-release (186) and 0.2.0 (194). Two things had changed in 0.2.0: torch.topk had reverted from a stable tie-breaking order back to an unstable default, and bf16 attention on sequence lengths that are not a multiple of 128 no longer ran the whole module in fp32 (more on attention below).</p>
+<p>On eight v6e chips, forcing the old low-index tie-breaking in topk took 0.2.0 from 193 moves back to 187, the pre-release’s number there. But why should tie-breaking change path length at all? On four chips, every fixed tie order I tried (lowest index first, highest first, a random shuffle) gave 185 moves; only 0.2.0’s native order gave 188. Something in the beam was turning tie order into path length, and that something was my deduplication.</p>
+<p>Recent findings suggest that because the Q head scores children from the parent, a state reached from two parents arrives as two copies with different scores. My dedup sorted candidates by hash and kept the first copy in each run, and since torch.sort is unstable on both builds, “first” was whichever copy the backend left in front. When 0.2.0 changed the tie order, good states started to disappear because their worse duplicate survived. JAX’s dedup uses a stable argsort on score-sorted buckets, so it keeps the better copy.</p>
+<p>Replacing “keep first” with a segment-min over (score, index) (so duplicates always keep their best score) added 0.5% overhead and fixed the matter:.</p>
+<p>On ten more puzzles, this fix cut total moves from 319 down to 302, improving seven of them and worsening none.</p>
+<p>One regression really was TorchTPU’s: on the same chips, 0.2.0 ran a beam level 1.7x slower than the pre-release. Timing each piece of a level separately highlighted that everything except attention was as fast or faster in 0.2.0. The cause was routing: 0.2.0 sends short attention shapes to its Flash attention kernel, which pads the 51-token sequence to a 128-token tile, so 84% of each score tile is padding. Turning Flash off with torch.backends.cuda.enable_flash_sdp(False) puts attention back on the plain XLA path (yes, .cuda. — TorchTPU respects PyTorch’s standard SDPA backend switches, which live under torch.backends.cuda):.</p>
+<p>With Flash off, a full beam level is 4x faster than with 0.2.0’s default and 2.4x faster than the pre-release. The 2026-11-04 nightly, which already routes short sequences away from Flash, is as fast as the workaround.</p>
+<p>Two things hid this at first. The --fp32-attn arm that I added to test attention precision still went through Flash, so it only made things slower. And PyTorch’s AOTAutograd cache is keyed on the graph, not on the attention backend flag, so a second process quietly reused the Flash-compiled graph and reported identical times until each run got its own cache directory.</p>
+<p>Industry observers note that my agent wrote up the measurements and reported the issue to the TorchTPU repository with a Colab reproduction and a table of attention timings across head sizes and sequence lengths. It turned out that the short-sequence fix had already landed on main three days after 0.2.0 was tagged, but it hadn’t been released. The report also noted that a newer routing rule on main would make some 128–256-token shapes slower. The TorchTPU team picked it up, merged a series of attention-routing fixes, and closed the issue on November 21.</p>
+<p>Milliseconds per SDPA call on one TPU v6e chip, TorchTPU 0.2.0 · lower is better.</p>
+<p>With the dedup fixed and Flash turned off, I reran the comparison on one eight-chip v6e machine with the public torch_tpu==0.2.0 and JAX 0.11.0 (the version in Kaggle’s TPU image).</p>
+<p>TorchTPU now runs a beam level 1.25x faster than JAX with the same quality.</p>
+<p>On Kaggle’s v5e-8, the picture is closer. TorchTPU with Flash off is still about 10% faster per beam level, but the median scramble takes slightly longer (49.9 vs 48.7 s), because it checks the hit flag only every four levels and runs extra levels, and it found one move more (186 vs 185):.</p>
+<p>JAX remains my main beam search solution for now as I have yet to run TorchTPU on a wider beam. And the investigations helped push the JAX kernel further: bounding temporary buffers reduced the compile-time memory for a 128M beam from 39.5 to 12 GiB per chip, and a 256M-state beam works on eight v6e chips.</p>
+<p>I started this experiment to see whether TorchTPU could replace my A100 + JAX setup, and on this task it can: the same model trains at the A100’s speed or slightly faster, and the beam search matches JAX on quality and is a bit faster per level.</p>
+<p>According to recent reports, however, a native PyTorch API does not eliminate the need for hardware-aware engineering. Static shapes, deferred execution, tensor layouts, compilation caching, and kernel selection all mattered considerably. Optimizations that helped training did not necessarily help inference, and seemingly minor changes in backend behaviour exposed a latent bug in my search algorithm.</p>
+<p>The migration also improved both implementations: fixing deduplication reduced solution lengths, the attention investigation contributed to upstream TorchTPU improvements, and revisiting memory management enabled larger beams in JAX.</p>
+<p>More broadly, this project demonstrated how AI coding agents can participate in experimental engineering rather than simply code generation. Claude Code and Codex implemented alternative approaches, profiled execution, constructed controlled experiments, investigated regressions, and prepared reproducible bug reports. My role was to formulate hypotheses, choose meaningful metrics, question misleading measurements, and decide which trade-offs were acceptable.</p>
+<p id="sec-end-109022">paperreview
+deeplearning
+activationfunction.</p>
+<p style="margin-top: 25px;">
+<a href="https://andlukyane.com/blog/cayley-graphs-and-torchtpu" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="from-zero-to-gpu-a-guide-to-building-and-scaling-production-ready-116641.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116641. From Zero to GPU: A Guide to Building and Scaling Production-Ready CUDA Kernels
+        </a>
+        
+        <a href="we-got-claude-to-build-cuda-kernels-and-teach-open-models-116497.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116497. We Got Claude to Build CUDA Kernels and teach open models!
+        </a>
+        
+        <a href="training-design-for-text-to-image-models-lessons-from-ablations-116490.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116490. Training Design for Text-to-Image Models: Lessons from Ablations
+        </a>
+        
+        <a href="breaking-find-orphan-pages-and-buried-content-build-an-internal-l-116461.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116461. Breaking: Find Orphan Pages and Buried Content: Build an Internal Link Graph for Your Site
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

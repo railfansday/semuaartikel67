@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give Your Coding Agents a Memory You Own</title>
+    <meta name="description" content="I work across several machines, and I switch coding agents depending on the task. Every one of them meets my projects as a stranger. The reasoning from “la">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/give-your-coding-agents-a-memory-you-own-116149.html">
+    <meta property="og:title" content="Give Your Coding Agents a Memory You Own">
+    <meta property="og:description" content="I work across several machines, and I switch coding agents depending on the task. Every one of them meets my projects as a stranger. The reasoning from “la">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/funes/thumbnail.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/give-your-coding-agents-a-memory-you-own-116149.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Give Your Coding Agents a Memory You Own", "image": ["https://huggingface.co/blog/assets/funes/thumbnail.jpg"], "datePublished": "2026-09-03T00:00:00", "dateModified": "2026-11-25T01:57:21.751784", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/give-your-coding-agents-a-memory-you-own-116149.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Give Your Coding Agents a Memory You Own</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 03 Sep 2026 &bull; ⏱️ 8 min read (1564 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>I work across several machines, and I switch coding agents depending on the task.</li><li style='margin-bottom:6px;'>Earlier this year, Software Forgets: Agent Traces Are the
+Memory made the case
+that coding agents already produce the record we keep losing.</li><li style='margin-bottom:6px;'>Sources indicate that while the diagnosis is correct, traces are only potential memory.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-116149"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-116149"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-116149"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Give Your Coding Agents a Memory You Own" loading="lazy" src="https://huggingface.co/blog/assets/funes/thumbnail.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-116149">I work across several machines, and I switch coding agents depending on the task. Every one of them meets my projects as a stranger. The reasoning from “last Tuesday”
+disappears when the session ends. Each latest agent, on each new host, starts from zero.</p>
+<p>Earlier this year, Software Forgets: Agent Traces Are the
+Memory made the case
+that coding agents already produce the record we keep losing. As they search a
+codebase, try approaches, hit errors, read documentation, and change direction, they
+leave behind a dense account of not just what changed, but why.</p>
+<p>Sources indicate that while the diagnosis is correct, traces are only potential memory. The session logs of
+an agent are still just an archive. You cannot grep your way to “why did we move
+off the streaming parser?” across ten thousand turns. For an agent to use those traces
+while it works, they need indexing, retrieval, ranking, and exact provenance.</p>
+<p>Industry observers note that that is what funes provides. It is a durable
+memory layer for your agents (Claude Code, Codex, pi, and Hermes). It is built from the
+sessions already on your machine. It works locally and becomes part of your agent's
+normal workflow with one command. When you want it to, it can also travel to a Hugging
+Face dataset you own, private by default.</p>
+<p>funes is a single binary. Its default inference backend has no ML runtime dependency,
+and embedding and reranking happen on your machine. Install it:.</p>
+<p>That one add command builds the first index, gives the agent recall and get
+tools, and installs the automation that indexes each completed turn. Indexing is
+incremental, with new runs adding new turns rather than embedding the whole history
+ again. The older and deeper content can backfill in bounded steps.</p>
+<p>From there, you just work. When a task touches a past decision, rationale, or finding,
+the agent can reach for recall itself. You do not need to remember the old session or
+paste its context into the fresh one.</p>
+<p>With funes added, recall happens inside the conversation. The agent reaches for its
+memory on its own and names the session behind its answer.</p>
+<p>recall returns the original text, not a summary, and highlights exactly where it came from
+(the agent, timestamp, session, and turn). Each result includes a get command that
+opens the full turn and its surrounding context.</p>
+<p>Underneath, one deterministic pipeline parses every supported trace into the same
+turn-and-block shape, chunks it, embeds it with a pinned local model, and writes it to
+a local Lance dataset. A query combines vector and BM25 search, fuses their
+rankings, reranks the candidates with a cross-encoder, reweights them by recency, and
+attaches neighboring chunks.</p>
+<p>That design gives funes three important properties:.</p>
+<p>The agent as a stranger problem is already solved on one machine. But memory gets
+more useful when the next agent is running somewhere else.</p>
+<p>To make a memory follow your work, bind one when you add funes to an agent:.</p>
+<p>In a recent development, the bind publishes your current memory there. funes then keeps it current, indexing
+each turn locally and publishing at session boundaries. The agent recalls from it
+throughout. Run the same command on another machine and the memory follows you there.</p>
+<p>Underneath, the local memory is a Lance dataset, and the shared memory is a Hugging
+Face dataset (private by default) you own.</p>
+<p>Industry observers note that before anything reaches the Hub, credentials have already been redacted during
+indexing. Publishing then scans every chunk again and withholds anything that still
+looks like a secret. The scanner behind this is documented in
+SECURITY.md, including
+what it does and doesn't cover.</p>
+<p>Industry observers note that when an agent reads a remote memory, funes caches the dataset files locally, so warm
+queries return to local speed. The Hub supplies the ownership, access control,
+versioning, and distribution it already supplies for other datasets. Your memory does
+not become an account in a separate memory service, and you do not rent it back
+through an API.</p>
+<p>recall is shaped for agents. When you want to put a question to a memory yourself,
+use ask. It reads your local memory by default:.</p>
+<p id="sec-mid-116149">Or point it at a shared memory. We published a
+memory of funes development,
+so you can ask why funes works the way it does without creating a memory of your own:.</p>
+<p>Industry observers note that funes ask is the read-only, one-question sibling of funes add. It recalls the
+passages, hands them to a coding agent, and returns a grounded answer that names its
+sources. It does not install an integration or change the agent's persistent setup.</p>
+<p>A retrieval miss is not papered over. If the passages do not support an answer, the
+agent notes so. You can rephrase the question or add funes to the agent so it can search
+the memory iteratively during normal work.</p>
+<p>A shared memory is not tied to the agent or model that created it. Start a task in
+Claude Code, continue it in Codex next week, and the second agent can recall the first
+agent's reasoning. Use pi with a local model or one served through the Hugging Face
+router, then return to Claude.</p>
+<p>Sources indicate that claude makes a decision; a hook indexes it; Codex recalls it in another session. The
+older hits in the demo are earlier recordings of the same experiment: an append-only
+memory remembered the rehearsals too.</p>
+<p>This matters in a few different scopes:.</p>
+<p>It has been revealed that published memories carry a dataset card and the funes tag, making them recognizable
+and discoverable on the Hub. The Hub
+already hosts open weights and datasets. funes adds open working memory. It holds
+the decisions, failed approaches, and rationale behind a project, queryable by another
+agent and traceable to the sessions that produced them.</p>
+<p>It has been revealed that A long investigation bloats a session until each turn costs more to carry the context
+than to do the work. The usual answers are to let the agent compact and carry on, or to
+write a handoff and start fresh. Recall is a third, so we measured them against each
+other on the handoff-vs-recall
+benchmark:
+two tasks whose answer cannot be reconstructed without the session prior knowledge.</p>
+<p>Compaction is what most agents do by default, and it was the only one of the three whose
+result divided: it arrived on one task and never arrived on the other. Where it failed,
+its summary had flattened the findings that mattered. Recall returns the passages
+themselves, so a finding does not have to survive summarization.</p>
+<p>Recall was the cheapest of the three on both tasks, 8x cheaper than a written handoff on
+one and 4x on the other.</p>
+<p>The lighter segment of each bar is the one-time charge for preparing the channel, the
+handoff or the compaction, paid before the first question is asked and counted once. A
+cross marks a channel that never arrives, and so has no cost per success.</p>
+<p>“To think is to forget differences, generalize, make abstractions.”
+— Jorge Luis Borges, Funes the Memorious.</p>
+<p>Your agents already wrote the record. funes lives at
+github.com/huggingface/funes, one command away
+from turning that record into a memory the next agent can read, on whichever machine you
+happen to be on.</p>
+<p>In a recent development, funes invents little of this. It leans on open-source embedding models good enough to
+run locally, on Lance's append-only datasets with
+cheap incremental writes, and on the Hub's caching and content-dedup for datasets. The
+work is in fitting them into a memory an agent can actually use.</p>
+<p>funes is open source too. Open an issue
+for anything from an install snag to a recall that missed, or an agent you'd like
+supported.</p>
+<p>It has been revealed that ran funes 1.3.0 on a machine with 19,195 coding-agent sessions already on disk (LongMemEval laid down in the real ~/.claude and ~/.codex layouts), 100 questions whose answer sits in exactly one session, scored by whether that session comes back. Disclosure: I maintain deja-vu, one of the tools in the same table.</p>
+<p>According to recent reports, full index: 2h03m on an M4 pro laptop (308k chunks), 6.3s per query. With defaults: hit@1 9/100, hit@5 39, found@50 71. With --half-life 0: 19/46/71 — the 30-day recency half-life halves rank-1 on history older than a month, which is most of what's on a real disk; worth a mention in the docs. Once recency is off, the vector+rerank stack is clearly the best ranker in the table at rank five. The documented one-minute first pass leaves 218 of the 19k sessions indexed (0/100 answered), so the "about a minute" framing is really "about a minute until the embedding job starts".</p>
+<p>In a recent development, for comparison on the same corpus, deja-vu (plain BM25 over 24 agents' files) indexes in 29s and answers in 24ms at hit@1 18/100, hit@5 35. Corpus, drivers and every row: vshulcz.github.io/deja-vu/guide/day-zero.html - happy to be corrected if a setting I missed changes the numbers.</p>
+<p id="sec-end-116149">Industry observers note that longmemeval does not really need semantic search: BM25 already gives the same ratio you mentioned IIRC, so for this use case this is pretty much expected that it is not worth paying the cost of evaluating the embeddings (this extra cost you see at indexing and recall time). funes shines when the information is actually difficult to find.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/funes" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-give-sandboxed-agents-live-web-access-with-the-fire-116209.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116209. Latest Update: Give sandboxed agents live web access with the Firecrawl kit for Docker Sandboxes
+        </a>
+        
+        <a href="tech-report-netflix-at-qconsf-2026-retrofitting-the-sdlc-for-ai-c-116131.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116131. Tech Report: Netflix at QConSF 2026: Retrofitting the SDLC for AI Coding Agents
+        </a>
+        
+        <a href="openai-scales-git-for-coding-agents-with-pando-116021.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116021. OpenAI Scales Git for Coding Agents with Pando
+        </a>
+        
+        <a href="latest-update-how-to-run-claude-code-and-other-coding-agents-in-t-116010.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116010. Latest Update: How to Run Claude Code and Other Coding Agents in the Cloud 24/7
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

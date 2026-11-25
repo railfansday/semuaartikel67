@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security incident on Hex.pm</title>
+    <meta name="description" content="In a recent development, on November 23, 2026, an unauthorized third party exploited a vulnerability in hex.pm that let them run commands on our web server">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/security-incident-on-hexpm-116043.html">
+    <meta property="og:title" content="Security incident on Hex.pm">
+    <meta property="og:description" content="In a recent development, on November 23, 2026, an unauthorized third party exploited a vulnerability in hex.pm that let them run commands on our web server">
+    <meta property="og:image" content="https://hex.pm/images/favicon-160-3770bc59f1f8ba7656b4db5a1eacd8e3.png?vsn=d">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/security-incident-on-hexpm-116043.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Security incident on Hex.pm", "image": ["https://hex.pm/images/favicon-160-3770bc59f1f8ba7656b4db5a1eacd8e3.png?vsn=d"], "datePublished": "2026-11-24T14:52:19", "dateModified": "2026-11-25T01:57:15.952485", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/security-incident-on-hexpm-116043.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Security incident on Hex.pm</h1>
+        <div class="meta-line">🌐 Source: <strong>Hex</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 3 min read (582 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, on November 23, 2026, an unauthorized third party exploited a vulnerability in hex.pm that let them run commands on our web servers.</li><li style='margin-bottom:6px;'>We found no evidence of unauthorized package modifications, or database changes, or that the attacker maintained access to our systems.</li><li style='margin-bottom:6px;'>Recent findings suggest that because email addresses may have been exposed, be careful with emails that claim to come from Hex.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-116043"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-116043"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-116043"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Security incident on Hex.pm" loading="lazy" src="https://hex.pm/images/favicon-160-3770bc59f1f8ba7656b4db5a1eacd8e3.png?vsn=d" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-116043">In a recent development, on November 23, 2026, an unauthorized third party exploited a vulnerability in hex.pm that let them run commands on our web servers. We blocked the traffic and deployed a fix within 20 minutes. Shortly afterwards we received a report of this exact vulnerability.</p>
+<p>We found no evidence of unauthorized package modifications, or database changes, or that the attacker maintained access to our systems. However, because database reads are not logged, we cannot rule out that the attacker accessed data stored in the database, including email addresses, password hashes, API key hashes, 2FA secrets, sessions, and audit logs.</p>
+<p>Recent findings suggest that because email addresses may have been exposed, be careful with emails that claim to come from Hex. Please double-check that the links they contain lead to hex.pm. Please forward suspicious emails to security@hex.pm.</p>
+<p>Industry observers note that we checked every file written to package storage during the incident against our database and found nothing unexpected. Reads of private packages in that period came from our own servers and coincide with releases the same organizations published at the time. A read made from a compromised server would look like one of ours, so we can't fully rule one out, and reads of private documentation aren't logged. We will contact affected organizations directly.</p>
+<p>Recent findings suggest that the attacker's commands could read the credentials our servers use, so we replaced them: the storage, CDN, email and database credentials, and the keys that sign sessions and access tokens. This logged everyone out of hex.pm and Hex clients. We're building a upcoming registry signing system that supports key rotation, with new Hex client releases in the coming days. Until then, don't trust third-party mirrors and fetch packages only from repo.hex.pm. We already deployed fixes for the vulnerability and are working on further hardening fixes.</p>
+<p>The vulnerability in Hex.pm is tracked as CVE-2026-129514.</p>
+<p id="sec-mid-116043">hex.pm decoded unauthenticated request bodies in Erlang term format with Plug.Crypto.non_executable_binary_to_term/2 which blocks most potentially harmful terms, but allows struct values through. These decoded struct values, when chained together correctly, turned into a remote command execution (RCE). This is the detailed playbook of the attack:.</p>
+<p>While investigating, we found the same class of vulnerability in Ash: its keyset pagination accepted crafted structs in client-supplied cursors, which could lead to command execution or SQL injection. We reported it and the Ash team released a fix in ash 3.38.0 on November 24. It is tracked as CVE-2026-124283.</p>
+<p>Sources indicate that hexpm commit 379b0a2 makes the decoder reject any term containing a map with a __struct__ key, returning a 400. Because the check sits in the one decoder used for this format, it covers every route that accepts it. That closes the entry point: an attacker can no longer get a fake struct into the request params. Every hex.pm server was running the patched build by 18:31 UTC.</p>
+<p>We are working on hardening fixes for these libraries which should prevent such an attack in the future on multiple levels, not just one decoder check in the request pipeline:.</p>
+<p>Every finding in this post is based on the checks below. Where a check is still running or something can't be verified from our logs, we say so.</p>
+<p id="sec-end-116043">Industry observers note that we're sorry for the inconvenience these precautions cause. If you have questions or notice anything unusual in your account, contact us at support@hex.pm. Security reports can be sent to security@hex.pm. We'll upgrade this post as our investigation continues.</p>
+<p style="margin-top: 25px;">
+<a href="https://hex.pm/blog/security-incident-on-hexpm" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="security-incident-disclosure-july-2026-116248.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116248. Security incident disclosure — July 2026
+        </a>
+        
+        <a href="hugging-face-and-virustotal-collaborate-to-strengthen-ai-security-116603.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116603. Hugging Face and VirusTotal collaborate to strengthen AI security
+        </a>
+        
+        <a href="industry-news-anatomy-of-a-frontier-lab-agent-intrusion-a-technic-116235.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116235. Industry News: Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident
+        </a>
+        
+        <a href="cncf-score-project-improved-its-security-posture-by-joining-the-d-116216.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116216. CNCF Score project improved its security posture by joining the Docker-Sponsored Open Source Program
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

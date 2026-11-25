@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Transformers now runs llama.cpp quants</title>
+    <meta name="description" content="We're adding support for running GGUF models efficiently in transformers, so you can use checkpoints sized for your laptop's memory through the familiar tr">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-transformers-now-runs-llamacpp-quants-116123.html">
+    <meta property="og:title" content="Breaking: Transformers now runs llama.cpp quants">
+    <meta property="og:description" content="We're adding support for running GGUF models efficiently in transformers, so you can use checkpoints sized for your laptop's memory through the familiar tr">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/transformers_llama_cpp_quants/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-transformers-now-runs-llamacpp-quants-116123.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: Transformers now runs llama.cpp quants", "image": ["https://huggingface.co/blog/assets/transformers_llama_cpp_quants/thumbnail.png"], "datePublished": "2026-09-22T00:00:00", "dateModified": "2026-11-25T01:57:19.984274", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-transformers-now-runs-llamacpp-quants-116123.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: Transformers now runs llama.cpp quants</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 22 Sep 2026 &bull; ⏱️ 8 min read (1575 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>We're adding support for running GGUF models efficiently in transformers, so you can use checkpoints sized for your laptop's memory through the familiar transformers APIs.</li><li style='margin-bottom:6px;'>Industry observers note that running AI models on your laptop has become much easier, and llama.cpp has been a major part of that.</li><li style='margin-bottom:6px;'>And i’m not gonna lie it feels pretty magical 🧙‍♀️Qwen3.6 27B running inside of Pi coding agent via Llama.cpp on the MacBook ProFor non-trivial tasks on the @huggingface codebases, this feels very, very close to hitting the latest Opus in Claude… pic.twitter.com/lsIxLoUneU.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-116123"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-116123"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-116123"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: Transformers now runs llama.cpp quants" loading="lazy" src="https://huggingface.co/blog/assets/transformers_llama_cpp_quants/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-116123">We're adding support for running GGUF models efficiently in transformers, so you can use checkpoints sized for your laptop's memory through the familiar transformers APIs. Pick a GGUF from the Hub, load it with from_pretrained, and start generating on your own machine.</p>
+<p>Industry observers note that running AI models on your laptop has become much easier, and llama.cpp has been a major part of that. Its inference engine powers local AI tools such as Ollama, LM Studio, and Jan. Alongside projects like MLX, it has helped make local inference a practical option for everyday use.</p>
+<p>A recent example of what local AI can feel like:.</p>
+<p>This is where we are right now. And i’m not gonna lie it feels pretty magical 🧙‍♀️Qwen3.6 27B running inside of Pi coding agent via Llama.cpp on the MacBook ProFor non-trivial tasks on the @huggingface codebases, this feels very, very close to hitting the latest Opus in Claude… pic.twitter.com/lsIxLoUneU.</p>
+<p>GGUF, developed by the llama.cpp team, is a widely used format for local inference. The team also shares quantized checkpoints under ggml-org on the Hub. Publishers such as Unsloth, LM Studio Community, and bartowski also provide ready-to-use GGUF checkpoints in a range of quantizations, so users can pick the version that fits their machine. GGUF models have been downloaded millions of times.</p>
+<p>We want to make it easier to run these models locally with transformers, too. Compatibility is only useful if the model is pleasant to run. To bring performance close to llama.cpp, we're reusing its underlying ggml kernels through the kernels library, and reducing overhead in generate. Our initial focus is local inference on Apple Silicon, starting with the Qwen3.5 architecture.</p>
+<p>According to recent reports, GGUF packages model weights and metadata, including tokenizer information and an optional chat template, in one file. It supports different quantization levels, letting you trade some precision for a smaller memory footprint. Variants such as Q4_K_M mix tensor precisions, using mostly 4-bit weights while keeping sensitive tensors at higher precision.</p>
+<p>Here's how quantization changes the file size of Unsloth's Qwen3.5-4B:.</p>
+<p>Industry observers note that we suggest starting with Q4_K_M, then trying Q5_K_M or Q6_K if you have more memory available. More aggressive quantization can help larger models fit, but the quality tradeoff depends on the model and the task. Evaluate it on the work you actually want the model to do. The Hub's GGUF documentation describes the available quantization types.</p>
+<p>To load a GGUF model, pass its Hub model_id and filename as gguf_file to from_pretrained.</p>
+<p>No extra configuration is needed: when the weights stay packed on Metal, transformers automatically loads the compatible ggml/Metal layer kernels and uses ggml-org/ggml-attn as the attention implementation. If that kernel cannot be fetched, the model falls back to "sdpa" with a warning, and you can always force "sdpa" by passing attn_implementation="sdpa" explicitly. See the GGUF documentation for more loading options.</p>
+<p>That is the only GGUF-specific step. Everything after it is the standard transformers API:.</p>
+<p>Without a compatible quantization kernel, the loader falls back to dequantizing the model and uses more memory.</p>
+<p>You can also use the same checkpoint with transformers serve, which exposes an OpenAI-compatible API:.</p>
+<p>Industry observers note that the model argument uses :.gguf: before the colon is the Hub repository (unsloth/Qwen3.5-4B-GGUF), and after it is the file to load (Qwen3.5-4B-Q4_K_M.gguf). This selects a specific quantization from a repository that may contain several.</p>
+<p>For models whose chat template supports thinking, add --reasoning off to skip it or --reasoning on to enable it. The default, --reasoning auto, follows the chat template’s default. See the reasoning options for details.</p>
+<p>You can connect a client such as Jan or Pi by adding a custom OpenAI-compatible provider with these settings:.</p>
+<p>transformers runs the model on your Mac, while the client provides the conversation interface. The same endpoint can be used by other clients that support this API.</p>
+<p>In a recent development, our reference for local inference performance is llama.cpp. The comparison below focuses on three GGUF checkpoints: a small dense model, a larger dense model, and a mixture-of-experts model.</p>
+<p>Industry observers note that the llama.cpp column comes from the llama-bench tool (build 5f55650a7, release b10200, Metal backend from ggml 0.18.0), run as llama-bench -m  -p 0 -n 128 -r 3, which reports tg128: the token-generation rate over 128 decoded tokens, averaged across three repetitions, with prompt processing excluded. The transformers column is generate producing the same 128 tokens from a 12-token prompt, best of three warmed runs, and it includes prefill.</p>
+<p id="sec-mid-116123">Measured on a MacBook Pro M2 Max, 32 GB unified memory, macOS 26.6, PyTorch 2.12.1, kernels 0.17.0,
+plugged in.</p>
+<p>In a recent development, transformers is close to llama.cpp across all three checkpoints. The chart uses the same measurements described above; it does not imply identical benchmark conditions, since the Transformers measurement includes prefill while llama-bench reports decode-only throughput.</p>
+<p>When GGML and llama.cpp joined Hugging Face, we described their complementary roles: llama.cpp provides a foundation for local inference, while transformers provides a foundation for model definition. GGUF support brings those two closer together.</p>
+<p>It has been revealed that llama.cpp remains our recommended engine when your priority is efficient local inference. Its dedicated runtime, memory management, and broad hardware support are built around that goal. This integration gives developers a convenient way to work with the same GGUF checkpoints inside transformers:.</p>
+<p>For that last case, use GgufConfig(dequantize=True):.</p>
+<p>The bigger opportunity is bringing ggml's performance to models that llama.cpp does not support.</p>
+<p>In a recent development, transformers already provides the PyTorch implementations of these architectures. With ggml kernels and quantization schemes available in PyTorch, we can work toward accelerating their supported operations without first implementing the entire model in llama.cpp. This is especially useful for fresh architectures, research models, and custom variants that may never receive a dedicated llama.cpp implementation.</p>
+<p>It has been revealed that that opportunity extends beyond the GGUF format itself. A kernel operates on tensors; it does not require the whole model to come from a GGUF file. The same building blocks can be integrated into other transformers models and loading workflows. This also opens a path to other modalities: computer vision models, audio models, and multimodal models could reuse compatible attention, normalization, and matrix multiplication kernels without first having a full implementation in llama.cpp. Each architecture still needs integration and validation; the initial GGUF examples here cover text generation.</p>
+<p>We also wanted to show how far we can get while keeping the model and generation loop in Python. With the right kernels and an efficient generation loop, Python and PyTorch can deliver strong local inference performance. The kernels handle the heavy computation, while the generation loop keeps the GPU busy by avoiding unnecessary synchronization.</p>
+<p>Our focus was to make eager execution fast without requiring torch.compile. For interactive use, we wanted a quick start and a steady stream of tokens, without compilation pauses or recompilation when input shapes change. The two main pieces of that work are the kernels and generate itself.</p>
+<p>Recent findings suggest that A kernel is a small program that performs an operation on the GPU. PyTorch supplies general-purpose implementations; a specialized kernel can do less work, combine several operations, or read quantized weights directly in their stored format.</p>
+<p>In a recent development, the kernels library lets us distribute compatible builds of ggml's Metal kernels on the Hub and call them from transformers. That brings ggml's work into the PyTorch model without replacing the model with a separate inference runtime.</p>
+<p>Industry observers note that the first four packages build on ggml's kernels; the top-k kernel addresses a separate bottleneck in MoE routing. Together they reduce the GPU work needed for each generated token.</p>
+<p>Industry observers note that to show the contribution of the layer kernels, we compare the same packed GGUF checkpoints with and without them. The quantization kernel stays enabled in both configurations: disabling it would also change how weights are represented and would measure a different tradeoff.</p>
+<p>Sources indicate that faster kernels only help if the GPU has work to do. During generation, the CPU schedules GPU operations and controls the loop that produces the next token. Reading a result back from the GPU can force the CPU to wait until queued operations finish. Repeating even a small wait for every token can noticeably reduce throughput.</p>
+<p>Two changes address this in generate, which results in improvements for all transformers models (not just when running GGUF files):.</p>
+<p>Recent findings suggest that these changes improve the generation loop around the model, so their usefulness extends beyond GGUF. They complement the kernel work: kernels reduce the cost of an operation, while fewer synchronization points let CPU scheduling and GPU execution overlap.</p>
+<p>These measurements keep all layer kernels enabled; the bars isolate the changes to the generation loop.</p>
+<p>The initial target is a single interactive conversation on Apple Silicon. There are a few boundaries to keep in mind:.</p>
+<p>If you have a GGUF model you would like to use in transformers, open an issue with the checkpoint and your use case. That will help us prioritize support for the models people are running locally.</p>
+<p id="sec-end-116123">We would like to thank Arthur Zucker for initiating this work and reviewing all of my PRs, and Cyril Vallez for the generate PRs. We are grateful to Sayak Paul, the llama.cpp team, and Bertrand Chevalier for their help integrating the kernels. We also thank Aritra Roy Gosthipaty and Pedro Cuenca for reviewing this blog post, and Lysandre Debut for overseeing the project.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/transformers-llama-cpp-quants" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-in-llamacpp-model-management-116549.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116549. Latest in llama.cpp: Model Management
+        </a>
+        
+        <a href="breaking-transformersjs-v4-now-available-on-npm-116475.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116475. Breaking: Transformers.js v4: Now Available on NPM!
+        </a>
+        
+        <a href="latest-update-ggml-and-llamacpp-join-hf-to-ensure-the-long-term-p-116458.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116458. Latest Update: GGML and llama.cpp join HF to ensure the long-term progress of Local AI
+        </a>
+        
+        <a href="llamacpp-v100-a-stronger-foundation-for-the-local-ai-ecosystem-115915.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #115915. llama.cpp v1.0.0 : A stronger foundation for the local AI ecosystem
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

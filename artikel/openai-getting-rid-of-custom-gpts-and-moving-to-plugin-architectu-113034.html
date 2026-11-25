@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Getting Rid of Custom GPTs and Moving to Plugin Architecture</title>
+    <meta name="description" content="OpenAI has announced it will retire Custom GPTs and move the specialized workflows built around them to a latest plugin architecture spanning ChatGPT and i">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/openai-getting-rid-of-custom-gpts-and-moving-to-plugin-architectu-113034.html">
+    <meta property="og:title" content="OpenAI Getting Rid of Custom GPTs and Moving to Plugin Architecture">
+    <meta property="og:description" content="OpenAI has announced it will retire Custom GPTs and move the specialized workflows built around them to a latest plugin architecture spanning ChatGPT and i">
+    <meta property="og:image" content="https://thejournal.com/-/media/EDU/CampusTechnology/2026/10/20261005migration.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/openai-getting-rid-of-custom-gpts-and-moving-to-plugin-architectu-113034.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "OpenAI Getting Rid of Custom GPTs and Moving to Plugin Architecture", "image": ["https://thejournal.com/-/media/EDU/CampusTechnology/2026/10/20261005migration.jpg"], "datePublished": "2026-10-05T18:30:00", "dateModified": "2026-11-25T01:54:14.827187", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/openai-getting-rid-of-custom-gpts-and-moving-to-plugin-architectu-113034.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>OpenAI Getting Rid of Custom GPTs and Moving to Plugin Architecture</h1>
+        <div class="meta-line">🌐 Source: <strong>Thejournal</strong> &bull; 📅 05 Oct 2026 &bull; ⏱️ 3 min read (627 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>OpenAI has announced it will retire Custom GPTs and move the specialized workflows built around them to a latest plugin architecture spanning ChatGPT and its Codex coding agent.</li><li style='margin-bottom:6px;'>In a recent development, custom GPT retirement is right now scheduled for Dec.</li><li style='margin-bottom:6px;'>Recent findings suggest that for affected Enterprise workspaces, OpenAI's current migration schedule targets Oct.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-113034"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-113034"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-113034"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="OpenAI Getting Rid of Custom GPTs and Moving to Plugin Architecture" loading="lazy" src="https://thejournal.com/-/media/EDU/CampusTechnology/2026/10/20261005migration.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-113034">OpenAI has announced it will retire Custom GPTs and move the specialized workflows built around them to a latest plugin architecture spanning ChatGPT and its Codex coding agent.</p>
+<p>In a recent development, custom GPT retirement is right now scheduled for Dec. 11, 2026, although the company claims timing and migration availability can vary by account and workspace.</p>
+<p>Recent findings suggest that for affected Enterprise workspaces, OpenAI's current migration schedule targets Oct. 26 for ending creation of new Custom GPTs. Qualifying Enterprise customers with approved deferrals can continue using them until Feb. 11, 2027.</p>
+<p>OpenAI has changed its UI to make GPTs less prominent, and when users choose to try creating a new Custom GPT, they are now prompted with an option to create a plugin instead.</p>
+<p>Rather than maintaining separate customized versions of ChatGPT, OpenAI is shifting customization toward plugins that can package reusable instructions, reference material, and connections to outside services.</p>
+<p>Recent findings suggest that under OpenAI's plugin architecture, a plugin can include one or more skills containing instructions and resources for repeatable workflows, a Model Context Protocol (MCP) server exposing tools and external systems, or both. ChatGPT and Codex share a universal plugin directory, although some capabilities can remain specific to a particular environment.</p>
+<p>For organizations, that makes the change more than a simple renaming exercise. A company could package recurring workflows into skills while using MCP servers or connected apps to give those workflows access to enterprise systems and data.</p>
+<p>OpenAI says creators will be able to migrate an existing GPT through the My GPTs interface. The GPT's instructions become a skill in the replacement plugin, while knowledge files are copied into plugin reference files and connected apps can be carried over.</p>
+<p>According to recent reports, not everything transfers automatically. Existing GPT conversations do not migrate, the selected model does not carry over, and Custom Actions may have to be rebuilt using an available app or a custom MCP server.</p>
+<p id="sec-mid-113034">Sources indicate that sharing also changes. Migrated plugins start private, existing GPT users do not automatically receive access to the replacement, and prior sharing settings do not carry over.</p>
+<p>In a recent development, openAI is also cautioning organizations against assuming that migration will preserve behavior exactly. "A migrated plugin may respond differently," the organization says, recommending that users retest familiar prompts, reference-material use, required output formats, and integrations before relying on the replacement.</p>
+<p>That warning has contributed to pushback from some GPT builders, who argue that plugins do not fully reproduce the dedicated and predictable environment of a Custom GPT. Other complaints have focused on sharing, migration complexity, and differences in how migrated workflows use instructions and reference material.</p>
+<p>Industry observers note that despite those concerns, OpenAI is clearly consolidating around plugins as its common mechanism for extending its AI products. Its developer documentation now describes plugins as packages users can "discover, install, share, and publish" across ChatGPT and Codex, replacing the separate-custom-assistant model with reusable AI capabilities that can be combined with enterprise tools and services.</p>
+<p>For more information, go to the OpenAI site.</p>
+<p>David Ramel is an editor and writer at Converge 360.</p>
+<p>California Governor Gavin Newsom is proposing a fresh model of artificial intelligence regulation that would give independent organizations a formal role in evaluating the safety claims made by AI giants.</p>
+<p>OpenAI has introduced GPT-6 Astra, its most capable broadly deployed model and the first system the company notes has reached the "Critical" cybersecurity capability threshold under its Preparedness Framework.</p>
+<p>Enterprise AI projects are running into infrastructure questions as organizations move from planning toward deployment, according to recent research from Digital Realty.</p>
+<p id="sec-end-113034">Ransomware attacks are becoming more automated, and AI could take that much further, according to cybersecurity manufacturer NCC Group's July 2026 threat intelligence report.</p>
+<p style="margin-top: 25px;">
+<a href="https://thejournal.com/articles/2026/10/05/openai-getting-rid-of-custom-gpts-and-moving-to-plugin-architecture.aspx" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="welcome-gpt-oss-the-newly-introduced-open-source-model-family-fro-116651.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116651. Welcome GPT OSS, the newly introduced open-source model family from OpenAI!
+        </a>
+        
+        <a href="tricks-from-openai-gpt-oss-you-can-use-with-transformers-116632.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116632. Tricks from OpenAI gpt-oss YOU 🫵 can use with transformers
+        </a>
+        
+        <a href="introducing-falcon-h1-arabic-pushing-the-boundaries-of-arabic-lan-116535.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116535. Introducing Falcon-H1-Arabic: Pushing the Boundaries of Arabic Language AI with Hybrid Architecture
+        </a>
+        
+        <a href="getting-asked-why-you-havent-bought-a-house-this-thanksgiving-her-116506.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116506. Getting asked why you haven’t bought a house this Thanksgiving? Here’s what to tell your relatives
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton</title>
+    <meta name="description" content="Add local obstacle avoidance to Microduck while keeping its walking policy fixed. Build varied courses with reusable SimReady assets, model ToF sensing wit">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/microduck-obstacle-avoidance-a-sim2real-workflow-with-isaac-lab-a-115869.html">
+    <meta property="og:title" content="Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton">
+    <meta property="og:description" content="Add local obstacle avoidance to Microduck while keeping its walking policy fixed. Build varied courses with reusable SimReady assets, model ToF sensing wit">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/6847ab8c06094fa4afb6ee38/M70tUMNd7N4KO5QGI37YZ.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/microduck-obstacle-avoidance-a-sim2real-workflow-with-isaac-lab-a-115869.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton", "image": ["https://cdn-uploads.huggingface.co/production/uploads/6847ab8c06094fa4afb6ee38/M70tUMNd7N4KO5QGI37YZ.png"], "datePublished": "2026-11-24T16:34:13", "dateModified": "2026-11-25T01:57:08.665203", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/microduck-obstacle-avoidance-a-sim2real-workflow-with-isaac-lab-a-115869.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 7 min read (1413 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Add local obstacle avoidance to Microduck while keeping its walking policy fixed.</li><li style='margin-bottom:6px;'>Recent findings suggest that A walking policy can keep Microduck balanced, but it does not tell the robot how to steer around an obstacle in its path.</li><li style='margin-bottom:6px;'>According to recent reports, NVIDIA Isaac Lab is an open-source framework for training policies across thousands of GPU-parallel simulations and it provides the robot-learning environment.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-115869"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-115869"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-115869"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/6847ab8c06094fa4afb6ee38/M70tUMNd7N4KO5QGI37YZ.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-115869">Add local obstacle avoidance to Microduck while keeping its walking policy fixed. Build varied courses with reusable SimReady assets, model ToF sensing with Newton’s raycaster, and train a controller in Isaac Lab to adjust gamepad velocity commands around obstacles. This tutorial covers simulation training, evaluation, export, and real-robot deployment.</p>
+<p>Recent findings suggest that A walking policy can keep Microduck balanced, but it does not tell the robot how to steer around an obstacle in its path. In this workflow, we reuse the walking policy from our first Microduck tutorial and keep its weights fixed. This follow-up trains a separate avoidance controller using time-of-flight (ToF) sensing. You choose a direction with a gamepad; the controller adjusts the velocity command before passing it to the walking policy.</p>
+<p>According to recent reports, NVIDIA Isaac Lab is an open-source framework for training policies across thousands of GPU-parallel simulations and it provides the robot-learning environment. Newton simulates physics and the sensor’s depth measurements. We will cover the control architecture, train on varied obstacle layouts, evaluate the resulting policies, and prepare the interface for hardware testing.</p>
+<p>For simulation and training, prepare:.</p>
+<p>According to recent reports, A Linux system with a compatible NVIDIA GPU and driver. See the Isaac Lab installation guide for platform requirements.</p>
+<p>Git with Git LFS, and the uv package manager.</p>
+<p>For physical-robot testing, prepare:.</p>
+<p>A configured Microduck. Load the same backlash walking-policy export used by the navigation task.</p>
+<p>A supported ToF sensor with its configuration recorded.</p>
+<p>A paired gamepad and a level test area with obstacles.</p>
+<p>Install uv if it is not already installed. Then clone the exp/microduck branch of the Isaac Lab repository and install its dependencies:.</p>
+<p>Once setup is complete, list the available Microduck environments and presets:.</p>
+<p>Download and export the upstream backlash walking checkpoint once before training. The obstacle avoidance task loads the exported walking policy automatically.</p>
+<p>It has been revealed that the environment combines simple primitives with OpenUSD assets available through SimReady Central on Hugging Face. We use a cardboard box, office bin, bedside cabinet alongside cones. From the IsaacLab repository root, download the pinned box, bin and cabinet packages into assets/simready.</p>
+<p>At each episode reset, the environment code automatically samples a layout, shuffles the props, and varies their placement and rotation. Most courses scatter obstacles ahead of the duck, with a smaller mix of clear paths, barriers and passages. The code also mirrors layouts and mixes aligned and staggered rows.</p>
+<p>Goals start ahead of the duck. Movement commands guide it toward the goal while the policy adjusts them around obstacles.</p>
+<p>Figure 1. Varied obstacle-course layouts with SimReady assets and primitive geometry.</p>
+<p>According to recent reports, the IsaacContrib-ObstacleAvoidance-Flat-MicroDuck task separates obstacle avoidance from balance. A navigation policy uses ToF sensing to adjust forward, lateral, and yaw commands at 50 Hz. The frozen walking policy then converts those commands into joint actions, allowing the robot to learn obstacle avoidance without retraining its walking behavior.</p>
+<p>During training, the navigation policy’s actor receives ToF history and body and controller state available on the real robot. Its critic has access to additional simulation state to guide learning, but is not needed for deployment.</p>
+<p>Sources indicate that rewards encourage progress toward the goal, safe arrivals, and movement around obstacles. Following a movement command earns credit only when the robot makes progress with sufficient clearance; risky approaches reduce that credit. Penalties discourage fast approaches, abrupt command changes, collisions, and falls.</p>
+<p>Sources indicate that the obstacle-avoidance task lives in isaaclab_tasks.contrib.microduck_obstacle. Its configuration is in obstacle_avoidance_env_cfg.py, ToF sensing is in sensors.py, and actions, commands, observations and rewards are organized under mdp/.</p>
+<p>Recent findings suggest that microDuckToFCamera extends Newton’s LegacyMultiMeshRayCasterCamera to model the VL53L5CX—a compact time-of-flight (ToF) sensor on the microduck that measures distance across an 8×8 grid at 15Hz. The simulated sensor has a 45° field of view and a 0.12–4 m range. It follows the duck’s head, with placement similar to the sensor on the real duck.</p>
+<p>Real recordings informed the sensor placement and floor readings in simulation. Training adds noise, delays and missing measurements—including near the grid’s edges—to expose the policy to imperfect data. The excerpt below highlights selected sensor settings already included in the task configuration. You do not need to edit or run this code separately.</p>
+<p>Train the navigation policy with PPO across 16,384 parallel environments for 1,500 training iterations. Its actor, critic, normalizers, and optimizer start fresh. The task configuration loads the fixed walking checkpoint, robot model, and obstacle assets.</p>
+<p>The 16,384 environments shown here are configurable, not a minimum requirement. Lower --num_envs to fit your GPU’s available memory. With fewer environments collecting experience in parallel, reaching comparable policy performance may require more training iterations and longer training time. We also trained this policy on NVIDIA DGX Spark in approximately 6 hours using 4,096 parallel environments for 3,000 PPO updates, demonstrating a smaller-scale configuration for the same workflow.</p>
+<p>Run this command to train the policy:.</p>
+<p id="sec-mid-115869">According to recent reports, figure 2. Parallel MicroDuck obstacle-avoidance simulation.</p>
+<p>Playback uses the same props, primitives, frozen walker and sensor randomization as training, with a different seed for fresh obstacle arrangements.</p>
+<p>Recent findings suggest that navigation checkpoints are saved under logs/rsl_rl/microduck_obstacle_avoidance_tof_flat_backlash// relative to the repository root. Choose a model_.pt file from your run and replace /absolute/path/to/model.pt below with its path. This plays the policy, opens the Newton viewer and records 20 seconds of simulation. Set --viz to none for headless recording.</p>
+<p>Playback saves TorchScript and ONNX models in the checkpoint’s exported folder. Keep the ONNX data file alongside the model.</p>
+<p>According to recent reports, figure 3. Cone-course evaluation with requested motion, policy steering, and ToF input overlays.</p>
+<p>These deployment tools run the navigation model on a laptop and send adjusted gamepad commands to the walking policy on the robot. Use the same walking policy that was used during navigation training.</p>
+<p>Section 1 saves the walker’s ONNX export to .pretrained_checkpoints/rsl_rl/https/omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.2/Isaac/IsaacLab/PretrainedCheckpoints/rsl_rl/exported/policy.onnx, relative to the Isaac Lab repository root.</p>
+<p>Load that walking policy using Pollen’s policy-loading guide. The deployment README includes the transfer steps, including how to package an ONNX export that uses an external data file.</p>
+<p>From your Isaac Lab checkout, set up SSH access and check inference with the robot standing upright and still:.</p>
+<p>Sources indicate that dry-run copies the helpers and streams sensor data, but sends no movement commands. Watch the proposed commands as obstacles enter the sensor’s view. Keep the navigation ONNX and any companion .data file together.</p>
+<p>Once those checks pass, start supervised gamepad navigation:.</p>
+<p>Recent findings suggest that hold the stick forward to request movement; the policy adjusts the command to avoid obstacles. Release the stick to stop, press X to toggle navigation, and use Ctrl-C to end the session. Forward speed is capped at 0.15 m/s by default, with an additional close-obstacle brake and stale-input stopping. Start in a clear area and verify stopping before testing a course.</p>
+<p>See the deployment README for controls, logs and troubleshooting.</p>
+<p>Figure 4. Microduck steers around cones using its 8×8 ToF sensor, with real footage on the left and a 3D rebuild from its logs on the right. Blue shows the policy steering, purple shows the operator intervention.</p>
+<p>Sources indicate that the Microduck task collection includes velocity tracking on flat and rough terrain; stand-up recovery, sit–stand transitions, and walking with fall recovery (VelStand); ball kicking, ground picking, and forward rolls (Roulade). Roller-skating tasks add velocity tracking and swizzle motion, crouch-gliding, slope descent, standing up on skates, and spins.</p>
+<p>Figure 5. Fifteen Microduck task views: flat and rough-terrain walking, recovery, object interaction, and roller-skating motions.</p>
+<p>In a recent development, start with the first Microduck tutorial, then choose a task from the Microduck task collection to build your next policy in Isaac Lab with Newton. Explore new behaviors by changing commands, rewards, or environments—from rough-terrain walking to perception-driven obstacle avoidance. Evaluate your policy on scenes outside the training set before testing on the robot.</p>
+<p>Microduck home page (ordering, quick start, installation).</p>
+<p>Train Robots to Navigate with AI agents, NVIDIA Isaac Lab and RTX Spark.</p>
+<p>Train in Simulation, Deploy on a Real Robot: Microduck with Isaac Lab 3.0.</p>
+<p>Microduck training environments and configuration.</p>
+<p>Newton-based BAM actuator documentation.</p>
+<p>Microduck Arena and ONNX submission guide.</p>
+<p>Explore SimReady Central for more simulation-ready OpenUSD assets from OEMs and asset providers.</p>
+<p>Learn how to Build a Robot Pick-and-Place Simulation with SimReady Assets.</p>
+<p>Microduck robot software and deployment guide.</p>
+<p id="sec-end-115869">This workflow builds on Pollen Robotics’ Microduck hardware and software, the original Microduck reinforcement-learning project, BAM actuator modeling work, and the Isaac Lab and Newton integrations.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="how-to-build-a-healthcare-robot-from-simulation-to-deployment-wit-116593.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116593. How to Build a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac for Healthcare
+        </a>
+        
+        <a href="building-a-healthcare-robot-from-simulation-to-deployment-with-nv-116590.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116590. Building a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac
+        </a>
+        
+        <a href="breaking-the-design-workflow-is-broken-here-is-how-vitalii-khomen-116561.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116561. Breaking: The Design Workflow Is Broken. Here Is How Vitalii Khomenko Thinks It Should Be Fixed
+        </a>
+        
+        <a href="bambu-lab-p3c-review-a-more-affordable-tool-changer-116531.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116531. Bambu Lab P3C Review: A more affordable tool changer
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

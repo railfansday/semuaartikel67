@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grabette: an open system to record robot-manipulation data</title>
+    <meta name="description" content="Record your own manipulation tasks in minutes with a handheld gripper, turn them into robot-ready datasets automatically, and help grow an open, collaborat">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/grabette-an-open-system-to-record-robot-manipulation-data-116242.html">
+    <meta property="og:title" content="Grabette: an open system to record robot-manipulation data">
+    <meta property="og:description" content="Record your own manipulation tasks in minutes with a handheld gripper, turn them into robot-ready datasets automatically, and help grow an open, collaborat">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/grabette/thumbnail_grabette.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/grabette-an-open-system-to-record-robot-manipulation-data-116242.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Grabette: an open system to record robot-manipulation data", "image": ["https://huggingface.co/blog/assets/grabette/thumbnail_grabette.png"], "datePublished": "2026-07-21T00:00:00", "dateModified": "2026-11-25T01:57:28.986830", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/grabette-an-open-system-to-record-robot-manipulation-data-116242.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Grabette: an open system to record robot-manipulation data</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 21 Jul 2026 &bull; ⏱️ 5 min read (1013 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Record your own manipulation tasks in minutes with a handheld gripper, turn them into robot-ready datasets automatically, and help grow an open, collaborative dataset for robot learning.</li><li style='margin-bottom:6px;'>Sources indicate that robot learning has a supply problem.</li><li style='margin-bottom:6px;'>Recent findings suggest that teleoperating a robot to collect it can be expensive and demanding: first of all, it requires a robot.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-116242"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-116242"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-116242"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Grabette: an open system to record robot-manipulation data" loading="lazy" src="https://huggingface.co/blog/assets/grabette/thumbnail_grabette.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-116242">Record your own manipulation tasks in minutes with a handheld gripper, turn them into robot-ready datasets automatically, and help grow an open, collaborative dataset for robot learning.</p>
+<p>Sources indicate that robot learning has a supply problem. We have capable policy architectures (transformer-based VLAs, diffusion and flow-matching policies, and even world models) and the GPUs to train them. What we lack is large, diverse, real-world manipulation data.</p>
+<p>Recent findings suggest that teleoperating a robot to collect it can be expensive and demanding: first of all, it requires a robot. And depending on the teleoperation method, data collection can be tedious for the user if it takes hours and involve significant hardware and logistical challenges. That is difficult to scale with the wide variety of tasks and environnements required.</p>
+<p>But you don't need a robot to collect robot data. Just a human hand, a gripper, a camera, and a way to recover the 6-DoF trajectory of what the hand did. Capture the demonstration and you have data a robot can learn from.</p>
+<p>That's what we're releasing today: Grabette, an open, low-cost system for recording manipulation data. Pick it up, record a task with your own hand, and get back a clean, robot-ready dataset. No robot, no lab, no teleop rig.</p>
+<p>And that's the bigger goal: if recording a demonstration is as easy as shooting a video, anyone can contribute. We want Grabette to seed a large, open, collaborative manipulation dataset. One no single lab could ever build alone.</p>
+<p>Grabette is directly inspired by the Universal Manipulation Interface (UMI) from Stanford: a handheld gripper with a fisheye camera that records demonstrations "in the wild", recovers camera trajectories with SLAM, and trains visuomotor policies from them.</p>
+<p>UMI proved the recipe works. Other (closed source) devices exists like Agibot's MEgo gripper, Genrobot's DAS gripper and Sunday Robotics skill capture glove. Our goal was to make it effortless to use, to get the barrier from "I have a task" to "I have a trained model" as low as possible.</p>
+<p>Grabette is built into the modern open ecosystem: LeRobot for datasets, the Hugging Face Hub for sharing, and a processing pipeline you run from your browser with nothing to install. Grabette is something anyone can build on a workbench, use in the field, and contribute data from.</p>
+<p>We have been developing Grabette for months, and we feel it has become usable enough to share. We are excited to share it now with you!</p>
+<p>Grabette is a handheld gripper instrumented with everything needed to reconstruct a manipulation demonstration.</p>
+<p>Sources indicate that it carries two cameras, each with a distinct job. Splitting the two roles is deliberate: the cheap wide fisheye gives the policy the context-rich, wrist-camera-style view it needs, while the RGBD camera does the heavy lifting of robust 6-DoF tracking.</p>
+<p>And while Grabette records data during tasks performed by a user, it relies on its robotic counterpart to execute the movements it has learned after training. So, meet Gripette, the robotic arm end-effector twin of Grabette.</p>
+<p>The family shares the same hardware DNA:.</p>
+<p>Grabette hand held recording device (left) and Gripette robot gripper (right).</p>
+<p id="sec-mid-116242">Industry observers note that components. Standard sensors you can buy, no closed pipeline, no fork lock-in. A Raspberry Pi, a standard Pi camera, an off-the-shelf OAK-D depth camera, magnetic encoders. The whole point is that anyone can build one from parts you can just order.</p>
+<p>Robot-agnostic by design. Nothing in the capture or the data format assumes a particular arm. Demonstrations are stored as camera-local 6-DoF cartesian pose plus gripper state, the output is a standard LeRobot dataset on the Hugging Face Hub, so the same data can drive different robots and different learning methods. You will still need the matching Gripette gripper on your arm though.</p>
+<p>This release enables anyone to go from "I want to demonstrate a task" to "I have a training-ready dataset" swiftly and without prior expertise.</p>
+<p>Recent findings suggest that press the button, and data from the observation camera, the tracking camera (color, depth, and IMU), and the gripper’s encoder joint values are recorded simultaneously, using a single shared clock to ensure proper synchronization. Press the button again to stop the episode, and the data is saved locally on the Raspberry Pi.</p>
+<p>It has been revealed that open the Grabette dashboard in your browser. Select the episodes you want to add to the dataset, and with one click, post-processing begins.</p>
+<p>Everything is now ready to start training!</p>
+<p>According to recent reports, A dataset is only interesting if it trains something. So, to show the loop end-to-end, we ship a complete example. But to be clear, this is an example of what is enables, not the product: the release is the recording system. Your Grabette data works with any method that consumes LeRobot datasets.</p>
+<p>Our example takes 200 recorded demonstrations such as :.</p>
+<p>Dataset available on this HF Dataset.</p>
+<p>Policy available on this HF Model.</p>
+<p>The data bottleneck doesn’t get solved by one lab, but by a community recording demonstrations everywhere. You can now help build the dataset: build a Grabette, record tasks you are interested in, and share them on the Hub. Every episode makes the open dataset bigger and more diverse, and every contributor makes robot learning a little less gated behind expensive hardware.</p>
+<p>Industry observers note that this release is only the start of the project! Grabette will keep evolving. We already have more coming, including Casquette, a head-mounted POV device to complement Grabette for egocentric capture (still a work in progress). But the most vital next step isn’t only ours, it’s also yours: start recording, and let’s build the dataset together.</p>
+<p>👉 Build a Grabette (GitHub) · Process your data (HF Space) · Contribute to the dataset.</p>
+<p>Built with ❤️ by Pollen Robotics.</p>
+<p>Sources indicate that @SteveNguyen  @glannuzel  Congrats on the release, really excited to build one of these.One small snag while working through the BoM: the electronics repo it links to isn't publicly accessible.Could elec_grabette be made public? Thanks!</p>
+<p id="sec-end-116242">Recent findings suggest that hi Arita, good catch! It is now public : https://github.com/pollen-robotics/elec_grabette.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/grabette" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="reachy-mini-the-open-source-robot-for-todays-and-tomorrows-ai-bui-116671.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116671. Reachy Mini - The Open-Source Robot for Today's and Tomorrow's AI Builders
+        </a>
+        
+        <a href="synthetic-data-save-money-time-and-carbon-with-open-source-104750.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #104750. Synthetic data: save money, time and carbon with open source
+        </a>
+        
+        <a href="industry-news-democrats-to-open-2028-primary-debates-in-june-afte-116675.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116675. Industry News: Democrats to open 2028 primary debates in June after pushback against earlier start
+        </a>
+        
+        <a href="asynchronous-robot-inference-decoupling-action-prediction-and-exe-116668.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #116668. Asynchronous Robot Inference: Decoupling Action Prediction and Execution
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
