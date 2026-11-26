@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nfs2root: A 12-year-old pre-auth remote root in the Linux kernel's NFS server</title>
+    <meta name="description" content="Port 2049 sits open on file servers, NAS appliances, build farms and Kubernetes storage nodes. Since 2014, the Linux kernel listening on it has let anyone ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/nfs2root-a-12-year-old-pre-auth-remote-root-in-the-linux-kernels--132316.html">
+    <meta property="og:title" content="Nfs2root: A 12-year-old pre-auth remote root in the Linux kernel's NFS server">
+    <meta property="og:description" content="Port 2049 sits open on file servers, NAS appliances, build farms and Kubernetes storage nodes. Since 2014, the Linux kernel listening on it has let anyone ">
+    <meta property="og:image" content="https://opensec.in/blog/media/ddf81bad-ef8d-43da-8d5b-bbb9d0a5f9a3.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/nfs2root-a-12-year-old-pre-auth-remote-root-in-the-linux-kernels--132316.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Nfs2root: A 12-year-old pre-auth remote root in the Linux kernel's NFS server", "image": ["https://opensec.in/blog/media/ddf81bad-ef8d-43da-8d5b-bbb9d0a5f9a3.jpg"], "datePublished": "2026-11-25T19:52:40.114+00:00", "dateModified": "2026-11-26T16:09:36.251844", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/nfs2root-a-12-year-old-pre-auth-remote-root-in-the-linux-kernels--132316.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Nfs2root: A 12-year-old pre-auth remote root in the Linux kernel's NFS server</h1>
+        <div class="meta-line">🌐 Source: <strong>Opensec</strong> &bull; 📅 25 Nov 2026 &bull; ⏱️ 3 min read (593 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Port 2049 sits open on file servers, NAS appliances, build farms and Kubernetes storage nodes.</li><li style='margin-bottom:6px;'>Pre-auth heap overflow in the Linux NFS server (nfsd).</li><li style='margin-bottom:6px;'>It has been revealed that fixed in Linux 6.12.117, 6.18.61, 7.3.2 and 7.4-rc1.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-132316"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-132316"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-132316"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Nfs2root: A 12-year-old pre-auth remote root in the Linux kernel's NFS server" loading="lazy" src="https://opensec.in/blog/media/ddf81bad-ef8d-43da-8d5b-bbb9d0a5f9a3.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-132316">Port 2049 sits open on file servers, NAS appliances, build farms and Kubernetes storage nodes. Since 2014, the Linux kernel listening on it has let anyone who can reach it write into kernel memory before logging in. We pointed OpenSec's Antara at it. It came back with a root shell.</p>
+<p>Pre-auth heap overflow in the Linux NFS server (nfsd).</p>
+<p>It has been revealed that fixed in Linux 6.12.117, 6.18.61, 7.3.2 and 7.4-rc1. Update the kernel and reboot.</p>
+<p>The NFS server runs inside the kernel and parses network input before it knows who you are. CVE-2026-99362 lives in that gap: a client can shrink its reply cache to zero bytes, then make the server copy a full reply into it. The copy lands on the kernel heap, and the client picks most of the bytes.</p>
+<p>Commit 47ee52986472 narrows the reply buffer while handling SEQUENCE. It ships in Linux 3.16.</p>
+<p>12 yearsEvery kernel since 3.16 carries it: LTS, distribution and appliance kernels.</p>
+<p>Jérémy Jean of ANSSI sends a fix upstream with a KASAN report.</p>
+<p>OpenSec's Antara flags the bug, scores it 9.8 and turns it into a root shell on its own.</p>
+<p>CVE-2026-99362 is published with fixes.</p>
+<p>A real run, end to end. Left: the victim's console. Right: our client on another machine, talking to the victim only over tcp/2049.</p>
+<p>Industry observers note that each NFSv4.1 session slot caches its last reply, so a retried request is answered exactly once. The client decides how significant that cache is.</p>
+<p>Set it to the minimum and every slot's buffer is zero bytes. nfsd4_sequence() then shrinks the reply buffer to that limit before it accepts the slot. Pad the request's tag so the buffer fills right after the SEQUENCE opcode, and the encoder quits without flagging an error. The server believes SEQUENCE succeeded and caches the whole reply, headers and tag included, into a buffer with room for nothing.</p>
+<p>That is 80 bytes copied, 61 of them past the end of the heap object, 40 of them chosen by the client.</p>
+<p>The fix checks that the reply fits before taking the slot, and makes the encoder report what it can't fit.</p>
+<p id="sec-mid-132316">It has been revealed that the exploit stays private. Each step is an ordinary NFS request:.</p>
+<p>The write corrupts the neighbouring slot's bookkeeping.</p>
+<p>A replay request returns 3.8 KB of kernel heap, and with it the KASLR slide.</p>
+<p>A forged pointer makes the kernel free an object we choose.</p>
+<p>We refill that memory with a fake callback built from NFS client names.</p>
+<p>We hang up. nfsd calls the fake callback, and the kernel runs /bin/sh as root.</p>
+<p>In the recording, that command is whoami; id; poweroff -f: the victim prints root, then uid=0(root), and switches itself off.</p>
+<p>Antara, OpenSec's white-box harness, flagged the nfsd reply-cache path, scored it 9.8, and built the leak, the arbitrary free and the root shell shown in the video by itself: end to end, with no human in the loop.</p>
+<p>Kernel hardening does not remove the overflow. Patch every host.</p>
+<p>In a recent development, tick what's true for your host. All four means exposed, today.</p>
+<p>On a distribution kernel, install the revision that lists CVE-2026-99362.</p>
+<p>Then restart nfs-server. This turns off pNFS and some 4.2 features.</p>
+<p>The attack is valid NFS, so there is no network signature. Look for:.</p>
+<p id="sec-end-132316">It has been revealed that we reported the bug to the NFSD maintainers and security@kernel.org on 22 September 2026 with the full remote-root exploit, and sent a patch the same day. CVE-2026-99362 was published with fixes on 20 November.</p>
+<p style="margin-top: 25px;">
+<a href="https://opensec.in/blog/nfs2root-cve-2026-99362" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-103-year-old-grandmother-competing-in-tekken-8-tour-139672.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139672. Industry News: 103-year-old grandmother competing in Tekken 8 tournament but doesn’t actually want to win
+        </a>
+        
+        <a href="53-holiday-and-christmas-cookies-to-bake-this-year-our-best-cooki-138954.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #138954. 53 holiday and Christmas cookies to bake this year: Our best cookie recipes, including newly introduced classics and old favorites.
+        </a>
+        
+        <a href="before-amp-after-this-couple-planned-to-flip-a-62-year-old-fixer--136149.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #136149. Before &amp; After: This Couple Planned to Flip a 62-Year-Old Fixer-Upper, Then Made It Their Home Instead
+        </a>
+        
+        <a href="how-did-this-14-year-old-get-sam-bankman-fried-on-the-phone-135851.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #135851. How Did This 14-Year-Old Get Sam Bankman-Fried on the Phone?
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

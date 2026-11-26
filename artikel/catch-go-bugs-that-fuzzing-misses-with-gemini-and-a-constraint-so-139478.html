@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch Go bugs that fuzzing misses with Gemini and a constraint solver</title>
+    <meta name="description" content="Sources indicate that I help lead Google's agent skills program, right now with 175 agent skills that supplement community collections like go-skills. To k">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-so-139478.html">
+    <meta property="og:title" content="Catch Go bugs that fuzzing misses with Gemini and a constraint solver">
+    <meta property="og:description" content="Sources indicate that I help lead Google's agent skills program, right now with 175 agent skills that supplement community collections like go-skills. To k">
+    <meta property="og:image" content="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/title-image.2e16d0ba.fill-1200x600.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-so-139478.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Catch Go bugs that fuzzing misses with Gemini and a constraint solver", "image": ["https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/title-image.2e16d0ba.fill-1200x600.png"], "datePublished": "2026-11-26T16:17:07.709602", "dateModified": "2026-11-26T16:17:07.709607", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-so-139478.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Catch Go bugs that fuzzing misses with Gemini and a constraint solver</h1>
+        <div class="meta-line">🌐 Source: <strong>Googleblog</strong> &bull; 📅 26 Nov 2026 &bull; ⏱️ 3 min read (633 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that I help lead Google's agent skills program, right now with 175 agent skills that supplement community collections like go-skills.</li><li style='margin-bottom:6px;'>In Go, every slice or index operation that can panic at runtime compiles down to an explicit bounds-check trap in machine code, after the compiler's optimizer strips out the checks it can already rule out.</li><li style='margin-bottom:6px;'>In this post, I'll walk through how the Gemini and Z3 pipeline works, why go test -fuzz missed two of those crashes (and the one-line change that fixes it), and where this approach fits in a day-to-day Go workflow.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-139478"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-139478"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-139478"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Catch Go bugs that fuzzing misses with Gemini and a constraint solver" loading="lazy" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/title-image.2e16d0ba.fill-1200x600.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-139478">Sources indicate that I help lead Google's agent skills program, right now with 175 agent skills that supplement community collections like go-skills. To keep that many skill files consistent, I wrote skill-lint, a standalone Go CLI that checks SKILL.md files and applies LLM-generated line edits before they ship. Even with skill-lint's own unit and fuzz test suite, a small slice or line-number mistake inside its Markdown parsers or edit applier can sit dormant until an unusual file or edit range triggers a runtime panic in the linter.</p>
+<p>In Go, every slice or index operation that can panic at runtime compiles down to an explicit bounds-check trap in machine code, after the compiler's optimizer strips out the checks it can already rule out. To hunt for crashes, I compiled key functions from my code to see which panic traps survived optimization, and Gemini 4 Argon translated the path to each trap into rules for the Z3 constraint solver. An LLM-written solver model isn't a sound proof system, but it gives the agent an independent way to reason about control flow and synthesize concrete Go reproducers, and every crash it finds is real because go test runs the offending bytes directly. That workflow caught all three bugs I planted in test parsers and turned up three latent bugs in skill-lint.</p>
+<p>In this post, I'll walk through how the Gemini and Z3 pipeline works, why go test -fuzz missed two of those crashes (and the one-line change that fixes it), and where this approach fits in a day-to-day Go workflow.</p>
+<p>A recent post from Anthropic highlighted how formal verification catches latent bugs in C and C++ by having frontier AI models write machine-checked Rocq proofs across OSS-Fuzz libraries. Instead of sampling random inputs like a fuzzer, a formal tool works backward from each failure condition to solve for the exact input that triggers it. Full theorem proving is still too heavy for most day-to-day Go projects, so I wanted to see how much of that bug-hunting power an agent can get from an LLM and a constraint solver in about a minute per function.</p>
+<p id="sec-mid-139478">In C and C++, reading or writing past the end of a buffer corrupts memory. Go catches out-of-bounds access at runtime instead, compiling every slice or index operation it can't prove safe into an explicit branch to runtime.panicBounds that panics, crashing the process unless recovered.</p>
+<p>According to recent reports, before generating machine code, Go's SSA prove pass already eliminates most of those checks by tracking slice lengths and loop variables. That optimization pass leaves behind only the runtime.panicBounds traps the compiler couldn't rule out on its own, giving the solver a short list of candidate crash sites to target.</p>
+<p>In a recent development, I compiled each target with GOOS=linux GOARCH=riscv64 go build -gcflags="-S -d=ssa/check_bce/debug=1" (-S prints the assembly listing and ssa/check_bce/debug=1 logs every surviving bounds check) and passed both the Go source and the disassembly to the model. Looking at Go source alone, you can't see which bounds checks the compiler already removed or where a register gets truncated to 8 bits; in the disassembly, both show up. I targeted RISC-V because it's the instruction set Anthropic's post targets for its Rocq proofs, and Go cross-compiles to it out of the box.</p>
+<p id="sec-end-139478">From there, Argon read the Go source and disassembly and returned a Z3 script modeling the path to each surviving trap, along with a patched function whenever it flagged a bug. Z3 then checked whether those constraints could be satisfied, and whenever it found a crashing input, go test replayed those bytes against the real function. Using an LLM saved me from translating assembly into solver constraints by hand. Argon's translation dominated the runtime, at about a minute per function, while Z3 itself finished in milliseconds.</p>
+<p style="margin-top: 25px;">
+<a href="https://developers.googleblog.com/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-solver/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-gemini-app-rolls-out-very-slick-camera-redesign-on--139584.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139584. Industry News: Gemini app rolls out very slick camera redesign on Android
+        </a>
+        
+        <a href="latest-update-google-messages-replacing-old-gemini-with-new-tasks-139506.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139506. Latest Update: Google Messages replacing old Gemini with new ‘tasks’ chat, and it’s very proactive
+        </a>
+        
+        <a href="big-google-home-revision-adds-these-new-nest-cam-app-and-gemini-f-139472.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139472. Big Google Home revision adds these new Nest Cam, app, and Gemini features
+        </a>
+        
+        <a href="exploring-the-indium-phosphide-supply-chain-the-material-constrai-139464.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139464. Exploring the Indium phosphide supply chain — the material constraint tightening the optical interconnect bottleneck
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

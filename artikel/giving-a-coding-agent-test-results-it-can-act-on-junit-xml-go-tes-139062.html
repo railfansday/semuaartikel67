@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giving a coding agent test results it can act on: JUnit XML, go test -json and a short failure summary</title>
+    <meta name="description" content="Most coding agents spend a large share of their turns in one loop: change code, run the tests, read the result, change code again. The quality of that loop">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/giving-a-coding-agent-test-results-it-can-act-on-junit-xml-go-tes-139062.html">
+    <meta property="og:title" content="Giving a coding agent test results it can act on: JUnit XML, go test -json and a short failure summary">
+    <meta property="og:description" content="Most coding agents spend a large share of their turns in one loop: change code, run the tests, read the result, change code again. The quality of that loop">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fstvvacr17hmucma4kwo4.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/giving-a-coding-agent-test-results-it-can-act-on-junit-xml-go-tes-139062.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Giving a coding agent test results it can act on: JUnit XML, go test -json and a short failure summary", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fstvvacr17hmucma4kwo4.png"], "datePublished": "2026-11-26T16:09:29", "dateModified": "2026-11-26T16:16:38.886425", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/giving-a-coding-agent-test-results-it-can-act-on-junit-xml-go-tes-139062.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Giving a coding agent test results it can act on: JUnit XML, go test -json and a short failure summary</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 26 Nov 2026 &bull; ⏱️ 3 min read (673 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Most coding agents spend a large share of their turns in one loop: change code, run the tests, read the result, change code again.</li><li style='margin-bottom:6px;'>Recent findings suggest that test runners already know the answer in structured form.</li><li style='margin-bottom:6px;'>Three common runners, each writing a report next to its normal output:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-139062"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-139062"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-139062"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Giving a coding agent test results it can act on: JUnit XML, go test -json and a short failure summary" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fstvvacr17hmucma4kwo4.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-139062">Most coding agents spend a large share of their turns in one loop: change code, run the tests, read the result, change code again. The quality of that loop depends on what "read the result" means. An exit code of 1 tells the model something failed and nothing about what. The full log tells it everything, at a cost in tokens and attention, and the one assertion that matters is somewhere in the middle.</p>
+<p>Recent findings suggest that test runners already know the answer in structured form. Most can write a report that lists every test, its status, and for each failure a message and a stack trace. This post indicates how to get those reports out of a sandbox and turn them into a tool result built for a model: the counts, the first few failures, and a clear signal when the run did not finish at all.</p>
+<p>Three common runners, each writing a report next to its normal output:.</p>
+<p>Recent findings suggest that jest can write the same JUnit XML through the separately installed jest-junit reporter. JUnit XML is the closest thing the ecosystem has to a shared format: a testsuite holds testcase elements, and a failing case has a failure or error child with a message attribute and the trace as text. Skipped cases have a skipped child.</p>
+<p>Go's format is a stream instead. Each line is an event with an Action such as run, output, pass, fail or skip, plus the Package and Test it belongs to. A test's output arrives as a series of output events before its fail.</p>
+<p>The parser below reads either format and returns the same shape: totals, the first five failures, and how many more were left out. Each failure's message and details are cut to a fixed size. It uses the fast-xml-parser package for XML.</p>
+<p>A few choices here are deliberate:.</p>
+<p>The tool that runs the tests should distinguish three outcomes, because the right next step is different for each:.</p>
+<p id="sec-mid-139062">It has been revealed that here is that tool for pytest with the Sandscale TypeScript SDK. run returns exitCode, stdout, stderr, timedOut and oomKilled, and readFile reads the report back:.</p>
+<p>In a recent development, the stale report is deleted before each run. Without that, a run that crashes before pytest writes anything would read the previous run's report and tell the model its tests failed for old reasons, or passed.</p>
+<p>According to recent reports, combine the exit code with the report rather than trusting either alone. A runner can exit non-zero with no failing tests listed, for example pytest exits with a distinct code when it collected no tests at all, and the summary's total of zero is the clue the model needs.</p>
+<p>Industry observers note that once the model knows which test failed, it rarely needs the whole suite again. Say so in the tool description, and give it a way to rerun a subset:.</p>
+<p>Narrow reruns are cheaper and give shorter, clearer reports. Run the full suite again before the agent declares the task done.</p>
+<p>Everything in this post runs inside the sandbox, under the agent's control. That is the right place for the edit-test loop, and the wrong place to decide whether a change is safe to merge. An agent can edit a test until it passes, mark it skipped, or change the configuration that decides which tests run. None of that is malicious; it is what optimizing for "tests pass" looks like.</p>
+<p>In a recent development, A Sandscale sandbox gives each run its own Firecracker microVM, so test suites the agent wrote or changed run against their own kernel and filesystem, with the network mode defaulting to none. The builtin:base template has Python 3, Node.js, Git and a C compiler; your project's own test dependencies go in with the project. The result fields this post relies on, exitCode, timedOut and oomKilled, come straight from run, and the command and the files read back are recorded in the audit log.</p>
+<p id="sec-end-139062">Originally published on the Sandscale blog.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/sandscale/giving-a-coding-agent-test-results-it-can-act-on-junit-xml-go-test-json-and-a-short-failure-1pl6" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="an-ai-coding-agent-a-browser-and-a-mac-tool-found-a-financial-fir-139394.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139394. An AI coding agent, a browser, and a Mac tool found a financial firm's access key in under 6 minutes
+        </a>
+        
+        <a href="battlefield-labs-is-coming-back-for-a-short-session-to-test-out-n-133651.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #133651. Battlefield Labs is coming back for a short session to test out next week's Battlefield 6 revision, and you can expect more tests in the future, too
+        </a>
+        
+        <a href="ai-kills-another-coding-competition-i-was-not-at-all-interested-i-132829.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #132829. AI kills another coding competition: 'I was not at all interested in giving awards to the output of large language models'
+        </a>
+        
+        <a href="meta-declined-to-let-the-fca-test-its-muse-agent-wired-reports-132299.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #132299. Meta declined to let the FCA test its Muse agent, WIRED reports
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Treating CSS Container Queries Like Traditional Media Queries</title>
+    <meta name="description" content="It has been revealed that I Code. I Write. Meme Rules. Ok, but seriously, I’m a web and mobile developer who writes a lot. In my spare time, I like to buil">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/stop-treating-css-container-queries-like-traditional-media-querie-138527.html">
+    <meta property="og:title" content="Stop Treating CSS Container Queries Like Traditional Media Queries">
+    <meta property="og:description" content="It has been revealed that I Code. I Write. Meme Rules. Ok, but seriously, I’m a web and mobile developer who writes a lot. In my spare time, I like to buil">
+    <meta property="og:image" content="https://files.smashing.media/articles/stop-treating-css-container-queries-traditional-media-queries/stop-treating-css-container-queries-traditional-media-queries.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/stop-treating-css-container-queries-like-traditional-media-querie-138527.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Stop Treating CSS Container Queries Like Traditional Media Queries", "image": ["https://files.smashing.media/articles/stop-treating-css-container-queries-traditional-media-queries/stop-treating-css-container-queries-traditional-media-queries.jpg"], "datePublished": "2026-09-16 13:00:00 +0000 UTC", "dateModified": "2026-11-26T16:15:58.440402", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/stop-treating-css-container-queries-like-traditional-media-querie-138527.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Stop Treating CSS Container Queries Like Traditional Media Queries</h1>
+        <div class="meta-line">🌐 Source: <strong>Smashingmagazine</strong> &bull; 📅 2026-09-16 &bull; ⏱️ 10 min read (2078 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Ok, but seriously, I’m a web and mobile developer who writes a lot.</li><li style='margin-bottom:6px;'>Weekly tips on front-end & UX.Trusted by 182,000+ folks.</li><li style='margin-bottom:6px;'>According to recent reports, to be completely honest with you, I missed the news when CSS Container Queries first shipped.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-138527"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-138527"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-138527"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Stop Treating CSS Container Queries Like Traditional Media Queries" loading="lazy" src="https://files.smashing.media/articles/stop-treating-css-container-queries-traditional-media-queries/stop-treating-css-container-queries-traditional-media-queries.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-138527">It has been revealed that I Code. I Write. Meme Rules. Ok, but seriously, I’m a web and mobile developer who writes a lot. In my spare time, I like to build products that would …
+More about
+Victor ↬.</p>
+<p>Weekly tips on front-end &amp; UX.Trusted by 182,000+ folks.</p>
+<p>According to recent reports, to be completely honest with you, I missed the news when CSS Container Queries first shipped. And when I finally heard about it, my very first thought was, “Why exactly do I need this when media queries already exist?”.</p>
+<p>Recent findings suggest that I’m not proud of that reaction, knowing what I know now, but it was comforting to know that I wasn’t alone. In fact, there are legions of us out there.</p>
+<p>What baffles me is that container queries aren’t a fresh feature, as it currently sits at around 94% browser support. And yet, very few people are actually using it. According to the State of CSS survey, 86% of developers are aware of container queries, but only 41.4% actually use them. Surveys can be biased and not completely representative of our entire field, but this one is certainly the best indicator we’ve got.</p>
+<p>Industry observers note that kevin Powell also talked about this at SmashingConf Amsterdam 2026: Container Queries adoption has been terrible. And that is so strange to me, knowing that the ability for components to adapt to the size of their outer container has been at the top of so many CSS wishlists over the years.</p>
+<p>Recent findings suggest that I’m not particularly interested in how many people are using container queries as much as in how they are using them. I can’t account for everyone, but from what I’ve seen — including in my own early attempts — many of us are using them wrong.</p>
+<p>The bottom line is that incorrect use comes down to the same impression I had when learning about them: they absolutely look just like media queries at first glance. And since they look similar, it’s easy to assume they serve similar purposes and work the same way.</p>
+<p>According to recent reports, note: I should state up front that what I’m focusing on in this article is using container size queries, i.e., a responsive design technique for responding to the size of a particular container. There are also container style queries that respond to a container’s computed styles (and are experimental at the time of this writing). You can catch up on those in Juan Diego’s piece here on Smashing Magazine where he examines their possible use cases.</p>
+<p>The viewport is a proxy. It always has been. Media queries are what gave us the illusion that screen width alone is responsible for how responsive apps adapt to their environment.</p>
+<p>Ask yourself this: When you write @media, what are you asking the browser?</p>
+<p>I, like most developers, am asking the browser: How wide is the screen right now? That’s it.</p>
+<p>Media queries answer that beautifully, but what happens when this .card component is placed in a grid cell that’s 300px wide on a 1920px desktop screen?</p>
+<p>Recent findings suggest that the media query doesn’t care; it does its job. The viewport is still 1920px, so min-width: 1024px fires and the matched query styles are applied, even though the card only has 300px of space to work with. Eventually, everything in the card deforms, overflows, or cramps up.</p>
+<p>It’s common to think of responsive design purely as a system for updating complete page layouts, like going from two columns on a large screen to a single column on a small screen.</p>
+<p>Container queries are smarter than that. They make responsive layouts more reliant on what’s happening inside a component rather than on the outer context that has no insight into a component’s contents. It is more like: “How much space is available for me in this specific spot, right now?”.</p>
+<p>Here is the same card code example we looked at in the last section, but with a container query:.</p>
+<p>Sources indicate that this changes everything. The card isn’t influenced by the viewport; its only concern is whether the .card component’s parent wrapper has at least 450px of inline (i.e., horizontal in a left-to-right writing mode) space. If that condition is true, the component goes horizontal; if not, it goes to its default block display.</p>
+<p>See the Pen [Viewport vs Container [forked]](https://codepen.io/smashingmag/pen/01a0a73d-6f39-709f-8dae-037f6b588852) by Vayo.</p>
+<p>A very interesting way to distinguish @media and @container queries is the layout type.</p>
+<p>Media queries are for the “macro” layout; they look outward. Stuff like page structure, the header that spans the window, footers, main grid layout, system preferences (prefers-color-scheme), device capabilities (touch screens). You know, anything that is majorly true to the entire page structure.</p>
+<p>Container queries, I’d say, are for “micro” layouts, i.e., most things that live inside the “macro” layout. We use them when any content needs to responsively fit whatever space it is allocated. Components that come to mind are things like cards, widgets, forms, navigation, and so on.</p>
+<p>In other words, think “page layout” vs. “component layout”.</p>
+<p>Recent findings suggest that an element shouldn’t magically become “tablet-sized” just because the width exceeds an abstract width threshold like 768px. Instead, it should switch layout when it has enough space to do so, whether that happens on a mobile viewport or inside a desktop sidebar.</p>
+<p>According to recent reports, in case you’re still not convinced, did you know there are over 2,300 unique viewport sizes on the modern web? Do you think it is possible to account for all of them?</p>
+<p>I’m not hating on media queries. It’s that in this era of responsiveness and component re-use, layout logic is closer to the container than the viewport. When we think in terms of containers and components, we’re effectively relying on the content to determine layout, not the viewport.</p>
+<p>Recent findings suggest that responsive typography is a good example of something many of us have relied on media queries for. The fact that media queries come with their own CSS units — e.g., vw, vh, and so on — that are relative to the viewport size makes media queries look really good for adjusting font size based on the user’s screen size.</p>
+<p>According to recent reports, this works until that same component is moved into a different context, like a sidebar, where the viewport is completely irrelevant. Now, because we tied the responsiveness to the wrong reference point, the scaled typography can get too massive or too small.</p>
+<p>Container queries come with their very own units — cqi, cqw, cqb, among others — and we can take responsive components further by coupling those units with the CSS clamp() function, using it for fluid typography that scales with the component rather than the viewport:.</p>
+<p>See the Pen [Fluid Typography [forked]](https://codepen.io/smashingmag/pen/01a0a73f-1a44-750c-8b40-9b0ab774d981) by Vayo.</p>
+<p id="sec-mid-138527">With this in place, the entire code is self-contained to that element’s specific container.</p>
+<p>According to recent reports, interestingly, container queries can, in a way, detect the state of a component’s internal layout. It’s not bulletproof, but it is also something media queries simply cannot do because they only observe the external browser window and are structurally blind to internal layout events like when, for example, flex items wrap onto a new line. Let’s poke at that.</p>
+<p>Recent findings suggest that flexbox is superb at wrapping content (flex-wrap: wrap), allowing flex items to automatically wrap to latest lines when the flex container runs out of space to fit them in a single row. But CSS by itself can’t tell when that wrap happens. There isn’t something like a :wrapped pseudo-class or a media query like @media (flex-wrapped: true) that would get us there.</p>
+<p>Media queries only observe the browser window, as they can’t see internal changes. That is pretty much what flex wrapping is: a width state change on the item itself.</p>
+<p>For example, if you have a horizontal menu that is lined up with flexbox and you want the items to restyle themselves only when wrapped, you’d be in JavaScript territory, using ResizeObserver to get that information. However, when we nest container queries inside flex items, we can come up with a workaround to get what we need without JavaScript, thanks to this technique I learned from Kevin Powell. The core idea is to allow a flex item to flex-grow: 1 when we query the container’s inline size.</p>
+<p>See the Pen [Fluid Typography [forked]](https://codepen.io/smashingmag/pen/01a0a73f-1a44-750c-8b40-9b0ab774d981) by Vayo.</p>
+<p>This works. As the parent size shrinks and the cards wrap to two lines, the card item expands, the container query fires, and applies the necessary styles.</p>
+<p>See the Pen [Flex Wrap Detection Using Container Queries [forked]](https://codepen.io/smashingmag/pen/01a0a752-150a-754e-a77a-07fe1b046658) by Vayo.</p>
+<p>Container queries, like all things, come with some side effects or caveats you will want to watch for before reaching for them.</p>
+<p>Container queries need something similar to a parent-child relationship to function as expected. Let’s say we have this markup:.</p>
+<p>We can’t actually query the .card component to adjust the .card-content, like this:.</p>
+<p>In a recent development, this doesn’t work because a container cannot query itself. In that last example, we’re querying a card container and then attempting to adjust that container’s display based on its size. It’s an infinite loop.</p>
+<p>Instead, we need an additional wrapper that makes the .card a descendant of the container:.</p>
+<p>From there, we can query the .cards container and adjust the .card layout accordingly:.</p>
+<p>In media queries, this doesn’t matter as @media does not care which element you style inside the block; its only concern is the viewport, which is always available. So you can just slap a condition on any element and call it a day.</p>
+<p>This happens when querying the container’s size (i.e., its block, or vertical, size) instead of its inline-size:.</p>
+<p>Sources indicate that why? Because the browser calculates the container’s dimensions without looking at its children. If we don’t give the .hero-banner an explicit height (or min-height or aspect-ratio), the browser sets a height of 0px.</p>
+<p>For that reason, it’s often better to query a container by its inline-size instead. That is, unless you genuinely need to query the container’s block size.</p>
+<p>Media queries aren’t affected by this, as they treat height the same way they treat @media (min-height: ...) does, i.e., ask the viewport and move on.</p>
+<p>Another container query limitation: we can’t query against a custom property value:.</p>
+<p>This is because custom properties depend on values that cascade down the DOM tree. There’s the possibility that a container query that relies on a custom property can change that same custom property. And it can swiftly get complicated:.</p>
+<p>I don’t think any project should wholesale use @container instead of @media. Media queries still play an notable role in responsive layouts. It’s about understanding the separation of concerns.</p>
+<p>It has been revealed that I tend to reach for container queries when a component is used in more than one layout context. For example, a .card element could live in a full-width grid or a narrower sidebar. If that’s the case, then we’ll want the component’s content to determine when it adjusts rather than a media query that looks at the outer viewport.</p>
+<p>Similarly, I reach for media queries when a component solely exists at the page level. This would be something like a main navigation that always sits at the top of the page. It is directly influenced by the viewport’s size, meaning that the viewport is a reliable reference for when the navigation needs to adjust. Again, it’s all about “macro” layout versus “micro” layouts.</p>
+<p>Here’s a diagram for how I reason about which type of query to use:.</p>
+<p>Recent findings suggest that at the end of the day, the core reason why container queries look incredibly similar to media queries is simply familiarity. They’re not exactly “upcoming”, but they are way less understood and adopted than media queries. But media queries have plenty of their own limitations; otherwise, we wouldn’t need container queries to fill those gaps.</p>
+<p>What we have is a more effective feature for detecting when a specific component’s context changes and a means for adjusting styles based on its content, as it should be when that component can exist in multiple contexts.</p>
+<p>Tips on front-end &amp; UX, delivered weekly in your inbox. Just the things you can actually use.</p>
+<p>With practical takeaways, live sessions, video recordings and a friendly Q&amp;A.</p>
+<p id="sec-end-138527">Industry observers note that everything TypeScript, with code walkthroughs and examples. And other printed books.</p>
+<p style="margin-top: 25px;">
+<a href="https://smashingmagazine.com/2026/09/stop-treating-css-container-queries-traditional-media-queries/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="stop-treating-agents-as-one-off-projects-and-start-running-them-a-139500.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139500. Stop treating agents as one-off projects and start running them as a continuous discipline
+        </a>
+        
+        <a href="latest-update-the-eat-like-me-look-like-me-lie-is-everywhere-on-s-138938.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #138938. Latest Update: The ‘Eat Like Me, Look Like Me’ Lie Is Everywhere On Social Media (M)
+        </a>
+        
+        <a href="breaking-the-festive-container-plant-that-outshines-poinsettias-i-137480.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #137480. Breaking: The Festive Container Plant That Outshines Poinsettias – It's Evergreen And Smells Just Like Vanilla!
+        </a>
+        
+        <a href="the-secret-to-surviving-holiday-chaos-having-a-one-stop-shop-like-137295.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #137295. The Secret to Surviving Holiday Chaos? Having A One-Stop Shop Like CVS
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

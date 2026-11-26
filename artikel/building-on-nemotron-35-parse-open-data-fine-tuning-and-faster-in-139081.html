@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference</title>
+    <meta name="description" content="We recently released NVIDIA Nemotron 3.5 Parse, a compact document model that turns page images into structured data for retrieval-augmented generation (RA">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/building-on-nemotron-35-parse-open-data-fine-tuning-and-faster-in-139081.html">
+    <meta property="og:title" content="Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference">
+    <meta property="og:description" content="We recently released NVIDIA Nemotron 3.5 Parse, a compact document model that turns page images into structured data for retrieval-augmented generation (RA">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/6365c3f398da81987e2753f2/zArpuP9uLsLz9luMW0K2g.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/building-on-nemotron-35-parse-open-data-fine-tuning-and-faster-in-139081.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference", "image": ["https://cdn-uploads.huggingface.co/production/uploads/6365c3f398da81987e2753f2/zArpuP9uLsLz9luMW0K2g.png"], "datePublished": "2026-11-26T05:05:36", "dateModified": "2026-11-26T16:16:40.220448", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/building-on-nemotron-35-parse-open-data-fine-tuning-and-faster-in-139081.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 26 Nov 2026 &bull; ⏱️ 6 min read (1300 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>We recently released NVIDIA Nemotron 3.5 Parse, a compact document model that turns page images into structured data for retrieval-augmented generation (RAG) and agents.</li><li style='margin-bottom:6px;'>Now we’re building on that release with synthetic training datasets, a fine-tuning recipe, and a DFlash2 speculator for faster inference.</li><li style='margin-bottom:6px;'>According to recent reports, parse extracts content from pages of documents into reading order, assigns content classes such as headings, paragraphs, tables, and charts, and returns bounding boxes that locate the content.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-139081"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-139081"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-139081"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/6365c3f398da81987e2753f2/zArpuP9uLsLz9luMW0K2g.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-139081">We recently released NVIDIA Nemotron 3.5 Parse, a compact document model that turns page images into structured data for retrieval-augmented generation (RAG) and agents.</p>
+<p>Now we’re building on that release with synthetic training datasets, a fine-tuning recipe, and a DFlash2 speculator for faster inference. We’re also sharing how we trained Parse 3.5: first teaching document understanding through supervised fine-tuning, then using reinforcement learning to improve accuracy, consistency, and reliable completion.</p>
+<p>According to recent reports, parse extracts content from pages of documents into reading order, assigns content classes such as headings, paragraphs, tables, and charts, and returns bounding boxes that locate the content. Tables and charts become structured records that can power downstream document processing applications.</p>
+<p>According to recent reports, figure 1. Actual model output from a synthetic operations brief, showing the connection between the page and its structured representation.</p>
+<p>Sources indicate that this latest version of Parse significantly extends its ability to read charts and tables, especially in more difficult and ambiguous cases. For example, bar charts or other plots that do not have any marked numeric values. The model is able to infer values by looking at the axes and height of the bar to derive these. Tables can be especially tricky because the structure is so meaningful, a shifted row or column can totally change the interpretation and meaning. These advancements have been largely powered by synthetic data generation, rendering variations of charts and tables with known ground truth and then training our model to reverse this process.</p>
+<p>We are open-sourcing three datasets used in the Parse 3.5 training:.</p>
+<p>Synthetic Charts V1 — 9.98M examples: rendered charts and structured annotations for learning categories, series, and numerical values.</p>
+<p>Synthetic Tables V1 — 1M examples: rendered HTML tables with targets that preserve rows, columns, headers, and cell relationships.</p>
+<p>OCR Synthetic Multilingual v2 — 7.9M examples: synthetic document pages with Parse-format targets across varied fonts and layouts, for multilingual OCR and structured page reading.</p>
+<p>It has been revealed that each release includes images, annotations, generation documentation, and the training format. Use these pairs to fine-tune document models or create newly introduced variations for a target document type or language.</p>
+<p>It has been revealed that figure 2. Parse recovers 18, 27, 39, and 54 from the chart geometry.</p>
+<p>Recent findings suggest that we trained Parse 3.5 with two phases of training. Supervised fine-tuning (SFT) spanning text, layout, tables, charts, and multilingual documents. Learning to predict structured targets established the general capability of reading a page and representing its contents.</p>
+<p>We then continued with reinforcement learning with verifiable rewards (RLVR), using Group Relative Policy Optimization (GRPO). Rewards check the quality of sampled extractions. For example, a chart extraction can earn a better reward for recovering the correct series and values, producing a usable structure, and finishing without repeatedly generating the same content.</p>
+<p>A difficult page can have several valid representations. These checks give the model flexibility to find a correct answer without prescribing one exact token sequence, while discouraging looping and unfinished output.</p>
+<p>Industry observers note that figure 3. A controlled comparison of SFT and GRPO with matched evaluation settings. These are development checkpoints, separate from the final released model. Loop counts use a repetition check. Methods.</p>
+<p>The matched comparison reveals the benefit: loop-flagged outputs fall from 126 to 29 pages—about 77% fewer—and outputs reaching the 9,000-token limit fall from 185 to 35. Overall score improves from 66.24 to 71.38, including +5.18 points in tables and +4.15 in charts.</p>
+<p>Recent findings suggest that A parser must generate substantial text and structure for every page. Alongside the training work, we optimized how Parse 3.5 processes images and decodes those outputs.</p>
+<p id="sec-mid-139081">In a recent development, naViT preprocessing adapts the input shape to the page. A visual adapter compresses the image sequence, and the text decoder consumes it as a prefix, replacing encoder–decoder cross-attention. Grouped-query attention with eight key/value heads (GQA-8) reduces the decoder’s attention-cache memory.</p>
+<p>In a recent development, the built-in multi-token prediction (MTP) head supplies one-token lookahead. Our DFlash2 speculator goes further: a small draft model proposes up to 32 tokens ahead, and Parse verifies the proposals together. In the measured 32-token configuration, it averages about 14 accepted draft tokens, or roughly 15 output tokens of progress per verification step including the target token.</p>
+<p>Figure 4. Native single-pass throughput on one H200, BF16, using the same 2,078 pages. Parse 2.0 uses one trial per point; Parse 3.5 shows three-trial medians. Arrows show the gain from Parse 3.5 base to DFlash2. Measurement details.</p>
+<p>In the native single-pass benchmark on one H200 in BF16, DFlash2 increased throughput 7.62× at concurrency 1 and 1.52× at concurrency 512, compared with Parse 3.5 with speculative decoding disabled. At 512, Parse 3.5 reaches 13.48 pages/s without speculation and 20.44 pages/s with DFlash2, versus 2.98 for Parse 2.0. Those are 4.53× and 6.86× the Parse 2.0 throughput, respectively.</p>
+<p>Fast parsing gives us room to revisit difficult regions. Start with a full-page prediction, then add focused reprocessing where the document needs it:.</p>
+<p>Single pass - Parse the full page once for text, layout, tables, and charts.</p>
+<p>In a recent development, double pass - use for dense tables and small chart details. Crop the table and chart regions found by the parser, re-parse them at higher detail, and merge the refinements into the page output.</p>
+<p>Triple pass - Instead of only using the models full page parsing bounding boxes, use a second pass of the model in detection mode in order to get verification that all boxes have been accurately found and text has not been missed and re-extract any found charts or tables in a third pass.</p>
+<p>Figure 5. Additional stages focus computation on difficult regions. Multiple crops can require multiple requests.</p>
+<p>In a recent development, in the published reference evaluation, double and triple pass add 2.18 and 2.46 ParseBench points over single pass. The additional work lets applications trade some throughput for better extraction in difficult regions. Reference results and serving measurements.</p>
+<p>We are sharing a Parse fine-tuning recipe that takes developers through paired data generation, NeMo Automodel SFT, and NeMo RL GRPO, using vLLM to generate candidate answers.</p>
+<p>According to recent reports, the worked example uses a synthetic dental form with an odontogram: a chart showing teeth, planned procedures, and affected tooth surfaces. Before adaptation, Parse reads the printed tooth numbers but misses the intended procedure table. SFT teaches it to associate each marked tooth with a procedure and its placement on the tooth.</p>
+<p>Figure 6. A recorded recipe example: after SFT, all six chart rows match the target. Full image and native training label.</p>
+<p>Industry observers note that RLVR then reinforces accuracy and consistent completion. In the dental reference run, the estimated first-attempt success rate (sampled pass@1) rose from 0.00% for the base model to 95.85% after SFT and 96.58% after RLVR.</p>
+<p>In a recent development, figure 7. Matched evaluation on 256 held-out forms from the same synthetic generator, with eight samples per page. Success requires natural completion, exact chart content, and error-free normalized page text. Evaluation protocol.</p>
+<p>Recent findings suggest that to adapt the recipe, supply your own image/label pairs and a verifier: checks that determine whether an extraction is correct. The included document reward components cover text fidelity, bounding boxes, tables, chart facts, and completion. Combine the components relevant to your task, add schema checks, and use completion and repetition checks to discourage looping or unfinished output.</p>
+<p>We are excited that the community has extended and improved Parse for Thai, Persian/Farsi, and Arabic already and we hope that these additional datasets and fine-tuning recipes will help encourage these efforts and future models.</p>
+<p id="sec-end-139081">We thank Denis Ovchinnikov for his work on vLLM integration and independent performance validation, Oliver Holworthy for improving the fine-tuning recipe's runtime setup and reproducibility, and Bo Liu for technical review.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="20x-faster-trl-fine-tuning-with-rapidfire-ai-139809.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139809. 20x Faster TRL Fine-tuning with RapidFire AI
+        </a>
+        
+        <a href="industry-news-make-llm-fine-tuning-2x-faster-with-unsloth-and-trl-127964.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127964. Industry News: Make LLM Fine-tuning 2x faster with Unsloth and 🤗 TRL
+        </a>
+        
+        <a href="measuring-open-source-llama-nemotron-models-on-deepresearch-bench-139879.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139879. Measuring Open-Source Llama Nemotron Models on DeepResearch Bench
+        </a>
+        
+        <a href="sygra-the-one-stop-framework-for-building-data-for-llms-and-slms-139848.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139848. SyGra: The One-Stop Framework for Building Data for LLMs and SLMs
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

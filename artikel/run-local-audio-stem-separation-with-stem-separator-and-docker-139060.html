@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run Local Audio Stem Separation with Stem Separator and Docker</title>
+    <meta name="description" content="If you want to remove vocals from a song, isolate drums, or export several instrument tracks, sending audio to a third-party API is not your only option. S">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/run-local-audio-stem-separation-with-stem-separator-and-docker-139060.html">
+    <meta property="og:title" content="Run Local Audio Stem Separation with Stem Separator and Docker">
+    <meta property="og:description" content="If you want to remove vocals from a song, isolate drums, or export several instrument tracks, sending audio to a third-party API is not your only option. S">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Frvnf4bafguhcus49kop7.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/run-local-audio-stem-separation-with-stem-separator-and-docker-139060.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Run Local Audio Stem Separation with Stem Separator and Docker", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Frvnf4bafguhcus49kop7.png"], "datePublished": "2026-11-26T16:09:29", "dateModified": "2026-11-26T16:16:38.760407", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/run-local-audio-stem-separation-with-stem-separator-and-docker-139060.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Run Local Audio Stem Separation with Stem Separator and Docker</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 26 Nov 2026 &bull; ⏱️ 7 min read (1306 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>If you want to remove vocals from a song, isolate drums, or export several instrument tracks, sending audio to a third-party API is not your only option.</li><li style='margin-bottom:6px;'>This tutorial uses the project's stable v1.0.0 release and Docker Compose.</li><li style='margin-bottom:6px;'>Recent findings suggest that clone the repository, start the default Compose service, open http://localhost:7860, and upload an MP3, WAV, FLAC, M4A, AAC, OGG, or OPUS file.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-139060"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-139060"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-139060"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Run Local Audio Stem Separation with Stem Separator and Docker" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Frvnf4bafguhcus49kop7.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-139060">If you want to remove vocals from a song, isolate drums, or export several instrument tracks, sending audio to a third-party API is not your only option. Stem Separator is an open-source, self-hosted web application that runs the separation pipeline on your own machine, homelab, or NAS.</p>
+<p>This tutorial uses the project's stable v1.0.0 release and Docker Compose. You will start the CPU version, verify its health endpoint, upload a supported audio file through the browser, and understand when the NVIDIA GPU configuration is appropriate.</p>
+<p>Recent findings suggest that clone the repository, start the default Compose service, open http://localhost:7860, and upload an MP3, WAV, FLAC, M4A, AAC, OGG, or OPUS file. The default mode separates vocals and music. Stem Separator stores model weights in a named Docker volume and writes job output to ./data/output.</p>
+<p>Recent findings suggest that the key boundary is that this is local processing, not an anonymous public service. The application does not include built-in authentication or rate limiting, so keep it on localhost or a trusted LAN unless you add an authenticated reverse proxy.</p>
+<p>The CPU deployment includes FFmpeg in the image. You do not need to install Python, PyTorch, or FFmpeg on the host for this path.</p>
+<p>Industry observers note that the repository is MIT licensed and the stable release used here is v1.0.0. The project README is the source for the commands and configuration discussed below: paladini/stem-separator.</p>
+<p>Clone the repository and build the service:.</p>
+<p>The service listens on port 7860. Open http://localhost:7860 in a browser.</p>
+<p>Sources indicate that the first build can take time because the image installs dependencies. The first separation can also take longer while the selected model downloads.</p>
+<p>Check the container and its health endpoint:.</p>
+<p>Recent findings suggest that A healthy response reports the detected device, whether FFmpeg is available, and the active and queued job counts. If FFmpeg is unavailable, the endpoint reports a degraded state instead of pretending that a separation can succeed.</p>
+<p>Inspect the application logs while the first model is loading:.</p>
+<p>Recent findings suggest that stop following the logs with Ctrl+C. The container keeps running.</p>
+<p>Recent findings suggest that in the web interface, select an audio file and choose a separation goal. The default Vocals &amp; Music mode uses the curated MDX-Net Inst HQ 3 model and produces vocals and music tracks. The interface only exposes tracks that the selected model can produce, which avoids requesting outputs that the model cannot generate.</p>
+<p>Choose an output format supported by the application:.</p>
+<p>Submit the job and wait for the stages shown in the interface: preparing audio, loading the model, separating tracks, and exporting files. When processing finishes, preview tracks in the browser or download individual files and the ZIP archive.</p>
+<p>According to recent reports, the default Compose file maps the host directory ./data/output to /data/output in the container. That directory holds job state and exported tracks, so the results remain available when the container restarts. Model weights use the named volume stem-separator-models, which prevents a model from being downloaded again after every container recreation.</p>
+<p>The default Compose configuration is intentionally conservative:.</p>
+<p>These settings cap upload size and duration, reject jobs when disk space is too low, limit concurrent processing to one job, and bound the waiting queue. Completed or failed job folders are retained for 24 hours by default.</p>
+<p id="sec-mid-139060">Sources indicate that the default model is a practical CPU starting point. The repository also documents a BS-Roformer model of about 610 MB, recommended for an NVIDIA GPU because CPU processing can be slow. Model file size is not the same as runtime memory, so treat the RAM and VRAM guidance as a baseline, not a guarantee.</p>
+<p>The project provides a separate Compose override for NVIDIA CUDA. The host needs an updated NVIDIA driver and the NVIDIA Container Toolkit installation. Verify that Docker can see the GPU before starting Stem Separator:.</p>
+<p>Then start the GPU image with both Compose files:.</p>
+<p>The override replaces the CPU image, requests all GPUs, and keeps the same port and mounts. Do not run both stacks in the same checkout because both publish port 7860.</p>
+<p>The Docker configuration supports CPU and NVIDIA CUDA deployments. The README does not claim verified Docker acceleration for Apple Silicon MPS/CoreML, AMD ROCm, Intel graphics, or Windows DirectML. If you need those paths, evaluate the native Python setup separately instead of assuming the Docker image will pass through the host accelerator.</p>
+<p>It has been revealed that stem Separator places a small web application in front of python-audio-separator. Its catalog maps friendly goals such as Vocals &amp; Music to a verified model and a set of output tracks. The job manager validates the input, creates an isolated job directory, runs the engine, and exposes status and download endpoints.</p>
+<p>That separation is useful operationally. A malformed filename or unsupported extension can be rejected before inference, and a low-disk condition can stop a job before it consumes more storage. Engine failures can return as actionable application errors rather than unfiltered stack traces.</p>
+<p>Check the logs and verify that the container has its bundled FFmpeg available. For a native Python installation, install FFmpeg and confirm that both ffmpeg and ffprobe are on PATH. A degraded health response is a signal to fix the media dependency before submitting a job.</p>
+<p>The first use of a model downloads its weights. Watch docker compose logs -f, check available disk space, and remember that the model cache is mounted at /data/models. Deleting the named volume forces the downloads again.</p>
+<p>It has been revealed that start with the default Vocals &amp; Music model, reduce concurrency if you changed it, or choose the Force CPU option exposed by the application. The larger studio model and multi-instrument modes need more memory. A GPU does not remove the need to size the host and its VRAM correctly.</p>
+<p>Sources indicate that run docker compose ps and inspect the port mapping. If another application owns port 7860, change the host side of the mapping in a local Compose override, then use the matching browser URL. Keep the container port at 7860 unless you also change the health check and application configuration consistently.</p>
+<p>The README documents local processing, filename sanitization, isolated UUID job directories, and path-containment checks for downloads. These safeguards are not a complete deployment security model.</p>
+<p>There is no built-in authentication or per-IP rate limiting. Do not expose this service directly to the public internet. If remote access is necessary, put it behind a reverse proxy with HTTPS, authentication, request-size limits, and rate limits. Also review the licenses and usage rights for the audio files and model weights you process.</p>
+<p>In a recent development, the project is designed to process audio locally. In the Docker workflow, input files, model inference, and exports stay in the host's container volumes unless you add another integration yourself.</p>
+<p>It has been revealed that no. The CPU Compose file is the default. A compatible NVIDIA GPU can accelerate supported workloads, but it adds host driver and toolkit requirements.</p>
+<p>It has been revealed that run docker compose down. The named model volume and the ./data/output bind mount remain unless you explicitly remove them.</p>
+<p>According to recent reports, stem Separator turns local audio stem separation into a repeatable Docker workflow: one Compose command, a browser interface, persistent model storage, bounded jobs, and explicit CPU/GPU tradeoffs. Start with the CPU deployment, verify /health, and move to the NVIDIA override only when the host prerequisites and memory budget are clear.</p>
+<p>What would make a self-hosted separator more useful for your workflow: batch-folder processing, an authenticated multi-user mode, or a more detailed quality comparison between models?</p>
+<p id="sec-end-139060">In a recent development, AI assistance disclosure: AI assistance was used to organize and edit this tutorial. The commands, project behavior, limits, and security notes were checked against the public repository, its v1.0.0 release, and the current project documentation.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/paladini/run-local-audio-stem-separation-with-stem-separator-and-docker-2ckb" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="meet-the-new-docker-built-to-run-on-trust-127460.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #127460. Meet the New Docker: Built to Run on Trust
+        </a>
+        
+        <a href="3lm-a-benchmark-for-arabic-llms-in-stem-and-code-139880.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139880. 📚 3LM: A Benchmark for Arabic LLMs in STEM and Code
+        </a>
+        
+        <a href="introducing-anylanguagemodel-one-api-for-local-and-remote-llms-on-139811.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139811. Introducing AnyLanguageModel: One API for Local and Remote LLMs on Apple Platforms
+        </a>
+        
+        <a href="latest-update-ggml-and-llamacpp-join-hf-to-ensure-the-long-term-p-139763.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139763. Latest Update: GGML and llama.cpp join HF to ensure the long-term progress of Local AI
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

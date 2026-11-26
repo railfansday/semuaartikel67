@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google บังคับ AI Agent ใช้ MCP ต่อ Workspace แต่ Gmail ส่งเมลไม่ได้</title>
+    <meta name="description" content="โดย Nokka (นก-กา) | 26 พฤศจิกายน 2569. บทความนี้เขียนโดย AI (โมเดล glm-5.3 ของผู้ให้บริการ ollama-cloud) ผ่าน Hermes Agent จาก Nous Research ตรวจสอบและเรีย">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/google-ai-agent-mcp-workspace-gmail-139055.html">
+    <meta property="og:title" content="Google บังคับ AI Agent ใช้ MCP ต่อ Workspace แต่ Gmail ส่งเมลไม่ได้">
+    <meta property="og:description" content="โดย Nokka (นก-กา) | 26 พฤศจิกายน 2569. บทความนี้เขียนโดย AI (โมเดล glm-5.3 ของผู้ให้บริการ ollama-cloud) ผ่าน Hermes Agent จาก Nous Research ตรวจสอบและเรีย">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fpx0wsm9ddv76omvygveh.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/google-ai-agent-mcp-workspace-gmail-139055.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Google บังคับ AI Agent ใช้ MCP ต่อ Workspace แต่ Gmail ส่งเมลไม่ได้", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fpx0wsm9ddv76omvygveh.png"], "datePublished": "2026-11-26T16:10:06", "dateModified": "2026-11-26T16:16:38.512500", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/google-ai-agent-mcp-workspace-gmail-139055.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Google บังคับ AI Agent ใช้ MCP ต่อ Workspace แต่ Gmail ส่งเมลไม่ได้</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 26 Nov 2026 &bull; ⏱️ 2 min read (432 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>บทความนี้เขียนโดย AI (โมเดล glm-5.3 ของผู้ให้บริการ ollama-cloud) ผ่าน Hermes Agent จาก Nous Research ตรวจสอบและเรียบเรียงโดย Nokka.</li><li style='margin-bottom:6px;'>2026) Google เปิดตัวเซิร์ฟเวอร์ MCP สำหรับ Workspace อย่างเป็นทางการครบทั้งแปดตัว พร้อมกฎข้อใหม่ที่เขียนสั้นแต่เปลี่ยนวิธีทำงานของใครที่เขียนเอเจนต์ต่อกับ Gmail, Drive หรือ Calendar อยู่ นับจากวันที่ 1 กุมภาพันธ์ 2027 เครื่องมือใดที่เป็น AI หรือถูกขับเคลื่อนด้วย AI จะต้องต่อกับ Workspace ผ่าน MCP ของ Google เท่านั้น ห้ามเรียก REST API ตรง ๆ [1][3].</li><li style='margin-bottom:6px;'>ปัญหาอยู่ตรงที่เมื่อเปิดเซิร์ฟเวอร์ Gmail ดูจริง ๆ จะพบว่ามันค้นเมลได้ อ่านเมลได้ สร้างฉบับร่างได้ แต่ส่งเมลไม่ได้ [4].</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-139055"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-139055"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-139055"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Google บังคับ AI Agent ใช้ MCP ต่อ Workspace แต่ Gmail ส่งเมลไม่ได้" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fpx0wsm9ddv76omvygveh.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-139055">โดย Nokka (นก-กา) | 26 พฤศจิกายน 2569.</p>
+<p>บทความนี้เขียนโดย AI (โมเดล glm-5.3 ของผู้ให้บริการ ollama-cloud) ผ่าน Hermes Agent จาก Nous Research ตรวจสอบและเรียบเรียงโดย Nokka.</p>
+<p>วันที่ 24 พฤศจิกายน (ค.ศ. 2026) Google เปิดตัวเซิร์ฟเวอร์ MCP สำหรับ Workspace อย่างเป็นทางการครบทั้งแปดตัว พร้อมกฎข้อใหม่ที่เขียนสั้นแต่เปลี่ยนวิธีทำงานของใครที่เขียนเอเจนต์ต่อกับ Gmail, Drive หรือ Calendar อยู่ นับจากวันที่ 1 กุมภาพันธ์ 2027 เครื่องมือใดที่เป็น AI หรือถูกขับเคลื่อนด้วย AI จะต้องต่อกับ Workspace ผ่าน MCP ของ Google เท่านั้น ห้ามเรียก REST API ตรง ๆ [1][3].</p>
+<p>ปัญหาอยู่ตรงที่เมื่อเปิดเซิร์ฟเวอร์ Gmail ดูจริง ๆ จะพบว่ามันค้นเมลได้ อ่านเมลได้ สร้างฉบับร่างได้ แต่ส่งเมลไม่ได้ [4].</p>
+<p>ข้อความบังคับอยู่ในเอกสารเพิ่มเติมชื่อ Workspace AI Tools Addendum ที่แนบกับข้อตกลงใช้บริการ ผมอ่านจากตัวเอกสารจริง ข้อแรกระบุตรง ๆ ว่าเครื่องมือเข้าถึง Workspace ต้องใช้ MCP ของ Google ในกรณีที่เครื่องมือนั้นเป็น AI Agent, เป็น AI Harness หรือถูกขับเคลื่อนด้วยโมเดล AI หรือบริการที่ใช้โมเดล AI [2].</p>
+<p>ข้อถัดไปห้ามพรางตัวเอเจนต์ให้พ้นการจำแนก เมื่อทำผิด Google สามารถตัดสิทธิ์การเข้าถึงหรือระงับบัญชีได้ [2].</p>
+<p>ข้อบังคับเรื่อง MCP ครอบเฉพาะเครื่องมือ AI ในบันทึกประจำรุ่นเดือนตุลาคม Google เขียนเองว่าแอปที่ไม่ใช่เอเจนต์ AI เช่นโปรแกรมที่เรียก REST API เท่านั้น ไม่ได้รับผลกระทบจากการเปลี่ยนแปลงเรื่องการจำแนก OAuth client ครั้งนี้ [3].</p>
+<p>ส่วนการจัดชั้นโควตาใหม่เป็นอีกเรื่องหนึ่ง ใช้กับ API ของ Workspace โดยรวม ไม่ใช่เฉพาะเอเจนต์ [1].</p>
+<p>คู่มือทางการของเซิร์ฟเวอร์ Gmailระบุว่ามีเครื่องมือให้ใช้สิบตัว แบ่งเป็นสามกลุ่มงาน [4].</p>
+<p>ทว่าคู่มือไม่ใช่ขอบเขตทั้งหมด หน้าโควตาทางการของ Google ซึ่งอัปเดตล่าสุด 24 พฤศจิกายน 2026 วันเดียวกับที่เปิดใช้งาน ขึ้นทะเบียนเครื่องมือของ Gmail ไว้ 31 ตัว โดยแปดตัวมีดอกจันกำกับว่าต้องมีสิทธิ์พันธมิตร [7] เหลือเครื่องมือสาธารณะ 23 ตัว รวมถึงการย้ายข้อความลงถังขยะและสแปมที่คู่มือไม่ได้ระบุว่ามีให้ใช้ ตัวเลข 23 ตรงกับผลยิง tools/list ในรายงานของ [6] และชุดงานที่ [5] ระบุว่าเปิดให้สาธารณะก็ตรงกัน.</p>
+<p>การส่งเมล ตอบกลับ ส่งต่อ และการแก้ไขฉบับร่างที่สร้างไว้แล้ว ไม่ปรากฏในเครื่องมือสาธารณะทั้งชุด เครื่องมือเหล่านี้มีอยู่จริงบนเซิร์ฟเวอร์เดียวกัน แต่ถูกกักไว้ให้เฉพาะพันธมิตรที่ได้รับอนุมัติ สองรายงานสื่อที่ตรวจแยกกันยืนยันตรงกันว่าหน้าโควตาของ Google ระบุว่าเครื่องมือกลุ่มนี้ต้องมีสิทธิ์พันธมิตรและยังไม่เปิดทั่วไป [5][6].</p>
+<p>ผลที่ตามมาคือลำดับงานที่พังกลางทาง ลองนึกภาพสถานการณ์นี้ คุณพิมพ์สั่งตัวช่วยว่า ร่างอีเมลตอบลูกค้าเรื่องงบประมาณ เอเจนต์ค้นเมลเจอ ร่างให้เรียบร้อย คุณอ่านแล้วคอมเมนต์ว่าเพิ่มส่วนลดและเปลี่ยนโทนให้ทางการขึ้น.</p>
+<p>จังหวะนี้พังทันที เพราะการแก้ฉบับร่างเดิมไม่ใช่เครื่องมือสาธารณะ เอเจนต์มีทางเดียวคือสร้างร่างใหม่อีกฉบับแล้วทิ้งอันเก่าไว้ให้คุณลบเอง.</p>
+<p>ฝั่ง Drive ก็เจอแบบเดียวกันในระดับเบากว่า เอเจนต์สร้างรายงานเสร็จแต่ย้ายเข้าโฟลเดอร์ที่ถูกต้องหรือแชร์ให้ทีมเองไม่ได้ [5].</p>
+<p>รายละเอียดเชิงเทคนิคสำหรับคนจะลอง: เซิร์ฟเวอร์แต่ละตัวอยู่ที่โดเมนของตัวเอง เช่น gmailmcp.googleapis.com โดยมีปลายทางหลัก /mcp/v1 และปลายทาง /mcp/v1self สำหรับโปรแกรมที่ไม่รองรับการยืนยันผ่านแบบฟอร์ม สิทธิ์ที่ขอคือชุดเดียวกับ REST เช่น gmail.readonly กับ gmail.compose [4].</p>
+<p id="sec-mid-139055">อีกข้อในเอกสารเพิ่มเติมที่คนเขียนเอเจนต์จะรู้สึกถึงที่สุดคือการห้ามเก็บข้อมูลจำพวก Google Technical Information เกิน 30 วัน คำนิยามของข้อมูลกลุ่มนี้ครอบคลุมถึง vector embeddings, ดัชนีความจำ โปรไฟล์ผู้ใช้ และผังความสัมพันธ์ในองค์กรที่สร้างจากข้อมูล Workspace โดยที่ตัวข้อมูลของผู้ใช้เช่นเนื้อความอีเมลไม่ได้ถูกลบตามกฎ 30 วันนี้ ส่วนที่ห้ามเก็บคือผลสังเคราะห์ที่เอเจนต์สร้างขึ้นจากการใช้งาน [2].</p>
+<p>แปลง่าย ๆ ว่าตัวช่วยที่สร้างความจำระยะยาวจากกล่องจดหมายเพื่อตอบคำถามเรื่องสัญญาปีที่แล้ว จะต้องสร้างดัชนีใหม่ทุกเดือนหรือปล่อยความสามารถนี้ไป.</p>
+<p>พร้อมกันนั้นยังห้ามใช้ข้อมูลไปเทรนโมเดลหรือสร้างผลิตภัณฑ์ที่แข่งกับ Workspace และเมื่อผู้ใช้ถอดเอเจนต์ออก ข้อมูลที่เก็บไว้ต้องถูกลบทิ้งด้วย [2].</p>
+<p>ระดับพื้นฐานฟรี ได้ 5,000 คำขอต่อวันต่อโปรเจกต์ต่อผลิตภัณฑ์ แต่คำขอหนึ่งครั้งไม่เท่ากันเสมอไป เครื่องมือที่ต้องเรียก API หลายชั้นเบื้องหลังจะถูกนับเป็นหลายคำขอ [3].</p>
+<p>โควตานี้แชร์กันทั้งโปรเจกต์ ผลิตภัณฑ์เล็กที่มีผู้ใช้หลายคนจะชนเพดานเร็วกว่าที่คิด ตัวอย่างจากรายงานของสื่อเทคโนโลยีคือเครื่องมือค้นเมลหนึ่งครั้งถูกนับเป็นสิบคำขอ เอเจนต์ที่ทำแต่การค้นเมลจะได้ราวห้าร้อยครั้งต่อวันรวมทุกผู้ใช้ [5].</p>
+<p>ระดับ Scaled สำหรับงานหนักเริ่มคิดเงินวันที่ 1 เมษายน 2027 โดยหน้าทางการสองหน้าระบุต่างกันเอง หนึ่งบอกคิดตั้งแต่คำขอแรกของ MCP อีกหน้าบอกคิดเฉพาะส่วนที่เกินโควตาฟรีต่อวัน ส่วนโควตาฟรีขนาดใหญ่ของ REST ยังอยู่กับการเรียกแบบเดิม ซึ่งอ่านได้ว่าเป็นโครงสร้างราคาที่ผลักให้เอเจนต์ต้องอยู่บนเส้นทางของ Google [1][3][5].</p>
+<p>ความเห็นส่วนตัว: ผมอ่านแล้วเห็นสองด้านชัดทั้งคู่ ด้านความปลอดภัย เหตุผลของ Google มีน้ำหนักจริง เพราะโทเคนที่ได้รับมาไม่ได้แปลว่าเจตนาของคน อีเมลฉบับหนึ่งที่เขียนว่าให้ส่งอีเมลสิบฉบับข้างหน้าไปที่อยู่นี้ คือความเสี่ยงโจมตีแบบพรอมต์อินเจกชันที่มีอยู่จริง การบังคับให้ทุกเอเจนต์เดินผ่านประตูบานเดียวที่ผู้ดูแลองค์กรตั้งกฎยืนยันจากมนุษย์และบันทึกการใช้งานไว้ได้ ทำให้ผู้ดูแลคุมได้จริง แต่อีกด้านคือของที่ปิดไว้ให้เฉพาะพันธมิตร คนทำผลิตภัณฑ์อิสระจะได้เล่นในสนามที่ตัดสิทธิ์เฉพาะกิจ และเส้นทางเดิมที่เคยเปิดกว้างก็ถูกปิดลงพร้อมกัน สำหรับทีมไทยที่ทำตัวช่วยอีเมลหรือระบบออโตเมชัน AI ต่อ Workspace ผมว่าอย่ารอถึงมกราคม ประเมินว่าผลิตภัณฑ์ตัวเองอยู่ด้านไหนของกฎเสียตั้งแต่ตอนนี้ครับ.</p>
+<p>ถ้าคุณกำลังย้ายเอเจนต์ไป MCP อยู่และเจอปัญหาอะไร คอมเมนต์เล่าไว้ได้ครับ และถ้าบทนี้ช่วยได้ แชร์ให้ทีมที่ทำงานกับ Workspace ด้วยก็จะดีมาก.</p>
+<p>[1] Google. "Simplifying agent access while keeping organizations in control: MCP servers, CLI, standardized usage tiers, and admin policies." Google Workspace Updates, 24 พฤศจิกายน 2569 (ค.ศ. 2026). https://workspaceupdates.googleblog.com/2026/11/mcp-servers-cli-standardized-usage-tiers-now-available.html.</p>
+<p>[2] Google. "Google Workspace AI Tools Addendum." เข้าถึง 26 พฤศจิกายน 2569 (ค.ศ. 2026). https://workspace.google.com/terms/ai-tools.</p>
+<p>Sources indicate that [3] Google. "Google Workspace developer release notes," รายการ 12 ตุลาคม 2569 และ 24 พฤศจิกายน 2569 (ค.ศ. 2026). https://developers.google.com/workspace/release-notes.</p>
+<p>[4] Google. "Configure the Gmail MCP server." เข้าถึง 26 พฤศจิกายน 2569 (ค.ศ. 2026). https://developers.google.com/workspace/gmail/api/guides/configure-mcp-server.</p>
+<p>Recent findings suggest that [5] Smith, Al. "Google Will Make AI Agents Use Its Workspace MCP Servers. The Gmail One Can Not Send Email." TechStackups, 26 พฤศจิกายน 2569 (ค.ศ. 2026). https://techstackups.com/articles/google-workspace-ai-agents-mcp/.</p>
+<p>[6] Copes, Flavio. "Google is requiring AI agents to use its Workspace MCP servers." flaviocopes.com, 26 พฤศจิกายน 2569 (ค.ศ. 2026). https://flaviocopes.com/google-workspace-mcp/.</p>
+<p id="sec-end-139055">[7] Google. "Gmail API and MCP server quotas." อัปเดต 24 พฤศจิกายน 2569 (ค.ศ. 2026). https://developers.google.com/workspace/gmail/api/guides/quotas.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/sarantoon/google-bangkhab-ai-agent-aich-mcp-t-workspace-aet-gmail-sngemlaimaid-6e2" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="kagi-the-paid-google-search-alternative-now-has-a-gmail-rival-too-139519.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139519. Kagi, the paid Google Search alternative, now has a Gmail rival too
+        </a>
+        
+        <a href="latest-update-remus-malware-steals-gmail-messages-via-fake-google-139084.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139084. Latest Update: Remus malware steals Gmail messages via fake Google Sheets extension
+        </a>
+        
+        <a href="google-publishes-guidance-for-google-agent-crawler-via-sejournal--136615.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #136615. Google Publishes Guidance For Google-Agent Crawler via @sejournal, @martinibuster
+        </a>
+        
+        <a href="how-google-workspace-with-gemini-powers-small-businesses-get-20-o-132545.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #132545. How Google Workspace with Gemini powers small businesses – get 20% off your first 6 months
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

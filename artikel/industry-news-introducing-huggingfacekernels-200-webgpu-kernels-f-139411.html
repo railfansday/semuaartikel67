@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: Introducing @huggingface/kernels: 200+ WebGPU Kernels for Local AI</title>
+    <meta name="description" content="In a recent development, one of our biggest goals on the WebAI team at Hugging Face is to make browser inference as fast and as user-friendly as possible. ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-introducing-huggingfacekernels-200-webgpu-kernels-f-139411.html">
+    <meta property="og:title" content="Industry News: Introducing @huggingface/kernels: 200+ WebGPU Kernels for Local AI">
+    <meta property="og:description" content="In a recent development, one of our biggest goals on the WebAI team at Hugging Face is to make browser inference as fast and as user-friendly as possible. ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/webgpu-kernels/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-introducing-huggingfacekernels-200-webgpu-kernels-f-139411.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: Introducing @huggingface/kernels: 200+ WebGPU Kernels for Local AI", "image": ["https://huggingface.co/blog/assets/webgpu-kernels/thumbnail.png"], "datePublished": "2026-09-01T00:00:00", "dateModified": "2026-11-26T16:17:01.054228", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-introducing-huggingfacekernels-200-webgpu-kernels-f-139411.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: Introducing @huggingface/kernels: 200+ WebGPU Kernels for Local AI</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 01 Sep 2026 &bull; ⏱️ 8 min read (1600 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, one of our biggest goals on the WebAI team at Hugging Face is to make browser inference as fast and as user-friendly as possible.</li><li style='margin-bottom:6px;'>Today, we are releasing the first layer of that effort: @huggingface/kernels, a minimal library for loading and running optimized WebGPU kernels from the Hugging Face Hub, together with an initial collection of 207 kernels at huggingface.co/webgpu-kernels.</li><li style='margin-bottom:6px;'>In a recent development, the collection covers operations used across a wide variety of machine learning architectures and workloads.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-139411"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-139411"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-139411"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: Introducing @huggingface/kernels: 200+ WebGPU Kernels for Local AI" loading="lazy" src="https://huggingface.co/blog/assets/webgpu-kernels/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-139411">In a recent development, one of our biggest goals on the WebAI team at Hugging Face is to make browser inference as fast and as user-friendly as possible. Getting there is a multi-layer effort: models need browser-friendly representations, runtimes need to build efficient execution intends, and the individual GPU operations at the bottom of the stack need to make the most of many different devices and browser implementations.</p>
+<p>Today, we are releasing the first layer of that effort: @huggingface/kernels, a minimal library for loading and running optimized WebGPU kernels from the Hugging Face Hub, together with an initial collection of 207 kernels at huggingface.co/webgpu-kernels.</p>
+<p>In a recent development, the collection covers operations used across a wide variety of machine learning architectures and workloads. More importantly, each kernel is published as a complete, versioned package: its interface, shader templates, correctness cases, benchmark cases, and usage instructions all live together on the Hub.</p>
+<p>Sources indicate that we are also launching Fleet, an in-browser GPU benchmarking and testing suite that runs and scores the kernels on your hardware. Beyond the results for your own machine, Fleet gives the community a way to contribute performance and correctness evidence from devices we could never cover in a conventional test lab. With your consent, every run adds private evidence that can help us find failures (incorrect results, pathologically slow cases, etc.), improve kernel variants, and make better optimization decisions across real-world hardware.</p>
+<p>In a recent development, A model running in the browser eventually becomes a sequence of GPU operations: matrix multiplications, normalizations, convolutions, attention primitives, quantization operations, data-layout transformations, and many more. WebGPU makes these operations available across modern browsers through a portable API, while WGSL provides a common language for the shaders that execute them.</p>
+<p>According to recent reports, portability, however, does not automatically mean performance. Two shaders can implement the same operation and produce the same output while behaving completely differently across different accelerators. Workgroup sizes, memory access patterns, vectorization, data types, and fusion strategies can all affect performance. The best choice can also change with the input shape, device, browser, and available WebGPU features.</p>
+<p>This is why kernels form a foundational layer of fast browser inference. Higher-level runtimes can only be as efficient as the operations they dispatch. By making those operations individually discoverable, testable, benchmarkable, and versioned, we can improve the foundation independently while keeping a stable contract for the layers above it.</p>
+<p>Each kernel in the collection has its own repository and kernel card. The card documents the operation's semantics, inputs, outputs, attributes, supported data types, source files, and a ready-to-run @huggingface/kernels example.</p>
+<p>According to recent reports, for example, ai.onnx.Add implements elementwise addition with multidirectional broadcasting. It is one of the simplest operations in a neural network, used everywhere from residual connections to adding a bias. Its card documents the two inputs, the broadcasted output shape, supported data types, and the variants available for different shapes and devices.</p>
+<p>Behind the card, the repository contains the artifacts needed to understand and evaluate the implementation:.</p>
+<p>This structure turns a shader into a reusable software artifact. The interface is inspectable without reading WGSL, correctness and performance cases travel with the implementation, and published versions can be loaded explicitly rather than depending on an unversioned file URL. Our kernels can also serve as reference implementations for developers building custom WebGPU kernels or integrating these operations into their own runtimes.</p>
+<p>Sources indicate that running these kernels requires a browser with WebGPU support. WebGPU availability depends on the browser, operating system, GPU, and driver. You can check for it in JavaScript with "gpu" in navigator.</p>
+<p>@huggingface/kernels provides the bridge between a kernel repository and your application. Call getKernel with a Hub repository ID and a contract version, then invoke the returned function with typed input data and tensor shapes. Here is a small bias-add example:.</p>
+<p>The second input is broadcast across the first dimension, producing an output with shape [2, 3]. The loader derives that output shape and logical data type from the manifest contract and the inputs, then allocates c automatically.</p>
+<p>Addition on six floats is deliberately the smallest possible demo. At this size, the GPU round trip costs far more than the math. The point is the call pattern: it stays exactly the same for the heavyweight operations where optimized kernels actually pay off, such as matrix multiplication (ai.onnx.MatMul). Only the repository ID and the inputs change.</p>
+<p>Even this elementary operation illustrates why kernels need variants. Equal-shape addition can use a direct vectorized path, while broadcasted inputs need different indexing logic. The published Add kernel includes variants for equal shapes, vectorized broadcasting, scalar processing, and general broadcasting. The runtime can select an implementation that fits the current call and device without changing the application-facing API.</p>
+<p>According to recent reports, the version: 1 option selects version 1 of the published kernel contract. It is separate from an ONNX opset, an operator's since_version, or a model revision. Keeping those concepts separate lets applications depend on a stable JavaScript-facing contract while kernel implementations evolve behind it.</p>
+<p>So, how much of a difference do optimized kernels actually make? We put our collection head-to-head with ORT WebGPU on an Apple M4 GPU, using ONNX Runtime Web 1.30.0-dev.20260826-b1f76d586a. We started with 1,756 test cases across all 207 operations and kept the 809 cases where both sides produced matching outputs and reliable timings.</p>
+<p id="sec-mid-139411">Across those comparisons, our kernels were 2.57x faster by geometric mean and 1.90x faster at the median, with 629 wins, 176 losses, and 4 ties. Here is a closer look at four familiar operations:.</p>
+<p>In a recent development, some individual wins were much bigger. A particularly difficult bilinear Einsum case (i,ij,j with size 4096) ran in 0.136 ms with our kernel versus 1,396 ms with ORT WebGPU: more than 10,000x faster. A row-wise CumSum over [256, 4096] was 301x faster, at 0.016 ms versus 4.784 ms. These are unusual cases rather than the speedups you should expect everywhere, but they show how much a specialized kernel can help when a general implementation hits a slow path.</p>
+<p>In a recent development, we timed the work done on the GPU itself, leaving out setup such as loading kernels, creating sessions, uploading inputs, compiling shaders, and reading outputs back. Very short workloads are naturally harder to measure, and small cases can benefit from the GPU cache, so these numbers are best read as a useful comparison rather than a promise for every application.</p>
+<p>It has been revealed that they are also results for individual operations, not complete models. Exact performance will change across GPUs and browsers, which is why Fleet is so key for building a broader picture.</p>
+<p>We are also working with the ONNX Runtime team to upstream these improvements so they can benefit the broader ONNX Runtime Web ecosystem.</p>
+<p>WebGPU performance varies across GPUs, browsers, and drivers, so results from one machine only tell part of the story. Fleet lets anyone run correctness and performance checks in the browser and see how the kernels behave on their hardware.</p>
+<p>With consent, each run privately contributes evidence that helps us spot device-specific failures, compare variants, and improve selection rules. The goal is simple: use broad, real-world coverage to make the kernels faster and more reliable for everyone.</p>
+<p>The initial 207 kernels are a starting point, not the end state. Publishing kernels independently on the Hub gives us a common place to inspect contracts, compare implementations, reproduce correctness checks, and improve performance without embedding every shader directly into every runtime.</p>
+<p>The collection is also part of the Hub's broader kernel ecosystem: on the Kernels page, the WebGPU kernels sit alongside kernels for CUDA, ROCm, Metal, and other platforms, and can be filtered, sorted, and explored like any other artifact on the Hub.</p>
+<p>The pieces reinforce one another:.</p>
+<p>Recent findings suggest that this is the low-level foundation for the next steps in our browser inference stack. We are excited to connect these kernels to higher-level model tooling, continue expanding operation coverage, and make fast local inference easier to use across the WebAI ecosystem.</p>
+<p>Explore the WebGPU kernel collection, try @huggingface/kernels, and join the Fleet to contribute evidence from your device and help us make the kernels better for everyone.</p>
+<p>In a recent development, the Fleet part may matter as much as the kernels. The 809 comparable cases on an M4 are useful, but browser, driver and device variance is where WebGPU tends to get painful. Will Fleet eventually expose per-device distributions, or is the strategy to use the runs only for aggregate selection rules?</p>
+<p>In an automated build system, I could see per device kernels, made more interesting by fusion of ops.</p>
+<p>In a recent development, the area that obviously needs more attention are the 947 tests that did not result in reliable output. This could be the test, it could be that the ORT WebGPU is wrong, or the new kernel is wrong, or the test harness had issues, hard to know from the outside. Perhaps the Fleet thing is meant to improve this.</p>
+<p>Very excited to see such attention at making WebGPU first class in ML!</p>
+<p>Sources indicate that @sroussey  Agreed—the excluded 947 need a taxonomy before the 2.57× summary can travel. I'd want counts by operation and device for unsupported, ORT mismatch, fresh-kernel mismatch, and harness/timeout, with raw failing cases downloadable. Then Fleet can optimize only within a proven-correct compatibility envelope; fusion and per-device tuning become much safer.</p>
+<p id="sec-end-139411">Industry observers note that excellent! This will help our WebAI community continue developing highly optimized solutions. Many thanks @Xenova  and @nico-martin  for the great work you have been doing.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/webgpu-kernels" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="introducing-anylanguagemodel-one-api-for-local-and-remote-llms-on-139811.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139811. Introducing AnyLanguageModel: One API for Local and Remote LLMs on Apple Platforms
+        </a>
+        
+        <a href="introducing-swift-huggingface-the-complete-swift-client-for-huggi-139799.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139799. Introducing swift-huggingface: The Complete Swift Client for Hugging Face
+        </a>
+        
+        <a href="industry-news-introducing-modular-diffusers-composable-building-b-139760.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139760. Industry News: Introducing Modular Diffusers - Composable Building Blocks for Diffusion Pipelines
+        </a>
+        
+        <a href="industry-news-introducing-the-ettin-reranker-family-139697.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139697. Industry News: Introducing the Ettin Reranker Family
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage v2.6.0 released with web admin, v1.x EoL & other news</title>
+    <meta name="description" content="We are glad to announce the release of Garage v2.6.0 that includes a brand-new web administration UI funded by NLnet. We also discuss many other small news">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/garage-v260-released-with-web-admin-v1x-eol-other-news-139269.html">
+    <meta property="og:title" content="Garage v2.6.0 released with web admin, v1.x EoL & other news">
+    <meta property="og:description" content="We are glad to announce the release of Garage v2.6.0 that includes a brand-new web administration UI funded by NLnet. We also discuss many other small news">
+    <meta property="og:image" content="https://garagehq.deuxfleurs.fr/images/og-default.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/garage-v260-released-with-web-admin-v1x-eol-other-news-139269.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Garage v2.6.0 released with web admin, v1.x EoL & other news", "image": ["https://garagehq.deuxfleurs.fr/images/og-default.png"], "datePublished": "2026-11-25T00:00:00.000Z", "dateModified": "2026-11-26T16:16:50.185681", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/garage-v260-released-with-web-admin-v1x-eol-other-news-139269.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Garage v2.6.0 released with web admin, v1.x EoL & other news</h1>
+        <div class="meta-line">🌐 Source: <strong>Deuxfleurs</strong> &bull; 📅 25 Nov 2026 &bull; ⏱️ 6 min read (1270 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>We are glad to announce the release of Garage v2.6.0 that includes a brand-new
+web administration UI funded by NLnet.</li><li style='margin-bottom:6px;'>The Garage project has been quite active lately, so we thought it would be a
+good time to write a blog post to present new features and give some
+information on what's coming next.</li><li style='margin-bottom:6px;'>This is the culmination of almost two years of work by Tixie
+Salander.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-139269"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-139269"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-139269"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Garage v2.6.0 released with web admin, v1.x EoL &amp; other news" loading="lazy" src="https://garagehq.deuxfleurs.fr/images/og-default.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-139269">We are glad to announce the release of Garage v2.6.0 that includes a brand-new
+web administration UI funded by NLnet. We also discuss many other small news:
+Helm chart repository release, Garage v1.x EoL, Garage v3.0.0 beta 1 and an
+outlook on upcoming work on S3 versioning.</p>
+<p>The Garage project has been quite active lately, so we thought it would be a
+good time to write a blog post to present new features and give some
+information on what's coming next.</p>
+<p>This is the culmination of almost two years of work by Tixie
+Salander. We started this collaboration in 2024 when it
+was clear that a user interface was one of the most sorely lacking feature of Garage. We
+are very grateful that NLnet has again engaged with us and provided funding to
+make this a reality.</p>
+<p>Here's a minimal example to test 2.6.0 right away:.</p>
+<p>Running 2.6.0 or above, you can access the web interface on the garage admin API port, by default port
+3903, so http://localhost:3903/ if you are running garage on your machine with the example above.</p>
+<p>According to recent reports, logging in requires a garage admin token. The example above prints it on the command line. If you have set the admin_token configuration variable
+in your configuration file, you may use that token. Otherwise, you'll need to create a separate token
+from the command line with garage admin-token create.</p>
+<p>Sources indicate that one world of caution: administering a remote cluster over plain HTTP is NOT safe, as
+your admin token is transmitted in plain text with each request. You'll need to setup an HTTPS
+reverse proxy in front of your Garage node to encrypt the connection, or/and access your
+node through a VPN such as Wireguard to make sure no one can eavesdrop the credentials.</p>
+<p>Once logged in the cluster, you will be greeted by a cluster overview screen that looks like
+the following (this is a live example from our Deuxfleurs cluster):.</p>
+<p>Sources indicate that the web interface follows a similar pattern to the CLI: cluster monitoring,
+layout configuration, bucket and access credential management are all available
+as you expect. Here are example videos (now included in the Quick Start guide
+as well) showing the setting up of a new cluster from scratch:.</p>
+<p>From a development standpoint, the web UI presently lives in a separate Git
+repository so please
+report any issues there and not in Garage's main issue tracker. Tixie will
+continue being the maintainer of the UI moving forward.</p>
+<p>This has also been one of the longstanding requests from our Kubernetes consumers, and it's
+now done! Starting today you can deploy Garage on Kubernetes easily thanks to our
+self-hosted Helm repository. Both "regular" (tgz+index.yml) helm chart repository as well as OCI artefacts
+are available. Instructions in the documentation
+have been updated accordingly. Happy Helming!</p>
+<p>Industry observers note that thanks to Boris M. and Maximilien for contributing this improvement to Garage,
+along the many contributors that participated in finding the right way to make this work.</p>
+<p>The Garage helm chart follows its own version scheme, with the current version being 0.10.7.</p>
+<p>The last release of the 1.x branch was v1.3.1 in January 2026, almost a year ago. Many significant bug fixes, including security fixes, are at the moment only present on the v2.x
+branch. At this point, it would be too much work to backport them to 1.x
+and it didn't seem there was any ask to do so from the community either. So we are
+officially deprecating Garage v1.x and urging all customers still on this branch to
+update to v2.x as soon as possible. The release note has been updated accordingly.</p>
+<p id="sec-mid-139269">Recent findings suggest that we have published a first beta release of Garage v3.0.0. This release does
+not yet include S3 versioning (sorry!). This unfortunately needed to be a major release
+because of a few breaking changes we wanted to release without
+waiting for s3 versioning to come though:.</p>
+<p>We are looking for testers for this beta so please give it a try and report any
+findings on our matter tracker!</p>
+<p>This beta release also marks the first step toward having a reliable Fjall metadata engine
+so please report to us not only problems, but also
+cases of successfully running a Garage cluster on Fjall with significant
+activity, so that we can gain confidence that it works well and potentially
+mark it stable soon. This also means we'll take bug report for Fjall problems,
+something that we explicitly disregarded so far for the 2.x experimental implementation.</p>
+<p>As per the release
+notes,
+the most crucial breaking changes for customers to be aware of are:.</p>
+<p>To finally align with industry standard, most Prometheus metrics have been slighly renamed, we provide an updated Grafana dashboard.</p>
+<p>Sources indicate that the Fjall major version enhancement breaks compatibility with the Garage 2.x Fjall as data files from older
+versions are not supported. If you were using Fjall on v2.x, you will need
+to migrate manually: convert your metadata to another format (LMDB or SQlite) with garage node convert-db
+before upgrading. You can convert back to Fjall once you successfully upgraded to v3.</p>
+<p>The complete list of breaking changes can be found in the changelog linked above. Happy testing!</p>
+<p>Finally we want to close this post with an update on S3 versionning.</p>
+<p>In 2027 we will start a new collaboration with Armaël to implement what
+is certainly the most requested feature in Garage: S3 object versioning.</p>
+<p>We understand that there has been growing impatience for this feature to be
+implemented in Garage, and rightfully so as it would enable
+fresh use-cases such as for long-term archiving where compliance is important, or
+as a backup target that cannot be tampered with.</p>
+<p>We thank the community for their patience, and kindly ask them to understand
+why this hasn't been done before: while there have been several attempts by community
+members, this is a deep problem that requires intricate
+understanding of how Garage stores metadata, and implementing it without taking
+this into account leads to code that, while it might appear to work on the
+surface, is in fact incorrect. A correct implementation requires a
+significant rewrite of core parts of Garage, which we believe can currently be
+accomplished only by experienced maintainers. We will also take this rewrite as an
+opportunity to fix some performance problems, such as those arising with
+extremely big objects.</p>
+<p>Industry observers note that I would like to make an important note on object locking and WORM: we will
+provide an implementation of locking primitives/WORM per the S3 API
+specification, however note that due to Garage's lack of a consensus algorithm,
+this implementation will not be fully correct. This means that Garage will
+implement best-effort detection of access requests that would violate locks,
+but will not be able to guarantee that it upholds locks in all cases. More
+precisely: using conditional writes (If-Match, If-None-Match) as a
+substitute for a distributed mutex or to discriminate between concurrent write
+requests will obviously not work, but ensuring that a successfully uploaded
+object cannot be overwritten after the fact should work in most cases. We will
+take care of properly documenting what works and what doesn't, but in practice,
+this means that locking and WORM will be gated behind a feature flag (a
+configuration parameter) that requires cluster administrators to acknowledge
+that they might be running unsafe workloads if they don't understand exactly
+what the feature does.</p>
+<p>Thanks for reading, and for your continued support in our journey to a robust
+and resilient distributed storage system.</p>
+<p id="sec-end-139269">Alex, Maximilien and Tixie,
+The Garage (and Garage UI!) Maintainers.</p>
+<p style="margin-top: 25px;">
+<a href="https://garagehq.deuxfleurs.fr/blog/2026-11-webadmin-release/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-one-shot-any-web-app-with-gradios-grhtml-139766.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139766. Tech Report: One-Shot Any Web App with Gradio's gr.HTML
+        </a>
+        
+        <a href="how-to-build-scalable-web-apps-with-openais-privacy-filter-139717.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139717. How to build scalable web apps with OpenAI's Privacy Filter
+        </a>
+        
+        <a href="amazon-responds-after-delivery-drone-smashes-into-garage-like-a-s-139700.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139700. Amazon responds after delivery drone smashes into garage “like a sick bird”
+        </a>
+        
+        <a href="how-to-build-a-unified-lead-tracking-pipeline-for-web-forms-and-p-139651.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139651. How to Build a Unified Lead Tracking Pipeline for Web Forms and Phone Calls
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
