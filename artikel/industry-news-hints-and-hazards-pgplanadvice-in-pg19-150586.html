@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: Hints and hazards: pg_plan_advice in PG19</title>
+    <meta name="description" content="Recent findings suggest that over the past decade, one of the most contentious Postgres feature requests has been for query hints. The planner is remarkabl">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-hints-and-hazards-pgplanadvice-in-pg19-150586.html">
+    <meta property="og:title" content="Industry News: Hints and hazards: pg_plan_advice in PG19">
+    <meta property="og:description" content="Recent findings suggest that over the past decade, one of the most contentious Postgres feature requests has been for query hints. The planner is remarkabl">
+    <meta property="og:image" content="https://clickhouse.com/_next/image?url=%2Fuploads%2FIMG_6403_61a671fbea.png&w=1200&h=630&q=75">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-hints-and-hazards-pgplanadvice-in-pg19-150586.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: Hints and hazards: pg_plan_advice in PG19", "image": ["https://clickhouse.com/_next/image?url=%2Fuploads%2FIMG_6403_61a671fbea.png&w=1200&h=630&q=75"], "datePublished": "2026-11-26T13:20:26", "dateModified": "2026-11-27T01:28:37.079661", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-hints-and-hazards-pgplanadvice-in-pg19-150586.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: Hints and hazards: pg_plan_advice in PG19</h1>
+        <div class="meta-line">🌐 Source: <strong>Clickhouse</strong> &bull; 📅 26 Nov 2026 &bull; ⏱️ 8 min read (1655 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that over the past decade, one of the most contentious Postgres feature requests has been for query hints.</li><li style='margin-bottom:6px;'>Recent findings suggest that postgres 19 brings 2 new contrib modules that collectively provide the initiative hint experience without affecting all queries or SQL syntax.</li><li style='margin-bottom:6px;'>Industry observers note that the companion extension provided is pg_stash_advice.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150586"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150586"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150586"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: Hints and hazards: pg_plan_advice in PG19" loading="lazy" src="https://clickhouse.com/_next/image?url=%2Fuploads%2FIMG_6403_61a671fbea.png&amp;w=1200&amp;h=630&amp;q=75" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150586">Recent findings suggest that over the past decade, one of the most contentious Postgres feature requests has been for query hints. The planner is remarkably effective at making good decisions, but it doesn’t always do so, and query hints have been proposed as a way to fill that gap. They’ve been a popular feature on other databases for years, and some would say that they are essential for production usage to ensure that indexes are used effectively and queries are planned sensibly. While pg_hint_plan has existed for a while, the Postgres community has historically been divided on this topic, with the general consensus being that planner failures were bugs that should be fixed instead of being worked around.</p>
+<p>Recent findings suggest that postgres 19 brings 2 new contrib modules that collectively provide the initiative hint experience without affecting all queries or SQL syntax. pg_plan_advice works at the session level, allowing you to simply SET how the next queries will be planned. The technique supports a decent list of features, letting you specify scan method, join order, join method, parallelism, partitionwise joins, and semijoin uniqueness.</p>
+<p>Industry observers note that the companion extension provided is pg_stash_advice. This is meant to apply to query identifiers instead of specific queries, so rather than using SET to hint, you instead find a specific query identifier and tell Postgres to always apply your hints only to that query. It supports the same capabilities for affecting query aims as pg_plan_advice, so most of this article applies to it as well.</p>
+<p>Industry observers note that under the hood, these extensions work by telling the planner that it should not pick the options you didn’t select. This can’t actually force Postgres to pick the proposal that you actually want, so if there’s no viable way to actually use the hint, the advice will be partially or fully ignored. In addition, there is no check that the advice is good- the planner will happily accept input that actively degrades query performance. In practice, this means that it can be similar to existing enable_ knobs you may have already used to force certain plans on queries. For example, if you’re trying to convince the planner to use an index, here’s the old way and the fresh way you’d consider. They do similar things, but the advice extensions provide a lot more capability and granularity:.</p>
+<p>According to recent reports, I’ve put together a few examples of queries where you might want to consider using pg_plan_advice, and did some testing to see how well it works in practice. All of these tests ran on ClickHouse Managed Postgres, on a m6gd.xlarge machine with 4 vCPUs, 16GB RAM, and a 237GB local NVME drive. The tests are fairly artificial, as the planner is remarkably clever and it’s surprisingly difficult to construct scenarios that reliably give it trouble.</p>
+<p>pg_plan_advice ships as a contrib module, so you’ll probably want to add it to your server’s shared_preload_libraries or take one of the following steps to get it working in a PG19 environment:.</p>
+<p>Recent findings suggest that this post uses a lot of SET commands for demonstration purposes. If you are looking to use pg_plan_advice in a production system, please keep in mind that these should instead generally be SET LOCAL in a transaction to prevent unexpected effects on other queries.</p>
+<p>Industry observers note that the planner generally assumes that rows in a table are spread somewhat evenly. Unfortunately, the ISO Standard User does not actually exist, so a lot of database writes are clustered around bursts of correlated activity. This can lead to a scenario where the planner knows a few percent of rows match a given filter, starts walking through a primary key column to find them, and ends up scanning nearly the whole index before getting enough hits.</p>
+<p>Here’s the query we’ll use for this:.</p>
+<p>Running it does, indeed, give us a terrible proposal.</p>
+<p>Industry observers note that excellent, we’ve reproduced the failure! The index scan looks like it should be reasonable, and the cost of 66.77 is trivial: the planner clearly expected to find all 10 rows it needed immediately. Unfortunately, it had to gather and discard 10,000,000 rows before finding a useful result, which obviously took far longer than you’d expect.</p>
+<p>According to recent reports, you’ve probably noticed the “Generated Blueprint Advice” section in this explain plan as well. This is another fresh feature; we’re using EXPLAIN (ANALYZE, BUFFERS, PLAN_ADVICE) here. Since we didn’t provide plan advice, this output just indicates the plan it actually used.</p>
+<p>Recent findings suggest that we could definitely fix this with a newly introduced index, but that isn’t always a good option when you see this kind of thing in the wild, so let’s try a bitmap heap scan. It works by first constructing a bitmap of potential row locations using a bitmap index scan, and then decodes it to fetch the underlying data. It’s better suited to bulk operations, so it’s a good bet given how uncooperative the index scan is proving to be. Here’s all we need to do to actually use it:.</p>
+<p>The parallelism makes it a bit tricky to read, but a few things stand out. First, we got &lt;10ms execution time, so the bitmap heap scan actually did help. Second, we can now see the supplied blueprint advice at the bottom of the EXPLAIN output, and the matched feedback (without a failed flag) makes it clear that the planner actually used our advice. Please note that this does not necessarily mean that the planner benefited from the advice.</p>
+<p>Industry observers note that JOINs can be a source of planner complications, as statistics are resolutely single-table. The planner has a limited ability to predict how many rows will be pruned by filters on JOINed tables, so it can be way off base on selectivity. In general, it assumes that filters on different tables are independent of each other, which is a fairly easy assumption to violate with the following setup:.</p>
+<p id="sec-mid-150586">Here’s our baseline query. It’s just a simple join, filter, and limit:.</p>
+<p>Here’s our first plan, with the planner doing the heavy lifting for us:.</p>
+<p>This blueprint is honestly pretty terrible. The planner correctly understands that there are 500K or so trial_start rows, and that 1% of customers are enterprise customers. It then multiplies these numbers by each other, which leads it to predict that 5000 rows will match, and it only needs 10. Unfortunately, the filters aren’t as independent as it’s estimating, so only 20 out of the 500K rows actually have the values it’s looking for. As such, it ends up scanning a lot more rows than it was counting on to get this result. You can see as much in the row estimates above: the planner predicts 5288 rows when we know there are only 20, which is right in line with the math.</p>
+<p>To fix this, let’s try giving initiative advice. We want the join order to prioritize accounts first, as that will give us a vastly more selective filter to cut down on row counts.</p>
+<p>In a recent development, A nearly 200x improvement is absurdly better. By adjusting the join order, we’re able to take full advantage of the accounts table’s much lower number of rows matching the enterprise filter, which lets us dramatically cut down on the number of rows to scan. You probably won’t get quite as substantial a speedup in most cases in production, but this pattern comes up every now and then, and having a tool to address it is priceless.</p>
+<p>This is probably the use case that fits the proposal advice feature best. It’s rare, but there are not a lot of good alternatives for dealing with it. I’ve come across similar challenges perhaps a half dozen times, and while I was able to find workarounds, they got pretty hacky and difficult to reason around.</p>
+<p>Sources indicate that we’ve got some promising results in scenario 1, but what happens if the data changes to be less lumpy while our hint is still in place? To test this, let’s set every third row to the failed state:.</p>
+<p>This means we only need to walk a few rows to get what we’re looking for, so the planner estimate should be able to get us a good outcome. Sure enough, if we run without any hints, we get this:.</p>
+<p>That’s the kind of result we wanted to see in the first place! Let’s see how we do with the earlier hint to use a bitmap heap scan in place:.</p>
+<p>That’s 7,000 times worse, and the feedback doesn’t show a problem because it’s still matched. Now that the artificial data condition tripping up the planner is gone, the planner has no problem doing a better job than our hinted alternate. This is a good reminder that all hints should be regularly checked for ongoing necessity — otherwise, your performance fixes can lead to performance complications.</p>
+<p>Sources indicate that we’ve gone through a few scenarios, and it’s clear that pg_plan_advice is a powerful but situational tool. It’s not easy to construct scenarios that reliably confuse the planner, but they show up in production often enough that it’s worth having a tool to address them. pg_plan_advice is newly introduced enough that it’s hard to say for sure, but I’d bet from what I’ve shown here that the following workflow will serve you well:.</p>
+<p>If you get a mysteriously slow query and tuning doesn’t get the results you wanted, then blueprint advice is a good thing to try.</p>
+<p>If it works, then baking it into the transaction with SET LOCAL  is a good way to improve performance.</p>
+<p>If you do set advice, check on it in a few months, as shifting data and query patterns can make it counterproductive.</p>
+<p id="sec-end-150586">Interested in seeing how ClickHouse Managed Postgres works on your data? Get started with ClickHouse Cloud in minutes and receive $300 in free credits.</p>
+<p style="margin-top: 25px;">
+<a href="https://clickhouse.com/blog/pg-plan-advice-postgresql-19" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-hyperparameter-search-with-transformers-and-ray-tun-151409.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151409. Industry News: Hyperparameter Search with Transformers and Ray Tune
+        </a>
+        
+        <a href="industry-news-fine-tune-wav2vec2-for-english-asr-in-hugging-face--151399.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151399. Industry News: Fine-Tune Wav2Vec2 for English ASR in Hugging Face with 🤗 Transformers
+        </a>
+        
+        <a href="industry-news-summer-at-hugging-face-151384.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151384. Industry News: Summer at Hugging Face
+        </a>
+        
+        <a href="industry-news-fine-tune-a-semantic-segmentation-model-with-a-cust-151354.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151354. Industry News: Fine-Tune a Semantic Segmentation Model with a Custom Dataset
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

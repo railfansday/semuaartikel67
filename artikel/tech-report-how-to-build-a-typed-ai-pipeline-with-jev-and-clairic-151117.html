@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: How to Build a Typed AI Pipeline With Jev and Clairic.</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. It has been revealed that 7 Day Free ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-how-to-build-a-typed-ai-pipeline-with-jev-and-clairic-151117.html">
+    <meta property="og:title" content="Tech Report: How to Build a Typed AI Pipeline With Jev and Clairic.">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. It has been revealed that 7 Day Free ">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_clairic_jev_how_to_cc4d3f1b56.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-how-to-build-a-typed-ai-pipeline-with-jev-and-clairic-151117.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: How to Build a Typed AI Pipeline With Jev and Clairic.", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_clairic_jev_how_to_cc4d3f1b56.png"], "datePublished": "2026-11-02T03:19:45", "dateModified": "2026-11-27T01:29:10.994338", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-how-to-build-a-typed-ai-pipeline-with-jev-and-clairic-151117.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: How to Build a Typed AI Pipeline With Jev and Clairic.</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 02 Nov 2026 &bull; ⏱️ 6 min read (1292 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>It has been revealed that 7 Day Free Trial.</li><li style='margin-bottom:6px;'>A support email lands: "Order NW-47790, the tent poles snapped on the first night, I paid $389 and I want every cent back today or I'm disputing the charge.".</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-151117"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-151117"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-151117"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: How to Build a Typed AI Pipeline With Jev and Clairic." loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_clairic_jev_how_to_cc4d3f1b56.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-151117">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>Weekly. Free. One click to leave.</p>
+<p>It has been revealed that 7 Day Free Trial. Cancel Anytime.</p>
+<p>A support email lands: "Order NW-47790, the tent poles snapped on the first night, I paid $389 and I want every cent back today or I'm disputing the charge.".</p>
+<p>To act on that, your code needs answers to a handful of small questions. Is it a refund request? How urgent is it? Should a person handle it? What's the order number? How much money is involved? It's the same problem whether you're sorting a support inbox or building a custom chatbot that has to work out what each customer is asking for.</p>
+<p>The usual move is to send the whole email to a chat model with a prompt that ends "respond in JSON", then validate whatever comes back. It works, but you're paying a model built to write essays to fill in five fields, and you're parsing its guess at a schema.</p>
+<p>In a recent development, system One models are built for exactly this kind of job. In this tutorial we'll build a small support inbox pipeline with two of them: Jev from TypeSafe makes the decisions, and Clairic from Cloudflare reads the values. Plain TypeScript then turns their answers into an action. No prompt engineering for output formats, and no JSON repair.</p>
+<p>The name comes from Daniel Kahneman's Thinking, Fast and Slow. System 1 is the fast, intuitive kind of thinking you use to read a face or a sign. System 2 is the slow, deliberate kind you use for long division.</p>
+<p>It has been revealed that A System One model is an AI model that understands natural language but doesn't generate text. You give it some input (the state) and a set of typed questions, and it gives back typed answers with probabilities. There's no free text to parse, because the model can only answer in the shape you asked for.</p>
+<p>According to recent reports, that's different from asking a chat model for structured output. SitePoint's guide to LLM structured output with JSON Schema indicates how to constrain a chat model and validate its JSON with Zod. With a System One model, the type is the interface: a yes/no question comes back as a probability, a pick-one question comes back as one of your options, and a date comes back as a date.</p>
+<p>Two other properties matter in practice:.</p>
+<p>Jev and Clairic are both System One models, but they do different jobs, and that's what makes them a good pair.</p>
+<p>In a recent development, jev can't hand you an order number, and Clairic has no way to pick from a list of options or answer yes or no. Give each one the job it's built for.</p>
+<p>If you've read SitePoint's Jev and LangChain tutorial, you've seen Jev deciding which model handles an agent's request. Here we'll use it on the incoming text itself.</p>
+<p>Sources indicate that five made-up emails for a made-up outdoor gear store go in. For each one:.</p>
+<p>Both models read the same email, so they run at the same time.</p>
+<p>Put the three values in your environment:.</p>
+<p>No SDKs are needed. Both models are a single fetch call.</p>
+<p>Here's the test inbox. Each email is there to test a different path through the rules:.</p>
+<p>Industry observers note that jev takes a state (the email) and a set of named questions. We'll ask three, one of each type:.</p>
+<p>Recent findings suggest that all three questions go in one request. Jev reads the email once and answers every question in parallel, so adding a question costs very little:.</p>
+<p>According to recent reports, we pin jev-1.14.0 rather than the jev-latest alias. Your thresholds get tuned against one version's probabilities, so you want to choose when that version changes.</p>
+<p>For the angry tent email, Jev came back with:.</p>
+<p id="sec-mid-151117">(Trimmed: the real response also includes the probability of every option and level.).</p>
+<p>Clairic takes the same state, plus a set of typed fields instead of questions:.</p>
+<p>Recent findings suggest that reference_date anchors relative dates like "the 14th" or "last Monday". In production, pass the date the email arrived.</p>
+<p>Each answer comes back with three things worth using:.</p>
+<p>For the "where is it?" email, Clairic read the deadline like this:.</p>
+<p>It has been revealed that "The 14th" became a full date, worked out from the reference date. Text fields like order_number also come back as character spans of the original email. The value is copied from the input, not generated, so it can't invent an order number that isn't there.</p>
+<p>The two models don't depend on each other, so send both requests together:.</p>
+<p>The time for each email is whichever model is slower, not the two added together.</p>
+<p>This is the part a chat model usually ends up doing badly: the business rules. Here they're ordinary code you can read, test, and change without touching a prompt:.</p>
+<p>Notice that the model's confidence sits right next to the business rule. A $18.95 refund is only automatic if Clairic is sure about both the order number and the amount. Raising the refund limit or the confidence bar is a one-line change, and you don't need to call either model again to see what it would do. Save the answers and replay them.</p>
+<p>Here's the run on all five emails:.</p>
+<p>Every email went where it should. The whole run used 2,703 input tokens on Jev and 2,292 on Clairic, about US$0.0003 in total. At that rate, 10,000 support emails would cost roughly US$0.70.</p>
+<p>The interesting part of the run wasn't the right answers. It was the two wrong ones.</p>
+<p>In a recent development, "From last Monday." The run used 2 November 2026 as the reference date, which is a Monday. "Last Monday" means 26 October, but Clairic answered 2026-11-02, the reference date itself. Its confidence on that answer was 0.54, compared with 0.99 or higher on almost every other value in the run.</p>
+<p>Industry observers note that "A couple of weeks ago." Clairic turned this into 2026-10-19, which is a fair reading but still a guess. Its confidence was 0.43.</p>
+<p>Recent findings suggest that neither date changed any action, because the rules only trust values at 0.9 or above. That's the habit to build: a value under your bar counts as unknown. A chat model returning JSON would have handed you "2026-11-02" with the same certainty as everything else.</p>
+<p>One more catch: Clairic copied the order number as #NW-48213, hash included, because that's how the customer wrote it. Text values are spans of the input, so normalising them is your code's job. That's one line of code.</p>
+<p>System One models handle the reading and the routing. They don't hold a conversation. Once an email is routed, something still has to write the reply, ask a follow-up question, or explain a returns policy in the customer's own words. That's where a chat model earns its cost.</p>
+<p>The split that works is: System One models decide, code applies the rules, and a chat model only gets the cases where words matter.</p>
+<p>We built a support inbox triage pipeline from two small models and some ordinary code:.</p>
+<p>Each email took about half a second and cost less than a hundredth of a cent. Most importantly, the two answers that would have been wrong came back flagged as unsure.</p>
+<p>Industry observers note that the full code is about 160 lines with no dependencies. Try adding a fourth Jev question (does the customer mention a photo?) or an estimate field in Clairic (how many days until the trip?), and see how little the rest of the pipeline has to change.</p>
+<p id="sec-end-151117">7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/how-to-build-a-typed-ai-pipeline-with-jev-and-clairic/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-power-bi-mcp-server-how-to-brief-an-ai-agent-to-build-150773.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150773. Tech Report: Power BI MCP server: how to brief an AI agent to build accurate measures
+        </a>
+        
+        <a href="tech-report-build-awesome-datasets-for-video-generation-150741.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150741. Tech Report: Build awesome datasets for video generation
+        </a>
+        
+        <a href="tech-report-scientists-build-6986-digital-brain-twins-to-study-de-150343.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150343. Tech Report: Scientists Build 6,986 Digital Brain Twins to Study Dementia
+        </a>
+        
+        <a href="tech-report-kitchen-of-the-week-a-latest-build-that-eschews-perfe-148866.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #148866. Tech Report: Kitchen of the Week: A Latest Build that Eschews Perfection and Allows a ‘Boisterous’ Life
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

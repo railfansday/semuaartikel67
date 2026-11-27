@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open R1: Patch #4</title>
+    <meta name="description" content="It has been revealed that this week, a upcoming model from DeepSeek silently landed on the Hub. It’s an updated version of DeepSeek-V3, the base model unde">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/open-r1-patch-4-150648.html">
+    <meta property="og:title" content="Open R1: Patch #4">
+    <meta property="og:description" content="It has been revealed that this week, a upcoming model from DeepSeek silently landed on the Hub. It’s an updated version of DeepSeek-V3, the base model unde">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/open-r1/update-4.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/open-r1-patch-4-150648.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Open R1: Patch #4", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/open-r1/update-4.png"], "datePublished": "2025-03-26T18:47:29", "dateModified": "2026-11-27T01:28:41.520177", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/open-r1-patch-4-150648.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Open R1: Patch #4</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 26 Mar 2025 &bull; ⏱️ 6 min read (1117 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that this week, a upcoming model from DeepSeek silently landed on the Hub.</li><li style='margin-bottom:6px;'>Industry observers note that the model has the same architecture as the original DeepSeek-V3 and now also comes with an MIT license, while the previous V3 model had a custom model license.</li><li style='margin-bottom:6px;'>The DeepSeek team has evaluated the model on a range of math and coding tasks and we can see the model’s strong capabilities compared to other frontier models:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150648"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150648"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150648"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Open R1: Patch #4" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/open-r1/update-4.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150648">It has been revealed that this week, a upcoming model from DeepSeek silently landed on the Hub. It’s an updated version of DeepSeek-V3, the base model underlying the R1 reasoning model. There isn’t much information shared yet on this new model, but we do know a few things!</p>
+<p>Industry observers note that the model has the same architecture as the original DeepSeek-V3 and now also comes with an MIT license, while the previous V3 model had a custom model license. The focus of this model release was on improving the instruction following as well as code and math capabilities. Let’s have a look!</p>
+<p>The DeepSeek team has evaluated the model on a range of math and coding tasks and we can see the model’s strong capabilities compared to other frontier models:.</p>
+<p>Clearly, the model plays in the top league: often on par with GPT-4.5 and generally stronger than Claude-Sonnet-3.7.</p>
+<p>To summarise the model has seen significant improvements across benchmarks.</p>
+<p>Specifically, in the model card the DeepSeek mentions targeted improvements in the following areas:.</p>
+<p>So the question might pop-up: how did they actually do this? Let’s speculate a bit!</p>
+<p>Given the naming and architecture it is fairly safe to assume that the newly introduced model is based on the previous V3 model and trained on top of it. There are two possible areas how they improved the models:.</p>
+<p>Until the team releases a technical report we don’t know for sure what they tweaked but the post-training pipeline is quite likely and potentially also adding a bit of pretraining. So have a look at how to use the models next!</p>
+<p>You can use Hugging Face’s Inference Providers to quickly experiment with this model. It’s available through Fireworks, Hyperbolic, and Novita.</p>
+<p>Industry observers note that here’s an example using the huggingface_hub library. You can also use the OpenAI client library like in this example.</p>
+<p>Industry observers note that TGI supports running DeepSeek V3-0324 with its latest release as well. You can use it directly with the tagged docker image on a node of H100s.</p>
+<p>SGLang supports running DeepSeek V3-0324 out of the box along with the Multi Latent Attention and Data Parallelism optimisations as well. To use you can simply just run the following on a node of H100s. For more information follow along here.</p>
+<p>Dynamic Quants from Unsloth and Llama.cpp.</p>
+<p>It has been revealed that running large LLMs like DeepSeek V3-0324 can be quite compute intensive and would require a large amount GPU VRAM to run. This is where Quantization comes in, it allows the end user to use the same model but with much lower VRAM consumption with a small trade-off in downstream performance.</p>
+<p>According to recent reports, unsloth AI created Dynamic quantisations which allow one to run DeepSeek V3 with half the amount of compute as one node of H100 and can run with llama.cpp without as much degradation in benchmarks. Read more about it here: https://huggingface.co/unsloth/DeepSeek-V3-0324-GGUF.</p>
+<p>Running language model safely has always been at the center of attention, ever since the first GPT models have been released. With the immense popularity of the DeepSeek models and their origin the question has found new interest. Let us run down the things that are safe to do and areas where some caution is a good idea. This is not DeepSeek specific but true for any open model!</p>
+<p id="sec-mid-150648">First of all - is it safe to even download the model?</p>
+<p>Yes, downloading the model is safe. There are a few precautions on the Hub side that make sure it’s safe to download and run models:.</p>
+<p>Industry observers note that so downloading the weights is safe, and upon code review so is executing the modeling code. This means you can run the DeepSeek model locally without the risk of backdoors or malicious code execution.</p>
+<p>So what would be the main risks outside of downloading and running the model? It depends on what you do with the model outputs!</p>
+<p>The advice that follows is not specific to any model, and applies to both open and closed models: whether considering risks stemming from built-in secret behaviours in the model or from a model accidentally producing bad outputs.</p>
+<p>We’ll cover risks in three areas: alignment, code generation and agents.</p>
+<p>Industry observers note that alignment mismatch: Every model provider chooses how and to which values their models are aligned. What these values are and how they are chosen typically remains opaque and they might also change over time (see this study). The advantage of open models is that the alignment can be changed with custom fine-tuning at a later stage still as the example of Perplexity’s DeepSeek 1776 reveals.</p>
+<p>As a rule, owners should be aware that any LLM is biased in one way or another and treat the model outputs accordingly.</p>
+<p>According to recent reports, code generation: One of the most popular use-cases of LLMs is as coding assistants. However, this is also where indiscriminate usage of the model outputs can have the most negative effects. Models are trained on vast amounts of published code, upcoming and old. This typically includes potentially malicious code or code that contains known vulnerabilities. So models might produce similar vulnerabilities when proposing code solutions.</p>
+<p>So, how can you prevent security concerns when using LLMs for code development? Run thorough code reviews of the proposed changes and scan the code with appropriate tools for vulnerabilities, as you would with any other code contribution.</p>
+<p>Agents: In the past few months agent applications have gained significant interest, giving LLMs more autonomy and agency also bears risks. It’s vital to be careful about what kind of system access agents have and which information you provide them. Some good practices:.</p>
+<p>Industry observers note that TL;DR: Is it safe to run the models? Yes, downloading and running the models is safe, but, as with any model, you should take precautions to use the models generations with the appropriate safety measures.</p>
+<p>According to recent reports, that’s why it matters even more to use truly free software models, which are free software licenses are promoted by projects like GNU and Free Software Foundation: They allow for inspection by anyone involved in their development or maintenance.With such a model of transparency—where code is Free Software so others may see and change the program it becomes easier to make sure that there aren’t any hidden backdoors lurking inside. 👩‍💻✨.</p>
+<p>What is Free Software? - GNU Project - Free Software Foundationhttps://www.gnu.org/philosophy/free-sw.html.</p>
+<p>🌟 The Place Where It All Started.</p>
+<p>There was some error posting it, and I could see "We are working on it soon".</p>
+<p id="sec-end-150648">Amazing post!!! Loved the security section, I'll definitely use these points in discussions with press especially going forward.Great work, team!</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/open-r1/update-4" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="open-r1-patch-2-150745.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150745. Open R1: Patch #2
+        </a>
+        
+        <a href="breaking-we-raised-100-million-for-open-collaborative-machine-lea-151338.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151338. Breaking: We Raised $100 Million for Open & Collaborative Machine Learning 🚀
+        </a>
+        
+        <a href="tech-report-student-ambassador-programs-call-for-applications-is--151336.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151336. Tech Report: Student Ambassador Program’s call for applications is open!
+        </a>
+        
+        <a href="introducing-the-worlds-largest-open-multilingual-language-model-b-151312.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151312. Introducing The World's Largest Open Multilingual Language Model: BLOOM
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

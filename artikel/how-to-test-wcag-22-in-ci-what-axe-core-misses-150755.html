@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Test WCAG 2.2 in CI: What axe-core Misses</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. In a recent development, 7 Day Free T">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-to-test-wcag-22-in-ci-what-axe-core-misses-150755.html">
+    <meta property="og:title" content="How to Test WCAG 2.2 in CI: What axe-core Misses">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Weekly. Free. One click to leave. In a recent development, 7 Day Free T">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_How_to_Test_WCAG_2_2_in_CI_What_axe_core_Misses_344b927d5a.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-to-test-wcag-22-in-ci-what-axe-core-misses-150755.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How to Test WCAG 2.2 in CI: What axe-core Misses", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_How_to_Test_WCAG_2_2_in_CI_What_axe_core_Misses_344b927d5a.png"], "datePublished": "2026-11-16T13:52:13", "dateModified": "2026-11-27T01:28:48.153039", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-to-test-wcag-22-in-ci-what-axe-core-misses-150755.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How to Test WCAG 2.2 in CI: What axe-core Misses</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 16 Nov 2026 &bull; ⏱️ 6 min read (1170 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>In a recent development, 7 Day Free Trial.</li><li style='margin-bottom:6px;'>It has been revealed that your accessibility check in CI is green.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150755"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150755"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150755"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How to Test WCAG 2.2 in CI: What axe-core Misses" loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_How_to_Test_WCAG_2_2_in_CI_What_axe_core_Misses_344b927d5a.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150755">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>Weekly. Free. One click to leave.</p>
+<p>In a recent development, 7 Day Free Trial. Cancel Anytime.</p>
+<p>It has been revealed that your accessibility check in CI is green. axe-core ran, zero violations, and the badge in the README looks great. Your site can still fail WCAG 2.2.</p>
+<p>Sources indicate that that isn't a bug in axe. WCAG 2.2 became a W3C Recommendation in October 2023. It added nine success criteria and dropped one (4.1.1 Parsing), and most of the new ones can't be judged by reading the DOM. Deque said as much when it shipped the first WCAG 2.2 support in axe-core 4.5: the target-size rule would probably be the only new-criterion rule they added, because the others can't be automated without a lot of false positives.</p>
+<p>So the rest is on you. This article covers the one criterion axe can check and three it can't (focus not obscured, dragging movements, accessible authentication), with Playwright tests you can drop into a project. I ran all of them against a small test page that fails every criterion on purpose, and against a fixed version of the same page. If you want a plain-language rundown of every change first, WCAG 2.2 vs 2.1 goes through them. Here I only care about what you can put in a pipeline.</p>
+<p>In a recent development, level A and AA are what most contracts and laws point at, so those are the ones that matter first. The AAA criteria are still worth knowing about.</p>
+<p>In a recent development, that's four AA criteria with something you can script, one of which axe already handles. The rest of this article goes through those four.</p>
+<p>Industry observers note that the AA rule is smaller than most people expect: a pointer target should be at least 24 by 24 CSS pixels, or sit far enough from its neighbours that a 24px circle centred on it wouldn't overlap another target or that target's own circle. There are exceptions, including inline links in a sentence, and targets whose size the browser controls.</p>
+<p>According to recent reports, axe-core has a target-size rule for this. One catch: it isn't part of a default run. In my setup (axe-core 4.14.1 through @axe-core/playwright 4.14.0), a plain analyze() on the broken page reported nothing at all. The rule only showed up once I asked for it:.</p>
+<p>It has been revealed that on the broken page this lists the three 16px toolbar buttons by selector. On the fixed page, with 32px buttons, it passes. If you've been running axe for years and never seen a target-size result, this is why.</p>
+<p>Some context on how common the problem is. In the scan data behind my last SitePoint article, 34.5% of the 1,025 sites had controls below a stricter 44px threshold. That is a tougher standard than the 24px that AA asks for, so don't read it as "a third of sites fail 2.5.8". Plenty of those would pass. But it does show how many production sites ship tiny controls.</p>
+<p>If you'd like a quick look at one page before wiring anything up, browser tools such as axe DevTools, WAVE, or a WCAG checker will show the same thing.</p>
+<p>Industry observers note that axe can't test it, because you have to press Tab and look at where the browser scrolled. Two details caught me out building this:.</p>
+<p>The check below samples a grid of points inside the visible part of the focused element and asks the browser what's on top at each one. If none of the points land on the element or its children, it's covered.</p>
+<p id="sec-mid-150755">On my broken page it reported nine hits: links hidden behind the footer going forward ("Section 4 link", "Section 10 link", "Section 16 link") and the toolbar buttons and a few links hidden behind the header coming back. The output names the element and the key, which is what you want when you're staring at a failed build.</p>
+<p>The fix is one CSS rule, sized to your sticky elements:.</p>
+<p>That tells the browser to leave room when it scrolls a focused element into view. With it in place the same test passes.</p>
+<p>Recent findings suggest that be aware of what this can't see: a modal that opens over the page, or a chat widget that only appears after a delay, will not show up unless your test opens or waits for them. Adrian Roselli's piece on 2.4.11 and adversarial conformance is worth reading for the awkward cases.</p>
+<p>It has been revealed that anything you can do by dragging needs a way to do it with a single click or tap, unless dragging is essential. Sortable lists, sliders, kanban cards, file reorderers: all of them.</p>
+<p>You can't prove a drag alternative works from a script. But you can catch the obvious mistake, which is a draggable item with no button anywhere near it:.</p>
+<p>The limit is real. It only recognises the native draggable attribute. Libraries built on pointer events, such as dnd-kit, don't set it, so this test will walk right past them. If you use one of those, replace the selector with whatever your component renders, or add a test per drag component. Treat it as a tripwire for the common case, not a verdict.</p>
+<p>The fix, in the fixed page, is a pair of "Move up" and "Move down" buttons on each item, each with an accessible name that indicates which item it moves.</p>
+<p>According to recent reports, this dispatches a synthetic paste event and checks whether anything called preventDefault() on it. It catches the old onpaste="return false" trick, and it catches script-based blockers too. It does not tell you whether your login has a CAPTCHA that needs an alternative, or an emailed one-time code you must retype. Those need a person.</p>
+<p>On a pull request, a plain GitHub Actions job is enough:.</p>
+<p>Industry observers note that point PAGE_URL at a running preview, and run the tests against the pages that matter most: sign-in, checkout, anything with a sticky element. Don't try to crawl everything on the first pass. A test that fails for reasons nobody owns gets deleted within a month.</p>
+<p>Four things I haven't tried to automate, and wouldn't:.</p>
+<p>In a recent development, automation will keep the regressions out. It won't tell you the work is finished. A green build and a conformant site are different things, and WCAG 2.2 widened the gap between them.</p>
+<p>Industry observers note that the tests and both test pages are small enough to read in one sitting. Copy what's useful, change the selectors, and keep the broken page around: it's a handy way to check that a test fails when it should.</p>
+<p>Sources indicate that about the author: [name] builds WCAGsafe, an accessibility scanner. The study data above comes from its scans; the code in this article is independent of it and runs against any page.</p>
+<p id="sec-end-150755">Recent findings suggest that 7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/how-to-test-wcag-2-2-in-ci-what-axe-core-misses/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="putting-ethical-principles-at-the-core-of-the-research-lifecycle-151330.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151330. Putting ethical principles at the core of the research lifecycle
+        </a>
+        
+        <a href="using-stable-diffusion-with-core-ml-on-apple-silicon-151258.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151258. Using Stable Diffusion with Core ML on Apple Silicon
+        </a>
+        
+        <a href="faster-stable-diffusion-with-core-ml-on-iphone-ipad-and-mac-151172.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151172. Faster Stable Diffusion with Core ML on iPhone, iPad, and Mac
+        </a>
+        
+        <a href="industry-news-stable-diffusion-xl-on-mac-with-advanced-core-ml-qu-151152.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151152. Industry News: Stable Diffusion XL on Mac with Advanced Core ML Quantization
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

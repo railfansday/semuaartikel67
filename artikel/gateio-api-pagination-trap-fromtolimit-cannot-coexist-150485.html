@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gate.io API Pagination Trap: from+to+limit Cannot Coexist</title>
+    <meta name="description" content="Recent findings suggest that if you've wired up Gate.io's futures candlestick endpoint, you've probably hit this: you build a request with a start time, an">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/gateio-api-pagination-trap-fromtolimit-cannot-coexist-150485.html">
+    <meta property="og:title" content="Gate.io API Pagination Trap: from+to+limit Cannot Coexist">
+    <meta property="og:description" content="Recent findings suggest that if you've wired up Gate.io's futures candlestick endpoint, you've probably hit this: you build a request with a start time, an">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fm746qzdok1mogjwrb3kx.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/gateio-api-pagination-trap-fromtolimit-cannot-coexist-150485.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Gate.io API Pagination Trap: from+to+limit Cannot Coexist", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fm746qzdok1mogjwrb3kx.png"], "datePublished": "2026-11-27T01:24:49", "dateModified": "2026-11-27T01:28:30.363532", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/gateio-api-pagination-trap-fromtolimit-cannot-coexist-150485.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Gate.io API Pagination Trap: from+to+limit Cannot Coexist</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 27 Nov 2026 &bull; ⏱️ 4 min read (880 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that if you've wired up Gate.io's futures candlestick endpoint, you've probably hit this: you build a request with a start time, an end time, and a page size, and the server replies HTTP 400.</li><li style='margin-bottom:6px;'>Here's the endpoint in question (USDT-margined perpetual futures):.</li><li style='margin-bottom:6px;'>It has been revealed that the rule the docs bury: from, to, and limit are mutually constrained.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150485"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150485"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150485"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Gate.io API Pagination Trap: from+to+limit Cannot Coexist" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fm746qzdok1mogjwrb3kx.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150485">Recent findings suggest that if you've wired up Gate.io's futures candlestick endpoint, you've probably hit this: you build a request with a start time, an end time, and a page size, and the server replies HTTP 400. You strip out to, retry, and it works. You add it back, it breaks. The error message doesn't mention to at all — it usually complains about something generic like an invalid parameter or an empty result set, which sends you chasing the wrong thing for an hour.</p>
+<p>Here's the endpoint in question (USDT-margined perpetual futures):.</p>
+<p>Query parameters that matter for history:.</p>
+<p>It has been revealed that the rule the docs bury: from, to, and limit are mutually constrained. from+limit works. from+to works. to+limit works. All three together returns 400. And there's a second constraint that bites later: any single call returns at most the most recent 10,000 data points, regardless of how wide your range is.</p>
+<p>It has been revealed that let's pin down the failure so it's not folklore. The code below is the minimal reproduction — no retry logic, no abstractions.</p>
+<p>The message varies and is never "you sent too many parameters." That's the trap: the API validates combinations, not individual fields, and the error text doesn't say which combination it rejected.</p>
+<p>One more detail worth knowing: from and to are in seconds, but the timestamps inside the returned candle objects are also in seconds. Mixing in milliseconds (easy to do if you're used to other exchanges) silently produces empty arrays or absurd ranges rather than an error.</p>
+<p>It has been revealed that the fix is to pick one paging axis and stick to it. from+limit is the most robust because it's forward-only: you always ask for "the next N candles starting at timestamp T," and you advance T using the data you got back.</p>
+<p>Sources indicate that the rule: next page's from = last candle's timestamp + interval seconds. Not +1 second in general — +1 only works for the 1s interval. For 1m it's +60, for 1h it's +3600. If you use the interval length, you never re-request the boundary candle and you never skip one.</p>
+<p>A few things this loop gets right that naive versions don't:.</p>
+<p>The 10,000-point cap is per call, not per range, and it's applied to the most recent data in the window you asked for. This has a nasty consequence: if you request from = now - 30 days with limit = 1000 on 1m, you get the 1,000 most recent minutes of that window — not the first 1,000 minutes. Your pagination loop's first page is fine, but the semantics of "most recent within the window" mean that a naive loop which advances from will eventually get stuck asking for data older than what the server will serve in a single call.</p>
+<p id="sec-mid-150485">The clean way to handle it is to split the overall range into windows of at most 10,000 intervals, and paginate inside each window. That way each from+limit call is guaranteed to fall inside the server's per-call ceiling.</p>
+<p>Industry observers note that if you're pulling months of 1m data, this is dozens of HTTP round-trips. That's expected — there is no bulk export endpoint, and hammering the server with parallel requests will get you rate-limited. Serialize, add a small sleep between windows, and cache to disk.</p>
+<p>The Gate.io case is one instance of a general problem: undocumented parameter interactions. When you hit a 400 and the message is unhelpful, don't guess — bisect.</p>
+<p>The idea: start with a request you know works, then add parameters one at a time, and when it breaks, remove one at a time to confirm which combination is fatal. For a small parameter set this is a few requests.</p>
+<p>Sources indicate that for three optional parameters this is at most 8 requests and it tells you definitively that {from, to, limit} is the failing triple and {from, limit} is the maximal working pair. That's far faster than reading docs that don't mention the rule.</p>
+<p>According to recent reports, when the parameter space is larger — say, ten optional query params — exhaustive subsets are 1,024 requests, which is too many. Switch to a greedy bisection: add params one at a time in the order you suspect matters; when adding one breaks the request, mark it as conflicting with the current set and try it alone against the required params. That's O(n) in practice.</p>
+<p>Run it, and you get a working parameter set plus the list of params that broke it. In the Gate.io case, rejected would contain whichever of from/to/limit was added third — which is exactly the information the error message withheld.</p>
+<p>Industry observers note that the general lesson transfers: when an API's parameters interact, the docs often describe each field in isolation and leave the constraints implicit. Build a small probe harness once, and every new endpoint becomes a five-minute investigation instead of an afternoon of guessing.</p>
+<p>More notes like this ship every week on this site.</p>
+<p>Recent findings suggest that the following pairs are selected from the multi-timeframe trend scanner (Gate.io futures) and are for technical-analysis study only — not investment advice. Data updated: 2026-11-12 08:46:26.</p>
+<p id="sec-end-150485">In a recent development, 1 picks selected. Scanner runs every 15 minutes.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/mattleeee/gateio-api-pagination-trap-fromtolimit-cannot-coexist-57db" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-how-we-sped-up-transformer-inference-100x-for-api-c-151406.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151406. Latest Update: How we sped up transformer inference 100x for 🤗 API customers
+        </a>
+        
+        <a href="few-shot-learning-in-practice-gpt-neo-and-the-accelerated-inferen-151391.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151391. Few-shot learning in practice: GPT-Neo and the 🤗 Accelerated Inference API
+        </a>
+        
+        <a href="how-to-install-and-use-the-hugging-face-unity-api-151200.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151200. How to Install and Use the Hugging Face Unity API
+        </a>
+        
+        <a href="deploying-the-ai-comic-factory-using-the-inference-api-151118.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151118. Deploying the AI Comic Factory using the Inference API
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

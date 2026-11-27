@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmolVLM Grows Smaller – Introducing the 256M & 500M Models!</title>
+    <meta name="description" content="We’re excited to announce two fresh additions to the SmolVLM family: SmolVLM-256M and SmolVLM-500M. That’s right—256M parameters, making it the smallest Vi">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/smolvlm-grows-smaller-introducing-the-256m-500m-models-150812.html">
+    <meta property="og:title" content="SmolVLM Grows Smaller – Introducing the 256M & 500M Models!">
+    <meta property="og:description" content="We’re excited to announce two fresh additions to the SmolVLM family: SmolVLM-256M and SmolVLM-500M. That’s right—256M parameters, making it the smallest Vi">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/smolervlm/banner.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/smolvlm-grows-smaller-introducing-the-256m-500m-models-150812.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "SmolVLM Grows Smaller – Introducing the 256M & 500M Models!", "image": ["https://huggingface.co/blog/assets/smolervlm/banner.png"], "datePublished": "2025-01-23T00:00:00", "dateModified": "2026-11-27T01:28:50.901872", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/smolvlm-grows-smaller-introducing-the-256m-500m-models-150812.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>SmolVLM Grows Smaller – Introducing the 256M & 500M Models!</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 23 Jan 2025 &bull; ⏱️ 6 min read (1128 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>We’re excited to announce two fresh additions to the SmolVLM family: SmolVLM-256M and SmolVLM-500M.</li><li style='margin-bottom:6px;'>We built on everything we learned from SmolVLM 2B while focusing on efficiency, data mixtures, and fresh design trade-offs.</li><li style='margin-bottom:6px;'>Industry observers note that this release comes with four checkpoints: two base models and two instruction fine-tuned models with sizes 256M and 500M parameters.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150812"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150812"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150812"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="SmolVLM Grows Smaller – Introducing the 256M &amp; 500M Models!" loading="lazy" src="https://huggingface.co/blog/assets/smolervlm/banner.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150812">We’re excited to announce two fresh additions to the SmolVLM family: SmolVLM-256M and SmolVLM-500M. That’s right—256M parameters, making it the smallest Vision Language Model in the world!</p>
+<p>We built on everything we learned from SmolVLM 2B while focusing on efficiency, data mixtures, and fresh design trade-offs. We are excited to introduce a pair of models that preserve strong multimodal performance in a fraction of the footprint.</p>
+<p>Industry observers note that this release comes with four checkpoints: two base models and two instruction fine-tuned models with sizes 256M and 500M parameters. These models can be loadable directly to transformers, MLX and ONNX, and we have demos for transformers and WebGPU (with ONNX). You can find all the models and the demo for this release here.</p>
+<p>We're now reaching model parity with the SmolLM2 family (135M, 360M, 1.7B), so you have a complete set of smaller LLM + VLM combos to play with.</p>
+<p>In a recent development, when we released SmolVLM 2B, the community response was fantastic: The model is very light weight, open-source and permissive, and easy to integrate into existing workflows. But we wanted to push this approach even further for people working with constrained devices, consumer laptops, or even potentially browser-based inference. That’s where our new 256M and 500M models come in. On the other side, for people trying to process huge amounts of data, these models can run at a fraction of the cost of the 2B model.</p>
+<p>In the last year, we trained two 80B VLMs and reduced them to 8B. Then for SmolVLM we took the challenge of reducing that 2B. And what we learned was that we could push the frontier way further! We are excited to show that at 256M and 500M we can still get great performance. Our new 256M model is the smallest VLM ever released, yet it surpasses the performance of our Idefics 80B model from just 17 months ago.</p>
+<p>According to recent reports, with just 256 million parameters, this model stands as the tiniest VLM ever. Despite its small size, it packs a surprising punch. It’s more than capable on many multimodal tasks, including:.</p>
+<p>It has been revealed that if you need more performance headroom while still keeping the memory usage low, SmolVLM-500M is our half-billion-parameter compromise. It’s significantly smaller than the previous 2B release yet manages to push scores on tasks like DocVQA and MMMU closer to the bigger models. We also found this model to be more robust to prompting, which makes it out-of-the-box better fitted for production. But both models do great when fine-tuned.</p>
+<p>We have visualized the throughput gains across different batch sizes in below graph. Below numbers are throughput benchmarks ran on A100.</p>
+<p>It has been revealed that 1. Vision Encoder Choices
+Previously, we used the standard SigLIP 400M SO vision backbone, the same one found in many VLM architectures. For these smaller models, we experimented with two setups:.</p>
+<p>We found the performance gap wasn’t major enough to justify the heavier encoder for our 256M and 500M models. So, we decided to go small on the vision encoder, too. As a bonus, the smaller encoder processes images at a larger resolution, which (per research from Apple and Google) can often yield better visual understanding without ballooning parameter counts.</p>
+<p>Similarly to our previous release, we rely on The Cauldron and Docmatix with the addition of MathWriting to the mix.</p>
+<p>The proportions of the datasets were adjusted to place a stronger emphasis on document understanding (41%) and image captioning (14%), while still maintaining a balanced focus on other essential areas such as visual reasoning, chart comprehension, and general instruction following. With this update the model is built on a strong document understanding basis and lets the door open to fine-tunes that will adjust its understanding of specific tasks.</p>
+<p>It has been revealed that we increased the pixel shuffle even more! Our fresh models encode images at a rate of 4096 pixels per token, compared to 1820 pixels per token in the 2B model.</p>
+<p>It has been revealed that to optimize the tokenization even more, we added special tokens to represent our sub-image separators in a more efficient way. This means that now instead of a string like  being mapped to 7 tokens, it is mapped to a single token. We did the same for strings up to . This led to a sizeable improvement in the model's stability during training and quality of the results. More details were documented in this LinkedIn post.</p>
+<p id="sec-mid-150812">4. Completing the SmolLM2-SmolVLM family.</p>
+<p>SmolLM2 came in three sizes: 135M, 360M, and 1.7B. With the two models we are releasing today, we now have a complete set of smaller LLM + VLM combos to play with.</p>
+<p>We also found that it's surprisingly easy to fine-tune and experiment. The team behind the ColBERT-like retrieval models have trained ColSmolVLM, delivering SOTA multimodal retrieval speeds with performance rivaling models 10x their size. SmolVLM makes it faster and cheaper to build searchable databases. We think the 256M model can become a great specialized model for many tasks. Find the link on how to use the new ColSmolVLM with the new SmolVLM models in Next Steps.</p>
+<p>In a recent development, we partnered with IBM to build models for Docling. Their early results with the 256M model are impressive. Below are some early examples they shared with us. Stay tuned for more updates on this!</p>
+<p>Newer SmolVLMs are working out-of-the-box with the old SmolVLM code, so you can use transformers and MLX for inference and fine-tuning, and TRL for alignment 🚀 Moreover, this release also comes with ONNX checkpoints.</p>
+<p>Get started with SmolVLM using transformers like below.</p>
+<p>Use SmolVLM with MLX by running the following CLI command:.</p>
+<p>You can play with the WebGPU demos for the SmolVLM-256M-Instruct and SmolVLM-500M-Instruct.</p>
+<p>Find links to fine-tuning and multimodal RAG with ColSmolVLM on the Next Steps.</p>
+<p>You can cite us in the following way:.</p>
+<p>We would like to thank ViDoRe team for training ColSmolVLM: Tony Wu, Manuel Faysse, and Joshua Lochner for the ONNX conversion and WebGPU demo and Vaibhav Srivastav for his help on this release.</p>
+<p>Great blog post! Congratulations on the release.</p>
+<p>According to recent reports, personally, I don't think it's fair to compare a unilingual model on unilingual benchmarks against multilingual models. Are unilingual models that relevant in 2025, anyways? There are no use cases in the real world for unilingual models.</p>
+<p>I'm starting to think in some use cases if unilingual (therefore small) model is capable of doing a niche task, and we want to chain or parallelize many of these small models in an agentic workflow, it's even reasonable to  translate the original prompt by a multilingual model beforehand.</p>
+<p id="sec-end-150812">you have swaped the link for the ColSmal and the fine tuningawesome work.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/smolervlm" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="block-sparse-matrices-for-smaller-and-faster-language-models-151411.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151411. Block Sparse Matrices for Smaller and Faster Language Models
+        </a>
+        
+        <a href="introducing-doi-the-digital-object-identifier-to-datasets-and-mod-151279.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151279. Introducing DOI: the Digital Object Identifier to Datasets and Models
+        </a>
+        
+        <a href="breaking-introducing-hugs-scale-your-ai-with-open-models-150902.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150902. Breaking: Introducing HUGS - Scale your AI with Open Models
+        </a>
+        
+        <a href="latest-update-introducing-helmet-holistically-evaluating-long-con-150619.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150619. Latest Update: Introducing HELMET: Holistically Evaluating Long-context Language Models
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

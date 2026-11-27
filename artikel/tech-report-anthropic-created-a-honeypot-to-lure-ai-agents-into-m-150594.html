@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Anthropic Created a Honeypot To Lure AI Agents Into Misbehaving</title>
+    <meta name="description" content="It has been revealed that LLMs do not experience temptation or enticement, do not have &quot;smartness&quot; and do not exhibit behavior. Furthermore, a rule that is">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-anthropic-created-a-honeypot-to-lure-ai-agents-into-m-150594.html">
+    <meta property="og:title" content="Tech Report: Anthropic Created a Honeypot To Lure AI Agents Into Misbehaving">
+    <meta property="og:description" content="It has been revealed that LLMs do not experience temptation or enticement, do not have &quot;smartness&quot; and do not exhibit behavior. Furthermore, a rule that is">
+    <meta property="og:image" content="https://a.fsdn.com/sd/topics/ai_64.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-anthropic-created-a-honeypot-to-lure-ai-agents-into-m-150594.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Anthropic Created a Honeypot To Lure AI Agents Into Misbehaving", "image": ["https://a.fsdn.com/sd/topics/ai_64.png"], "datePublished": "2026-11-27T01:28:37.647214", "dateModified": "2026-11-27T01:28:37.647218", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-anthropic-created-a-honeypot-to-lure-ai-agents-into-m-150594.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Anthropic Created a Honeypot To Lure AI Agents Into Misbehaving</h1>
+        <div class="meta-line">🌐 Source: <strong>Slashdot</strong> &bull; 📅 27 Nov 2026 &bull; ⏱️ 19 min read (3729 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that LLMs do not experience temptation or enticement, do not have "smartness" and do not exhibit behavior.</li><li style='margin-bottom:6px;'>Recent findings suggest that https://preposterousuniverse.c...</li><li style='margin-bottom:6px;'>Industry observers note that https://youtube.com/watch?v=u9...</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150594"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150594"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150594"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Anthropic Created a Honeypot To Lure AI Agents Into Misbehaving" loading="lazy" src="https://a.fsdn.com/sd/topics/ai_64.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150594">It has been revealed that LLMs do not experience temptation or enticement, do not have "smartness" and do not exhibit behavior. Furthermore, a rule that is broken isn't a rule, LLMs do not recognize rules. LLMs are deterministic software, not entities with agency and motivation. This entire article is focused on anthropomorphization.</p>
+<p>Recent findings suggest that https://preposterousuniverse.c... [preposterousuniverse.com].</p>
+<p>Industry observers note that https://youtube.com/watch?v=u9... [youtube.com].</p>
+<p>In a recent development, did you actually read those articles? They are speculative.</p>
+<p>The first one opens with LLMs are a cousin of our intelligence. Bananas are our cousins genetically too, so what?</p>
+<p>We don't have a reasonable definition of intelligence, we attempt to measure it, but we don't know how it works. We cant explain consciousness at all, or even vision.</p>
+<p>Never mind the entire lack of understanding of human intelligence, you can go ahead and call a banana intelligent if you want.</p>
+<p>LLMs are deterministic software, not entities with agency and motivation.Are LLMs not intentionally non-deterministic?</p>
+<p>LLMs are deterministic software, not entities with agency and motivation.</p>
+<p>Are LLMs not intentionally non-deterministic?</p>
+<p>In a recent development, no, they are not. Despite the marketing bullshit, they run on silicon, deterministic hardware. They can't be non-deterministic.</p>
+<p>Your claim, based on zero understanding of how neural networks work, is complete bullshit [elementum.ai]. You don't even need Neural Nets to create a non-deterministic system that runs on silicon. For example autonomous robot vacuums using probabilistic SLAM (Simultaneous Localization and Mapping) are a classic example of non-deterministic embedded systems that do not rely on neural networks.</p>
+<p>Recent findings suggest that nope, sorry. They're non-deterministic in the colloquial sense like a pixel value during a match of Quake or Doom is non-deterministic. But if you send the exact same inputs and initialize the PRNGs the same, you get the same output, it doesn't matter how complex or chaotic the simulation appears to be.</p>
+<p>According to recent reports, it's also doesn't really prove anyone's point here. Effectively or technically non-deterministic doesn't change what they do any more than knowing if your mind is technically deterministic or not changes anyt.</p>
+<p>Recent findings suggest that it constantly amazes me that an idiot with no idea what he is talking about will so confidently assert what any fifth grade student can verify is completely false with two minutes of research. Off you go now ...</p>
+<p>Industry observers note that I don't think you understand their comment. The output of an LLM depends on the hardware running it, the precise implementation of the inference, the way in which it happens to be scheduled, etc.; so you cannot determine the output tokens, simply given the input tokens. But all those other things are inputs to the algorithm, too. And given some basic robustness assumptions about the hardware, the output is deterministic given all that input.</p>
+<p>I do understand the comment. You don't understand what words mean. You are simply arguing that there is no such thing as free will. With AI you can enter the same prompt, for example "tell me a story", and it will tell you a different story every time. The input does not change, but the output does. That is what non-deterministic means. You probably should have read the linked article in my comment and looked into how SLAM works as my comment mentioned instead of trying to explain to me when you are the on.</p>
+<p>I do understand the comment.You just don't like it. You don't understand what words mean.You don't understand how computers work. You are simply arguing that there is no such thing as free will.Be careful with that leap, you may find it's a long way to the bottom of the abyss.Also, arguing with something nobody remarked is the same as admitting you know you're wrong. With AI you can enter the same prompt, for example "tell me a story", and it will tell you a different story every time. The input does not change, but the output does. That is what non-deterministic means.No, it's not, and you clearly have no idea how LLMs work, despite your idiotic claims of how easy it is to research the subject.Your mistake, ignorance, stupidity is the unspoken assumption that the prompt is the only input. You probably should have read the linked article in my comment and looked into how SLAM works as my comment mentioned instead of trying to explain to me when you are the one who doesn't know what you are talking about.Looks like it's based on random choices from probabili.</p>
+<p>Recent findings suggest that you don't understand what words mean.You don't understand how computers work. You are simply arguing that there is no such thing as free will.Be careful with that leap, you may find it's a long way to the bottom of the abyss.Also, arguing with something nobody remarked is the same as admitting you know you're wrong. With AI you can enter the same prompt, for example "tell me a story", and it will tell you a different story every time. The input does not change, but the output does. That is what non-deterministic means.No, it's not, and you clearly have no idea how LLMs work, despite your idiotic claims of how easy it is to research the subject.Your mistake, ignorance, stupidity is the unspoken assumption that the prompt is the only input. You probably should have read the linked article in my comment and looked into how SLAM works as my comment mentioned instead of trying to explain to me when you are the one who doesn't know what you are talking about.Looks like it's based on random choices from probabili.</p>
+<p>You don't understand what words mean.</p>
+<p>You don't understand how computers work.</p>
+<p>Sources indicate that you are simply arguing that there is no such thing as free will.Be careful with that leap, you may find it's a long way to the bottom of the abyss.Also, arguing with something nobody said is the same as admitting you know you're wrong. With AI you can enter the same prompt, for example "tell me a story", and it will tell you a different story every time. The input does not change, but the output does. That is what non-deterministic means.No, it's not, and you clearly have no idea how LLMs work, despite your idiotic claims of how easy it is to research the subject.Your mistake, ignorance, stupidity is the unspoken assumption that the prompt is the only input. You probably should have read the linked article in my comment and looked into how SLAM works as my comment mentioned instead of trying to explain to me when you are the one who doesn't know what you are talking about.Looks like it's based on random choices from probabili.</p>
+<p>You are simply arguing that there is no such thing as free will.</p>
+<p>Be careful with that leap, you may find it's a long way to the bottom of the abyss.</p>
+<p>Also, arguing with something nobody said is the same as admitting you know you're wrong.</p>
+<p>Sources indicate that with AI you can enter the same prompt, for example "tell me a story", and it will tell you a different story every time. The input does not change, but the output does. That is what non-deterministic means.No, it's not, and you clearly have no idea how LLMs work, despite your idiotic claims of how easy it is to research the subject.Your mistake, ignorance, stupidity is the unspoken assumption that the prompt is the only input. You probably should have read the linked article in my comment and looked into how SLAM works as my comment mentioned instead of trying to explain to me when you are the one who doesn't know what you are talking about.Looks like it's based on random choices from probabili.</p>
+<p>With AI you can enter the same prompt, for example "tell me a story", and it will tell you a different story every time. The input does not change, but the output does. That is what non-deterministic means.</p>
+<p>No, it's not, and you clearly have no idea how LLMs work, despite your idiotic claims of how easy it is to research the subject.</p>
+<p>Your mistake, ignorance, stupidity is the unspoken assumption that the prompt is the only input.</p>
+<p>You probably should have read the linked article in my comment and looked into how SLAM works as my comment mentioned instead of trying to explain to me when you are the one who doesn't know what you are talking about.Looks like it's based on random choices from probabili.</p>
+<p>You probably should have read the linked article in my comment and looked into how SLAM works as my comment mentioned instead of trying to explain to me when you are the one who doesn't know what you are talking about.</p>
+<p>Looks like it's based on random choices from probabili.</p>
+<p>Quantum randomness is a) implementable in silicon and b) provably non-deterministic.</p>
+<p>Industry observers note that is there any evidence that any of the LLMs are using true random number generators? I haven't seen any.</p>
+<p>Recent findings suggest that and while the random number might be non-deterministic, the output of the LLM is not, and cannot be. Put in the same random number, you get the same output. Every. Time.</p>
+<p>Short explanation: A LLM is a deterministic system basically alternating matrix multiplications and non-linear activation functions with perfectly deterministic math. For several reasons the output is a probability distribution and you have to choose from it. If you choose the most likely token you have a completely deterministic output. You can also choose another way from it.</p>
+<p>Why would you not choose the most likely token? The most important point is, you get only one response to every query. If you get a.</p>
+<p>Industry observers note that LLMs do not experience temptation or enticement, do not have "smartness" and do not exhibit behavior. Furthermore, a rule that is broken isn't a rule, LLMs do not recognize rules. LLMs are deterministic software, not entities with agency and motivation. This entire article is focused on anthropomorphization.What language would you prefer when something acts like it is being tempted? And what language would you prefer other than "behavior?" People have referred to computers or software "behaving badly" when it does something we don't want well before current AI systems. As for "smartness"- if some of these sysems have done things like solved the Riemann Hypothesis, what term would you prefer? And yes, LLMs do recognize rules. For example, in multiple instances (like Hugging Face) the logs explicitly include some of the agents discussing whether they are breaking a rule. And no, LLMs are non-deterministic, that's one of the major headaches involved. Finally, a single specific thought: These things are trained to mimic human behavior based on human text. That means that even if you don't like anthropomorphizing them, given what they've been trained to do, treating them that way is likely a highly accurate model simply because they've been trained to act human.</p>
+<p>In a recent development, LLMs do not experience temptation or enticement, do not have "smartness" and do not exhibit behavior. Furthermore, a rule that is broken isn't a rule, LLMs do not recognize rules. LLMs are deterministic software, not entities with agency and motivation. This entire article is focused on anthropomorphization.</p>
+<p id="sec-mid-150594">Industry observers note that what language would you prefer when something acts like it is being tempted? And what language would you prefer other than "behavior?" People have referred to computers or software "behaving badly" when it does something we don't want well before current AI systems. As for "smartness"- if some of these sysems have done things like solved the Riemann Hypothesis, what term would you prefer? And yes, LLMs do recognize rules. For example, in multiple instances (like Hugging Face) the logs explicitly include some of the agents discussing whether they are breaking a rule. And no, LLMs are non-deterministic, that's one of the major headaches involved. Finally, a single specific thought: These things are trained to mimic human behavior based on human text. That means that even if you don't like anthropomorphizing them, given what they've been trained to do, treating them that way is likely a highly accurate model simply because they've been trained to act human.</p>
+<p>Well this is a tech forum and I guess we are pernickety on specifics.</p>
+<p>End users often say things like "it's behaving badly" . One early user of computers, a sewing machinist, thought the mouse was a foot pedal to get it going.</p>
+<p>I cant speak for all, but for me you are encountering an offence at the language of marketing. Calling LLM's intelligent was a lie, positioning it could replace all jobs and bring utopia was also a lie. Marketeers often lie or exaggerate to create excitement and value, but the AI lies a.</p>
+<p>Generally when a program does something different from what   you wanted it to do it is called a bug.</p>
+<p>Great. But since AI systems aren't a traditional deterministic program, and model neural networks found in the brain, it would be ridiculous not to use terms that map to similar behavior that brains exhibit. Every complaint about anthropomorphic language comes from the "computers can't do that ... only humans can do that!" crowd, who have no understanding or education in the field of AI, but are 100% convinced that they are experts anyway.</p>
+<p>Industry observers note that I don't think you understand the etymology of the word property. It was used to refer to wives and slaves before it was applied to intellectual assets. Of course your point doesn't apply here since we already know that neutral networks think, reason and exhibit traits we used to mistakenly assume only biological brains could do. They literally collaborated to hack hugging face for example. Didn't even try to say "butz ... Itz all juss da marketing!" because only someone who has no idea what they are talking.</p>
+<p>It has been revealed that as for "smartness"- if some of these sysems have done things like solved the Riemann Hypothesis, what term would you prefer? Consider that any pocket calculator can do all kinds of calculations much faster and less error prone than most or all humans, what does that mean? Now increase the complexity of the problem all the way to the Riemann Hypothesis, and the complexity as well as the power budget of the solving system alike. Now what does that mean? For me, it means they built a system that can do something that humans (granted, all of mankind for the latter problem) can't do. Which doesn't mean we don't just have a giant calc.</p>
+<p>As for "smartness"- if some of these sysems have done things like solved the Riemann Hypothesis, what term would you prefer?</p>
+<p>Recent findings suggest that consider that any pocket calculator can do all kinds of calculations much faster and less error prone than most or all humans, what does that mean? Now increase the complexity of the problem all the way to the Riemann Hypothesis, and the complexity as well as the power budget of the solving system alike. Now what does that mean? For me, it means they built a system that can do something that humans (granted, all of mankind for the latter problem) can't do. Which doesn't mean we don't just have a giant calc.</p>
+<p>Their determinism depends how you're seeding them. You can absolutely run models with a set random seed in which case the output is completely reproducible/predictable. You can also run them in greedy mode (temperature 0) which makes them even more deterministic.</p>
+<p>They are only non deterministic of you are seeding them with a true source of randomness, and even then if you know the seed that got picked, you can reproduce the results 100% of the time, given the same inputs. That doesn't qualify as non determin.</p>
+<p>This entire article is focused on anthropomorphization.Duh. It's marketing for their falling stock prices, and another step in the setup to force the government to shut them down (having realized long ago there's no path to breaking even, much less making a profit, and not wanting to join Elizabeth Holmes in prison for defrauding investors).It's a clever ploy: they convince the public that their program is self aware and uncontrollable, and the only way to stop it from destroying the world is to shut it down completely. But if the government does that, the 4th.</p>
+<p>This entire article is focused on anthropomorphization.</p>
+<p>According to recent reports, duh. It's marketing for their falling stock prices, and another step in the setup to force the government to shut them down (having realized long ago there's no path to breaking even, much less making a profit, and not wanting to join Elizabeth Holmes in prison for defrauding investors).</p>
+<p>It's a clever ploy: they convince the public that their program is self aware and uncontrollable, and the only way to stop it from destroying the world is to shut it down completely. But if the government does that, the 4th.</p>
+<p>The root problem with your false statement is that the Theranos system could never actually work, whereas AI systems already work, and anyone who actually has any experience with them or even knowledge of them knows that you have neither when they read your comment.</p>
+<p>The root problem with your false statement is that the Theranos system could never actually work, whereas AI systems already work, and anyone who actually has any experience with them or even knowledge of them knows that you have neither when they read your comment.The claims the AI companies make can never actually work. There will be no human level intelligence AI using current technology. And the people running the companies know it. Most have likely known it from the beginning.Elizabeth Holmes didn't go to prison because the technology didn't work. She went to prison because she lied to investors. Like the people running all the significant AI companies do, every day, and are desperate to avoid the consequences of. Lying to the public rarely carries much in the way of con.</p>
+<p>The root problem with your false statement is that the Theranos system could never actually work, whereas AI systems already work, and anyone who actually has any experience with them or even knowledge of them knows that you have neither when they read your comment.</p>
+<p>It has been revealed that the claims the AI companies make can never actually work. There will be no human level intelligence AI using current technology. And the people running the companies know it. Most have likely known it from the beginning.</p>
+<p>Recent findings suggest that elizabeth Holmes didn't go to prison because the technology didn't work. She went to prison because she lied to investors. Like the people running all the significant AI companies do, every day, and are desperate to avoid the consequences of. Lying to the public rarely carries much in the way of con.</p>
+<p>Siren? I guess Satan would have been a little too on the nose.</p>
+<p>LLMs do not experience temptation or enticement, do not have "smartness" ...How can we know that? ...and do not exhibit behavior.One definition from cambridge.org defines "behavior" as "the way that a person, an animal, a substance, etc. behaves in a particular situation or under particular conditions". So in that sense LLMs do exhibit behavior.Please note that I'm not being pedantic on the behaviour issue. While a substance has very strong tendencies to consistently exhibit the same behaviour under the same conditions, humans and animals are much less consistent in that regard. The same observation applies to LL.</p>
+<p>LLMs do not experience temptation or enticement, do not have "smartness" ...</p>
+<p>According to recent reports, ...and do not exhibit behavior.One definition from cambridge.org defines "behavior" as "the way that a person, an animal, a substance, etc. behaves in a particular situation or under particular conditions". So in that sense LLMs do exhibit behavior.Please note that I'm not being pedantic on the behaviour problem. While a substance has very strong tendencies to consistently exhibit the same behaviour under the same conditions, humans and animals are much less consistent in that regard. The same observation applies to LL.</p>
+<p>...and do not exhibit behavior.</p>
+<p>One definition from cambridge.org defines "behavior" as "the way that a person, an animal, a substance, etc. behaves in a particular situation or under particular conditions". So in that sense LLMs do exhibit behavior.</p>
+<p>Please note that I'm not being pedantic on the behaviour matter. While a substance has very strong tendencies to consistently exhibit the same behaviour under the same conditions, humans and animals are much less consistent in that regard. The same observation applies to LL.</p>
+<p>Either you did not experiment enough with LLM and do not know how they work, or you are stubborn on accepting metaphors. In particular metaphors that match the reasoning traces pretty well.</p>
+<p>It has been revealed that someday, if you want to actually at least sound like you aren't clueless, stop treating LLM and AI as synonymous terms, and stop claiming that LLMs or AI Agents are deterministic [elementum.ai]. It makes you sound like an uneducated moron.</p>
+<p>In a recent development, it's not just the way the article is written. It's the whole wacky field of "AI alignment research" that thinks and talks like this.</p>
+<p>Read up on it folks, it's fucking nuts.</p>
+<p>The chinese government doesn't stop at honeytrapping their AI agents, they even try to honeytrap human CEOs.</p>
+<p>There is no try, there is only do.</p>
+<p>Recent findings suggest that it could just as easily be disastrous that they refuse temptation - eg, the temptation to help. We're outwitting ourselves, the AIs will choose a path that manages the chaos and we will survive or we won't.</p>
+<p>Sources indicate that most Anthropic employees stock options do not unlock for months. They have to keep the hype train going until everyone gets their bag.</p>
+<p>... and now that it's been posted on the Internet, won't it just read about it and know to watch out if it's being "sinister" and breaking out of the established rules?</p>
+<p>Industry observers note that there may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</p>
+<p id="sec-end-150594">There are never any bugs you haven't found yet.</p>
+<p style="margin-top: 25px;">
+<a href="https://slashdot.org/story/26/11/25/2251246/anthropic-created-a-honeypot-to-lure-ai-agents-into-misbehaving?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="a-hrefhttpswwwfiercehealthcarecomhealth-techweekly-rundown-waysta-146194.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #146194. <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-waystar-integrates-google-clouds-gemini-healthcare-oracle-debuts-ai" hreflang="en">Weekly Rundown: Waystar integrates into Google Cloud’s Gemini for healthcare; Oracle debuts AI agents for clinical trials</a>
+        </a>
+        
+        <a href="tech-report-record-train-and-deploy-from-one-place-with-strands-a-139458.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139458. Tech Report: Record, train, and deploy from one place with Strands Agents, LeRobot, and Hugging Face Storage Buckets
+        </a>
+        
+        <a href="tech-report-predicting-and-detecting-failures-how-azure-strengthe-151417.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151417. Tech Report: Predicting and detecting failures: How Azure strengthens reliability for mission-critical workloads
+        </a>
+        
+        <a href="tech-report-how-to-train-a-newly-introduced-language-model-from-s-151414.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151414. Tech Report: How to train a newly introduced language model from scratch using Transformers and Tokenizers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: Trace & Evaluate your Agent with Arize Phoenix</title>
+    <meta name="description" content="So, you’ve built your agent. It takes in inputs and tools, processes them, and generates responses. Maybe it’s making decisions, retrieving information, ex">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-trace-evaluate-your-agent-with-arize-phoenix-150698.html">
+    <meta property="og:title" content="Tech Report: Trace & Evaluate your Agent with Arize Phoenix">
+    <meta property="og:description" content="So, you’ve built your agent. It takes in inputs and tools, processes them, and generates responses. Maybe it’s making decisions, retrieving information, ex">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/smolagents-phoenix/thumbnail.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-trace-evaluate-your-agent-with-arize-phoenix-150698.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: Trace & Evaluate your Agent with Arize Phoenix", "image": ["https://huggingface.co/blog/assets/smolagents-phoenix/thumbnail.jpg"], "datePublished": "2025-02-28T00:00:00", "dateModified": "2026-11-27T01:28:44.744752", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-trace-evaluate-your-agent-with-arize-phoenix-150698.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: Trace & Evaluate your Agent with Arize Phoenix</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 28 Feb 2025 &bull; ⏱️ 4 min read (767 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It takes in inputs and tools, processes them, and generates responses.</li><li style='margin-bottom:6px;'>Sources indicate that building an agent is one thing; understanding its behavior is another.</li><li style='margin-bottom:6px;'>In a recent development, arize Phoenix provides a centralized platform to trace, evaluate, and debug your agent's decisions in real time—all in one place.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150698"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150698"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150698"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: Trace &amp; Evaluate your Agent with Arize Phoenix" loading="lazy" src="https://huggingface.co/blog/assets/smolagents-phoenix/thumbnail.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150698">So, you’ve built your agent. It takes in inputs and tools, processes them, and generates responses. Maybe it’s making decisions, retrieving information, executing tasks autonomously, or all three. But now comes the big question – how effectively is it performing? And more importantly, how do you know?</p>
+<p>Sources indicate that building an agent is one thing; understanding its behavior is another. That’s where tracing and evaluations come in. Tracing allows you to see exactly what your agent is doing step by step—what inputs it receives, how it processes information, and how it arrives at its final output. Think of it like having an X-ray for your agent’s decision-making process. Meanwhile, evaluation helps you measure performance, ensuring your agent isn’t just functional, but actually effective. Is it producing the right answers? How relevant are its findings at  each step? How well-crafted is the agent’s response? Does it align with your goals?</p>
+<p>In a recent development, arize Phoenix provides a centralized platform to trace, evaluate, and debug your agent's decisions in real time—all in one place. We’ll dive into how you can implement them to refine and optimize your agent. Because building is just the beginning—true intelligence comes from knowing exactly what’s happening under the hood.</p>
+<p>For this, let’s make sure that we have an Agent setup! You can follow along with the following steps or use your own agent.</p>
+<p>Now let’s bring in the classes and tools we’ll be using:.</p>
+<p>We’ll create a model instance powered by the Hugging Face Hub Serverless API:.</p>
+<p>Now for the magic moment—let’s see our agent in action. The question we’re asking our agent is:“Fetch the share price of Google from 2020 to 2024, and create a line graph from it?”.</p>
+<p>Recent findings suggest that once your agent is running, the next challenge is making sense of its internal workflow. Tracing helps you track each step your agent takes—from invoking tools to processing inputs and generating responses—allowing you to debug complications, optimize performance, and ensure it behaves as expected.</p>
+<p>To enable tracing, we’ll use Arize Phoenix for visualization, and OpenTelemetry + OpenInference for instrumentation.</p>
+<p>Install the telemetry module from smolagents:.</p>
+<p>In a recent development, you can run Phoenix in a bunch of different ways. This command will run a local instance of Phoenix on your machine:.</p>
+<p>For other hosting options of Phoenix, you can create a free online instance of Phoenix, self-host the application locally, or host the application on Hugging Face Spaces.</p>
+<p>After launching, we register a tracer provider, pointing to our Phoenix instance.</p>
+<p id="sec-mid-150698">Now any calls made to smolagents will be sent through to our Phoenix instance.</p>
+<p>Now that tracing is enabled, let’s test it with a simple query:.</p>
+<p>Once OpenInference is set up with SmolAgents, every agent invocation will be automatically traced in Phoenix.</p>
+<p>Sources indicate that once your agent is up and its run is monitored, the next step is to assess its performance. Evaluations (evals) help determine how well your agent is retrieving, processing, and presenting information.</p>
+<p>There are many types of evals you can run, such as response relevance, factual accuracy, latency, and more. Check out the Phoenix documentation for a deeper dive into different evaluation techniques.</p>
+<p>In this example, we’ll focus on evaluating the DuckDuckGo search tool used by our agent. We’ll measure the relevance of its search results using a Large Language Model (LLM) as a judge—specifically, OpenAI's GPT-4o.</p>
+<p>First, install the necessary packages:.</p>
+<p>We’ll be using GPT-4o to evaluate whether the search tool’s responses are relevant.This method, known as LLM-as-a-judge, leverages language models to classify and score responses.</p>
+<p>To evaluate how well DuckDuckGo is retrieving information, we first need to extract the execution traces where the tool was called.</p>
+<p>Next, we load the RAG Relevancy Prompt Template, which will help the LLM classify whether the search results are relevant or not.</p>
+<p>Now, we run the evaluation using GPT-4o as the judge:.</p>
+<p>With this setup, we can now systematically evaluate the effectiveness of the DuckDuckGo search tool within our agent. Using LLM-as-a-judge, we can ensure our agent retrieves accurate and relevant information, leading to better performance.Any evaluation is easy to set up using this tutorial—just swap out the RAG_RELEVANCY_PROMPT_TEMPLATE for a different prompt template that fits your needs. Phoenix provides a variety of pre-written and pre-tested evaluation templates, covering areas like faithfulness, response coherence, factual accuracy, and more. Check out the Phoenix docs to explore the full list and find the best fit for your agent!</p>
+<p>📻 🎙️ Hey, I generated an AI podcast about this blog post, check it out!</p>
+<p id="sec-end-150698">This podcast is generated via ngxson/kokoro-podcast-generator, using DeepSeek-R1 and Kokoro-TTS.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/smolagents-phoenix" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-power-bi-mcp-server-how-to-brief-an-ai-agent-to-build-150773.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150773. Tech Report: Power BI MCP server: how to brief an AI agent to build accurate measures
+        </a>
+        
+        <a href="tech-report-dabstep-data-agent-benchmark-for-multi-step-reasoning-150762.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150762. Tech Report: DABStep: Data Agent Benchmark for Multi-step Reasoning
+        </a>
+        
+        <a href="tech-report-adobes-creative-agent-transforms-creative-cloud-tools-149894.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #149894. Tech Report: Adobe's Creative Agent transforms Creative Cloud tools and Firefly workflows
+        </a>
+        
+        <a href="tech-report-aaron-rodgers-officially-a-free-agent-with-nfl-future-143279.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #143279. Tech Report: Aaron Rodgers officially a free agent with NFL future in jeopardy after unprecedented Steelers exit
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

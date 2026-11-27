@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: Correcting Sharpe Ratios for Autocorrelation: The Lo Factor in Practice</title>
+    <meta name="description" content="Sources indicate that the Sharpe ratio's standard error formula assumes i.i.d. returns. That assumption is almost always false for real strategies: smoothe">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-correcting-sharpe-ratios-for-autocorrelation-the-lo-150493.html">
+    <meta property="og:title" content="Industry News: Correcting Sharpe Ratios for Autocorrelation: The Lo Factor in Practice">
+    <meta property="og:description" content="Sources indicate that the Sharpe ratio's standard error formula assumes i.i.d. returns. That assumption is almost always false for real strategies: smoothe">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fyxi0jya469coec7ltakj.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-correcting-sharpe-ratios-for-autocorrelation-the-lo-150493.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: Correcting Sharpe Ratios for Autocorrelation: The Lo Factor in Practice", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fyxi0jya469coec7ltakj.png"], "datePublished": "2026-11-27T01:23:36", "dateModified": "2026-11-27T01:28:30.843305", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-correcting-sharpe-ratios-for-autocorrelation-the-lo-150493.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: Correcting Sharpe Ratios for Autocorrelation: The Lo Factor in Practice</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 27 Nov 2026 &bull; ⏱️ 4 min read (832 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that the Sharpe ratio's standard error formula assumes i.i.d.</li><li style='margin-bottom:6px;'>The fix is cheap: correct the Sharpe ratio by the Lo factor before you run any significance test.</li><li style='margin-bottom:6px;'>Lo (2002) derives the asymptotic variance of the Sharpe estimator under serial dependence.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150493"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150493"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150493"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: Correcting Sharpe Ratios for Autocorrelation: The Lo Factor in Practice" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fyxi0jya469coec7ltakj.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150493">Sources indicate that the Sharpe ratio's standard error formula assumes i.i.d. returns. That assumption is almost always false for real strategies: smoothed marks, overlapping holding periods, illiquid positions, and momentum effects all leave a lag-1 autocorrelation in the return series. When returns are autocorrelated, the effective sample size is smaller than the nominal one, and significance tests fire far too often. With rho = 0.2, a nominal 5% test rejects the null at 18–25% in simulation. That is not a small calibration error; it is the difference between "maybe real" and "coin flip.".</p>
+<p>The fix is cheap: correct the Sharpe ratio by the Lo factor before you run any significance test.</p>
+<p>Lo (2002) derives the asymptotic variance of the Sharpe estimator under serial dependence. For an AR(1)-style dependence with lag-1 autocorrelation rho, the corrected Sharpe is:.</p>
+<p>The rule I use: apply the correction whenever |rho| &gt; 0.1. Below that threshold the adjustment is within noise of the estimate itself, and applying it adds churn without information. Above it, ignoring the correction is a methodological error, not a modeling choice.</p>
+<p>Recent findings suggest that the (1 - rho)/(1 + rho) factor is the AR(1) special case. For q-th order dependence, the full Lo variance uses a weighted sum of autocorrelations:.</p>
+<p>Industry observers note that for most daily-frequency strategies, lag-1 dominates and the closed form above is enough. Use the general form when you have overlapping windows (e.g., 5-day returns sampled daily), where lag-k dependence out to k = 4 is structural, not noise.</p>
+<p>Do not eyeball this from a chart. Compute it, and compute it on the return series you actually test, not on cumulative PnL. Cumulative PnL is a random walk under the null and will show high autocorrelation regardless of the strategy.</p>
+<p>Two practical checks before you trust the number:.</p>
+<p>Keep the correction in one place so every downstream test uses the same number.</p>
+<p>Then wire it into your evaluation path:.</p>
+<p>In a recent development, the SharpeReport object carries both numbers and a flag. Log the flag. If a strategy's headline Sharpe only survives because the correction was never applied, you want that visible in the report, not buried in a notebook.</p>
+<p>Recent findings suggest that the point estimate correction is what people remember, but the test is where the false positives come from. The corrected Sharpe has standard error approximately:.</p>
+<p>Note the direction: positive autocorrelation inflates the standard error by the same factor that deflates the point estimate. Both effects push you toward "not significant," which is the honest conclusion. A quick t-statistic:.</p>
+<p id="sec-mid-150493">Run this on raw and corrected Sharpe with the same rho and the same n. If the raw version clears 3.0 and the corrected one does not, the strategy does not clear 3.0.</p>
+<p>Negative autocorrelation is the less-discussed case, and it is worth walking through because the correction moves the number up, which invites overconfidence.</p>
+<p>Suppose a mean-reversion strategy on a liquid futures contract highlights an annualized Sharpe of 1.40 over 500 daily observations, with lag-1 autocorrelation of -0.33. That is a large negative value. Check it against the ACF before proceeding:.</p>
+<p>Recent findings suggest that the pattern — strong lag-1, weak lag-2, near-zero beyond — is consistent with a genuine AR(1) mean-reverting component rather than an artifact. Now apply the correction:.</p>
+<p>Sources indicate that A Sharpe of 1.40 becomes 1.97. That is a 41% uplift, and it is legitimate under the AR(1) model: negative dependence means each observation carries more independent information than its index suggests, so the effective sample is larger than 500.</p>
+<p>But the standard error moves too:.</p>
+<p>Sources indicate that with rho = -0.33, the SE factor is sqrt(0.67 / 1.33) ≈ 0.71, so the standard error shrinks by about 29%. The t-statistic rises, but not by the 41% the point estimate suggests. The two adjustments partially offset. This is the honest reading: negative autocorrelation helps, but less than the headline correction implies.</p>
+<p>Two caveats on negative rho specifically:.</p>
+<p>The autocorrelation correction is the single most common missing step in strategy evaluation, and it interacts badly with multiple testing.</p>
+<p>Consider a grid search over 200 parameter combinations. You keep the best in-sample Sharpe. Two things then compound:.</p>
+<p>Sources indicate that the result is a strategy that looks significant at p &lt; 0.01 on the raw numbers and is pure noise. The autocorrelation correction does not fix selection bias on its own, but it is a prerequisite. Deflating a Sharpe that was never corrected for dependence deflates the wrong quantity.</p>
+<p>A minimal evaluation harness that handles both:.</p>
+<p>The expected_max_z line is a crude proxy for the multiple-testing hurdle, not a substitute for a proper deflated Sharpe. It is there to make the point concrete: once you correct for rho, the bar the best candidate must clear goes up, and the number of candidates that clear it goes down. Usually to zero, which is the correct answer for most grid searches.</p>
+<p id="sec-end-150493">More notes like this ship every week on this site.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/mattleeee/correcting-sharpe-ratios-for-autocorrelation-the-lo-factor-in-practice-1bo0" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-hyperparameter-search-with-transformers-and-ray-tun-151409.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151409. Industry News: Hyperparameter Search with Transformers and Ray Tune
+        </a>
+        
+        <a href="industry-news-fine-tune-wav2vec2-for-english-asr-in-hugging-face--151399.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151399. Industry News: Fine-Tune Wav2Vec2 for English ASR in Hugging Face with 🤗 Transformers
+        </a>
+        
+        <a href="few-shot-learning-in-practice-gpt-neo-and-the-accelerated-inferen-151391.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151391. Few-shot learning in practice: GPT-Neo and the 🤗 Accelerated Inference API
+        </a>
+        
+        <a href="industry-news-summer-at-hugging-face-151384.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151384. Industry News: Summer at Hugging Face
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nvidia release hotfix for latest graphics card driver battering SSDs with excessive writes, but it looks like reverting may still be the better option</title>
+    <meta name="description" content="In a recent development, late last week, reports emerged of some folks having Nvidia's latest GeForce driver, 621.24, needlessly write vast amounts of data">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/nvidia-release-hotfix-for-latest-graphics-card-driver-battering-s-144592.html">
+    <meta property="og:title" content="Nvidia release hotfix for latest graphics card driver battering SSDs with excessive writes, but it looks like reverting may still be the better option">
+    <meta property="og:description" content="In a recent development, late last week, reports emerged of some folks having Nvidia's latest GeForce driver, 621.24, needlessly write vast amounts of data">
+    <meta property="og:image" content="https://assetsio.gnwcdn.com/nvidia-geforce-rtx-4090-gpu.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/nvidia-release-hotfix-for-latest-graphics-card-driver-battering-s-144592.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Nvidia release hotfix for latest graphics card driver battering SSDs with excessive writes, but it looks like ", "image": ["https://assetsio.gnwcdn.com/nvidia-geforce-rtx-4090-gpu.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp"], "datePublished": "2026-11-23T12:59:50+00:00", "dateModified": "2026-11-27T01:24:06.144847", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/nvidia-release-hotfix-for-latest-graphics-card-driver-battering-s-144592.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Hardware & Chips</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Nvidia release hotfix for latest graphics card driver battering SSDs with excessive writes, but it looks like reverting may still be the better option</h1>
+        <div class="meta-line">🌐 Source: <strong>Rockpapershotgun</strong> &bull; 📅 23 Nov 2026 &bull; ⏱️ 3 min read (565 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, late last week, reports emerged of some folks having Nvidia's latest GeForce driver, 621.24, needlessly write vast amounts of data to their PC's SSD, a bug that could affect the component's lifespan at a time when replacing SSDs certainly isn't cheap.</li><li style='margin-bottom:6px;'>In a recent development, the hotfix, driver version 621.35, was released on November 20th and as of writing is only available to download directly from the Nvidia website.</li><li style='margin-bottom:6px;'>It has been revealed that "Since we have so many changes being checked in, we usually try to align driver releases with significant game or product releases," Nvidia wrote in their announcement of the hotfix.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-144592"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-144592"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-144592"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Nvidia release hotfix for latest graphics card driver battering SSDs with excessive writes, but it looks like reverting may still be the better option" loading="lazy" src="https://assetsio.gnwcdn.com/nvidia-geforce-rtx-4090-gpu.jpg?width=1200&amp;height=630&amp;fit=crop&amp;enable=upscale&amp;auto=webp" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-144592">In a recent development, late last week, reports emerged of some folks having Nvidia's latest GeForce driver, 621.24, needlessly write vast amounts of data to their PC's SSD, a bug that could affect the component's lifespan at a time when replacing SSDs certainly isn't cheap. The immediate short-term solution for affected consumers was to roll back to a previous driver, 621.01. Sadly it appears that might still be the best way to go despite Nvidia having released a hotfix.</p>
+<p>In a recent development, the hotfix, driver version 621.35, was released on November 20th and as of writing is only available to download directly from the Nvidia website. It's designed to address one concern, this being that "excessive writes to file nvlog.nvlgstg may occur in background".</p>
+<p>It has been revealed that "Since we have so many changes being checked in, we usually try to align driver releases with significant game or product releases," Nvidia wrote in their announcement of the hotfix. "This process has served us pretty well over the years but it has one significant weakness. Sometimes a change that is key to many users might end up sitting and waiting until we are able to release the driver. The fixes that make it in are based in part on your feedback in the Driver Feedback threads and partly on how realistic it is for us to quickly address them. These fixes (and many more) will be incorporated into the next official driver release, at which time the hotfix driver will be taken down.</p>
+<p id="sec-mid-144592">Sources indicate that "To be sure, these Hotfix drivers are beta, optional and provided as-is. They are run through a much abbreviated QA process. The sole reason they exist is to get fixes out to you more swiftly. The safest option is to wait for the next WHQL certified driver. But we know that many of you are willing to try these out.".</p>
+<p>Unfortunately, it seems that based on some testing by customers on r/Nvidia, the hotfix makes the situation with excessive SSD writing less bad than it is with 621.24, but doesn't eliminate the problem entirely. According to one of these users, 621.35 stops the excessive writing from starting right after you boot up and reduces the amount that's being written when the problem's at its peak, but doesn't prevent some excessive writing creeping in if hardware is left running for extended periods or left idling overnight.</p>
+<p>In a recent development, given that, rolling back to 621.01 still appears to be the most effective way of keeping the writes at an acceptable level while waiting for Nvidia to release a upcoming driver than can permanently do away with the problem. One would hope it won't take too long, especially given the 621.24 driver still doesn't look to have been pulled offline so no one else grabs it prior to a fix arriving.</p>
+<p id="sec-end-144592">It has been revealed that if you want to check if you're suffering from the excessive writing you'll need to open task manager, head to the 'details' tab, right click on the column header, click 'select columns', select 'I/O write bytes' from the menu of check boxes that brings up, then look for 'NVDisplay.Container.exe'. The number next that exe is in bytes, so you'll need to do some maths to work out if it's only writing a matter of MB or chunks of GB.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.rockpapershotgun.com/nvidia-release-hotfix-for-latest-graphics-card-driver-battering-ssds-with-excessive-writes-but-it-looks-like-reverting-may-still-be-the-better-option" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="nvidias-latest-graphics-card-driver-appears-to-be-unnecessarily-w-144640.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #144640. Nvidia's latest graphics card driver appears to be unnecessarily writing to PC SSDs, something that's dumb, annoying and definitely warrants reverting
+        </a>
+        
+        <a href="nvidia-release-latest-graphics-card-driver-hopefully-finally-fixi-144422.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #144422. Nvidia release latest graphics card driver, hopefully finally fixing that SSD-hammering unnecessary write bug the previous hotfix couldn't seem to sort
+        </a>
+        
+        <a href="hyundai-is-overhauling-the-kona-and-it-looks-like-it-may-still-be-145795.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #145795. Hyundai is overhauling the Kona, and it looks like it may still be offered as an EV after all
+        </a>
+        
+        <a href="breaking-teslas-driver-assistance-software-now-looks-like-a-video-145125.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #145125. Breaking: Tesla’s Driver-Assistance Software Now Looks Like a Video Game
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

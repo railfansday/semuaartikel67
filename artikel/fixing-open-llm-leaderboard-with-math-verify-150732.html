@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixing Open LLM Leaderboard with Math-Verify</title>
+    <meta name="description" content="3 weeks ago, we showed how hard it is to correctly evaluate LLM performance on math problems, and introduced Math-Verify, a better solution to validate mod">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/fixing-open-llm-leaderboard-with-math-verify-150732.html">
+    <meta property="og:title" content="Fixing Open LLM Leaderboard with Math-Verify">
+    <meta property="og:description" content="3 weeks ago, we showed how hard it is to correctly evaluate LLM performance on math problems, and introduced Math-Verify, a better solution to validate mod">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/math_verify_leaderboard/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/fixing-open-llm-leaderboard-with-math-verify-150732.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Fixing Open LLM Leaderboard with Math-Verify", "image": ["https://huggingface.co/blog/assets/math_verify_leaderboard/thumbnail.png"], "datePublished": "2025-02-14T00:00:00", "dateModified": "2026-11-27T01:28:46.714214", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/fixing-open-llm-leaderboard-with-math-verify-150732.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Fixing Open LLM Leaderboard with Math-Verify</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 14 Feb 2025 &bull; ⏱️ 4 min read (896 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>3 weeks ago, we showed how hard it is to correctly evaluate LLM performance on math problems, and introduced Math-Verify, a better solution to validate models on math (read more in the announcement)!</li><li style='margin-bottom:6px;'>Today, we’re thrilled to share that we’ve used Math-Verify to thoroughly re-evaluate all 3,751 models ever submitted to the Open LLM Leaderboard, for even fairer and more robust model comparisons!</li><li style='margin-bottom:6px;'>The Open LLM Leaderboard is the most used leaderboard on the Hugging Face Hub: it compares open Large Language Models (LLM) performance across various tasks.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150732"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150732"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150732"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Fixing Open LLM Leaderboard with Math-Verify" loading="lazy" src="https://huggingface.co/blog/assets/math_verify_leaderboard/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150732">3 weeks ago, we showed how hard it is to correctly evaluate LLM performance on math problems, and introduced Math-Verify, a better solution to validate models on math (read more in the announcement)!</p>
+<p>Today, we’re thrilled to share that we’ve used Math-Verify to thoroughly re-evaluate all 3,751 models ever submitted to the Open LLM Leaderboard, for even fairer and more robust model comparisons!</p>
+<p>The Open LLM Leaderboard is the most used leaderboard on the Hugging Face Hub: it compares open Large Language Models (LLM) performance across various tasks. One of these tasks, called MATH-Hard, is specifically about math problems: it evaluates how well LLMs solve high-school and university-level math problems. It uses 1,324 highest difficulty problems (Level 5) from the Hendrycks MATH dataset spread across 7 topics (precalculus, prealgebra, algebra, intermediate algebra, counting/probability and number theory), using a 5-shot approach (the model is provided with 5 examples in the prompt to showcase how it should answer).</p>
+<p>A typical question looks like this:.</p>
+<p>In the leaderboard, models would have to end their answers with a very specific string (following the Minerva-Math paper):.</p>
+<p>The leaderboard would then try to parse [ANSWER] with SymPy to convert it to a symbolic representation (and simplify the values if needed), before finally comparing it to the gold target.</p>
+<p>However, owners reported a number of issues with the above.</p>
+<p>Sources indicate that to start, a recurring issue was the inability of some models to follow the expected answer format from the examples: they outputted other sentences instead to introduce their answers. Since the format was not followed, answers were marked as wrong even if they were actually correct! (Which is an issue if what you’re interested in is “how good the model is at math” specifically).</p>
+<p>The next step, converting [ANSWER] to the symbolic representation also presented some issues, this time linked to the SymPy parsing:.</p>
+<p>On the final step, when comparing the extracted answer with the target expression, a number of problems also occurred:.</p>
+<p>All of these issues are now completely fixed with the upcoming Math-Verify parser!</p>
+<p>As all these complications tend to accumulate, some models deeply suffered from this, and their performance was strongly underestimated… so we removed the previous evaluator and added Math-Verify, which was as simple as changing only 3 lines of code! (You can try it too on your math evals!).</p>
+<p>This therefore meant re-evaluating all submitted models since June… and it completely overhauled the top 20 models on the MATH subset of the leaderboard.</p>
+<p>On average, models solved 61 more problems across the board, equating to a 4.66-point increase across the board!</p>
+<p id="sec-mid-150732">The two subsets that demonstrated the most significant improvement were both algebra-related (Algebra and Prealgebra) with gains of 8.27 and 6.93, respectively. In extreme cases, some models demonstrated improvements of nearly 90 points on these subsets. We believe these subsets saw the greatest improvement because they frequently involve answers presented as sets (due to questions with multiple solutions) and matrices. The Math-Verify has enhanced its handling of both answer types, contributing to these notable gains.</p>
+<p>We initially discovered the math evaluation problems when inspecting Qwen models, which had unusually low scores compared to the self-reported performance. After the Math-Verify introduction, the scores more than doubled for these models, showcasing previous severe underestimation of performance.</p>
+<p>But Qwen models aren’t alone. Another major family affected is DeepSeek. After switching to Math-Verify, DeepSeek models almost tripled their scores! This is because their answers are typically wrapped in boxed (\boxed{}) notations which the old evaluator couldn’t extract.</p>
+<p>As mentioned at the beginning, the Top 20 rankings have undergone a significant shift, with Nvidia’s AceMath models now dominating the MATH-Hard leaderboard. Other major beneficiaries of this change are the Qwen derivatives, which are now almost exclusively the only models ranking right below AceMath. Following is the complete table comparing the old and latest Top 20 leaderboard rankings:.</p>
+<p>Recent findings suggest that finally, we examined how the overall Leaderboard results have evolved. While the top four positions remain unchanged, the rest have undergone significant shifts. Due to the rise of multiple Qwen derivatives in the MATH subset, the presence of Qwen models among the top 20 has grown-derived models grown even further at the Overall results.</p>
+<p>Industry observers note that many other models also completely jumped in the rankings, gaining 200 places or more! You can check out the results in more detail at the Open LLM Leaderboard.</p>
+<p>Industry observers note that the introduction of Math-Verify has significantly improved the accuracy and fairness of our evaluations on the Open LLM Leaderboard. This has led to a reshuffling of the leaderboard, with many models showing substantial improvements in their scores.</p>
+<p>We encourage all developers and researchers to adopt Math-Verify for their own math evaluations. By doing so, you can ensure that your models are evaluated with more reliable results. Additionally, we invite you to explore the updated rankings and see how your favorite models have changed in performance.</p>
+<p>Great! I raised this issue with Qwen models a while ago :) https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard/discussions/942.</p>
+<p>📻 🎙️ Hey, I made a podcast about this blog post, check it out!</p>
+<p>This podcast is generated via ngxson/kokoro-podcast-generator, using DeepSeek-R1 and Kokoro-TTS.</p>
+<p>can Math-Verify be integrated into lighteval library ?</p>
+<p>Hi @pulkitmehtawork  !It already has been, iirc :).</p>
+<p>Will this be included in the lm-evaluation-harness?</p>
+<p id="sec-end-150732">Open LLM Leaderboard is not an active project anymore :(.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/math_verify_leaderboard" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="whats-going-on-with-the-open-llm-leaderboard-151167.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151167. What's going on with the Open LLM Leaderboard?
+        </a>
+        
+        <a href="breaking-open-llm-leaderboard-drop-deep-dive-151100.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151100. Breaking: Open LLM Leaderboard: DROP deep dive
+        </a>
+        
+        <a href="introducing-the-open-ko-llm-leaderboard-leading-the-korean-llm-ev-151059.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151059. Introducing the Open Ko-LLM Leaderboard: Leading the Korean LLM Evaluation Ecosystem
+        </a>
+        
+        <a href="tech-report-the-open-medical-llm-leaderboard-benchmarking-large-l-151018.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151018. Tech Report: The Open Medical-LLM Leaderboard: Benchmarking Large Language Models in Healthcare
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

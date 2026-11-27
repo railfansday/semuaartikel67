@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From User Feedback to a Better Prompt: 4 Tools Tested in TypeScript</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Industry observers note that weekly. Free. One click to leave. 7 Day Fr">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/from-user-feedback-to-a-better-prompt-4-tools-tested-in-typescrip-150932.html">
+    <meta property="og:title" content="From User Feedback to a Better Prompt: 4 Tools Tested in TypeScript">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. Industry observers note that weekly. Free. One click to leave. 7 Day Fr">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_cover_06250594d1.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/from-user-feedback-to-a-better-prompt-4-tools-tested-in-typescrip-150932.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "From User Feedback to a Better Prompt: 4 Tools Tested in TypeScript", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_cover_06250594d1.png"], "datePublished": "2026-11-08T13:52:08", "dateModified": "2026-11-27T01:28:57.279703", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/from-user-feedback-to-a-better-prompt-4-tools-tested-in-typescrip-150932.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>From User Feedback to a Better Prompt: 4 Tools Tested in TypeScript</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 08 Nov 2026 &bull; ⏱️ 9 min read (1775 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>Industry observers note that weekly.</li><li style='margin-bottom:6px;'>In a recent development, when an LLM app gives a wrong answer, nothing in your logs shows it.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150932"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150932"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150932"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="From User Feedback to a Better Prompt: 4 Tools Tested in TypeScript" loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_cover_06250594d1.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150932">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>Industry observers note that weekly. Free. One click to leave.</p>
+<p>7 Day Free Trial. Cancel Anytime.</p>
+<p>In a recent development, when an LLM app gives a wrong answer, nothing in your logs shows it. The request returns 200, the JSON is valid, and no exception fires. Usually the user is the only one who notices. A thumbs-down button records that moment, on the exact trace that went wrong, while the user still remembers why.</p>
+<p>In a recent development, that button is easy to add. The hard part is what comes after: turning the thumbs-down into a reviewed test case, a judge score, and a better prompt.</p>
+<p>According to recent reports, we ran that loop in TypeScript in four tools: LangSmith, Langfuse, Phoenix and AcruxCore. All four handled the first four steps, which are user feedback, reviewer comments, a dataset and an LLM judge. Only AcruxCore rewrote the prompt from TypeScript. On 15 support tickets that no tool had seen, the rewritten prompt routed 13 correctly, against 7 for the original.</p>
+<p>Our test app is a support-ticket router. It reads a ticket and returns JSON with a category (account, billing, bug or feature_request) and a priority (P0, P1 or P2). The first version of the prompt describes only the output format:.</p>
+<p>The support team has a policy that this prompt never states. Sign-in problems are always account. A customer who can't use the product at all is P0. Any billing error is P1, even when the customer says there is no rush. Feature requests are P2, however angry the customer sounds.</p>
+<p>Sources indicate that without that policy, the model guesses priority from the customer's tone. Here are three real replies from the first version:.</p>
+<p>Every reply is valid JSON, so no schema check catches the mistake. A person has to read the reply and say it is wrong. The loop in this article takes that judgement and turns it into a better prompt.</p>
+<p>All four tools cover evaluation. We compared the self-hosted ones on tracing in Self-Hosted LangSmith Alternatives: 4 Tools Tested on One TypeScript Agent, and on prompt registries in Prompt Management in TypeScript. For a broader comparison of self-hosted options, see this LangSmith alternatives roundup. This article covers the feedback loop only.</p>
+<p>We wrote 30 tickets. Fifteen are the "production traffic" that each tool's app processed. The other 15 are a holdout set. No tool saw them, and we used them only for the final before-and-after check.</p>
+<p>Each tool ran the same sequence from one TypeScript script:.</p>
+<p>The reviewer comments follow one template, so the wording is identical in every tool:.</p>
+<p>The comments name one rule each. The full policy appears nowhere in the data any tool received.</p>
+<p>Recent findings suggest that the app model isn't fully deterministic at temperature 0. Each tool's run got between 6 and 8 of the 15 traffic tickets right, so the tools received 7 to 9 thumbs-down each. The holdout check below repeats every measurement three times.</p>
+<p>All four tools accept feedback on a trace from TypeScript. They differ in how a second person, the reviewer, adds the correct answer.</p>
+<p>Industry observers note that langSmith stores both as feedback on a run. The thumbs-down runs go into an annotation queue, where a reviewer adds feedback with a comment:.</p>
+<p>Langfuse stores both as scores. An annotation queue needs a score config first:.</p>
+<p>Phoenix stores both as span annotations. The reviewer's comment goes in explanation:.</p>
+<p>In a recent development, phoenix stores spans asynchronously. Our first run annotated a span before Phoenix had stored it, and the API returned a 404. The script now waits until all 15 spans are visible.</p>
+<p>Industry observers note that acruxCore stores both as feedback rows on the trace. The source field separates the end user from the reviewer:.</p>
+<p>It has been revealed that this is the first step where the code differs a lot. Each tool can make a dataset, but only one builds it from feedback in one call.</p>
+<p>In a recent development, in LangSmith, a run query finds the thumbs-down runs. Then createExamples copies them into a dataset. You decide where the reviewer's comment goes. We put it in the reference output:.</p>
+<p>Industry observers note that langSmith can also do this without code. An automation rule in the UI can add runs that match a filter to a dataset.</p>
+<p>Sources indicate that in Langfuse, the scores API finds the thumbs-down traces. Two details cost us a run each. A boolean score is filtered with value: "false", not 0. And the trace ID is returned only when you ask for the subject field group:.</p>
+<p>In Phoenix, getSpans can't filter by annotation. So the script lists the app's spans, reads their annotations, and keeps the ones with a thumbs-down. Then createDataset takes the examples. We kept the source span ID in the metadata.</p>
+<p id="sec-mid-150932">In AcruxCore, buildFromFeedback takes the reviewer's feedback IDs. Each comment becomes that example's grading criteria, and the input comes from the variables captured on the trace:.</p>
+<p>It has been revealed that each tool scored the first version of the prompt on its own dataset. The judge read the reviewer's comment and the router's reply, and returned 1 for a match and 0 for a mismatch.</p>
+<p>LangSmith, Langfuse and Phoenix each have an experiment runner that takes your evaluator function, and we gave all three the same judge prompt. AcruxCore grades with its built-in judge inside the optimize run. All four used the same judge model.</p>
+<p>It has been revealed that the first version fails almost every reviewed case. That is expected, because these are the cases customers marked wrong. A score of 1 means the app model got that case right on the second call, or the judge accepted a wrong reply. We didn't check which.</p>
+<p>The judge can also run without your code. Besides the in-code evaluator we used, Langfuse has a managed LLM-as-a-judge that runs on production traces and on experiments, with your own judge prompt. LangSmith has online evaluators, which you set up in its UI, for the same job.</p>
+<p>According to recent reports, an optimizer reads the failing cases and the reviewer comments, writes new versions of the prompt, and scores each one with the judge. This is the step that turns feedback into a better prompt, and it's where the four tools differ most.</p>
+<p>LangSmith's API reference lists an optimize prompt job (POST /api/v1/repos/optimize-job). It takes a prompt name, a dataset name, evaluator IDs and an algorithm, promptim or demo. No method in the TypeScript SDK wraps it, so we called it with fetch. We gave it a code evaluator that checks the reply against the reviewer's correct answer.</p>
+<p>The job was accepted and reported successful about ten seconds later. It ran no experiment on the dataset. With auto_commit set to true, it added no upcoming commit to the prompt. We found no guide for this endpoint, so we may have configured it wrongly, but the job record and its logs gave no error to act on.</p>
+<p>LangSmith's documented route to prompt optimization is promptim, which its README calls an experimental library. It is a Python package with a CLI, and it can add a human review step through LangSmith annotation queues.</p>
+<p>Langfuse has no optimizer. Its blog reveals a workflow with Claude Code agent skills that reads Langfuse data and edits the prompt. That workflow runs in a coding agent, not in your app's code.</p>
+<p>According to recent reports, phoenix's Optimize Prompts Automatically tutorial uses Arize's prompt-learning package, which you clone from GitHub and install with pip. The Phoenix TypeScript client has no optimizer export, and the tutorial runs outside Phoenix. Arize's commercial platform, Arize AX, has prompt optimization built in.</p>
+<p>For Python teams, there are more options: Opik's Agent Optimizer and DSPy both rewrite prompts from a dataset and a metric. This article covers TypeScript.</p>
+<p>Industry observers note that its optimize run takes the dataset and drafts three rewrites of the production prompt. It runs each rewrite and the current production version on every example, and the judge grades all of them:.</p>
+<p>The run finished with this report:.</p>
+<p>Sources indicate that the three rewrites tied, so we took candidate A. Its rationale: "Added explicit priority rules for each category and clarified that access-blocking complications are P0, billing errors are P1, and feature requests are P2, overriding tone/urgency." The Improve a prompt from feedback guide covers the dashboard version of this step.</p>
+<p>A rewrite that passes the cases it was built from can still fail on new tickets. So we ran both prompts on the 15 holdout tickets, three times each, outside every tool. The script calls the model directly and checks the category and the priority against the expected answer. No judge is involved.</p>
+<p>The two misses are worth reading:.</p>
+<p>Both come from one line in the rewrite: "P1 for bugs without workaround." That rule isn't in the team's policy, and no reviewer wrote it. The optimizer made it up to explain the examples it had. There was also no outage in the traffic set's thumbs-down cases, because the first version routed that one correctly. So no comment ever said that a full outage is P0.</p>
+<p>According to recent reports, the optimizer learns only from what users marked wrong. Anything they never marked stays a guess, and the rationale won't tell you which rules are guesses. Read the rewritten prompt before you promote it.</p>
+<p>In LangSmith, Langfuse and Phoenix, shipping a upcoming version is a tag or label move. We showed those calls in the prompt-management article. Here there was no rewrite to ship, so the step didn't apply.</p>
+<p>It has been revealed that in AcruxCore, promotion commits the candidate as a upcoming prompt version and moves the production alias to it. Nothing else moves:.</p>
+<p>The app renders production on every call, so the next ticket used version 2 without a deploy.</p>
+<p>Use LangSmith if your team already works in it and writes Python. Feedback, queues, datasets and experiments all work from TypeScript, and promptim covers optimization from Python.</p>
+<p>Recent findings suggest that use Langfuse if you want a managed judge that runs on live traces with your own prompt. Initiative to write the dataset glue code and the rewrite step yourself.</p>
+<p>Use Phoenix if you already trace with OpenTelemetry and annotate spans. Plan to move to Python, or to Arize AX, for optimization.</p>
+<p>Use AcruxCore if you want all six steps from TypeScript in one tool, including the rewrite. Keep a human on the promote button.</p>
+<p id="sec-end-150932">Industry observers note that 7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/from-user-feedback-to-a-better-prompt-4-tools-tested-in-typescript/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="self-hosted-langsmith-alternatives-4-tools-tested-on-one-typescri-150980.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150980. Self-Hosted LangSmith Alternatives: 4 Tools Tested on One TypeScript Agent
+        </a>
+        
+        <a href="prompt-management-in-typescript-langsmith-vs-git-vs-3-open-source-150956.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150956. Prompt Management in TypeScript: LangSmith vs Git vs 3 Open-Source Registries
+        </a>
+        
+        <a href="best-ai-humanizer-tools-tested-and-compared-7-options-for-web-con-150942.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150942. Best AI Humanizer Tools Tested and Compared: 7 Options for Web Content
+        </a>
+        
+        <a href="these-are-the-6-best-soundbars-weve-tested-for-boosting-your-tvs--143922.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #143922. These are the 6 best soundbars we've tested for boosting your TV's audio and a better movie night
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

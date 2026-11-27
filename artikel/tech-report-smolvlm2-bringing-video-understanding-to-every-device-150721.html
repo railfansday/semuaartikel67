@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: SmolVLM2: Bringing Video Understanding to Every Device</title>
+    <meta name="description" content="SmolVLM2 represents a fundamental shift in how we think about video understanding - moving from massive models that require substantial computing resources">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-smolvlm2-bringing-video-understanding-to-every-device-150721.html">
+    <meta property="og:title" content="Tech Report: SmolVLM2: Bringing Video Understanding to Every Device">
+    <meta property="og:description" content="SmolVLM2 represents a fundamental shift in how we think about video understanding - moving from massive models that require substantial computing resources">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/smolvlm2/banner.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-smolvlm2-bringing-video-understanding-to-every-device-150721.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: SmolVLM2: Bringing Video Understanding to Every Device", "image": ["https://huggingface.co/blog/assets/smolvlm2/banner.png"], "datePublished": "2025-02-20T00:00:00", "dateModified": "2026-11-27T01:28:45.897071", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-smolvlm2-bringing-video-understanding-to-every-device-150721.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: SmolVLM2: Bringing Video Understanding to Every Device</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 20 Feb 2025 &bull; ⏱️ 8 min read (1526 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>SmolVLM2 represents a fundamental shift in how we think about video understanding - moving from massive models that require substantial computing resources to efficient models that can run anywhere.</li><li style='margin-bottom:6px;'>Sources indicate that we are releasing models in three sizes (2.2B, 500M and 256M), MLX ready (Python and Swift APIs) from day zero.</li><li style='margin-bottom:6px;'>It has been revealed that want to try SmolVLM2 right away?</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150721"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150721"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150721"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: SmolVLM2: Bringing Video Understanding to Every Device" loading="lazy" src="https://huggingface.co/blog/assets/smolvlm2/banner.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150721">SmolVLM2 represents a fundamental shift in how we think about video understanding - moving from massive models that require substantial computing resources to efficient models that can run anywhere. Our goal is simple: make video understanding accessible across all devices and use cases, from phones to servers.</p>
+<p>Sources indicate that we are releasing models in three sizes (2.2B, 500M and 256M), MLX ready (Python and Swift APIs) from day zero. We've made all models and demos available in this collection.</p>
+<p>It has been revealed that want to try SmolVLM2 right away? Check out our interactive chat interface where you can test visual and video understanding capabilities of SmolVLM2 2.2B through a simple, intuitive interface.</p>
+<p>In a recent development, we are introducing three new models with 256M, 500M and 2.2B parameters. The 2.2B model is the go-to choice for vision and video tasks, while the 500M and 256M models represent the smallest video language models ever released.</p>
+<p>Industry observers note that while they're small in size, they outperform any existing models per memory consumption. Looking at Video-MME (the go-to scientific benchmark in video), SmolVLM2 joins frontier model families on the 2B range and we lead the pack in the even smaller space.</p>
+<p>In a recent development, video-MME stands out as a comprehensive benchmark due to its extensive coverage across diverse video types, varying durations (11 seconds to 1 hour), multiple data modalities (including subtitles and audio), and high-quality expert annotations spanning 900 videos totaling 254 hours. Learn more here.</p>
+<p>Industry observers note that compared with the previous SmolVLM family, our upcoming 2.2B model got better at solving math problems with images, reading text in photos, understanding complex diagrams, and tackling scientific visual questions. This demonstrates in the model performance across different benchmarks:.</p>
+<p>When it comes to video tasks, 2.2B is a good bang for the buck. Across the various scientific benchmarks we evaluated it on, we want to highlight its performance on Video-MME where it outperforms all existing 2B models.</p>
+<p>We were able to achieve a good balance on video/image performance thanks to the data mixture learnings published in Apollo: An Exploration of Video Understanding in Large Multimodal Models.</p>
+<p>It’s so memory efficient, that you can run it even in a free Google Colab.</p>
+<p>Nobody dared to release such small video models until today.</p>
+<p>Our newly introduced SmolVLM2-500M-Video-Instruct model has video capabilities very close to SmolVLM 2.2B, but at a fraction of the size: we're getting the same video understanding capabilities with less than a quarter of the parameters 🤯.</p>
+<p>And then there's our little experiment, the SmolVLM2-256M-Video-Instruct. Think of it as our "what if" project - what if we could push the boundaries of small models even further? Taking inspiration from what IBM achieved with our base SmolVLM-256M-Instruct a few weeks ago, we wanted to see how far we could go with video understanding. While it's more of an experimental release, we're hoping it'll inspire some creative applications and specialized fine-tuning projects.</p>
+<p>To demonstrate our vision in small video models, we've built three practical applications that showcase the versatility of these models.</p>
+<p>We make SmolVLM2 available to use with transformers and MLX from day zero. In this section, you can find different inference alternatives and tutorials for video and multiple images.</p>
+<p>The easiest way to run inference with the SmolVLM2 models is through the conversational API – applying the chat template takes care of preparing all inputs automatically.</p>
+<p>You can load the model as follows.</p>
+<p>It has been revealed that you can pass videos through a chat template by passing in {"type": "video", "path": {video_path}. See below for a complete example.</p>
+<p>In addition to video, SmolVLM2 supports multi-image conversations. You can use the same API through the chat template, providing each image using a filesystem path, an URL, or a PIL.Image object:.</p>
+<p>To run SmolVLM2 with MLX on Apple Silicon devices using Python, you can use the excellent mlx-vlm library. First, you need to install mlx-vlm from this branch using the following command:.</p>
+<p>Then you can run inference on a single image using the following one-liner, which uses the unquantized 500M version of SmolVLM2:.</p>
+<p>We also created a simple script for video understanding. You can use it as follows:.</p>
+<p>Note that the system prompt is crucial to bend the model to the desired behaviour. You can use it to, for example, describe all scenes and transitions, or to provide a one-sentence summary of what's going on.</p>
+<p>The Swift language is also supported through the mlx-swift-examples repo, which is what we used to build our iPhone app.</p>
+<p>Until our in-progress PR is finalized and merged, you have to compile the project from this fork, and then you can use the llm-tool CLI on your Mac as follows.</p>
+<p>Sources indicate that video analysis is also supported, as well as providing a system prompt. We found system prompts to be particularly helpful for video understanding, to drive the model to the desired level of detail we are interested in. This is a video inference example:.</p>
+<p>It has been revealed that if you integrate SmolVLM2 in your apps using MLX and Swift, we'd love to know about it! Please, feel free to drop us a note in the comments section below!</p>
+<p id="sec-mid-150721">You can fine-tune SmolVLM2 on videos using transformers 🤗
+We have fine-tuned the 500M variant in Colab on video-caption pairs in VideoFeedback dataset for demonstration purposes. Since the 500M variant is small, it's better to apply full fine-tuning instead of QLoRA or LoRA, meanwhile you can try to apply QLoRA on cB variant. You can find the fine-tuning notebook here.</p>
+<p>You can cite us in the following way:.</p>
+<p>We would like to thank Raushan Turganbay, Arthur Zucker and Pablo Montalvo Leroux for their contribution of the model to transformers.</p>
+<p>We are looking forward to seeing all the things you'll build with SmolVLM2! If you'd like to learn more about the SmolVLM family of models, feel free to read the following:.</p>
+<p>SmolVLM2 - Collection with Models and Demos.</p>
+<p>📻 🎙️ Hey, I generated an AI podcast about this blog post, check it out!</p>
+<p>This podcast is generated via ngxson/kokoro-podcast-generator, using DeepSeek-R1 and Kokoro-TTS.</p>
+<p>when run this script:python -m mlx_vlm.generate   --model mlx-community/SmolVLM2-500M-Video-Instruct-mlx   --image https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/bee.jpg   --prompt "Can you describe this image?".</p>
+<p>======================================test errror:Files: ['https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/bee.jpg'].</p>
+<p>Recent findings suggest that prompt: &lt;|im_start|&gt;User:Can you describe this image?Assistant:Traceback (most recent call last):  File "", line 198, in _run_module_as_main  File "", line 88, in _run_code  File "/opt/homebrew/Caskroom/miniconda/base/envs/playwright/lib/python3.12/site-packages/mlx_vlm/generate.py", line 156, in     main()  File "/opt/homebrew/Caskroom/miniconda/base/envs/playwright/lib/python3.12/site-packages/mlx_vlm/generate.py", line 141, in main    output = generate(             ^^^^^^^^^  File "/opt/homebrew/Caskroom/miniconda/base/envs/playwright/lib/python3.12/site-packages/mlx_vlm/utils.py", line 1115, in generate    for response in stream_generate(model, processor, prompt, image, **kwargs):                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  File "/opt/homebrew/Caskroom/miniconda/base/envs/playwright/lib/python3.12/site-packages/mlx_vlm/utils.py", line 1016, in stream_generate    inputs = prepare_inputs(             ^^^^^^^^^^^^^^^  File "/opt/homebrew/Caskroom/miniconda/base/envs/playwright/lib/python3.12/site-packages/mlx_vlm/utils.py", line 806, in prepare_inputs    processor.tokenizer.pad_token = processor.tokenizer.eos_token                                    ^^^^^^^^^^^^^^^^^^^  File "/opt/homebrew/Caskroom/miniconda/base/envs/playwright/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 1108, in getattr    raise AttributeError(f"{self.class.name} has no attribute {key}")AttributeError: GPT2TokenizerFast has no attribute tokenizer. Did you mean: '_tokenizer'?</p>
+<p>It has been revealed that hi @leexiaobo2006 ! You need to install transformers from main, or from this stable branch:.</p>
+<p>https://koshurai.medium.com/a-comprehensive-tutorial-on-using-smolvlm2-for-image-and-video-analysis-faa10e0710a6.</p>
+<p>here is a tutorial on how to use SMOLVLM2 on colab for free using T4 GPU Free Tier.</p>
+<p>Nice! Would you like to publish the same content as a community article, to maximize visibility?</p>
+<p>where to find th code of app demo @pcuenq.</p>
+<p>In a recent development, do you know where is the code repo for Video Highlight Generator? Thanks! @pcuenq.</p>
+<p>Hi!You can find it here: https://huggingface.co/spaces/HuggingFaceTB/SmolVLM2Then press three dots -&gt; Clone repository.</p>
+<p>i have seen vlms which are great but they do inference via frame by frame which can lead to false alarms.</p>
+<p>can this model understand the video(take chunks of frame and  uderstand the nature of video ) ?</p>
+<p>Hi - what is the longest duration of video this can handle ?</p>
+<p>Could someone share how video processing in this model is handled?</p>
+<p>Hi, can I ask if SmolVLM2 supports semantic segmentation ?</p>
+<p>@dangmanhtruong1995  hello, unfortunately no. I think all vision LMs that support segmentation support instance segmentation, you can then aggregate masks together to come up with semantic ones. PaliGemma2 does it, maybe SAM3 (it takes in short prompts like "red car" and not "red car on the left").</p>
+<p>SmolVLM2 is an advanced video understanding model designed to run efficiently on a wide range of devices. It enables fast video analysis, caption generation, and visual reasoning without requiring powerful hardware. For Alooy TV APK users, similar AI-powered technology can enhance content discovery, improve recommendations, and deliver a smarter, more personalized streaming experience.https://alooytvlive.com/.</p>
+<p>Hi — what’s the maximum video duration this can handle ?</p>
+<p>SmolVLM2 makes video understanding accessible across devices, supporting smarter viewing experiences and enhancing how consumers discover and enjoy content through YouCine APK Live .</p>
+<p id="sec-end-150721">According to recent reports, smolVLM2 is an exciting step forward for making AI-powered video understanding more accessible and practical. I especially like the availability of multiple model sizes, as it gives developers more flexibility to choose based on their hardware and performance requirements. With AI making video analysis more efficient, even everyday activities like using the ppcine app to watch movie content can become more interactive and convenient. Looking forward to seeing how developers use SmolVLM2 to build lightweight video analysis and visual understanding applications.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/smolvlm2" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-build-awesome-datasets-for-video-generation-150741.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150741. Tech Report: Build awesome datasets for video generation
+        </a>
+        
+        <a href="tech-report-nearly-every-major-smartphone-brand-is-slashing-targe-150659.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150659. Tech Report: Nearly every major smartphone brand is slashing targets for 2027
+        </a>
+        
+        <a href="tech-report-designing-for-distressed-users-why-mental-health-apps-150174.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150174. Tech Report: Designing For Distressed Users: Why Mental Health Apps Shouldn’t Follow Every UI Fashion
+        </a>
+        
+        <a href="tech-report-astronaut-captures-video-of-the-moon-melting-into-ear-150016.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150016. Tech Report: Astronaut Captures Video of the Moon Melting Into Earth’s Atmosphere
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

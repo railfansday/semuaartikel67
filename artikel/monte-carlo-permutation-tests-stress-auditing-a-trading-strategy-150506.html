@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte Carlo Permutation Tests: Stress-Auditing a Trading Strategy</title>
+    <meta name="description" content="A backtest gives you a number: total PnL, Sharpe, max drawdown. The first two are (roughly) order-independent if you're just summing returns. Max drawdown ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/monte-carlo-permutation-tests-stress-auditing-a-trading-strategy-150506.html">
+    <meta property="og:title" content="Monte Carlo Permutation Tests: Stress-Auditing a Trading Strategy">
+    <meta property="og:description" content="A backtest gives you a number: total PnL, Sharpe, max drawdown. The first two are (roughly) order-independent if you're just summing returns. Max drawdown ">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fbppdtic93s7d52ysaeka.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/monte-carlo-permutation-tests-stress-auditing-a-trading-strategy-150506.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Monte Carlo Permutation Tests: Stress-Auditing a Trading Strategy", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fbppdtic93s7d52ysaeka.png"], "datePublished": "2026-11-27T01:23:00", "dateModified": "2026-11-27T01:28:31.263061", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/monte-carlo-permutation-tests-stress-auditing-a-trading-strategy-150506.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Monte Carlo Permutation Tests: Stress-Auditing a Trading Strategy</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 27 Nov 2026 &bull; ⏱️ 4 min read (890 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>A backtest gives you a number: total PnL, Sharpe, max drawdown.</li><li style='margin-bottom:6px;'>Consider two strategies with identical trade lists: same 300 trades, same total PnL, same win rate.</li><li style='margin-bottom:6px;'>In a recent development, A Monte Carlo permutation test fixes this cheaply.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150506"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150506"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150506"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Monte Carlo Permutation Tests: Stress-Auditing a Trading Strategy" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fbppdtic93s7d52ysaeka.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150506">A backtest gives you a number: total PnL, Sharpe, max drawdown. The first two are (roughly) order-independent if you're just summing returns. Max drawdown is not. Neither is the probability that your equity curve touches a ruin threshold before the backtest window ends.</p>
+<p>Consider two strategies with identical trade lists: same 300 trades, same total PnL, same win rate. One sequence happens to cluster its losses early and its wins late. The other does the reverse. Same totals, radically different drawdowns, radically different risk of blowing up mid-stream. Your backtest only sampled one of the possible orderings — the one that actually happened, or worse, the one your optimization pipeline selected for.</p>
+<p>In a recent development, A Monte Carlo permutation test fixes this cheaply. Shuffle the realized trade PnL sequence thousands of times, recompute max drawdown and ruin indicators on every shuffle, then look at the resulting distribution. If your backtest's drawdown sits at the 5th percentile of the shuffled distribution, your headline number is flattering you. If it sits near the median, the strategy's risk is roughly order-neutral and you can trust the backtest more.</p>
+<p>The key assumption: the multiset of trade PnLs is fixed, only the order is random. This tests sensitivity to sequencing, not to whether the trades themselves were lucky. It's a stress audit of path risk, not a validation of edge.</p>
+<p>Assume you have a vector of per-trade PnL in account currency (or in R-multiples — the math is identical, only the ruin thresholds change units).</p>
+<p>In a recent development, the permutation test only cares about the values, not their original order. If you want to audit the actual backtest drawdown, keep the original array around — you'll compare it against the shuffled distribution.</p>
+<p>Industry observers note that the naive approach loops over 5000 shuffles in Python and calls np.cumsum each time. That's fine for 300 trades but painful at 5000 trades × 5000 shuffles. Vectorize it: build a matrix of shape (n_sims, n_trades), cumsum along axis 1, then compute running max and drawdown per row.</p>
+<p>For 5000 trades and 5000 simulations, that's a 25M-element float64 array — about 200 MB. If memory is tight, chunk the simulations:.</p>
+<p>Max drawdown is one number per shuffle. Ruin probability is the fraction of shuffles where the equity curve drops below a threshold at any point. Compute it directly from the drawdown matrix — no extra pass needed.</p>
+<p>Pass thresholds in the same units as your PnL. If you're sizing in R-multiples and risking 1% of equity per trade, a 20R drawdown is roughly a 20% equity hit (ignoring compounding). Pick thresholds that map to real operational limits: margin call levels, a hard stop-loss on the strategy, a psychological "I'd shut this down" number.</p>
+<p id="sec-mid-150506">Sometimes you want this in a script with no numpy dependency — a research notebook on a locked-down box, a quick check in a CI step, or a port to another language. The pure-Python version is 20 lines and fast enough for a few hundred trades.</p>
+<p>It has been revealed that random.Random.shuffle mutates the list in place, so you don't rebuild it every iteration — that's the main cost saver. If you need ruin probabilities too, track the minimum equity inside the loop and collect it. For 1000 trades × 5000 sims this takes a few seconds; the numpy version is roughly 50–100× faster.</p>
+<p>Recent findings suggest that now the part that actually matters. You have a distribution of 5000 max drawdowns. What do you do with it?</p>
+<p>The percentile of your backtest DD tells you how flattering the realized order was. A backtest DD at the 10th percentile means 90% of orderings produce a worse drawdown — the strategy's risk is understated. At the 50th, you're unbiased. At the 90th, your backtest was unusually unlucky and the strategy is probably better than it looks (rare, but it happens with short samples).</p>
+<p>A concrete rule that works in practice:.</p>
+<p>Recent findings suggest that one caveat worth stating plainly: this test assumes trade PnLs are exchangeable. Real strategies have autocorrelation — volatility clustering, regime shifts, correlated losses during stress. Permutation tests ignore that, so they can understate tail drawdowns when losses cluster. If you suspect serial dependence, the permutation test is a lower bound on path risk, not an upper one. Combine it with a block bootstrap or a regime-conditional analysis if the strategy is sensitive to volatility regimes.</p>
+<p>Recent findings suggest that it tells you whether your backtest drawdown is representative of the drawdown distribution over all orderings of the same trades. It does not tell you whether the trades themselves are predictive, whether the sample is large enough, or whether the strategy will work out of sample. Those are separate questions with separate tests.</p>
+<p>According to recent reports, what it does well: it catches the specific failure mode where a strategy looks safe because the backtest got a lucky ordering. That failure mode is common, cheap to test for, and expensive to discover live. Five thousand shuffles and a percentile lookup is a small price.</p>
+<p>More notes like this ship every week on this site.</p>
+<p>The following pairs are selected from the multi-timeframe trend scanner (Gate.io futures) and are for technical-analysis study only — not investment advice. Data updated: 2026-11-09 08:46:35.</p>
+<p id="sec-end-150506">2 picks selected. Scanner runs every 15 minutes.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/mattleeee/monte-carlo-permutation-tests-stress-auditing-a-trading-strategy-4lde" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="strategy-stress-liquidity-strain-145687.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #145687. Strategy stress, liquidity strain
+        </a>
+        
+        <a href="industry-news-a-trading-strategy-to-ride-out-the-nvidia-uncertain-143558.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #143558. Industry News: A trading strategy to ride out the Nvidia uncertainty and generate income in the process
+        </a>
+        
+        <a href="anthropic-trading-tests-investors-appetite-for-ai-141229.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #141229. Anthropic trading tests investors' appetite for AI
+        </a>
+        
+        <a href="industry-news-duckdb-20-vs-polars-20-in-five-real-world-tests-and-150530.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150530. Industry News: DuckDB 2.0 vs Polars 2.0 in Five Real-World Tests  and One 14x Gap
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

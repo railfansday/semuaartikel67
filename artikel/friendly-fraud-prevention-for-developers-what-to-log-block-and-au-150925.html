@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendly Fraud Prevention for Developers: What to Log, Block and Automate</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. According to recent reports, weekly. Free. One click to leave. In a rec">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/friendly-fraud-prevention-for-developers-what-to-log-block-and-au-150925.html">
+    <meta property="og:title" content="Friendly Fraud Prevention for Developers: What to Log, Block and Automate">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. According to recent reports, weekly. Free. One click to leave. In a rec">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_friendly_fraud_prevention_cover_ee453db95f.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/friendly-fraud-prevention-for-developers-what-to-log-block-and-au-150925.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Friendly Fraud Prevention for Developers: What to Log, Block and Automate", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_friendly_fraud_prevention_cover_ee453db95f.png"], "datePublished": "2026-11-08T16:33:09", "dateModified": "2026-11-27T01:28:56.809464", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/friendly-fraud-prevention-for-developers-what-to-log-block-and-au-150925.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Friendly Fraud Prevention for Developers: What to Log, Block and Automate</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 08 Nov 2026 &bull; ⏱️ 13 min read (2586 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>According to recent reports, weekly.</li><li style='margin-bottom:6px;'>In a recent development, 7 Day Free Trial.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150925"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150925"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150925"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Friendly Fraud Prevention for Developers: What to Log, Block and Automate" loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_friendly_fraud_prevention_cover_ee453db95f.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150925">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>According to recent reports, weekly. Free. One click to leave.</p>
+<p>In a recent development, 7 Day Free Trial. Cancel Anytime.</p>
+<p>Sources indicate that friendly fraud prevention comes down to three jobs you can do in code: log the right checkout data, block risky payments before they settle, and automate your response when a dispute still lands. Get the first one wrong and you can't win the dispute later, no matter how good your case is.</p>
+<p>In this tutorial, we'll build each piece in Node.js in a way that works with any payment service provider (PSP). Your code owns the data and the logic, and a thin adapter talks to Stripe, Adyen, Checkout.com or whoever processes your payments.</p>
+<p>Industry observers note that friendly fraud happens when a customer makes a real purchase, then disputes it with their card issuer. They might claim they didn't authorize it, that it never arrived, or that they canceled. Sometimes it's honest confusion. A spouse used the saved card, or the charge indicated up under a name they didn't recognize. Sometimes it's a free refund with extra steps.</p>
+<p>Either way, the money leaves your account. A dispute (also called a chargeback) reverses the payment, and your processor charges a dispute fee on top. Lose too many, and the card networks put your account into a monitoring program with higher fees.</p>
+<p>Sources indicate that it's also common. Visa puts friendly fraud at around 20% of fraudulent disputes globally, and up to 30% for high-volume online merchants. Mastercard goes further: it notes first-party fraud makes up 75% of the fraud online businesses experience.</p>
+<p>In a recent development, so why is this your problem and not finance's? Because the evidence that wins these disputes is created at checkout, by your code. If your app never stored the customer's IP address, device ID or login history, nobody can produce it three months later when the dispute arrives.</p>
+<p>Friendly fraud can be stopped at four points, and each one is a different piece of code:.</p>
+<p>Most guides only cover stages 1 and 4. The rest of this tutorial walks through all four.</p>
+<p>It has been revealed that log four things on every order: the customer's IP address, a device ID, their account ID and the shipping address. Those are the data elements Visa's Compelling Evidence 3.0 (CE3.0) rules check when you fight an "unauthorized" fraud dispute.</p>
+<p>Here's how CE3.0 works. You win the dispute if you can show two earlier, undisputed purchases on the same card, made 120 to 365 days before the disputed one. All three purchases must share at least two data elements, and one of them must be the IP address or device ID. In plain terms: same card, same person, same device, and they never complained before.</p>
+<p>Recent findings suggest that most PSPs support CE3.0, including Stripe, Adyen, Checkout.com and Airwallex. But none of them can submit data you never captured. And because the window reaches back a full year, you need to keep these logs for at least 13 months (Mastercard's rule, below).</p>
+<p>Mastercard has its own version, called First-Party Trust, for disputes filed under reason code 4837 (no cardholder authorization). It asks for one data point from each of three categories: a device factor (IP address, device ID or fingerprint), a delivery factor (shipping address, email or phone) and a different identity factor (such as account login ID or billing address). On the dispute route, Mastercard calls a lookup service that you host, with named fields such as deviceIpAddress, orderDeviceId, orderEmail and userIdName. That service has to answer in about 2.5 seconds on average and search 13 months of sales data.</p>
+<p>Industry observers note that first-Party Trust is live in the US. Per Mastercard's October 2026 announcement, it reaches Eastern Europe, the Middle East and Africa from October 2026 and the rest of Europe from July 2027. If you sell into Europe, the logging work is due now.</p>
+<p>Two storage rules save you pain later:.</p>
+<p>Recent findings suggest that the good news: one evidence table serves both networks. Capture the data once, then keep the eligibility checks for Visa and Mastercard separate.</p>
+<p>Start with a table that stores this data per order, separate from your PSP:.</p>
+<p>Sources indicate that then capture it in your checkout route. If your app sits behind a proxy or CDN, set Express's trust proxy so req.ip returns the customer's address, not your load balancer's:.</p>
+<p>Recent findings suggest that the psp object is your adapter: one small module per provider that maps its API to the same shape. Swap providers, and this route doesn't change.</p>
+<p>Sources indicate that for digital products and SaaS, log usage too. Login timestamps, downloads and feature activity prove the customer used what they paid for, which beats "I never received it" claims.</p>
+<p>The cheapest dispute is the one that never happens. Three checkout changes do most of the work: 3D Secure on risky payments, a billing descriptor customers recognize, and a few rules that stop obvious abuse.</p>
+<p>Use 3D Secure where risk is higher. 3D Secure (3DS) asks the cardholder to confirm the payment with their bank, often through an app prompt. For authenticated payments, liability for fraud disputes generally shifts from you to the card issuer. Every major PSP supports it, and most let you request it per payment instead of forcing it on everyone. Forcing it everywhere adds friction and costs conversions, so trigger it on risk signals.</p>
+<p>Sources indicate that make your billing descriptor obvious. The descriptor is the text on the customer's card statement. If it reads PMT*SRV 8812 instead of your product name, expect "I don't recognize this charge" disputes. Use the brand name customers know, and add a support URL or phone number where your PSP allows it. If you sell several products, use a dynamic descriptor that names each one.</p>
+<p>According to recent reports, add a risk check before you charge. Most PSPs include a rules engine, but a small check in your own code keeps the logic portable:.</p>
+<p>Recent findings suggest that store the signals array with the order. If a dispute arrives later, you'll know whether the payment looked risky at the time, which helps you decide whether to fight it or accept it.</p>
+<p>Keep the rules few and specific. A rule that blocks 5% of good customers to stop 1% of bad ones costs more than the disputes it prevents.</p>
+<p>Sources indicate that yes, if you ship physical goods. The window between a successful payment and the moment an order ships is the cheapest place to stop friendly fraud: nothing has left the warehouse, so canceling costs you nothing but the sale. Most fraud tools decide at checkout and never look again.</p>
+<p>The pattern is a fulfillment gate. Instead of sending every paid order straight to your warehouse or 3PL, route it through a decision step first:.</p>
+<p>In a recent development, the verify path does two jobs. Legitimate buyers confirm and their order ships. Buyers planning to dispute see that the store is watching, and a confirmed verification becomes evidence if they dispute anyway.</p>
+<p>The hard part is screenOrder. Your own data only shows how a customer behaved with you. A buyer who has filed "item not received" disputes at 10 other stores looks brand new on their first order with yours. That's why post-purchase screening works best on shared data across many merchants.</p>
+<p id="sec-mid-150925">Sources indicate that chargeflow Prevent is one example of this kind of friendly fraud prevention. It scores each order after checkout and before fulfillment, links device, IP, email and payment behavior across a network of 20,000+ merchants, and returns approve, verify or cancel. Today it runs as a Shopify app, with no checkout changes. A public Prevent API isn't available yet, so on other stacks you'd build the gate above with your own rules and data.</p>
+<p>According to recent reports, build an order lookup endpoint. When a cardholder taps "I don't recognize this" in their banking app, the issuer can now ask the merchant for order details before a dispute is filed. Visa does this through Verifi Order Insight, and Mastercard through Ethoca Consumer Clarity. Show the customer a receipt with your logo, the items and the delivery date, and many disputes are never filed.</p>
+<p>One endpoint can serve both networks, plus Mastercard's First-Party Trust dispute route. Mastercard's published service levels for this kind of lookup are strict:.</p>
+<p>Sources indicate that the tricky part is matching. Issuers often send partial data, so match on whatever arrives: acquirer reference number (ARN), authorization code, date, amount, currency, and card BIN plus last four digits.</p>
+<p>Industry observers note that on top of lookups, Visa and many PSPs offer rules-based auto-refunds. Verifi's Rapid Dispute Resolution (RDR) and Visa Resolve refund pre-disputes that match rules you set, such as "refund anything under $25". You don't write code for these, but you do pick the thresholds, so treat them like the REFUND_THRESHOLD below.</p>
+<p>Industry observers note that if you sell subscriptions, many friendly fraud disputes aren't about stolen cards at all. The customer forgot about a renewal, couldn't find the cancel button, or thinks they canceled. Each of these has a code fix.</p>
+<p>Here's a daily job that sends renewal reminders and records that each one went out:.</p>
+<p>In a recent development, that evidenceLog row matters. When a customer later claims they never knew about the renewal, you can show the exact date you told them.</p>
+<p>In a recent development, automate two things: refunding payments that get flagged before they become chargebacks, and building evidence packets for the ones you fight. Both run off webhooks, and both have hard deadlines that humans miss.</p>
+<p>Card networks can warn you before a dispute is filed. Visa runs this through Verifi and Mastercard through Ethoca, and many PSPs pass these alerts or their own early fraud warnings to you by webhook. Refunding at this stage costs you the sale, but you skip the dispute fee and the dispute doesn't count against your ratio.</p>
+<p>The threshold is a business call. Refunding a $20 order is cheaper than fighting it; a $900 order with strong evidence may be worth contesting.</p>
+<p>When a fraud dispute arrives, check whether it qualifies for CE3.0 by looking for two earlier undisputed orders on the same card that share data with the disputed one:.</p>
+<p>If you get two matches, pass them to your PSP's CE3.0 evidence fields. On Stripe that's evidence.enhanced_evidence.visa_compelling_evidence_3; other PSPs have their own equivalents. Your adapter handles the mapping. If not, fall back to standard evidence: the IP, receipt, usage logs, renewal reminders and terms acceptance you've been logging all along.</p>
+<p>Always submit before the deadline your PSP returns with the dispute. A late response is an automatic loss.</p>
+<p>Sources indicate that the code above covers the basics. A production system also needs evidence templates per reason code, network deadlines per card brand, retries, and win-rate tracking. That maintenance multiplies with every PSP you add.</p>
+<p>It has been revealed that PSP-native tools only see that PSP's data, so they miss the usage logs, renewal reminders and support threads in your own app. A dedicated platform connects to your PSPs and lets you send that data in.</p>
+<p>It has been revealed that here's what the buy path looks like with the Chargeflow API. Chargeflow ingests disputes from connected PSPs (Stripe, PayPal, Adyen, Checkout.com, Braintree and 20+ others), fires a dispute.created webhook, and you enrich the dispute with the evidence you logged:.</p>
+<p>Industry observers note that chargeflow then builds the response and submits it to the PSP before the deadline. Pre-dispute alerts work the same way: Chargeflow can refund flagged transactions for you, or send alerts.created and alerts.transaction.linked webhooks so your code challenges the refund and reports the result to POST /alerts/{id}/outcome.</p>
+<p>Using Claude, ChatGPT or Cursor to build this? Chargeflow publishes its whole developer documentation as one machine-readable file, docs.chargeflow.io/llms-full.txt. Point your assistant at it and it can write the webhook handler and field mapping against the real API, not a guess.</p>
+<p>Then your merchants get the disputes, and you need to give them a dispute product without building a dispute team. Chargeflow Connect is built for this. It exposes the same prevention, alerts and recovery engine to your platform in a few delivery models:.</p>
+<p>EaaS is the most developer-friendly entry point. You POST /public/2025-04-01/evidence with a merchant account_id and a dispute, get back an in_progress record, and receive an evidence.ready webhook with the PDF link, typically in about 30 seconds. Store the evidence id, not the URL, because the download link expires after 7 days. You can run it on auto-pilot (Chargeflow generates and submits) or co-pilot (your merchant approves first).</p>
+<p>Don't wait for a customer to dispute a charge to find out your evidence pipeline is broken. Most PSPs give you test cards that create disputes on demand.</p>
+<p>One more check before launch: confirm your webhook endpoints verify signatures and return 200 fast. PSPs and Chargeflow retry deliveries that fail, and a slow handler can process the same dispute twice.</p>
+<p>If you only do one thing this week, start logging IP address and device ID on every order. Everything else builds on that data.</p>
+<p>According to recent reports, true fraud is when a criminal uses a stolen card. Friendly fraud is when the real cardholder makes a purchase, then disputes it. Prevention differs: true fraud is stopped at checkout with risk checks and 3DS, while friendly fraud is won with evidence after the fact.</p>
+<p>Mostly, yes. Both describe a real cardholder disputing a legitimate charge. "Chargeback fraud" usually implies the customer did it on purpose, while friendly fraud also covers honest mistakes, like a forgotten subscription or a family member's purchase. Visa calls it first-party misuse, and Mastercard calls it first-party fraud.</p>
+<p>Sources indicate that check the reason code first. For "unauthorized" fraud claims, submit Visa CE3.0 or Mastercard First-Party Trust evidence if the customer qualifies. For "not received" or "canceled" claims, submit delivery proof, usage logs and your cancellation records. For low-value orders, accepting the dispute or refunding on an alert is often cheaper than fighting it.</p>
+<p>Partly. 3DS generally shifts liability for fraud disputes to the issuer, so "I didn't authorize this" claims on authenticated payments rarely cost you. It doesn't help with "item not received" or "I canceled" disputes, which need delivery proof and cancellation records.</p>
+<p>No. CE3.0 needs two undisputed purchases on the same card made 120 to 365 days earlier, so it only protects returning customers. For first-time buyers, rely on 3DS and standard evidence.</p>
+<p>Sources indicate that yes. Mastercard's First-Party Trust program covers reason code 4837 disputes. It needs one device, one delivery and one extra identity data point, and Mastercard checks them against the cardholder's past purchases. The same evidence table you build for Visa feeds both.</p>
+<p>Recent findings suggest that it depends on the stage. At checkout, your PSP's 3D Secure and rules engine. After payment, post-purchase screening such as Chargeflow Prevent holds risky orders before they ship. Before a chargeback, Verifi Order Insight and Ethoca Consumer Clarity show cardholders the order details, while Verifi and Ethoca alerts (offered by many PSPs and by Chargeflow Alerts) and RDR let you refund early. After a chargeback, Visa CE3.0, Mastercard First-Party Trust and dispute automation tools submit the evidence. For developers, the Chargeflow API covers the alert and dispute stages across PSPs, and Chargeflow Connect does the same for platforms.</p>
+<p id="sec-end-150925">7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/friendly-fraud-prevention-for-developers-what-to-log-block-and-automate/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="block-sparse-matrices-for-smaller-and-faster-language-models-151411.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151411. Block Sparse Matrices for Smaller and Faster Language Models
+        </a>
+        
+        <a href="understanding-bigbirds-block-sparse-attention-151396.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151396. Understanding BigBird's Block Sparse Attention
+        </a>
+        
+        <a href="industry-news-ai-powered-pentesting-for-devsecops-7-checks-develo-151099.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151099. Industry News: AI-Powered Pentesting for DevSecOps: 7 Checks Developers Should Make First
+        </a>
+        
+        <a href="how-developers-can-improve-their-learning-and-productivity-with-a-151066.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151066. How Developers Can Improve Their Learning and Productivity With AI
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Deepdive into Aya Vision: Advancing the Frontier of Multilingual Multimodality</title>
+    <meta name="description" content="With the release of the Aya Vision family, our upcoming 8B and 32B parameter vision-language models (VLMs), we are addressing one of the biggest challenges">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/a-deepdive-into-aya-vision-advancing-the-frontier-of-multilingual-150696.html">
+    <meta property="og:title" content="A Deepdive into Aya Vision: Advancing the Frontier of Multilingual Multimodality">
+    <meta property="og:description" content="With the release of the Aya Vision family, our upcoming 8B and 32B parameter vision-language models (VLMs), we are addressing one of the biggest challenges">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/aya-vision/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/a-deepdive-into-aya-vision-advancing-the-frontier-of-multilingual-150696.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "A Deepdive into Aya Vision: Advancing the Frontier of Multilingual Multimodality", "image": ["https://huggingface.co/blog/assets/aya-vision/thumbnail.png"], "datePublished": "2025-03-04T00:00:00", "dateModified": "2026-11-27T01:28:44.614637", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/a-deepdive-into-aya-vision-advancing-the-frontier-of-multilingual-150696.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>A Deepdive into Aya Vision: Advancing the Frontier of Multilingual Multimodality</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 04 Mar 2025 &bull; ⏱️ 8 min read (1611 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>With the release of the Aya Vision family, our upcoming 8B and 32B parameter vision-language models (VLMs), we are addressing one of the biggest challenges in AI: bringing multilingual performance to multimodal models.</li><li style='margin-bottom:6px;'>Aya Vision is Cohere For AI's latest open-weight multilingual and multimodal model family, designed to be a strong foundation for language and vision understanding across 23 languages.</li><li style='margin-bottom:6px;'>It has been revealed that as a result, our models perform well in a variety of tasks, including image captioning, visual question answering, text generation, and translating both text and images into clear, natural-language text.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150696"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150696"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150696"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="A Deepdive into Aya Vision: Advancing the Frontier of Multilingual Multimodality" loading="lazy" src="https://huggingface.co/blog/assets/aya-vision/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150696">With the release of the Aya Vision family, our upcoming 8B and 32B parameter vision-language models (VLMs), we are addressing one of the biggest challenges in AI: bringing multilingual performance to multimodal models.</p>
+<p>Aya Vision is Cohere For AI's latest open-weight multilingual and multimodal model family, designed to be a strong foundation for language and vision understanding across 23 languages. It builds on the success of Aya Expanse, state-of-the-art multilingual language models, and extends it using a combination of advanced techniques. These include synthetic annotations, scaling up multilingual data through translation and rephrasing, and multimodal model merging – key methods that improve both language and vision understanding in a multilingual setting.</p>
+<p>It has been revealed that as a result, our models perform well in a variety of tasks, including image captioning, visual question answering, text generation, and translating both text and images into clear, natural-language text. We evaluated Aya Vision models on a set of datasets, including our new open-ended vision-language benchmark AyaVisionBench and a multilingual version of Wild Vision Bench (mWildVision) that is translated into 23 languages, which we release both of them for research.</p>
+<p>In pair-wise comparison, Aya Vision 32B outperforms models more than 2x of its size, such as Llama-3.2 90B Vision, Molmo 72B, and Qwen2.5-VL 72B by win rates ranging from 50% to 64% on AyaVisionBench and 52% to 72% on mWildVision average across 23 languages.</p>
+<p>Our compact and more efficient model Aya Vision 8B achieves the best performance in multilingual multimodal in its parameter class,  outperforming leading models such as Qwen2.5-VL 7B, Pixtral 12B, Gemini Flash 1.5 8B, Llama-3.2 11B Vision, Molmo-D 7B, and Pangea 7B by up to 79% win-rates on AyaVisionBench and 81% on mWildBench.</p>
+<p>According to recent reports, we release both 8B and 32B models as open weights for the research community to further accelerate multilingual multimodal progress. In this blog post, we share the key technical details behind Aya Vision models.</p>
+<p>Recent findings suggest that for a high-performance vision-language model, it is important to process images with arbitrary resolutions, especially high-resolution images. To enable this capability in Aya Vision, we dynamically resize and split any higher-resolution images into multiple tiles to generate rich image features from the image encoder. In Aya Vision models, we use the recently released SigLIP2-patch14-384 model as the initialization for the vision encoder.</p>
+<p>In a recent development, while dynamic resizing enables processing high-resolution images, it also leads to a larger number of image tokens passing through the vision-language connector and LLM decoder. To improve latency and throughput, we use a downsampling method called Pixel Shuffle, to compress the number of image tokens by 4x. After downsampling, image tokens are aligned to the language model input embeddings through a vision-language connector and passed to an LLM decoder.</p>
+<p>For the text decoder, we use our multilingual language models. For Aya Vision 8B, we use an LLM that is initialized from Cohere Command  R7B for improved instruction following and world knowledge and further post-trained using the Aya Expanse recipe consisting of diverse multilingual data, model merging, and preference training. For Aya Vision 32B, we initialize the language model from Aya Expanse 32B based on its state-of-the-art multilingual performance.</p>
+<p>We trained Aya Vision models in 2 stages – vision-language alignment and supervised fine-tuning (SFT). In the vision-language alignment stage, only the vision-language connector is trained, while the vision encoder and the language model weights are kept frozen. This enables rudimentary vision-language understanding by mapping the image encoder features to the language model embedding space. In the SFT stage, we train both the connector and the language model on a diverse set of multimodal tasks in 23 languages.</p>
+<p>One of the biggest challenges in developing a multilingual vision-language model is ensuring strong performance across underrepresented languages. To address this, we first gather synthetic annotations using a diverse pool of high-quality datasets in English, which lay the basis for our multilingual multimodal annotation. Following the synthetic annotations of English datasets, we translated a large volume of the data into 23 languages. To avoid translation artefacts and maintain fluent textual characteristics with high precision in answers, we then rephrased translated prompt/generation pairs by matching them with the original high-quality synthetic samples, expanding language coverage where real-world datasets are scarce. This improves both linguistic fluency and alignment between vision and text, allowing Aya Vision to exhibit superior image understanding in multiple languages.</p>
+<p>Our 8B model, when only supervised fine-tuned with original academic datasets, reaches a 40.9% win rate across 23 languages in AyaVisionBench against Pangea 7B, which is a multilingual VLM, whereas synthetic annotations and scaling up the multilingual data lead to a 58.1% win rate with a gain of 17.2%. This significant improvement showcases the impact of significant investment in multilingual data coverage.</p>
+<p>It has been revealed that A state-of-the-art vision-language model should excel not only in image understanding but also in conversational context, where the model is expected to generate a high-quality response to both image and text inputs. To address this, inspired by our previous research on model merging, a technique that combines multiple trained models, we merge the base language model with the fine-tuned vision-language model.</p>
+<p>Model merging enhances the generative capabilities of our final model that leads to a 70% win rates across 23 languages on AyaVisionBench against Pangea 7B, improving the multimodal win rate by 11.9% compared to the model before merging.</p>
+<p>Multimodal model merging also enables our Aya Vision models to excel in text-only tasks as measured in mArenaHard datasets compared with the other leading vision-language models.</p>
+<p id="sec-mid-150696">Finally, we scale our recipe from 8B to 32B, resulting in the state-of-the-art open-weight multilingual vision-language model – Aya Vision 32B which shows significant improvements in win rates due to the stronger initialization of the text-backbone, and outperforms models more than 2x of its size, such as Llama-3.2 90B Vision, Molmo 72B, and Qwen2.5-VL 72B by win rates ranging from 49% to 63% on AyaVisionBench and 52% to 72% on mWildVision average across 23 languages.</p>
+<p>Together with Aya Vision models, we also release a high-quality multilingual vision-language benchmark called AyaVisionBench, constructed based on real-world applications, covering 23 languages and 9 distinct task categories, with 135 image-question pairs per language.</p>
+<p>We make this evaluation set available to the research community to push forward multilingual multimodal evaluations. This dataset is designed to assess a model’s ability to perform a diverse range of vision-language tasks, including captioning, chart and figure understanding, identifying differences between two images, general visual question answering, OCR, document understanding, text transcription, reasoning involving logic and math, and converting screenshots to code. By incorporating multiple languages and task types, the dataset provides a broad and challenging evaluation framework for assessing cross-lingual and multimodal understanding.</p>
+<p>To create this dataset, we first selected images from the Cauldron held-out test set, a large collection derived from 50 high-quality datasets, ensuring they had not been seen during training. For each image, we then generated a corresponding question that explicitly required visual context for an answer. These questions were synthetically generated and subsequently refined through a two-stage verification process. First, human annotators reviewed and validated each question to ensure it was clear, relevant, and truly dependent on the image. This rigorous selection and validation process ensures that the dataset serves as a robust benchmark for evaluating vision-language models in multilingual and real-world settings.</p>
+<p>Communication happens in many forms and in many languages. With our leading research and development, we’ve released a model that facilitates connection, whether in text or visual, in 23 different languages today.</p>
+<p>In a recent development, aya Vision has a wide range of practical applications, where one notable example is its availability on WhatsApp, one of the most broadly used communications platforms in the world. This allows a massive audience of global citizens who speak a multitude of languages to utilize the capabilities of Aya Vision on a platform they use to communicate every single day.</p>
+<p>Download weights and datasets from the Aya Vision collection on Hugging Face.Try Aya Vision using our Hugging Face Space or text it on WhatsappBuild on Aya using our colab example.</p>
+<p>Learn more about our ongoing efforts around multilingual.</p>
+<p>This work wouldn’t have been possible without the core Aya Vision technical team:.</p>
+<p>Saurabh Dash, Oliver Nan, John Dang, Arash Ahmadian Dehkordi, Shivalika Singh, Alejandro Salamanca, Bharat Venkitesh, Vlad Shmyhlo, Walter Beller-Morales, Jeremy Pekmez, Jason Ozuzu, Madeline Smith, Marzieh Fadaee, Manoj Govindassamy, Sudip Roy, Matthias Gallé, Beyza Ermis, Ahmet Üstün, Sara Hooker.</p>
+<p>It has been revealed that it also wouldn’t have been possible without the wider Cohere For AI and Cohere team who supported in many different ways. Special thanks to Sungjin Hong, Michael Kozakov, Pierre Richemond, Brittawnya Prince, Jim Payne, Kyle Lastovica, Jeff Colen, Jenna Cook, Viraat Aryabumi, Trent Fowler, Linus Chui, Meor Amer, Lucas Fayoux, Kyle Lastovica, Billy Trend, Acyr Locatelli, Morgan Norman, Florian Strub, Jon Ander Campos, Nick Frosst, Phil Blunsom, Aidan Gomez, Ivan Zhang.</p>
+<p>Special thank you to Hugging Face for helping make this come together: Yoni Gozlan, Arthur Zucker, Pedro Cuenca, Aritra Roy Gosthipaty, Merve Noyan, Vaibhav Srivastav.</p>
+<p>[1] Aya Expanse: Combining Research Breakthroughs for a New Multilingual Frontier[2] Pangea: A Fully Open Multilingual Multimodal LLM for 39 Languages[3] WildVision: Evaluating Vision-Language Models in the Wild with Human Preferences[4] SigLIP 2: Multilingual Vision-Language Encoders with Improved Semantic Understanding, Localization, and Dense Features[5] What matters when building vision-language models?[6] Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models[7] How Far Are We to GPT-4V? Closing the Gap to Commercial Multimodal Models with Open-Source Suites.</p>
+<p>📻 🎙️ Hey, I generated an AI podcast about this blog post, check it out!</p>
+<p id="sec-end-150696">This podcast is generated via ngxson/kokoro-podcast-generator, using DeepSeek-R1 and Kokoro-TTS.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/aya-vision" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="a-deepdive-into-aya-expanse-advancing-the-frontier-of-multilingua-150898.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150898. A Deepdive into Aya Expanse: Advancing the Frontier of Multilinguality
+        </a>
+        
+        <a href="siglip-2-a-better-multilingual-vision-language-encoder-150718.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150718. SigLIP 2: A better multilingual vision language encoder
+        </a>
+        
+        <a href="introducing-the-worlds-largest-open-multilingual-language-model-b-151312.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151312. Introducing The World's Largest Open Multilingual Language Model: BLOOM
+        </a>
+        
+        <a href="deploying-tensorflow-vision-models-in-hugging-face-with-tf-servin-151307.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151307. Deploying TensorFlow Vision Models in Hugging Face with TF Serving
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

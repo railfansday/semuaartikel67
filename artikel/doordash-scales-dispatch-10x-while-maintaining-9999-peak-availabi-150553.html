@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoorDash Scales Dispatch 10x While Maintaining 99.99% Peak Availability</title>
+    <meta name="description" content="InfoQ Homepage News DoorDash Scales Dispatch 10x While Maintaining 99.99% Peak Availability. Nov 25, 2026 2 min read. DoorDash has rebuilt its real-time di">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/doordash-scales-dispatch-10x-while-maintaining-9999-peak-availabi-150553.html">
+    <meta property="og:title" content="DoorDash Scales Dispatch 10x While Maintaining 99.99% Peak Availability">
+    <meta property="og:description" content="InfoQ Homepage News DoorDash Scales Dispatch 10x While Maintaining 99.99% Peak Availability. Nov 25, 2026 2 min read. DoorDash has rebuilt its real-time di">
+    <meta property="og:image" content="https://res.infoq.com/news/2026/11/doordash-dispatch-redesign/en/headerimage/generatedHeaderImage-1793847001864.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/doordash-scales-dispatch-10x-while-maintaining-9999-peak-availabi-150553.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "DoorDash Scales Dispatch 10x While Maintaining 99.99% Peak Availability", "image": ["https://res.infoq.com/news/2026/11/doordash-dispatch-redesign/en/headerimage/generatedHeaderImage-1793847001864.jpg"], "datePublished": "2026-11-25T14:44:00", "dateModified": "2026-11-27T01:28:34.890946", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/doordash-scales-dispatch-10x-while-maintaining-9999-peak-availabi-150553.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>DoorDash Scales Dispatch 10x While Maintaining 99.99% Peak Availability</h1>
+        <div class="meta-line">🌐 Source: <strong>Infoq</strong> &bull; 📅 25 Nov 2026 &bull; ⏱️ 3 min read (602 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>InfoQ Homepage
+News
+DoorDash Scales Dispatch 10x While Maintaining 99.99% Peak Availability.</li><li style='margin-bottom:6px;'>Nov 25, 2026
+								
+								
+								
+									
+									2
+									min read.</li><li style='margin-bottom:6px;'>DoorDash has rebuilt its real-time dispatch platform to handle growing delivery demand, replacing a monolithic optimization engine with a distributed architecture that separates coordination from computation.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150553"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150553"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150553"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="DoorDash Scales Dispatch 10x While Maintaining 99.99% Peak Availability" loading="lazy" src="https://res.infoq.com/news/2026/11/doordash-dispatch-redesign/en/headerimage/generatedHeaderImage-1793847001864.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150553">InfoQ Homepage
+News
+DoorDash Scales Dispatch 10x While Maintaining 99.99% Peak Availability.</p>
+<p>Nov 25, 2026
+								
+								
+								
+									
+									2
+									min read.</p>
+<p>DoorDash has rebuilt its real-time dispatch platform to handle growing delivery demand, replacing a monolithic optimization engine with a distributed architecture that separates coordination from computation. The redesign delivers 10 times higher throughput and more than 99.99% availability during peak periods, while enabling the manufacturer to run machine learning and reinforcement learning models within dispatch workflows.</p>
+<p>The previous dispatch engine tightly coupled business logic, logistics state management, and computationally intensive routing algorithms. As delivery volume increased, its optimization workload became increasingly difficult to process within the time available for dispatch decisions. The underlying algorithms had roughly quadratic time complexity, and during peak periods, demand approached four times the system's processing capacity. The engine consequently relied on fallback heuristics and sometimes made assignment decisions using incomplete information.</p>
+<p>As the DoorDash engineering team explained:.</p>
+<p>The fatal bottleneck wasn't just raw machine capacity; it was the speed of reality.</p>
+<p>Rather than address the bottleneck through conventional horizontal scaling, DoorDash redesigned the execution model around two independently scalable tiers. The engineering team described the motivation:.</p>
+<p>To scale into the future, the system didn't just need more capacity; it demanded a fundamentally newly introduced execution model.</p>
+<p>The newly introduced platform separates execution into two independently scalable tiers. A stateful coordinator manages dispatch lifecycles, maintains global logistics state, and validates business rules. Stateless compute workers handle mathematical optimization, vehicle-routing heuristics, and model inference.</p>
+<p id="sec-mid-150553">The coordinator distributes localized portions of logistics data to workers using payload sharding over gRPC. This avoids broadcasting the entire global state to every worker and reduces network overhead. Workers process their assigned optimization tasks independently, while the coordinator manages orchestration and result aggregation.</p>
+<p>Evolution from DoorDash's monolithic dispatch engine to its distributed architecture (Source: DoorDash Blog Post).</p>
+<p>The redesign addresses computational complexity through hierarchical decomposition. Rather than solving one global optimization problem, the coordinator partitions logistics data into geographic clusters and delivery trajectories. Workers process smaller problems in parallel, and a reconciliation layer combines results across partitions.</p>
+<p>It has been revealed that doorDash used shadow testing before directing live dispatch decisions to the latest platform. Production requests were duplicated, with the legacy engine determining assignments while the new platform's outputs were logged for comparison. Teams evaluated matching quality, delivery times, and resilience under load. After establishing parity, they used controlled switchback experiments and fallback mechanisms during rollout.</p>
+<p>Shadow testing compares legacy and latest dispatch outputs (Source: DoorDash Blog Post).</p>
+<p>It has been revealed that doorDash reports a tenfold increase in dispatch throughput, with more than 99.96% of runs completing within 20 seconds. During Super Bowl Sunday, the platform maintained more than 99.99% availability despite a 10% week-over-week increase in peak volume.</p>
+<p>The architecture also introduces a hybrid L1/L2 model serving. Latency-sensitive inference runs locally within compute workers using ONNX Runtime, avoiding remote procedure call overhead. More complex evaluations use isolated remote model-serving clusters, keeping heavier workloads away from the coordinator's state-management path.</p>
+<p>DoorDash has also deployed multi-agent reinforcement learning to dynamically adjust dispatch objective weights based on localized marketplace feedback, including merchant congestion and courier utilization. The agents adapt the trade-off between delivery speed and batching efficiency at individual stores. The approach was evaluated through production switchback experiments and accepted at the ICML 2026 Workshop on Reinforcement Learning from World Feedback.</p>
+<p>Presented by: Kiran Gangadharappa - Engineering Advisor at Harness, and Scott Davis - Senior Engineering Manager at Harness.</p>
+<p id="sec-end-150553">A round-up of last week’s content on InfoQ sent out every Tuesday. Join a community of over 250,000 senior developers. View an example.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.infoq.com/news/2026/11/doordash-dispatch-redesign/?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=global" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-how-to-start-a-side-business-while-working-full-time-150489.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150489. Tech Report: How to Start a Side Business While Working Full-Time
+        </a>
+        
+        <a href="tech-report-6-things-i-learned-while-hosting-the-design-drop-podc-150121.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150121. Tech Report: 6 Things I Learned While Hosting ‘The Design Drop’ Podcast
+        </a>
+        
+        <a href="shoot-while-the-sun-shines-samples-from-the-nikon-z5iic-150052.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150052. Shoot while the sun shines: samples from the Nikon Z5IIC
+        </a>
+        
+        <a href="student-photographer-who-lost-right-eye-while-covering-la-protest-150017.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150017. Student Photographer Who Lost Right Eye While Covering LA Protest Sues Federal Government
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

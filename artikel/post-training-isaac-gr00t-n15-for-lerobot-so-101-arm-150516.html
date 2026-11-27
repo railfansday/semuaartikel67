@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Training Isaac GR00T N1.5 for LeRobot SO-101 Arm</title>
+    <meta name="description" content="NVIDIA Isaac GR00T (Generalist Robot 00 Technology) is a research and development platform for building robot foundation models and data pipelines, designe">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/post-training-isaac-gr00t-n15-for-lerobot-so-101-arm-150516.html">
+    <meta property="og:title" content="Post-Training Isaac GR00T N1.5 for LeRobot SO-101 Arm">
+    <meta property="og:description" content="NVIDIA Isaac GR00T (Generalist Robot 00 Technology) is a research and development platform for building robot foundation models and data pipelines, designe">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/nvidia/gr00t-n1-5-so101-tuning.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/post-training-isaac-gr00t-n15-for-lerobot-so-101-arm-150516.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Post-Training Isaac GR00T N1.5 for LeRobot SO-101 Arm", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/nvidia/gr00t-n1-5-so101-tuning.png"], "datePublished": "2025-06-11T18:27:22", "dateModified": "2026-11-27T01:28:32.486990", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/post-training-isaac-gr00t-n15-for-lerobot-so-101-arm-150516.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Post-Training Isaac GR00T N1.5 for LeRobot SO-101 Arm</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 11 Jun 2025 &bull; ⏱️ 8 min read (1593 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>NVIDIA Isaac GR00T (Generalist Robot 00 Technology) is a research and development platform for building robot foundation models and data pipelines, designed to accelerate the creation of intelligent, adaptable robots.</li><li style='margin-bottom:6px;'>Today, we announced the availability of Isaac GR00T N1.5, the first major update to Isaac GR00T N1, the world’s first open foundation model for generalized humanoid robot reasoning and skills.</li><li style='margin-bottom:6px;'>In this blog, we’ll demonstrate how to post-train (fine-tune) GR00T N1.5 using teleoperation data from a single SO-101 robot arm.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-150516"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-150516"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-150516"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Post-Training Isaac GR00T N1.5 for LeRobot SO-101 Arm" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/nvidia/gr00t-n1-5-so101-tuning.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-150516">NVIDIA Isaac GR00T (Generalist Robot 00 Technology) is a research and development platform for building robot foundation models and data pipelines, designed to accelerate the creation of intelligent, adaptable robots.</p>
+<p>Today, we announced the availability of Isaac GR00T N1.5, the first major update to Isaac GR00T N1, the world’s first open foundation model for generalized humanoid robot reasoning and skills. This cross-embodiment model processes multimodal inputs, including language and images, to perform manipulation tasks across diverse environments. It is adaptable through post-training for specific embodiments, tasks, and environments.</p>
+<p>In this blog, we’ll demonstrate how to post-train (fine-tune) GR00T N1.5 using teleoperation data from a single SO-101 robot arm.</p>
+<p>Technical Blog for GR00T N1.5: https://research.nvidia.com/labs/gear/gr00t-n1_5/.</p>
+<p>Now accessible to developers working with a wide range of robot form factors, GR00T N1.5 can be easily fine-tuned and adapted using the affordable, open-source LeRobot SO-101 arm.</p>
+<p>This flexibility is enabled by the EmbodimentTag system, which allows seamless customization of the model for different robotic platforms, empowering hobbyists, researchers, and engineers to tailor advanced humanoid reasoning and manipulation capabilities to their own hardware.</p>
+<p>Before proceeding to installation, please check if you satisfy the prerequisites.</p>
+<p>In a recent development, consumers can fine-tune GROOT N1.5 with any LeRobot dataset. For this tutorial, we will be using the table cleanup task as an example for fine-tuning.</p>
+<p>Recent findings suggest that it's important to note that datasets for the SO-100 or SO-101 are not in GR00T N1.5's initial pre-training. As a result of this, we will be training it as a new_embodiment.</p>
+<p>For this tutorial, you can either begin by creating your own custom dataset by following these instructions (recommended) or by downloading the so101-table-cleanup dataset from Hugging Face. The --local-dir argument specifies where the dataset will be saved on your machine.</p>
+<p>The modality.json file provides additional information about the state and action modalities to make it "GR00T-compatible". Copy over the getting_started/examples/so100_dualcam__modality.json to the dataset /meta/modality.json using this command:.</p>
+<p>NOTE: For a single-camera setup like 
+so100_strawberry_grape, run:.</p>
+<p>In a recent development, after these steps, the dataset can be loaded using the GR00T LeRobotSingleDataset class. An example script for loading the dataset is shown here:.</p>
+<p>Fine-tuning GR00T N1.5 can be executed using the Python script, scripts/gr00t_finetune.py. To begin finetuning, execute the following command from your terminal:.</p>
+<p>Tip: The default fine-tuning settings require ~25G of VRAM. If you don't have that much VRAM, try adding the --no-tune_diffusion_model flag to the gr00t_finetune.py script.</p>
+<p>Once the training is complete and your fine-tuned policy is generated, you can visualize its performance in an open-loop setting by running the following command:.</p>
+<p>Congratulations! You have successfully finetuned GR00T-N1.5 on a new embodiment.</p>
+<p>After successfully fine-tuning and evaluating your policy, the final step is to deploy it onto your physical robot for real-world execution.</p>
+<p>To connect your SO-101 robot and begin the evaluation, execute the following commands in your terminal:.</p>
+<p>Since we finetuned GRO0T-N1.5 with different language instructions, the user can steer the policy by using one of the task prompts in the dataset such as:.</p>
+<p>"Grab tapes and place into pen holder".</p>
+<p>For detailed step-by-step tutorial, please check out: https://github.com/NVIDIA/Isaac-GR00T/tree/main/getting_started.</p>
+<p>According to recent reports, ready to elevate your robotics projects with NVIDIA's GR00T N1.5? Dive in with these essential resources:.</p>
+<p>Stay up-to-date with the latest developments by following NVIDIA on Hugging Face.</p>
+<p>According to recent reports, nice, thanks for this fresh release ! 🤗.</p>
+<p>Excited to play with this on the SO-101. Great timing for the Lerobot hackathon!</p>
+<p>Nice! You guys should add a "Step 0" to actually clone the GR00T repository though, it took me a while to figure out where you were getting the scripts you were calling from 😅.</p>
+<p>Industry observers note that thank you for your feedback! We've updated the post to include an installation section. Hope that helps 🤗.</p>
+<p>In a recent development, great job! i would like to repeat this with my so100 arm, do you have the remote inference code?</p>
+<p>I don't understand why robotic models are not used on Windows. I'm sure a learning model that processes desktop data as sensor data would be very successful.</p>
+<p id="sec-mid-150516">Hi, I followed the instructions and finetuned the model with the given dataset. I deployed the finetuned model on a similar setting as shown in the training data in Isaac Sim, but the robot is not performing the actions properly.Have I missed anything? Please help.</p>
+<p>Industry observers note that hello, the same problem occurred to me. I wonder if you have solved this problem?</p>
+<p>When I try running "getting_started/examples/eval_lerobot.py", I get the error message:.</p>
+<p>File "/home/seb/Isaac-GR00T/getting_started/examples/eval_lerobot.py", line 74, in     from service import ExternalRobotInferenceClientModuleNotFoundError: No module named 'service'.</p>
+<p>How do I resolve this?Which conda env am I supposed to use, gr00t or lerobot?</p>
+<p>Separately, I also got these errors at different run attempts of "eval_lerobot.py":ModuleNotFoundError: No module named 'draccus'ModuleNotFoundError: No module named 'lerobot'.</p>
+<p>I resolved this with pip install, but this should probably be part of the pyproject.toml file to ensure proper versioning.</p>
+<p>Hi, I recently solved this problem in the tag n1.5-release of the project, you should uncomment line 69 from service import ExternalRobotInferenceClient in the file examples/SO-100/eval_lerobot.py.</p>
+<p>I was able to post-train gr00t with my custom dataset and run inference on the SO-101. However, the motion is quite jerky. I tried tuning --denoising-steps and --action_horizon (capped at 16 it seems), but it didn't help the motion very much.</p>
+<p>Sources indicate that I'm using an RTX 4080 GPU. This is the command and hyperparameters I used for training:python scripts/gr00t_finetune.py    --dataset-path ./demo_data/pensInHolder-many/    --num-gpus 1    --output-dir ./so101-checkpoints/policy_gr00t_pensInHolder-many_v2     --max-steps 20000    --data-config so100_dualcam    --video-backend torchvision_av    --no-tune_diffusion_model    --batch-size 16    --lora-rank 16    --dataloader-num-workers 16.</p>
+<p>Sources indicate that I cannot use a bigger batch size (CUDA OOM error). I could train for more steps, but not sure how much that will help. I haven't tried yet, but for reducing motion jerk, I thought either limiting motor acceleration or implementing action interpolation could help.</p>
+<p>Do you have recommendations for improving performance?</p>
+<p>In a recent development, could you also remove the --no-tune_diffusion_model, this will tune the entire expert head too. Also you can also use a larger action horizon too by configuring the data_config.py.</p>
+<p>I put together my own dataset, and after 30 episodes in dataset and about 6,000 fine-tuning steps, the model finally started doing something reasonable 🎉 https://www.youtube.com/shorts/C3_fH8jhzo8.</p>
+<p>The only funny part is that no matter what text prompt I give it, it still sticks to the same action from the dataset (prompt from training dataset: “pick up the cube and place it in the bin.”).</p>
+<p>According to recent reports, any tips on figuring out the right number of max-steps for fine-tuning? And what are your go-to best practices? I heard in NVIDIA’s livestreams that there’s a chance of overtraining, which might make the model ignore text prompts, so I’m curious how you avoid that.</p>
+<p>I have the same question with you, it seems the glitch of the generalization of the model.</p>
+<p>hey,what happens to the modality.json for if the dataset is for 2 arm, 1 cameraheres the info file from the dataset'''{    "codebase_version": "v2.1",    "robot_type": "bi_so100_follower",    "total_episodes": 50,    "total_frames": 21932,    "total_tasks": 1,    "total_videos": 50,    "total_chunks": 1,    "chunks_size": 1000,    "fps": 30,    "splits": {        "train": "0:50"    },    "data_path": "data/chunk-{episode_chunk:03d}/episode_{episode_index:06d}.parquet",    "video_path": "videos/chunk-{episode_chunk:03d}/{video_key}/episode_{episode_index:06d}.mp4",    "features": {        "action": {            "dtype": "float32",            "shape": [                12            ],            "names": [                "left_shoulder_pan.pos",                "left_shoulder_lift.pos",                "left_elbow_flex.pos",                "left_wrist_flex.pos",                "left_wrist_roll.pos",                "left_gripper.pos",                "right_shoulder_pan.pos",                "right_shoulder_lift.pos",                "right_elbow_flex.pos",                "right_wrist_flex.pos",                "right_wrist_roll.pos",                "right_gripper.pos"            ]        },        "observation.state": {            "dtype": "float32",            "shape": [                12            ],            "names": [                "left_shoulder_pan.pos",                "left_shoulder_lift.pos",                "left_elbow_flex.pos",                "left_wrist_flex.pos",                "left_wrist_roll.pos",                "left_gripper.pos",                "right_shoulder_pan.pos",                "right_shoulder_lift.pos",                "right_elbow_flex.pos",                "right_wrist_flex.pos",                "right_wrist_roll.pos",                "right_gripper.pos"            ]        },        "observation.images.front": {            "dtype": "video",            "shape": [                480,                640,                3            ],            "names": [                "height",                "width",                "channels"            ],            "info": {                "video.height": 480,                "video.width": 640,                "video.codec": "av1",                "video.pix_fmt": "yuv420p",                "video.is_depth_map": false,                "video.fps": 30,                "video.channels": 3,                "has_audio": false            }        },        "timestamp": {            "dtype": "float32",            "shape": [                1            ],            "names": null        },        "frame_index": {            "dtype": "int64",            "shape": [                1            ],            "names": null        },        "episode_index": {            "dtype": "int64",            "shape": [                1            ],            "names": null        },        "index": {            "dtype": "int64",            "shape": [                1            ],            "names": null        },        "task_index": {            "dtype": "int64",            "shape": [                1            ],            "names": null        }    }}.</p>
+<p>Thanks for the finetuning guide.I run with 5000 steps and the Average MSE across all trajs: 59.93302306439424.Is it a large error?</p>
+<p>is this compatible for lerobot dtaset v3 ?</p>
+<p>It seems you need to stick v2 for now.</p>
+<p>Has anyone tried to convert v3 dataset to v2 dataset? I realize this only supports v2 dataset for now.</p>
+<p>I tried and it worked. I used this file.https://github.com/huggingface/lerobot/pull/2109.</p>
+<p>whether the repository is built under Isaac lab framework for RL training, and could be visualized in Isaac sim ?OR need to build the environment by myself?</p>
+<p>your answering is much appreciated.</p>
+<p>before deployment, i want to visualize my finetuned model on demo_dataset(PickNPlace), can anyone help with how to use the simulation (view the visualization in isaac-sim??). Please...</p>
+<p>Does this work with v3 datasets from Lerobot?If not, has anybody figured out how to get it to work?</p>
+<p>Use Lerobot repository, it supports v3.0 datasets and already integrated gr00t n1.5 model.</p>
+<p>According to recent reports, I would suggest for anybody running this for complicated tasks,  at least have denoising steps of 16 and also have like an action horizon of 16. That's the only time  I managed to get  good results. Until then it is just jittery and it was like not even moving towards the object.</p>
+<p>I want to fine-tune using my own single robotic arm dataset, but my robotic arm only has 4 degrees of freedom. How should I modify it?</p>
+<p id="sec-end-150516">It has been revealed that maybe using new-embodiment I guess? That is what I did with bimanual setup.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/nvidia/gr00t-n1-5-so101-tuning" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="smol2operator-post-training-gui-agents-for-computer-use-139847.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139847. Smol2Operator: Post-Training GUI Agents for Computer Use
+        </a>
+        
+        <a href="trl-v10-post-training-library-built-to-move-with-the-field-139746.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139746. TRL v1.0: Post-Training Library Built to Move with the Field
+        </a>
+        
+        <a href="turning-database-grading-into-rl-rewards-post-training-agents-wit-139270.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139270. Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox
+        </a>
+        
+        <a href="breaking-daisyrose-27b-pushing-the-frontier-of-post-training-effi-139125.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #139125. Breaking: DaisyRose-27B: Pushing the Frontier of Post-Training Efficiency
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
