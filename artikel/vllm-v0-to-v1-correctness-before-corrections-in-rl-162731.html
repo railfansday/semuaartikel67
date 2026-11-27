@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vLLM V0 to V1: Correctness Before Corrections in RL</title>
+    <meta name="description" content="According to recent reports, pipelineRL uses vLLM as the inference engine for rollout generation. The inference engine samples tokens and returns token log">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/vllm-v0-to-v1-correctness-before-corrections-in-rl-162731.html">
+    <meta property="og:title" content="vLLM V0 to V1: Correctness Before Corrections in RL">
+    <meta property="og:description" content="According to recent reports, pipelineRL uses vLLM as the inference engine for rollout generation. The inference engine samples tokens and returns token log">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow-AI/correctness-before-corrections.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/vllm-v0-to-v1-correctness-before-corrections-in-rl-162731.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "vLLM V0 to V1: Correctness Before Corrections in RL", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow-AI/correctness-before-corrections.png"], "datePublished": "2026-05-06T19:06:55", "dateModified": "2026-11-27T16:03:15.588397", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/vllm-v0-to-v1-correctness-before-corrections-in-rl-162731.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>vLLM V0 to V1: Correctness Before Corrections in RL</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 06 May 2026 &bull; ⏱️ 5 min read (961 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, pipelineRL uses vLLM as the inference engine for rollout generation.</li><li style='margin-bottom:6px;'>vLLM V1 matched our vLLM V0 reference after we fixed four things:
+processed rollout logprobs, V1-specific runtime defaults, the inflight
+weight-update path, and the fp32 lm_head used for the final projection.</li><li style='margin-bottom:6px;'>In a recent development, the reference run used vLLM 0.8.5; the V1 runs used vLLM 0.18.1.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162731"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162731"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162731"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="vLLM V0 to V1: Correctness Before Corrections in RL" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow-AI/correctness-before-corrections.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162731">According to recent reports, pipelineRL uses vLLM as the inference engine for rollout generation. The
+inference engine samples tokens and returns token logprobs; the trainer uses
+those logprobs to compute policy ratios, KL, clip rate, entropy, and reward. Any discrepancy in how those logprobs are computed can change the training
+dynamics. This is the train-inference mismatch we needed to eliminate during
+the vLLM V0 to V1 migration.</p>
+<p>TL;DR. vLLM V1 matched our vLLM V0 reference after we fixed four things:
+processed rollout logprobs, V1-specific runtime defaults, the inflight
+weight-update path, and the fp32 lm_head used for the final projection. We
+fixed the backend behavior before changing the RL objective.</p>
+<p>In a recent development, the reference run used vLLM 0.8.5; the V1 runs used vLLM 0.18.1. Figure 1
+shows the final result. The red run is the initial V1 attempt, and the green
+run is the final V1 run after the fixes described below.</p>
+<p>vLLM V1 is a substantial rewrite of the V0 engine. Our migration target was
+therefore deliberately narrow:.</p>
+<p>The first visible symptoms appeared in:.</p>
+<p>According to recent reports, those metrics came from a GSPO training run, the objective used for this
+experiment. The same class of mismatch can surface in PPO, GRPO, or any online
+RL system that treats rollout-side logprobs as part of the optimization target.</p>
+<p>According to recent reports, the initial V1 run indicated the problem clearly. The trainer-side logprobs and
+reward moved away from the V0 reference early in training.</p>
+<p>The same pattern appears in the trainer metrics. Clip rate is the easiest signal
+to read in the initial comparison.</p>
+<p>We separated the possible causes into three layers:.</p>
+<p>Industry observers note that we initially suspected the third category too early. The useful diagnosis came
+from treating the first two as backend behavior problems and ruling them out
+first.</p>
+<p>It has been revealed that the first problem was semantic. vLLM V1 returns logprobs from the raw model
+outputs by default, before logits post-processing such as temperature scaling,
+penalties, and top-k/top-p filtering. PipelineRL expected logprobs from the
+processed distribution used by the sampler.</p>
+<p>It has been revealed that this removed the obvious mean offset in rollout logprobs. The training curves
+still showed a gap relative to the known-good reference, so the next issue had
+to be in the inference path.</p>
+<p>The policy-ratio plot indicates this directly. Once processed_logprobs is on for
+V1, the mean policy ratio stays centered extremely close to 1.0 across all
+three runs. That establishes the mean-bias fix. The remaining mismatch shows up
+in clip rate, KL, entropy, and downstream training behavior.</p>
+<p>The early V1 run mixed the engine version with V1 runtime defaults:.</p>
+<p>For the parity run, we made these choices explicit:.</p>
+<p id="sec-mid-162731">Prefix caching deserves a separate note. It is normally a
+correctness-preserving inference optimization for a fixed model state. In this
+online RL setup, it was a V1-only difference in cache lifetime and reuse
+relative to the V0 reference path. The actor was also handling repeated
+prefixes, concurrent requests, async scheduling, and inflight weight updates.</p>
+<p>A prefix-cache hit can reuse state computed before a weight revision when the
+cache policy ignores the weight-update boundary. Disabling prefix caching
+removed one V1-only degree of freedom from the parity comparison.</p>
+<p>Sources indicate that weight synchronization also had to match the online-RL update model. One option
+was to make V1 stricter than V0 by draining requests and clearing caches at
+every update. That would answer a separate question. We first needed to verify
+that V1 could match the existing V0 behavior.</p>
+<p>What V0 effectively did was closer to:.</p>
+<p>Lag was a useful runtime diagnostic. The initial V1 path carries more
+persistent lag later in training than the corrected V1 run.</p>
+<p>Recent findings suggest that the V1 backend fixes above removed the obvious migration complications, but final
+parity still required matching the numerical path used to compute logits. The
+trainer used an fp32 lm_head for the final projection. The rollout backend
+had to match that behavior.</p>
+<p>A closely related problem appears in the
+MiniMax-M1 technical report: their RL run
+revealed a training/inference token-probability mismatch that they traced to the
+LM output head and fixed by computing the head in fp32.</p>
+<p>Recent findings suggest that this matters because the RL update consumes token logprobs directly. Small
+changes in logits can become visible in policy ratios, KL, and clipping. The
+final projection precision is therefore part of the correctness surface for
+online RL. The
+ScaleRL paper later includes fp32
+logits/head computation as part of its RL recipe and ablates it as a useful
+design choice for large-scale RL.</p>
+<p>With the fp32 lm_head path included, reward gives a compact view of the final
+parity result. In Figure 6, the final V1 run tracks the V0 reference; the
+initial V1 attempt produces a clearly different reward curve.</p>
+<p>The negative results are important because they rule out common explanations.</p>
+<p>Objective-side corrections such as truncated importance sampling,
+importance-ratio reweighting, and related methods are useful tools. If rollouts
+are intentionally stale, generated asynchronously, or produced by a backend
+where equivalence to the trainer-side policy is unavailable, then some form of
+correction is often the right thing to add.</p>
+<p>The first problem here was inference correctness. After moving to V1, the
+rollout backend returned logprobs and runtime behavior that broke the trainer
+assumption. Adding an objective-side correction at that point would have mixed
+two questions:.</p>
+<p>According to recent reports, those questions need to be separated. Otherwise an objective-side correction
+can compensate for broken inference-backend behavior, which makes the training
+curve harder to interpret.</p>
+<p>The current objective can still improve. After inference parity is restored,
+the next improvement is the usual async/off-policy cleanup:.</p>
+<p id="sec-end-162731">The main lesson from this migration is narrower: fix backend correctness first,
+then add corrections for the mismatch that remains.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ServiceNow-AI/correctness-before-corrections" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="runaway-horse-visits-mcdonalds-before-leading-police-on-neighborh-162818.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162818. Runaway horse visits McDonald’s before leading police on neighborhood chase
+        </a>
+        
+        <a href="breaking-ai-models-on-one-vllm-server-secretly-talk-through-gpu-r-162802.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162802. Breaking: AI models on one vLLM server secretly talk through GPU rounding errors
+        </a>
+        
+        <a href="tech-report-thieves-crash-stolen-suv-into-video-game-store-before-162758.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162758. Tech Report: Thieves crash stolen SUV into video game store before fleeing in getaway vehicle
+        </a>
+        
+        <a href="what-to-check-before-adding-a-tripo-model-to-a-website-162638.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162638. What to Check Before Adding a Tripo Model to a Website
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Service Worker Releases v3.0 with ESM-Only Build, Socket-Based Interception and GraphQL Subs</title>
+    <meta name="description" content="InfoQ Homepage News Mock Service Worker Releases v3.0 with ESM-Only Build, Socket-Based Interception and GraphQL Subs. Nov 26, 2026 2 min read. Sources ind">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/mock-service-worker-releases-v30-with-esm-only-build-socket-based-162412.html">
+    <meta property="og:title" content="Mock Service Worker Releases v3.0 with ESM-Only Build, Socket-Based Interception and GraphQL Subs">
+    <meta property="og:description" content="InfoQ Homepage News Mock Service Worker Releases v3.0 with ESM-Only Build, Socket-Based Interception and GraphQL Subs. Nov 26, 2026 2 min read. Sources ind">
+    <meta property="og:image" content="https://res.infoq.com/news/2026/11/mock-service-worker-v3/en/headerimage/generatedHeaderImage-1795626212829.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/mock-service-worker-releases-v30-with-esm-only-build-socket-based-162412.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Mock Service Worker Releases v3.0 with ESM-Only Build, Socket-Based Interception and GraphQL Subs", "image": ["https://res.infoq.com/news/2026/11/mock-service-worker-v3/en/headerimage/generatedHeaderImage-1795626212829.jpg"], "datePublished": "2026-11-26T06:59:00", "dateModified": "2026-11-27T16:02:54.072134", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/mock-service-worker-releases-v30-with-esm-only-build-socket-based-162412.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Mock Service Worker Releases v3.0 with ESM-Only Build, Socket-Based Interception and GraphQL Subs</h1>
+        <div class="meta-line">🌐 Source: <strong>Infoq</strong> &bull; 📅 26 Nov 2026 &bull; ⏱️ 3 min read (608 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>InfoQ Homepage
+News
+Mock Service Worker Releases v3.0 with ESM-Only Build, Socket-Based Interception and GraphQL Subs.</li><li style='margin-bottom:6px;'>Nov 26, 2026
+								
+								
+								
+									
+									2
+									min read.</li><li style='margin-bottom:6px;'>Sources indicate that mock Service Worker, the API mocking library maintained by Artem Zakharchenko, has released version 3.0, nearly three years after the Fetch-based v2.0 rewrite.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162412"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162412"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162412"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Mock Service Worker Releases v3.0 with ESM-Only Build, Socket-Based Interception and GraphQL Subs" loading="lazy" src="https://res.infoq.com/news/2026/11/mock-service-worker-v3/en/headerimage/generatedHeaderImage-1795626212829.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162412">InfoQ Homepage
+News
+Mock Service Worker Releases v3.0 with ESM-Only Build, Socket-Based Interception and GraphQL Subs.</p>
+<p>Nov 26, 2026
+								
+								
+								
+									
+									2
+									min read.</p>
+<p>Sources indicate that mock Service Worker, the API mocking library maintained by Artem Zakharchenko, has released version 3.0, nearly three years after the Fetch-based v2.0 rewrite. The release ships as ESM-only, completes the library's GraphQL story with subscription support, and introduces a socket-based interception algorithm in Node.js that Zakharchenko describes as going as deep into the runtime as JavaScript will allow without recompiling Node.</p>
+<p>It has been revealed that the headline breaking change is that MSW is now distributed natively as ECMAScript Modules only, with support for Node.js v18 and v20 dropped in favour of v22, v24, and v26. TypeScript 5.9 is now the minimum supported version. Several transitive dependencies have been removed, including graphql (now a proper optional peer), path-to-regexp, picocolors, and statuses. The result is a library tarball that drops from 416KB to 234KB, with type definitions shrinking by half, from 190KB to 90KB.</p>
+<p>Alongside ESM, v3.0 introduces granular entrypoints that replace the single msw import with designated paths for each protocol:.</p>
+<p>GraphQL subscription support, a long-standing community request on the project's tracker, lands in this release. Building on the WebSocket interception shipped previously, subscription handlers can now be defined against a graphql.link() and publish events on demand, closing the gap between MSW's HTTP, WebSocket, and GraphQL coverage.</p>
+<p>An experimental defineNetwork API is introduced as the eventual replacement for setupServer and setupWorker. The new primitive splits interception into sources (where traffic comes from) and handlers (how it is answered), allowing teams to replay HAR files, combine custom interceptors, or hand control of request timing to a test runner. The first ecosystem package to expose it directly is @msw/cloudflare, which wraps the API for Workers environments.</p>
+<p id="sec-mid-162412">According to recent reports, the most technically significant change sits in the underlying Interceptors library. Zakharchenko writes that after seven attempts at the problem, the team has moved network interception in Node.js down to the TCP and TLS wraps, the JavaScript bindings for Node's C-level network code. Moving any lower, he notes, would require recompiling Node.js itself. The upcoming architecture supports arbitrary socket-based protocols, with SMTP cited as an early example. Nock already relies on the Interceptors library for its Node.js support.</p>
+<p>A GitHub discussion reports failing tests after upgrading, traced to MSW now intercepting the browser-issued OPTIONS preflight requests that previous versions quietly ignored. Separately, a developer in discussion #2771 challenged the earlier decision to deprioritise Jest and JSDOM, arguing that a runner with 46 million weekly downloads warrants a formal breaking-change note rather than a quiet docs change.</p>
+<p>In the Node-only space, MSW continues to compete with Nock, fetch-mock, and undici's built-in MockAgent, though as a recent comparison notes, none of those cover both browser and server with a single handler definition.</p>
+<p>Teams on v2 should consult the official 2.x to 3.x migration guide before upgrading. Full release notes are available on GitHub.</p>
+<p>Mock Service Worker is an open-source, MIT-licensed JavaScript library for mocking network traffic using Service Workers in the browser and runtime-level interception in Node.js. It is used widely for frontend and full-stack testing, and now covers HTTP, WebSocket, Server-Sent Events, and GraphQL including subscriptions.</p>
+<p>In a recent development, explore how Azul helps Java teams reduce JVM vulnerability risk, strengthen application security, and prepare their Java environments for agentic AI. Discover practical strategies for securing Java workloads while maintaining performance and reliability. Learn more.</p>
+<p id="sec-end-162412">According to recent reports, A round-up of last week’s content on InfoQ sent out every Tuesday. Join a community of over 250,000 senior developers. View an example.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.infoq.com/news/2026/11/mock-service-worker-v3/?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=global" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-forest-service-releases-1982-report-on-bigfoot-trac-158225.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #158225. Latest Update: Forest Service releases 1982 report on ‘Bigfoot’ tracks found in Oregon
+        </a>
+        
+        <a href="breaking-us-forest-service-releases-bigfoot-files-156760.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #156760. Breaking: U.S. Forest Service releases Bigfoot files
+        </a>
+        
+        <a href="tech-report-us-forest-service-releases-bigfoot-reports-that-read--155922.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #155922. Tech Report: US Forest Service Releases Bigfoot Reports That Read Like Something Out Of Control
+        </a>
+        
+        <a href="textquests-how-good-are-llms-at-text-based-video-games-162959.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162959. TextQuests: How Good are LLMs at Text-Based Video Games?
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

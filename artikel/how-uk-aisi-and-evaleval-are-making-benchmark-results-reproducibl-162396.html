@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How UK AISI and EvalEval Are Making Benchmark Results Reproducible</title>
+    <meta name="description" content="The EvalEval Coalition is thrilled to share that the UK AI Security Institute (AISI) is using EvalEval's infrastructure to openly share evaluation results,">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-uk-aisi-and-evaleval-are-making-benchmark-results-reproducibl-162396.html">
+    <meta property="og:title" content="How UK AISI and EvalEval Are Making Benchmark Results Reproducible">
+    <meta property="og:description" content="The EvalEval Coalition is thrilled to share that the UK AI Security Institute (AISI) is using EvalEval's infrastructure to openly share evaluation results,">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/evaleval-aisi/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-uk-aisi-and-evaleval-are-making-benchmark-results-reproducibl-162396.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How UK AISI and EvalEval Are Making Benchmark Results Reproducible", "image": ["https://huggingface.co/blog/assets/evaleval-aisi/thumbnail.png"], "datePublished": "2026-09-22T00:00:00", "dateModified": "2026-11-27T16:02:53.110674", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-uk-aisi-and-evaleval-are-making-benchmark-results-reproducibl-162396.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How UK AISI and EvalEval Are Making Benchmark Results Reproducible</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 22 Sep 2026 &bull; ⏱️ 4 min read (786 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>The EvalEval Coalition is thrilled to share that the UK AI Security Institute (AISI) is using EvalEval's infrastructure to openly share evaluation results, supporting more reproducible and verifiable evaluation science.</li><li style='margin-bottom:6px;'>AISI and EvalEval have previously collaborated on research that began at a joint workshop alongside NeurIPS 2025, and feedback from the Institute has helped shape the Every Eval Ever (EEE) schema.</li><li style='margin-bottom:6px;'>It has been revealed that as AI deployment accelerates, evaluations are becoming increasingly important sources of evidence about model and system performance.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162396"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162396"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162396"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How UK AISI and EvalEval Are Making Benchmark Results Reproducible" loading="lazy" src="https://huggingface.co/blog/assets/evaleval-aisi/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162396">The EvalEval Coalition is thrilled to share that the UK AI Security Institute (AISI) is using EvalEval's infrastructure to openly share evaluation results, supporting more reproducible and verifiable evaluation science.</p>
+<p>AISI and EvalEval have previously collaborated on research that began at a joint workshop alongside NeurIPS 2025, and feedback from the Institute has helped shape the Every Eval Ever (EEE) schema. This next phase of the collaboration puts that shared infrastructure into practice.</p>
+<p>It has been revealed that as AI deployment accelerates, evaluations are becoming increasingly important sources of evidence about model and system performance. Yet results are reported across many formats, platforms, and outlets, often without enough information to reproduce them. Running the evaluations again may itself be prohibitively expensive.</p>
+<p>EvalEval's mission is to improve this ecosystem through a shared reporting schema, Every Eval Ever, and an open platform, Evaluation Cards, that brings evaluation results and the information needed to interpret them into a common structure.</p>
+<p>Sources indicate that this builds naturally on AISI's work to make evaluation more efficient through OptStop, more statistically rigorous through HiBayES, and more standardised in areas including transcript analysis and capability elicitation. Together, AISI and EvalEval are working to diagnose gaps in evaluation reporting and build shared infrastructure to close them.</p>
+<p>Transcript-level transparency matters not only for reproducibility, but also for analysis and diagnosis. In this new phase of the collaboration, AISI is making publicly reported evaluation methods and findings available through Evaluation Cards where appropriate. The release includes verified results, context, and configuration information for the five benchmarks in the paper's main experiment:.</p>
+<p>These results cover six frontier models: Claude Opus 4, Claude Opus 4.5, Claude Opus 4.6, GPT-5, GPT-5.2, and GPT-5.4. The release also includes results from two related cyber evaluations—Cyber CTFs and The Last Ones—which use a different, partially overlapping set of models. The data accompany AISI's paper, How Inference Compute Shapes Frontier LLM Evaluation, which studies how benchmark performance depends on inference-time compute and evaluation protocol.</p>
+<p>Performance on Humanity's Last Exam changes with evaluation protocol and inference compute. Each curve shows the cumulative share of attempted tasks solved within a given token count, using the earliest observed success per task. When models received correctness feedback from an oracle after each attempt, they continued to solve additional tasks as token use increased.</p>
+<p>When results are openly released with setup information, researchers and practitioners can examine individual studies more closely and compare findings across the wider ecosystem. Where other reports lack these details, releases like AISI's provide verified reference points for interpreting evaluations in context—for example, by helping researchers understand how setup choices may influence reported performance. As more evaluators adopt EEE, open comparisons like these can support broader and more reliable meta-research.</p>
+<p id="sec-mid-162396">AISI's Terminal-Bench 2.0 results alongside other reported evaluations for the same models, under different evaluation setups.</p>
+<p>We are excited about this adoption and look forward to further standardising and sharing evaluations with AISI and other AI evaluation organisations.</p>
+<p>The EvalEval Coalition is a research community developing scientifically grounded research and robust deployment infrastructure for the evaluation ecosystem. Its goal is to improve evaluation science, address the lack of consensus around documenting evaluation applicability and utility, and broaden coverage of the impacts that matter for scientific research and policy analysis.</p>
+<p>It has been revealed that the coalition's flagship projects include Every Eval Ever, a shared schema and repository for evaluation results, and Evaluation Cards, which combines benchmark metadata, evaluation-run data, and model metadata into interpretable records. Together, they make it easier to understand when apparently similar scores were produced under meaningfully different conditions.</p>
+<p>The UK AI Security Institute is a research organisation within the UK government's Department for Science, Innovation and Technology. Its mission is to equip governments with a scientific understanding of the risks posed by advanced AI. AISI conducts research and builds infrastructure to understand advanced AI capabilities and impacts, develop and test mitigations, and inform policy.</p>
+<p>The line that matters for practitioners is quiet: apparently similar scores can be produced under meaningfully different conditions.</p>
+<p>Industry observers note that once you've watched a benchmark move just by changing inference-time compute or the elicitation protocol, "Model A beat Model B on X" without a card is marketing, not comparison. Evaluation Cards that ship verified results with configuration — especially transcript-level context where it's appropriate — are how eval becomes a contract instead of a leaderboard screenshot.</p>
+<p>One ask I'd put to teams adopting EEE: which fields get skipped first under deadline pressure (seed, tool access, attempt budget, oracle feedback), and do you treat a missing field as "do not cite the delta" rather than "assume defaults"?</p>
+<p id="sec-end-162396">Reproducible reporting won't remove disagreement. It will make the disagreement about the right variables.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/evaleval-aisi" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="3lm-a-benchmark-for-arabic-llms-in-stem-and-code-162966.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162966. 📚 3LM: A Benchmark for Arabic LLMs in STEM and Code
+        </a>
+        
+        <a href="ai-girlfriends-based-on-lucia-from-gta-6-are-making-creators-thou-162785.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162785. AI girlfriends based on Lucia from GTA 6 are making creators thousands
+        </a>
+        
+        <a href="breaking-the-honor-magic-9-pro-max-is-making-its-global-debut-tod-162699.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162699. Breaking: The Honor Magic 9 Pro Max is making its global debut today with huge preorder bonuses
+        </a>
+        
+        <a href="featuring-every-eval-ever-results-on-hugging-face-model-pages-162590.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162590. Featuring Every Eval Ever Results on Hugging Face Model Pages
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

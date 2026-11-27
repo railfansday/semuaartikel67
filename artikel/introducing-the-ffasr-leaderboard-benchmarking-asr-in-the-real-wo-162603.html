@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing the FFASR Leaderboard: Benchmarking ASR in the Real World</title>
+    <meta name="description" content="🚀 First open far-field ASR benchmark: community-driven evaluation across 14 simulated rooms, validated against real-world measurements: https://huggingface">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/introducing-the-ffasr-leaderboard-benchmarking-asr-in-the-real-wo-162603.html">
+    <meta property="og:title" content="Introducing the FFASR Leaderboard: Benchmarking ASR in the Real World">
+    <meta property="og:description" content="🚀 First open far-field ASR benchmark: community-driven evaluation across 14 simulated rooms, validated against real-world measurements: https://huggingface">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/ffasr-leaderboard/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/introducing-the-ffasr-leaderboard-benchmarking-asr-in-the-real-wo-162603.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Introducing the FFASR Leaderboard: Benchmarking ASR in the Real World", "image": ["https://huggingface.co/blog/assets/ffasr-leaderboard/thumbnail.png"], "datePublished": "2026-06-24T00:00:00", "dateModified": "2026-11-27T16:03:07.507686", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/introducing-the-ffasr-leaderboard-benchmarking-asr-in-the-real-wo-162603.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Introducing the FFASR Leaderboard: Benchmarking ASR in the Real World</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 24 Jun 2026 &bull; ⏱️ 8 min read (1646 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>🚀 First open far-field ASR benchmark: community-driven evaluation across 14 simulated rooms, validated against real-world measurements: https://huggingface.co/spaces/treble-technologies/ffasr.</li><li style='margin-bottom:6px;'>📉 The gap is real and it is large: across all submitted models, far-field WER at low SNR is consistently several times higher than near-field WER on the same speech content.</li><li style='margin-bottom:6px;'>🔬 Methodology you can trust: hybrid wave-based simulation, sim-to-real validation, moving-source splits in beta, held-out audio, and standardized evaluation hardware across all submissions.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162603"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162603"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162603"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Introducing the FFASR Leaderboard: Benchmarking ASR in the Real World" loading="lazy" src="https://huggingface.co/blog/assets/ffasr-leaderboard/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162603">🚀 First open far-field ASR benchmark: community-driven evaluation across 14 simulated rooms, validated against real-world measurements: https://huggingface.co/spaces/treble-technologies/ffasr.</p>
+<p>📉 The gap is real and it is large: across all submitted models, far-field WER at low SNR is consistently several times higher than near-field WER on the same speech content.</p>
+<p>🔬 Methodology you can trust: hybrid wave-based simulation, sim-to-real validation, moving-source splits in beta, held-out audio, and standardized evaluation hardware across all submissions.</p>
+<p>⚡ Accuracy and speed together: the Pareto front plots average WER against RTFx so you can evaluate the tradeoff that is right for your deployment.</p>
+<p>👀 More is coming: multi-talker scenarios, microphone array support, and echo cancellation are on the roadmap.</p>
+<p>According to recent reports, the gap between benchmark performance and real-world deployment is one of the more persistent frustrations in ASR development. Models that score well on standard evaluations often behave differently once real room acoustics are involved: reverberation, background noise, microphone distance. The complex interactions between these factors affect performance in ways that clean-speech benchmarks do not capture. The FFASR Leaderboard is our attempt to quantify that gap.</p>
+<p>Treble Technologies and Hugging Face are launching the Far-Field ASR (FFASR) Leaderboard, the first open, community-driven benchmark designed to evaluate ASR models under realistic far-field acoustic conditions. It is live now, and we are inviting the community to submit models, explore the results, and help shape what comes next.</p>
+<p>Voice interfaces have expanded well beyond the headset and the smartphone. AI voice agents, conference room transcription, in-car assistants, humanoid robots, smart glasses, and hands-free tools are all seeing rapid adoption. What they have in common is that they operate in acoustically complex environments: reverberation, background noise, overlapping sounds, and a microphone that may be anywhere from one to several meters from the speaker.</p>
+<p>Industry observers note that the dominant ASR evaluation paradigm has not caught up with this reality. Clean, close-microphone benchmarks remain the standard, and while they are useful for measuring core recognition quality, they do not predict far-field performance. A model that performs well on LibriSpeech or other near-field sets may degrade substantially once real room acoustics enter the picture. While there have been several research efforts around far-field and noisy speech evaluation — including CHiME, URGENT, and NOIZEUS — the community has not had a standardized, open way to measure that degradation consistently across models in a continuously updated leaderboard format. That is what FFASR is built for.</p>
+<p>A major challenge of far-field evaluation is the availability of data. Collecting far-field recordings across a representative range of room types, microphone distances, and noise conditions at scale is prohibitively expensive with physical measurements alone. Simulation makes it possible to cover that space systematically and to extend coverage over time without a corresponding increase in measurement cost.</p>
+<p>According to recent reports, another goal of FFASR is to encourage the development of models that are explicitly robust to these conditions. Leaderboards have historically been effective at directing research effort. By making far-field performance visible and comparable, we hope to raise the priority of real-world acoustic robustness across the field.</p>
+<p>Sources indicate that the FFASR Leaderboard evaluates models across nine conditions. The four that determine the primary ranking score are (as of 22 June 2026):.</p>
+<p>To give a sense of what these conditions actually sound like, the samples below let you hear the same speech utterance as dry anechoic audio, then convolved with a room impulse response, and finally with noise added at each SNR tier. The difference between the dry recording and the low-SNR far-field condition is a reasonable proxy for the scale of the problem the leaderboard is measuring.</p>
+<p>Two additional columns, Lab Measured and Lab Simulated, serve as a sim-to-real validation track. The leaderboard also includes moving-source splits, right now in beta, which evaluate models against audio where the speaker is in motion rather than stationary. This condition reflects use cases such as humanoid robots, in-car speech, and mobile voice assistants where the acoustic geometry between speaker and microphone changes continuously.</p>
+<p>Recent findings suggest that the acoustic data is generated with Treble's hybrid simulation engine, which combines a wave-based solver at low to mid frequencies with geometrical-acoustics modeling at higher frequencies. This approach captures physical phenomena that simpler simulation methods often miss: diffraction, scattering, interference, and modal behavior. The result is simulated data that closely matches measured acoustic conditions, which the Lab Measured and Lab Simulated columns confirm directly by running the same evaluation on both.</p>
+<p id="sec-mid-162603">It has been revealed that fourteen fully furnished rooms are included in the benchmark, ranging from 20 to 470 m³ and covering bathrooms, living rooms with hallways, offices, classrooms, and restaurant spaces. Each acoustic scene contains one target speaker, recorded in an anechoic chamber to avoid reverberation artifacts from the recording environment, and up to three noise sources. Every scene includes both a transient noise source such as coughing and a continuous noise source such as HVAC, at three SNR levels. This coverage is designed to reflect the actual variety of spaces where deployed voice systems operate.</p>
+<p>Sources indicate that alongside WER, the leaderboard reports RTFx (audio seconds per inference second) for every submission, evaluated on an NVIDIA L4 GPU under identical conditions. Accuracy and latency together are what matter in real deployments, and the Pareto front view in the Analysis tab makes that tradeoff explicit.</p>
+<p>This benchmark is build on simulated acoustic spaces via Treble Technologies proprietaty simulation engine. An example of the output from the enginge can be found in the Treble10 dataset released last year, which established the simulation pipeline and made far-field RIRs available for training and research. FFASR extends that foundation into a standardized evaluation framework with a held-out test set, consistent normalization, and automated scoring.</p>
+<p>With the leaderboard live, a consistent pattern is emerging across all submitted models: the gap between near-field and far-field performance is large, and it grows significantly as SNR decreases. Near-field WER values, on clean dry speech, look comparable to what the same models achieve on established benchmarks. Far-field WER at low SNR tells a different story, often several times higher. The benchmark makes this degradation visible and comparable in a way that was previously difficult to do outside proprietary evaluation pipelines.</p>
+<p>The Pareto front of average WER against RTFx is also revealing. There is a genuine spectrum of approaches represented in the current submissions: models that prioritize speed at the cost of some accuracy, models that push accuracy at the cost of throughput, and a smaller number that achieve a competitive position on both axes. Visualizing these tradeoffs against far-field accuracy rather than clean-speech accuracy produces a materially different picture of where the real differences between systems lie. The Analysis tab is worth exploring beyond the main ranking table.</p>
+<p>Sources indicate that one observation worth highlighting for developers: the leaderboard reports both near-field (dry) and far-field WER side by side. This separation is intentional and useful. It makes it possible to distinguish between a model that is genuinely accurate and one that is accurate but brittle to acoustic conditions, which matters for deciding whether to invest in far-field fine-tuning, speech enhancement preprocessing, or a different architecture altogether.</p>
+<p>Recent findings suggest that open the Submit tab on the FFASR Leaderboard, paste a Hugging Face model ID, and evaluation runs server-side against the held-out dataset. The pipeline supports Whisper variants, IBM Granite Speech, Cohere Transcribe, Wav2Vec2 and HuBERT CTC heads, SpeechBrain ASR, and most other ASR architectures on the Hub without any custom configuration.</p>
+<p>For teams using more complex inference stacks, including systems that combine speech enhancement with ASR, a custom evaluator option allows you to define your own evaluate() function. Custom evaluators run on Hub Jobs after moderator review, and the submission notes field is a good place to document any preprocessing steps so results are interpretable by others.</p>
+<p>Industry observers note that the held-out evaluation set uses 2,000 anechoic speech samples across 14 rooms at three SNR tiers, approximately 8 hours of audio per condition, with Whisper-style text normalization applied consistently. The audio is not exposed to submitters, to avoid test-set contamination.</p>
+<p>The conditions we are actively exploring for future tracks include multi-talker scenarios, where more than one speaker is active simultaneously, microphone array evaluation, covering beamforming and spatial filtering approaches, and echo cancellation, relevant for any device that plays audio while also listening.</p>
+<p>What we build next will depend on where the community tells us the gaps are largest. If you work on a deployment environment or a use case that is not well represented in the current benchmark, we want to hear from you. The FFASR Leaderboard is designed to grow, and the direction it grows should reflect real needs.</p>
+<p>Submit your model, explore the Analysis tab, post your ideas and suggestions on the FFASR forum, and help us build a benchmark that is actually useful for the problems the field is working on.</p>
+<p>Much needed and very cool work!</p>
+<p>Btw one related idea I've had sitting on the back of my mind: there's a class of synthetic audio scenarios that don't really occur naturally but are both tricky and relevant to real deployments.</p>
+<p>Industry observers note that most ASR models lately seem geared toward clean meeting transcription. But if you run a Granola style setup that pulls every audio stream on your machine and mixes them together, things get messy fast. The system audio from the meeting, your physical hardware mic, and sometimes your own voice echoing back through the meeting can all be mixed/delayed/noisy in the same track the model sees. (I use VibeVoice for this myself since I figured it would be more robust; it's held up okay, but I haven't done a real comparison).</p>
+<p id="sec-end-162603">Mixed multi-stream audio like that feels like a natural fit for the kind of robustness/"real world scenario" this benchmark is measuring, even though it's a synthetic condition rather than a recorded room.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ffasr-leaderboard" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-introducing-the-enterprise-scenarios-leaderboard-a--151071.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151071. Industry News: Introducing the Enterprise Scenarios Leaderboard: a Leaderboard for Real World Use Cases
+        </a>
+        
+        <a href="introducing-real-world-voiceeq-measuring-the-human-quality-of-voi-162555.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162555. Introducing Real World VoiceEQ: Measuring the human quality of voice AI
+        </a>
+        
+        <a href="open-asr-leaderboard-trends-and-insights-with-newly-introduced-mu-162896.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162896. Open ASR Leaderboard: Trends and Insights with Newly introduced Multilingual & Long-Form Tracks
+        </a>
+        
+        <a href="tech-report-introducing-waypoint-1-real-time-interactive-video-di-162873.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162873. Tech Report: Introducing Waypoint-1: Real-time interactive video diffusion from Overworld
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

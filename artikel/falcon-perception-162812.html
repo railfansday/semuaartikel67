@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falcon Perception</title>
+    <meta name="description" content="TL;DR — Falcon Perception is a 0.6B-parameter early-fusion Transformer for open-vocabulary grounding and segmentation from natural language prompts. The mo">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/falcon-perception-162812.html">
+    <meta property="og:title" content="Falcon Perception">
+    <meta property="og:description" content="TL;DR — Falcon Perception is a 0.6B-parameter early-fusion Transformer for open-vocabulary grounding and segmentation from natural language prompts. The mo">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/e0EmVVRs4ITxTaPMJ-VPh.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/falcon-perception-162812.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Falcon Perception", "image": ["https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/e0EmVVRs4ITxTaPMJ-VPh.png"], "datePublished": "2026-04-01T07:13:20", "dateModified": "2026-11-27T16:03:20.527595", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/falcon-perception-162812.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Falcon Perception</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 01 Apr 2026 &bull; ⏱️ 10 min read (2082 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>TL;DR — Falcon Perception is a 0.6B-parameter early-fusion Transformer for open-vocabulary grounding and segmentation from natural language prompts.</li><li style='margin-bottom:6px;'>We also relase Falcon OCR, a 0.3B-parameter model which reaches a score of 80.3 and 88.6 on the olmOCR benchmark and OmniDocBench respectively, while having the highest throughput of any open source OCR model.</li><li style='margin-bottom:6px;'>This post is a brief, practical write-up of what we built, why we built it this way, and what we learned along the way.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162812"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162812"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162812"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Falcon Perception" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/e0EmVVRs4ITxTaPMJ-VPh.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162812">TL;DR — Falcon Perception is a 0.6B-parameter early-fusion Transformer for open-vocabulary grounding and segmentation from natural language prompts. The model processes image patches + text in one sequence using a hybrid attention mask, and produces variable numbers of instances with a small, structured token interface and lightweight output heads. On SA-Co, Falcon Perception reaches 68.0 Macro-F1 (vs. 62.3 for SAM 3) with the main remaining gap being presence calibration (MCC 0.64 vs. 0.82). We also introduce PBench, a diagnostic benchmark that breaks down performance by capability (attributes, OCR-guided disambiguation, spatial constraints, relations) and by dense long-context crowded scenes.</p>
+<p>We also relase Falcon OCR, a 0.3B-parameter model which reaches a score of 80.3 and 88.6 on the olmOCR benchmark and OmniDocBench respectively, while having the highest throughput of any open source OCR model.</p>
+<p>This post is a brief, practical write-up of what we built, why we built it this way, and what we learned along the way.</p>
+<p>Many open-vocabulary perception systems are built as modular pipelines: a (often frozen) vision backbone extracts features, a separate fusion/decoder stage combines them with language, and additional components handle matching and post-processing. This family of designs works well in many settings, but it comes with trade-offs: it can be hard to scale cleanly, hard to attribute improvements to the right component, and easy to accumulate complexity as we add a upcoming fix for each failure mode.</p>
+<p>We asked a simpler question: can a single early-fusion Transformer backbone handle both perception and language modeling, if we choose the right attention pattern, output interface, and training signal?</p>
+<p>In our experiments, the answer is largely yes. The rest of this post describes the main design choices and the evidence behind them.</p>
+<p>A single autoregressive Transformer processes a unified sequence of image patches, text, and task tokens. The model predicts object properties in a fixed order:  →  → . Bounding box coordinates and sizes are decoded via specialized heads and re-injected as Fourier features. High-resolution segmentation masks are generated by a dot product between the  token and upsampled image features.</p>
+<p>At its core, Falcon Perception is a dense Transformer that processes image patches and text tokens in a shared parameter space from the first layer. Instead of a separate vision backbone followed by a late-fusion decoder, we keep a single backbone and rely on masking and a lightweight output interface to make the dense prediction problem tractable.</p>
+<p>Sources indicate that images and text have different structure: pixels are 2D and benefit from bidirectional context, while the prediction interface is naturally sequential. We address this with a hybrid attention mask:.</p>
+<p>This allows the same backbone to behave like a bidirectional visual encoder on image tokens, while still supporting autoregressive prediction over task tokens.</p>
+<p>Industry observers note that dense perception is not a fixed-size prediction problem: an image may contain zero instances or hundreds. Autoregressive generation gives a clean variable-length interface, but fully autoregressive dense generation (e.g., polygons or high-resolution masks token-by-token) promptly becomes expensive.</p>
+<p>We use a small structured interface, Chain-of-Perception, which decomposes each instance into three steps:.</p>
+<p>Industry observers note that this ordering is deliberate. Committing to geometry first reduces ambiguity (“which instance?”), and makes the mask prediction step closer to pixel refinement conditioned on the resolved object.</p>
+<p>The backbone is shared, while decoding uses lightweight heads tailored to the output type:.</p>
+<p>Coordinate &amp; Size Heads use Fourier feature encoding : mapping continuous coordinates through a random Gaussian projection into a high-dimensional sinusoidal space. This overcomes the spectral bias of neural networks, yielding more precise localization than discrete binning alone. Decoded coordinates are re-injected into the sequence as conditioning for subsequent tokens.</p>
+<p>According to recent reports, segmentation Head computes a dot product between the  token’s hidden state and content-aware upsampled image features. Because the  token is produced after geometry and has access to early-fused visual context, we can avoid the separate mask-query machinery and Hungarian matching that often appears in decoder-based instance segmentation training.</p>
+<p>Existing referring-expression benchmarks like RefCOCO are saturated — models routinely hit 90%+ — and they conflate what went wrong. Did the model fail because it can't read text? Can't understand spatial relationships? Can't handle a crowd?</p>
+<p>We introduce PBench, a diagnostic benchmark that separates samples by the dominant capability required:.</p>
+<p>Each sample targets one dominant capability: OCR prompts avoid spatial qualifiers, and spatial prompts avoid in-image text disambiguators. This yields a capability profile rather than a single opaque score, and makes it easier to decide where to invest next (data, training curriculum, or post-training).</p>
+<p>Rather than training from random weights (which in our ablations was unstable for segmentation), Falcon Perception initializes via multi-teacher distillation. Two strong vision teachers contribute complementary signals:.</p>
+<p>The distilled initialization achieves 74.25% zero-shot accuracy on ImageNet-1k and 85.11% linear-probe mIoU on Pascal VOC, providing a strong visual foundation before perception-specific training.</p>
+<p>We build the training set through a multi-stage pipeline:.</p>
+<p>According to recent reports, we maintain a strict 1:1 ratio of positive to negative samples. This makes presence calibration a first-class target: the model should reliably say “absent,” not only draw masks when confident.</p>
+<p>Stage 1 — In-Context Listing (450 GT): The model learns to autoregressively list scene inventories — predicting text expressions and their locations. Full causal attention between queries enables learning of object co-occurrence ("fork, then knife, then plate"). This builds broad scene understanding.</p>
+<p>Stage 2 — Task Alignment (225 GT): The attention mask is modified so queries can no longer see each other, simulating independent queries at inference time. Loss on text tokens is masked, focusing gradient signal entirely on presence classification and localization. This stage transitions from "scene understanding" to "answer this specific question.".</p>
+<p>Stage 3 — Long-Context Finetuning (10 GT): A short phase with the mask limit raised to 600 per expression and a minimal constant learning rate. This adapts the model for extreme crowd density without forgetting earlier capabilities.</p>
+<p>Key design choices validated through ablations:.</p>
+<p>On the SA-Co open-vocabulary segmentation benchmark, Falcon Perception (0.6B parameters) achieves 68.0 Macro-F1, compared to 62.3 for SAM 3, with large gains on attribute-heavy (+8.2), food &amp; drink (+12.2), and sports equipment (+4.0) splits. At the same time, Falcon Perception lags SAM 3 on presence calibration (MCC: 0.64 vs 0.82), which is the clearest remaining improvement axis.</p>
+<p>Here's an example output — the prompt "Falcon" produces precise instance masks:.</p>
+<p>Falcon Perception also performs well for reffering expressions, able to correctly segment the burger with a black bun in each frame of the video:.</p>
+<p>This is where the early-fusion design demonstrates the largest differences:.</p>
+<p id="sec-mid-162812">On simple objects, the gap is modest. As prompts become more compositional—requiring OCR-guided disambiguation, spatial constraints, or relational binding—the gap widens.</p>
+<p>In our PBench Dense split, Falcon Perception (0.6B) substantially outperforms generalist VLM baselines (e.g., 72.6 vs 8.9 for Qwen3-VL-30B in our evaluation setup), and matches or exceeds the 8B model on spatial and relational tiers.</p>
+<p>As prompts grow more compositional — requiring OCR-guided disambiguation, spatial constraints, relational binding, or scaling to hundreds of instances — the early-fusion advantage becomes visually clear:.</p>
+<p>"168 wine bottles": Falcon Perception identifies the bottles labeled "168",
+while SAM 3 highlights every bottle. "Honolulu direction sign": Falcon reads the text to find the right sign.</p>
+<p>"Lower meat skewer on left grill," "black car to the right of red car at bottom,"
+"Belgian flag on the left" — Falcon Perception resolves the correct instance from spatial constraints. SAM 3 predicts false positives for multiple candidates.</p>
+<p>Sources indicate that "Pastry next to brown round bread," "person using phone,"
+"person holding helmet in hand" — Falcon Perception identifies the interacting instance. SAM 3 highlights all instances of the object class, ignoring the relational constraint.</p>
+<p>"Snow goose," "pigeon," "colorful canned drinks" — Falcon Perception autoregressively
+segments hundreds of instances. SAM 3's fixed-size decoder runs out of query tokens beyond ~200 instances.</p>
+<p>Sources indicate that modern OCR has moved well beyond extracting text from clean scans. Today's systems must handle multi-column layouts, mathematical formulas, tables, charts, and multilingual content — all in one pass. Most competitive OCR VLMs tackle this with a familiar recipe: a vision encoder feeding a separate text decoder, plus task-specific glue. These systems work, but they tend to be large (1B–3B+ parameters).</p>
+<p>In a recent development, we took a different path: reuse the same early-fusion dense Transformer from Falcon Perception, but train a smaller 0.3B-parameter variant from scratch specifically for OCR. The result is Falcon OCR — a single backbone that processes image patches and text tokens in a shared parameter space with the same hybrid attention mask (bidirectional for image tokens, causal for text tokens), and switches tasks through prompts rather than additional modules.</p>
+<p>We trained from scratch (no multi-teacher distillation) because the visual features OCR needs — fine-grained glyph recognition, stroke-level discrimination — differ substantially from the object-level features useful for segmentation. Starting fresh lets the backbone develop text-optimized representations from the ground up.</p>
+<p>Recent findings suggest that we train on a curated English-language mixture spanning three core tasks: general document text parsing (digital PDFs, old scans, typewritten documents), mathematical and scientific formula recognition, and table structure recognition. The mixture also includes handwriting, real-world scene text, and synthetic samples generated from rendered LaTeX and HTML sources. The training objective is pure next-token prediction on structured text outputs.</p>
+<p>Training proceeds in two phases: a long pre-training phase at constant learning rate where the model learns core OCR capabilities across all element types, followed by a short cosine-decay finetuning phase where the learning rate is annealed to near zero.</p>
+<p>We evaluate on olmOCR (binary correctness checks across diverse inputs) and OmniDocBench (continuous metrics over full-page parses). All comparison models are significantly larger and/or use proprietary infrastructure. At 80.3% on olmOCR with only 0.3B parameters, Falcon OCR is within 1.7 points of the top system and leads all models on Multi-Column (87.1%) and Tables (90.3%). On OmniDocBench it scores 88.64 overall, ahead of DeepSeek OCR v2, GPT 5.2, and Mistral OCR 3.</p>
+<p>Sources indicate that at 0.3B parameters, Falcon OCR is roughly 3x smaller than 0.9B-class OCR VLMs, which translates directly into higher serving throughput. Measured on a single A100-80GB with vLLM at high concurrency:.</p>
+<p>The compact footprint and vLLM integration (continuous batching, PagedAttention, optimized CUDA kernels) make it practical for large-scale document digitization where millions of pages need processing.</p>
+<p>More broadly, these results suggest that the early-fusion single-stack Transformer is a viable alternative to the "vision encoder plus text decoder" recipe for OCR. One backbone, shared parameter space, one decoding interface, and better data and training signals rather than increasingly complex pipelines. We hope this encourages more work in this direction.</p>
+<p>Falcon OCR processes images captured under challenging real-world conditions with varying lighting, diverse text semantics (mathematical formulae, structured tables, handwritten notes), and complex document layouts, to produce structured text output.</p>
+<p>Click each category below to expand.</p>
+<p>Falcon OCR extracts text from handwritten documents and real-world photographs with variable lighting, orientation, and content complexity.</p>
+<p>Falcon OCR accurately reproduces cell entries and structural layout from tables of varying formats and complexity.</p>
+<p>Falcon OCR correctly transcribes mathematical expressions ranging from simple equations to multi-line derivations with nested operators.</p>
+<p>Falcon OCR preserves reading order and structural fidelity when extracting text from documents with multi-column layouts, figures, and footnotes.</p>
+<p>The release includes an inference stack built on PyTorch’s FlexAttention, which makes it practical to express the custom attention patterns and efficiently serve packed variable-length sequences.</p>
+<p>It has been revealed that in our setup on an H100, typical latencies are on the order of ~100ms prefill, ~200ms upsampling (0ms if cached), and ~50ms decode for a handful of instances. (These numbers depend on resolution, sequence length, and the number of predicted instances.).</p>
+<p>For the Falcon-OCR model, we also provide a vLLM docker server for fast deployment and MLX integration for Apple-Silicon.</p>
+<p>Please check out the github repo for details.</p>
+<p>Falcon Perception is intentionally minimal: one backbone, one objective family, and small heads only where outputs are continuous and dense. The working assumption is that most gains should come from data, compute, and training signals, rather than continually expanding the pipeline with specialized modules.</p>
+<p>The architecture doesn't block any obvious scaling path: add more images and harder prompts for better grounding, mix in text-only data for better language, increase context length for denser scenes. It's still just one sequence model.</p>
+<p>Falcon Perception is developed by the Falcon Vision Team at the Technology Innovation Institute (TII), Abu Dhabi, UAE.</p>
+<p>If you use Falcon-Perception, please cite.</p>
+<p id="sec-end-162812">In a recent development, very cool release! will build on this soon 🤗.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/tiiuae/falcon-perception" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="introducing-falcon-h1-arabic-pushing-the-boundaries-of-arabic-lan-162877.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162877. Introducing Falcon-H1-Arabic: Pushing the Boundaries of Arabic Language AI with Hybrid Architecture
+        </a>
+        
+        <a href="introducing-falcon-asr-162365.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162365. Introducing Falcon ASR
+        </a>
+        
+        <a href="beyond-visible-light-what-an-ultraviolet-art-installation-taught--162247.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162247. Beyond Visible Light: What an Ultraviolet Art Installation Taught Me About Perception
+        </a>
+        
+        <a href="the-falcon-has-landed-in-the-hugging-face-ecosystem-151180.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151180. The Falcon has landed in the Hugging Face ecosystem
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

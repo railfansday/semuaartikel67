@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex is Open Sourcing AI models</title>
+    <meta name="description" content="Sources indicate that building on our work to get Claude Code to train open source models, we are now getting Codex to go further. We gave Codex access to ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/codex-is-open-sourcing-ai-models-162885.html">
+    <meta property="og:title" content="Codex is Open Sourcing AI models">
+    <meta property="og:description" content="Sources indicate that building on our work to get Claude Code to train open source models, we are now getting Codex to go further. We gave Codex access to ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/hf-skills-training/thumbnail-codex.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/codex-is-open-sourcing-ai-models-162885.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Codex is Open Sourcing AI models", "image": ["https://huggingface.co/blog/assets/hf-skills-training/thumbnail-codex.png"], "datePublished": "2025-12-11T00:00:00", "dateModified": "2026-11-27T16:03:29.704445", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/codex-is-open-sourcing-ai-models-162885.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Codex is Open Sourcing AI models</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 11 Dec 2025 &bull; ⏱️ 13 min read (2691 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that building on our work to get Claude Code to train open source models, we are now getting Codex to go further.</li><li style='margin-bottom:6px;'>Recent findings suggest that this tutorial dives even deeper and highlights you how it works and how to use it yourself.</li><li style='margin-bottom:6px;'>Codex uses AGENTS.md files to accomplish specialized tasks, whilst Claude Code uses 'Skills'.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162885"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162885"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162885"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Codex is Open Sourcing AI models" loading="lazy" src="https://huggingface.co/blog/assets/hf-skills-training/thumbnail-codex.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162885">Sources indicate that building on our work to get Claude Code to train open source models, we are now getting Codex to go further. We gave Codex access to the Hugging Face Skills repository, which contains skills for Machine Learning and AI tasks such as training or evaluating models. With HF skills, a coding agent can:.</p>
+<p>Recent findings suggest that this tutorial dives even deeper and highlights you how it works and how to use it yourself. So let's get started.</p>
+<p>Codex uses AGENTS.md files to accomplish specialized tasks, whilst Claude Code uses 'Skills'. Fortunately, 'HF-skills' is compatible with both approaches and works with major coding agents like Claude Code, Codex, or Gemini CLI.</p>
+<p>With HF-skills, you can tell Codex something like:.</p>
+<p>According to recent reports, the model trains on Hugging Face GPUs while you do other things. When it's done, your fine-tuned model appears on the Hub, ready to use.</p>
+<p>This isn't a toy demo. The extension supports the same training methods used in production: supervised fine-tuning, direct preference optimization, and reinforcement learning with verifiable rewards. You can train models from 0.5B to 7B parameters, convert them to GGUF for local deployment, and run multi-stage pipelines that combine different techniques.</p>
+<p>We explored this single prompt approach in the Claude Code tutorial. However, we can now go further and get OpenAI Codex to do end-to-end Machine Learning experiments. For example, Codex should be able to monitor progress, evaluate the models, and maintain an up to date training report. This will allow engineers to delegate experiments to Codex and review reports in a more hands-off way. It will also allow Codex to make more decisions on its own based on the training report and evaluation results.</p>
+<p>Sources indicate that codex is OpenAI's AI coding agent included in ChatGPT Plus, Pro, Business, Edu, and Enterprise looks. Codex brings AI assistance directly into your development workflow.</p>
+<p>See the Codex documentation for installation and setup instructions.</p>
+<p>The Hugging Face Skills repository includes an AGENTS.md file that Codex automatically detects and uses.</p>
+<p>Codex will automatically detect the AGENTS.md file in the repository and load the skills. You can verify the instructions are loaded with:.</p>
+<p>See the Codex AGENTS guide for more details.</p>
+<p>Authenticate with Hugging Face using the hf auth login command and a write-access token from hf.co/settings/tokens:.</p>
+<p>Codex supports MCP (Model Context Protocol) servers. You can configure the Hugging Face MCP server for additional Hub integration capabilities. You can add the Hugging Face MCP server to your Codex configuration by adding the following to your ~/.codex/config.toml file:.</p>
+<p>Configure Hugging Face MCP Server to use relevant MCP servers like Jobs in the Settings page.</p>
+<p>Then start Codex and you'll be directed to the Hugging Face MCP authentication page.</p>
+<p>Let's walk through a complete example. We'll fine-tune a small model to improve code solving abilities, using the open-r1/codeforces-cots dataset and the openai_humaneval benchmark.</p>
+<p>The open-r1/codeforces-cots dataset is a dataset of codeforces problems and solutions. It is a good dataset for instruction tuning a model to solve hard coding problems.</p>
+<p>According to recent reports, start Codex in your project directory. Then give it a simple and clear instruction:.</p>
+<p>You'll notice that we've gone a bit further than the single prompt approach in the Claude Code tutorial. We've added more details to the instruction but also added more steps to the experiment.</p>
+<p>Why not try iterating on this experiment yourself with more open ended questions like "What is the best model for code solving abilities?" or "What is the best dataset for code solving abilities?".</p>
+<p>It has been revealed that codex analyzes your request and prepares a training configuration. For a 0.6B model on a demo dataset, it selects t4-small—enough GPU for this model size and the cheapest option available. Codex will start a new report at training_reports/--.md which looks like the example below. As the experiment progresses, Codex will revision the report with the latest information and each run report.</p>
+<p>As the experiment progresses, Codex will revision the report with the latest information and each run report. You can view the report in training_reports/--.md file.</p>
+<p>For example, codex will revision the title of the report to sft-a10g - TBD - In Progress when the experiment is in progress.</p>
+<p>It can link to the run logs and trackio logs.</p>
+<p>And it will revision the evaluation results in a combined table.</p>
+<p>Dataset format and processing is the most common source of training failures and usually a significant amount of work is done in the training script. Codex can validate datasets before the job starts and either define a configuration for TRL or process the dataset separately.</p>
+<p>In most cases, Codex will validate the dataset before training, but you can always check the dataset validation before submitting the job.</p>
+<p>Codex runs a quick inspection on CPU (fractions of a penny) and reports:.</p>
+<p>If your dataset needs transformation, Codex can preprocess the dataset before training.</p>
+<p>Codex will preprocess the dataset and update the training script with the latest configuration.</p>
+<p>Before Codex submits anything, you'll see the configuration:.</p>
+<p>Sources indicate that this is your chance to adjust anything. Change the output repo name, pick different hardware, or ask Codex to modify training parameters. Once you approve, the job is submitted.</p>
+<p>For example, you can ask Codex to try a test run:.</p>
+<p>In a recent development, after submission, you can track progress using the training report and get links to the run logs and trackio logs. You can also tell Codex to fetch the logs, summarize progress, and upgrade the training report. As codex runs the jobs, it will update the training report with the latest information.</p>
+<p>According to recent reports, trackio will monitor the training and evaluation scores for you by running evaluation jobs and selecting the best checkpoint. If you want to know the status of the training job, you can ask Codex to fetch the logs and summarize progress in a table.</p>
+<p>You can also monitor the training loss in real-time.</p>
+<p>Codex fetches the logs and summarizes progress.</p>
+<p id="sec-mid-162885">Click here for an example Trackio dashboard with some completed runs.</p>
+<p>When training completes, your model is on the Hub:.</p>
+<p>Transformers is great as a standard, and we can easily convert the trained model to GGUF for local deployment. This is because the training skill contains instructions and support scripts to convert models to GGUF.</p>
+<p>Codex then converts to GGUF, applies quantization, and pushes to the Hub. If we trained a LoRA adapter, it will merge the LoRA adapters into the base model.</p>
+<p>Codex selects hardware based on your model size, but understanding the tradeoffs helps you make better decisions. You can use the Hardware Guide to see the hardware options and costs, but codex will do it for you and select the best option.</p>
+<p>Industry observers note that for tiny models under 1B parameters, t4-small works well. These models train rapidly—expect $1-2 for a full run. This is perfect for educational or experimental runs.</p>
+<p>In a recent development, for small models (1-3B), step up to t4-medium or a10g-small. Training takes a few hours and costs $5-15.</p>
+<p>Sources indicate that for medium models (3-7B), you need a10g-large or a100-large with LoRA. Full fine-tuning doesn't fit, but LoRA makes these very trainable. Budget $15-40 for production.</p>
+<p>For large models (7B+), this HF skills job is not suitable for this scale yet. But stay tuned because we are working on it!</p>
+<p>We've shown that Codex can handle the full lifecycle of model fine-tuning: validating data, selecting hardware, generating scripts, submitting jobs, monitoring progress, and converting outputs.</p>
+<p>Sources indicate that the extension is open source. You can extend it, customize it for your workflows, or use it as a starting point for other training scenarios.</p>
+<p>Is this possible to do on local infrastructure without having paid tier?</p>
+<p>This post is really helpful for me. I didn’t know AI agents could handle tasks like training and deployment so easily. After reading this, I’m thinking about applying an AI agent on my own website too to improve how information is organized and delivered for customers: https://ebiharbhumi.com. Thanks for sharing such a useful guide!</p>
+<p>Really interesting update on how Codex is integrating with HF-skills for advanced AI workflows. Automating fine-tuning, evaluation, and deployment tasks can make machine learning development much more efficient. I also found tools like aesthetic font generator useful for creating stylish text designs for online projects and social content.</p>
+<p>Recent findings suggest that this is a great step toward smarter AI coding agents. The ability to validate datasets, monitor training with Trackio, and deploy models directly through Codex sounds incredibly practical for developers. For owners interested in gaming customization, toca boca mod apk resources are also becoming very popular these days.</p>
+<p>It has been revealed that this is a massive step forward for workflow automation. Fine-tuning models directly through a coding agent like Codex or Claude completely removes the boilerplate headache. I'm at the moment looking into how these HF skills can be adapted for automated mobile app validation specifically for generating test cases around custom Android builds and modified packages saasswitcher saas spend calculators. Managing assets for complex setups like Toca Boca Mod Apps manually takes hours, but wrapping a fine-tuned agent around the repository to validate file structures and asset dependencies could be a game-changer. Looking forward to seeing more domain-specific skills added to the repo!</p>
+<p>This is a massive step forward for workflow automation. Fine-tuning models directly through a coding agent like Codex or Claude completely removes the boilerplate headache. I'm at the moment looking into how these HF skills can be adapted for automated mobile app validation specifically for generating test cases around custom Android builds and modified packages Khaleej Guides UAE. Managing assets for complex setups like Toca Boca Mod Apps manually takes hours, but wrapping a fine-tuned agent around the repository to validate file structures and asset dependencies could be a game-changer. Looking forward to seeing more domain-specific skills added to the repo!</p>
+<p>Sources indicate that login or register on Pak Club Game Pakistan. Play online, join live games, earn PKR, access free &amp; paid PakClub games, and enjoy membership perks.</p>
+<p>In a recent development, nice guide! Clear and easy to follow. I also like using fancy text generator when formatting project names, demos, or profile descriptions—it adds a nice touch without much effort.</p>
+<p>In a recent development, really enjoyed this article. It's great to see more practical resources for people working with AI. For project docs, demos, or even profile customization, I sometimes use letras bonitas para copiar y pegar to make text a bit more readable and visually appealing.</p>
+<p>It has been revealed that thanks for sharing this detailed guide about HF Skills and Codex. The explanation of practical AI development workflows and coding skills was very useful. For people interested in creating stylish text for websites and social media, a cambiador de letraa can also be a handy tool for generating different text styles.</p>
+<p>Integrating Hugging Face Skills with autonomous coding agents makes model evaluation, RL alignment, experiment reporting, and GGUF quantization drastically easier to execute right from the CLI.</p>
+<p>Off-Topic Utility: Stepping away from machine learning setups to tackle physical workshop builds or home renovation projects? Calculate your material volume, bag counts, and yardage easily with a Concrete Measurement Calculator.</p>
+<p>Utforsk vårt utvalg av   Signerte fotballdrakter. , ideelle for samlere og fotballentusiaster som ønsker å eie et unikt og autentisk minne fra favorittlagene og spillerne. Disse draktene er ekte samleobjekter som fanger de mest minneverdige øyeblikkene på banen, og de kan være perfekte gaver eller tillegg til enhver fotballsamling. Med et bredt utvalg av signerte drakter, kan du finne noe som passer din lidenskap og interesse for sporten. Ta steget i dag og eier en del av fotballhistorien!</p>
+<p>Integrating Hugging Face skills into coding agents like Codex is a game-changer for automating ML workflows and model fine-tuning. Streamlining complex tasks like RL alignment and quantization saves developers and data teams countless hours.</p>
+<p>Whether automating technical AI experiments or managing personal administrative tasks such as reviewing public sector compensation and salary structures via http://nhspayscale.co.uk having access to structured tools and accurate resources makes complex management effortless. Great tutorial on expanding agent capabilities!</p>
+<p>Giving coding agents direct access to specialized skill repositories like Hugging Face is a massive step forward for automated ML workflows. Having an agent handle complex tasks like RL alignment, live metric tracking, and GGUF model quantization automatically saves developers countless hours of setup.</p>
+<p>It almost feels like working alongside a technical Letras Diferentes when an AI seamlessly evaluates checkpoints and manages model deployments end-to-end.</p>
+<p>Giving coding agents direct access to specialized skill repositories like Hugging Face is a massive step forward for automated ML workflows. Having an agent handle complex tasks like RL alignment, live metric tracking, and GGUF model quantization automatically saves developers countless hours of setup.</p>
+<p>It almost feels like working alongside a technical magician when an AI seamlessly evaluates checkpoints and manages model deployments end-to-end.</p>
+<p>This tutorial is a great breakdown of how developer tooling is evolving toward full-stack AI automation. Thanks for sharing this step-by-step guide!</p>
+<p>Equipping coding agents like Codex with pre-built skill repositories is a massive leap forward for AI workflow automation! The ability to handle real-time metrics evaluation and export models directly to GGUF makes fine-tuning so much faster. I’ve been testing similar agent workflows for building practical utility tools—like automated notification bots that run a web query or NOL card balance for commuters. Giving LLMs structured tool definitions and Hugging Face skills makes these multi-step API and browser automation tasks significantly more reliable. Great tutorial!</p>
+<p>In a recent development, building on our work to get Claude Code to train open source models, we are now getting Codex to go further. We gave Codex access to the Hugging Face Skills repository, which contains skills for Machine Learning and AI tasks such as training, evaluating models, or analyzing word meanings in complex datasets.</p>
+<p>Really clean workflow—automating RL alignment and Trackio metric reviews takes so much repetitive overhead out of fine-tuning open-source models. Whenever I'm comparing benchmark eval scores across checkpoints or calculating standard deviations and confidence intervals from experiment logs, using a Online TI-84 Plus CE calculator right in the browser is a super fast way to double-check the math before exporting to GGUF. Thanks for walking through the setup!</p>
+<p>Sources indicate that giving Codex direct access to HF Skills for end-to-end fine-tuning and Trackio metric reviews is a huge workflow upgrade—especially automating the GGUF quantization and Hub publishing steps after checkpoint evaluation. When I run iterative fine-tuning experiments on domain-specific datasets, I usually schedule a 30-day benchmark check to test for model drift against fresh validation data; keeping a quick browser utility handy to check the exact date 30 days from today makes logging follow-up evaluation milestones in my experiment tracker super straightforward. Great walkthrough!</p>
+<p>Creative tools make digital work more engaging and personalized. For anyone looking to customize text for social media, usernames, or online projects, Fancy Fonts offers a simple way to generate stylish text and decorative font styles that can be copied and pasted anywhere.</p>
+<p>Collaborative learning gives students opportunities to share ideas and develop communication skills. I particularly like activities that encourage everyone to contribute. We cover similar classroom learning strategies at https://classroomevents.com/.</p>
+<p>Personalizar las letras del móvil y de las redes sociales es una excelente manera de darle un toque original a nuestros perfiles. Para quienes buscan más estilos de texto para Instagram, un Cambiador de letras online es una herramienta muy práctica, ya que permite transformar palabras en diferentes tipografías y copiarlas fácilmente. Puedes probarlo aquí: https://cambiadorsdeletras.com/.</p>
+<p id="sec-end-162885">Industry observers note that equipping AI agents with practical tools and structured workflows is definitely making automation more accessible! The ability to connect APIs, process real-time information, and handle repetitive tasks can save a lot of development time. I've been exploring similar approaches while working on utility tools, especially those that simplify everyday calculations and help people get quick results without complicated steps. Having a reliable Dubai metro fare calculator can be equally useful for people trying to understand their income and blueprint their expenses in the UAE. Great insights!</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/hf-skills-training-codex" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-measuring-open-source-llama-nemotron-models-on-deep-162965.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162965. Industry News: Measuring Open-Source Llama Nemotron Models on DeepResearch Bench
+        </a>
+        
+        <a href="introducing-ai-sheets-a-tool-to-work-with-datasets-using-open-ai--162961.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162961. Introducing AI Sheets: a tool to work with datasets using open AI models!
+        </a>
+        
+        <a href="supercharge-your-ocr-pipelines-with-open-models-162916.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162916. Supercharge your OCR Pipelines with Open Models
+        </a>
+        
+        <a href="we-got-claude-to-build-cuda-kernels-and-teach-open-models-162865.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162865. We Got Claude to Build CUDA Kernels and teach open models!
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

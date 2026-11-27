@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Weekly Roundup: Local Zone in Bogotá, 30-minute Lambda timeout, and more (November 24, 2026)</title>
+    <meta name="description" content="In a recent development, some limits shape architecture more than any feature does. AWS Lambda debuted in 2014 with a 60-second timeout, moved to 5 minutes">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/aws-weekly-roundup-local-zone-in-bogot-30-minute-lambda-timeout-a-162471.html">
+    <meta property="og:title" content="AWS Weekly Roundup: Local Zone in Bogotá, 30-minute Lambda timeout, and more (November 24, 2026)">
+    <meta property="og:description" content="In a recent development, some limits shape architecture more than any feature does. AWS Lambda debuted in 2014 with a 60-second timeout, moved to 5 minutes">
+    <meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2023/08/13/AWS-WIR-default.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/aws-weekly-roundup-local-zone-in-bogot-30-minute-lambda-timeout-a-162471.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "AWS Weekly Roundup: Local Zone in Bogotá, 30-minute Lambda timeout, and more (November 24, 2026)", "image": ["https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2023/08/13/AWS-WIR-default.png"], "datePublished": "2026-11-24T07:39:59-08:00", "dateModified": "2026-11-27T16:02:58.000727", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/aws-weekly-roundup-local-zone-in-bogot-30-minute-lambda-timeout-a-162471.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>AWS Weekly Roundup: Local Zone in Bogotá, 30-minute Lambda timeout, and more (November 24, 2026)</h1>
+        <div class="meta-line">🌐 Source: <strong>Amazon</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 7 min read (1434 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In a recent development, some limits shape architecture more than any feature does.</li><li style='margin-bottom:6px;'>Industry observers note that two other threads ran through the week.</li><li style='margin-bottom:6px;'>HeadlinesAWS Local Zone in Bogotá, Colombia – AWS opened a newly introduced Local Zone in Bogotá, so you can now run applications that need single-digit millisecond latency closer to consumers in Colombia.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162471"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162471"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162471"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="AWS Weekly Roundup: Local Zone in Bogotá, 30-minute Lambda timeout, and more (November 24, 2026)" loading="lazy" src="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2023/08/13/AWS-WIR-default.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162471">In a recent development, some limits shape architecture more than any feature does. AWS Lambda debuted in 2014 with a 60-second timeout, moved to 5 minutes in 2015 and to 15 minutes in 2018, and then stayed there for eight years. Last week the limit doubled, and in the same week Lambda learned to run on GPUs and gave platform teams their own runtimes. That is a lot of Lambda for one week.</p>
+<p>Industry observers note that two other threads ran through the week. A upcoming AWS Local Zone in Bogotá brought AWS infrastructure closer to customers in Colombia. And AWS Security Token Service (AWS STS), Amazon Cognito, and Amazon CloudFront each shipped a piece of identity for agents: who an agent is when it shows up at your door, and how little it should be allowed to do. Now, let’s get into this week’s AWS news….</p>
+<p>HeadlinesAWS Local Zone in Bogotá, Colombia – AWS opened a newly introduced Local Zone in Bogotá, so you can now run applications that need single-digit millisecond latency closer to consumers in Colombia. AWS Local Zones place compute, storage, and networking near large metropolitan areas with the same APIs and tools as a Region, for workloads like real-time gaming, live streaming, and financial transactions. The Bogotá Local Zone supports Amazon EC2 C7i, M7i, and R7i instances, Amazon EBS gp3, gp2, and io1 volumes with local snapshots, Amazon S3 One Zone-Infrequent Access, Amazon ECS, Amazon EKS, AWS Direct Connect, and Application Load Balancer. To start, enable us-east-1-bog-1a in AWS Global View.</p>
+<p>It has been revealed that AWS Lambda now supports a 30-minute timeout for on-demand Event Functions – You can now configure any Event Function with a timeout of up to 30 minutes (1,800 seconds), double the previous limit, for synchronous, asynchronous, and event source mapping invocations. On Lambda Managed Instances, synchronous invocations also go to 30 minutes, while asynchronous and event source mapping invocations keep the 90-minute timeout from September. Standard Lambda pricing applies, in all commercial Regions. Agentic requests that chain model and tool calls, media transcoding, and file conversion are the workloads AWS calls out. Before raising the value, read the considerations in the Compute blog post: a service that invokes your function synchronously applies its own timeout, client read and socket timeouts need to be longer, and a NAT gateway drops idle connections after 350 seconds, so long calls need keep-alives. For longer work, durable functions still run for up to a year, and now emit OpenTelemetry traces.</p>
+<p>Recent findings suggest that AWS Lambda now supports GPU instances for Event Functions on Lambda Managed Instances – You can now run GPU-accelerated inference, media processing, rendering, and scientific computing as Lambda functions, packaged as OCI container images, with no GPU drivers, CUDA versions, or AMIs to reconcile. In the walkthrough, four concurrent requests shared one copy of the model on a single GPU and finished in about the same time as one. It’s optimized for inference with custom models, on G-series instances from G4dn to G6e. You pay the EC2 instance fee (Savings Looks and Reserved Instances apply), a 9.75% management fee for GPU instances, and $0.20 per million requests.</p>
+<p>Last week’s launches
+         Here are some launches and updates from this past week that caught my attention:.</p>
+<p>Amazon Polly now supports voice cloning – You can now create a custom voice in Amazon Polly from a few minutes of recordings of a consenting speaker, running on the Polly generative engine. It introduces in seven languages, including English, Spanish, and Portuguese, and each cloned voice speaks the language it was recorded in. Polly doesn’t keep the recordings or train on them. Creating a voice is free, and you pay for the speech you synthesize. It’s a gated release, so request access through your account team. The ML blog post covers brand-voice use cases for contact centers, voice agents, and content.</p>
+<p>It has been revealed that AWS Lambda now supports customer-managed runtimes – You can now manage a Lambda runtime as its own resource, separate from function deployment. Platform teams package approved SDKs, certificates, and security or monitoring agents as an OCI image in Amazon ECR, and functions pick up updates as Lambda recycles execution environments, with no per-function redeploys. Updates can be staged, with health metrics and rollback. There’s no additional charge, and the Compute blog walkthrough demonstrates the platform-team workflow.</p>
+<p>AWS STS reveals GetScopedCredentials to scope down permissions at runtime – You can now take the temporary credentials a workload already holds and derive narrower ones, cutting permissions, session duration, or both. The result keeps the caller’s original identity, and permissions only ever narrow, so a sub-agent can never end up with more access than whoever created it. Access to the API is controlled with IAM policies, and every call lands in AWS CloudTrail. It’s available in all commercial Regions and beyond, including GovCloud (US) and China.</p>
+<p>Amazon Cognito now supports dynamic client registration – You can now let MCP clients and AI agents register themselves at runtime (RFC 7591) instead of creating an app client in advance for each one. You choose between requiring an access token with a registration scope or opening registration to any client, and dynamically registered clients carry a client ID prefix so you can filter and manage them with the rest. It’s available on the Essentials and Plus prepares, and client ID metadata documents arrived the same week.</p>
+<p>It has been revealed that amazon CloudFront Functions now supports network calls – You can now call your own APIs from a function with cf.fetch() and act on the response, so authorization, personalization, or fraud checks that used to need Lambda@Edge or a trip to the origin can run at the edge. AWS’s own example: check an AI agent’s permissions and usage budget before the request reaches your API or MCP server. Network calls cost $0.10 per million on top of invocation charges and are included in the Pro flat-rate proposal and above. The Networking blog post also covers cf.beacon() for background analytics.</p>
+<p id="sec-mid-162471">Amazon Aurora DSQL now supports multi-Region peering across continents – You can now build a multi-Region Amazon Aurora DSQL cluster with peers on different continents, such as US East (N. Virginia) and Europe (Ireland), and read and write to one strongly consistent database from both. It was a busy week for DSQL: PL/pgSQL functions and procedures arrived, and storage upgrades brought up to 50% higher write throughput at no additional cost.</p>
+<p>For a full list of AWS announcements, be sure to keep an eye on the What’s New with AWS page.</p>
+<p>Other AWS news
+         Here are some additional posts and resources that you might find interesting:.</p>
+<p>How the BMW Group governs hundreds of agents across thousands of developers – With more than 12,500 developers in R&amp;D, BMW treats governance as deterministic code outside the agent’s reasoning loop, mostly in the CI/CD pipeline, so neither the agent nor its prompts can override it.</p>
+<p>According to recent reports, AI coding agents on Amazon EC2 Mac: How Cognition scales Devin for macOS – Cognition starts a fresh macOS VM for each Devin session in under a minute on Amazon EC2 Mac hosts across six Regions. The detail worth stealing: sessions are decoupled from hosts, and Cognition reports that about 90% release their VM when idle and resume from a snapshot in seconds.</p>
+<p>Recent findings suggest that how Klaviyo processes 3 billion daily events at scale with Amazon MSK Express – Timely reading for Black Friday week. Klaviyo moved from RabbitMQ to Amazon MSK Express brokers to absorb roughly 7 times normal event volume during Black Friday and Cyber Monday. Running one set of processors across three priority topics, instead of separate infrastructure per level, cut costs by roughly 30%, according to the team.</p>
+<p>AWS re:Invent – It’s next week: join the community in Las Vegas from November 30 to December 4, or register for the free livestream to follow the keynotes and selected sessions remotely.</p>
+<p>In a recent development, AWS Community Days – Find community-led technical talks, workshops, and hands-on learning near you. Check each organizer’s page for current dates and registration details.</p>
+<p>Join the AWS Builder Center to connect with builders, share solutions, and access content that supports your development. Browse here for upcoming AWS-led in-person and virtual events and developer-focused events.</p>
+<p>Recent findings suggest that that’s all for this week. Check back next Monday for another Weekly Roundup!</p>
+<p id="sec-end-162471">According to recent reports, this post is part of our Weekly Roundup series. Check back each week for a quick roundup of interesting news and announcements from AWS!</p>
+<p style="margin-top: 25px;">
+<a href="https://aws.amazon.com/blogs/aws/aws-weekly-roundup-local-zone-in-bogota-30-minute-lambda-timeout-and-more-november-24-2026/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-aws-weekly-roundup-aws-lambda-web-functions-amazon--162514.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162514. Latest Update: AWS Weekly Roundup: AWS Lambda Web Functions, Amazon S3 on the Vercel Marketplace, and more (October 19, 2026)
+        </a>
+        
+        <a href="latest-update-aws-weekly-roundup-gpt-61-terra-on-bedrock-step-fun-162495.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162495. Latest Update: AWS Weekly Roundup: GPT-6.1 Terra on Bedrock, Step Functions as agent tools, and more (November 2, 2026)
+        </a>
+        
+        <a href="breaking-aws-weekly-roundup-agentcore-runtime-v2-amazon-dynamodb--162487.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162487. Breaking: AWS Weekly Roundup: AgentCore Runtime V2, Amazon DynamoDB bulk put items, and more (November 9, 2026)
+        </a>
+        
+        <a href="aws-weekly-roundup-aws-nitro-sandboxes-aws-emulator-and-more-nove-162480.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162480. AWS Weekly Roundup: AWS Nitro Sandboxes, AWS Emulator, and more (November 16, 2026)
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

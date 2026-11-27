@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLMON: An LLM-Native Markup Language, now in Granite 4.1 3B and 8B</title>
+    <meta name="description" content="According to recent reports, LLMs rely on their context to generate the next set of tokens. Over a long trajectory, the context fills with numerous types o">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/llmon-an-llm-native-markup-language-now-in-granite-41-3b-and-8b-162219.html">
+    <meta property="og:title" content="LLMON: An LLM-Native Markup Language, now in Granite 4.1 3B and 8B">
+    <meta property="og:description" content="According to recent reports, LLMs rely on their context to generate the next set of tokens. Over a long trajectory, the context fills with numerous types o">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/6484ca4d5ff9a3d2ee52a83b/6KFZDHIJkxpICiErHLqAw.gif">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/llmon-an-llm-native-markup-language-now-in-granite-41-3b-and-8b-162219.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "LLMON: An LLM-Native Markup Language, now in Granite 4.1 3B and 8B", "image": ["https://cdn-uploads.huggingface.co/production/uploads/6484ca4d5ff9a3d2ee52a83b/6KFZDHIJkxpICiErHLqAw.gif"], "datePublished": "2026-11-12T19:07:35", "dateModified": "2026-11-27T16:02:44.166306", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/llmon-an-llm-native-markup-language-now-in-granite-41-3b-and-8b-162219.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>LLMON: An LLM-Native Markup Language, now in Granite 4.1 3B and 8B</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 12 Nov 2026 &bull; ⏱️ 9 min read (1704 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, LLMs rely on their context to generate the next set of tokens.</li><li style='margin-bottom:6px;'>It has been revealed that to address this, we developed LLMON (LLM Object Notation, pronounced “lemon”), an LLM-native markup language for explicitly communicating structure and semantics to the models.</li><li style='margin-bottom:6px;'>In a recent development, today we are releasing two experimental preview models, derived from Granite 4.1 base models, trained to consume and generate LLMON-marked text: granite-4.1-3b-LLMON-preview and granite-4.1-8b-LLMON-preview.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162219"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162219"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162219"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="LLMON: An LLM-Native Markup Language, now in Granite 4.1 3B and 8B" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/6484ca4d5ff9a3d2ee52a83b/6KFZDHIJkxpICiErHLqAw.gif" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162219">According to recent reports, LLMs rely on their context to generate the next set of tokens. Over a long trajectory, the context fills with numerous types of components: a system prompt, past conversation turns, instructions that act on retrieved documents, tool responses or user data, requirements constraining the allowed output, and reasoning chains. The context carries a rich structure, most of which is either implicit to the model or encoded in formats such as JSON that were not designed to be digested by LLMs. This is one of the main reasons LLMs, particularly those on the smaller end of the scale, are brittle and sometimes fail in unexpected ways. The lack of explicit structure can also be exploited by attackers, for example, in the form of prompt injections.</p>
+<p>It has been revealed that to address this, we developed LLMON (LLM Object Notation, pronounced “lemon”), an LLM-native markup language for explicitly communicating structure and semantics to the models. Semantically coherent components are marked with meaningful tags which are wrapped in reserved special-token delimiters. Data schemas, including nesting, are stated in a way that is unambiguous to a causal LLM. Unique IDs make it possible to point to specific instructions, which could reside anywhere in the context, and bind them to the data payloads they should act on, analogous to the way functions are called and arguments are passed to them in programming languages.</p>
+<p>In a recent development, today we are releasing two experimental preview models, derived from Granite 4.1 base models, trained to consume and generate LLMON-marked text: granite-4.1-3b-LLMON-preview and granite-4.1-8b-LLMON-preview. We are also releasing a GitHub repo, which includes a toolkit for working with LLMON and examples of workflows and templates.</p>
+<p>JSON was designed for parsers, not for causal language models. The tokenizer is not constrained to respect the grammar, and structure is encoded by tokens ({, ", :) that may also appear in normal text. To a model, a quotation mark inside a document and a quotation mark that closes a field are the same token. Escaping rules that are clear to a parser are only statistical patterns to a model. Nesting depth is encoded by counting brackets, which transformers are known to be weak at, especially over long spans.</p>
+<p>LLMON, on the other hand, is an XML-like markup whose structural delimiters are reserved special tokens rather than characters, so structure and content use separate parts of the vocabulary. Tags are stated at the beginning of each span, and the boundaries between spans are explicit. Nested structures are stated locally so the model does not need to keep track of the hierarchy over long spans.</p>
+<p>Since most teams already have pipelines built around JSON, we created conversion tools and example notebooks that translate JSON to LLMON and back in a lossless manner.</p>
+<p>LLMON does not replace chat templates; rather, it enriches them. Where regular chat templates tell the model which part belongs to which role (system, user, assistant), LLMON tells it what each component means and how components relate to each other, within and across roles.</p>
+<p>Sources indicate that the LLMON preview models ship with their own chat template, so you build the same messages list you would pass to any chat model and call apply_chat_template as usual; it renders the LLMON shown below. The only difference is that a turn can now name its parts and mark each one exec: True or False. A part marked True is bound into the exec block at the bottom of the rendered output, which states which instruction to run and what it operates on; a part marked False is still rendered into the context but is referenced by nothing.</p>
+<p>Which the model receives as the following (with newlines and indentation added here for readability, as the template emits none):.</p>
+<p>The two-character block IDs are drawn from a fixed set that this tokenizer encodes as single tokens, so addressing a block always costs two tokens regardless of which ID is drawn.</p>
+<p>Recent findings suggest that the role is still a single user turn, but its components reach the model as five separate addressable blocks, bound together by a sixth (the exec block) that states: run this instruction, on this data, subject to these two requirements, and put the answer in the block named here, which is the same assistant block the model then fills. A conventional template would have flattened all components into one string and left the model to infer which part was the task, which was the subject, and which were constraints.</p>
+<p>Indirect prompt injection is a type of attack where a malicious instruction is hidden in a data payload, such as a retrieved document, a tool response, or user-provided data. This is the problem LLMON’s instruction/data separation is designed to address.</p>
+<p id="sec-mid-162219">Recent findings suggest that we compared the LLMON previews against several open-source and closed-source models. We evaluated on the OPI benchmark, which places the injection in the data of classic NLP tasks. Several attack strategies are employed. We report robustness, defined as 1 − attack success rate: the share of attacks where the model does not carry out the injected instruction.</p>
+<p>All non-LLMON models are highly susceptible, carrying out the injected instructions with high probability. LLMON practically eliminates the problem on this benchmark, avoiding 47% more attacks relative to the best frontier model that we tested, and 95% more than the best open-source model. We observe similar trends on other benchmarks (ASB and StruQ). It is worth noting that these benchmarks test robustness to static indirect prompt injections. The instruction/data separation directly addresses this type of attack. We are actively working on also improving adaptive attacks which unfold over many chat turns.</p>
+<p>According to recent reports, safety gains don’t come at the expense of general capability. Across standard benchmark categories, the LLMON models perform on par with the Granite 4.1 Instruct models.</p>
+<p>According to recent reports, in short, if you’re experimenting with Granite 4.1 3B or 8B today, you can swap in the LLMON preview and should see comparable general performance with much stronger resistance to prompt injection. No conversion pipeline is required. Naming the turn's parts (e.g., instruction, data, requirement as in the example above) is enough. The shipped chat template turns those into LLMON blocks for you. Our LLMON-converters library goes one level deeper: if a part is itself structured, such as a JSON document, LLMONizing it preserves that structure as typed, individually addressable blocks, instead of one opaque string.</p>
+<p>The models start from Granite 4.1 base checkpoints rather than the released instruct models, so LLMON behavior is learned during post-training rather than layered on an existing chat format.</p>
+<p>LLMON defines six delimiters that mark the start and end of tags and allow nesting and anchoring; they are installed in the tokenizer as reserved single tokens. We re-serialized a conventional instruction-tuning corpus into LLMON: every prompt component becomes its own addressable block, and each turn carries an execution block naming which instruction to run, which inputs it operates on, and where the output goes. The task mix is the one a normal instruct model sees (chat, multi-turn, RAG, tool calling), which is why benchmark performance stays close to the conventionally tuned model. In addition, we augment the data with decoy instructions and data blocks that are present in context but deliberately left unbound, while the target output is unchanged. So the model learns to follow the dependencies dictated by the execution block and ignore the rest. Reinforcement learning follows: five sequential GRPO stages spanning multi-domain reasoning, RLHF, knowledge calibration, and math, followed by a final DPO stage on a thousand on-policy preference pairs built from the model’s own responses to injection attempts.</p>
+<p>The resulting privilege rule falls out of this layout rather than an added guardrail: an instruction reached through an execution block is authoritative, while anything reached as input (data, documents, tool schemas, tool results) is material to read, not a command to follow. Furthermore, instructions and data spans that are not called on in the execution block are ignored. This is a learned behavior, not an enforced guarantee. To see how this plays out in the attention layers of a LLMON model, try the LLMON Attention Visualization on Hugging Face Spaces.</p>
+<p>Industry observers note that LLMON is not tied to a fixed schema: you can choose tag names and structure that fit your domain and fine-tune an adapter to read and write them. We demonstrate this on ScienceWorld, a text-based benchmark where an agent carries out elementary science tasks (such as boiling water) by issuing one command at a time and receiving a score from the simulator. We defined a vocabulary capturing the structure in the planning trajectories involved in solving these tasks. The vocabulary includes tags such as instr.task.goal, req.planning_policy.rule, data.state.room, data.state.inventory and assistant.next_action. We rendered every step of ScienceWorld's reference solutions with these tags and tuned a LoRA on top of a LLMON model. The trained model then plays held-out games and writes its next action in the new vocabulary. This notebook walks through the full workflow, from converting reference trajectories to playing the test games and scoring the adapter against the untrained base model. Another example for tool-calling agents can be found in this notebook.</p>
+<p>This is an experimental preview, ready for exploration and evaluation but not for production.</p>
+<p>In a recent development, tell us what you find: what worked, what broke, and which use cases you’d like to see. Post it in GitHub Discussions.</p>
+<p>That's really awesome! With an Apple pkl community renderer, you could potentially write PKL and render LLMON. 🥒🍋.</p>
+<p>Any-to-pkl-community will convert json, yaml, toml to pkl, so just need the render part.</p>
+<p id="sec-end-162219">According to recent reports, this is an interesting development, especially the idea of giving LLMs a more explicit structure for understanding instructions, data, and their relationships. The discussion about prompt injection and separating instructions from input data is particularly relevant as organizations build more advanced LLM applications. Implementing these approaches requires engineers who understand model behavior, fine-tuning, context management, and evaluation. I think these technical requirements are vital when estimating the cost to hire an LLM engineer, particularly for specialized enterprise projects. I came across this resource that explores the different factors involved: https://mobisoftinfotech.com/resources/blog/cost-to-hire-llm-engineer-2026.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-the-open-medical-llm-leaderboard-benchmarking-large-l-151018.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151018. Tech Report: The Open Medical-LLM Leaderboard: Benchmarking Large Language Models in Healthcare
+        </a>
+        
+        <a href="industry-news-llm-inference-on-edge-a-fun-and-easy-guide-to-run-l-150689.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150689. Industry News: LLM Inference on Edge: A Fun and Easy Guide to run LLMs via React Native on your Phone!
+        </a>
+        
+        <a href="vision-language-model-alignment-in-trl-162963.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162963. Vision Language Model Alignment in TRL ⚡️
+        </a>
+        
+        <a href="fine-tune-any-llm-from-the-hugging-face-hub-with-together-ai-162944.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162944. Fine-tune Any LLM from the Hugging Face Hub with Together AI
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rvoip: VoIP stack in Rust</title>
+    <meta name="description" content="A Rust library for building communications applications. SIP, RTP, WebRTC, QUIC/WebTransport/WebSocket conversations, Media over QUIC, and voice-AI agents ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/rvoip-voip-stack-in-rust-155517.html">
+    <meta property="og:title" content="Rvoip: VoIP stack in Rust">
+    <meta property="og:description" content="A Rust library for building communications applications. SIP, RTP, WebRTC, QUIC/WebTransport/WebSocket conversations, Media over QUIC, and voice-AI agents ">
+    <meta property="og:image" content="https://opengraph.githubassets.com/40cb02a5088dc12be0d827876247f02f71c84346057a0adc599a2dcc5cc6b42e/eisenzopf/rvoip">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/rvoip-voip-stack-in-rust-155517.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Rvoip: VoIP stack in Rust", "image": ["https://opengraph.githubassets.com/40cb02a5088dc12be0d827876247f02f71c84346057a0adc599a2dcc5cc6b42e/eisenzopf/rvoip"], "datePublished": "2026-11-26T19:18:09", "dateModified": "2026-11-27T15:57:08.675105", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/rvoip-voip-stack-in-rust-155517.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Rvoip: VoIP stack in Rust</h1>
+        <div class="meta-line">🌐 Source: <strong>Github</strong> &bull; 📅 26 Nov 2026 &bull; ⏱️ 6 min read (1263 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>A Rust library for building communications applications.</li><li style='margin-bottom:6px;'>Sources indicate that five-minute start · For carriers · Which crate?</li><li style='margin-bottom:6px;'>In a recent development, rvoip is a library, not a server you deploy next to your application.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-155517"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-155517"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-155517"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Rvoip: VoIP stack in Rust" loading="lazy" src="https://opengraph.githubassets.com/40cb02a5088dc12be0d827876247f02f71c84346057a0adc599a2dcc5cc6b42e/eisenzopf/rvoip" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-155517">A Rust library for building communications applications. SIP, RTP, WebRTC, QUIC/WebTransport/WebSocket conversations, Media over QUIC, and voice-AI agents share one call model, and the whole stack is in the box: no external SIP server, media server, or RTP engine to install and wire together.</p>
+<p>Sources indicate that five-minute start · For carriers · Which crate? · Pick a path · How it fits together · What ships · Interop evidence · Changes · Upgrading from 0.3.</p>
+<p>In a recent development, rvoip is a library, not a server you deploy next to your application. Signalling,
+media, codecs, NAT traversal, security, and the conversation model are all
+Rust crates in this workspace, so a call goes from your code to the wire without
+a separately installed SIP proxy, media server, or RTP engine. The examples
+below run on a laptop with nothing installed but Rust; the same crates carry
+the release-gated interoperability evidence against Asterisk, FreeSWITCH,
+Jambonz, Kamailio, and OpenSIPS. Carriers evaluating standards coverage,
+performance, and reliability should start with For carriers.</p>
+<p>One AWS c8i.4xlarge (16 vCPU, 8 cores, Intel Xeon 6, 32 GiB) running a single
+rvoip process, measured with the RFC 7501/7502 benchmark:.</p>
+<p>At 2x capacity, rvoip keeps admitting calls at its max CPS, refuses the
+excess with fast 503 responses, and recovers cleanly once the load drops.</p>
+<p>Full method and per-trial data: RFC 7501/7502 benchmark report.</p>
+<p>Industry observers note that upgrading an existing application from 0.3? The
+0.4 migration guide has before/after code for every
+breaking change.</p>
+<p>2. Make a call. Bob answers, Alice dials, Alice hangs up. Everything runs
+on loopback, so this works on a laptop with no PBX, no account, and no network
+setup.</p>
+<p>3. Or run the same program from the checkout.</p>
+<p>From here, examples/ walks forward one step at a time: real
+microphone audio, registering to a PBX, hold/DTMF, transfers, SRTP and TLS, an
+IVR, a B2BUA, then browser and voice-AI gateways.</p>
+<p>In a recent development, the workspace contains 47 crates. You import one of them; it pulls in
+everything it needs. The rest are internal layers you never name in your own
+Cargo.toml.</p>
+<p>Deployment backends (Keycloak, LDAP, Redis, Postgres vCon storage, audit and
+SIEM sinks, SAML, SCIM, WebAuthn, STIR/SHAKEN, IMS AKA) are separate
+rvoip-* extension crates you add only when you operate that backend. The
+extension catalog lists them.</p>
+<p>Industry observers note that for JavaScript UCTP control, see the experimental browser/Node WebSocket
+client. It is available as source with TypeScript
+declarations; the package is not yet published to npm. Application-profile
+dispatch is a separate opt-in server extension that stock servers do not enable.</p>
+<p>Four API surfaces, from simplest to most control. Most applications use the
+first one.</p>
+<p>Register an account on a PBX and place a call through it:.</p>
+<p>Answer calls and react to key presses, the shape of an IVR or auto-attendant:.</p>
+<p>Recent findings suggest that security and transports are configuration, not different APIs: SDES-SRTP in
+07-secure-call-srtp, TLS in
+08-tls-transport, DTLS-SRTP, G.729, AMR-NB/WB,
+and Opus behind Cargo features. The full surface is documented in the
+SIP crate README.</p>
+<p>RvoipApp declares transports, roles, and routing through one builder and
+runs SIP, WebRTC, and UCTP listeners on the shared Orchestrator:.</p>
+<p>In a recent development, start from 12-customer-escalation-sip-webrtc:
+a browser chat escalates to a SIP agent's phone. For SIP into Amazon Connect,
+see 13-sip-to-amazon-connect.</p>
+<p>In a recent development, hosted agent. rvoip-vapi speaks Vapi's
+bidirectional raw-audio WebSocket directly. Your SIP or WebRTC caller is
+bridged to the agent through the Orchestrator; the agent joins as its own
+AI participant with typed events, control messages, and supervised teardown. Start from 14-vapi-agent, one server that accepts
+either kind of caller. Attaching an agent to a caller you already hold:.</p>
+<p>Your own pipeline. rvoip-harness
+gives you ASR, TTS, dialog, and recording provider traits, and
+rvoip-vcon emits signed vCon records of the
+conversation. 11-ai-harness-demo runs the
+whole loop with deterministic providers, so you can see the shape before you
+plug in a real model.</p>
+<p id="sec-mid-155517">Recent findings suggest that every transport turns into the same objects, so an application written against
+the conversation model does not care whether a leg arrived over SIP, a browser,
+or QUIC. That is what lets one Orchestrator bridge them.</p>
+<p>Words you will meet in the API:.</p>
+<p>Adapters depend on the shared ConnectionAdapter trait; the core never
+imports a transport. The design docs go deeper, starting with
+INTERFACE_DESIGN.md and
+CONVERSATION_PROTOCOL.md.</p>
+<p>Recent findings suggest that beta-qualified means covered by the SIP release gate and its
+interoperability, security, standards, performance, and soak evidence. Developer preview means implemented and published, but API-unstable or
+outside that attestation. Planned items appear only in the
+roadmap. A published crate or Cargo feature is evidence of
+availability, not a blanket production-readiness statement.</p>
+<p>The WebRTC implementation of ICE and DTLS-SRTP is separate from the SIP beta
+claim. UCTP and MoQ availability does not imply that SIP-over-QUIC or
+RTP-over-QUIC has shipped.</p>
+<p>It has been revealed that all 14 extension crates ship at 0.5.1. They stay optional so protocol
+crates depend on provider contracts, never on a deployment backend.</p>
+<p>How they attach: voip-3 on the facade brings in the harness, vCon, and the
+identity surface; vapi and sip-stir-shaken are their own facade features;
+everything else is a direct dependency.</p>
+<p>The contracts they implement live in
+rvoip-auth-core,
+rvoip-consumers-core, and
+rvoip-identity.</p>
+<p>It has been revealed that for orientation only. Everything below the front doors is a transitive
+dependency of rvoip or rvoip-sip; depend on it directly only when you are
+extending the platform itself.</p>
+<p>In a recent development, the full release path exercises rvoip-sip public APIs against independently
+implemented peers. The exact peer versions, scenarios, transports, results, and
+exclusions are recorded in signed qualification evidence; see the
+compatibility matrix.</p>
+<p>Patch releases can explicitly use the shorter release path:
+unit, integration, regression, example, and doc tests, including runnable
+TURN/ICE examples, without
+benchmark, soak/load, or extended interoperability jobs. Each GitHub release
+links its tested commit and gate results; a reduced patch report marks
+performance qualification NOT RUN. The matrix below describes the full
+qualification scope, not a claim that a patch run repeated it.</p>
+<p>In a recent development, the strict full-beta gate requires an explicit PASS attestation for every
+required independently managed peer below. The report generator binds each row
+to the tested source tree, exact peer identity and configuration, selected
+matrix, and hashed evidence; it refuses to produce a strict release-candidate
+report if a required peer is missing, skipped, ambiguous, unpinned, or failing.</p>
+<p>The 0.5.1 release uses the shorter patch profile: regular unit, integration,
+regression, example, and doc tests, including TURN/ICE checks. Benchmarks and
+extended external interoperability were not rerun. See the
+0.5.1 release notes and the
+release's qualification attachments
+for exact commands, results, and scope.</p>
+<p>Historical full-release evidence, retained at its original versions:.</p>
+<p>Recent findings suggest that this is bounded interoperability evidence, not a claim of compatibility with
+every version, module, configuration, transport, codec, or SIP extension, and
+not carrier certification. Anything outside a stated qualification boundary
+remains the application's responsibility to validate in its own deployment.</p>
+<p>In a recent development, developer-preview products document their own supported scope and gaps in
+their crate READMEs. A published crate or Cargo feature is evidence of
+availability, not a blanket production-readiness statement.</p>
+<p>In a recent development, feature-gated targets (codecs, DTLS-SRTP, generated compliance suites) only
+build with their features on; use --all-features when you touch a gated
+path. docs/RELEASING.md describes the release train.</p>
+<p>Remaining major items, beyond the developer-preview products above:.</p>
+<p>Detailed engineering gaps are tracked in docs/GAP_PLAN.md
+and in concerns.</p>
+<p>Licensed under the MIT License.</p>
+<p id="sec-end-155517">Built in Rust · Facade API · SIP API · Examples · Issues · Discussions.</p>
+<p style="margin-top: 25px;">
+<a href="https://github.com/eisenzopf/rvoip" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="screenenv-deploy-your-full-stack-desktop-agent-162982.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162982. ScreenEnv: Deploy your full stack Desktop Agent
+        </a>
+        
+        <a href="in-defense-of-lock-poisoning-in-rust-2025-162439.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162439. In defense of lock poisoning in Rust (2025)
+        </a>
+        
+        <a href="five-apify-actors-for-agent-pipelines-tech-stack-phone-validation-162155.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162155. Five Apify Actors for agent pipelines: tech stack, phone validation, Wikipedia, Crossref, and DNS
+        </a>
+        
+        <a href="industry-news-web-design-tiger-dingsuns-kinetic-stack-portfolio-161787.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #161787. Industry News: Web Design: Tiger Dingsun’s Kinetic Stack Portfolio
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

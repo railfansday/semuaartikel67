@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ansible Fails waiting for privilege escalation on Ubuntu 26</title>
+    <meta name="description" content="I've slowly been moving my servers from Ubuntu 22 and 24 to 26 this year, and noticed my Ansible automation starts failing if I have password protection fo">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/ansible-fails-waiting-for-privilege-escalation-on-ubuntu-26-162473.html">
+    <meta property="og:title" content="Ansible Fails waiting for privilege escalation on Ubuntu 26">
+    <meta property="og:description" content="I've slowly been moving my servers from Ubuntu 22 and 24 to 26 this year, and noticed my Ansible automation starts failing if I have password protection fo">
+    <meta property="og:image" content="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/ansible-fails-waiting-for-privilege-escalation-on-ubuntu-26-162473.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Ansible Fails waiting for privilege escalation on Ubuntu 26", "image": ["https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk"], "datePublished": "2026-11-25T15:43:00-06:00", "dateModified": "2026-11-27T16:02:58.065589", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/ansible-fails-waiting-for-privilege-escalation-on-ubuntu-26-162473.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Ansible Fails waiting for privilege escalation on Ubuntu 26</h1>
+        <div class="meta-line">🌐 Source: <strong>Jeffgeerling</strong> &bull; 📅 25 Nov 2026 &bull; ⏱️ 2 min read (367 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>I've slowly been moving my servers from Ubuntu 22 and 24 to 26 this year, and noticed my Ansible automation starts failing if I have password protection for sudo use:.</li><li style='margin-bottom:6px;'>Apparently Ubuntu's been rewriting system utilities in Rust, and the sudo-rs version that ships on Ubuntu 26.04 has some incompatiblities with the sudo I've used on servers for 20+ years.</li><li style='margin-bottom:6px;'>It prints an extra string before the password prompt, which sudo doesn't do, and that can confuse automation tools like Ansible that wait for a specific prompt.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162473"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162473"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162473"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Ansible Fails waiting for privilege escalation on Ubuntu 26" loading="lazy" src="https://via.placeholder.com/350x180/2563eb/ffffff?text=Global+News+Desk" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162473">I've slowly been moving my servers from Ubuntu 22 and 24 to 26 this year, and noticed my Ansible automation starts failing if I have password protection for sudo use:.</p>
+<p>Apparently Ubuntu's been rewriting system utilities in Rust, and the sudo-rs version that ships on Ubuntu 26.04 has some incompatiblities with the sudo I've used on servers for 20+ years.</p>
+<p>It prints an extra string before the password prompt, which sudo doesn't do, and that can confuse automation tools like Ansible that wait for a specific prompt.</p>
+<p>In a recent development, there's a thread in the Ansible project covering the glitch: validate sudo become plugin against sudo-rs
+. The fix landed in Ansible Core 2.22.0, and is being backported into updates in 2.16, 2.18, 2.19, 2.20, and maybe also 2.21 (it's quite disruptive!). It looks like it also broke pyinfra, and their fix is in the latest release of 3.11.</p>
+<p>I updated Ansible (pip install -U ansible) and now -K (--ask-become-pass) works again.</p>
+<p id="sec-mid-162473">Another alternative is to use the traditional version of sudo that still ships with Ubuntu 26. For that, the easiest way is to set the become_exe inside your hosts file:.</p>
+<p>Or you could even revert sudo systemwide on your Ubuntu host:.</p>
+<p>I'm not sure why Ubuntu sees the need to rewrite common Linux utils in Rust. I don't mind Rust, but these are foundational tools every Linux system relies on. This isn't a window manager, where experimentation is more acceptable1.</p>
+<p>If other distros proposal on moving to sudo-rs that's one thing, but if it's just Ubuntu, maybe I should hop back to Debian for everything, and not just my cloud servers.</p>
+<p id="sec-end-162473">Recent findings suggest that yes, I know this makes me sound like "old man yells at [rust]," but major changes to structural components of Linux should take longer, IMO. At least on the Red Hat side, we have Fedora, which is more bleeding edge, then at least a few years' gap before it hits 'production' systems. With Ubuntu, there is no cutting edge upstream where things like this can be fixed or worked around before hitting prod! (And no, I don't consider non-LTS Ubuntu releases the same thing.) ↩︎.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.jeffgeerling.com/blog/2026/ansible-fails-become-ubuntu2604/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="at-last-ive-finally-played-faraway-an-enigma-ive-been-waiting-16--162745.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162745. At last, I've finally played Faraway, an enigma I've been waiting 16 years to see
+        </a>
+        
+        <a href="ai-boom-leaves-network-operators-waiting-up-to-18-months-for-kit-162419.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162419. AI boom leaves network operators waiting up to 18 months for kit
+        </a>
+        
+        <a href="retired-man-tries-to-spend-more-money-mostly-fails-161068.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #161068. Retired Man Tries to Spend More Money, Mostly Fails
+        </a>
+        
+        <a href="invoice-factoring-worth-the-fee-only-when-waiting-to-get-paid-cos-161050.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #161050. Invoice Factoring – Worth the Fee Only When Waiting to Get Paid Costs More
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

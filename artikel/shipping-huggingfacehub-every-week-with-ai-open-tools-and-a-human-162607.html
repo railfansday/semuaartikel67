@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping huggingface_hub every week with AI, open tools, and a human in the loop</title>
+    <meta name="description" content="huggingface_hub is the Python client at the base of the Hugging Face ecosystem. transformers, datasets, diffusers, sentence-transformers and dozens of othe">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/shipping-huggingfacehub-every-week-with-ai-open-tools-and-a-human-162607.html">
+    <meta property="og:title" content="Shipping huggingface_hub every week with AI, open tools, and a human in the loop">
+    <meta property="og:description" content="huggingface_hub is the Python client at the base of the Hugging Face ecosystem. transformers, datasets, diffusers, sentence-transformers and dozens of othe">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/huggingface-hub-release-ci/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/shipping-huggingfacehub-every-week-with-ai-open-tools-and-a-human-162607.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Shipping huggingface_hub every week with AI, open tools, and a human in the loop", "image": ["https://huggingface.co/blog/assets/huggingface-hub-release-ci/thumbnail.png"], "datePublished": "2026-06-23T00:00:00", "dateModified": "2026-11-27T16:03:07.671612", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/shipping-huggingfacehub-every-week-with-ai-open-tools-and-a-human-162607.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Shipping huggingface_hub every week with AI, open tools, and a human in the loop</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 23 Jun 2026 &bull; ⏱️ 7 min read (1363 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>huggingface_hub is the Python client at the base of the Hugging Face ecosystem.</li><li style='margin-bottom:6px;'>For a long time we released every 4 to 6 weeks.</li><li style='margin-bottom:6px;'>By the end of this post, you'll have everything you need to build your own.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162607"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162607"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162607"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Shipping huggingface_hub every week with AI, open tools, and a human in the loop" loading="lazy" src="https://huggingface.co/blog/assets/huggingface-hub-release-ci/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162607">huggingface_hub is the Python client at the base of the Hugging Face ecosystem. transformers, datasets, diffusers, sentence-transformers and dozens of other libraries depend on it to talk to the Hub. Every week we don't ship a new release is a week of fixes and features stuck on main.</p>
+<p>For a long time we released every 4 to 6 weeks. We now release every week from a single GitHub Actions workflow. We built it using open-source tools and open-weights models and kept a human in the loop at the one place where judgment matters. Nothing in this post requires a vendor contract, a closed model, or infrastructure you can't run yourself. That was a design goal from the start since we wanted a workflow other maintainers could pick up and adapt.</p>
+<p>By the end of this post, you'll have everything you need to build your own.</p>
+<p>The old process was partly automated, mostly manual.</p>
+<p>Still manual, every single time:.</p>
+<p>In a recent development, writing good notes for a new version was the heavy part, aggregating tens of PRs on different topics. Nothing technically hard but a few hours of focused attention. Add the announcements on top and a minor release was easily a half-day of work spread over several days.</p>
+<p>So we decided to streamline the whole thing. Looking at that list, the work splits in two.</p>
+<p>Some steps are purely mechanical and can be automated: bumping the version, committing, tagging, pushing, opening downstream test branches, opening the post-release PR. Nobody needs to think about those. They just have to happen in the right order, every time, which is what a CI workflow is good at.</p>
+<p>The rest is different. Writing release notes, deciding what to highlight, phrasing an announcement for a human audience: that's brain work. It's the kind of judgment that kept the release manual for years. This is where AI comes in, turning a blank page into a solid first draft in seconds. It's also where we have to be careful because a draft that looks confident and is subtly wrong is worse than no draft at all.</p>
+<p>According to recent reports, when we decided to fix this, we set one constraint up front: every moving part had to be something any maintainer could run themselves. No closed model behind an API we couldn't swap, no proprietary release platform, no secret sauce.</p>
+<p>The second principle: the model drafts, a human decides. Language models are good at turning thirty terse PR titles into readable release notes. They are not good at being trusted blindly. So the workflow is human-supervised: the model does the first pass, a deterministic script checks its work, and a human reviews and edits before anything ships (more on that below).</p>
+<p>The full workflow is a single file, .github/workflows/release.yml, triggered by hand from the Actions UI. It takes exactly one input:.</p>
+<p>From there, the jobs run roughly in this order:.</p>
+<p>The remaining manual steps are reviewing and publishing the draft release notes, and reviewing and posting an internal Slack message. Those two steps are where we want a human in the loop.</p>
+<p>Here's the failure mode everyone worries about with AI-generated release notes: the model quietly drops a PR or invents one that isn't in this release. A changelog that's almost right is worse than no changelog because nobody re-checks it.</p>
+<p>According to recent reports, we don't trust the generated release notes to be complete on the first try, we verify it deterministically. Before the model runs, a Python script retrieves all PRs that belong to the release and stores them as ground truth.</p>
+<p>Recent findings suggest that then model drafts the notes from them. Once done, we check its output against the initial list of PRs:.</p>
+<p>It has been revealed that if anything is missing or extra, we don't fail and we don't ship a wrong file. We hand the discrepancy back to the agent and ask it to fix exactly those PRs:.</p>
+<p>Industry observers note that this is the pattern that makes the whole thing trustworthy: a non-deterministic model wrapped in deterministic guardrails. The model is great at writing prose and unreliable at being exhaustive. So we let it write and let code enforce the consistency.</p>
+<p id="sec-mid-162607">It has been revealed that completeness is one half. Accuracy is the other. A model summarizing a PR from its title alone will cheerfully invent a code example that doesn't match the real API.</p>
+<p>To prevent that, when we fetch PR metadata we also pull the actual documentation diffs from each PR: the unified diff of any .md file under docs/ that the PR touched.</p>
+<p>That diff goes into the model's context so when it writes "here's the fresh CLI command," it's quoting the example the PR author actually wrote in the docs. That's the same logic as before: give the model real source material and a narrow job.</p>
+<p>The prompts themselves live as Skills: small Markdown files (SKILL.md plus reference templates) checked into the repo. The release-notes skill spells out how to pick highlights, how to structure sections, when to add a doc link, etc. It reads like onboarding instructions, which is exactly the right mental model.</p>
+<p>Sources indicate that after the RC is published, the draft GitHub release sits there with the AI's first pass in it. This is where the human comes in:.</p>
+<p>The reviewer's time goes into polishing, turning a half-day of writing into a fifteen-minute editing session.</p>
+<p>We also keep a paper trail to improve over time. We archive two files side by side to a Hugging Face Bucket: the raw AI draft, uploaded at RC time before anyone touches it, and the human-edited version, uploaded when the final release is cut.</p>
+<p>Recent findings suggest that collecting both every week gives us a growing dataset of "what the model wrote" versus "what we wished it wrote". Dataset that we can then reuse to update the agent's skill.</p>
+<p>Revamping the release process was a good opportunity to tighten security, especially against supply-chain attacks.</p>
+<p>No PyPI token. Publishing uses Trusted Publishing: PyPI verifies a short-lived OIDC token minted by GitHub for this exact workflow, and complications PEP 740 attestations / Sigstore provenance for every artifact. There's no long-lived secret to leak or rotate.</p>
+<p>Industry observers note that the agent runtime is pinned and verified. We don't curl | bash the latest OpenCode and hope. We pin a version and check its SHA256 before running it:.</p>
+<p>Open tooling doesn't mean careless tooling.</p>
+<p>Almost nothing. A full release (notes plus the Slack announcement, across 20-40 PRs and a few rounds of prompting) costs about $0.25 on Inference Providers. With open weights billed pay-as-you-go, the only real question each week is "is there something worth shipping?", and there always is.</p>
+<p>The cadence went from one release every 4 to 6 weeks to once a week. The secondary effects were the interesting ones:.</p>
+<p>Industry observers note that this is the part we cared about most. The workflow is shaped around huggingface_hub but the structure is generic.</p>
+<p>To adapt it: fork the workflow file and scripts, point it at your package, rewrite the skill Markdown for your project's voice, set two repo variables (the model ID and your OpenCode version), set up Trusted Publishing on PyPI, and delete the downstream-testing job if you don't have downstreams. The trust-but-verify loop is the part worth reusing as-is. It's what makes a generated artifact safe to ship.</p>
+<p>The parts of a release that used to need a half-day of focused human work (writing notes, drafting announcements, coordinating downstream checks) are the parts a model is good at drafting. Everything else is mechanical and fits in a YAML file. The trick was never just "let the AI do it". It's to let the model draft, let deterministic code verify, and let a human decide. It's built entirely from open tools and open weights so the cost rounds to zero and anyone can run it.</p>
+<p>It has been revealed that the full workflow file is public. If you maintain a Python library, fork it, adapt it, and let us know how it goes!</p>
+<p id="sec-end-162607">Thanks for the post! This will help so many people 🤗.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/huggingface-hub-release-ci" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-i-have-a-front-row-seat-to-norways-cutting-edge-ai--157618.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #157618. Industry News: I have a front-row seat to Norway’s cutting-edge AI newsroom experiment. Even with AI on more than 200 stories a day, a human still checks every one
+        </a>
+        
+        <a href="2026-kitchen-gift-guide-50-essential-cooking-tools-for-chefs-of-e-157054.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #157054. 2026 kitchen gift guide: 50 essential cooking tools for chefs of every level
+        </a>
+        
+        <a href="apple-work-podcast-smplify-wants-ai-agents-to-manage-your-macs-wi-155628.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #155628. Apple @ Work Podcast: Smplify wants AI agents to manage your Macs, with a human approving every change.
+        </a>
+        
+        <a href="tech-report-week-12-nfl-picks-against-the-spread-predictions-for--154910.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #154910. Tech Report: Week 12 NFL picks against the spread, predictions for every game: Can the Seahawks, or anyone, stop the 49ers?
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGML and llama.cpp join HF to ensure the long-term progress of Local AI</title>
+    <meta name="description" content="We are super happy to announce that GGML, creators of Llama.cpp, are joining HF in order to keep future AI open. 🔥. Georgi Gerganov and team are joining HF">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/ggml-and-llamacpp-join-hf-to-ensure-the-long-term-progress-of-loc-162850.html">
+    <meta property="og:title" content="GGML and llama.cpp join HF to ensure the long-term progress of Local AI">
+    <meta property="og:description" content="We are super happy to announce that GGML, creators of Llama.cpp, are joining HF in order to keep future AI open. 🔥. Georgi Gerganov and team are joining HF">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/ggml-joins-hf/ggml-joins-hf.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/ggml-and-llamacpp-join-hf-to-ensure-the-long-term-progress-of-loc-162850.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "GGML and llama.cpp join HF to ensure the long-term progress of Local AI", "image": ["https://huggingface.co/blog/assets/ggml-joins-hf/ggml-joins-hf.png"], "datePublished": "2026-02-20T00:00:00", "dateModified": "2026-11-27T16:03:24.100090", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/ggml-and-llamacpp-join-hf-to-ensure-the-long-term-progress-of-loc-162850.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>GGML and llama.cpp join HF to ensure the long-term progress of Local AI</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 20 Feb 2026 &bull; ⏱️ 5 min read (1065 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>We are super happy to announce that GGML, creators of Llama.cpp, are joining HF in order to keep future AI open.</li><li style='margin-bottom:6px;'>Georgi Gerganov and team are joining HF with the goal of scaling and supporting the community behind ggml and llama.cpp as Local AI continues to make exponential progress in the coming years.</li><li style='margin-bottom:6px;'>We've been working with Georgi and team for quite some time (we even have awesome core contributors to llama.cpp like Son and Alek in the team already) so this has been a very natural process.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162850"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162850"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162850"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="GGML and llama.cpp join HF to ensure the long-term progress of Local AI" loading="lazy" src="https://huggingface.co/blog/assets/ggml-joins-hf/ggml-joins-hf.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162850">We are super happy to announce that GGML, creators of Llama.cpp, are joining HF in order to keep future AI open. 🔥.</p>
+<p>Georgi Gerganov and team are joining HF with the goal of scaling and supporting the community behind ggml and llama.cpp as Local AI continues to make exponential progress in the coming years.</p>
+<p>We've been working with Georgi and team for quite some time (we even have awesome core contributors to llama.cpp like Son and Alek in the team already) so this has been a very natural process.</p>
+<p>It has been revealed that llama.cpp is the fundamental building block for local inference, and transformers is the fundamental building block for model definition, so this is basically a match made in heaven. ❤️.</p>
+<p>In a recent development, not much – Georgi and team still dedicate 100% of their time maintaining llama.cpp and have full autonomy and leadership on the technical directions and the community. HF is providing the project with long-term sustainable resources, improving the chances of the project to grow and thrive. The project will continue to be 100% open-source and community driven as it is now.</p>
+<p>llama.cpp is the fundamental building block for local inference, and transformers is the fundamental building block for definition of models and architectures, so we’ll work on making sure it’s as seamless as possible in the future (almost “single-click”) to ship new models in llama.cpp from the transformers library ‘source of truth’ for model definitions.</p>
+<p>It has been revealed that additionally, we will improve packaging and user experience of ggml-based software. As we enter the phase in which local inference becomes a meaningful and competitive alternative to cloud inference, it is crucial to improve and simplify the way in which casual users deploy and access local models. We will work towards making llama.cpp ubiquitous and readily available everywhere.</p>
+<p>Our shared goal is to provide the community with the building blocks to make open-source superintelligence accessible to the world over the coming years.</p>
+<p>We will achieve this together with the growing Local AI community, as we continue to build the ultimate inference stack that runs as efficiently as possible on our devices.</p>
+<p>It has been revealed that massive congrats to GGML and Hugging Face! Great news for the Local AI community. Excited to see llama.cpp grow stronger and make local AI easier for everyone!</p>
+<p>LLama.cpp is the best AI project by far, super reactive to bug solve, very competent team, love you guys, you desserve it.</p>
+<p>Our shared goal is to provide the community with the building blocks to make open-source superintelligence accessible to the world over the coming years.</p>
+<p>Sources indicate that hugging Face smart moves never ending.Are you guys using AI for advice? I wonder which of 2 million AI models you are using 😄.</p>
+<p>Serving with llama.cpp using HF-hosted models, including unsloth's on AMD Strix Halo and OpenCode here.</p>
+<p>Congrats to both teams. Well deserved. Wonderful news for wonderful teams and community.</p>
+<p>Recent findings suggest that congratulations to Georgi Gerganov and team! So happy for you guys, this is huge success!</p>
+<p>Sources indicate that great news. congrats to GGML and HF. . always LocalAI.</p>
+<p>This is a match made in heaven for the local AI ecosystem. Transformers as the model definition layer plus llama.cpp as the local inference layer, backed by HF's long-term resources, gives the entire community a stable foundation to build on for years to come.</p>
+<p>The focus on packaging and user experience is especially crucial. Making local inference accessible beyond developers is how we get to an AI future that's open, private, and user-owned — not locked behind API calls.</p>
+<p id="sec-mid-162850">Congratulations to Georgi and team. Open-source superintelligence that runs on your own hardware isn't just a technical goal, it's a trust model.</p>
+<p>Congratulations! I love Llama.cpp and I love running my models locally. This is absolutely the future of transparency and I love the push for the open, private, user-owned software world! Thank you for all that you are doing!</p>
+<p>So basically HF, "acquires" an open source project. hmm. I've seen this before and it never ends well (see Trixbox, PCBSD, FreeNAS, etc..).</p>
+<p>I sure hope history doesn't repeat itself (yet it always does).</p>
+<p>It’s great news for the future of edge AI!</p>
+<p>gglm's gguf format now the prefered default for executorch (on device) inference 🚀🦙.</p>
+<p>finally, something good about living in modern world, you guys are awesome!</p>
+<p>In a recent development, "...it is crucial to improve and simplify the way in which casual people deploy and access local models. We will work towards making llama.cpp ubiquitous and readily available everywhere."  (It... already was?).</p>
+<p>Before you upvote. Raise your hand if you realize that hf.co is a business with the necessary end goal of making money. This isn't a bad thing; however, this blog post is so devoid of substance and so full of hypebole that one can't help but wonder.</p>
+<p>I cant wait till hf adds a quota/limitation on amount of models you can quantize with future versions of llama.cpp requiring hf login /token to quantize a model (trust me bro its just basic telemetry) 😻.</p>
+<p>Sources indicate that of course, when the noose tightens further it won't be officially discussed/acknowledged (why would we?? we have so much to share with sell to the #community like this robot! look its so cute).</p>
+<p>Sources indicate that maybe lcpp will now natively support image models quanting? yay.</p>
+<p>Check out stable-diffusion.cpp for this, or KoboldCpp if you want a fork that has both llamacpp and stablediffusioncpp integrated.</p>
+<p>This is awesome news! Making llama.cpp and the GGML ecosystem more sustainable and widely supported will help local AI become more accessible and easier to use for everyone for sure.</p>
+<p>Does this mean that we will have GGUF quants of models as they release, or at least support for gguf out of the box for newly introduced models in the future?</p>
+<p>reasoning:      min_steps: 2                  # Minimum reasoning steps before code      require_action_field: true    # Each step must have thought + action = freedom      confidence_calibration: true  # Post-process confidence scores ciritcally high!</p>
+<p>Get Pi as the agent harness next.</p>
+<p>A great milestone for Local AI!For those already living daily in the ggml and llama.cpp ecosystem, this is a strong signal for what’s ahead.The alignment with Transformers brings clear strategic coherence.A solid move. Looking forward to what comes next.</p>
+<p id="sec-end-162850">Congratulations to all involved! These are great additions!</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ggml-joins-hf" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="serving-a-local-llm-to-several-users-ollama-lm-studio-llamacpp-an-150727.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150727. Serving a Local LLM to Several Users: Ollama, LM Studio, llama.cpp and vLLM Benchmarked
+        </a>
+        
+        <a href="fresh-in-llamacpp-model-management-162884.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162884. Fresh in llama.cpp: Model Management
+        </a>
+        
+        <a href="latest-update-transformers-now-runs-llamacpp-quants-162399.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162399. Latest Update: Transformers now runs llama.cpp quants
+        </a>
+        
+        <a href="introducing-the-llamacpp-benchmark-dashboard-for-amd-ryzen-and-ra-162162.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162162. Introducing the llama.cpp benchmark dashboard for AMD Ryzen and Radeon
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

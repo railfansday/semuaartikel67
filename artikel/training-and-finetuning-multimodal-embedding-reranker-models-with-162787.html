@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training and Finetuning Multimodal Embedding & Reranker Models with Sentence Transformers</title>
+    <meta name="description" content="According to recent reports, sentence Transformers is a Python library for using and training embedding and reranker models for applications like retrieval">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/training-and-finetuning-multimodal-embedding-reranker-models-with-162787.html">
+    <meta property="og:title" content="Training and Finetuning Multimodal Embedding & Reranker Models with Sentence Transformers">
+    <meta property="og:description" content="According to recent reports, sentence Transformers is a Python library for using and training embedding and reranker models for applications like retrieval">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/train-sentence-transformers/st-hf-thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/training-and-finetuning-multimodal-embedding-reranker-models-with-162787.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Training and Finetuning Multimodal Embedding & Reranker Models with Sentence Transformers", "image": ["https://huggingface.co/blog/assets/train-sentence-transformers/st-hf-thumbnail.png"], "datePublished": "2026-04-16T00:00:00", "dateModified": "2026-11-27T16:03:18.661229", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/training-and-finetuning-multimodal-embedding-reranker-models-with-162787.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Training and Finetuning Multimodal Embedding & Reranker Models with Sentence Transformers</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 16 Apr 2026 &bull; ⏱️ 9 min read (1843 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, sentence Transformers is a Python library for using and training embedding and reranker models for applications like retrieval augmented generation, semantic search, and more.</li><li style='margin-bottom:6px;'>Recent findings suggest that as a practical example, I'll walk through finetuning Qwen/Qwen3-VL-Embedding-2B for Visual Document Retrieval (VDR), the task of retrieving relevant document pages (as images, with charts, tables, and layout intact) for a given text query.</li><li style='margin-bottom:6px;'>If you're new to multimodal models in Sentence Transformers, I recommend reading Multimodal Embedding & Reranker Models with Sentence Transformers first.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162787"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162787"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162787"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Training and Finetuning Multimodal Embedding &amp; Reranker Models with Sentence Transformers" loading="lazy" src="https://huggingface.co/blog/assets/train-sentence-transformers/st-hf-thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162787">According to recent reports, sentence Transformers is a Python library for using and training embedding and reranker models for applications like retrieval augmented generation, semantic search, and more. In my previous blogpost, I introduced the fresh multimodal capabilities, showing how to use embedding and reranker models that handle text, images, audio, and video. In this blogpost, I'll show you how to train or finetune these multimodal models on your own data.</p>
+<p>Recent findings suggest that as a practical example, I'll walk through finetuning Qwen/Qwen3-VL-Embedding-2B for Visual Document Retrieval (VDR), the task of retrieving relevant document pages (as images, with charts, tables, and layout intact) for a given text query. The resulting tomaarsen/Qwen3-VL-Embedding-2B-vdr demonstrates how much performance you can gain by finetuning on your own domain. On my evaluation data, the finetuned model achieves an NDCG@10 of 0.947 compared to the base model's 0.888, and outperforms all existing VDR models I tested against, including models up to 4x its size.</p>
+<p>If you're new to multimodal models in Sentence Transformers, I recommend reading Multimodal Embedding &amp; Reranker Models with Sentence Transformers first. For training text-only embedding, reranker, or sparse embedding models, see the Prior Blogposts section at the end.</p>
+<p>Sources indicate that general-purpose multimodal embedding models like Qwen/Qwen3-VL-Embedding-2B are trained on diverse data to perform well across a wide range of languages and tasks: image-text matching, visual question answering, document understanding, and more. But this generality means the model is rarely the best choice for any specific task.</p>
+<p>According to recent reports, consider Visual Document Retrieval: given a text query like "What was the company's Q3 revenue?", the model must find the most relevant document screenshot from a corpus of thousands. This requires understanding document layouts, charts, tables, and text, which is a very different skill from e.g. matching pictures of shoes with product descriptions.</p>
+<p>By finetuning on domain-specific data, the model can learn these specialized patterns. In my experiment, finetuning improved NDCG@10 from 0.888 to 0.947, ahead of every recent multimodal model I tested, including ones up to 4x larger.</p>
+<p>Training multimodal Sentence Transformer models involves the same components as training text-only models:.</p>
+<p>Industry observers note that the multimodal training pipeline uses the same SentenceTransformerTrainer as text-only training. The key difference is that your datasets contain images (or other modalities) alongside text, and the model's processor handles the image preprocessing automatically.</p>
+<p>Let's walk through each component, using Visual Document Retrieval (matching text queries to document screenshots) as a running example.</p>
+<p>The most common approach is to finetune an existing multimodal embedding model, or to start from a Vision-Language Model (VLM) checkpoint. The Transformer module automatically detects supported modalities from the model's processor.</p>
+<p>To finetune an existing multimodal embedding model (e.g. one that already has a modules.json file), you can pass processor_kwargs and model_kwargs to control preprocessing and model loading respectively. processor_kwargs are passed directly to AutoProcessor.from_pretrained(...) (e.g., image resolution bounds: higher max_pixels means higher quality but more memory), while model_kwargs are passed to the appropriate AutoModel.from_pretrained(...) call (e.g., precision, attention implementation):.</p>
+<p>You can also start from a fresh VLM checkpoint that hasn't been trained for embeddings yet. Sentence Transformers will attempt to recognize the architecture, infer the supported modalities from the processor, and set up the appropriate forward method and pooling. If the automatic detection doesn't work perfectly for a particular model, the configuration in the saved sentence_bert_config.json can be edited to adjust modality settings, forward methods, and output handling:.</p>
+<p>It has been revealed that in both cases, the Transformer module inspects the processor to determine which modalities are available, and Pooling is added automatically if needed. You can verify the supported modalities:.</p>
+<p>It has been revealed that instead of using a single VLM backbone, you can compose separate encoders for different modalities using the Router module. This lets you combine any existing encoders and route inputs to the appropriate one based on detected modality:.</p>
+<p>Sources indicate that since Router-based multimodal models use separate encoders per modality, their embedding spaces are initially unaligned. Training is required to align the spaces for meaningful cross-modal similarity. The Dense projection layer shown above helps map embeddings from different encoders into a shared space.</p>
+<p>According to recent reports, this approach is useful when you want to use lightweight, specialized encoders rather than a large VLM. You can also combine Router-based multimodality with task-based routing (e.g. different encoders for queries vs. documents) using route_mappings. See the Router documentation for advanced routing scenarios.</p>
+<p>For this example, I use the tomaarsen/llamaindex-vdr-en-train-preprocessed dataset, a preprocessed English subset of llamaindex/vdr-multilingual-train. The source dataset was released alongside the Visual Document Retrieval Goes Multilingual blogpost by LlamaIndex, and consists of ~500k multilingual query-image samples collected from public internet PDFs, with queries synthetically generated using VLMs (gemini-1.5-pro and Qwen2-VL-72B). My preprocessed version filters to the 53,512 English samples and resolves 4 of the 16 ID-based hard negatives per sample into actual document screenshot images, so it can be used directly for training without further preprocessing:.</p>
+<p>Recent findings suggest that the train config contains the first 10,000 samples, and the eval config contains the next 300 samples (a full config with all 53,512 samples is also available). For training, I select query, image, and negative_0 to form (anchor, positive, hard negative) triplets. Including additional hard negatives would likely improve the training signal, but each extra negative also increases memory usage and training time, so I stick with one. For evaluation, I keep all four hard negatives per query to build a more challenging retrieval corpus (more on that in the Evaluator section).</p>
+<p>Recent findings suggest that just like text-only training, the dataset format must match your chosen loss function. The rules are the same:.</p>
+<p>For multimodal datasets, the inputs can contain:.</p>
+<p>The data collator automatically calls model.preprocess(), which detects the modality of each input and applies the appropriate preprocessing. No manual tokenization or image processing is needed.</p>
+<p>Many Hugging Face datasets that work out of the box with Sentence Transformers have been tagged with sentence-transformers, allowing you to easily find them at https://huggingface.co/datasets?other=sentence-transformers.</p>
+<p>For this training, I use CachedMultipleNegativesRankingLoss, a common choice for retrieval tasks. It accepts (query, positive) pairs with any number of additional hard negative columns, from 0 up to n, as long as each sample has the same number of negatives. During training, the loss pushes each query's similarity to its positive up and its similarity to every negative down. The negatives come from two sources:.</p>
+<p>Recent findings suggest that more negatives per query means a stronger training signal, so a larger batch size directly improves training quality. Beyond that, the "cached" variant of the loss uses gradient caching to make large effective batch sizes feasible even when GPU memory is limited.</p>
+<p id="sec-mid-162787">The mini_batch_size parameter controls how many samples are processed at once during the cached forward passes. For large multimodal models, setting this to a small value (e.g., 1) is crucial to avoid out-of-memory errors without sacrificing the benefits of large effective batch sizes:.</p>
+<p>To produce embeddings that work well at multiple dimensionalities, I wrap the base loss with MatryoshkaLoss. This trains the model so that truncating the embedding to a smaller number of dimensions still yields good performance:.</p>
+<p>It has been revealed that this is especially useful for multimodal models, where embeddings can be large (2048 dimensions for Qwen3-VL). With Matryoshka training, you can use truncated embeddings (e.g., 256 or 128 dimensions) at deployment time for faster search with minimal quality loss. As I'll show in the Results section, the finetuned model achieves near-peak performance even at 512 dimensions.</p>
+<p>Industry observers note that the SentenceTransformerTrainingArguments class lets you control training hyperparameters. Here's the configuration used for the VDR finetuning:.</p>
+<p>A few things to note for (multimodal) training:.</p>
+<p>To track retrieval performance before, during, and after training, I use the InformationRetrievalEvaluator. It computes standard retrieval metrics like NDCG@10, MAP, and Recall@k:.</p>
+<p>The evaluator takes text queries, a corpus of images (including hard negatives), and a mapping of which documents are relevant to which queries. Note that the corpus contains a mix of positive and hard negative document screenshots, making this a challenging evaluation. Using batch_size=1 prevents out-of-memory concerns during evaluation of the large VLM.</p>
+<p>It has been revealed that the SentenceTransformerTrainer brings everything together. Here's the complete training script:.</p>
+<p>According to recent reports, the training script is nearly identical to a text-only training script. The only differences are:.</p>
+<p>Everything else (the trainer, training arguments, dataset loading) works exactly the same as text-only training.</p>
+<p>After training for just 1 epoch, the finetuned tomaarsen/Qwen3-VL-Embedding-2B-vdr model achieves an NDCG@10 of 0.947 on the evaluation set (300 queries, 1500 corpus documents, cosine similarity). This is a significant improvement over the base Qwen/Qwen3-VL-Embedding-2B model's 0.888, and outperforms all existing VDR models:.</p>
+<p>The finetuned 2B model outperforms even the 8B Qwen3-VL-Embedding model, demonstrating the power of task-specific finetuning. Finetuning on your own domain is often worth considering, even when a larger general-purpose model is available!</p>
+<p>The comparison above uses full-size 2048-dim embeddings. Thanks to the Matryoshka training, the finetuned model also holds up well when truncated to fewer dimensions, letting you trade off embedding size and retrieval quality at deployment time:.</p>
+<p>Recent findings suggest that the finetuned model's peak is at the full 2048 dimensions (0.948), but it stays within 0.3% of peak all the way down to 512 (4x smaller), and retains over 92% of peak even at 64 (32x smaller). Matryoshka training concentrates the most vital information in the earlier dimensions, so moderate truncation costs very little performance.</p>
+<p>Sources indicate that the gap between 1024 and 2048 dimensions is small (0.946 vs. 0.948), so I've saved the model with truncate_dim=1024 set in its configuration. This means that SentenceTransformer("tomaarsen/Qwen3-VL-Embedding-2B-vdr") produces 1024-dimensional embeddings by default, halving the storage footprint compared to the full 2048. If you want a different dimensionality, pass truncate_dim=N when loading to override it.</p>
+<p>Recent findings suggest that you can also finetune multimodal Cross Encoder (reranker) models using the same training infrastructure. The key difference is using CrossEncoderTrainer and Cross Encoder-specific loss functions. This section provides a brief overview; see the full training examples for complete, runnable scripts with dataset preparation and evaluation.</p>
+<p>Here's a simplified example based on the doodles training script, which trains a reranker to match images with text captions:.</p>
+<p>There are multiple valid architectural choices for multimodal rerankers, including:.</p>
+<p>Both approaches are demonstrated in the multimodal cross encoder training examples.</p>
+<p>According to recent reports, the two scripts linked above split the training data into two datasets, one per direction (image-to-text and text-to-image), with a task-specific prompt for each that tells the model how to score in that direction. Each positive pair is then expanded with randomly sampled negatives so the loss sees a balanced mix of matches and non-matches.</p>
+<p>The Sentence Transformers repository includes several multimodal training examples:.</p>
+<p>Additionally, the following pages may be useful to learn more about training with Sentence Transformers:.</p>
+<p>The direct prerequisite and the prior training guides are listed first, followed by related technique posts that stack with multimodal training:.</p>
+<p id="sec-end-162787">Great tutorial! Would be lovely to see how this fares on https://huggingface.co/spaces/Snowflake/MADQA-Leaderboard :) @Borchmann.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/train-multimodal-sentence-transformers" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="multimodal-embedding-reranker-models-with-sentence-transformers-162800.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162800. Multimodal Embedding & Reranker Models with Sentence Transformers
+        </a>
+        
+        <a href="training-and-finetuning-multi-vector-embedding-models-with-senten-162455.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162455. Training and Finetuning Multi-Vector Embedding Models with Sentence Transformers
+        </a>
+        
+        <a href="training-and-finetuning-embedding-models-with-sentence-transforme-150991.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150991. Training and Finetuning Embedding Models with Sentence Transformers
+        </a>
+        
+        <a href="industry-news-training-and-finetuning-reranker-models-with-senten-150652.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150652. Industry News: Training and Finetuning Reranker Models with Sentence Transformers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

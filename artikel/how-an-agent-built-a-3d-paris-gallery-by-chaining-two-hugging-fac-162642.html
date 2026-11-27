@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces</title>
+    <meta name="description" content="An agent built a 3D Paris gallery from two Hugging Face Spaces. I asked a coding agent to build a beautiful website showcasing the monuments of Paris as 3D">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-an-agent-built-a-3d-paris-gallery-by-chaining-two-hugging-fac-162642.html">
+    <meta property="og:title" content="How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces">
+    <meta property="og:description" content="An agent built a 3D Paris gallery from two Hugging Face Spaces. I asked a coding agent to build a beautiful website showcasing the monuments of Paris as 3D">
+    <meta property="og:image" content="https://cdn-uploads.huggingface.co/production/uploads/60a551a34ecc5d054c8ad93e/0tamlKpAvO3lZEklNmwHT.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-an-agent-built-a-3d-paris-gallery-by-chaining-two-hugging-fac-162642.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces", "image": ["https://cdn-uploads.huggingface.co/production/uploads/60a551a34ecc5d054c8ad93e/0tamlKpAvO3lZEklNmwHT.png"], "datePublished": "2026-06-09T10:46:19", "dateModified": "2026-11-27T16:03:10.318144", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-an-agent-built-a-3d-paris-gallery-by-chaining-two-hugging-fac-162642.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 09 Jun 2026 &bull; ⏱️ 5 min read (1022 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>An agent built a 3D Paris gallery from two Hugging Face Spaces.</li><li style='margin-bottom:6px;'>I asked a coding agent to build a beautiful website showcasing the monuments of
+Paris as 3D Gaussian splats.</li><li style='margin-bottom:6px;'>This post is about how that's possible now, and why I think it's a preview of
+how a lot of multimedia software gets built from here on.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162642"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162642"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162642"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces" loading="lazy" src="https://cdn-uploads.huggingface.co/production/uploads/60a551a34ecc5d054c8ad93e/0tamlKpAvO3lZEklNmwHT.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162642">An agent built a 3D Paris gallery from two Hugging Face Spaces.</p>
+<p>I asked a coding agent to build a beautiful website showcasing the monuments of
+Paris as 3D Gaussian splats. I never opened an image generator. I never touched a
+3D reconstruction tool. The agent produced every asset (the images and the 3D
+splats) by calling two Hugging Face Spaces directly, then wired them into a
+cinematic viewer.</p>
+<p>Here's the result, live as a static Space:.</p>
+<p>This post is about how that's possible now, and why I think it's a preview of
+how a lot of multimedia software gets built from here on.</p>
+<p>It has been revealed that mitchell Hashimoto recently described a shift he calls the
+building block economy:
+the most effective path to software is no longer a polished monolith, but small,
+well-documented components that others (increasingly agents) can assemble. His key observation: AI is okay at building everything from scratch, but it is
+really good at gluing together proven pieces.</p>
+<p>According to recent reports, that thesis has mostly been told with code libraries. But the same forces are
+hitting multimedia AI. The hard part of using a state-of-the-art image model,
+a video model, a TTS model, or a 3D reconstruction model was never the model. It
+was the integration: SDKs, weights, GPUs, input formats, polling. If each model
+were instead a documented, callable block, an agent could glue them together the
+same way it globs together npm packages.</p>
+<p>That's exactly what Hugging Face Spaces have quietly become.</p>
+<p>According to recent reports, the Hub hosts thousands of state-of-the-art models (a huge share of them
+open-weights), and most are deployed as interactive Spaces. As of now,
+every Gradio Space also exposes a plain-text
+agents.md that tells an agent
+exactly how to call it:.</p>
+<p>returns everything needed in one shot: the schema URL, the call and poll templates,
+how to upload files, and the auth hint:.</p>
+<p>No client library. No hardcoded integration. An agent reads that, and it can drive
+the Space end to end. Set an HF_TOKEN
+and you're going. You can find these instructions on any Gradio Space via its
+Agents button:.</p>
+<p>The real unlock is chaining: the output of one Space becomes the input to the
+next. Prompt → image → 3D. That's the whole pipeline behind this gallery.</p>
+<p id="sec-mid-162642">The six source images the agent generated, all isolated on black, ready for
+single-image 3D reconstruction:.</p>
+<p>From there the agent did the "glue" work too. It noticed TripoSplat outputs are
+Y-down and flipped them upright, auto-framed each monument, compressed the .ply
+files to .ksplat (~3× smaller, so they load fast), built a Three.js viewer with a
+scroll-to-switch and drag-to-rotate UI, and deployed the whole thing as a static
+Space. The only human inputs were taste-level: "make it zoomed out," "replace the
+obelisk with something better for splatting," "the transition lingers too long.".</p>
+<p>Several of those steps were the agent reacting to reality. A wide glass pyramid
+splats poorly. A thin obelisk is dull. A single-view reconstruction infers the
+back. That is exactly the "outsourced R&amp;D, fast iteration" loop the building-block
+economy predicts, except the R&amp;D was a conversation.</p>
+<p>Sources indicate that the real test of a building block is how cheaply you can reuse it. Once this
+pipeline existed, spinning up entirely latest galleries cost about one sentence each. "Create a similar Space with splats for Japan," then the same for Egypt, and the
+agent did the rest: six monument images, six splats, compression, a viewer, and a
+deployed Space, per country.</p>
+<p>Several of those steps were the agent reacting to reality. A wide glass pyramid
+splats poorly. A thin obelisk is dull. A single-view reconstruction infers the
+back. That is exactly the "outsourced R&amp;D, fast iteration" loop the building-block
+economy predicts, except the R&amp;D was a conversation. The real test of a building block is how cheaply you can reuse it. Once this
+pipeline existed, spinning up entirely new galleries cost about one sentence each. "Create a similar Space with splats for Japan," then the same for Egypt, and the
+agent did the rest: six monument images, six splats, compression, a viewer, and a
+deployed Space, per country. Same two Spaces, same agents.md, only the prompts changed. That is the
+building-block economy in one line: the marginal cost of a new multimedia app
+falls toward the cost of describing it. Point your own agent at a Space's agents.md and let it cook:
+Paste either link into your coding agent (Claude Code, etc.), set your
+HF_TOKEN, and ask it to build something. The full, reproducible pipeline for this
+gallery, the scripts that hit those two agents.md endpoints, lives in the
+Space repo. The building blocks are sitting right there on the Hub. The agents already know how
+to glue.</p>
+<p>Industry observers note that several of those steps were the agent reacting to reality. A wide glass pyramid
+splats poorly. A thin obelisk is dull. A single-view reconstruction infers the
+back. That is exactly the "outsourced R&amp;D, fast iteration" loop the building-block
+economy predicts, except the R&amp;D was a conversation.</p>
+<p>Sources indicate that the real test of a building block is how cheaply you can reuse it. Once this
+pipeline existed, spinning up entirely new galleries cost about one sentence each. "Create a similar Space with splats for Japan," then the same for Egypt, and the
+agent did the rest: six monument images, six splats, compression, a viewer, and a
+deployed Space, per country.</p>
+<p>It has been revealed that same two Spaces, same agents.md, only the prompts changed. That is the
+building-block economy in one line: the marginal cost of a latest multimedia app
+falls toward the cost of describing it.</p>
+<p>Point your own agent at a Space's agents.md and let it cook:.</p>
+<p>According to recent reports, paste either link into your coding agent (Claude Code, etc.), set your
+HF_TOKEN, and ask it to build something. The full, reproducible pipeline for this
+gallery, the scripts that hit those two agents.md endpoints, lives in the
+Space repo.</p>
+<p id="sec-end-162642">Sources indicate that the building blocks are sitting right there on the Hub. The agents already know how
+to glue.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/mishig/spaces-agents-md" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-hosting-your-models-and-datasets-on-hugging-face-spac-151382.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151382. Tech Report: Hosting your Models and Datasets on Hugging Face Spaces using Streamlit
+        </a>
+        
+        <a href="breaking-visualize-proteins-on-hugging-face-spaces-151291.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151291. Breaking: Visualize proteins on Hugging Face Spaces
+        </a>
+        
+        <a href="deploy-livebook-notebooks-as-apps-to-hugging-face-spaces-151173.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151173. Deploy Livebook notebooks as apps to Hugging Face Spaces
+        </a>
+        
+        <a href="run-comfyui-workflows-for-free-with-gradio-on-hugging-face-spaces-151084.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #151084. Run ComfyUI workflows for free with Gradio on Hugging Face Spaces
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

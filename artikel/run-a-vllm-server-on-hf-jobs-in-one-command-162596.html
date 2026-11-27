@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run a vLLM Server on HF Jobs in One Command</title>
+    <meta name="description" content="It has been revealed that you can spin up a private, OpenAI-compatible LLM endpoint on Hugging Face infrastructure with a single command — no servers to pr">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/run-a-vllm-server-on-hf-jobs-in-one-command-162596.html">
+    <meta property="og:title" content="Run a vLLM Server on HF Jobs in One Command">
+    <meta property="og:description" content="It has been revealed that you can spin up a private, OpenAI-compatible LLM endpoint on Hugging Face infrastructure with a single command — no servers to pr">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/vllm-jobs/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/run-a-vllm-server-on-hf-jobs-in-one-command-162596.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Run a vLLM Server on HF Jobs in One Command", "image": ["https://huggingface.co/blog/assets/vllm-jobs/thumbnail.png"], "datePublished": "2026-06-26T00:00:00", "dateModified": "2026-11-27T16:03:07.140319", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/run-a-vllm-server-on-hf-jobs-in-one-command-162596.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Run a vLLM Server on HF Jobs in One Command</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 26 Jun 2026 &bull; ⏱️ 5 min read (1093 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that you can spin up a private, OpenAI-compatible LLM endpoint on Hugging Face infrastructure with a single command — no servers to provision, no Kubernetes, pay-per-second.</li><li style='margin-bottom:6px;'>It's the quickest way to stand up a model for tests, evals, or batch generation.</li><li style='margin-bottom:6px;'>hf jobs run is docker run for HF infrastructure.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162596"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162596"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162596"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Run a vLLM Server on HF Jobs in One Command" loading="lazy" src="https://huggingface.co/blog/assets/vllm-jobs/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162596">It has been revealed that you can spin up a private, OpenAI-compatible LLM endpoint on Hugging Face infrastructure with a single command — no servers to provision, no Kubernetes, pay-per-second. Once it's up, you can query it from your laptop, a notebook, or anywhere else.</p>
+<p>It's the quickest way to stand up a model for tests, evals, or batch generation. (If you're after a managed, production-ready service instead, that's what Inference Endpoints are for — more on when to pick which at the end.).</p>
+<p>Here's the whole thing end to end.</p>
+<p>hf jobs run is docker run for HF infrastructure. We use the official vllm/vllm-openai image, ask for a GPU with --flavor, and expose vLLM's port with --expose:.</p>
+<p>Industry observers note that --expose 8000 routes the container's port through HF's public jobs proxy (see the Serve Models guide for the full reference). The command prints the URL your server is reachable at:.</p>
+<p>Sources indicate that 6a381ca1953ed90bfb947332 is your job ID. Keep track of it, we'll need it. We'll use  as a placeholder for it in the rest of the post.</p>
+<p>It has been revealed that give it a couple of minutes to download weights and boot. When the logs show Application startup complete, you're live.</p>
+<p>vLLM speaks the OpenAI API, and every request just needs your HF token as a bearer token. The quickest way to hit it is curl:.</p>
+<p>which returns the usual OpenAI-style JSON, with choices[0].message.content holding "Hello! How can I assist you today? 😊".</p>
+<p>Or, from Python, point the OpenAI client at the exposed URL and pass the token as the API key:.</p>
+<p>Quick health check before you start: curl https://--8000.hf.jobs/v1/models -H "Authorization: Bearer $(hf auth token)" should list the model.</p>
+<p>🔐 The endpoint is gated, not public. Every request must carry an HF token with read access to the job's namespace. A plain browser visit will be rejected. In effect, the jobs proxy is your API gate: access is scoped to you (and your org). That's fine for private use, but treat the URL accordingly: don't share it expecting it to be open, and don't paste your token into untrusted places. If you need finer-grained or public access, put a proper gateway in front instead. Or see HF Jobs or Inference Endpoints? below.</p>
+<p>Jobs are billed per second, so stop the server when you're done:.</p>
+<p>Sources indicate that the --timeout you set is a safety net (it'll auto-stop), but cancelling explicitly is cheaper. An a10g-large runs at $1.50/hour — check hf jobs hardware for the full price list and pick the smallest flavor that fits your model.</p>
+<p>Recent findings suggest that the same command scales to much larger models — pick a beefier --flavor and tell vLLM to shard the model across the GPUs with --tensor-parallel-size. For example, the 122B Qwen3.5 mixture-of-experts model on 2× H200:.</p>
+<p id="sec-mid-162596">--tensor-parallel-size should match the number of GPUs in the flavor (h200x2 → 2, h200x8 → 8). Run hf jobs hardware to see what's available and give bigger models a longer --timeout, since they take longer to download and load. For large models, H200 flavors are usually the best value.</p>
+<p>Industry observers note that the --max-model-len 32768 --max-num-seqs 256 flags are specific to this model: Qwen3.5-122B is a hybrid Mamba/attention architecture with a 256K-token default context, which doesn't leave enough memory for vLLM's default batch settings. Capping the context length and concurrent-sequence count keeps it within the GPUs' memory. If a model fails to start with an out-of-memory or cache-block error, dialing these two down is the first thing to try. Everything else (the exposed URL, the OpenAI client, the token auth) stays exactly the same.</p>
+<p>Sources indicate that prefer a chat window over curl? A few lines of Gradio point at the same endpoint. Add --reasoning-parser deepseek_r1 to the vllm serve command so Qwen3's thinking comes back as a separate field (not necessary, but helpful), then run this code locally (you'll just need the job ID):.</p>
+<p>Run it, open http://127.0.0.1:7860, and chat — reasoning streams into the collapsible panel, the answer below.</p>
+<p>According to recent reports, need to debug a startup failure, watch GPU memory, or tail logs interactively? You can open a shell straight into the running job. Launch it with --ssh and make sure your public key is registered at huggingface.co/settings/keys:.</p>
+<p>Sources indicate that you're now inside the container, where you can run nvidia-smi, inspect the process, or poke at the model directly — which makes debugging and monitoring much easier than reading logs from the outside. SSH support requires huggingface_hub &gt;= 1.20.0.</p>
+<p>The same endpoint can back a terminal coding agent. Pi is a provider-agnostic agent harness. Point it at the job and you get a Read/Write/Edit/Bash agent running on your own self-hosted model.</p>
+<p>In a recent development, one thing to set up first: agents drive the model through tool calls, and vLLM only accepts those if the server is launched with tool calling enabled. So relaunch with --enable-auto-tool-choice and a --tool-call-parser matching the model family (hermes for Qwen3). Agents also benefit from a stronger model, so this is a good place to bring in the bigger one:.</p>
+<p>Then add the job as a custom provider in ~/.pi/agent/models.json:.</p>
+<p>Then launch the agent against it:.</p>
+<p>The model you spun up a couple of commands ago, now driving an interactive coding agent in your terminal.</p>
+<p>HF Jobs isn't the only way to serve a model on Hugging Face. Inference Endpoints are our managed product for the same job, and which one fits depends on what you're after.</p>
+<p>Sources indicate that reach for HF Jobs when you want maximum flexibility and control: it's just docker run on HF infrastructure, so you pick the image, the exact vllm serve flags, and the hardware, and you pay per second for as long as the job runs. That makes it a great fit for experiments, one-off evals, batch generation, or kicking the tires on a model before committing to anything.</p>
+<p>In a recent development, reach for Inference Endpoints when you want something more production-ready. They add the operational niceties a long-lived service needs: finer-grained access control (an endpoint can be public, protected, or private), and scale-to-zero, so you're not billed during periods of inactivity. If you're standing up a durable endpoint rather than running a job, that's the tool to grab.</p>
+<p id="sec-end-162596">It has been revealed that this post sticks to vLLM, but the same expose-a-port pattern works with any OpenAI-compatible server. To serve GGUFs with llama.cpp or run SGLang instead, see the Serve Models on Jobs guide, which walks through those backends.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/vllm-jobs" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-ai-models-on-one-vllm-server-secretly-talk-through-gpu-r-162802.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162802. Breaking: AI models on one vLLM server secretly talk through GPU rounding errors
+        </a>
+        
+        <a href="florida-law-allowing-bar-liability-for-knowingly-serving-habitual-160218.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #160218. Florida Law Allowing Bar Liability for Knowingly Serving "Habitually Addicted" Doesn't Apply When Server Only Saw One Drinking Session
+        </a>
+        
+        <a href="why-barnsley-fc-captain-cameron-mcgeehan-has-sympathy-for-daniel--153448.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #153448. Why Barnsley FC captain Cameron McGeehan has sympathy for Daniel Stendel amid wretched League One run
+        </a>
+        
+        <a href="building-the-hugging-face-mcp-server-162983.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162983. Building the Hugging Face MCP Server
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

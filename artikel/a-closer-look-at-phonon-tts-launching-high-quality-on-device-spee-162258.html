@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.</title>
+    <meta name="description" content="Two weeks ago, we opened up Phonon, our small text-to-speech model that runs on your own device. It needs no server and no network, and what you type stays">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/a-closer-look-at-phonon-tts-launching-high-quality-on-device-spee-162258.html">
+    <meta property="og:title" content="A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.">
+    <meta property="og:description" content="Two weeks ago, we opened up Phonon, our small text-to-speech model that runs on your own device. It needs no server and no network, and what you type stays">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/phonon-closer-look/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/a-closer-look-at-phonon-tts-launching-high-quality-on-device-spee-162258.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.", "image": ["https://huggingface.co/blog/assets/phonon-closer-look/thumbnail.png"], "datePublished": "2026-11-05T00:00:00", "dateModified": "2026-11-27T16:02:45.999418", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/a-closer-look-at-phonon-tts-launching-high-quality-on-device-spee-162258.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 05 Nov 2026 &bull; ⏱️ 7 min read (1363 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Two weeks ago, we opened up Phonon, our small text-to-speech model that runs on your own device.</li><li style='margin-bottom:6px;'>We've been very happy with the reception so far.</li><li style='margin-bottom:6px;'>Sources indicate that most voice AI lives in the cloud: every sentence makes a round trip to a server.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162258"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162258"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162258"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks." loading="lazy" src="https://huggingface.co/blog/assets/phonon-closer-look/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162258">Two weeks ago, we opened up Phonon, our small text-to-speech model that runs on your own device. It needs no server and no network, and what you type stays with you.</p>
+<p>We've been very happy with the reception so far. So here's the story of the launch: why we built Phonon, what it can do, the demos that came with it, and how it did on Hugging Face's Open TTS Leaderboard.</p>
+<p>Sources indicate that most voice AI lives in the cloud: every sentence makes a round trip to a server. Phonon runs on your own device instead. Your text stays there and the voice works without a network. We’ve also opened the weights. Phonon 31m is Apache 2.0, so you can use it for free, even in a commercial product. The other models are CC BY-NC, so they’re free for non-commercial projects. If you’re building something commercial with those, pricing is based on your number of owners, not how much speech you generate.</p>
+<p>Industry observers note that getting a good voice to run on a small device has always been hard. You could make the model small, but then it didn’t sound great. Or you could make it sound great, but then it wouldn’t fit. We addressed both.</p>
+<p>We confirmed Phonon in April and spent the next six months building on it with partners and early owners. Their feedback helped us to shape this release. The models got smaller, and we added more languages and support for custom voices through voice cloning and voice design.</p>
+<p>Phonon is based on the Pocket TTS lineage and as such uses flow matching to generate the audio which is very different from the modeling techniques used in other TTS systems. This is what allowed us to bring this level of quality to such a small model but it created new challenges while training the models. The training was initially numerically unstable and required several tricks to produce quality results on all five languages.</p>
+<p>Phonon comes in two sizes, at about 65 MB and 75 MB. Together they speak English, French, German, Spanish and Portuguese. There are more than 100 built-in voices, and you can create your own in Gradium Studio. Phonon also handles the vital things that most other TTS systems often stumble on, like phone numbers, dates and codes.</p>
+<p>It runs on phones, laptops, single-board computers and in a browser tab, so you can hear it right now. Phonon 31m speaks English and is Apache 2.0, so you can build on it freely, including for commercial products. Phonon 40m covers all five languages under a non-commercial license.</p>
+<p>Sources indicate that the launch came with demos from friends and from our own team. On an Apple Watch with Wi-Fi off, Phonon talks you through a coffee brew step by step. On an iPhone with no signal, it counts your reps and keeps you going. A robot called Lamp, from Autonomous, wears a sorting hat and talks in character. In a browser, an offline dino runner becomes a radio show hosted by Rex. There's also a sci-fi game voiced on the player's own machine, and Proust read aloud page by page.</p>
+<p>The Hugging Face team built the Transformers integration, so developers could use Phonon in Transformers from day one.</p>
+<p>Sources indicate that developers have started building on it too. An ExecuTorch conversion runs Phonon on a visitor's GPU in the browser, Micdrop brings it to Node.js apps, and Spaces like smallest-s2s build on it.</p>
+<p>Phonon was downloaded more than 200,000 times in its first two weeks, and it’s still trending on Hugging Face.</p>
+<p>The Open TTS Leaderboard is a very new project from Hugging Face, and we love it. With more than 9,000 TTS models on the Hugging Face Hub, the leaderboard gives developers one place to compare open models and hear them side by side. Across 23 languages, models are evaluated on intelligibility (word error rate of the outputs), speed (inverse real-time factor and time-to-first audio), and naturalness (UTMOS for English and KOMOS for Korean). Fixed-voice and voice cloning are evaluated, with an additional speaker similarity metric for the latter. The leaderboard also has a Listen tab, where you can conveniently compare TTS outputs yourself and vote for the ones you like the most.</p>
+<p>On intelligibility, Phonon ranks first in German and Spanish, and in the top three in every language we evaluated, next to models up to 100 times its size.</p>
+<p id="sec-mid-162258">Speed is where we see Phonon truly shine, as the models top the CPU streaming benchmark on time-to-first audio.</p>
+<p>Sources indicate that we built a new inference framework, ptts, specifically for Phonon. The goal of ptts is to get the best performance on a wide variety of devices and as such supports more than 10 backends: CPU (Intel, Arm, WebAssembly), GPU (CUDA, Vulkan, Metal, WebGPU), and NPU (Apple Core ML, Snapdragon®).</p>
+<p>Phonon is also available in 🤗 Transformers, from v5.21, as its reference PyTorch implementation. Where ptts runs a single stream on device, Transformers targets GPU throughput: batched generation, full-graph torch.compile, e.g., for synthesizing speech datasets at scale. Being native PyTorch, it is a base to build upon, whether to integrate Phonon into your own stack or to study the model itself.</p>
+<p>Sources indicate that it belongs to the Pocket TTS lineage, so we first added Pocket TTS to Transformers. Phonon sits on top as a modular model: about 200 lines describing only what differs.</p>
+<p>It has been revealed that phonon generates audio latents autoregressively: each step outputs a latent that is fed back as the next input, and the training loss is computed on them. Latents are the model's inputs, outputs and targets, as text tokens are for a language model, so the codec mapping audio to latents plays the role of a tokenizer. Transformers ships it as such: an audio tokenizer, held by the processor next to the text tokenizer:.</p>
+<p>A voice is not a recording but a tensor of speaker latents. Phonon never encodes audio directly with its audio tokenizer, which ships decoder-only, and voices come precomputed: gradium/phonon-voices.</p>
+<p>The prompt layout (voice positions, text, then a token opening the audio) ships with the checkpoint as a chat template, as for other multimodal models in Transformers. You write a standard conversation, with an empty audio item where the voice goes, and your code stays the same across checkpoints. The processor then expands the voice placeholder to one position per frame, normalizes and tokenizes the text, and batches the inputs:.</p>
+<p>generate returns latents, which the processor decodes to audio:.</p>
+<p>Phonon can speak with any voice. Clone one from a short recording with the speaker’s consent, or describe a latest one in plain text in Gradium Studio. Then download the voice file, load it in Phonon, and it runs fully on the device.</p>
+<p>Industry observers note that we also train custom Phonon models with design partners. If your memory budget is tight, we can make the model smaller. If you need Korean, Arabic or Japanese, we can train for that too. And if your product has its own vocabulary, we can fine-tune on it. Get in touch and tell us what you need.</p>
+<p>Thank you to the Hugging Face team, and to everyone who tried Phonon in its first two weeks.</p>
+<p>According to recent reports, phonon is our first open release. Try it out and tell us what you build.</p>
+<p>Congrats on the launch — running this cleanly on an Apple Watch with Wi-Fi off is genuinely impressive. As a German speaker I'm happy to see it top the intelligibility ranking in German; the compounding is unforgiving to TTS, so that's not a small win.</p>
+<p id="sec-end-162258">Sources indicate that one line in "what's next" I keep coming back to: Korean, Arabic and Japanese get offered as custom-training requests. That framing quietly shows where the field's centre of gravity still sits — a handful of languages are first-class citizens, and everything else is a sales conversation. The Open TTS Leaderboard covering 23 languages is a great step, but the long tail of the world's languages is still waiting. Would love to see lower-resource languages get first-class leaderboard slots rather than a custom quote.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/phonon-tts" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="on-device-speech-recognition-and-text-to-speech-in-google-ai-edge-162620.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162620. On-Device Speech Recognition and Text-to-Speech in Google AI Edge Gallery
+        </a>
+        
+        <a href="tech-report-open-tts-leaderboard-scalable-evaluation-for-multilin-162380.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162380. Tech Report: Open TTS Leaderboard: Scalable Evaluation for Multilingual Text-to-Speech and Voice Cloning
+        </a>
+        
+        <a href="tech-report-9-frozen-puff-pastry-desserts-that-only-look-high-eff-160472.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #160472. Tech Report: 9 Frozen Puff Pastry Desserts That Only Look High Effort
+        </a>
+        
+        <a href="autistic-brains-look-surprisingly-similar-on-average-then-scienti-157877.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #157877. Autistic brains look surprisingly similar on average. Then scientists looked closer.
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

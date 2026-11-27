@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use Transformers.js in a Chrome Extension</title>
+    <meta name="description" content="We recently released a Transformers.js demo browser extension powered by Gemma 4 E2B to help users navigate the web. While building it, we ran into several">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-to-use-transformersjs-in-a-chrome-extension-162771.html">
+    <meta property="og:title" content="How to Use Transformers.js in a Chrome Extension">
+    <meta property="og:description" content="We recently released a Transformers.js demo browser extension powered by Gemma 4 E2B to help users navigate the web. While building it, we ran into several">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/transformersjs-chrome-extension/thumbnail.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-to-use-transformersjs-in-a-chrome-extension-162771.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How to Use Transformers.js in a Chrome Extension", "image": ["https://huggingface.co/blog/assets/transformersjs-chrome-extension/thumbnail.jpg"], "datePublished": "2026-04-23T00:00:00", "dateModified": "2026-11-27T16:03:17.513244", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-to-use-transformersjs-in-a-chrome-extension-162771.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How to Use Transformers.js in a Chrome Extension</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 23 Apr 2026 &bull; ⏱️ 5 min read (901 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>We recently released a Transformers.js demo browser extension powered by Gemma 4 E2B to help users navigate the web.</li><li style='margin-bottom:6px;'>While building it, we ran into several practical observations about Manifest V3 runtimes, model loading, and messaging that are worth sharing.</li><li style='margin-bottom:6px;'>This guide is for developers who want to run local AI features in a Chrome extension with Transformers.js under Manifest V3 constraints.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162771"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162771"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162771"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How to Use Transformers.js in a Chrome Extension" loading="lazy" src="https://huggingface.co/blog/assets/transformersjs-chrome-extension/thumbnail.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162771">We recently released a Transformers.js demo browser extension powered by Gemma 4 E2B to help users navigate the web.</p>
+<p>While building it, we ran into several practical observations about Manifest V3 runtimes, model loading, and messaging that are worth sharing.</p>
+<p>This guide is for developers who want to run local AI features in a Chrome extension with Transformers.js under Manifest V3 constraints.</p>
+<p>By the end, you will have the same architecture used in this project: a background service worker that hosts models, a side panel chat UI, and a content script for page-level actions.</p>
+<p>In this guide, we will recreate the core architecture of Transformers.js Gemma 4 Browser Assistant, using the published extension as a reference and the open-source codebase as the implementation map.</p>
+<p>Before diving in, a quick scope note: I will not go deep on the React UI layer or Vite build configuration. The focus here is the high-level architecture decisions: what runs in each Chrome runtime and how those pieces are orchestrated.</p>
+<p>If Manifest V3 is newly introduced to you, read this short overview first:
+What is Manifest V3?.</p>
+<p>In a recent development, in MV3, your architecture starts in public/manifest.json. This project defines three entry points:.</p>
+<p>The background service worker also handles chrome.action.onClicked to open the side panel for the active tab. Related entry point to know: a popup can be defined with action.default_popup and works well for quick actions. This project uses a side panel for persistent chat, but the orchestration pattern is the same.</p>
+<p>The key design decision is to keep heavy orchestration in the background and keep UI/page logic thin.</p>
+<p>One practical consequence of this division is that the conversation history also lives in background (Agent.chatMessages): the UI sends events like AGENT_GENERATE_TEXT, background appends the message, runs inference, then emits MESSAGES_UPDATE back to the side panel.</p>
+<p>This split avoids duplicate model loads, keeps the UI responsive, and respects Chrome's security boundaries around DOM access.</p>
+<p>In a recent development, once runtimes are separated, messaging becomes the backbone. In this project, all messages are typed through enums in src/shared/types.ts.</p>
+<p>The orchestration rule is simple: the background is the single coordinator; side panel and content script are specialized workers that request actions and render results.</p>
+<p>In src/shared/constants.ts, this extension uses two model roles:.</p>
+<p>The split is intentional: Gemma 4 handles reasoning/tool decisions, while MiniLM generates vector embeddings for the semantic similarity search in ask_website and find_history.</p>
+<p>All inference runs in background (src/background/background.ts):.</p>
+<p>It has been revealed that this gives a single model host for all tabs/sessions, avoids duplicate memory usage, and keeps the side panel UI responsive. Because models are loaded from the background service worker, artifacts are cached under the extension origin (chrome-extension://) rather than per-website origins, which gives one shared cache for the whole extension install.</p>
+<p id="sec-mid-162771">MV3 lifecycle note: service workers can be suspended and restarted, so model runtime state should be treated as recoverable and re-initialized when needed.</p>
+<p>The model lifecycle is explicit:.</p>
+<p>It has been revealed that permissions and privacy are part of the architecture, not a checkbox at the end. In this project, public/manifest.json asks for sidePanel, storage, scripting, and tabs, plus host_permissions for http(s)://*/*:.</p>
+<p>Recent findings suggest that why keep this narrow: permissions define user trust and Chrome Web Store review risk. Request only what your features actually need, and state clearly that inference runs locally in the extension runtime so customers understand where their data is processed.</p>
+<p>Before the execution loop, it helps to understand how model tool calling works (the basis for any agentic workflow). You pass messages plus a tool schema (name, description, and parameters), and Transformers.js formats the actual prompt from those inputs using the model's chat template. Because chat templates are model-specific, the exact tool-call format depends on the model you use. With Gemma-4-style templates, the model emits a special tool-call token block when it decides to call one.</p>
+<p>At generation time, the model can emit output like:.</p>
+<p>That is exactly why this project has a normalization layer (webMcp) and a parser (extractToolCalls): model output must be converted into deterministic tool executions.</p>
+<p>src/background/agent/webMcp.tsx normalizes extension tools into a model-friendly shape:.</p>
+<p>Example tools include get_open_tabs, go_to_tab, open_url, close_tab, find_history, ask_website, and highlight_website_element.</p>
+<p>The core design choice here is to separate internal model messages from UI-facing chat messages:.</p>
+<p>This keeps user communication clean while preserving a deterministic tool loop in the background.</p>
+<p>According to recent reports, state placement is another architectural decision that matters a lot in MV3. In this implementation, state is split by lifecycle and access pattern:.</p>
+<p>As described in section 1.2, keeping conversation history in background gives one canonical state across UI updates. This keeps short-lived state in memory, durable settings in extension storage, and heavy retrieval data in a local database.</p>
+<p>You do not need a complex build setup, but MV3 does require predictable outputs for each runtime.</p>
+<p>The goal is simple: one artifact per Chrome entry point, in the exact place public/manifest.json expects.</p>
+<p>The architecture choice that unlocks this whole project is clear separation of concerns: background owns orchestration and model execution, UI surfaces stay thin, and content scripts handle page access.</p>
+<p>This project uses a side panel, but the same approach works for other setups:.</p>
+<p id="sec-end-162771">The practical rule is simple: decide where state lives (global, tabId, or site-scoped), keep that state and the model inference in background (basically as background services), and let UI/content runtimes act as focused clients.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/transformersjs-chrome-extension" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tricks-from-openai-gpt-oss-you-can-use-with-transformers-162943.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162943. Tricks from OpenAI gpt-oss YOU 🫵 can use with transformers
+        </a>
+        
+        <a href="timm-transformers-use-any-timm-model-with-transformers-150819.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150819. Timm ❤️ Transformers: Use any timm model with transformers
+        </a>
+        
+        <a href="smol2operator-post-training-gui-agents-for-computer-use-162932.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162932. Smol2Operator: Post-Training GUI Agents for Computer Use
+        </a>
+        
+        <a href="swift-transformers-reaches-10-and-looks-to-the-future-162931.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162931. Swift Transformers Reaches 1.0 – and Looks to the Future
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

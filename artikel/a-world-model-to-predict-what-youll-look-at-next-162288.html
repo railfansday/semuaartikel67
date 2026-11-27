@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A World Model to Predict What You’ll Look at Next</title>
+    <meta name="description" content="One of the most frustrating aspects of using the old autoencoder-based FaceSwap program (or the more popular DeepFaceLab, which had exactly the same issue)">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/a-world-model-to-predict-what-youll-look-at-next-162288.html">
+    <meta property="og:title" content="A World Model to Predict What You’ll Look at Next">
+    <meta property="og:description" content="One of the most frustrating aspects of using the old autoencoder-based FaceSwap program (or the more popular DeepFaceLab, which had exactly the same issue)">
+    <meta property="og:image" content="https://www.unite.ai/wp-content/uploads/2026/11/gaze-MAIN2.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/a-world-model-to-predict-what-youll-look-at-next-162288.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "A World Model to Predict What You’ll Look at Next", "image": ["https://www.unite.ai/wp-content/uploads/2026/11/gaze-MAIN2.jpg"], "datePublished": "2026-11-27T10:26:26-05:00", "dateModified": "2026-11-27T16:02:47.817550", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/a-world-model-to-predict-what-youll-look-at-next-162288.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>A World Model to Predict What You’ll Look at Next</h1>
+        <div class="meta-line">🌐 Source: <strong>Unite</strong> &bull; 📅 27 Nov 2026 &bull; ⏱️ 12 min read (2439 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>One of the most frustrating aspects of using the old autoencoder-based FaceSwap program (or the more popular DeepFaceLab, which had exactly the same issue), was trying to get a person to either look to camera, or not look to camera:.</li><li style='margin-bottom:6px;'>The IA Change Image tool is one of many, including functionality native to Photoshop in the neural filters section, that offers consumers a chance to rethink eye direction.</li><li style='margin-bottom:6px;'>If the training data for the personality did not have enough ‘eye contact’, camera-facing examples, the model trained from it simply did not have the data to generate that eyeline, since it had discounted the few to-camera examples as outliers in the training data, during the training process.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162288"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162288"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162288"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="A World Model to Predict What You’ll Look at Next" loading="lazy" src="https://www.unite.ai/wp-content/uploads/2026/11/gaze-MAIN2.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162288">One of the most frustrating aspects of using the old autoencoder-based FaceSwap program (or the more popular DeepFaceLab, which had exactly the same issue), was trying to get a person to either look to camera, or not look to camera:.</p>
+<p>The IA Change Image tool is one of many, including functionality native to Photoshop in the neural filters section, that offers consumers a chance to rethink eye direction. Source.</p>
+<p>If the training data for the personality did not have enough ‘eye contact’, camera-facing examples, the model trained from it simply did not have the data to generate that eyeline, since it had discounted the few to-camera examples as outliers in the training data, during the training process.</p>
+<p>Conversely, if one had used ‘influencer’-style videos as the primary data source, it would be practically impossible to get the AI persona to not look at the camera, since ‘eye contact’ was dominant in the data.</p>
+<p>You would think the age of diffusion-based generative AI would have ushered all these issues away; yet recognizing, changing, and predicting eye direction remains a very dark art even now.</p>
+<p>In 2023 NVIDIA’s Broadcast app offered eyeline-changing on demand, though it did not seem on launch to be a reliable or totally convincing solution:.</p>
+<p>Recent findings suggest that A grab from the premium demo for NVIDIA Broadcast’s gaze-altering functionality. Even in this flagship example, the AI-altered version does not really look to camera properly. Source.</p>
+<p>Photoshop included a Change Eye Direction facility in one of its Neural Filters even before the advent of Firefly GenAI in the program; but neither of these methods have ever worked very well. Likewise, asking even the best of the current frontier Vision Language Models (VLMs) to subtly change eye direction in a photo still obtains spotty results.</p>
+<p>Photoshop’s gaze correction feature relied initially on cloud processing, since most users lacked the GPU resources needed to perform the task locally. Even then, achieving a convincing change in gaze required considerable manual retouching. In both examples shown here, the original eye color has been poorly reproduced. In the Jennifer Lawrence example the iris is softly-rendered; in the Ryan Gosling example, the iris appears considerably smaller. Source  (The author’s own work at another domain).</p>
+<p>Recent findings suggest that the problem is the very small amount of ‘action area’ involved in eye direction, both in the real world, and as a pixel-percentage of footage. Though I used to obtain some limited improvement in autoencoder-based genAI tools by specifically training eye-contact/averted paired datasets, that kind of approach is really pushing against the domain trends in the base model.</p>
+<p>Diffusion-based models, unless diverted by ancillary mechanisms, tend to treat all sections of images and videos as equally important; one can therefore imagine the sheer volume of variegated eye data necessary in a training set to draw the model’s attention to such a small section of the total available image space.</p>
+<p>A number of research methods have tried to improve on the state of the art in this regard by leveraging secondary indicators such as audio cues:.</p>
+<p>Industry observers note that in the 2023 paper ‘Multi-Modal Gaze Following in Conversational Scenarios’ , audio is used as a clue to indicate eye gaze. Source.</p>
+<p>Perhaps the most common and obvious proxy for gaze direction is head direction:.</p>
+<p>It has been revealed that examples of head-based eye disposition guessing in a 2024 paper. Source.</p>
+<p>But this presumption may be one of the main reasons for mis-prediction of gaze direction, since you never know when the owner of the eyes will be subverting it:.</p>
+<p>Recent findings suggest that A case – albeit a telescoped one – where head direction does not equate to eye direction. Here the lateral diversion is very expressive, and indicative of some kind of narrative event, and clearly should not be dismissed as an outlier. Source.</p>
+<p>Another recently-adopted proxy for gaze-estimation is evaluating what events are taking place in a scene, and guessing from that context where the eyes of an individual are likely to be alighting. For instance, this summer saw the release of the paper TextGaze: Prompting Gaze Target Estimation with Textual Scene Cues, which uses a VLM to generate textual descriptions of a person’s appearance, actions and apparent gaze direction, to establish where the person is looking:.</p>
+<p>Test results comparing TextGaze (right) with the earlier GazeLLE system (center). The addition of contextual information helps the newer system locate gaze targets even when facial details are difficult to discern or other elements in the scene are visually distracting. Source.</p>
+<p>As one can see from the examples above, in some of the cases under test, guessing the eye direction would even be momentarily challenging for us, even though (for reasons of mating and avoiding or sharpening combat) this skill is life-critical for humans.</p>
+<p>Following on from this research is a more recent outing, a collaboration between the University of Illinois Urbana-Champaign and Google, titled Gaze World Model, which attempts to predict where a person will look next in a scene:.</p>
+<p>It has been revealed that from the upcoming paper, test results using two clips from ‘It’s Always Sunny in Philadelphia’. Yellow boxes identify the people whose gaze is being tracked, green circles indicate where they actually look, and red crosses indicate the model’s estimates. The second and third frames in each sequence show future moments that the system had to predict without seeing the footage. Source.</p>
+<p>Sources indicate that the system was trained on video sequences in which changes in people’s gaze could be associated with activity around them. The beginnings of a hand gesture, for instance, might be interpreted as an early indication of where another person’s attention will be directed.</p>
+<p>Industry observers note that ‘Where a person looks indicates their focus of attention, and how their gaze shifts between targets reveals how that attention responds to a changing scene. Existing gaze target estimation methods largely operate frame by frame and do not model these shifts.</p>
+<p>‘Gaze shifts are often driven by dynamic changes in the scene, which is the kind of information world models are designed to encode.’.</p>
+<p>Industry observers note that with only two seconds of footage, the upcoming model allows gaze locations to be be predicted throughout the following second, with greater accuracy than was achieved by competing methods, the authors contend. In tests against both specialist gaze estimation systems and general-purpose AI models, including Google’s Gemini, nearly nine out of ten upcoming changes in gaze were successfully anticipated by the new system, compared to fewer than eight out of ten by its closest rival.</p>
+<p>Recent findings suggest that GWM uses Meta’s V-JEPA 2.1 as a foundation. Unlike generative video models, V-JEPA was designed to learn how the physical world behaves from video footage, without having to reconstruct every pixel of a scene. Rather, its existing knowledge of movement and interaction was adapted to the specific task of gaze prediction.</p>
+<p>According to recent reports, overview of the Gaze World Model. Current gaze is estimated from the available footage (blue), while future gaze is estimated from predicted changes in the scene (purple) from latent scene dynamics.</p>
+<p>A shift in gaze was defined as a brief transition between two sustained periods of looking at different targets, as shown below:.</p>
+<p>It has been revealed that illustration of a gaze shift from a person to an object. The subject (yellow dashed box) looks initially at the other person’s face before redirecting her attention to the sheet of paper. Minimum fixation periods and a maximum transition time are imposed to distinguish meaningful changes in attention from fleeting eye movements.</p>
+<p>The three types of gaze shift studied were from one person to another; from a person to an object or other location; and from an object or other location to a person, based on the V-JEPA 2.1 methodology:.</p>
+<p>Industry observers note that examples of V-JEPA 2.1 predicting upcoming human actions from first-person video footage. The colored boxes identify objects that the person may interact with next, with labels indicating the anticipated action and time until contact. Each set of predictions is shown alongside what actually occurred. Source.</p>
+<p id="sec-mid-162288">Using the Scene-Head Interaction Module (SIM) from the earlier PaGE project, visual information about the person’s head was combined with information about the surrounding scene, and changes in both analyzed across successive frames.</p>
+<p>Examples of zero-shot visual attention estimation from the PaGE study. Source.</p>
+<p>Recent findings suggest that during training, greater weight was given to parts of the scene undergoing the most visual change, since these could contain early indications of events likely to attract the subject’s attention. Both the future location of the gaze and the likelihood of a shift in attention were estimated – but not the exact moment at which the shift would occur.</p>
+<p>For training and evaluation, the existing VideoAttentionTarget and ChildPlay datasets were supplemented with annotations identifying changes in gaze.</p>
+<p>According to recent reports, examples from the ChildPlay dataset. Source.</p>
+<p>Through a semi-automated annotation process, 6,204 gaze shifts were confirmed, with 15,086 video segments used for training. For this purpose, Meta’s SAM 3 semantic segmentation model was used to identify people and objects at the annotated gaze locations, with temporal rules applied to identify potential gaze shifts.</p>
+<p>According to recent reports, subsequently, Google’s Gemini 3.5 Flash examined sequences of frames to establish whether the subject had actually changed their focus of attention, rather than merely blinking or following a moving target. Ambiguous cases were referred to human reviewers, and random audits of 15% of the annotations conducted, with a final sampled error rate of 0.5%.</p>
+<p>Tests were designed to evaluate how accurately Gaze World Model (GWM) could establish where and when a person redirected their gaze in existing footage – and predict gaze locations and shifts beyond the observed footage. Comparisons were made with specialist image- and video-based gaze estimation systems, gaze forecasting methods, and general-purpose multimodal models.</p>
+<p>For gaze estimation in existing footage, GWM was tested against the image-based Gaze-LLE and PaGE systems, and MTGS, a video-based model designed to analyze social gaze. For the prediction of future gaze, the authors developed two implementations of the SAGE forecasting method (whose original code is unavailable) using the Sharingan Transformer architecture and PaGE to establish gaze locations.</p>
+<p>Additionally, Qwen3.8 27B and Gemini 3.8 Flash were tested on both tasks, without additional training.</p>
+<p>Training took place in two stages, initially using still images drawn primarily from the GazeFollow dataset, with additional material from VideoAttentionTarget, ChildPlay, and Multi-view Gaze Target Estimation (MVGT).</p>
+<p>Recent findings suggest that the components trained to interpret individual images were then frozen, and the system trained on video sequences to anticipate changes in the scene and estimate gaze locations. Finally, these newly trained components were also frozen, and their outputs used to train the gaze-shift detection and forecasting modules.</p>
+<p>Industry observers note that three sizes of the V-JEPA 2.1 visual encoder were used, frozen – ViT-B, ViT-L and ViT-g. Video clips comprised 16 frames sampled at 8fps, with gaze forecast for the subsequent eight frames. Training used four NVIDIA H100 GPUs, each with 80GB of VRAM.</p>
+<p>Initial video training ran for 20 epochs with the AdamW optimizer, an effective batch size of 32, a peak learning rate of 0.0005, weight decay of 0.05, a linear warmup over 300 updates, and cosine decay to 0.0000001.</p>
+<p>The gaze-shift modules were trained for 25 epochs using the same schedule, with a batch size of 64, a peak learning rate of 0.0003, and a warmup over 200 updates.</p>
+<p>Sources indicate that test results for gaze estimation and gaze-shift detection in existing footage. The three variants of GWM (bottom) achieved the highest scores for detecting changes in gaze. Best results are in bold, and second-best results are underlined.</p>
+<p>Recent findings suggest that in the tests, all three versions of the newly introduced model outperformed every rival at detecting changes in gaze within the observed footage, including the smallest version, with less than a tenth of the parameters of PaGE-H+. The largest version also matched or narrowly exceeded the best competing results in locating gaze targets.</p>
+<p>About half of the improvement came from training the model to identify where a designated person in the scene was looking. The remaining gains came equally from tracking changes in gaze over time and predicting changes in the surrounding scene.</p>
+<p>The two larger versions of GWM also tracked moving gaze targets more accurately than competing systems, with fewer fluctuations in estimated gaze locations, when the subject’s attention remained fixed.</p>
+<p>Test results for predicting gaze locations and shifts up to one second ahead. The ‘Persistence’ baseline assumes that the last observed gaze location remains unchanged. Lower L2 scores indicate more accurate gaze predictions.</p>
+<p>In a recent development, as shown above, the two larger versions of GWM outperformed all competing systems in predicting gaze locations, both half a second and a full second ahead, with gains of eight to ten percentage points in average precision for predicting gaze shifts. Compared to just extrapolating the last known gaze location, forecasting reduced average positional errors by 15.6% on VideoAttentionTarget and 11% on ChildPlay. Additional tests confirmed that accuracy deteriorated when the scene prediction component was removed*.</p>
+<p>Recent findings suggest that it’s a testament to human acuity that a domain this small could be so dominant in survival, mating, and evaluation of all kinds in human life. Unfortunately, current trends in machine learning do not allow for an equivalent division and apportionment of attention when gathering and training a wider context of data, such as all-purpose image and video diffusion models.</p>
+<p>According to recent reports, naturally, once you curate a face-only dataset, the eyes become a dominant feature and more can be achieved (though as I have noted, it remains an concern). However, it’s difficult to then apply lessons learned from that ‘close-up work’ to the wider context of integrated scenes, unless one plans to treat of the head separately – a clunky and Frankenstein-like proposition.</p>
+<p>* We do not cover ablation studies, apart from exceptional cases, and therefore we refer the reader to the source paper for details of those.</p>
+<p>First published Friday, November 27, 2026.</p>
+<p>According to recent reports, writer on machine learning, domain specialist in human image synthesis. Former head of research content at Metaphysic.ai, until its dissolution into DNEG's Brahma.ai. Website:  martinanderson.ai
+Contact: martin@martinanderson.ai.</p>
+<p>The Simulation Gap: Why Physical AI Still Needs Real-World Data.</p>
+<p>No Tongues! AI Researchers Address Missing Anatomy in Facial Animation.</p>
+<p>Teaching AI to Read the Hidden Text That Humans Can See.</p>
+<p>Giving AI Video Some Remembrance of Things Past.</p>
+<p>What Are World Models? How AI Learns to Predict and Simulate Environments.</p>
+<p id="sec-end-162288">Predicting Violence in Advance With AI.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.unite.ai/a-world-model-to-predict-what-youll-look-at-next/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="does-your-model-run-on-aws-trainium-look-it-up-162298.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162298. Does Your Model Run on AWS Trainium? Look It Up
+        </a>
+        
+        <a href="industry-news-5-fall-trends-designers-think-will-still-look-good--159374.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #159374. Industry News: 5 Fall Trends Designers Think Will Still Look Good Next Spring
+        </a>
+        
+        <a href="our-first-look-at-diablo-4s-warlock-and-the-games-next-season-arr-156386.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #156386. Our first look at Diablo 4's Warlock and the game's next season arrive in today's livestream - watch it here
+        </a>
+        
+        <a href="ps-plus-essentials-next-upgrade-looks-a-bit-better-in-japan-than--156097.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #156097. PS Plus Essential's Next Upgrade Looks a Bit Better in Japan Than the Rest of the World
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

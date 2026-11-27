@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenization in Transformers v5: Simpler, Clearer, and More Modular</title>
+    <meta name="description" content="According to recent reports, transformers v5 redesigns how tokenizers work. The major tokenizers reformat separates tokenizer design from trained vocabular">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tokenization-in-transformers-v5-simpler-clearer-and-more-modular-162881.html">
+    <meta property="og:title" content="Tokenization in Transformers v5: Simpler, Clearer, and More Modular">
+    <meta property="og:description" content="According to recent reports, transformers v5 redesigns how tokenizers work. The major tokenizers reformat separates tokenizer design from trained vocabular">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/tokenizers/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tokenization-in-transformers-v5-simpler-clearer-and-more-modular-162881.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tokenization in Transformers v5: Simpler, Clearer, and More Modular", "image": ["https://huggingface.co/blog/assets/tokenizers/thumbnail.png"], "datePublished": "2025-12-18T00:00:00", "dateModified": "2026-11-27T16:03:28.982780", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tokenization-in-transformers-v5-simpler-clearer-and-more-modular-162881.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tokenization in Transformers v5: Simpler, Clearer, and More Modular</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 18 Dec 2025 &bull; ⏱️ 8 min read (1600 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, transformers v5 redesigns how tokenizers work.</li><li style='margin-bottom:6px;'>Recent findings suggest that TL;DR: This blog explains how tokenization works in Transformers and why v5 is a major redesign, with clearer internals, a clean class hierarchy, and a single fast backend.</li><li style='margin-bottom:6px;'>For experts: If you're already familiar with the concepts and want to understand the changes in v5, go to v5 Separates Tokenizer Architecture from Trained Vocab.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162881"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162881"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162881"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tokenization in Transformers v5: Simpler, Clearer, and More Modular" loading="lazy" src="https://huggingface.co/blog/assets/tokenizers/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162881">According to recent reports, transformers v5 redesigns how tokenizers work. The major tokenizers reformat separates tokenizer design from trained vocabulary (much like how PyTorch separates neural network architecture from learned weights). The result is tokenizers you can inspect, customize, and train from scratch with far less friction.</p>
+<p>Recent findings suggest that TL;DR: This blog explains how tokenization works in Transformers and why v5 is a major redesign, with clearer internals, a clean class hierarchy, and a single fast backend. It’s a practical guide for anyone who wants to understand, customize, or train model-specific tokenizers instead of treating them as black boxes.</p>
+<p>For experts: If you're already familiar with the concepts and want to understand the changes in v5, go to v5 Separates Tokenizer Architecture from Trained Vocab.</p>
+<p>Before diving into the changes, let's quickly cover what tokenization does and how the pieces fit together.</p>
+<p>Industry observers note that language models don't read raw text. They consume sequences of integers usually called token IDs or input IDs. Tokenization is the process of converting raw text into these token IDs. (Try the tokenization playground here to visualize tokenization.).</p>
+<p>Tokenization is a broad concept used across natural language processing and text processing generally. This post focuses specifically on tokenization for Large Language Models (LLMs) using the transformers and tokenizers libraries.</p>
+<p>Ġworld (above) is a single token that represents the character sequence " world" (with the space).</p>
+<p>According to recent reports, A token is the smallest string unit the model sees. It can be a character, word, or subword chunk like "play" or "##ing" ("##" is a pattern, don't worry if you don't completely understand it now 🤗). The vocabulary maps each unique token to the token ID.</p>
+<p>A good tokenizer compresses text into the smallest amount of tokens. Fewer tokens means more usable context without increasing model size. Training a tokenizer boils down to finding the best compression rules for your datasets. For example, if you work on Chinese corpus you can sometimes find very nice surprises 😉.</p>
+<p>According to recent reports, tokenization happens in stages. Each stage transforms text before passing it to the next:.</p>
+<p>In a recent development, each component is independent. You can swap normalizers or change the algorithm without rewriting everything else.</p>
+<p>You can access the rust based tokenizer through _tokenizer. We go in more depth about it in this section.</p>
+<p>The following algorithms dominate modern language model tokenizers:.</p>
+<p>In a recent development, the tokenizers library is a Rust-based tokenization engine. It is fast, efficient, and completely language model agnostic. The library handles the mechanics of converting text into token IDs and back. The tokenizers library is a general-purpose tool that implements the tokenization algorithms, but does not implement the conventions that connect those algorithms to specific language models.</p>
+<p>Consider what happens when you use tokenizers directly with the SmolLM3-3B model:.</p>
+<p>The output is raw tokenization. You get token IDs and the string pieces they correspond to. Nothing more.</p>
+<p>Industry observers note that now consider what's missing. The SmolLM3-3B is a conversational model. When you interact with it, you typically structure your input as a conversation with roles like "user" and "assistant". The language model expects special formatting tokens to indicate these roles. The raw tokenizers library has no concept of any of this.</p>
+<p>In a recent development, the transformers library bridges this gap. The library is primarily known as a model definition library, but it also provides a tokenizer abstraction layer that wraps the raw tokenizers backend and adds model-aware functionality.</p>
+<p>Here's the same tokenization with the transformers wrapper:.</p>
+<p>Notice how the special tokens like &lt;|im_start|&gt; and &lt;|im_end|&gt; are applied to the prompt before tokenizing. This is useful for the model to learn where a new sequence starts and ends.</p>
+<p>The transformers tokenizer adds everything the raw library lacks:.</p>
+<p>transformers implements the tokenization API that is most commonly used in the entire ML community (encode, decode, convert_tokens_to_ids, etc.).</p>
+<p>It has been revealed that the transformers library organizes tokenizers into a class hierarchy. At the top sits a base class that defines the common interface. Below it, backend classes handle the actual tokenization using different engines. At the bottom, model-specific classes configure the backends for particular models.</p>
+<p>PreTrainedTokenizerBase is the abstract base class for all tokenizers in transformers. It defines the interface that every tokenizer must implement.</p>
+<p>The base class handles functionality that doesn't depend on the tokenization backend:.</p>
+<p>Every tokenizer in transformers ultimately inherits from PreTrainedTokenizerBase. The base class ensures consistent behavior across all tokenizers, regardless of which backend they use for the actual tokenization.</p>
+<p>Recent findings suggest that tokenizersBackend is the primary backend class for most modern tokenizers. It inherits from PreTrainedTokenizerBase and wraps the Rust-based tokenizers library.</p>
+<p>The class stores the Rust tokenizer object internally:.</p>
+<p>When you call encoding methods on a TokenizersBackend tokenizer, the class delegates the actual tokenization to the Rust backend:.</p>
+<p>The Rust backend performs computationally intensive work, while the Python wrapper adds the model-aware features on top.</p>
+<p>Many model-specific tokenizers inherit from TokenizersBackend, examples include:.</p>
+<p>These model-specific classes configure the backend with the correct vocabulary, merge rules, special tokens, and normalization settings for their respective models.</p>
+<p>PythonBackend inherits from PreTrainedTokenizerBase and implements tokenization in pure Python. The class is aliased as PreTrainedTokenizer.</p>
+<p id="sec-mid-162881">The pure-Python backend exists for several reasons:.</p>
+<p>It has been revealed that the Python backend is slower than the Rust backend. For most use cases, the Rust-backed TokenizersBackend is preferred.</p>
+<p>Model-specific tokenizers that inherit from PythonBackend (or its alias PreTrainedTokenizer) include some older or specialized models, like:.</p>
+<p>SentencePieceBackend inherits from PythonBackend and provides integration with Google's SentencePiece library. SentencePiece is a standalone tokenization library that many models use, particularly those trained by Google.</p>
+<p>The backend wraps a SentencePiece processor:.</p>
+<p>Models that use SentencePiece tokenization inherit from this backend. Examples include:.</p>
+<p>The SentencePiece backend inherits from PythonBackend rather than directly from PreTrainedTokenizerBase because it shares much of the same interface and padding/truncation logic.</p>
+<p>In a recent development, autoTokenizer is the recommended entry point for loading tokenizers. It automatically determines which tokenizer class to use for a given model and returns an instance of that class.</p>
+<p>Behind the scenes, AutoTokenizer performs these steps:.</p>
+<p>The benefit of AutoTokenizer is that you don't need to know which tokenizer class a model uses. Whether a model uses LlamaTokenizer, GPT2Tokenizer, or BertTokenizer, the same AutoTokenizer.from_pretrained("model-name") call works.</p>
+<p>The tokenizer system in transformers forms a layered architecture:.</p>
+<p>Sources indicate that the most significant change in Transformers v5 is a philosophical shift in how tokenizers are defined. Tokenizers now work like PyTorch's nn.Module: you define the architecture first, then fill it with learned parameters.</p>
+<p>Industry observers note that in v4, tokenizers were black boxes tied to pretrained checkpoint files. If you loaded LlamaTokenizerFast, you couldn't easily answer basic questions about it:.</p>
+<p>The __init__ method gave no clues. You had to dig through serialized files or external documentation to understand what the tokenizer actually did.</p>
+<p>v4 also maintained two parallel implementations for every model:.</p>
+<p>Worst of all, you couldn't create an empty tokenizer architecture. If you wanted to train a LLaMA-style tokenizer on your own data, there was no clean way to instantiate a "blank" LLaMA tokenizer and fill it with your vocabulary and merges. Tokenizers existed only as loaded checkpoints, not as configurable templates.</p>
+<p>v5 treats tokenizer architecture (normalizer, pre-tokenizer, model type, post-processor, decoder) as distinct from trained parameters (vocabulary, merges). This mirrors how PyTorch separates model architecture from learned weights.</p>
+<p>With nn.Module, you define layers first:.</p>
+<p>V5 tokenizers follow the same pattern:.</p>
+<p>The tokenizer class now explicitly declares its structure. Looking at LlamaTokenizer in v5, you can immediately see:.</p>
+<p>This transparency was impossible in v4, where the same information was buried in serialized files.</p>
+<p>In a recent development, v5 consolidates the two-file system into a single file per model. LlamaTokenizer now inherits from TokenizersBackend, which wraps the Rust-based tokenizer that was previously exposed as the “fast” implementation and is now the default.</p>
+<p>The former “slow” Python implementation lives explicitly behind PythonBackend, and SentencePieceBackend remains for models that require it, but Rust-backed tokenization is the preferred default.</p>
+<p>Users now have one clear entry point. Advanced users who need to customize can still access lower-level components, but the library no longer forces everyone to navigate two parallel implementations.</p>
+<p>Suppose you want a tokenizer that behaves exactly like LLaMA's – same normalization, same pre-tokenization, same BPE model type – but trained on a domain-specific corpus (medical text, legal documents, a newly introduced language). In v4, this required manually reconstructing the tokenizer pipeline from low-level tokenizers library primitives. In v5, you can instantiate the architecture directly and call train:.</p>
+<p>The resulting tokenizer will have your custom vocabulary and merge rules, but will process text identically to how a standard LLaMA tokenizer would with the same whitespace handling, same special token conventions, same decoding behavior.</p>
+<p>The shift from "tokenizers as loaded checkpoints" to "tokenizers as configurable architectures" makes the library more modular, more transparent, and more aligned with how practitioners think about building ML systems.</p>
+<p>Transformers v5 brings three improvements to tokenization:.</p>
+<p>Recent findings suggest that the wrapper layer between tokenizers and Transformers remains essential. It adds model awareness, context lengths, chat templates, special tokens, that raw tokenization doesn't provide. V5 just makes that layer clearer and more customizable.</p>
+<p>If you are looking to learn more about tokenization here are some resources:.</p>
+<p>I think it depends on the nature of tools.</p>
+<p>What depends on the nature of tools? 😳.</p>
+<p>Thanks for doing this! I had to train some tokenizers with the v4, it was indeed not straightforward to understand the behavior.</p>
+<p id="sec-end-162881">Glad that this was useful to you.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/tokenizers" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tricks-from-openai-gpt-oss-you-can-use-with-transformers-162943.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162943. Tricks from OpenAI gpt-oss YOU 🫵 can use with transformers
+        </a>
+        
+        <a href="swift-transformers-reaches-10-and-looks-to-the-future-162931.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162931. Swift Transformers Reaches 1.0 – and Looks to the Future
+        </a>
+        
+        <a href="sentence-transformers-is-joining-hugging-face-162915.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162915. Sentence Transformers is joining Hugging Face!
+        </a>
+        
+        <a href="transformers-v5-simple-model-definitions-powering-the-ai-ecosyste-162890.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162890. Transformers v5: Simple model definitions powering the AI ecosystem
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

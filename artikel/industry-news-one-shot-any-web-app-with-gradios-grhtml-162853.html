@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: One-Shot Any Web App with Gradio's gr.HTML</title>
+    <meta name="description" content="It has been revealed that gradio 6 quietly shipped a very powerful feature: gr.HTML now supports custom templates, scoped CSS, and JavaScript interactivity">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-one-shot-any-web-app-with-gradios-grhtml-162853.html">
+    <meta property="og:title" content="Industry News: One-Shot Any Web App with Gradio's gr.HTML">
+    <meta property="og:description" content="It has been revealed that gradio 6 quietly shipped a very powerful feature: gr.HTML now supports custom templates, scoped CSS, and JavaScript interactivity">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/gradio-html-one-shot-apps/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-one-shot-any-web-app-with-gradios-grhtml-162853.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: One-Shot Any Web App with Gradio's gr.HTML", "image": ["https://huggingface.co/blog/assets/gradio-html-one-shot-apps/thumbnail.png"], "datePublished": "2026-02-18T00:00:00", "dateModified": "2026-11-27T16:03:24.591844", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-one-shot-any-web-app-with-gradios-grhtml-162853.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: One-Shot Any Web App with Gradio's gr.HTML</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 18 Feb 2026 &bull; ⏱️ 3 min read (666 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>It has been revealed that gradio 6 quietly shipped a very powerful feature: gr.HTML now supports custom templates, scoped CSS, and JavaScript interactivity.</li><li style='margin-bottom:6px;'>Recent findings suggest that we tested this by building different types of apps.</li><li style='margin-bottom:6px;'>Sources indicate that pomodoro Timer: A focus timer where a pixel-art tree grows as you work.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162853"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162853"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162853"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: One-Shot Any Web App with Gradio's gr.HTML" loading="lazy" src="https://huggingface.co/blog/assets/gradio-html-one-shot-apps/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162853">It has been revealed that gradio 6 quietly shipped a very powerful feature: gr.HTML now supports custom templates, scoped CSS, and JavaScript interactivity. Which means you can build pretty much any web component — and Claude (or any other frontier LLM) can generate the whole thing in one shot: frontend, backend, and state management, all in a single Python file.</p>
+<p>Recent findings suggest that we tested this by building different types of apps. Each one is a single Python file, no build step, deployable to Hugging Face Spaces in seconds.</p>
+<p>Sources indicate that pomodoro Timer: A focus timer where a pixel-art tree grows as you work. Starts as a seed, sprouts branches, grows leaves. Complete a session and the tree joins your forest. Session tracking, theme switching, break modes — all interactive, all in one file.</p>
+<p>The tree animation alone would normally require a separate React component. Here it's just CSS keyframes in css_template and state updates in js_on_load.</p>
+<p>Industry observers note that gitHub Contribution Heatmap: Click any cell to toggle contributions. Multiple color themes. Pattern generators (streaks, seasonal, random). Live stats that update as you edit.</p>
+<p>Kanban Board: Full drag-and-drop between columns. Inline editing (double-click any card). Search feature that can filter in real-time. Collapsible columns.</p>
+<p>In a recent development, drag-and-drop usually means pulling in a library. Here it's native HTML5 drag events wired up in js_on_load, with state synced back to Python via trigger('change').</p>
+<p>Sources indicate that spin-to-Win Wheel: Smooth CSS animation, rotation state that persists across re-renders. Preset configurations for yes/no decisions, restaurant picking, team selection. You can also add custom spinning segments on the fly.</p>
+<p>This is where gr.HTML gets really interesting for ML work: you can build specialized components that can handle your exact output format, then use them like any built-in Gradio component.</p>
+<p>Detection Viewer: A custom viewer for object detection, instance segmentation, and pose estimation results. Renders bounding boxes, segmentation masks, keypoints, and skeleton connections — all in a reusable gr.HTML subclass that plugs directly into your model pipeline.</p>
+<p>The community's built some creative components with gr.HTML too:.</p>
+<p id="sec-mid-162853">Industry observers note that 3D Camera Control for Image Editing: A full Three.js viewport inside a Gradio app! Drag handles to control azimuth, elevation, and distance. Your uploaded image appears in the 3D scene, and the camera parameters feed directly into Qwen's latest image editing model. These kinds of interactive 3D controls would normally require a separate frontend — with Gradio it's just one gr.HTML subclass🔥.</p>
+<p>Real-time Speech Transcription: Live transcription with Mistral's Voxtral model. The transcript display is a custom gr.HTML component with animated status badges, a live WPM counter, and styled output that updates as you speak. Real-time UI feedback without using React!</p>
+<p>Every gr.HTML component takes three templates:.</p>
+<p>Industry observers note that ${value} injects Python state. props.value updates it from JavaScript. trigger('change') syncs back to Python. That's the whole API.</p>
+<p>For reusable components, subclass gr.HTML:.</p>
+<p>Now Heatmap() works like gr.Image() or gr.Slider() — use it in Blocks, wire up event handlers, whatever you need.</p>
+<p>When you ask your LLM to build a custom component, single-file output is everything. No "now create the styles file" or "wire this into your build config." Just one Python file that runs immediately.</p>
+<p>It has been revealed that the feedback loop becomes: describe what you want → get code → gradio app.py → see it working → describe what to fix → repeat. Each cycle takes seconds with Gradio's reload mode.</p>
+<p>Sources indicate that deploy to Spaces with gradio deploy or share a temporary link with demo.launch(share=True). Within a few seconds from an idea to a live app.</p>
+<p>Industry observers note that gradio ships with 32 interactive components, but sometimes your perfect AI web app needs something special. That's where gr.HTML comes in.</p>
+<p id="sec-end-162853">Sources indicate that if you’ve got an idea, try building it with gr.HTML: describe what you want to your LLM, generate the code, run it. You might be surprised what you can ship in 5 minutes.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/gradio-html-one-shot-apps" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="10-best-ai-app-builders-ive-used-in-2026-and-what-each-one-gets-w-162880.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162880. 10 Best AI App Builders I've Used in 2026 (and What Each One Gets Wrong)
+        </a>
+        
+        <a href="breaking-any-custom-frontend-with-gradios-backend-162814.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162814. Breaking: Any Custom Frontend with Gradio's Backend
+        </a>
+        
+        <a href="industry-news-todays-android-app-deals-and-freebies-grand-theft-a-162650.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162650. Industry News: Today’s Android app deals and freebies: Grand Theft Auto San Andreas 50% off, Dead Cells, Prune, more
+        </a>
+        
+        <a href="industry-news-mid-week-android-app-deals-and-freebies-stardew-val-162628.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162628. Industry News: Mid-week Android app deals and freebies: Stardew Valley, The Past Within, Almost Out of Mana, more
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

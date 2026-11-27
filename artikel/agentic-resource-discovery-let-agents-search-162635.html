@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Resource Discovery: Let agents search</title>
+    <meta name="description" content="If you build with agents today, you probably know three protocols. MCP gives agents a standard way to call tools. Skills give agents a way of consuming ins">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/agentic-resource-discovery-let-agents-search-162635.html">
+    <meta property="og:title" content="Agentic Resource Discovery: Let agents search">
+    <meta property="og:description" content="If you build with agents today, you probably know three protocols. MCP gives agents a standard way to call tools. Skills give agents a way of consuming ins">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/agentic-resource-discovery-launch/thumbnail_.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/agentic-resource-discovery-let-agents-search-162635.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Agentic Resource Discovery: Let agents search", "image": ["https://huggingface.co/blog/assets/agentic-resource-discovery-launch/thumbnail_.png"], "datePublished": "2026-06-17T00:00:00", "dateModified": "2026-11-27T16:03:09.907284", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/agentic-resource-discovery-let-agents-search-162635.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Agentic Resource Discovery: Let agents search</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 17 Jun 2026 &bull; ⏱️ 6 min read (1122 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>If you build with agents today, you probably know three protocols.</li><li style='margin-bottom:6px;'>The Agentic Resource Discovery (ARD) specification is the discovery layer that sits in front of them.</li><li style='margin-bottom:6px;'>In this post, we'll explore the specification, how Hugging Face has implemented it, and how you can start building on ARD.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162635"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162635"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162635"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Agentic Resource Discovery: Let agents search" loading="lazy" src="https://huggingface.co/blog/assets/agentic-resource-discovery-launch/thumbnail_.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162635">If you build with agents today, you probably know three protocols. MCP gives agents a standard way to call tools. Skills give agents a way of consuming instructions. A2A gives agents a way to call other agents. All three assume the user already knows which tool, instruction, or agent they need. The user is still responsible for discovering, integrating, and maintaining those capabilities.</p>
+<p>The Agentic Resource Discovery (ARD) specification is the discovery layer that sits in front of them. It is a draft, open specification developed by contributors from Microsoft, Google, GoDaddy, Hugging Face, and others, with broad participation across the industry. It defines how agents and tools are cataloged, indexed, and searched across federated registries, so an agent can find capabilities at runtime instead of needing them pre-installed. It is not a product or a marketplace. It is a shared standard that any company can implement independently, and that any agent or tool can participate in.</p>
+<p>In this post, we'll explore the specification, how Hugging Face has implemented it, and how you can start building on ARD.</p>
+<p>Industry observers note that the current model for agent capabilities is install-first, use-later. A developer hardcodes an MCP server URL into a config file. A user connects a service to their AI app via a plugin and reuses it. This works for the handful of tools an agent uses every day, but it doesn't scale to thousands of ad-hoc surfaces.</p>
+<p>The fallback is to dump every available tool description into the LLM's context window and let the model pick. This is limited by the context budget. There are search-based strategies here too, but the descriptions are often too thin to disambiguate well.</p>
+<p>It has been revealed that ARD moves selection outside the LLM. A registry indexes capabilities with richer signals such as publisher identity, representative queries, compliance attestations, and tags. It exposes a REST endpoint. The client searches in natural language, and the model invokes whatever the search returns. The shift is from manually installed, static catalogs to intent-based search that lets an agent find the right capability dynamically, and reach a growing ecosystem of MCP tools, A2A agents, and other services without pre-configuring each one.</p>
+<p>The specification defines two things:.</p>
+<p>It has been revealed that the Hugging Face Discover Tool is our reference implementation of ARD. It provides search access to thousands of Skills, ML applications, and MCP Servers — on Hugging Face and across other ARD discovery services.</p>
+<p>It works by combining the Hub's existing semantic search over Spaces, alongside our Agent Skills, and serving the results as ARD catalog entries. The Hub already hosts a catalog of Spaces running Gradio apps, MCP servers, and demos. Its semantic search supports an agents=true flag that returns Spaces ranked by agent-oriented metadata, and Discover translates that search into the ARD specification.</p>
+<p>In a recent development, the adapter applies two filters. First, the response includes only Spaces whose runtime stage is RUNNING. Second, the response media type is driven by the request. Three media types are supported:.</p>
+<p>Recent findings suggest that the skill type involves an additional transformation. Many Spaces ship an agents.md file describing how an agent should interact with them. Discover reads that file and wraps it with the frontmatter a skill consumer expects: name, description, and source metadata covering the Space ID, Hub URL, app URL, and original agents.md URL. The result is a skill any skill-aware client can install or load through its normal skill flow.</p>
+<p>For MCP-tagged Spaces, the adapter generates a catalog entry pointing at the Space's Gradio MCP endpoint over HTTP transport. The URL uses the Space's runtime domain when the Hub provides one, otherwise the standard .hf.space slug convention.</p>
+<p id="sec-mid-162635">Industry observers note that discover is built into the Hugging Face CLI (hf). To get started and give you or your agent access:.</p>
+<p>You can also Search the catalog directly using either the REST API or an MCP Server.</p>
+<p>The Hugging Face catalog is published at its well-known URL:.</p>
+<p>Alternatively, connect any MCP Client to search via MCP endpoint using https://huggingface-hf-discover.hf.space/mcp to search the catalog.</p>
+<p>In a recent development, ARD separates discovery from execution. The static manifest format is driven by media type, so any artifact protocol can ride the same envelope without specification-level changes. The registry API is plain HTTP REST, so any client can federate against it. Discover is one of several reference implementations of the specification across the ecosystem, and because federation is built into the protocol, a search through one service can surface capabilities hosted by another.</p>
+<p>According to recent reports, the Discover Tool is a working test of that design. It does not invent a upcoming artifact format. It wraps an existing search backend, the Hub, in the specification's envelope, and lets the same Spaces surface as skills or MCP servers depending on what the client asked for.</p>
+<p>Sources indicate that next steps are tighter integration with the specification's federation modes (auto, referrals, none) and Hub-side support for static ai-catalog.json manifests on user and organization profiles. Once that lands, any Space publisher will be able to advertise their capabilities through the standard well-known URI mechanism.</p>
+<p>Sources indicate that google just published Agentic Resource Discovery — an open standard (with the Linux Foundation) for how AI agents find and connect to capabilities across the web. Think DNS + a phone book for agents.</p>
+<p>It has been revealed that the model is simple: you publish an ai-catalog.json at a well‑known path on your domain → registries crawl it → an agent searches by intent → it verifies the publisher → then it connects (over MCP, A2A, or a plain API). Publish → crawl → search → verify → connect.</p>
+<p>Most of the coverage will fixate on discovery. I want to flag step 4, because it's the one that actually matters: verify. The agent is about to act on what it finds — call a tool, pull data, make a decision. "I found a capability" is worthless if it can't check who published it and whether it's been tampered with. Discovery without verification just industrialises trusting strangers.</p>
+<p>Recent findings suggest that that's the half we've been building the whole time — so when the spec dropped this week, we shipped our catalog the same week. Dynamic Feed is now a verifiable ARD publisher: domain‑anchored identity, every datapoint Ed25519‑signed and checkable against our public key.</p>
+<p>It has been revealed that the agentic web is going to be discovered and verified. Good to see the standard treat the second half as a first‑class citizen.</p>
+<p id="sec-end-162635">It has been revealed that if you publish an API, an MCP server, or an agent — you can host an ai-catalog.json today. It's a single file. Spec's open: github.com/ards-project/ard-spec.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/agentic-resource-discovery-launch" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-presentation-finetuning-your-embedding-model-for-better--162392.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162392. Breaking: Presentation: Finetuning Your Embedding Model for Better Search: Learning from Agentic Search at Dell
+        </a>
+        
+        <a href="breaking-ai-agents-zip-from-flaw-discovery-to-root-access-in-11-m-162236.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162236. Breaking: AI Agents Zip From Flaw Discovery to Root Access in 11 Minutes
+        </a>
+        
+        <a href="tech-report-supertake-raises-20m-to-let-ai-agents-turn-your-marke-157501.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #157501. Tech Report: Supertake raises $20M to let AI agents turn your market predictions into stock portfolios
+        </a>
+        
+        <a href="open-source-deepresearch-freeing-our-search-agents-150752.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #150752. Open-source DeepResearch – Freeing our search agents
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

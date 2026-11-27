@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek-V4: a million-token context that agents can actually use</title>
+    <meta name="description" content="Recent findings suggest that deepSeek released V4 today. Two MoE checkpoints are on the Hub: DeepSeek-V4-Pro at 1.6T total parameters with 49B active, and ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/deepseek-v4-a-million-token-context-that-agents-can-actually-use-162767.html">
+    <meta property="og:title" content="DeepSeek-V4: a million-token context that agents can actually use">
+    <meta property="og:description" content="Recent findings suggest that deepSeek released V4 today. Two MoE checkpoints are on the Hub: DeepSeek-V4-Pro at 1.6T total parameters with 49B active, and ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/deepseekv4/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/deepseek-v4-a-million-token-context-that-agents-can-actually-use-162767.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "DeepSeek-V4: a million-token context that agents can actually use", "image": ["https://huggingface.co/blog/assets/deepseekv4/thumbnail.png"], "datePublished": "2026-04-24T00:00:00", "dateModified": "2026-11-27T16:03:17.260697", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/deepseek-v4-a-million-token-context-that-agents-can-actually-use-162767.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">Business & Policy</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>DeepSeek-V4: a million-token context that agents can actually use</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 24 Apr 2026 &bull; ⏱️ 7 min read (1380 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that deepSeek released V4 today.</li><li style='margin-bottom:6px;'>Focusing on long running agentic workloads.</li><li style='margin-bottom:6px;'>This post covers three things: what the architecture does differently to make long-context inference cheap, the agent-specific post-training decisions that compound on top of it, and some takeaways from the paper that help reason about these changes.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162767"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162767"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162767"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="DeepSeek-V4: a million-token context that agents can actually use" loading="lazy" src="https://huggingface.co/blog/assets/deepseekv4/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162767">Recent findings suggest that deepSeek released V4 today. Two MoE checkpoints are on the Hub: DeepSeek-V4-Pro at 1.6T total parameters with 49B active, and DeepSeek-V4-Flash at 284B total with 13B active. Both have a 1M-token context window. The benchmark numbers are competitive, but not SOTA. It doesn't matter. The real innovation is how DeepSeek v4 is designed for efficient large context length support, and hence as one of the best candidates for agentic tasks.</p>
+<p>Focusing on long running agentic workloads. Running a frontier open model as an agent today breaks in predictable ways. The model stops. You reprompt. The trace blows past the context budget, or the KV cache fills the GPU, or tool-call round trips degrade halfway through a long task. V4 is built to fix these known failures, and point the way for the community to follow.</p>
+<p>This post covers three things: what the architecture does differently to make long-context inference cheap, the agent-specific post-training decisions that compound on top of it, and some takeaways from the paper that help reason about these changes.</p>
+<p>A 1M context window is just capacity, not performance. Whether you can use it depends on the cost of every forward pass at that depth. For an agent running a long tool-use trajectory (a SWE-bench task, a multi-step browse session, a terminal session with hundreds of commands), every tool result is appended to the context, and every subsequent token pays the full attention cost against everything that came before.</p>
+<p>Two numbers matter: single-token inference FLOPs and KV cache size. Both grow with sequence length. At 1M tokens, DeepSeek-V4-Pro requires 27% of single-token inference FLOPs compared with DeepSeek-V3.2, so it runs faster on the same hardware. It also uses 10% of the KV cache memory. V4-Flash drops these numbers even further: 10% of the FLOPs and 7% of the KV cache.</p>
+<p>If we compare the KV cache memory against a established architecture like grouped query attention with 8 heads, stored in the usual bfloat16 format, DeepSeek v4 requires roughly 2% the cache size. This makes it much easier to deploy for very large context handling.</p>
+<p>Figure 1: benchmark comparison (left), per-token FLOPs and accumulated KV cache against sequence length (right).</p>
+<p>The efficiency gain comes from splitting attention into two mechanisms and interleaving them across layers.</p>
+<p>Compressed Sparse Attention (CSA) compresses KV entries by 4x along the sequence dimension using softmax-gated pooling with a learned positional bias. A lightning indexer (FP4, ReLU-scored multi-head dot product) picks the top-k compressed blocks per query. It inherits the sparse-selection idea from DeepSeek Sparse Attention in V3.2, but runs it over blocks that are already 4x shorter than the original sequence. The indexer's search space shrinks with it.</p>
+<p>Industry observers note that figure 3: CSA. The compressor collapses every 4 tokens into one compressed KV entry. The lightning indexer picks the top-k compressed blocks per query. A sliding-window branch handles the most recent uncompressed tokens.</p>
+<p>Heavily Compressed Attention (HCA) compresses KV entries by 128x and drops the sparse selection. Every query attends densely to every compressed block. The compressed sequence is short enough that dense attention is cheap.</p>
+<p>In a recent development, figure 4: HCA. A heavier compressor (128x vs. 4x) followed by dense attention over the compressed stream, with the same sliding-window branch for recency.</p>
+<p>Industry observers note that the layers alternate between CSA and HCA. Different layers carry different attention patterns, and forcing one mechanism across all of them wastes capacity. In V4-Pro's 61-layer stack, layers 0–1 are HCA, layers 2–60 alternate CSA and HCA, and the MTP block at the end runs sliding-window only.</p>
+<p>Recent findings suggest that both paths use FP8 storage for most KV entries and BF16 only for the RoPE dimensions. The lightning indexer inside CSA runs in FP4. These storage choices compound with the compression ratios to produce the 2% KV cache figure.</p>
+<p>Industry observers note that figure 2: overall architecture. Attention layers alternate between CSA and HCA. Feed-forward layers use DeepSeekMoE. Residual connections are replaced with manifold-constrained hyper-connections (mHC).</p>
+<p>In a recent development, efficient long-context attention is necessary for agent workflows but not sufficient. The paper describes three post-training and infrastructure choices that target agent use cases directly.</p>
+<p>V3.2 kept reasoning traces across tool-result rounds but discarded them whenever a upcoming user message arrived. For an agent handling a single user turn, this was fine. For multi-turn agentic workflows, where the user sends a follow-up after the agent has already chained several tool calls, the model lost its accumulated reasoning and had to reconstruct state.</p>
+<p id="sec-mid-162767">V4 preserves reasoning content across user message boundaries when the conversation contains tool calls. The model retains the complete reasoning history across all rounds, including across user turns. This allows a coherent, cumulative chain of thought over long-horizon agent tasks. For conversational use without tools, the old behavior is preserved: reasoning is flushed on each turn to keep context concise.</p>
+<p>Recent findings suggest that figure 7: thinking with tools (top) preserves reasoning across all turns. Thinking without tools (bottom) discards reasoning at each fresh user message.</p>
+<p>Industry observers note that V4 introduces a |DSML| special token and an XML-based tool-call format. The XML format reduces escaping failures compared to JSON-in-string tool calls, a common failure mode when models emit nested quoted content.</p>
+<p>Sources indicate that the schema separates string parameters (passed as-is with string="true") from structured parameters (passed as JSON with string="false"). This removes a class of parsing errors around numbers and booleans that JSON tool-call formats routinely hit.</p>
+<p>The agent behavior was trained with RL against real tool environments. The paper describes the sandbox infrastructure built for that purpose. DeepSeek Elastic Compute (DSec) is a Rust platform that exposes four execution substrates behind one Python SDK: function calls, containers, microVMs (Firecracker), and full VMs (QEMU). A single cluster runs hundreds of thousands of concurrent sandboxes.</p>
+<p>Three DSec features matter for agent training: fast image loading via layered 3FS storage (so RL rollouts do not wait on container startup), preemption-safe trajectory replay (so interrupted training steps resume without re-running tool calls), and a uniform API across substrates (so training harnesses target function calls or full VMs without rewriting). These infrastructure decisions underpin the agent benchmark scores.</p>
+<p>Sources indicate that the knowledge and reasoning numbers are competitive but not leading. The agent numbers are where V4-Pro-Max separates from the field.</p>
+<p>Specific numbers from the agent section of Table 6:.</p>
+<p>Industry observers note that in the paper's internal R&amp;D coding benchmark, 30 curated tasks across PyTorch, CUDA, Rust, and C++, V4-Pro-Max hits 67% pass rate, versus 47% for Sonnet 4.5 and 70% for Opus 4.5. In a survey of 85 DeepSeek developers using V4-Pro as their daily driver, 52% noted it was ready to replace their current primary coding model and 39% leaned toward yes.</p>
+<p>The long-context retrieval numbers are in Figure 9. MRCR 8-needle accuracy stays above 0.82 through 256K tokens and holds at 0.59 at 1M.</p>
+<p>Figure 9: MRCR 8-needle retrieval. V4-Pro-Max stays above 0.82 through 256K and holds at 0.59 at 1M.</p>
+<p>Four checkpoints are on the Hub. The instruct models use FP4 for MoE expert weights and FP8 for everything else. The base models are FP8 throughout.</p>
+<p>In a recent development, both instruct models support three reasoning modes: Non-think (fast, no chain of thought), Think High (explicit reasoning in  blocks), and Think Max (maximum reasoning effort with a dedicated system prompt). Think Max requires a context window of at least 384K tokens. The recommended sampling parameters across all modes are temperature=1.0, top_p=1.0.</p>
+<p>The V4-Pro numbers on SWE Verified, MCPAtlas, and the internal R&amp;D benchmark put it at parity with frontier closed models on agent tasks. The open question is how the community's tool harnesses adapt to the |DSML| schema and whether the interleaved thinking gains transfer to out-of-domain agent frameworks.</p>
+<p>Figures in this blog post are from the technical report at DeepSeek_V4.pdf.</p>
+<p>It has been revealed that according to my personal tests DeepSeek V4 Flash (Non-thinking mode) passed the Needle-in-a-Haystack retrieval test on both 32k and 435k actual prompt tokens with a 100% result across depths of 0-100%. In no-needle negative control with the NOT_FOUND instruction, the model also returned 100% correct failures, reducing the risk of contamination and false positives.</p>
+<p>So thinking mode may degrade behaviour in some tests.</p>
+<p id="sec-end-162767">https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/d2b624a83795ae3c77a4af70189ad084cf8fa90b/DeepSeek_V4.pdf.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/deepseekv4" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="smol2operator-post-training-gui-agents-for-computer-use-162932.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162932. Smol2Operator: Post-Training GUI Agents for Computer Use
+        </a>
+        
+        <a href="latest-update-ulysses-sequence-parallelism-training-with-million--162839.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162839. Latest Update: Ulysses Sequence Parallelism: Training with Million-Token Contexts
+        </a>
+        
+        <a href="inside-vakra-reasoning-tool-use-and-failure-modes-of-agents-162790.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162790. Inside VAKRA: Reasoning, Tool Use, and Failure Modes of Agents
+        </a>
+        
+        <a href="latest-update-introducing-nvidia-nemotron-3-nano-omni-long-contex-162754.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162754. Latest Update: Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

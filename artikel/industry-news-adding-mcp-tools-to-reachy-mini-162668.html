@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: Adding MCP Tools to Reachy Mini</title>
+    <meta name="description" content="Recent findings suggest that the Reachy Mini conversation app can now use tools hosted in public Hugging Face Spaces, called over MCP. You can give your ro">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-adding-mcp-tools-to-reachy-mini-162668.html">
+    <meta property="og:title" content="Industry News: Adding MCP Tools to Reachy Mini">
+    <meta property="og:description" content="Recent findings suggest that the Reachy Mini conversation app can now use tools hosted in public Hugging Face Spaces, called over MCP. You can give your ro">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/adding-mcp-tools-to-reachy-mini/reachy_mini_remote_spaces_thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-adding-mcp-tools-to-reachy-mini-162668.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: Adding MCP Tools to Reachy Mini", "image": ["https://huggingface.co/blog/assets/adding-mcp-tools-to-reachy-mini/reachy_mini_remote_spaces_thumbnail.png"], "datePublished": "2026-06-03T00:00:00", "dateModified": "2026-11-27T16:03:11.837937", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-adding-mcp-tools-to-reachy-mini-162668.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: Adding MCP Tools to Reachy Mini</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 03 Jun 2026 &bull; ⏱️ 6 min read (1243 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that the Reachy Mini conversation app can now use tools hosted in public Hugging Face Spaces, called over MCP.</li><li style='margin-bottom:6px;'>Below, we look at what a tool is, how profiles control what the robot can use, and the current limits of the remote path.</li><li style='margin-bottom:6px;'>When you talk to the robot, what you get back isn't only a voice, it's a system that reacts to the conversation: the robot can move and respond non-verbally, when it's applicable.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-162668"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-162668"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-162668"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: Adding MCP Tools to Reachy Mini" loading="lazy" src="https://huggingface.co/blog/assets/adding-mcp-tools-to-reachy-mini/reachy_mini_remote_spaces_thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-162668">Recent findings suggest that the Reachy Mini conversation app can now use tools hosted in public Hugging Face Spaces, called over MCP. You can give your robot a new ability, like checking the weather or searching the web, by adding a Space from the Hub instead of editing the app. The tool keeps running in the Space itself, so no code is downloaded onto your machine. And you can publish your own tools for other people to use.</p>
+<p>Adding a tool takes one command:.</p>
+<p>Below, we look at what a tool is, how profiles control what the robot can use, and the current limits of the remote path.</p>
+<p>When you talk to the robot, what you get back isn't only a voice, it's a system that reacts to the conversation: the robot can move and respond non-verbally, when it's applicable. The part we want to focus on here is the tools that make that possible. A tool is something the model can do during a conversation: play an emotion, move the head, look through the camera. Each tool has a name and a short description. The model reads those, decides when one is useful, calls it, and uses what comes back.</p>
+<p>Today every tool is local and ships inside the app, and most of them are about the robot's body:.</p>
+<p>A tool in the code isn't usable until it's enabled in a profile, a folder with two files that matter here: instructions.txt (the prompt) and tools.txt (the tools that are turned on).</p>
+<p>The default profile enables the full set:.</p>
+<p>If a name isn't in tools.txt, the model can't call it.</p>
+<p>You can also write your own tool: add a Python file to the profile (or external_tools/), give it a name and description, and list that name in tools.txt.</p>
+<p>Today there are built-in tools and custom local tools, and tools.txt decides which are active. This works well for the robot's body and keeps the trusted core small.</p>
+<p>Industry observers note that the constraint here is that every tool has to be local Python. For move_head or play_emotion that's right: they talk to the hardware and belong in the app but a lot of useful things have nothing to do with the body, like web search, weather, or lookups. For those, keeping everything local is mostly friction:.</p>
+<p>Remote tools add a third kind, alongside the built-in and custom local tools you already have, for capabilities that are easier to publish, share, and update on their own:.</p>
+<p>We started with two canary tools, small test tools to exercise the new flow:.</p>
+<p>They're enough to exercise the whole feature: install from the Hub, discover the remote tools, enable them per profile, and let the realtime backend call them exactly like built-in tools.</p>
+<p>To use both at once, add each Space and their tools stack in the same profile:.</p>
+<p>Now the robot can search the web and check the weather in the same conversation, which is exactly what the canary_web_search_weather profile below does.</p>
+<p>In a recent development, add validates the Space on the Hub, probes the MCP endpoint, discovers its tools, and by default appends the tool IDs to the active profile's tools.txt. The active profile is default unless you've set REACHY_MINI_CUSTOM_PROFILE. Use --install-only to skip that step.</p>
+<p>tools.txt is the gatekeeper: a remote tool is only active if its ID appears in the profile's tools.txt, alongside whatever built-in tools you want.</p>
+<p>Installed sources are persisted in:.</p>
+<p id="sec-mid-162668">Each installed Space gets a local alias derived from its slug, with hyphens, dots, and slashes collapsing to underscores:.</p>
+<p>Remote tools are then namespaced with a double underscore:.</p>
+<p>This keeps remote tool names from colliding with built-in ones and lets multiple Spaces coexist in the same profile.</p>
+<p>Recent findings suggest that the implementation also strips redundant Space-name prefixes when possible, so a verbose remote tool name becomes a cleaner local ID. If stripping would cause a collision between two tools from the same Space, the code falls back to the fully namespaced name.</p>
+<p>There is also a duplicate safety check at registry level: Tool.name values must be unique across the entire merged tool set. The app fails fast if two sources claim the same name.</p>
+<p>For this work we created two focused canary profiles to isolate the MCP experiment from the full embodied tool set.</p>
+<p>The first keeps a few expressive tools (emotions, head movement) and adds web search on top:.</p>
+<p>The second is the same, plus the weather tool alongside search:.</p>
+<p>The small physical tool set means Reachy Mini can still react expressively while answering current questions from the web.</p>
+<p>In a recent development, the remote-tool plumbing gets the tools into the model. The prompts decide how the model uses them.</p>
+<p>That was especially visible in the search-plus-weather canary. A combined question like:.</p>
+<p>can be handled in at least three ways: weather first then search, search first then weather, or both in the same turn. If the prompt is vague, the model serialises the calls and creates unnecessary latency. So the canary prompts became part of the feature, not just incidental configuration.</p>
+<p>Two things are worth calling out. First, the Space has to actually behave like an MCP server; if tool discovery fails, the install fails. Second, prompt instructions can encourage parallel calls but cannot guarantee them. If deterministic orchestration matters for a use case, that logic should move from the prompt into code.</p>
+<p>If you want others to use your tool, publish it as a public Gradio Space that exposes the standard MCP endpoint, and keep the tools stateless so they work well over the network. Whether a Space installs depends on this runtime behavior, not on tags.</p>
+<p>Tags aren't required for installation, but they help people find compatible Spaces:.</p>
+<p>The app now has three kinds of tools sharing one registry: built-in, local custom, and remote MCP tools, and profiles still decide which of them a given assistant can reach. A small, trusted core stays at the center while the optional capabilities around it can be added, tested, and swapped without touching the app itself.</p>
+<p>Sources indicate that what we're most curious about now is what people build. If you publish a tool Space, tag it reachy-mini-tool and mcp so others can find it. We'd love to see what Reachy Mini ends up able to do!</p>
+<p>Acknowledgements: Many thanks to Fabien Danieau for proofreading this post and helping test the workflow, to Andres Marafioti for helping test it, and to Remi Fabre and the Pollen Robotics team for the ideas and feedback that shaped the remote tools workflow.</p>
+<p>Great work on making Reachy even easier to customize!How can I add these MCP tools on a wireless Reachy Mini with a preinstalled conversation app?</p>
+<p id="sec-end-162668">It has been revealed that the tools.txt approach makes the MCP integration especially clear. I like how remote tools are kept separate from the built-in robot tools while still being enabled per profile. The distinction between installing a Space and actually activating its tool IDs in tools.txt also seems crucial, particularly when multiple remote tools are being used together.I’m also using an MCP server on my site, https://tinid.ph/, to work with AI agents, and it has been really useful for me. In particular, it has helped a lot with identifying and fixing technical issues on the site. The idea of keeping tools accessible to AI agents through MCP, rather than building every capability directly into the application, makes a lot of sense.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/adding-mcp-tools-to-reachy-mini" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-reachy-mini-the-open-source-robot-for-todays-and-to-162984.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162984. Industry News: Reachy Mini - The Open-Source Robot for Today's and Tomorrow's AI Builders
+        </a>
+        
+        <a href="latest-update-mcp-for-research-how-to-connect-ai-to-research-tool-162955.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162955. Latest Update: MCP for Research: How to Connect AI to Research Tools
+        </a>
+        
+        <a href="tech-report-nvidia-brings-agents-to-life-with-dgx-spark-and-reach-162878.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162878. Tech Report: NVIDIA brings agents to life with DGX Spark and Reachy Mini
+        </a>
+        
+        <a href="reachy-mini-goes-fully-local-162687.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162687. Reachy Mini goes fully local
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
