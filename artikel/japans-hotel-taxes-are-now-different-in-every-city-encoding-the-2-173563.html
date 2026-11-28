@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan's hotel taxes are now different in every city: encoding the 2026–27 rules in plain JS</title>
+    <meta name="description" content="Japan doesn't have one hotel tax (宿泊税). It has a growing patchwork of prefectural and municipal ones, and in 2026–27 several of them change. Kyoto's top ba">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/japans-hotel-taxes-are-now-different-in-every-city-encoding-the-2-173563.html">
+    <meta property="og:title" content="Japan's hotel taxes are now different in every city: encoding the 2026–27 rules in plain JS">
+    <meta property="og:description" content="Japan doesn't have one hotel tax (宿泊税). It has a growing patchwork of prefectural and municipal ones, and in 2026–27 several of them change. Kyoto's top ba">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fp2b9isx1nla4s5ppjtnz.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/japans-hotel-taxes-are-now-different-in-every-city-encoding-the-2-173563.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Japan's hotel taxes are now different in every city: encoding the 2026–27 rules in plain JS", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fp2b9isx1nla4s5ppjtnz.png"], "datePublished": "2026-11-28T00:59:22", "dateModified": "2026-11-28T01:04:25.044964", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/japans-hotel-taxes-are-now-different-in-every-city-encoding-the-2-173563.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Japan's hotel taxes are now different in every city: encoding the 2026–27 rules in plain JS</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 28 Nov 2026 &bull; ⏱️ 3 min read (581 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Japan doesn't have one hotel tax (宿泊税).</li><li style='margin-bottom:6px;'>Travellers usually pay it at the hotel, on top of whatever they prepaid on a booking site (some booking sites collect it in advance).</li><li style='margin-bottom:6px;'>These are the parts that were harder than they looked.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173563"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173563"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173563"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Japan's hotel taxes are now different in every city: encoding the 2026–27 rules in plain JS" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fp2b9isx1nla4s5ppjtnz.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173563">Japan doesn't have one hotel tax (宿泊税). It has a growing patchwork of prefectural and municipal ones, and in 2026–27 several of them change. Kyoto's top band went to ¥10,000 per person per night on 1 March 2026. Hokkaido added a prefectural tax on 1 April 2026 that stacks on top of city taxes like Sapporo's. Okinawa starts a 2% tax on 1 February 2027. Tokyo moves from flat amounts to 3% on 1 April 2027.</p>
+<p>Travellers usually pay it at the hotel, on top of whatever they prepaid on a booking site (some booking sites collect it in advance). So I built a free, client-side calculator for a whole itinerary: Japan Hotel Tax Calculator 2026–27. You add stays (city, check-in date, nights, room price, guests, lodging type) and it gives the tax per night and the trip total. It's one plain JS file with no dependencies, and your stays are saved only in your browser's localStorage.</p>
+<p>These are the parts that were harder than they looked.</p>
+<p>Sources indicate that the rate follows the night stayed, not the booking date. Tokyo's Q&amp;A and Kyoto's FAQ both say so explicitly. So each city is a list of rules with a from date, and each night of a stay looks up its own rule:.</p>
+<p>Sources indicate that bands are [upperExclusive, yen] pairs. percent covers Tokyo's fresh rule (3% of the per-person price rounded down to ¥100, nothing under ¥13,000), Okinawa's (2% of the price rounded down to ¥1,000, max ¥2,000) and Kutchan's (3% rounded down to ¥100, Hokkaido tax included). Those three "round the price down first" rules are easy to miss. In Tokyo from April 2027, ¥13,550 becomes ¥13,500 × 3% = ¥405.</p>
+<p>According to recent reports, example: a 4-night Tokyo stay from 29 March 2027, ¥30,000 for a room for two (¥15,000 each), is ¥400, ¥400, ¥400, then ¥900 on the night of 1 April. The calculator warns when a stay spans a change.</p>
+<p id="sec-mid-173563">Dates are plain calendar strings ('2027-04-01'). All the arithmetic is done with Date.UTC, so the result doesn't depend on the visitor's time zone. The test suite runs under TZ=Asia/Tokyo, America/Los_Angeles, Pacific/Kiritimati and UTC to make sure.</p>
+<p>In a recent development, the bands are defined on the per-person price excluding the 10% consumption tax. People usually know the price for the whole room, often tax-inclusive. The obvious conversion is price / 1.1 / guests, and it's wrong exactly where it matters:.</p>
+<p>According to recent reports, ¥6,600 including tax is exactly ¥6,000, which is Kyoto's ¥400 band edge. So I keep the price as a fraction and compare with integer multiplication:.</p>
+<p>The tests pin the edges from both sides. ¥22,000 incl. tax is exactly ¥20,000 and must hit Kyoto's ¥1,000 band, while ¥21,999 stays at ¥400. A ¥26,000 Tokyo room for two in June 2027 is ¥13,000 each and is taxed. ¥25,999 isn't.</p>
+<p>Industry observers note that read the official wording for each edge carefully too. Niseko's lowest band is "5,001円未満" (up to ¥5,000), not "under ¥5,000", so its first edge in the data is 5001.</p>
+<p>According to recent reports, the tool page and a companion blog post both show a full rates table. I didn't want to type the rates twice, because a table that disagrees with the calculator is worse than no table. The static site builder (Python) runs Node to load the calculator module and renders the table from its exported data:.</p>
+<p id="sec-end-173563">The same file is also inlined into the page as.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/member_0fbab672/japans-hotel-taxes-are-now-different-in-every-city-encoding-the-2026aeu27-rules-in-plain-js-3789" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-when-ai-means-something-different-in-every-classroom-171243.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #171243. Breaking: When AI means something different in every classroom
+        </a>
+        
+        <a href="breaking-three-routes-to-vpp-revenue-for-installers-epcs-and-deve-169898.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #169898. Breaking: Three Routes to VPP Revenue for Installers, EPCs, and Developers Utility programs, wholesale markets, and bilateral contracts each come with different eligibility rules, payment structures, and commercial responsibilities.
+        </a>
+        
+        <a href="graph-of-the-day-the-world-now-makes-7-solar-panels-for-every-tv-169434.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #169434. Graph of the Day: The World Now Makes 7 Solar Panels for Every TV
+        </a>
+        
+        <a href="bitcoin-dodged-one-risk-from-japan-and-now-faces-a-monday-reckoni-168854.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #168854. Bitcoin dodged one risk from Japan and now faces a Monday reckoning
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

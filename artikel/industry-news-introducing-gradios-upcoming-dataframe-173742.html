@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: Introducing Gradio's upcoming Dataframe!</title>
+    <meta name="description" content="Gradio’s gr.Dataframe component is one of our most popular components, we've seen it used in a variety of awesome apps, like leaderboards, dashboards, and ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-introducing-gradios-upcoming-dataframe-173742.html">
+    <meta property="og:title" content="Industry News: Introducing Gradio's upcoming Dataframe!">
+    <meta property="og:description" content="Gradio’s gr.Dataframe component is one of our most popular components, we've seen it used in a variety of awesome apps, like leaderboards, dashboards, and ">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/gradio-dataframe-update/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-introducing-gradios-upcoming-dataframe-173742.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: Introducing Gradio's upcoming Dataframe!", "image": ["https://huggingface.co/blog/assets/gradio-dataframe-update/thumbnail.png"], "datePublished": "2025-03-24T00:00:00", "dateModified": "2026-11-28T01:04:39.087398", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-introducing-gradios-upcoming-dataframe-173742.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: Introducing Gradio's upcoming Dataframe!</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 24 Mar 2025 &bull; ⏱️ 2 min read (441 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Gradio’s gr.Dataframe component is one of our most popular components, we've seen it used in a variety of awesome apps, like leaderboards, dashboards, and interactive visualisations.</li><li style='margin-bottom:6px;'>Well — we’re now super excited to release a host of new updates to Gradio’s dataframe component.</li><li style='margin-bottom:6px;'>Industry observers note that you can select multiple cells at once!</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173742"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173742"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173742"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: Introducing Gradio's upcoming Dataframe!" loading="lazy" src="https://huggingface.co/blog/assets/gradio-dataframe-update/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173742">Gradio’s gr.Dataframe component is one of our most popular components, we've seen it used in a variety of awesome apps, like leaderboards, dashboards, and interactive visualisations. Although we hadn't made any changes to the dataframe in quite some time, our backlog of complications had been growing, and some improvements had been in demand for a while.</p>
+<p>Well — we’re now super excited to release a host of new updates to Gradio’s dataframe component. Over the last 6 weeks, we’ve closed over 70 dataframe issues - including bugs, improvements and enhancements.</p>
+<p>Industry observers note that you can select multiple cells at once! Copy or delete values across your selection with ease.</p>
+<p>Sources indicate that add row number columns and keep critical columns in view while navigating wide datasets using the pinned_columns parameter. No more losing track of what you're looking at!</p>
+<p>Industry observers note that easily copy cell values into a comma-separated format with our new copy button. Need a better view? The full screen button gives you interactivity without distractions and can be enabled with the show_full_screen parameter.</p>
+<p>Look at all that data! Now we can just scroll to the top.</p>
+<p>It has been revealed that improved keyboard navigation makes gr.Dataframe more accessible than ever. You can also take control of your dataframe’s look with a dedicated styler parameter and enhance the user experience of your app.</p>
+<p>Access entire row data in select events for more intuitive interactivity and data manipulation.</p>
+<p id="sec-mid-173742">Customise the interactivity of your dataframe by specifying non-editable columns using the static_columns parameter.</p>
+<p>Quickly find the data you need with our powerful search feature by setting the show_search parameter to "search".</p>
+<p>Narrow down your dataset to focus on exactly what you need with flexible filtering options with show_search set to "filter".</p>
+<p>Experience smoother, more intuitive cell selection that behaves the way you expect.</p>
+<p>With over 70 concerns closed, we’ve made huge improvements, but there’s always more for us to work on. Looking ahead, we still have more ideas to implement and we’re excited to keep refining accessibility, performance, and integration. Look out for some cool demos on our socials using the dataframe on Gradio’s X.</p>
+<p>The updated dataframe is live in the latest Gradio release. Upgrade your installation with pip install --upgrade gradio.</p>
+<p>In a recent development, check out the Gradio documentation for examples and tutorials to get started with these new features. We’re eager to see what you create! Got thoughts or suggestions? Share them by raising an glitch in our GitHub repo.</p>
+<p id="sec-end-173742">This is awesome, I hope it can get into Streamlit, which is a great library for making interactive dashboards in Python.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/gradio-dataframe-upgrade" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-introducing-optimum-the-optimization-toolkit-for-tr-174520.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174520. Industry News: Introducing Optimum: The Optimization Toolkit for Transformers at Scale
+        </a>
+        
+        <a href="industry-news-introducing-snowball-fight-our-first-ml-agents-envi-174505.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174505. Industry News: Introducing Snowball Fight ☃️, our first ML-Agents environment
+        </a>
+        
+        <a href="introducing-the-upcoming-microsoft-iq-putting-your-organizations--174495.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174495. Introducing the upcoming Microsoft IQ: Putting your organization’s intelligence to work in every agent
+        </a>
+        
+        <a href="industry-news-introducing-pull-requests-and-discussions-174459.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174459. Industry News: Introducing Pull Requests and Discussions 🥳
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

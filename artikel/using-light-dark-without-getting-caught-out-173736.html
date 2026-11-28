@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using light-dark() without getting caught out</title>
+    <meta name="description" content="I honestly hadn’t thought about “getting caught” by light-dark() — particularly when leaning heavily on it for this site — but Martin Underhill explains:. ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/using-light-dark-without-getting-caught-out-173736.html">
+    <meta property="og:title" content="Using light-dark() without getting caught out">
+    <meta property="og:description" content="I honestly hadn’t thought about “getting caught” by light-dark() — particularly when leaning heavily on it for this site — but Martin Underhill explains:. ">
+    <meta property="og:image" content="https://css-tricks.com/wp-content/uploads/2018/12/candles-lightbulb-1024x512.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/using-light-dark-without-getting-caught-out-173736.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Using light-dark() without getting caught out", "image": ["https://css-tricks.com/wp-content/uploads/2018/12/candles-lightbulb-1024x512.png"], "datePublished": "2026-11-27T09:01:31-07:00", "dateModified": "2026-11-28T01:04:38.548511", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/using-light-dark-without-getting-caught-out-173736.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Using light-dark() without getting caught out</h1>
+        <div class="meta-line">🌐 Source: <strong>Css-tricks</strong> &bull; 📅 27 Nov 2026 &bull; ⏱️ 2 min read (479 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>I honestly hadn’t thought about “getting caught” by light-dark() — particularly when leaning heavily on it for this site — but Martin Underhill explains:.</li><li style='margin-bottom:6px;'>In a recent development, without fallbacks, browsers that don’t support light-dark()typically use black text on a white background in Light Mode, and white text on a dark grey background in Dark Mode.</li><li style='margin-bottom:6px;'>In a recent development, like Martin, I initially began implementing color themes based on media queries sniffing out user preferences.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173736"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173736"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173736"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Using light-dark() without getting caught out" loading="lazy" src="https://css-tricks.com/wp-content/uploads/2018/12/candles-lightbulb-1024x512.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173736">I honestly hadn’t thought about “getting caught” by light-dark() — particularly when leaning heavily on it for this site — but Martin Underhill explains:.</p>
+<p>In a recent development, without fallbacks, browsers that don’t support light-dark()typically use black text on a white background in Light Mode, and white text on a dark grey background in Dark Mode. They’re not the exact colours I’d want, but my website looks fine.</p>
+<p>Again, it’s risky, so test thoroughly.</p>
+<p>In a recent development, like Martin, I initially began implementing color themes based on media queries sniffing out user preferences. But it became super cumbersome to write prefers-color-scheme time and again. I mean, totally DX-world problems. I also remembered the piece Sara Joy wrote with us a while back encouraging a jump into the light-dark() waters and thought it’d be nice to take that advice.</p>
+<p>According to recent reports, doing that, I ran into another DX annoyance: writing two color values for each light-dark(). CSS variables help, of course, but even then it exhausted me. That says something more about me than the feature, but I digress. So, I took Martin’s process one step further to abstract all the things:.</p>
+<p>In a recent development, very nice, at least for my penchant for laziness. But I ran into another issue because sometimes text needs to go the other direction. Keep abstracting. I could define the background variable which is normally the contrast to text:.</p>
+<p>Works, but using a helper called “surface” on a property controlling color bothers me too. I may be lazy, but I’m a little anal with semantics. Hence:.</p>
+<p id="sec-mid-173736">Sources indicate that …where “reverse” means it goes the opposite direction of a normal “light-dark” call and the “dark” value is called first. But even that is still too much for my brain to handle because now I’m left with multiple tokens to remember if I want things to be super semantic:.</p>
+<p>So I went with an even more general abstraction:.</p>
+<p>In a recent development, perfect, no. But I’m pretty happy with it.</p>
+<p>Back to Martin and fallbacks, he goes about it with a classic cascade safeguard:.</p>
+<p>Recent findings suggest that he’s totally right and I ought to be doing that as well. Maybe I will, but I couldn’t help thinking that a light-dark() fallback argument would be nice. Spitballing here, of course:.</p>
+<p>Now we’re getting verbose. But so are fallbacks in general. Indeed, Martin asked if moving to light-dark() is even worth it given the need to think about fallbacks. Is it really more efficient than a media query at this point? His byte-savings were negligible. I decided to compare what the differences would have been on CSS-Tricks:.</p>
+<p id="sec-end-173736">It has been revealed that not bad, actually. Not an earth shattering difference but it does help me justify favoring DX even if I was just lucky it worked out that way.</p>
+<p style="margin-top: 25px;">
+<a href="https://css-tricks.com/using-light-dark-without-getting-caught-out/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="getting-started-with-sentiment-analysis-using-python-174493.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174493. Getting Started with Sentiment Analysis using Python
+        </a>
+        
+        <a href="latest-update-what-its-like-getting-caught-inside-at-20-foot-mave-172364.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #172364. Latest Update: What It's Like Getting Caught Inside At 20-Foot Maverick's According To Kai Lenny (Video)
+        </a>
+        
+        <a href="racerback-sports-bras-support-without-getting-in-the-way-these-6--168713.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #168713. Racerback Sports Bras Support Without Getting in the Way. These 6 Editor-Tested Picks Are the Best.
+        </a>
+        
+        <a href="newcastle-united-star-banned-from-driving-after-being-caught-usin-163973.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #163973. Newcastle United star banned from driving after being caught using phone at the wheel
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

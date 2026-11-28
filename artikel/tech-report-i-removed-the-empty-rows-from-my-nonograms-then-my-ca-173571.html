@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: I removed the empty rows from my nonograms. Then my camels got taller.</title>
+    <meta name="description" content="I'm a junior solo developer from South Korea. I use a translator to help me write in English. According to recent reports, my game is Whale Squares: Nonogr">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-i-removed-the-empty-rows-from-my-nonograms-then-my-ca-173571.html">
+    <meta property="og:title" content="Tech Report: I removed the empty rows from my nonograms. Then my camels got taller.">
+    <meta property="og:description" content="I'm a junior solo developer from South Korea. I use a translator to help me write in English. According to recent reports, my game is Whale Squares: Nonogr">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fum0ggj4x8tmnr54kvqku.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-i-removed-the-empty-rows-from-my-nonograms-then-my-ca-173571.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: I removed the empty rows from my nonograms. Then my camels got taller.", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fum0ggj4x8tmnr54kvqku.png"], "datePublished": "2026-11-28T00:57:50", "dateModified": "2026-11-28T01:04:25.460755", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-i-removed-the-empty-rows-from-my-nonograms-then-my-ca-173571.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: I removed the empty rows from my nonograms. Then my camels got taller.</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 28 Nov 2026 &bull; ⏱️ 3 min read (640 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>I'm a junior solo developer from South Korea.</li><li style='margin-bottom:6px;'>According to recent reports, my game is Whale Squares: Nonogram.</li><li style='margin-bottom:6px;'>In a recent development, in my last post, I wrote about making 9,000 of these puzzles.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173571"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173571"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173571"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: I removed the empty rows from my nonograms. Then my camels got taller." loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fum0ggj4x8tmnr54kvqku.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173571">I'm a junior solo developer from South Korea. I use a translator to help me write in English.</p>
+<p>According to recent reports, my game is Whale Squares: Nonogram. In a nonogram, also called Picross, you use the numbers beside the rows and columns to fill in cells and make a picture.</p>
+<p>In a recent development, in my last post, I wrote about making 9,000 of these puzzles. This one is about what came after.</p>
+<p>Industry observers note that someone testing the app told me there were too many empty rows. If a row or column has a clue of 0, every cell in it is empty. By default my app puts an X in each of those cells before you start.</p>
+<p>Recent findings suggest that on some 25×25 puzzles, more than ten rows and columns were already crossed out. I'd picked a substantial board and only had the middle to solve.</p>
+<p>The original picture had white space around it. When I put the picture on the grid, I included all that white space too. That's why the picture was so small in the middle.</p>
+<p>Industry observers note that I cropped off the white space and made the picture bigger. A wide picture could reach both sides of the board and still leave empty space above and below. I stretched the short side to fill the square.</p>
+<p>That brought the empty rows down to about two. I thought that was good enough and shipped the update.</p>
+<p>According to recent reports, after it went out, I saw the two camels. They were standing side by side like before, but now they were both tall and thin. The elephants in the circus parade were taller too. A lot of the pictures on the biggest boards looked wrong like that.</p>
+<p>The picture is everything in this game, and I'd stretched it out of shape. It felt like there was something wrong with my whole game.</p>
+<p id="sec-mid-173571">This time I changed the board to fit the picture. I kept the long side at the puzzle size and shortened the other side in steps of five cells. A puzzle in the 25×25 pack could be 25×20 or 25×15, depending on the picture.</p>
+<p>The pictures looked right again and there were hardly any empty rows. But more than 2,500 puzzles now had rectangular boards. Near the start of that pack there were more rectangles than squares.</p>
+<p>I think a rectangular puzzle once in a while is fun. I don't see them very often, though. Nonograms have been around a long time. To me a square board feels like one of the rules by now. I wanted to respect the old game and stay as close to it as I could.</p>
+<p>Recent findings suggest that for the giraffe, I wanted to keep the long neck. The diplodocus is long right down to its tail, and the suspension bridge needs room to stretch across the board. I kept rectangles for pictures like those, where the length is part of what you want to see.</p>
+<p>For the rest I used fresh pictures that fit a square. I threw away a lot of pictures.</p>
+<p>There are fewer than 300 rectangular boards now. You'll hardly see any near the start of a pack.</p>
+<p>Recent findings suggest that when a picture changed, its answer changed too. A cell you filled in correctly before might need to be empty now. For those puzzles, the app clears your half-finished board once. It keeps the record of puzzles you've finished.</p>
+<p>It has been revealed that this version is now out on Google Play and the App Store. I only wanted to remove a few empty rows. It turned into changing the board shape and making newly introduced pictures.</p>
+<p>Whale Squares: Nonogram on Google Play: https://play.google.com/store/apps/details?id=kr.binarytech.goraekan&amp;utm_source=devto&amp;utm_campaign=blog_202611.</p>
+<p id="sec-end-173571">Whale Squares: Nonogram on the App Store: https://apps.apple.com/us/app/id6835263397.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/_21fd064819ff1707b8060/i-removed-the-empty-rows-from-my-nonograms-then-my-camels-got-taller-4gm7" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-how-southeastern-university-got-a-handle-on-its-data-173606.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173606. Tech Report: How Southeastern University Got a Handle on Its Data
+        </a>
+        
+        <a href="tech-report-nate-silver-trump-could-absolutely-be-removed-from-of-169644.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #169644. Tech Report: Nate Silver: Trump could ‘absolutely’ be removed from office after midterm turmoil
+        </a>
+        
+        <a href="tech-report-i-finally-got-a-usb-c-charging-e-bike-and-it-costs-75-168747.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #168747. Tech Report: I finally got a USB-C charging e-bike, and it costs 75% less than Rivian’s bike
+        </a>
+        
+        <a href="tech-report-how-to-generate-text-using-different-decoding-methods-174547.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174547. Tech Report: How to generate text: using different decoding methods for language generation with Transformers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

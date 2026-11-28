@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open-R1: a fully open reproduction of DeepSeek-R1</title>
+    <meta name="description" content="Industry observers note that if you’ve ever struggled with a tough math problem, you know how useful it is to think a little longer and work through it car">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/open-r1-a-fully-open-reproduction-of-deepseek-r1-173897.html">
+    <meta property="og:title" content="Open-R1: a fully open reproduction of DeepSeek-R1">
+    <meta property="og:description" content="Industry observers note that if you’ve ever struggled with a tough math problem, you know how useful it is to think a little longer and work through it car">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/open-r1/thumbnails.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/open-r1-a-fully-open-reproduction-of-deepseek-r1-173897.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Open-R1: a fully open reproduction of DeepSeek-R1", "image": ["https://huggingface.co/blog/assets/open-r1/thumbnails.png"], "datePublished": "2025-01-28T00:00:00", "dateModified": "2026-11-28T01:04:49.814101", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/open-r1-a-fully-open-reproduction-of-deepseek-r1-173897.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Open-R1: a fully open reproduction of DeepSeek-R1</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 28 Jan 2025 &bull; ⏱️ 8 min read (1507 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that if you’ve ever struggled with a tough math problem, you know how useful it is to think a little longer and work through it carefully.</li><li style='margin-bottom:6px;'>Recent findings suggest that however, the recipe behind OpenAI’s reasoning models has been a well kept secret.</li><li style='margin-bottom:6px;'>Besides performing as well or better than o1, the DeepSeek-R1 release was accompanied by a detailed tech report that outlined the key steps of their training recipe.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173897"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173897"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173897"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Open-R1: a fully open reproduction of DeepSeek-R1" loading="lazy" src="https://huggingface.co/blog/assets/open-r1/thumbnails.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173897">Industry observers note that if you’ve ever struggled with a tough math problem, you know how useful it is to think a little longer and work through it carefully. OpenAI’s o1 model indicated that when LLMs are trained to do the same—by using more compute during inference—they get significantly better at solving reasoning tasks like mathematics, coding, and logic.</p>
+<p>Recent findings suggest that however, the recipe behind OpenAI’s reasoning models has been a well kept secret. That is, until last week, when DeepSeek released their DeepSeek-R1 model and promptly broke the internet (and the stock market!).</p>
+<p>Besides performing as well or better than o1, the DeepSeek-R1 release was accompanied by a detailed tech report that outlined the key steps of their training recipe. This recipe involved several innovations, most notably the application of pure reinforcement learning to teach a base language model how to reason without any human supervision. As shown in the figure below, making a powerful reasoning model is now very simple if you have access to a capable base model and a high-quality data mixture:.</p>
+<p>However, the DeepSeek-R1 release leaves open several questions about:.</p>
+<p>These questions prompted us to launch the Open-R1 project, an initiative to systematically reconstruct DeepSeek-R1’s data and training pipeline, validate its claims, and push the boundaries of open reasoning models. By building Open-R1, we aim to provide transparency on how reinforcement learning can enhance reasoning, share reproducible insights with the open-source community, and create a foundation for future models to leverage these techniques.</p>
+<p>In this blog post we take a look at key ingredients behind DeepSeek-R1, which parts we strategy to replicate, and how to contribute to the Open-R1 project.</p>
+<p>DeepSeek-R1 is a reasoning model built on the foundation of DeepSeek-V3. Like any good reasoning model, it starts with a strong base model, and DeepSeek-V3 is exactly that. This 671B Mixture of Experts (MoE) model performs on par with heavyweights like Sonnet 3.5 and GPT-4o. What’s especially impressive is how cost-efficient it was to train—just $5.5M—thanks to architectural changes like Multi Token Prediction (MTP), Multi-Head Latent Attention (MLA) and a LOT (seriously, a lot) of hardware optimization.</p>
+<p>DeepSeek also introduced two models: DeepSeek-R1-Zero and DeepSeek-R1, each with a distinct training approach. DeepSeek-R1-Zero skipped supervised fine-tuning altogether and relied entirely on reinforcement learning (RL), using Group Relative Policy Optimization (GRPO) to make the process more efficient. A simple reward system was used to guide the model, providing feedback based on the accuracy and structure of its answers. This approach helped the model develop useful reasoning skills, such as breaking problems into steps and verifying its own outputs. However, its responses often lacked clarity and were difficult to read.</p>
+<p>That’s where DeepSeek-R1 comes in. It started with a "cold start" phase, fine-tuning on a small set of carefully crafted examples to improve clarity and readability. From there, it went through more RL and refinement steps, including rejecting low-quality outputs with both human preference based and verifiable reward, to create a model that not only reasons well but also produces polished and consistent answers.</p>
+<p>This all sounds great, but what's actually missing? Let's have a look at the missing pieces of the puzzle.</p>
+<p>The release of DeepSeek-R1 is an amazing boon for the community, but they didn’t release everything—although the model weights are open, the datasets and code used to train the model are not 😢.</p>
+<p>The goal of Open-R1 is to build these last missing pieces so that the whole research and industry community can build similar or better models using these recipes and datasets. And by doing this in the open, everybody in the community can contribute!</p>
+<p>As shown in the figure below, here’s our plan of attack:.</p>
+<p>According to recent reports, note that we don’t want to stop at math datasets. There’s a lot of potential in exploring other areas, obvious one like code but also scientific fields such as medicine, where reasoning models could have significant impact.</p>
+<p>This initiative isn’t just about replicating results—it’s about sharing insights with the community. By documenting what works, what doesn’t, and why, we hope to save others from wasting time and compute on unproductive paths.</p>
+<p>If this sounds interesting, we’d love your help! Whether it’s contributing code, joining discussions on Hugging Face, there are plenty of ways to get involved. Let’s build this together! 🚀.</p>
+<p>In a recent development, where is the evaluation numbers? without it you can’t call it reproduction.</p>
+<p>True, but it seems like there’s nothing to be evaluated as of right now. I assume the ultimate goal is to train a upcoming reasoning model and then use the same evaluation metrics as o1 and the DeepSeek-R1.</p>
+<p>Recent findings suggest that that's quite interesting,I was asking myself why the questions the author exposed here are not being asked by others ? I believe the work they have done is memorable but at the same time I wonder why they wouldn't put these missing  pieces on if they are supposed to be fully open.Why even without reproduction and comprehension of the innovation they could affect so much the market in this way ?</p>
+<p>In a recent development, hi! This blog post is an introduction to the project, not a claim that we’ve reproduced R1 yet. We will totally share the missing piece when we have them, you can expect the models and datasets to be upload in this Hugging Face org and the code to be in this GitHub repo.</p>
+<p>Interesting read, and it is good that we see more effort into this direction: more optimization and less brute force.Also wonder what tool did the author use for creating step diagram.</p>
+<p>I'm so glad that initiative like this already exist, I'm gonna try to contribute :).</p>
+<p id="sec-mid-173897">Awesome to have this open reproduction started!</p>
+<p>For Step #1 check out https://github.com/open-thoughts/open-thoughts!</p>
+<p>https://x.com/ryanmart3n/status/1884284101265612856.</p>
+<p>It's really cool to see how the whole open source community comes together!</p>
+<p>Does anyone know the actual training cost of r1? I can't find it in the paper or the announcement post. Is the 6M cost reported by media just the number taken from v3's training cost?</p>
+<p>Industry observers note that has anyone asked the DeepSeek team to publish their training data and code, or at least share them privately with an independent replication project like this? Have they rejected such a request?</p>
+<p>Sources indicate that A faithful replication depends on using the same dataset and hyperparameters. Otherwise, any major discrepancies with the published benchmarks would be hard to pin down—whether due to training data differences or the replication method itself.</p>
+<p>Sources indicate that historically, they have never released code or datasets of their LLM training, so I wouldn't expect this time to be different. If they would release it that would be amazing of course!</p>
+<p>In the meantime we have to make best guess estimates and see if we can get there ourselves.</p>
+<p>According to recent reports, you provide good  replication process of Deepseek reasoning training. I will try something similar to it.</p>
+<p>This is really good information, can we fine tune with specific use case when code is released ?</p>
+<p>So basically you're asking to replace existing censorship with another flavour of censorship?</p>
+<p>In a recent development, can't wait! Hopefully the model will be uncensored but whatever you can do is alright! Love seeing open source building itself up. I'm not smart enough to actually help but I can contribute moral support lol.</p>
+<p>Recent findings suggest that hello guys, I am even just trying to find code for DeepSeek-V2, in order to fully understand multi-head latent attention. You do not seem to have code in Hugging Face even for that. Or am I missing something? Don't see anything in src/transformers/models. MLA is not properly described in their paper, so it would be vital to have code for this.</p>
+<p>In a recent development, the code for the models are inside the model repositories, e.g. for V3: https://huggingface.co/deepseek-ai/DeepSeek-V3/blob/main/modeling_deepseek.py.</p>
+<p>Is it possible to contribute to this project?</p>
+<p>Yes, you can look at https://huggingface.co/open-r1 and https://github.com/huggingface/open-r1/discussions :).</p>
+<p>In a recent development, I wonder what data was used for the training of R1 and R1-zero. Is there any news on the possibly tos -breaking openAI API calls that were made this past autumn?</p>
+<p>This project inspires me. At the moment, I developed an enhanced transformer. The goal is to figure out an equivalent SFT component in deepseek. The theoretical part and numeric examples worked out fine. I am now implementing it in a small scale LLM. Hopefully we can see the benchmark results in a few weeks. Thanks for the inspiration.</p>
+<p>In a recent development, releasing weights means open-binary ie freeware (as opposed to SAAS). but the actual blueprint/design of the network, defined in a HL language, is not provided, so it isn't even partially open (SOURCE).</p>
+<p>PS: Why don't OpenAI change its name since it guide AI industry into another directions?</p>
+<p>Industry observers note that if you need any help with Open-R1? Please let me know.</p>
+<p id="sec-end-173897">How's it going? I don't see more comment or updates here since Feb.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/open-r1" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-introducing-idefics-an-open-reproduction-of-state-of--174273.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174273. Tech Report: Introducing IDEFICS: An Open Reproduction of State-of-the-art Visual Langage Model
+        </a>
+        
+        <a href="tech-report-gemma-3n-fully-available-in-the-open-source-ecosystem-173573.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173573. Tech Report: Gemma 3n fully available in the open-source ecosystem!
+        </a>
+        
+        <a href="latest-update-architectural-choices-in-chinas-open-source-ai-ecos-162866.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162866. Latest Update: Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek
+        </a>
+        
+        <a href="the-future-of-the-global-open-source-ai-ecosystem-from-deepseek-t-162861.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162861. The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

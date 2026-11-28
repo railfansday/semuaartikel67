@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-R1: Reproduce Deepseek R1 „aha moment“ a RL tutorial</title>
+    <meta name="description" content="This post was written by Philipp Schmid and orginially posted on philschmid.de code can found here. The release of Deepseek R1 shocked the industry. Why? W">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/mini-r1-reproduce-deepseek-r1-aha-moment-a-rl-tutorial-173875.html">
+    <meta property="og:title" content="Mini-R1: Reproduce Deepseek R1 „aha moment“ a RL tutorial">
+    <meta property="og:description" content="This post was written by Philipp Schmid and orginially posted on philschmid.de code can found here. The release of Deepseek R1 shocked the industry. Why? W">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/open-r1/mini-r1-contdown-game.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/mini-r1-reproduce-deepseek-r1-aha-moment-a-rl-tutorial-173875.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Mini-R1: Reproduce Deepseek R1 „aha moment“ a RL tutorial", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/open-r1/mini-r1-contdown-game.png"], "datePublished": "2025-01-31T10:29:40", "dateModified": "2026-11-28T01:04:48.384890", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/mini-r1-reproduce-deepseek-r1-aha-moment-a-rl-tutorial-173875.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Mini-R1: Reproduce Deepseek R1 „aha moment“ a RL tutorial</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 31 Jan 2025 &bull; ⏱️ 6 min read (1197 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>This post was written by Philipp Schmid and orginially posted on philschmid.de code can found here.</li><li style='margin-bottom:6px;'>The release of Deepseek R1 shocked the industry.</li><li style='margin-bottom:6px;'>Industry observers note that in the paper they described an "aha moment" when using pure RL to train the model.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173875"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173875"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173875"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Mini-R1: Reproduce Deepseek R1 „aha moment“ a RL tutorial" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/open-r1/mini-r1-contdown-game.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173875">This post was written by Philipp Schmid and orginially posted on philschmid.de code can found here.</p>
+<p>The release of Deepseek R1 shocked the industry. Why? Well, DeepSeek-R1 is an open model that rivals OpenAI's o1 in complex reasoning tasks, introduced using Group Relative Policy Optimization (GRPO) and RL-focused multi-stage training approach. They not only released the model, but also a research paper on how they did it.</p>
+<p>Industry observers note that in the paper they described an "aha moment" when using pure RL to train the model. During this phase, DeepSeek-R1-Zero (the first test of DeepSeek-R1) learns to allocate more thinking time to a problem by reevaluating its initial approach without any human feedback or data describing how to do it. They describe this as an "aha moment" as:.</p>
+<p>This behavior is not only a testament to the model’s growing reasoning abilities but also a captivating example of how reinforcement learning can lead to unexpected and sophisticated outcomes.</p>
+<p>Recent findings suggest that in this blog post we want to recreate the small "aha moment" of DeepSeek-R1 using Group Relative Policy Optimization (GRPO) and the Countdown Game. We will train an open model using reinforcement learning trying to teach it self-verification and search abilities all on its own to solve the Countdown Game. The Countdown game is a numbers puzzle where players use a set of randomly drawn numbers and basic arithmetic operations (+, -, ×, ÷) to reach or get as close as possible to a target number.</p>
+<p>The blog post focuses on training distributed training using Deepspeed and vLLM. It was run on a 4x NVIDIA H100 GPUs.</p>
+<p>Note: This blog is inspired by Jiayi Pan who initially explored the idea and proofed it with a small model.</p>
+<p>But Before we start, let's take a look at the Group Relative Policy Optimization (GRPO) and understand how it works.</p>
+<p>Group Relative Policy Optimization (GRPO).</p>
+<p>Group Relative Policy Optimization (GRPO) is a reinforcement learning algorithm to improve the reasoning capabilities of LLMs. It was introduced in the DeepSeekMath paper in the context of mathematical reasoning. GRPO modifies the traditional Proximal Policy Optimization (PPO) by eliminating the need for a value function model. Instead, it estimates baselines from group scores, reducing memory usage and computational overhead. GRPO, now also used by the Qwen team, can be used with rule/binary-based Rewards as well as General Reward Models to improve models on helpfulness.</p>
+<p>Our first step is to install Hugging Face Libraries and Pytorch, vllm, and trl, transformers and datasets. If you haven't heard of trl yet, don't worry. It is a fresh library on top of transformers and datasets, which makes it easier to fine-tune, rlhf, align open LLMs.</p>
+<p>Note: you may need to restart the kernel to use updated packages.</p>
+<p>In a recent development, we are going to use the Jiayi-Pan/Countdown-Tasks-3to4 dataset, which contains samples with 3 to 4 numbers and solutions. As Model we are going to use Qwen/Qwen2.5-3B-Instruct which is a 3B parameter instruction tuned model. This makes it easier to showcase the "aha moment" as it already can follow instructions. Jiayi-Pan explored that the model needs to have a certain quality to be able to learn the reasoning process, starting with &gt; 1.5B parameters.</p>
+<p id="sec-mid-173875">Industry observers note that TRL supports Group Relative Policy Optimization (GRPO) through a dedicated GRPOTrainer for aligning LLMs from preference data, as described in DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models. The GRPOTrainer is a subclass of the Trainer from the transformers library and supports all the same features, including logging, checkpointing, distributed training, and parameter efficient fine-tuning (PEFT).</p>
+<p>Sources indicate that the GRPOTrainer supports generic Outcome Reward Models (ORM) and custom reward functions, that can be used to implement Rule-Based Reward Models. In the Deepseek R1 paper they implemented Rule-Based Reward Models to verify the correctness of the generated solutions. In our exmaple we are going to do a similar approach, where we will create 2 reward functions that:.</p>
+<p>Note: Correct  in our example includes the equation, for example  55 + 36 - 7 - 19.</p>
+<p>It has been revealed that hugging Face TRL added support for distributed training with Deepspeed and using vLLM for faster generation. I preprared a run_r1_grpo.py script and a receipes/grpo-qwen-2.5-3b-deepseek-r1-countdown.yaml config file to run the training.</p>
+<p>According to recent reports, this configuration is tested and validated on a Node with 4x H100 80GBs, where a single step takes around 45-60s, as we can leverage vLLM for generation and DeepSpeed for distributed training. Therefore we need to make sure we correctly set the num_processes to the number of GPUs you have - 1 as the last one will be used with vLLM for Generation. If you are using more GPUS you need to change the vllm_device in the config file to last index GPU, e.g. if you have 8 GPUs you need to set vllm_device=7 and your num_processes to 7.</p>
+<p>According to recent reports, with the optimized distributed training a single step with 8 generations per sample on 4x H100 80GBs takes around 45-60s. The full training for 450 steps takes around 6 hours.</p>
+<p>The script saves random completions to the completion_samples folder, which you can use to inspect the model's progress. It includes completion_samples.txt and success_completion_samples.txt. The completion_samples.txt includes all completions, while the success_completion_samples.txt which correctly solves the equation. Below you can find the interesating training obeserations on how the performance changes over time, as well as the Tensornoard logs and successfull reasoning samples.</p>
+<p>The model with checkpoints for every 25th step can be found at philschmid/qwen-2.5-3b-r1-countdown.</p>
+<p>Industry observers note that I started the experiment using the hyperparameters from the DeepSeekMath paper with a learning rate of 1e-6 and a beta (KL coefficient) of 0.04, which led to unstable training runs after around 150 steps. I ran some small ablations and decreased both the learning rate to 5e-7 and the beta to 0.001, based on a test from OpenRLHF. I coulnd't test how increasing the num_generations from 8 to 64 would affect the training. 64 is the generation value, which was used in the DeepSeekMath paper. All other parameters can be found in the grpo-qwen-2.5-3b-deepseek-r1-countdown.yaml config file.</p>
+<p>I have 3 potential assumptions why the model shifts from "word reasoning" to "programmatic execution":.</p>
+<p>The release of DeepSeek R1 and its research paper might be a breakpoint for open-science and open-source development. Just a week after the DeepSeek release, we've been able to reproduce a simple version of R1 learned "reasoning" using GRPO and the Countdown Game. While our implementation focuses on a specific task rather than general reasoning and convergence into a very specific "reasoning" format, it indicates that the method is working.</p>
+<p>In a recent development, looking in to 2025, it's clear that we are on the cusp of even more significant progress. RL will become more accessible and user-friendly, more researchers and developers will explore its potential, but also require amount of more compute as before and compared to supervised fine-tuning.</p>
+<p>I am excited for 2025. If you have any questions or ideas, feel free to reach out to me.</p>
+<p id="sec-end-173875">If this sounds interesting, we’d love your help! Whether it’s contributing code, joining discussions on Hugging Face.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/open-r1/mini-r1-contdown-game" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="one-year-since-the-deepseek-moment-162871.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162871. One Year Since the “DeepSeek Moment”
+        </a>
+        
+        <a href="ive-never-known-a-moment-like-this-in-video-games-173944.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173944. I've never known a moment like this in video games
+        </a>
+        
+        <a href="open-r1-a-fully-open-reproduction-of-deepseek-r1-173897.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173897. Open-R1: a fully open reproduction of DeepSeek-R1
+        </a>
+        
+        <a href="breaking-how-to-deploy-and-fine-tune-deepseek-models-on-aws-173883.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173883. Breaking: How to deploy and fine-tune DeepSeek models on AWS
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

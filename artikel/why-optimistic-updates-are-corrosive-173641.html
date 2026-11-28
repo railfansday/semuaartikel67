@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why optimistic updates are corrosive</title>
+    <meta name="description" content="I was having an X conversation with @ben_codez, and they asked: why is showing an update as succeeded, before the underlying operation has actually succeed">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/why-optimistic-updates-are-corrosive-173641.html">
+    <meta property="og:title" content="Why optimistic updates are corrosive">
+    <meta property="og:description" content="I was having an X conversation with @ben_codez, and they asked: why is showing an update as succeeded, before the underlying operation has actually succeed">
+    <meta property="og:image" content="https://datastar-instant-intent.ndyg.cross.stream/static/corrosive-og.png?v=64092d5f">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/why-optimistic-updates-are-corrosive-173641.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Why optimistic updates are corrosive", "image": ["https://datastar-instant-intent.ndyg.cross.stream/static/corrosive-og.png?v=64092d5f"], "datePublished": "2026-11-27T20:01:50", "dateModified": "2026-11-28T01:04:30.762759", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/why-optimistic-updates-are-corrosive-173641.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Why optimistic updates are corrosive</h1>
+        <div class="meta-line">🌐 Source: <strong>Cross</strong> &bull; 📅 27 Nov 2026 &bull; ⏱️ 2 min read (357 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>I was having an X conversation with @ben_codez, and
+they asked: why is showing an update as succeeded, before the underlying
+operation has actually succeeded, corrosive?</li><li style='margin-bottom:6px;'>Recent findings suggest that it's corrosive because it normalizes software that is plainly broken and
+doesn't respect our people.</li><li style='margin-bottom:6px;'>I made a chart of what I understand to be Ben's position on communicating with
+their users.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173641"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173641"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173641"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Why optimistic updates are corrosive" loading="lazy" src="https://datastar-instant-intent.ndyg.cross.stream/static/corrosive-og.png?v=64092d5f" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173641">I was having an X conversation with @ben_codez, and
+they asked: why is showing an update as succeeded, before the underlying
+operation has actually succeeded, corrosive?</p>
+<p>Recent findings suggest that it's corrosive because it normalizes software that is plainly broken and
+doesn't respect our people. If a user flips a switch, and sees it flip, and then
+comes back, and the switch is unflipped, the software is broken. How can you
+operate software that doesn't do what you request it to do? It erodes trust.</p>
+<p>I made a chart of what I understand to be Ben's position on communicating with
+their users.</p>
+<p>"Booking confirmed" shown before the server checks the seat.</p>
+<p>No self respect Ben: "No self respecting dev would show the user a booking had succeeded before server verification.".</p>
+<p>Your like shows as done before the server notes "ok".</p>
+<p>Ben: "liking a post", "(It can retry silently).".</p>
+<p id="sec-mid-173641">If the user closes the tab before the server has it, their like is lost and the user is never told.</p>
+<p>Your post reveals greyed out until the server claims "ok".</p>
+<p>Ben: "Right!", to a post shown "greyed out maybe, to indicate it wasn't committed".</p>
+<p>But in addition to that, it's actually easier to make software that doesn't
+lie to your consumers. You can skip all the reconciliation machinery that's required
+to create UI that communicates to users that the change they thought had gone
+through had indeed not gone through.</p>
+<p>Here's a quick demo of using instant intent to communicate the state toggling a switch e.g. a like button.</p>
+<p>When you click the switch, the client demonstrates the button as pressed straight away and sends the click to
+the server. The switch takes no more clicks while it's pressed, and if there's
+no answer within half a second, it starts to blink. The client then won't patch until the server answers with the reconciled HTML view, which Datastar morphs in place.</p>
+<p>Experiment with different latencies and taking it offline, to see how the interaction feels under different scenarios.</p>
+<p id="sec-end-173641">The pressed and blinking look is the same CSS the seats use, on the
+main page.</p>
+<p style="margin-top: 25px;">
+<a href="https://datastar-instant-intent.ndyg.cross.stream/corrosive/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="nphardeval-leaderboard-unveiling-the-reasoning-abilities-of-large-174199.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174199. NPHardEval Leaderboard: Unveiling the Reasoning Abilities of Large Language Models through Complexity Classes and Dynamic Updates
+        </a>
+        
+        <a href="whats-newly-introduced-in-androids-november-2026-google-system-up-173849.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173849. What’s newly introduced in Android’s November 2026 Google System Updates [U]
+        </a>
+        
+        <a href="security-updates-for-wednesday-173650.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173650. Security updates for Wednesday
+        </a>
+        
+        <a href="x-is-doubling-down-on-short-form-vertical-video-with-a-series-of--171236.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #171236. X is doubling down on short-form vertical video with a series of updates
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

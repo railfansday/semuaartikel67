@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>π0 and π0-FAST: Vision-Language-Action Models for General Robot Control</title>
+    <meta name="description" content="Industry observers note that we have ported the first robotics foundation models to Hugging Face LeRobot! Both π0 and π0-FAST, developed by Physical Intell">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/0-and-0-fast-vision-language-action-models-for-general-robot-cont-173865.html">
+    <meta property="og:title" content="π0 and π0-FAST: Vision-Language-Action Models for General Robot Control">
+    <meta property="og:description" content="Industry observers note that we have ported the first robotics foundation models to Hugging Face LeRobot! Both π0 and π0-FAST, developed by Physical Intell">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/192_pi0/new_thumbnail_pi0.001.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/0-and-0-fast-vision-language-action-models-for-general-robot-cont-173865.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "π0 and π0-FAST: Vision-Language-Action Models for General Robot Control", "image": ["https://huggingface.co/blog/assets/192_pi0/new_thumbnail_pi0.001.png"], "datePublished": "2025-02-04T00:00:00", "dateModified": "2026-11-28T01:04:47.511264", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/0-and-0-fast-vision-language-action-models-for-general-robot-cont-173865.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">AI & Tech</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>π0 and π0-FAST: Vision-Language-Action Models for General Robot Control</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 04 Feb 2025 &bull; ⏱️ 9 min read (1742 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that we have ported the first robotics foundation models to Hugging Face LeRobot!</li><li style='margin-bottom:6px;'>Explore the model collection and the PyTorch Version of the model in our repository:
+Huggingface collection of Pi0 models | Huggingface collection of Pi0+FAST models | LeRobot repo.</li><li style='margin-bottom:6px;'>Industry observers note that robert Heinlein suggests that a well-rounded person should be capable of handling a wide range of tasks—both intellectual and physical—rather than being narrowly specialized in one field.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173865"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173865"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173865"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="π0 and π0-FAST: Vision-Language-Action Models for General Robot Control" loading="lazy" src="https://huggingface.co/blog/assets/192_pi0/new_thumbnail_pi0.001.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173865">Industry observers note that we have ported the first robotics foundation models to Hugging Face LeRobot! Both π0 and π0-FAST, developed by Physical Intelligence, are now available in the LeRobot repository, bringing generalist robotic intelligence to the Hugging Face ecosystem. If you are curious about how Vision-Language-Action (VLA) models differ from Vision-Language Models (VLMs) and how actions are represented, dive into this blog post to find out!</p>
+<p>Explore the model collection and the PyTorch Version of the model in our repository:
+Huggingface collection of Pi0 models | Huggingface collection of Pi0+FAST models | LeRobot repo.</p>
+<p>Industry observers note that robert Heinlein suggests that a well-rounded person should be capable of handling a wide range of tasks—both intellectual and physical—rather than being narrowly specialized in one field. Drawing a parallel between a well-rounded person and machine intelligence: AI systems vary widely, but human intelligence excels in versatility—adapting to tasks, environments, and surprises. While large language and vision-language models (LLMs, VLMs) show promise, they lack interaction with the physical world. To bridge this gap, we need models trained on robotic data. Generalist robot models can enhance adaptability, using diverse data to improve generalization and robustness. Instead of training on isolated tasks, pre-training on varied robotic data—similar to LLMs—boosts efficiency and performance.</p>
+<p>Developing generalist robot policies, or robot foundation models, presents three key challenges:.</p>
+<p>The need for large-scale research to fully leverage pre-training benefits.</p>
+<p>Designing model architectures that can integrate diverse data sources while capturing complex physical interactions. A key challenge in this regard is cross-embodiment training, where a model must learn from diverse robot types with varying configurations, control spaces, and action representations. Existing approaches tackle this by:.</p>
+<p>Crafting an effective training recipe, as recent advances in NLP and vision have heavily relied on careful pre-training and post-training strategies.</p>
+<p>In this post, we introduce π0 and π0-FAST, prototype models and learning frameworks developed by Physical Intelligence, designed to overcome these challenges.</p>
+<p>π0 (Pi-Zero) is a Vision-Language-Action (VLA) model, developed by the Physical Intelligence team designed for generalist robot control. It builds upon large-scale pretraining and flow matching-based action generation, enabling robots to perform dexterous manipulation tasks across different embodiments.</p>
+<p>π0 is trained on data from 7 robotic platforms and 68 unique tasks, demonstrating strong zero-shot and fine-tuned performance on complex, real-world tasks such as laundry folding, table bussing, grocery bagging, box assembly, and object retrieval.</p>
+<p>According to recent reports, unlike standard robotic policies, π0 employs flow matching to produce smooth, real-time action trajectories at 50Hz, making it highly efficient, precise, and adaptable for real-world deployment. Flow matching was used in continuous normalizing flows and improved generation quality in diffusion models. The denoising process π0 used works in the same way, starting with a random noise that progressively converges towards a sequence of motor actions that make sense.</p>
+<p>Sources indicate that first of all, you need to upgrade your lerobot install, which leverages transformers as a dependency now! Simply do after a git clone.</p>
+<p>Industry observers note that π0 models are foundational models that, much like PaliGemma, are made to be adapted to a variety of frameworks, environments, and scene inputs. The base models here are usable as-is, in particular π0.</p>
+<p>However, the performances are reduced as it's a conversion from jax to torch and from a specific environment. We recommend fine-tuning your own π0 to your own environment, like below.</p>
+<p>To fine-tune the π0 model using the pi0_base checkpoint from openpi, run the following command:.</p>
+<p>To fine-tune the π0 neural network with PaliGemma and Expert Gemma, which were pretrained using VLM default parameters before π0 fine-tuning, execute:.</p>
+<p>You can also use the pretrained π0 model independently from the LeRobot training framework with the following code:.</p>
+<p>Vision-Language Models (VLMs) and Vision-Language-Action Models (VLAs) share a common foundation: transformers. However, the key distinction lies in action representation. While VLMs process and generate multimodal representations (images and text), VLAs extend this by incorporating action and observation state tokens. With these additional tokens in place, the next challenge is understanding how attention is computed.</p>
+<p>Let’s expand our vocabulary and introduce key terms:.</p>
+<p>They are appended after the prefix portion (images + text), so the prefix serves as context (e.g., a scene image, language instructions like "be a good robot" or "transfer the cube"), while the suffix captures policy‐specific features.</p>
+<p>However, efficiently handling attention in π0 comes with its own set of challenges. The unique shape of its attention mask influences how attention is computed—let’s dive into the details!</p>
+<p>The resulting 2D causal mask exhibits strong block sparsity, but defining the boundaries of each block—especially in a batch of samples—is a bit tricky. We are used to causal masks with triangular structures for autoregressive modeling, but this is not one of those cases.</p>
+<p>As you can see in this example below: the image (first element) has some padding tokens, representing empty cameras. Then, text tokens and state tokens are added. This "prefix" part forms a fully noncausal attention, as in PaliGemma. Then, the "suffix" (state + action/time tokens) has a causal-block structure. The eager naive implementation performs matrix multiplications and applies softmax across the entire input, making it highly inefficient.</p>
+<p>Figure 1: The visualization of the VLA attention mask.</p>
+<p>In a recent development, this looks like a FlexAttention job! It has a pure PyTorch interface, in which explored two options:.</p>
+<p>The current implementation runs, and a WIP is to have it support torch.compile and leverage it to the fullest!</p>
+<p>Industry observers note that now that we know actions are simply n-dimensional vectors that can be tokenized, we can explore the challenges of action representation in Vision-Language-Action (VLA) models. The way actions are represented directly impacts efficiency, generalization, and execution fidelity.</p>
+<p id="sec-mid-173865">Recent findings suggest that one approach is semantic action representation, where actions are described as high-level concepts like sub-tasks or keypoints. While this allows for few-shot and zero-shot learning, it often relies on hand-designed low-level controllers, limiting flexibility across different robots. In contrast, low-level control representations map actions directly to motor commands, enabling precise movements but making training less stable and harder to scale.</p>
+<p>Most existing VLAs use discrete action tokenization, converting continuous actions into discrete tokens generated autoregressively. The most common method—per-dimension, per-timestep binning—struggles with high-frequency control tasks, leading to lossy representations and inefficient training. Alternatives like vector quantization (VQ) and time-series compression help, but VQ is sensitive to hyperparameters, making it less reliable for diverse robot designs.</p>
+<p>It has been revealed that to address these issues, Frequency-space Action Sequence Tokenization (FAST) introduces a novel time-series compression approach using the Discrete Cosine Transform (DCT). FAST reduces redundancy, improves efficiency, and enhances action fidelity.</p>
+<p>With this, we present π0-FAST, faster and autoregressive version of π0 also available in Lerobot repo, an extension of π0, which leverages this fresh tokenizer for better action representation.</p>
+<p>Paper | Jax Code | Our implementation in Lerobot.</p>
+<p>π0-FAST is an autoregressive version of π0, introducing **FAST (Frequency-space Action Sequence Tokenization)**—a new tokenization scheme that enhances efficiency and performance.</p>
+<p>🔗 The π0-FAST tokenizer can be accessed here: FAST Tokenizer.</p>
+<p>🔗 Pretrained weights can be accessed here: Pi0+FAST.</p>
+<p>FAST uses the Discrete Cosine Transform (DCT) to compress continuous action sequences into discrete tokens. The process, illustrated in Figure 2, begins with normalizing raw robot actions, mapping the 1st and 99th quantiles of each action dimension to the range [-1,1]. This normalization is used to ensure consistency across different robotic systems and improve robustness against outliers.</p>
+<p>Each action dimension is then transformed independently using DCT, converting the time-domain signal into the frequency domain. To reduce redundancy, insignificant coefficients are removed through a scale-and-round operation, where a hyperparameter balances compression rate and reconstruction accuracy. The resulting DCT coefficient matrix, often sparse, is flattened into a one-dimensional sequence of integers, interleaving low-frequency components first across dimensions to preserve critical information.</p>
+<p>To further compress the sequence, Byte Pair Encoding (BPE) is applied. As usual, BPE merges frequently occurring patterns across dimensions while maintaining a fixed-size vocabulary.</p>
+<p>Figure 2: The FAST action tokenization pipeline.</p>
+<p>Recent findings suggest that since all operations are invertible, actions can be reconstructed efficiently and losslessly from tokens. The tokenization pipeline has only two hyperparameters: the scaling coefficient applied before rounding and the BPE vocabulary size. Both parameters remain robust across different datasets.</p>
+<p>According to recent reports, additionally, a universal version of FAST, called FAST+, has been trained on one million action sequences from single-arm, bimanual, and mobile manipulation robots, making it applicable across diverse robotic setups. FAST+ is available as a Hugging Face AutoProcessor, allowing people to tokenize action sequences with just a few lines of code.</p>
+<p>For optimal compression, input actions should be quantile-normalized to [-1,1] before tokenization. With the AutoProcessor module, the consumers can train a custom FAST tokenizer on their own datasets.</p>
+<p>🔗 Code for the usage and training custom action tokenizers in the official FAST Repo.</p>
+<p>FAST is integrated into Hugging Face Transformers and can be easily used for encoding and decoding robot action sequences.</p>
+<p>Industry observers note that with π0 and π0-FAST, we take a significant step towards generalist robot intelligence, bringing scalable, efficient, and versatile Vision-Language-Action (VLA) models to LeRobot. By leveraging FAST tokenization, we enhance action representation, enabling robots to perform a diverse range of tasks with higher efficiency and adaptability. These steps open the door for future multi-embodiment, real-time robotic policies, pushing the boundaries of what robots can achieve in the real world. 🚀.</p>
+<p>Sources indicate that so cool! Excited to start playing around with this!</p>
+<p>Thanks for this great contribution.</p>
+<p>One small thing, in your example, you wrotepolicy = Pi0Policy.from_pretrained("lerobot/pi0").</p>
+<p>Industry observers note that however, the policy in the source code is defined as PI0Policy. I was confused by the import error for a long while.</p>
+<p>But how do we get the torch version pi0 model and checkpoints ?</p>
+<p>Even though it varies with robot configuration, what exactly do the robot state and action entail? For example, in OpenVLA they are very clear that the output robot action is represented as delta-end effector in cartesian coordinates, i.e., deltas of [x, y, z, rotation_x, rotation_y, rotation_z, gripper].</p>
+<p>It has been revealed that what does Pi output? And how are the states represented? Are they represented as [j1, j2, j3, j4, j5, j6, x, y, z, qx, qy, qz, qw gripper]?</p>
+<p>Sources indicate that in openVLA the deltas are in robot base frame and not in gripper frame. What is the case for PiZero? Any help is appreciated.</p>
+<p id="sec-end-173865">Reference for OpenVLA action with timestamp: https://youtu.be/-0s0v3q7mBk?t=675.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/pi0" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-a-dive-into-vision-language-models-174369.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174369. Latest Update: A Dive into Vision-Language Models
+        </a>
+        
+        <a href="fast-inference-on-large-language-models-bloomz-on-habana-gaudi2-a-174346.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174346. Fast Inference on Large Language Models: BLOOMZ on Habana Gaudi2 Accelerator
+        </a>
+        
+        <a href="accelerating-vision-language-models-bridgetower-on-habana-gaudi2-174299.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174299. Accelerating Vision-Language Models: BridgeTower on Habana Gaudi2
+        </a>
+        
+        <a href="breaking-vision-language-models-explained-174158.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174158. Breaking: Vision Language Models Explained
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

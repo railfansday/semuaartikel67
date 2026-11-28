@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: How to deploy and fine-tune DeepSeek models on AWS</title>
+    <meta name="description" content="A running document to showcase how to deploy and fine-tune DeepSeek R1 models with Hugging Face on AWS. According to recent reports, if you’ve ever struggl">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/breaking-how-to-deploy-and-fine-tune-deepseek-models-on-aws-173883.html">
+    <meta property="og:title" content="Breaking: How to deploy and fine-tune DeepSeek models on AWS">
+    <meta property="og:description" content="A running document to showcase how to deploy and fine-tune DeepSeek R1 models with Hugging Face on AWS. According to recent reports, if you’ve ever struggl">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/deepseek-r1-aws/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/breaking-how-to-deploy-and-fine-tune-deepseek-models-on-aws-173883.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Breaking: How to deploy and fine-tune DeepSeek models on AWS", "image": ["https://huggingface.co/blog/assets/deepseek-r1-aws/thumbnail.png"], "datePublished": "2025-01-30T00:00:00", "dateModified": "2026-11-28T01:04:48.916119", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/breaking-how-to-deploy-and-fine-tune-deepseek-models-on-aws-173883.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Breaking: How to deploy and fine-tune DeepSeek models on AWS</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 30 Jan 2025 &bull; ⏱️ 5 min read (1045 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>A running document to showcase how to deploy and fine-tune DeepSeek R1 models with Hugging Face on AWS.</li><li style='margin-bottom:6px;'>According to recent reports, if you’ve ever struggled with a tough math problem, you know how useful it is to think a little longer and work through it carefully.</li><li style='margin-bottom:6px;'>However, the recipe behind OpenAI’s reasoning models has been a well kept secret.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173883"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173883"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173883"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Breaking: How to deploy and fine-tune DeepSeek models on AWS" loading="lazy" src="https://huggingface.co/blog/assets/deepseek-r1-aws/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173883">A running document to showcase how to deploy and fine-tune DeepSeek R1 models with Hugging Face on AWS.</p>
+<p>According to recent reports, if you’ve ever struggled with a tough math problem, you know how useful it is to think a little longer and work through it carefully. OpenAI’s o1 model showed that when LLMs are trained to do the same—by using more compute during inference—they get significantly better at solving reasoning tasks like mathematics, coding, and logic.</p>
+<p>However, the recipe behind OpenAI’s reasoning models has been a well kept secret. That is, until last week, when DeepSeek released their DeepSeek-R1 model and promptly broke the internet (and the stock market!).</p>
+<p>Recent findings suggest that deepSeek AI open-sourced DeepSeek-R1-Zero, DeepSeek-R1, and six dense models distilled from DeepSeek-R1 based on Llama and Qwen architectures. You can find them all in the DeepSeek R1 collection.</p>
+<p>We collaborate with Amazon Web Services to make it easier for developers to deploy the latest Hugging Face models on AWS services to build better generative AI applications.</p>
+<p>Let’s review how you can deploy and fine-tune DeepSeek R1 models with Hugging Face on AWS.</p>
+<p>It has been revealed that hugging Face Inference Endpoints offers an easy and secure way to deploy Machine Learning models on dedicated compute for use in production on AWS. Inference Endpoints empower developers and data scientists alike to create AI applications without managing infrastructure: simplifying the deployment process to a few clicks, including handling large volumes of requests with autoscaling, reducing infrastructure costs with scale-to-zero, and offering advanced security.</p>
+<p>With Inference Endpoints, you can deploy any of the 6 distilled models from DeepSeek-R1 and also a quantized version of DeepSeek R1 made by Unsloth: https://huggingface.co/unsloth/DeepSeek-R1-GGUF. On the model page, click on Deploy, then on HF Inference Endpoints. You will be redirected to the Inference Endpoint page, where we selected for you an optimized inference container, and the recommended hardware to run the model. Once you created your endpoint, you can send your queries to DeepSeek R1 for 8.3$ per hour with AWS 🤯.</p>
+<p>You can find DeepSeek R1 and distilled models, as well as other popular open LLMs, ready to deploy on optimized configurations in the Inference Endpoints Model Catalog.</p>
+<p>Recent findings suggest that | Note: The team is working on enabling DeepSeek models deployment on Inferentia instances. Stay tuned!</p>
+<p>You can deploy the Deepseek distilled models on Amazon Bedrock via the marketplace, which will deploy an endpoint in Amazon SageMaker AI under the hood. Here is a video of how you can navigate through the AWS console:.</p>
+<p>It has been revealed that | Note: The team is working on enabling DeepSeek-R1 deployment on Amazon Sagemaker AI with the Hugging Face LLM DLCs on GPU. Stay tuned!</p>
+<p>You can deploy the Deepseek distilled models on Amazon Sagemaker AI with Hugging Face LLM DLCs using Jumpstart directly or using the Python Sagemaker SDK. Here is a video of how you can navigate through the AWS console:.</p>
+<p>Now we have seen how to deploy usig Jumpstart, let’s walk through the Python Sagemaker SDK deployment of DeepSeek-R1-Distill-Llama-70B.</p>
+<p>Code snippets are available on the model page under the Deploy button!</p>
+<p>Before, let’s start with a few pre-requisites. Make sur you have a Sagemaker Domain configured, sufficient quota in Sagemaker, and a JupyterLab space. For DeepSeek-R1-Distill-Llama-70B, you should raise the default quota for ml.g6.48xlarge for endpoint usage to 1.</p>
+<p>For reference, here are the hardware configurations we recommend you to use for each of the distilled variants:.</p>
+<p>Once in a notebook, make sure to install the latest version of SageMaker SDK.</p>
+<p>Then, instantiate a sagemaker_session which is used to determine the current region and execution role.</p>
+<p>Create the SageMaker Model object with the Python SDK:.</p>
+<p>Deploy the model to a SageMaker endpoint and test the endpoint:.</p>
+<p id="sec-mid-173883">That’s it, you deployed a Llama 70B reasoning model!</p>
+<p>Because you are using a TGI v3 container under the hood, the most performant parameters for the given hardware will be automatically selected.</p>
+<p>Make sure you delete the endpoint once you finished testing it.</p>
+<p>Let’s walk through the deployment of DeepSeek-R1-Distill-Llama-70B on a Neuron instance, like AWS Trainium 2 and AWS Inferentia 2.</p>
+<p>Code snippets are available on the model page under the Deploy button!</p>
+<p>In a recent development, the pre-requisites to deploy to a Neuron instance are the same. Make sure you have a SageMaker Domain configured, sufficient quota in SageMaker, and a JupyterLab space. For DeepSeek-R1-Distill-Llama-70B, you should raise the default quota for ml.inf2.48xlarge for endpoint usage to 1.</p>
+<p>Then, instantiate a sagemaker_session which is used to determine the current region and execution role.</p>
+<p>Create the SageMaker Model object with the Python SDK:.</p>
+<p>Deploy the model to a SageMaker endpoint and test the endpoint:.</p>
+<p>In a recent development, that’s it, you deployed a Llama 70B reasoning model on a Neuron instance! Under the hood, it downloaded a pre-compiled model from Hugging Face to speed up the endpoint start time.</p>
+<p>Make sure you delete the endpoint once you finished testing it.</p>
+<p>This guide will detail how to export, deploy and run DeepSeek-R1-Distill-Llama-70B on a inf2.48xlarge AWS EC2 Instance.</p>
+<p>Once connected through the instance, you can deploy the model on an endpoint with this command:.</p>
+<p>It will take a few minutes to download the compiled model from the Hugging Face cache and launch a TGI endpoint.</p>
+<p>Then, you can test the endpoint:.</p>
+<p>Make sure you pause the EC2 instance once you are done testing it.</p>
+<p>According to recent reports, | Note: The team is working on enabling DeepSeek R1 deployment on Trainium &amp; Inferentia with the Hugging Face Neuron Deep Learning AMI. Stay tuned!</p>
+<p>Industry observers note that | Note: The team is working on enabling all DeepSeek models fine tuning with the Hugging Face Training DLCs. Stay tuned!</p>
+<p>| Note: The team is working on enabling all DeepSeek models fine tuning with the Hugging Face Neuron Deep Learning AMI . Stay tuned!</p>
+<p>Greate article. Will be goed to see costs analysis .</p>
+<p id="sec-end-173883">In a recent development, great article. I have been trying to deploy deepseek-ai/DeepSeek-R1-Distill-Qwen-32B on inferentia with a context window higher than 4096 (let's say MAX_TOTAL_TOKENS=8192), but it seems there is no pre-compiled model for that. It would be great if you could add instructions to compile these models, that would be great.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/deepseek-r1-aws" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="train-and-fine-tune-sentence-transformers-models-174434.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174434. Train and Fine-Tune Sentence Transformers Models
+        </a>
+        
+        <a href="latest-update-fine-tune-mms-adapter-models-for-low-resource-asr-174304.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174304. Latest Update: Fine-Tune MMS Adapter Models for low-resource ASR
+        </a>
+        
+        <a href="deploy-models-on-aws-inferentia2-from-hugging-face-174127.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174127. Deploy models on AWS Inferentia2 from Hugging Face
+        </a>
+        
+        <a href="investing-in-performance-fine-tune-small-models-with-llm-insights-173975.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173975. Investing in Performance: Fine-tune small models with LLM insights  - a CFM case study
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate a Maze With a Guaranteed Solution in Python (API Tutorial)</title>
+    <meta name="description" content="A maze generator is easy to write badly. Carve some passages, knock down some walls, ship it — and sooner or later it hands you a maze where the goal is wa">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/generate-a-maze-with-a-guaranteed-solution-in-python-api-tutorial-173561.html">
+    <meta property="og:title" content="Generate a Maze With a Guaranteed Solution in Python (API Tutorial)">
+    <meta property="og:description" content="A maze generator is easy to write badly. Carve some passages, knock down some walls, ship it — and sooner or later it hands you a maze where the goal is wa">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fg3u6rn14gun3eeyd4mii.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/generate-a-maze-with-a-guaranteed-solution-in-python-api-tutorial-173561.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Generate a Maze With a Guaranteed Solution in Python (API Tutorial)", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fg3u6rn14gun3eeyd4mii.png"], "datePublished": "2026-11-28T00:59:28", "dateModified": "2026-11-28T01:04:24.923799", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/generate-a-maze-with-a-guaranteed-solution-in-python-api-tutorial-173561.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Generate a Maze With a Guaranteed Solution in Python (API Tutorial)</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 28 Nov 2026 &bull; ⏱️ 4 min read (726 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>A maze generator is easy to write badly.</li><li style='margin-bottom:6px;'>In a recent development, so the maze generator I built for my books doesn't just carve — it proves.</li><li style='margin-bottom:6px;'>According to recent reports, the API lives on RapidAPI.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173561"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173561"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173561"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Generate a Maze With a Guaranteed Solution in Python (API Tutorial)" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fg3u6rn14gun3eeyd4mii.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173561">A maze generator is easy to write badly. Carve some passages, knock down some walls, ship it — and sooner or later it hands you a maze where the goal is walled off completely. In a game that's an unwinnable level. In a printed activity book, that's a kid discovering the answer key doesn't work, and a refund instead of a review.</p>
+<p>In a recent development, so the maze generator I built for my books doesn't just carve — it proves. It walks the finished maze from start to goal before anything ships, and the proof travels with the puzzle. This is that generator, exposed as an API called ActivityForge. In this tutorial we'll call it from Python: send a size and a seed, get back a maze, its wall data, and the verified solution path.</p>
+<p>According to recent reports, the API lives on RapidAPI. The free tier gives you 100 calls a day, and every plan — free included — reaches every endpoint and every format. The paid intends only change how many calls you get, starting at $19/month. Nothing in this tutorial needs a paid plan.</p>
+<p>The whole request is one POST. Two headers carry your key and the host; the JSON body carries the maze settings.</p>
+<p>A few things worth knowing about the parameters:.</p>
+<p>The response describes the maze as data, not a picture. Coordinates are [x, y] — x is the column, y is the row — with start at the top-left cell [0, 0] and goal at the bottom-right. The walls field is a list of rows; each cell carries four booleans, top, right, bottom, and left, saying which of its walls stand. That's everything a renderer needs:.</p>
+<p>That's a real response, not a mockup — seed 42 will hand you this exact maze every time.</p>
+<p>Here's the part that makes the maze safe to ship. Alongside the walls, the response carries a solution object: path (the route as [x, y] cells, start to goal), directions (the same route as words — right, down, left, up), and steps (the move count).</p>
+<p>The generator builds a perfect maze — a spanning tree over the grid, so exactly one route joins any two cells — then breadth-first walks that route before returning anything. The solution is the route it walked, so it can't disagree with the walls. Feed the path back into the renderer as marked cells and the proof draws itself:.</p>
+<p id="sec-mid-173561">In a recent development, trace the stars yourself: every step moves through a gap, never through a wall, from the S in the top-left to the G in the bottom-right. Generating levels? That directions list doubles as a walkthrough your game can replay. Printing? It's the answer key.</p>
+<p>It has been revealed that because we asked for format: "all", the same response also carries svg (a print-ready page) and pdf_base64 (a vector PDF, base64-encoded). Saving the PDF is three lines:.</p>
+<p>That's the page you hand to a kid — titled, with "Find your way from START to GOAL!" on it, no drawing required.</p>
+<p>Look back at the request: "seed": 42. Run it tomorrow, next month, on a different machine — same maze, wall for wall, same 38-step solution. Leave the seed out and every call returns a fresh random maze. For print: generate a catalog once, record the seeds, re-render identical puzzles forever. For a game: a daily maze that's identical for every player, from one integer.</p>
+<p>The maze is one of four generators, all with the same request shape and the same seed behavior:.</p>
+<p>Every generator proves its own output the same way — word placements re-checked against the finished grid, dot sequences checked complete and ordered — because a broken puzzle in a printed book is a refund, not a bug report.</p>
+<p>In a recent development, the free tier is 100 calls a day, which is plenty to build something real. The word-search script from the previous tutorial, plus a JavaScript version, is in the examples repo, and the API itself is on RapidAPI.</p>
+<p>If you generate a maze pack or a level set with it, I'd like to see what you made.</p>
+<p id="sec-end-173561">Part of the ActivityForge series — the previous tutorial builds a printable word search with its answer key, and the launch post covers how these generators came out of my activity-book pipeline.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/founderdroid/generate-a-maze-with-a-guaranteed-solution-in-python-api-tutorial-5d59" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-how-to-generate-text-using-different-decoding-methods-174547.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174547. Tech Report: How to generate text: using different decoding methods for language generation with Transformers
+        </a>
+        
+        <a href="how-we-sped-up-transformer-inference-100x-for-api-customers-174540.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174540. How we sped up transformer inference 100x for 🤗 API customers
+        </a>
+        
+        <a href="breaking-few-shot-learning-in-practice-gpt-neo-and-the-accelerate-174525.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174525. Breaking: Few-shot learning in practice: GPT-Neo and the 🤗 Accelerated Inference API
+        </a>
+        
+        <a href="getting-started-with-sentiment-analysis-using-python-174493.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174493. Getting Started with Sentiment Analysis using Python
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

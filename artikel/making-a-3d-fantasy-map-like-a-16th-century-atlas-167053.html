@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making a 3D fantasy map like a 16th-Century atlas</title>
+    <meta name="description" content="Sources indicate that over the last few weeks, I worked on a map of various game dev techniques for people to refer to and learn from. Like, a real map! Wi">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/making-a-3d-fantasy-map-like-a-16th-century-atlas-167053.html">
+    <meta property="og:title" content="Making a 3D fantasy map like a 16th-Century atlas">
+    <meta property="og:description" content="Sources indicate that over the last few weeks, I worked on a map of various game dev techniques for people to refer to and learn from. Like, a real map! Wi">
+    <meta property="og:image" content="https://www.spritefusion.com/blog/making-a-fantasy-map-like-a-16th-century-atlas/og.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/making-a-3d-fantasy-map-like-a-16th-century-atlas-167053.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Making a 3D fantasy map like a 16th-Century atlas", "image": ["https://www.spritefusion.com/blog/making-a-fantasy-map-like-a-16th-century-atlas/og.jpg"], "datePublished": "2026-11-25T00:00:00Z", "dateModified": "2026-11-28T00:58:45.467935", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/making-a-3d-fantasy-map-like-a-16th-century-atlas-167053.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Making a 3D fantasy map like a 16th-Century atlas</h1>
+        <div class="meta-line">🌐 Source: <strong>Spritefusion</strong> &bull; 📅 25 Nov 2026 &bull; ⏱️ 3 min read (654 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that over the last few weeks, I worked on a map of various game dev techniques for people to refer to and learn from.</li><li style='margin-bottom:6px;'>Sources indicate that if you want to pull off a cohesive art direction, you need to spend most of your time learning about your reference
+		materials.</li><li style='margin-bottom:6px;'>Industry observers note that gather things, ideas, and visuals!</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-167053"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-167053"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-167053"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Making a 3D fantasy map like a 16th-Century atlas" loading="lazy" src="https://www.spritefusion.com/blog/making-a-fantasy-map-like-a-16th-century-atlas/og.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-167053">Sources indicate that over the last few weeks, I worked on a map of various game dev techniques for people to refer to and learn from. Like,
+	a real map! With each town being a technique's home, provided with a concise, illustrated example. And here we are. Today we
+	are diving into the making of The Game Dev Atlas.</p>
+<p>Sources indicate that if you want to pull off a cohesive art direction, you need to spend most of your time learning about your reference
+		materials. No C code, no IDE, no sub-agents doing things. Just explore and wander on Google Images (old-school, I know),
+		Wikipedia, and online museum galleries.</p>
+<p>Industry observers note that gather things, ideas, and visuals! You should feel the inspiration (literally, as you inspire fresh air) inflating your
+		mind, and the first scraps of decisions starting to flow through your head, like: I want a bit of that, none of that, this
+		thing specifically for that part etc.</p>
+<p>Industry observers note that that is the whole work: what do you want? It's on you to set the quality bar and how things should be.</p>
+<p>If you don't already know, typography conveys most of the design weight. That's just it.</p>
+<p>Example: after some research I stumbled on that Luminari font that was a
+		great fit for what I wanted my map to look like. It is a paid font, and there were plenty of free alternatives, but
+		not quite as right as the Luminari font. Instead of saying "that's ok, this free one is the same vibe", I just paid for the font I found just right. Never concede terrain on your instinct!</p>
+<p>Instead of drawn sprite sheets for your effects, try building VFX via code! For pixel art it is super powerful and once you nail a workflow, it is also super cheap to produce. You can then tweak color, animation parameters, etc.</p>
+<p>Claude, please generate a procedural terr...</p>
+<p>Just pick an existing, real island. Nowadays we do have precise elevation data for most islands on Earth. If you want a
+		realistic island, well, pick a real one.</p>
+<p id="sec-mid-167053">Some styles and colourings I've tried (click on the tabs to compare):.</p>
+<p>Add some imperfections, color blends, etc. Nothing is perfect in real life, and having an eye for imperfections is what
+		makes things look interesting.</p>
+<p>The point of the atlas is to showcase game dev techniques, one per town. So I decided two things:.</p>
+<p>In a recent development, first, I wanted small visual touches on each town's shape reflecting the technique it's about. For instance, the Procedural Legs town shows a crawling house.</p>
+<p>Sources indicate that second, I wanted organic town buildings, so I built a small procedural building system to add diversity to buildings. Risky
+		move: I'm a significant fan of Houdini, so I could have thrown away the whole thing, and this blog post would be titled "I'm making
+		Houdini, but running in the browser".</p>
+<p>Anyway, here's what my small system can build:.</p>
+<p>The map application itself is written in C using the Kaigen engine as a headless C lib. I'm a Rust guy, but I must admit the compile time freaks me out for game dev with Rust. It took me
+		several iterations to reach smooth 60fps in the browser, especially with the night mode (try it!).</p>
+<p>But I'm finally happy with how it runs right now, while I'm still tweaking things atm.</p>
+<p>Recent findings suggest that the web app is written in Svelte, because I like Svelte. So the shallow routing and anything UI happen as part of the
+		SvelteKit app.</p>
+<p id="sec-end-167053">It was a very fun project! At the end of the day, I love the creative process of making things, shaping ideas like a
+		material, refining details. I strongly believe that when artists leverage AI, y'all will be cooked; because they alone
+		know how to touch the human soul and create the surprise.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.spritefusion.com/blog/making-a-fantasy-map-like-a-16th-century-atlas" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="paris-hiltons-toddler-daughter-is-a-diva-in-the-making-like-its-i-172014.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #172014. Paris Hilton’s Toddler Daughter Is a Diva in the Making Like It’s in Her DNA
+        </a>
+        
+        <a href="before-amp-after-this-generic-new-build-now-looks-like-a-century--170685.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #170685. Before &amp; After: This “Generic” New Build Now Looks Like a Century-Old Historic Home
+        </a>
+        
+        <a href="latest-update-battlefield-6s-first-big-map-in-months-is-coming-to-167992.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #167992. Latest Update: Battlefield 6’s first big map in months is coming to Labs soon, but I'm more excited about BF4's Golmud Railway making its way to BF6
+        </a>
+        
+        <a href="scaling-up-bert-like-model-inference-on-modern-cpu-part-2-174510.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174510. Scaling up BERT-like model Inference on modern CPU  - Part 2
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Self-Host Plex and Jellyfin: A Developer's Field Guide to Your Own Streaming Stack</title>
+    <meta name="description" content="According to recent reports, the first time I cancelled Netflix and tried to watch my own ripped movies on a hotel TV, nothing played. The file was H.265 1">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/how-to-self-host-plex-and-jellyfin-a-developers-field-guide-to-yo-173558.html">
+    <meta property="og:title" content="How to Self-Host Plex and Jellyfin: A Developer's Field Guide to Your Own Streaming Stack">
+    <meta property="og:description" content="According to recent reports, the first time I cancelled Netflix and tried to watch my own ripped movies on a hotel TV, nothing played. The file was H.265 1">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto/https%3A%2F%2Fmangodeveloper.com%2Fapi%2Fimages%2Farticle%2Fself-host-plex-jellyfin%2Fhero-2.webp">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/how-to-self-host-plex-and-jellyfin-a-developers-field-guide-to-yo-173558.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "How to Self-Host Plex and Jellyfin: A Developer's Field Guide to Your Own Streaming Stack", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto/https%3A%2F%2Fmangodeveloper.com%2Fapi%2Fimages%2Farticle%2Fself-host-plex-jellyfin%2Fhero-2.webp"], "datePublished": "2026-11-28T01:00:00", "dateModified": "2026-11-28T01:04:24.729933", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/how-to-self-host-plex-and-jellyfin-a-developers-field-guide-to-yo-173558.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>How to Self-Host Plex and Jellyfin: A Developer's Field Guide to Your Own Streaming Stack</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 28 Nov 2026 &bull; ⏱️ 6 min read (1245 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, the first time I cancelled Netflix and tried to watch my own ripped movies on a hotel TV, nothing played.</li><li style='margin-bottom:6px;'>Industry observers note that plex and Jellyfin both solve the same problem-your media library, served to your devices, with metadata, posters, and a Netflix-like UI.</li><li style='margin-bottom:6px;'>It has been revealed that both projects are mature, both play every common format, both support hardware transcoding.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173558"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173558"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173558"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="How to Self-Host Plex and Jellyfin: A Developer's Field Guide to Your Own Streaming Stack" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto/https%3A%2F%2Fmangodeveloper.com%2Fapi%2Fimages%2Farticle%2Fself-host-plex-jellyfin%2Fhero-2.webp" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173558">According to recent reports, the first time I cancelled Netflix and tried to watch my own ripped movies on a hotel TV, nothing played. The file was H.265 10-bit in MKV. The TV didn't support it. The browser transcoder choked. My "save $20 a month" project turned into a weekend of reading about hardware transcoding, and that's the moment you realize media streaming is genuinely hard. This article is the guide I wish I'd had then.</p>
+<p>Industry observers note that plex and Jellyfin both solve the same problem-your media library, served to your devices, with metadata, posters, and a Netflix-like UI. Plex is the polished commercial product with a paywall on the good features. Jellyfin is the AGPL-licensed fork of Emby that doesn't phone home and doesn't ask for a credit card. Most developers I know end up running both for a few weeks and picking a side. I'll show you how to run either (or both) on real hardware, with real transcoding, behind a real reverse proxy, reachable from anywhere.</p>
+<p>It has been revealed that both projects are mature, both play every common format, both support hardware transcoding. The differences are about philosophy and friction.</p>
+<p>I run Jellyfin in production. I run Plex on a second box for family members whose Smart TVs don't have a Jellyfin app. If your household is mostly Apple TV, Plex is still the safer bet. If everyone's on Roku/Fire Stick/web, Jellyfin is fine and you'll save the Plex Pass fee.</p>
+<p>A typical self-hosted media stack looks like this:.</p>
+<p>┌──────────────────────────┐
+ │ Internet / Tailscale │
+ └────────────┬─────────────┘
+ │ HTTPS
+ ▼
+ ┌──────────────────────────┐
+ │ Caddy reverse proxy │
+ │ (auto TLS via ACME) │
+ └────────────┬─────────────┘
+ │
+ ┌──────────────────┼───────────────────┐
+ │ │ │
+ ▼ ▼ ▼
+ ┌────────────┐ ┌──────────────┐ ┌──────────────┐
+ │ Jellyfin │ │ Plex │ │ *arr stack │
+ │ (Docker) │ │ (Docker) │ │ (Radarr / │
+ │ │ │ │ │ Sonarr / │
+ │ /dev/dri │ │ /dev/dri │ │ Prowlarr) │
+ │ render │ │ render │ │ │
+ └─────┬──────┘ └──────┬───────┘ └──────┬───────┘
+ │ │ │
+ ▼ ▼ ▼
+ ┌──────────────────────────────────────────────────┐
+ │ /mnt/media ← mergerfs( /mnt/disk{1..N} ) │
+ │ │
+ │ SnapRAID parity: /mnt/parity (1 disk) │
+ └──────────────────────────────────────────────────┘.</p>
+<p>The key design decisions are: services in Docker, all media mounted read-only inside containers, hardware acceleration passed through /dev/dri, and one reverse proxy handling TLS for everything.</p>
+<p>Industry observers note that keep the host layout boring and predictable. Every service gets a config dir under /opt, every persistent dataset under /mnt.</p>
+<p>plaintext
+/opt/jellyfin/ # config, metadata cache, transcode dir
+/opt/plex/
+/opt/caddy/Caddyfile
+/mnt/disk1/ # individual data disks, mounted at boot
+/mnt/disk2/
+/mnt/parity/ # SnapRAID parity
+/mnt/media # mergerfs view of disk1..N
+ ├── movies/
+ ├── tv/
+ ├── music/
+ └── photos/.</p>
+<p>Recent findings suggest that /mnt/media is the only path the containers see. If you ever migrate disks or rebuild the pool, the container mounts don't change.</p>
+<p>A single significant disk is the easy path until it dies. RAID 5 rebuilds are stressful on modern high-capacity drives and the array is slow while it runs. The homelab consensus is mergerfs (file-level concatenation, no striping) plus SnapRAID (snapshot parity, run nightly).</p>
+<p>shell
+sudo apt install mergerfs snapraid.</p>
+<p>conf
+/dev/disk/by-id/ata-WDC_WD40EFRX-1 /mnt/disk1 ext4 defaults,noatime 0 2
+/dev/disk/by-id/ata-WDC_WD40EFRX-2 /mnt/disk2 ext4 defaults,noatime 0 2
+/dev/disk/by-id/ata-WDC_WD40EFRX-3 /mnt/parity ext4 defaults,noatime 0 2.</p>
+<p>/mnt/disk1:/mnt/disk2 /mnt/media fuse.mergerfs \
+ defaults,allow_other,category.create=mfs,moveonenospc=true,dropcacheonrename=true 0 0.</p>
+<p>conf
+parity /mnt/parity/snapraid.parity
+content /mnt/disk1/snapraid.content
+content /mnt/disk2/snapraid.content
+content /opt/snapraid/snapraid.content
+data d1 /mnt/disk1/
+data d2 /mnt/disk2/
+exclude *.unrecoverable
+exclude /tmp/
+exclude /lost+found/
+exclude *.!sync
+exclude *.bak.</p>
+<p>set -euo pipefail
+LOG=/var/log/snapraid.log
+{
+ echo "=== $(date) ==="
+ snapraid sync
+ snapraid scrub -p 8 -o 1
+} &gt;&gt; "$LOG" 2&gt;&amp;1.</p>
+<p>Recent findings suggest that crucially: mergerfs is not RAID. If a disk dies before SnapRAID has run, the files written since the last sync are gone. SnapRAID is snapshot parity, not real-time. This is the trade-off. For movies you can re-rip, that's fine. For irreplaceable photos, back them up off-site too.</p>
+<p>Direct play is when the client can decode the file as-is. Transcoding is when the server has to convert it on the fly. 4K HEVC to 1080p H.264 in software will pin 8 cores and deliver 4 FPS. The fix is hardware: pass /dev/dri into the container and let the iGPU do it.</p>
+<p>Recent findings suggest that vainfo should list VAProfileHEVCMain10 and VAProfileVP9Profile0. If you don't have it, install intel-media-va-driver-non-free on Debian/Ubuntu.</p>
+<p>Add your media user to the render group so the container can access the device:.</p>
+<p>shell
+sudo usermod -aG render jellyfin
+sudo usermod -aG render plex.</p>
+<p>It has been revealed that the classical symptom of "transcoding doesn't work" is the server going to 100% CPU and the video pausing every few seconds. That's software transcoding. The container is missing /dev/dri or the render group permission.</p>
+<p id="sec-mid-173558">In a recent development, here's a production-ready compose file. Note the /dev/dri device, the render group ID mapped via group_add, and the explicit no-new-privileges security option.</p>
+<p>services:
+ jellyfin:
+ image: jellyfin/jellyfin:10.9.11
+ container_name: jellyfin
+ restart: unless-stopped
+ user: "1000:1000"
+ group_add:.</p>
+<p>Inside Jellyfin, enable VAAPI under Dashboard → Playback → Transcoding. Pick /dev/dri/renderD128 as the device. Test with a 4K HEVC file forced to 1080p max and a 20 Mbps bitrate cap-CPU should stay under 10%.</p>
+<p>Plex is similar but the image expects a claim token from plex.tv on first boot.</p>
+<p>services:
+ plex:
+ image: plexinc/pms-docker:latest
+ container_name: plex
+ restart: unless-stopped
+ hostname: plex
+ devices:.</p>
+<p>In a recent development, plex Pass is required for hardware transcoding. Without it, you'll see "Transcoding (cpu)" in the dashboard and CPU will spike. Don't waste a weekend debugging the /dev/dri perms if you haven't bought Plex Pass yet-it's gated behind the feature flag.</p>
+<p>It has been revealed that plex uses network_mode: host because it broadcasts on multiple ports (32400 main, 32469 DLNA, 1900/5353 UDP for discovery). You can run bridge mode with explicit port mappings, but DLNA auto-discovery will break for clients that rely on it.</p>
+<p>You want HTTPS for remote access and you want a single port forwarded. Caddy is the lowest-friction option because ACME is built in.</p>
+<p>jellyfin.example.com {
+ reverse_proxy 127.0.0.1:8096 {
+ flush_interval -1
+ }
+ encode zstd gzip.</p>
+<p># Jellyfin's recommended headers
+ header {
+ Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+ X-Frame-Options SAMEORIGIN
+ X-Content-Type-Options nosniff
+ Referrer-Policy no-referrer
+ # don't apply Caddy's default CSP, Jellyfin sets its own
+ ?Content-Security-Policy ""
+ }.</p>
+<p>@websockets {
+ header Connection Upgrade
+ header Upgrade websocket
+ }
+ reverse_proxy @websockets 127.0.0.1:8096
+}.</p>
+<p>plex.example.com {
+ reverse_proxy 127.0.0.1:32400
+ encode zstd gzip
+}.</p>
+<p>The flush_interval -1 is critical for Jellyfin-it disables buffering so streaming chunks reach the client immediately. Without it, you'll see 30-second startup stalls on every video.</p>
+<p>services:
+ caddy:
+ image: caddy:2.8-alpine
+ container_name: caddy
+ restart: unless-stopped
+ ports:.</p>
+<p>If you'd rather not open ports on your router, skip this whole section and use Tailscale.</p>
+<p>Cloudflare Tunnel's free ToS technically excludes "large file streaming." People do it anyway and most accounts never get flagged, but if you care about the letter of the agreement, don't. Use Tailscale for family-if they can install a phone app, they can use Tailscale. Use port forwarding + Caddy for yourself.</p>
+<p>shell
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up --advertise-tags=tag:media.</p>
+<p>Both Plex and Jellyfin have hard opinions about file layout. Get this wrong and metadata matching turns into a part-time job.</p>
+<p>plaintext
+/mnt/media/movies/
+ The Matrix (1999)/
+ The Matrix (1999) [1080p] [Bluray].mkv
+ The Matrix Reloaded (2003)/
+ The Matrix Reloaded (2003) [1080p] [Bluray].mkv.</p>
+<p>/mnt/media/tv/
+ Breaking Bad (2008)/
+ Season 01/
+ Breaking Bad - S01E01 - Pilot.mkv
+ Breaking Bad - S01E02 - Cat's in the Bag.mkv.</p>
+<p>/mnt/media/music/
+ Artist/
+ Album (Year)/
+ 01 - Track.flac.</p>
+<p id="sec-end-173558">The patterns the metadata agents look for:.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/mango7777/how-to-self-host-plex-and-jellyfin-a-developers-field-guide-to-your-own-streaming-stack-9jk" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-a-guide-to-setting-up-your-own-hugging-face-leaderboard--174216.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174216. Breaking: A guide to setting up your own Hugging Face leaderboard: an end-to-end example with Vectara's hallucination leaderboard
+        </a>
+        
+        <a href="which-mcm-has-the-best-revshare-a-developers-guide-to-evaluating--174198.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174198. Which MCM Has the Best Revshare? A Developer’s Guide to Evaluating Ad Partners
+        </a>
+        
+        <a href="building-ai-for-kids-a-developers-guide-to-age-appropriate-safety-171313.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #171313. Building AI for kids: A developer’s guide to age-appropriate safety architecture
+        </a>
+        
+        <a href="what-is-self-custody-how-to-hold-your-own-crypto-keys-168792.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #168792. What Is Self-Custody? How to Hold Your Own Crypto Keys
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: How to Add Idempotency Keys to a Node.js API with PostgreSQL</title>
+    <meta name="description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. In a recent development, weekly. Free. One click to leave. It has been ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-how-to-add-idempotency-keys-to-a-nodejs-api-with-po-173768.html">
+    <meta property="og:title" content="Latest Update: How to Add Idempotency Keys to a Node.js API with PostgreSQL">
+    <meta property="og:description" content="Stay up to date with AI tools, model releases, and developer workflows that matter. In a recent development, weekly. Free. One click to leave. It has been ">
+    <meta property="og:image" content="https://uploads.sitepoint.com/wp-content/uploads/medium_idempotency_featured_v2_dda4ead290.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-how-to-add-idempotency-keys-to-a-nodejs-api-with-po-173768.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: How to Add Idempotency Keys to a Node.js API with PostgreSQL", "image": ["https://uploads.sitepoint.com/wp-content/uploads/medium_idempotency_featured_v2_dda4ead290.png"], "datePublished": "2026-11-24T07:34:53", "dateModified": "2026-11-28T01:04:41.059407", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-how-to-add-idempotency-keys-to-a-nodejs-api-with-po-173768.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: How to Add Idempotency Keys to a Node.js API with PostgreSQL</h1>
+        <div class="meta-line">🌐 Source: <strong>Sitepoint</strong> &bull; 📅 24 Nov 2026 &bull; ⏱️ 8 min read (1515 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Stay up to date with AI tools, model releases, and developer workflows that matter.</li><li style='margin-bottom:6px;'>It has been revealed that 7 Day Free Trial.</li><li style='margin-bottom:6px;'>Industry observers note that A mobile app sends POST /orders.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173768"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173768"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173768"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: How to Add Idempotency Keys to a Node.js API with PostgreSQL" loading="lazy" src="https://uploads.sitepoint.com/wp-content/uploads/medium_idempotency_featured_v2_dda4ead290.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173768">Stay up to date with AI tools, model releases, and developer workflows that matter.</p>
+<p>In a recent development, weekly. Free. One click to leave.</p>
+<p>It has been revealed that 7 Day Free Trial. Cancel Anytime.</p>
+<p>Industry observers note that A mobile app sends POST /orders. The server creates the order, but the response is lost when the phone switches from Wi-Fi to 4G. The app sees a timeout and retries. Now the customer has two orders, and your support team has a refund to process.</p>
+<p>Sources indicate that retrying is the right thing for a client to do. The problem is that POST is not idempotent: RFC 9110 defines GET, PUT and DELETE as idempotent methods, but not POST or PATCH. Repeating a POST can repeat its side effects.</p>
+<p>In a recent development, an idempotency key fixes this. The client generates a unique key for each logical operation and sends it with every attempt. The server does the work once, stores the response against the key, and returns the stored response for any retry. The IETF HTTPAPI working group is standardizing this pattern as the Idempotency-Key HTTP header field, and this tutorial follows its recommendations.</p>
+<p>We'll build it with Node.js, Express 5 and PostgreSQL. By the end you'll have a table that stores keys, a function that safely claims a key under concurrent requests, an Express route that replays stored responses, and a client that retries without creating duplicates.</p>
+<p>According to recent reports, the client's job is simple: generate a key, usually a UUID, and send the same key on every retry of the same operation. The draft defines the header value as a quoted string:.</p>
+<p>The server's job is harder, because every request falls into one of five cases:.</p>
+<p>To tell case 3 from case 4, the server stores a fingerprint of the request alongside the key. A matching fingerprint means a genuine retry; a different one means key reuse. Case 5 is the one most implementations get wrong, because it only shows up under concurrency. A database constraint handles it for us.</p>
+<p>Create a project and install the two dependencies:.</p>
+<p>The key table records who sent the key, the request fingerprint, whether the work has finished, and the response to replay:.</p>
+<p>Two details matter here. The primary key includes client_id, so keys are scoped per client: two customers who happen to generate the same value can't see each other's responses. And locked_until lets the server recover a key whose request crashed halfway, which we'll use in Step 3.</p>
+<p>According to recent reports, the draft defines the header value as a structured field string, which means it arrives wrapped in double quotes. Many clients send it without quotes, so the parser below accepts both and limits the characters and length it will store:.</p>
+<p>In a recent development, the fingerprint has to be identical for identical requests, even if a client serializes the JSON body with its properties in a different order. Sorting object keys before hashing takes care of that. The hash uses SHA-256 from Node's built-in crypto module:.</p>
+<p>Including the method and path means a key reused on a different endpoint counts as a mismatch, not as a retry.</p>
+<p>In a recent development, the tempting approach is to SELECT the key, and insert it if nothing comes back. Under concurrency that fails: two retries arriving a few milliseconds apart both see no row, and both do the work.</p>
+<p>Sources indicate that instead, let the primary key decide. INSERT ... ON CONFLICT DO NOTHING either inserts the row or does nothing, atomically, even across many application processes. The PostgreSQL INSERT documentation describes this behavior in detail. If the insert returns a row, this request owns the key. If not, we read the existing row and decide which case we're in:.</p>
+<p>The ENHANCEMENT in the last step is also atomic. If two retries find the same expired lock, only one of them matches the locked_until &lt; now() condition and gets the key. If the row disappears between the two queries, for example because it was released after a failure, the function reports in_progress and the client simply retries.</p>
+<p id="sec-mid-173768">Sources indicate that set LOCK_SECONDS comfortably above the slowest time your operation takes. If the lock expires while the original request is still running, a retry can take over and run the work a second time.</p>
+<p>It has been revealed that once a request owns the key, it creates the order and marks the key as completed. Both writes happen in one transaction, so there is no moment where the order exists but the key still says in_progress, or the other way round. Note that a transaction in node-postgres has to use a single client checked out from the pool, as the node-postgres transaction documentation explains:.</p>
+<p>According to recent reports, releaseKey runs when the work fails. Deleting the claim lets the client retry with the same key instead of waiting for the lock to expire. It only deletes rows that are still in progress, so a completed response is never thrown away.</p>
+<p>It has been revealed that the route validates the body first. A request with invalid input never touches the key table, so the client can fix the input and resend with the same key. Error responses use the application/problem+json format from RFC 9457, which the idempotency draft also uses in its examples:.</p>
+<p>The server side only works if the client keeps the key stable. The most common client bug is generating a new key inside the retry loop, which turns every retry into a new operation. Generate the key once per logical action, before the first attempt:.</p>
+<p>According to recent reports, the catch branch is the reason idempotency keys exist. After a timeout, the client can't know whether the order was created. With a stable key, retrying is safe either way: if the first attempt succeeded, the retry returns the stored order; if it didn't, the retry creates it. The random jitter spreads retries out, so many clients recovering from the same outage don't all hit the server at once.</p>
+<p>In a browser or mobile app, store the key with the pending action, for example in the form state or a local queue. If the user taps "Place order" again after an error, reuse it. Only generate a new key when the user starts a genuinely new action.</p>
+<p>It has been revealed that keys can't live forever, or the table grows without limit. The draft leaves the retention period to the server but claims it should be published in the API documentation, so clients know how long a retry stays safe. Twenty-four hours covers most retry scenarios. A scheduled job can delete older rows in batches:.</p>
+<p>In a recent development, run it every few minutes from cron or your job scheduler until it deletes zero rows. Deleting in batches keeps each transaction short, and the created_at index from Step 1 keeps the inner query fast. A retry that arrives after its key has expired is treated as a new request, which is why the retention period belongs in your documentation.</p>
+<p>Start the server with node server.js, then send the same request twice:.</p>
+<p>Recent findings suggest that the second request lists the properties in a different order, and it's still recognized as a retry because of the canonical fingerprint. Both responses carry the same order ID, and the orders table contains one row.</p>
+<p>Recent findings suggest that now change the quantity while keeping the key. The server answers 422, because the key now belongs to a different request:.</p>
+<p>To see the concurrent case, add await upcoming Promise((r) =&gt; setTimeout(r, 3000)); before completeKey in the route, restart the server, and fire two requests with a new key at the same time:.</p>
+<p>It has been revealed that one request prints 201 and the other 409. Without the ON CONFLICT claim, both would have printed 201 and created two orders. Remove the delay when you're done.</p>
+<p>According to recent reports, this design guarantees that the database work in Step 4 happens once per key. Two situations need extra care:.</p>
+<p>In a recent development, idempotency keys don't replace other safeguards either. A unique constraint on a natural business key, such as one payment per invoice, still catches duplicates that arrive with different keys, for example when a user submits the same form from two tabs.</p>
+<p>According to recent reports, with one table, an atomic claim and a transaction that stores the response next to the work, POST endpoints become safe to retry. Clients get a simple rule: generate one key per action, reuse it on every retry. The server takes care of the rest, including the concurrent retries that a SELECT-then-INSERT approach misses.</p>
+<p>It has been revealed that the same pattern works for PATCH endpoints and for webhooks you send to other systems. Start with the endpoints where a duplicate costs real money or confuses a customer, and publish your key format and retention period in the API documentation so client developers know what to send.</p>
+<p id="sec-end-173768">According to recent reports, 7 Day Free Trial. Cancel Anytime.</p>
+<p style="margin-top: 25px;">
+<a href="https://www.sitepoint.com/how-to-add-idempotency-keys-to-a-node-js-api-with-postgresql/?utm_source=rss" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-implementing-transactional-api-idempotency-with-nod-162153.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162153. Industry News: Implementing Transactional API Idempotency With Node.js and PostgreSQL
+        </a>
+        
+        <a href="how-to-shut-down-a-nodejs-api-without-dropping-requests-162553.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162553. How to Shut Down a Node.js API Without Dropping Requests
+        </a>
+        
+        <a href="latest-update-pay-per-call-apis-on-tempo-mainnet-with-mppx-sub-ce-162174.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162174. Latest Update: Pay-Per-Call APIs on Tempo Mainnet with mppx: Sub-Cent Endpoints for AI Agents (No API Keys)
+        </a>
+        
+        <a href="how-we-sped-up-transformer-inference-100x-for-api-customers-174540.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174540. How we sped up transformer inference 100x for 🤗 API customers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

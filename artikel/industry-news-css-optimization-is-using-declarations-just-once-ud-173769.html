@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: CSS Optimization: Is Using Declarations Just Once (UDJO) Still Effective Today?</title>
+    <meta name="description" content="Industry observers note that CSS optimization is a deceptive topic. On the one hand, it feels like something simple that we should already have all the too">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-css-optimization-is-using-declarations-just-once-ud-173769.html">
+    <meta property="og:title" content="Industry News: CSS Optimization: Is Using Declarations Just Once (UDJO) Still Effective Today?">
+    <meta property="og:description" content="Industry observers note that CSS optimization is a deceptive topic. On the one hand, it feels like something simple that we should already have all the too">
+    <meta property="og:image" content="https://css-tricks.com/wp-content/uploads/2018/04/ellipses-brackets.jpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-css-optimization-is-using-declarations-just-once-ud-173769.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: CSS Optimization: Is Using Declarations Just Once (UDJO) Still Effective Today?", "image": ["https://css-tricks.com/wp-content/uploads/2018/04/ellipses-brackets.jpg"], "datePublished": "2026-11-10T09:42:18-07:00", "dateModified": "2026-11-28T01:04:41.094984", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-css-optimization-is-using-declarations-just-once-ud-173769.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: CSS Optimization: Is Using Declarations Just Once (UDJO) Still Effective Today?</h1>
+        <div class="meta-line">🌐 Source: <strong>Css-tricks</strong> &bull; 📅 10 Nov 2026 &bull; ⏱️ 4 min read (808 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that CSS optimization is a deceptive topic.</li><li style='margin-bottom:6px;'>In this article, I’d like to pick a technique that’s at least 18 years old — UDJO, or “using declarations just once.”.</li><li style='margin-bottom:6px;'>Recent findings suggest that aware of an older source?</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173769"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173769"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173769"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: CSS Optimization: Is Using Declarations Just Once (UDJO) Still Effective Today?" loading="lazy" src="https://css-tricks.com/wp-content/uploads/2018/04/ellipses-brackets.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173769">Industry observers note that CSS optimization is a deceptive topic. On the one hand, it feels like something simple that we should already have all the tooling for — especially when it comes to minification. On the other hand, the idea that we already exploited “everything” there is around CSS optimization may be considered naive. Such a claim looks hard to defend for a language that evolves almost daily.</p>
+<p>In this article, I’d like to pick a technique that’s at least 18 years old — UDJO, or “using declarations just once.”.</p>
+<p>Recent findings suggest that aware of an older source? Please comment!</p>
+<p>The technique is inspired by the principle of DRY, “don’t repeat yourself”, in that it works by identifying and reducing (if not eliminating) declaration repetition.</p>
+<p>So, if there’s something like display: flex and it appears two or more times, it gets reconciled in one rule:.</p>
+<p>The outcome of the technique depends on how intelligently the deduplication is done and how long the selectors are. Intelligence determines if UDJO leads to an actual maintainability advantage — can the change of a declaration really be done to all the selectors attached? And the selector length influences how major file size savings are.</p>
+<p>If you’re interested, my article on “DRY CSS” describes the mechanics in more detail. The question here is: Is UDJO still effective and still relevant today?</p>
+<p>When we try to answer this question, however, we end up with a problem: When sites are complex and their style sheet declarations have not been de-duplicated before, UDJO can require a lot of work.</p>
+<p>In a recent development, to save some time, I built tooling for this work. While it didn’t seem like it would immediately be as comprehensive as manually going through and testing style sheets, it seemed realistic enough that a tool could catch some repetition.</p>
+<p>In a recent development, skipping ahead, I created CSS Dedup not only to identify repetition, but also to deduplicate what could safely be optimized (CSS Dedup has some documentation on this but in essence, deduplication affects selector locations, which is part of how the cascade works). This, then, gives us some data:.</p>
+<p id="sec-mid-173769">Recent findings suggest that for the first batch, I arbitrarily picked 20 websites to analyze. I then used CSS Dedup to check what the file size changes would be if we deduplicated what seemed provably safe, and also what seemed probably safe, but only if it led to file size savings.</p>
+<p>According to recent reports, I picked those two options to provide the “natural” result of deduplication, but also the one site owners may be most interested in to reduce repetition but also decrease transfer size. After all, UDJO as a CSS optimization technique can improve both maintainability and performance.</p>
+<p>According to recent reports, important note: These values cannot be used to tell CSS quality—they depend on selector length and also on verifying if deduplication, in the respective case, actually leads to better maintainability. Also note that this leaves out changes after compression—this was not part of the experiment but would be fair to test, too.</p>
+<p>According to recent reports, for the question whether UDJO still works today, this should be a yes. It works as well as to even come with file size savings.</p>
+<p>Recent findings suggest that maybe you’re curious, too, about what the situation looks like in our field, among web developers. Let’s take some samples on this, too.</p>
+<p>It would be valuable to expand this analysis to take more samples and investigate the differences across samples, but there may be something to web professionals using shorter selectors so as to be able to benefit more from UDJO.</p>
+<p>As mentioned at the beginning, UDJO’s effectiveness generally depends on the kind of repetition as well as on the length of selectors.</p>
+<p>This can be managed, however: While tools like CSS Dedup make no difference between declaration use cases (and are therefore blunt), it is possible to configure them so as to reap the performance benefits.</p>
+<p>In a recent development, as the data taken for this article suggest, file size savings may be achieved in most cases. Considering that this is based on safe changes, this means a low-cost performance optimization vector — especially when applied to minified output. It’s still a good idea to couch that against the use of further compression (e.g. gzip/Brotli), but at face value, deduplication indicates how it can reduce the size of CSS.</p>
+<p id="sec-end-173769">Sources indicate that for anyone generally interested in CSS optimization, maintainability, and performance, UDJO should probably be part of the overall approach to CSS. But since the technique has been niche and since tooling is latest, I invite you to review, test, and explore this vector. It seems hard to argue that we have reached the ceiling of how far we can take CSS optimization.</p>
+<p style="margin-top: 25px;">
+<a href="https://css-tricks.com/css-using-declarations-just-once/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-introducing-optimum-the-optimization-toolkit-for-tr-174520.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174520. Industry News: Introducing Optimum: The Optimization Toolkit for Transformers at Scale
+        </a>
+        
+        <a href="industry-news-lave-zero-shot-vqa-evaluation-on-docmatix-with-llms-174085.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174085. Industry News: LAVE: Zero-shot VQA Evaluation on Docmatix with LLMs - Do We Still Need Fine-Tuning?
+        </a>
+        
+        <a href="industry-news-how-beginners-can-build-cycling-endurance-in-just-3-172861.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #172861. Industry News: How Beginners Can Build Cycling Endurance in Just 3 Days a Week
+        </a>
+        
+        <a href="industry-news-dr-martens-iconic-1460-leather-boots-just-went-on-s-172651.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #172651. Industry News: Dr. Martens Iconic 1460 Leather Boots Just Went on Sale for 50% Off
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Update: Source Control from Hell</title>
+    <meta name="description" content="My first office job was at an enterprise that built software for a significant telecom: a massive Delphi help desk application on Windows. Let me tell you ">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/latest-update-source-control-from-hell-166887.html">
+    <meta property="og:title" content="Latest Update: Source Control from Hell">
+    <meta property="og:description" content="My first office job was at an enterprise that built software for a significant telecom: a massive Delphi help desk application on Windows. Let me tell you ">
+    <meta property="og:image" content="https://frantic.im/assets/og/git.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/latest-update-source-control-from-hell-166887.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Latest Update: Source Control from Hell", "image": ["https://frantic.im/assets/og/git.png"], "datePublished": "2026-11-27T22:06:44", "dateModified": "2026-11-28T00:58:36.881312", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/latest-update-source-control-from-hell-166887.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Latest Update: Source Control from Hell</h1>
+        <div class="meta-line">🌐 Source: <strong>Frantic</strong> &bull; 📅 27 Nov 2026 &bull; ⏱️ 2 min read (492 words, 📖 Standard)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>My first office job was at an enterprise that built software for a significant telecom: a massive Delphi help desk application on Windows.</li><li style='margin-bottom:6px;'>Let me tell you about how we managed source control process at the time.</li><li style='margin-bottom:6px;'>First, you download the code from a shared folder (hosted on a trusted Windows server in a locked room).</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-166887"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-166887"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-166887"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Latest Update: Source Control from Hell" loading="lazy" src="https://frantic.im/assets/og/git.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-166887">My first office job was at an enterprise that built software for a significant telecom: a massive Delphi help desk application on Windows.</p>
+<p>Let me tell you about how we managed source control process at the time.</p>
+<p>First, you download the code from a shared folder (hosted on a trusted Windows server in a locked room). Build your thing, run the app, test it locally. Then you upload your changes to the shared folder and create a newly introduced ticket in the internal task tracker (also a Windows app). The ticket should have a list of the changes you’ve made, in a rich text editor, in a manual format somewhat resembling a patch. But it wasn’t a patch; it couldn’t simply be applied with a tool. Instead, the tech lead looks at the shared folder and your task and copies the relevant changes to his own integration folder. This usually took him a full day because the shared folder had a lot of changes, not all of them were ready to be integrated. Needless to say, if you simply pull a snapshot of the code from the shared folder, it would most likely fail to compile.</p>
+<p>The most common problem was two people overwriting each other’s work. So if you wanted to upload your stuff to the shared folder, you had to stand up and announce in a loud voice that you were using the shared folder. No chat apps back in the day.</p>
+<p id="sec-mid-166887">Imagine starting your career with this development experience! I did my best to improve it. At the time, almost everyone used FAR Manager, so I built a plugin that locked the folder when someone was using it, so others would get a warning. It became very popular because nobody really liked the old yelling system.</p>
+<p>It has been revealed that then in 2009 I found git. It was still early days, way before GitHub went mainstream, but my tiny little brain was blown away. Holy shit, it maintains old versions. And you can work locally. And you can sync and exchange deltas. And it was insanely fast (compared to the very aptly named TortoiseSVN I’d experimented with earlier). I must have rewatched Linus’ talk a billion times. I created git repos for every project I had, preached it to my friends, and even gave my first tech talk about git at my university.</p>
+<p>Sadly, my diplomatic skills were extremely rudimentary, and I couldn’t convince our tech lead to adopt git. He mumbled something about business value and how this new git thing lacked one. I left the tech giant after two years but kept meeting up with old colleagues for beer. They were still using the shared folder process many years later. It was crude, it was hellish, and it worked for them just fine.</p>
+<p id="sec-end-166887">Thanks for reading. If you want more, I'll email you when I write the next one. Or use RSS.</p>
+<p style="margin-top: 25px;">
+<a href="https://frantic.im/git/" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="industry-news-announcing-the-open-source-ai-game-jam-174316.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174316. Industry News: Announcing the Open Source AI Game Jam 🎮
+        </a>
+        
+        <a href="tech-report-open-source-text-generation-llm-ecosystem-at-hugging--174293.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174293. Tech Report: Open-Source Text Generation & LLM Ecosystem at Hugging Face
+        </a>
+        
+        <a href="results-of-the-open-source-ai-game-jam-174289.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174289. Results of the Open Source AI Game Jam
+        </a>
+        
+        <a href="safecoder-vs-closed-source-code-assistants-174262.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174262. SafeCoder vs. Closed-source Code Assistants
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

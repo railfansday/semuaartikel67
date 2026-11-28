@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing HELMET: Holistically Evaluating Long-context Language Models</title>
+    <meta name="description" content="Contact: hyen@cs.princeton.edu Paper: https://arxiv.org/abs/2410.02694 Website: https://princeton-nlp.github.io/HELMET Code & Data: https://github.com/prin">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/introducing-helmet-holistically-evaluating-long-context-language--173710.html">
+    <meta property="og:title" content="Introducing HELMET: Holistically Evaluating Long-context Language Models">
+    <meta property="og:description" content="Contact: hyen@cs.princeton.edu Paper: https://arxiv.org/abs/2410.02694 Website: https://princeton-nlp.github.io/HELMET Code & Data: https://github.com/prin">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/helmet/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/introducing-helmet-holistically-evaluating-long-context-language--173710.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Introducing HELMET: Holistically Evaluating Long-context Language Models", "image": ["https://huggingface.co/blog/assets/helmet/thumbnail.png"], "datePublished": "2025-04-16T00:00:00", "dateModified": "2026-11-28T01:04:36.122170", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/introducing-helmet-holistically-evaluating-long-context-language--173710.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Introducing HELMET: Holistically Evaluating Long-context Language Models</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 16 Apr 2025 &bull; ⏱️ 9 min read (1730 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Contact: hyen@cs.princeton.edu Paper: https://arxiv.org/abs/2410.02694 Website: https://princeton-nlp.github.io/HELMET Code & Data: https://github.com/princeton-nlp/HELMET.</li><li style='margin-bottom:6px;'>It has been revealed that since we first released HELMET last October, there has been more development on long-context language models than ever before, and we are thrilled to see the adoption of HELMET by the community, such as Microsoft's Phi-4 and AI21's Jamba 1.6.</li><li style='margin-bottom:6px;'>In this blog, we will describe the construction of HELMET, our key findings, and how practitioners can use HELMET to differentiate between various LCLMs in future research and applications.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173710"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173710"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173710"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Introducing HELMET: Holistically Evaluating Long-context Language Models" loading="lazy" src="https://huggingface.co/blog/assets/helmet/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173710">Contact: hyen@cs.princeton.edu Paper: https://arxiv.org/abs/2410.02694 Website: https://princeton-nlp.github.io/HELMET Code &amp; Data: https://github.com/princeton-nlp/HELMET.</p>
+<p>It has been revealed that since we first released HELMET last October, there has been more development on long-context language models than ever before, and we are thrilled to see the adoption of HELMET by the community, such as Microsoft's Phi-4 and AI21's Jamba 1.6. After the initial release, we have added more models to our evaluation suite and conducted additional analyses. We are excited to share our new results and present HELMET at ICLR 2025!</p>
+<p>In this blog, we will describe the construction of HELMET, our key findings, and how practitioners can use HELMET to differentiate between various LCLMs in future research and applications. Finally, we will conclude with a quickstart guide for using HELMET with HuggingFace.</p>
+<p>It has been revealed that from summarizing numerous legal documents to learning new tasks on the fly, long-context language models (LCLMs) have immense potential to change the way we use and interact with language models. Language models have been limited by their context window, which is around 2K to 8K tokens (e.g., ChatGPT, Llama-2/3). Recently, model developers have been constantly increasing the context window of their models, with recent models like GPT-4o, Claude-3, and Gemini-1.5 supporting context windows of up to millions of tokens.</p>
+<p>However, with longer context windows, previous natural language benchmarks (e.g., Scrolls) are no longer suitable for evaluating LCLMs. Consequently, perplexity and synthetic tasks (e.g., needle-in-a-haystack) emerged as the most popular evaluation metrics for recent LCLMs, but they often do not reflect real-world performance. Model developers may also evaluate on other arbitrary datasets, which complicates model comparisons. Furthermore, existing benchmarks for LCLMs may show confusing and counterintuitive results, making it difficult to understand the strengths and weaknesses of different models (Figure 1).</p>
+<p>It has been revealed that in this work, we propose HELMET (How to Evaluate Long-Context Models Effectively and Thoroughly), a comprehensive benchmark for evaluating LCLMs that improves upon existing benchmarks in several ways—diversity, controllability, and reliability. We evaluate 59 recent LCLMs and find that it is crucial to evaluate models across diverse applications to understand their capabilities and frontier LCLMs are still limited on complex tasks.</p>
+<p>With the development of LCLMs across both industry and the open-source community, it is crucial to have a reliable method for evaluating and comparing these models. However, current models are often evaluated on different benchmarks (Table 1).</p>
+<p>A common practice for evaluating long-context language models is to use perplexity or synthetic tasks, such as needle-in-a-haystack (NIAH). However, recent works have shown that perplexity does not correlate well with downstream performance (Fang et al., 2024). In Figure 2, we show that synthetic tasks like NIAH do not correlate with real-world performance, but the more complex synthetic tasks achieve higher correlation with real-world tasks.</p>
+<p>Among the existing benchmarks with realistic applications, such as ZeroScrolls (Shaman et al., 2023), LongBench (Bai et al., 2024), and InfiniteBench (Zhang et al., 2024), there are still crucial limitations:.</p>
+<p>Thus, we propose HELMET to address these limitations and provide a comprehensive evaluation of LCLMs.</p>
+<p>We design HELMET with the following desiderata:.</p>
+<p>Sources indicate that table 2 shows an overview of the benchmark. In our experiments, we evaluate on input length from 8K to 128K tokens, but HELMET can be easily extended to even longer context lengths.</p>
+<p>It has been revealed that diverse coverage: HELMET includes a diverse set of tasks, such as retrieval-augmented generation with real retrieval passages, generation with citations, and summarization. We carefully select datasets with naturally long contexts that reflect real-world applications. These datasets are complemented with reliable evaluation settings, such as model-based evaluations and human studies.</p>
+<p>Industry observers note that controllable length and difficulty: An crucial dimension to consider when evaluating LCLMs is the input length, as longer inputs can provide more information while challenging the model's ability to process noisy contexts. In our tasks, we can control the input length by changing the number of retrieved passages (RAG, Cite, Re-rank), the number of demonstrations (ICL), or the length of the input document (LongQA, Summ). Although LongQA and Summ cannot be easily extended to longer contexts, we intentionally chose datasets with natural documents of length far greater than 100K tokens, such that they can still be used to evaluate frontier LCLMs.</p>
+<p>Reliable evaluation: Many existing benchmarks still use n-gram-based metrics, such as ROUGE, despite their poor correlation with human judgments (Goyal et al., 2023). We employ model-based evaluations that show better distinguishability between models and different input lengths (Figure 3). Furthermore, our human studies show that our metrics have a high agreement with human judgments.</p>
+<p>Industry observers note that robust prompting: Existing long-context benchmarks often require models to follow instructions, but many model developments revolve around base models, which have to rely on synthetic tasks or perplexity for evaluation. Thus, we support base models for a subset of our tasks via in-context learning examples. This substantially improves the performance of base models, which is more reflective of real-world applications.</p>
+<p>It has been revealed that our experiments and analyses include a comprehensive set of 59 LCLMs. To our knowledge, this is the most thorough and controlled comparison of long-context models on diverse applications. These models cover both leading proprietary and open-source models, and we also consider models with different architectures (e.g., full-attention transformers, hybrid architectures) and positional extrapolation techniques. In this section, we will highlight a few key findings from our experiments.</p>
+<p>In a recent development, long-context benchmarks are often constructed with specific applications in mind, such as summarization or question answering, which limits the understanding of LCLMs in a broader context. We examine model performance over a wide range of real tasks and find that different categories do not always correlate with each other (Figure 4).</p>
+<p>In a recent development, while some tasks moderately correlate with each other (e.g., RAG and MS-MARCO) due to their retrieval-based nature, others show little correlation (e.g., Summ and Cite). Notably, ICL has the lowest correlation with other tasks, which suggests that it is a unique task that requires different capabilities from the model. Therefore, model developers should evaluate across these distinct axes to draw a more holistic picture of the model's capabilities.</p>
+<p>We present the results of the frontier proprietary models as well as a few open-source models on HELMET. Additional results can be found in the paper and the website.</p>
+<p id="sec-mid-173710">According to recent reports, first, we observe that open-source models lag behind closed-source models on complex tasks. Although the gap appears small on simpler tasks, such as Recall, the gap widens on more complex ones, such as Cite.</p>
+<p>According to recent reports, furthermore, performance degradation with increasing lengths is category-dependent. Even the most advanced models, such as GPT-4o and Gemini, experience a significant decrease in performance on tasks like re-ranking. This change in performance cannot be observed from simply looking at the synthetic task performance.</p>
+<p>Finally, there is no clear winner across all categories, thereby calling for evaluation across different axes. Additional analysis, such as the performance of different positional extrapolation methods and the lost-in-the-middle phenomenon, can be found in the paper.</p>
+<p>Recent findings suggest that using HELMET is easy! Simply clone our GitHub repository, and everything is ready to go after setting up the environment!</p>
+<p>We provide many different ways for loading models, which can be configured in the config file:.</p>
+<p>Just use the config yamls in our repo and run these evaluations with.</p>
+<p>Behind the scenes, HuggingFace's transformers library is used, and both local and remote models are automatically supported.</p>
+<p>Industry observers note that first, follow the instructions on TGI github to launch a model endpoint. Then in your config file, specify the endpoint url. For example, you can have a config.yaml like below.</p>
+<p>Then use the command below to run the benchmark.</p>
+<p>First set up an endpoint by following the instructions here. Get the endpoint url and your API key. Then use the same config yaml shown in Option 2 above, and run the command below.</p>
+<p>You can launch a model endpoint with vllm on your system, including Intel Gaudi2 and Gaudi3 accelerators. See the instructions here on how to run HELMET using vllm on Intel Gaudi accelerators.</p>
+<p>You can use the same example config.yaml as in Option 2, except for two lines of change as below:.</p>
+<p>Then use the command below to run the benchmark.</p>
+<p>We support APIs from OpenAI, Anthropic, Google, and TogetherAI. Please refer to the instructions in our repo.</p>
+<p>We recommend using the Recall and RAG tasks for fast iterations during model development. These tasks achieve a good balance between fast evaluation and correlation with other realistic tasks. You can easily run these evaluations with just.</p>
+<p>It is often expensive to run all the baselines for evaluating LCLMs, especially at long contexts given their computational and memory costs. For example, running HELMET at all lengths on a 70B model requires a node with 8 * 80GB GPUs for hundreds of GPU hours, which can be costly. By evaluating on HELMET, researchers can directly compare their models to existing ones simply by referencing our results, which cover 59 models of different sizes and architectures. You can find the leaderboard on our website.</p>
+<p>HELMET is a step towards a more comprehensive evaluation of long-context language models, but there are still many more exciting applications of LCLMs. For example, we recently released LongProc, a benchmark for evaluating LCLMs on long-form generation and following procedures, which are critical for developing reasoning models that generate tens of thousands of tokens in thinking steps. Although summarization tasks have long outputs (up to 1K tokens), LongProc focuses on even longer outputs, up to 8K tokens. Similar to HELMET, LongProc is also designed with reliable evaluation settings and diverse tasks. We are working on integrating LongProc into HELMET's evaluation suite, and we hope that this will provide a more comprehensive evaluation of LCLMs on long-form tasks.</p>
+<p>We thank Mengzhou Xia, Howard Chen, Xi Ye, Yinghui He, Lucy He, Alexander Wettig, Sadhika Malladi, Adithya Bhaskar, Joie Zhang, and other members of the Princeton Language and Intelligence (PLI) group for their helpful feedback. This work is gratefully supported by the Microsoft Accelerate Foundation Models Research (AFMR) for Azure OpenAI credits and an Intel grant.</p>
+<p>If you find HELMET useful, please consider citing our paper:.</p>
+<p id="sec-end-173710">In a recent development, thanks for sharing! Another benchmark to evaluate long contexts: https://github.com/adobe-research/NoLiMa ; paper: NoLiMa: Long-Context Evaluation Beyond Literal Matching.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/helmet" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="latest-update-introducing-nvidia-nemotron-3-nano-omni-long-contex-162754.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162754. Latest Update: Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents
+        </a>
+        
+        <a href="latest-update-block-sparse-matrices-for-smaller-and-faster-langua-174545.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174545. Latest Update: Block Sparse Matrices for Smaller and Faster Language Models
+        </a>
+        
+        <a href="leveraging-pre-trained-language-model-checkpoints-for-encoder-dec-174541.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174541. Leveraging Pre-trained Language Model Checkpoints for Encoder-Decoder Models
+        </a>
+        
+        <a href="deep-learning-over-the-internet-training-language-models-collabor-174521.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174521. Deep Learning over the Internet: Training Language Models Collaboratively
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

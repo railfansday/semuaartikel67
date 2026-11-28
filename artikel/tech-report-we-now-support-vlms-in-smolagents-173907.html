@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Report: We now support VLMs in smolagents!</title>
+    <meta name="description" content="Industry observers note that you hypocrite, first take the log out of your own eye, and then you will see clearly to take the speck out of your brother's e">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/tech-report-we-now-support-vlms-in-smolagents-173907.html">
+    <meta property="og:title" content="Tech Report: We now support VLMs in smolagents!">
+    <meta property="og:description" content="Industry observers note that you hypocrite, first take the log out of your own eye, and then you will see clearly to take the speck out of your brother's e">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/smolagents-can-see/thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/tech-report-we-now-support-vlms-in-smolagents-173907.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Tech Report: We now support VLMs in smolagents!", "image": ["https://huggingface.co/blog/assets/smolagents-can-see/thumbnail.png"], "datePublished": "2025-01-24T00:00:00", "dateModified": "2026-11-28T01:04:50.327920", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/tech-report-we-now-support-vlms-in-smolagents-173907.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Tech Report: We now support VLMs in smolagents!</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 24 Jan 2025 &bull; ⏱️ 5 min read (946 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Industry observers note that you hypocrite, first take the log out of your own eye, and then you will see clearly to take the speck out of your brother's eye.</li><li style='margin-bottom:6px;'>We have added vision support to smolagents, which unlocks the use of vision language models in agentic pipelines natively.</li><li style='margin-bottom:6px;'>Sources indicate that in the agentic world, many capabilities are hidden behind a vision wall.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173907"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173907"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173907"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Tech Report: We now support VLMs in smolagents!" loading="lazy" src="https://huggingface.co/blog/assets/smolagents-can-see/thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173907">Industry observers note that you hypocrite, first take the log out of your own eye, and then you will see clearly to take the speck out of your brother's eye. Matthew 7, 3-5.</p>
+<p>We have added vision support to smolagents, which unlocks the use of vision language models in agentic pipelines natively.</p>
+<p>Sources indicate that in the agentic world, many capabilities are hidden behind a vision wall. A common example is web browsing: web pages feature rich visual content that you never fully recover by simply extracting their text, be it the relative position of objects, messages transmitted through color, specific icons… In this case, vision is a real superpower for agents. So we just added this capability to our smolagents!</p>
+<p>Teaser of what this gives: an agentic browser that navigates the web in complete autonomy!</p>
+<p>Here's an example of what it looks like:.</p>
+<p>Industry observers note that 🤔 How do we want to pass images to agents? Passing an image can be done in two ways:.</p>
+<p>For the case where we want to pass images at once, we added the possibility to pass a list of images to the agent in the run method: agent.run("Describe these images:", images=[image_1, image_2]) .</p>
+<p>These image inputs are then stored in the task_images attribute of TaskStep along with the prompt of the task that you'd like to accomplish.</p>
+<p>When running the agent, they will be passed to the model. This comes in handy with cases like taking actions based on long PDFs that include visual elements.</p>
+<p>How to dynamically add images into the agent’s memory?</p>
+<p>To find out, we first need to understand how our agents work.</p>
+<p>All agents in smolagents are based on the singular MultiStepAgent class, which is an abstraction of the ReAct framework. On a basic level, this class performs actions on a cycle of following steps, where existing variables and knowledge are incorporated into the agent logs as follows:.</p>
+<p>The figure below details this process:.</p>
+<p>As you can see, for use cases where images are dynamically retrieved (e.g. web browser agent), we support adding images to the model’s ActionStep, in attribute step_log.observation_images.</p>
+<p>This can be done via a callback, which will be run at the end of each step.</p>
+<p>Let's demonstrate how to make such a callback, and using it to build a web browser agent.👇👇.</p>
+<p>We’re going to use helium. It provides browser automations based on selenium: this will be an easier way for our agent to manipulate webpages.</p>
+<p>In a recent development, the agent itself can use helium directly, so no need for specific tools: it can directly use helium to perform actions, such as click("top 10") to click the button named "top 10" visible on the page. We still have to make some tools to help the agent navigate the web: a tool to go back to the previous page, and another tool to close pop-ups, because these are quite hard to grab for helium since they don’t have any text on their close buttons.</p>
+<p>Sources indicate that for now, the agent has no visual input. So let us demonstrate how to dynamically feed it images in its step logs by using a callback. We make a callback save_screenshot that will be run at the end of each step.</p>
+<p id="sec-mid-173907">The most important line here is when we add the image in our observations images: step_log.observations_images = [image.copy()].</p>
+<p>In a recent development, this callback accepts both the step_log, and the agent itself as arguments. Having agent as an input allows to perform deeper operations than just modifying the last logs.</p>
+<p>Let's make a model. We've added support for images in all models. Just one precision: when using TransformersModel with a VLM, for it to work properly you need to pass
+flatten_messages_as_text as False upon initialization, like:.</p>
+<p>For this demo, let's use a bigger Qwen2VL via Fireworks API:.</p>
+<p>It has been revealed that now let’s move on to defining our agent. We set the highest verbosity_level to display the LLM’s full output messages to view its thoughts, and we increased max_steps to 20 to give the agent more steps to explore the web. We also provide it with our callback save_screenshot defined above.</p>
+<p>Finally, we provide our agent with some guidance about using helium.</p>
+<p>Now everything's ready: Let’s run our agent!</p>
+<p>In a recent development, note, however, that this task is really hard: depending on the VLM that you use, this might not always work. Strong VLMs like Qwen2VL-72B or GPT-4o succeed more often.</p>
+<p>This will give you a glimpse of the capabilities of a vision-enabled CodeAgent, but there’s much more to do!</p>
+<p>We are looking forward to seeing what you will build with vision language models and smolagents!</p>
+<p>Note: for the modal closing selectors please note that modals are also known as dialog elements and if built robustly should have a role="dialog" attribute in this is something that can be searched for when identifying these pop up windows.</p>
+<p>In addition, any dialog/modal window should be closeable via the escape key as well!</p>
+<p>Hope this helps identify modals/dialogs in a broader sense and/or helps close them out easier!</p>
+<p>related code chunk from above for reference :).</p>
+<p>Oh that's a great point, thanks a lot! Putting this to good use!</p>
+<p>If you have the power to do it. then:HELP! HELP! HELP! https://arxiv.org/auth/endorse?x=VMBF4S.</p>
+<p>It has been revealed that hm, what happened to the Agentic Web Browser sample? @m-ric https://github.com/huggingface/smolagents/blob/main/examples/vlm_web_browser.py.</p>
+<p>We integrated it in the main repo here: https://github.com/huggingface/smolagents/blob/main/src/smolagents/vision_web_browser.pyThus it was removed from examples/.</p>
+<p id="sec-end-173907">It has been revealed that I'm getting this deprecation warning "The 'logs' attribute is deprecated and will soon be removed. Please use 'self.memory.steps' instead." What action should be taken?</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/smolagents-can-see" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="tech-report-grapheneos-highlights-off-how-it-looks-rcs-support-wi-173884.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173884. Tech Report: GrapheneOS highlights off how it looks RCS support without Google Messages
+        </a>
+        
+        <a href="tech-report-the-galaxy-a56-is-a-decent-starter-phone-at-just-299--173834.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173834. Tech Report: The Galaxy A56 is a decent starter phone at just $299 right now
+        </a>
+        
+        <a href="tech-report-the-best-early-black-friday-photo-and-camera-deals-av-173174.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173174. Tech Report: The Best Early Black Friday Photo and Camera Deals Available Now
+        </a>
+        
+        <a href="tech-report-merrells-upcoming-leather-clad-moab-hiking-shoes-are--172710.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #172710. Tech Report: Merrell's Upcoming Leather-Clad Moab Hiking Shoes Are Now Nearly 60% Off
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

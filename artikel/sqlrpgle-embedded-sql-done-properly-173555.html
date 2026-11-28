@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLRPGLE: embedded SQL done properly</title>
+    <meta name="description" content="Embedded SQL in RPG is the default way to access Db2 for i in newly introduced code. It is also where I most often see sloppy code: no status checks, SELEC">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/sqlrpgle-embedded-sql-done-properly-173555.html">
+    <meta property="og:title" content="SQLRPGLE: embedded SQL done properly">
+    <meta property="og:description" content="Embedded SQL in RPG is the default way to access Db2 for i in newly introduced code. It is also where I most often see sloppy code: no status checks, SELEC">
+    <meta property="og:image" content="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fcdn.sanity.io%2Fimages%2F7jlf8urg%2Fproduction%2Fbace0eb259e68ad3bd254b734f2b472a472af383-1920x1272.jpg%3Fw%3D1000%26h%3D420%26fit%3Dcrop%26fm%3Djpg">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/sqlrpgle-embedded-sql-done-properly-173555.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "SQLRPGLE: embedded SQL done properly", "image": ["https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fcdn.sanity.io%2Fimages%2F7jlf8urg%2Fproduction%2Fbace0eb259e68ad3bd254b734f2b472a472af383-1920x1272.jpg%3Fw%3D1000%26h%3D420%26fit%3Dcrop%26fm%3Djpg"], "datePublished": "2026-11-28T01:00:18", "dateModified": "2026-11-28T01:04:24.513603", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/sqlrpgle-embedded-sql-done-properly-173555.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>SQLRPGLE: embedded SQL done properly</h1>
+        <div class="meta-line">🌐 Source: <strong>Dev</strong> &bull; 📅 28 Nov 2026 &bull; ⏱️ 5 min read (947 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Embedded SQL in RPG is the default way to access Db2 for i in newly introduced code.</li><li style='margin-bottom:6px;'>SQL statements start with exec sql and end with a semicolon, and can span lines.</li><li style='margin-bottom:6px;'>Same program in fixed format (what you will meet in most shops):.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173555"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173555"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173555"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="SQLRPGLE: embedded SQL done properly" loading="lazy" src="https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fcdn.sanity.io%2Fimages%2F7jlf8urg%2Fproduction%2Fbace0eb259e68ad3bd254b734f2b472a472af383-1920x1272.jpg%3Fw%3D1000%26h%3D420%26fit%3Dcrop%26fm%3Djpg" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173555">Embedded SQL in RPG is the default way to access Db2 for i in newly introduced code. It is also where I most often see sloppy code: no status checks, SELECT *, and cursors left open. This article gives a pattern you can paste into a real program.</p>
+<p>SQL statements start with exec sql and end with a semicolon, and can span lines. The source member type is SQLRPGLE.</p>
+<p>Same program in fixed format (what you will meet in most shops):.</p>
+<p>Fixed format has no exec sql ...; one-liner: the statement sits between C/EXEC SQL and C/END-EXEC on C+ lines (/ in column 7, EXEC SQL in columns 8-16). SET OPTION goes there like any other statement.</p>
+<p>SET OPTION is not executable; the precompiler reads it. IBM requires it to precede every other SQL statement in the source, and you can code only one, so put all options in that one statement. It lets the source carry its own compile options.</p>
+<p>Prefix RPG variables with a colon inside SQL.</p>
+<p>Same program in fixed format (what you will meet in most shops):.</p>
+<p>In a recent development, A host structure maps columns by position, not name, so the select list order must match the structure. Always list columns explicitly.</p>
+<p>Same program in fixed format (what you will meet in most shops):.</p>
+<p>If no row matches you get SQLSTATE 02000 (SQLCODE 100). If more than one matches, you get an error (SQLSTATE 21000, SQLCODE -811) unless you add fetch first row only. Decide which you mean. A null in a column needs a null-indicator variable (:cust.balance :balInd) or you get SQLCODE -305.</p>
+<p>According to recent reports, the precompiler gives you sqlstate and sqlcode automatically. Check after every statement. SQLSTATE is the portable value; SQLCODE is Db2-specific but handy.</p>
+<p>Same program in fixed format (what you will meet in most shops):.</p>
+<p>DSPLY needs a variable in fixed format, hence MSG. DSPLY also cuts the message at 52 characters, so keep it short. If CHECKSQL is called earlier in the same source, add a D CHECKSQL PR N prototype first.</p>
+<p>Sources indicate that warnings start with 01, not found is 02, and 00 is success. Anything else (class 22, 23, 42 and so on) is an error you must handle. For details use GET DIAGNOSTICS CONDITION 1 :msg = MESSAGE_TEXT (the CONDITION 1 is required for condition items like MESSAGE_TEXT, RETURNED_SQLSTATE and DB2_MESSAGE_ID). Capture sqlstate into a variable before you run it, or any other statement, because every later SQL statement can overwrite what you were about to test.</p>
+<p>Use a cursor when you expect many rows: declare, open, fetch in a loop, close.</p>
+<p>Same program in fixed format (what you will meet in most shops):.</p>
+<p id="sec-mid-173555">Sources indicate that DECLARE is not executable, but it must appear in the source before the OPEN that uses it, and the host variables it references must be declared before it. closqlcsr(*endmod) closes cursors when the module ends. The ILE default is *ENDACTGRP, so a cursor you forget to close stays open until the activation group ends, and the next call's OPEN fails with SQLSTATE 24502 (already open). Close cursors yourself anyway.</p>
+<p>Fetching a block of rows in one call reduces overhead. Use an array data structure.</p>
+<p>Same program in fixed format (what you will meet in most shops):.</p>
+<p>SQLERRD(3) (short name SQLER3) holds the number of rows fetched. The last block is usually short: Db2 then returns SQLSTATE 02000 (SQLCODE 100) and the rows it did find, so process SQLERRD(3) rows first and stop afterwards. Reading it straight after the FETCH needs no extra statement; GET DIAGNOSTICS :fetched = ROW_COUNT gives the same count but is one more statement to get wrong.</p>
+<p>When the statement text is built at run time, use PREPARE and EXECUTE. Use parameter markers (?), never concatenated user input, to avoid SQL injection.</p>
+<p>Same program in fixed format (what you will meet in most shops):.</p>
+<p>The statement literal is split with + because a single literal would run past column 80.</p>
+<p>Recent findings suggest that for a one-off statement without parameters, EXECUTE IMMEDIATE :stmt is enough. A dynamic SELECT is prepared, then used with DECLARE CURSOR FOR s1 and OPEN c USING :value.</p>
+<p>With COMMIT(*NONE) every statement is permanent immediately. With COMMIT(*CHG) (or *CS, *ALL) changes are held until you matter COMMIT or ROLLBACK.</p>
+<p>Same program in fixed format (what you will meet in most shops):.</p>
+<p>Tables must be journaled to be used under commitment control; otherwise the statement fails at runtime (SQLCODE -7008, SQLSTATE 55019). The CRTSQLRPGI default is COMMIT(*CHG), so a program you compile without thinking about it hits this on any unjournaled file. On PUB400 a latest SQL schema is journaled automatically, but tables created with CRTPF (see DDS to SQL DDL migration) in a plain library are not.</p>
+<p>Industry observers note that the precompiler produces a temporary source and then calls the RPG compiler. COMMIT(*NONE) is right for batch utilities (wrap the call in CL and use SBMJOB) and read-only programs; choose *CHG for transactional programs. The SET OPTION line in the source carries the same options with the member.</p>
+<p>Defaults worth knowing before you rely on them:.</p>
+<p>According to recent reports, the samples use mylib.customer. With OPTION(*SQL) an unqualified name goes to the default schema instead of the library list.</p>
+<p>Same program in fixed format (what you will meet in most shops):.</p>
+<p>Fixed format wants all D specs before the first C spec, so the declarations move up. SET OPTION is still the first SQL statement in the source, which is what the precompiler needs.</p>
+<p id="sec-end-173555">Originally published on rainierio.dev. The full Learn IBM i track, with an Indonesian version, is at rainierio.dev/learn.</p>
+<p style="margin-top: 25px;">
+<a href="https://dev.to/rainierio-dev/sqlrpgle-embedded-sql-done-properly-2obi" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="breaking-introducing-the-sql-console-on-datasets-174056.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174056. Breaking: Introducing the SQL Console on Datasets
+        </a>
+        
+        <a href="the-7-most-desperate-things-ive-done-in-my-search-for-ski-boots-t-172261.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #172261. The 7 Most Desperate Things I’ve Done in My Search for Ski Boots That Fit
+        </a>
+        
+        <a href="my-son-wasnt-dyslexiche-was-never-properly-taught-to-read-171106.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #171106. My son wasn’t dyslexic—he was never properly taught to read
+        </a>
+        
+        <a href="portnoy-notes-vance-done-as-2028-presidential-contender-169573.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #169573. Portnoy notes Vance ‘done’ as 2028 presidential contender
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

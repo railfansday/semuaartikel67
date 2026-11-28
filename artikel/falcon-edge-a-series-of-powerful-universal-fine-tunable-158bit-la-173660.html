@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falcon-Edge: A series of powerful, universal, fine-tunable 1.58bit language models.</title>
+    <meta name="description" content="In this blogpost, we present the key highlights and rationales about the Falcon-Edge series - a collection of powerful, universal, and fine-tunable languag">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/falcon-edge-a-series-of-powerful-universal-fine-tunable-158bit-la-173660.html">
+    <meta property="og:title" content="Falcon-Edge: A series of powerful, universal, fine-tunable 1.58bit language models.">
+    <meta property="og:description" content="In this blogpost, we present the key highlights and rationales about the Falcon-Edge series - a collection of powerful, universal, and fine-tunable languag">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/tiiuae/falcon-edge.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/falcon-edge-a-series-of-powerful-universal-fine-tunable-158bit-la-173660.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Falcon-Edge: A series of powerful, universal, fine-tunable 1.58bit language models.", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/tiiuae/falcon-edge.png"], "datePublished": "2025-05-15T13:13:45", "dateModified": "2026-11-28T01:04:31.914037", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/falcon-edge-a-series-of-powerful-universal-fine-tunable-158bit-la-173660.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Falcon-Edge: A series of powerful, universal, fine-tunable 1.58bit language models.</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 15 May 2025 &bull; ⏱️ 5 min read (1083 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>In this blogpost, we present the key highlights and rationales about the Falcon-Edge series - a collection of powerful, universal, and fine-tunable language models available in ternary format, based on the BitNet architecture.</li><li style='margin-bottom:6px;'>In a recent development, drawing from our experience with BitNet, Falcon-Edge introduces and validates an fresh pre-training paradigm that delivers a full-scope output from a single training process, simultaneously yielding both non-quantized and quantized model variants.</li><li style='margin-bottom:6px;'>Available now in two sizes—1 Billion and 3 Billion parameters—each size comes in both base and instruction-tuned models.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173660"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173660"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173660"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Falcon-Edge: A series of powerful, universal, fine-tunable 1.58bit language models." loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/tiiuae/falcon-edge.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173660">In this blogpost, we present the key highlights and rationales about the Falcon-Edge series - a collection of powerful, universal, and fine-tunable language models available in ternary format, based on the BitNet architecture.</p>
+<p>In a recent development, drawing from our experience with BitNet, Falcon-Edge introduces and validates an fresh pre-training paradigm that delivers a full-scope output from a single training process, simultaneously yielding both non-quantized and quantized model variants. This comprehensive approach produces a non-BitNet model in bfloat16 format, the native BitNet model, and a pre-quantized BitNet variant specifically engineered for effortless fine-tuning, enabling owners and developers to precisely tailor these models to their specific applications and needs.</p>
+<p>Available now in two sizes—1 Billion and 3 Billion parameters—each size comes in both base and instruction-tuned models. Discover the Falcon-Edge series on our dedicated Hugging Face collection.</p>
+<p>In a recent development, large Language Models (LLMs), by design, are inherently large and resource-intensive. As demand grows to deploy these models efficiently on edge devices, research into model compression has accelerated. Recent efforts, such as those by DeepSeek and Llama 4, explore training with reduced precision formats—down to FP8—to improve deployment scalability. On the other hand, many state-of-the-art methods emphasize post-training quantization. In contrast to these approaches, BitNet introduces a fundamentally different paradigm: unlike reduced-precision training which still relies on floating-point formats, and post-training quantization which adjusts weights after full-precision training, BitNet operates with the lowest possible precision — ternary weights ({-1, 0, 1}) — directly during training, enabling an end-to-end ultra-efficient model design.</p>
+<p>These ternary weights are paving the way for a “matmul-free” LLM design that is notably faster and remarkably memory-efficient in practice. The primary challenge of this innovative approach is the necessity for pre-training BitNet models, which can be computationally demanding and costly for typical owners.</p>
+<p>It has been revealed that leveraging the learnings from pre-training data strategies from our center, we pre-train our model on an internal data mixture for approximately 1.5 Tera Tokens. We use the classic WSD learning rate scheduler for pre-training.</p>
+<p>We evaluate our models (base and instruct versions) on the former Hugging Face leaderboard v2 benchmark and report the normalized results below in comparison with other models of similar size:.</p>
+<p>Additional results (leaderboard v1) on comparing our instructed models with Microsoft’s upcoming BitNet model:.</p>
+<p>Falcon-Edge demonstrates on-par and better performances than models of comparable sizes on the leaderboard v2 tasks, demonstrating that it is possible to train powerful BitNet models on desired domains while being competitive enough on other tasks.</p>
+<p>If we look closer at the formula of the BitNet linear layer for inference (in terms of Python code):.</p>
+<p>The normalization activation_norm_quant quantizes the activations in int8 format, then the activation is computed back in half precision by diving it by x_scale. Since the model has been trained with fake 8-bit activation quantization, we argue that it is possible to approximate that:.</p>
+<p>Therefore, instead of quantizing the model post-training, injecting the weight scale after quantizing the weights should lead to a good enough “approximation” of the non-BitNet version of the model:.</p>
+<p>We confirm this by running end-to-end evaluations on the bfloat16 variant of our 1B and 3B base models and below are the results:.</p>
+<p id="sec-mid-173660">The bfloat16 counterparts of the models can be loaded directly via Hugging Face transformers by passing revision="bfloat16" in the from_pretrained function:.</p>
+<p>To the best of our knowledge, except from the most recent release from Microsoft previous BitNet releases only focus on releasing the final quantized model, making it usable only for inference. Similarly to the release from Microsoft, we propose to extend the accessibility of research and application of BitNet models by releasing their pre-quantized weights. That way, users can either perform fine-tuning on their target domain, or do continuous pre-training of the BitNet checkpoint as long as nn.Linear layers are replaced by BitnetLinear layers, and by making sure to quantize the model post training in BitNet format. Since the weights corresponds to the pre-quantized weights, performing text generation without replacing the nn.Linear layers with BitnetLinear layers will produce gibberish output.</p>
+<p>The pre-quantized weights can be downloaded via Hugging Face's transformers library by specifying the revision argument to be prequantized:.</p>
+<p>This way, we will help fostering an ecosystem around first powerful 1-bit fine-tunes by the community. We provide to community the tools to get easily started and fine-tune their own version of powerful BitNet models by packaging all needed utility methods for performing fine-tuning on the pre-quantized weights on a Python package called onebitllms that we will cover in the next section.</p>
+<p>It has been revealed that in this release, we also introduce onebitllms - a lightweight Python package that can be plugged into your favorite LLM fine-tuning tools in order to fine-tune any pre-quantized BitNet model. At this time of writing onebitllms exposes these main functionalities:.</p>
+<p>Currently, only full-finetuning is supported through this framework, while in this release the model sizes are relatively small, supporting Parameter-Efficient Fine-tuning (PEFT) methods for BitNet models remains an exciting and impactful open question for upcoming BitNet models.</p>
+<p>To get started, simply install the package directly through pip or from source, and take a look at examples/ folders inside the source code.</p>
+<p>With this package, we hope to accelerate research and development around ternary format LLMs, and hope to see many derivations of Falcon-Edge and other future powerful BitNet models developed by the community.</p>
+<p>We believe this release opens up multiple interesting directions - among all the possible follow up directions, we right now think that the following open questions will make BitNet models much more impactful in the near future:.</p>
+<p>If you find this work useful for your research and work, please consider citing our work, as well as citing all the foundational work behind BitNet models:.</p>
+<p>Awesome stuff! Can't wait to try this with llama.cpp.</p>
+<p>Thank you @ThomasTheMaker  !You can actually already try it on bitnet.cpp (you need to use: https://github.com/microsoft/BitNet/pull/268 to use it until it gets merged).</p>
+<p>Industry observers note that congratulations, these results look really promising. However, I really don't think the comparison with FP-16 versions of other small models is fair. At least use the 8-bit or even 4-bit quantized version to give a more accurate performance and to reflect the versions people actually use.</p>
+<p id="sec-end-173660">We are building a local inference / fine-tuning solution / app to be used as a GPT alternate. I was wondering if can I take  gemma-e2b model and quantize it to 1-bit and then inference it instead of using llama.cpp, using this framework directly.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/tiiuae/falcon-edge" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="fine-tuning-florence-2-microsofts-cutting-edge-vision-language-mo-174107.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174107. Fine-tuning Florence-2 - Microsoft's Cutting-edge Vision Language Models
+        </a>
+        
+        <a href="falcon-arabic-a-breakthrough-in-arabic-language-models-173647.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173647. Falcon-Arabic: A Breakthrough in Arabic Language Models
+        </a>
+        
+        <a href="falcon-h1-a-family-of-hybrid-head-language-models-redefining-effi-173644.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173644. Falcon-H1: A Family of Hybrid-Head Language Models Redefining Efficiency and Performance
+        </a>
+        
+        <a href="latest-update-block-sparse-matrices-for-smaller-and-faster-langua-174545.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174545. Latest Update: Block Sparse Matrices for Smaller and Faster Language Models
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PipelineRL</title>
+    <meta name="description" content="According to recent reports, we are excited to open-source PipelineRL, an experimental RL implementation that tackles a fundamental challenge in large-scal">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/pipelinerl-173696.html">
+    <meta property="og:title" content="PipelineRL">
+    <meta property="og:description" content="According to recent reports, we are excited to open-source PipelineRL, an experimental RL implementation that tackles a fundamental challenge in large-scal">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow/pipelinerl.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/pipelinerl-173696.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "PipelineRL", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow/pipelinerl.png"], "datePublished": "2025-04-25T22:37:16", "dateModified": "2026-11-28T01:04:34.885904", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/pipelinerl-173696.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>PipelineRL</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 25 Apr 2025 &bull; ⏱️ 5 min read (1096 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>According to recent reports, we are excited to open-source PipelineRL, an experimental RL implementation that tackles a fundamental challenge in large-scale Reinforcement Learning with LLMs: the trade-off between inference throughput and on-policy data collection.</li><li style='margin-bottom:6px;'>According to recent reports, in this blog post, we show that 1) inflight weight updates do not harm the training process and 2) PipelineRL achieves competitive results compared to Open-Reasoner-Zero, while using a simpler RL algorithm.</li><li style='margin-bottom:6px;'>In conventional RL approaches (Figure 1a), there is a trade-off between high throughput inference and on-policy data collection.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173696"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173696"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173696"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="PipelineRL" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ServiceNow/pipelinerl.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173696">According to recent reports, we are excited to open-source PipelineRL, an experimental RL implementation that tackles a fundamental challenge in large-scale Reinforcement Learning with LLMs: the trade-off between inference throughput and on-policy data collection. PipelineRL's key innovation is inflight weight updates during RL training (see Figure 1 below). This allows PipelineRL to achieve constantly high inference throughput and minimize the lag between the weights used for rollouts and the most recently updated model weights. The result: fast and stable RL training for large language models.</p>
+<p>According to recent reports, in this blog post, we show that 1) inflight weight updates do not harm the training process and 2) PipelineRL achieves competitive results compared to Open-Reasoner-Zero, while using a simpler RL algorithm. We also present the modular PipelineRL architecture that facilitates trying new inference / trainer combinations.</p>
+<p>In conventional RL approaches (Figure 1a), there is a trade-off between high throughput inference and on-policy data collection. To explain this trade-off let us first define conventional RL algorithmically:.</p>
+<p>It has been revealed that to achieve high throughput, the inference servers must use large batch sizes and, therefore, generate data for multiple policy optimization steps. However, each optimization step increases the lag between the current policy and the data collected using the inference policy, progressively making collected data more off-policy and less effective for training. On-policy learning requires data for a single optimization step. But producing small amounts of data with many GPUs is inefficient because this means the per-GPU batch size is small. Furthermore the batch size goes down as the inference server finishes the short sequences and has only the few longest sequences in progress.</p>
+<p>PipelineRL (Figure 1b) remediates this trade-off through inflight weight updates. We revision the weights in inference servers after each optimizer step without ever stopping inference. We only pause the inference at all inference servers for just the time needed to receive the upcoming weights. Inflight weight updates allow the inference server to constantly maintain the optimal batch size while simultaneously ensuring data remains on-policy or near on-policy, which leads to better GPU utilization and more effective learning, respectively.</p>
+<p>Industry observers note that to demonstrate the effectiveness of PipelineRL and the benefits of inflight weight updates, we trained a 7B model and 32B model on the Open-Reasoner-Zero dataset. Looking at the learning curves we see that PipelineRL matches or exceeds the performance of Open-Reasoner on the popular reasoning test benchmarks: AIME 2024 and MATH 500 (see Figure 2 above).</p>
+<p>Notably, our RL implementation is much simpler than Open-Reasoner-Zero. While Open-Reasoner-Zero uses a value function, our implementation is a simplified version of GRPO. In particular, we found that the trust region importance weight clamping is not needed for stable training. Neither was overlong sequence filtering or reward shaping from the DAPO paper. For normalizing the loss we just use the number of sequences in the batch as the denominator, giving equal weights to all tokens. We used no KL penalty and no entropy bonus (though our implementation does support reference model KL). Despite the simplicity of our implementation, or perhaps thanks to it, training is very stable as you can see in this wandb report.</p>
+<p>In a recent development, one might expect that inflight weight updates would result in an unstable training process, since sequence generation proceeds with stale keys and values in the KV cache that was computed with a previous model version. However, our experiments indicate this does not adversely affect stability.</p>
+<p>PipelineRL is built to be modular and take advantage of rapid improvements in highly-specialized inference and training software (SGLang, vLLM, Nvidia Dynamo, DeepSpeed, FSDP, TorchTitan, FastLLM, etc.). We propose clear contracts between the inference and
+training components, allowing easy integration of latest inference and training solutions as they become available.</p>
+<p>The inference software must expose the following APIs to PipelineRL[1]:.</p>
+<p id="sec-mid-173696">If init_process_group and request_weight_update APIs become the industry standard, one will be able to plug-and-play try using difference inference implementations with PipelineRL.</p>
+<p>PipelineRL training code feeds freshly-generated training data to trainer workers as soon as the right number of training tokens has accumulated for each of them. One can make any training software that exposes these Python APIs work with PipelineRL:.</p>
+<p>Recent findings suggest that pipelineRL at the moment uses the HuggingFace accelerate library to give the user a choice between DeepSpeed and FSDP. But we found that accelerate contract is too flexible and can be confusing. We will be moving to the stricter contract as described above that will make using other trainers easier.</p>
+<p>Upcoming features. Our implementation is still experimental and lacks some important functionality. Top priorities for us include using coroutines for more precise inference batch size control, multi-modal support and sequence parallel training. We would also welcome contributions of more inference server and trainer integrations. We will not, however, try to make the pipeline-rl repo a framework that supports all possible algorithms and reward functions. Our take is that pipeline-rl should be a hackable and fast reference implementation of GRPO with easily verifiable rewards. If you'd like to do a research project using PipelineRL, you can just fork the repo and have fun hacking the code!</p>
+<p>Recent findings suggest that more research coming soon. More analysis is needed to understand how inflight weight updates affect the training dynamics, and to carefully measure the speed-ups that PipelineRL brings. Also, much can be said about the similarities between PipelineRL and
+highly relevant prior work on asynchronous Reinforcement Learning for LLMs. For all this and more please stay tuned for our upcoming research paper!</p>
+<p>Sources indicate that alexandre Piché wrote the first synchronous version of our RL code while working on TapeAgents. Dzmitry Bahdanau refactored the code to be asynchronous and distributed, and implemented inflight weight updates. Rafael Pardinas implemented sequence packing. Ehsan Kamaloo helped with running the experiments. Xiaoyin Chen helped with debugging the framework.</p>
+<p>We acknowledge the prior RL for LLM implementations such as TRL, OpenRLHF and veRL for the many tricks we borrowed from them. Artifacts from other open-source reasoning projects, such as Simple-RL, Deepscaler, DAPO and OpenReasoner were instrumental for stabilizing PipelineRL. We would like to recognize Christopher Manning, Michael Noukhovitch for their thoughtful comments. Finally, we thank the broader ServiceNow Research team and ServiceNow CoreLLM teams for being amazing colleagues.</p>
+<p>[1] The current contract in the code is slightly different, but we are refactoring it as described above.</p>
+<p>We used the same hyperparameters for both 7B and 32B experiments we report here:.</p>
+<p>The compute that we used for the reported experiments.</p>
+<p id="sec-end-173696">Very nice, cc @qgallouedec  you will probably like this 🤗.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/ServiceNow/pipelinerl" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="predicting-and-detecting-failures-how-azure-strengthens-reliabili-174550.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174550. Predicting and detecting failures: How Azure strengthens reliability for mission-critical workloads
+        </a>
+        
+        <a href="designing-azure-silicon-on-azure-silicon-eda-workloads-on-cobalt--174549.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174549. Designing Azure silicon on Azure silicon: EDA workloads on Cobalt 200
+        </a>
+        
+        <a href="how-to-train-a-latest-language-model-from-scratch-using-transform-174548.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174548. How to train a latest language model from scratch using Transformers and Tokenizers
+        </a>
+        
+        <a href="tech-report-how-to-generate-text-using-different-decoding-methods-174547.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174547. Tech Report: How to generate text: using different decoding methods for language generation with Transformers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

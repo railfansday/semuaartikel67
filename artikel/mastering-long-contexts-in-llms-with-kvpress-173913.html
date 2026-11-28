@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Long Contexts in LLMs with KVPress</title>
+    <meta name="description" content="Recent findings suggest that TL;DR: KVPress packs the latest KV cache compression techniques, enabling memory-efficient long-context LLMs. 🚀. One of the ke">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/mastering-long-contexts-in-llms-with-kvpress-173913.html">
+    <meta property="og:title" content="Mastering Long Contexts in LLMs with KVPress">
+    <meta property="og:description" content="Recent findings suggest that TL;DR: KVPress packs the latest KV cache compression techniques, enabling memory-efficient long-context LLMs. 🚀. One of the ke">
+    <meta property="og:image" content="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/nvidia/kvpress.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/mastering-long-contexts-in-llms-with-kvpress-173913.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Mastering Long Contexts in LLMs with KVPress", "image": ["https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/nvidia/kvpress.png"], "datePublished": "2025-01-23T08:03:03", "dateModified": "2026-11-28T01:04:50.606113", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/mastering-long-contexts-in-llms-with-kvpress-173913.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Mastering Long Contexts in LLMs with KVPress</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 23 Jan 2025 &bull; ⏱️ 6 min read (1278 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Recent findings suggest that TL;DR: KVPress packs the latest KV cache compression techniques, enabling memory-efficient long-context LLMs.</li><li style='margin-bottom:6px;'>One of the key features of Large Language Models (LLMs) is their context window—the maximum number of tokens they can process in a single request.</li><li style='margin-bottom:6px;'>Larger context windows unlock incredible possibilities:.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173913"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173913"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173913"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Mastering Long Contexts in LLMs with KVPress" loading="lazy" src="https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/nvidia/kvpress.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173913">Recent findings suggest that TL;DR: KVPress packs the latest KV cache compression techniques, enabling memory-efficient long-context LLMs. 🚀.</p>
+<p>One of the key features of Large Language Models (LLMs) is their context window—the maximum number of tokens they can process in a single request. As LLMs evolve, their context windows are becoming increasingly larger.</p>
+<p>Larger context windows unlock incredible possibilities:.</p>
+<p>However, these extended windows come at a cost—memory taken by the long context in the KV Cache becomes hard to manage. For instance, handling 1M tokens with Llama 3-70B in float16 demands 330GB for KV Cache, rendering it infeasible for many applications.</p>
+<p>In this blog post, we'll address one solution for this problem: compressing the KV Cache for more efficient generation. To achieve this, we'll explore:.</p>
+<p>Before getting started, explore KVPress in this Space (you'll find examples at the end if needed):.</p>
+<p>Figure 1: Key Value cache inside the attention module (Source: NVIDIA).</p>
+<p>It has been revealed that in autoregressive models, text generation happens token by token, with each prediction relying on all preceding tokens for context. For example:.</p>
+<p>In a recent development, this repetitive computation becomes inefficient as the sequence grows, especially for large models. KV Cache optimizes this process by storing the intermediate results—keys (K) and values (V)—from the attention layers, so the model can reuse them for future tokens instead of recalculating them.</p>
+<p>It has been revealed that as powerful as the KV Cache is, it comes with a major drawback-it scales linearly with the size of the context window. While this might not sound alarming at first, let's break it down to see why this becomes a serious bottleneck.</p>
+<p>The values stored in the KV Cache come from all the attention blocks used by the model. Therefore, its size depends on the model architecture, which dictates the number of attention heads. More concretely, the memory consumed by the KV Cache is determined by the following equation:.</p>
+<p>Size(KV)=2×precision×nlayers×nheads×d×ntokens   
+\text{Size}(\text{KV}) = 2 \times \text{precision} \times n_{layers} \times n_{heads} \times d \times n_{tokens}   
+Size(KV)=2×precision×nlayers​×nheads​×d×ntokens​.</p>
+<p>Each of these factors contributes to the explosion in memory usage. To make this more tangible, let's consider a concrete example—Llama 3-70B running in bfloat16 precision (as recommended by the model authors) with a context size of 1M tokens:.</p>
+<p>Size(KV)=2×2×80×8×128×1M=327.6GB   
+\text{Size}(\text{KV}) = 2 \times 2 \times 80 \times 8 \times 128 \times 1M = 327.6 \text{GB}   
+Size(KV)=2×2×80×8×128×1M=327.6GB.</p>
+<p>Since bfloat16 uses 2 bytes per parameter, the model weights alone require 140 GB (70B x 2 bytes). This means that running the model with a 1M token context size demands approximately 470 GB of memory, with the KV cache alone accounting for a staggering 70% of this total.</p>
+<p>As we've seen, the KV Cache is both a critical enabler and a significant bottleneck for deploying large language models (LLMs) with long context windows. Addressing the linearly scaling memory problem requires innovative compression techniques, and that's exactly where KVPress steps in.</p>
+<p>Recent findings suggest that KVPress, developed by NVIDIA, is a Python toolkit designed to address the memory challenges of large KV Caches by providing a suite of state-of-the-art compression techniques. It also integrates with other approaches, such as KV Cache Quantization, a method built into the transformers library to reduce memory usage (the precision term in the equation above), further expanding its utility (details here).</p>
+<p>Recent findings suggest that for researchers specializing in compression, KVPress offers a flexible and modular framework, making it easy to understand and extend with upcoming methods. For developers, KVPress simplifies the process of deploying these cutting-edge techniques, enabling quick and efficient integration into real-world applications.</p>
+<p>At its core, KVPress leverages presses, which are advanced compression algorithms specifically designed to reduce the memory footprint of the KV Cache.</p>
+<p>Many of these presses rely on a score that is used in each head to prune the KV pairs with the lowest importance. For instance the KnormPress prunes the KV pairs with lowest key value norm (paper), and SnapKVPress prunes the KV pairs associated with a low attention weights for the latest queries (paper).</p>
+<p id="sec-mid-173913">These presses are seamlessly integrated into the attention layers of the model using forward hooks.</p>
+<p>Figure 2: KV Compression visualized (Source: NVIDIA).</p>
+<p>During text generation, they dynamically compress the KV Cache, reducing memory usage without compromising the model's ability to generate coherent and accurate outputs. Each press is characterized by a compression_ratio attribute, which determines the degree of compression applied to the KV Cache.</p>
+<p>These presses integrate seamlessly with a custom transformers pipeline, enabling easy application and experimentation.</p>
+<p>Industry observers note that here's how you can use a press with KVPress with one of the many presses, ExpectedAttentionPress. This press prunes the KV pairs associated with the lowest expected attention weight for future queries.</p>
+<p>Try using it directly in this Hugging Face space or in this Google colab notebook!</p>
+<p>By targeting the pre-filling phase, KVPress ensures that the cache is compressed when it's largest—helping reduce memory overhead for sequences with tens of thousands or even millions of tokens.</p>
+<p>In a recent development, the plot below demonstrates the GPU memory savings achieved with KVPress compression as prompt lengths increase. For shorter prompts, most of the memory is allocated to model weights—approximately 15GB for Llama 3.1 8B in bfloat16. However, as prompt lengths grow, the KV cache becomes a major contributor to memory consumption. For 128k context length, applying KVPress with a 50% compression ratio reduces peak memory usage from 45GB to 37GB. This smaller KV cache also improves decoding speed, from 11 tokens per second to 17 tokens per second on an A100 GPU (source). .</p>
+<p>Figure 3: Memory usage vs Context length (Source: NVIDIA).</p>
+<p>The research community has been actively developing various techniques for KV cache compression. KVPress encourages researchers to contribute their methods and already provides more than a dozen presses.</p>
+<p>To evaluate the performance of these presses, KVPress includes a simple CLI for benchmarking them on standard long-context datasets such as RULER, InfiniteBench, and Loogle. The plot below benchmarks 9 different presses on the RULER dataset with 4k context length and different compression ratio. The best performing press on this dataset is a combination of the AdaKVPress (paper) and ExpectedAttentionPress, a new unpublished pruning technique created by the authors of KVPress (more information here).</p>
+<p>Figure 4: Average score vs Compression ratio (Source: NVIDIA).</p>
+<p>It has been revealed that the growing context windows of LLMs unlock newly introduced possibilities but pose significant memory challenges with the linearly scaling KV Cache. KVPress addresses this by compressing the cache during the critical pre-filling phase.</p>
+<p>While KVPress improves memory efficiency, higher compression ratios can impact model accuracy, as shown in the benchmark plot. Further research is needed to develop more effective compression algorithms that minimize trade-offs.</p>
+<p>It has been revealed that with its seamless integration into the transformers library and modular design, KVPress empowers researchers and developers to handle long-context LLMs efficiently and design latest compression techniques. It's a practical solution for scaling LLMs without overwhelming memory resources—ensuring innovation stays accessible as models grow.</p>
+<p>really cool post! love the embedded Gradio app, cc @abidlabs.</p>
+<p>In a recent development, happy you like it @julien-c  ! Feel free to share it  on social media to raise awareness around the package 🤗.</p>
+<p>Love it! Thanks for writing this! Curious about the impact on the FLOP count. Since we're reducing the size of the KV cache, the number of  operations F(QK.T)V will also decrease, but is this reduction being replaced by the compression.</p>
+<p>We've not measured FLOPs, but we have a few plots here that measure total time for generation here: https://github.com/NVIDIA/kvpress/blob/main/notebooks/speed_and_memory.ipynb.</p>
+<p>For most presses, the compression computation are very light compared to the forward pass of the long context itself.</p>
+<p id="sec-end-173913">https://github.com/NVIDIA/kvpress/challenges/151.</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/nvidia/kvpress" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="hugging-face-reads-feb-2021-long-range-transformers-174534.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174534. Hugging Face Reads, Feb. 2021 - Long-range Transformers
+        </a>
+        
+        <a href="fine-tuning-20b-llms-with-rlhf-on-a-24gb-consumer-gpu-174352.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174352. Fine-tuning 20B LLMs with RLHF on a 24GB consumer GPU
+        </a>
+        
+        <a href="making-llms-even-more-accessible-with-bitsandbytes-4-bit-quantiza-174320.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174320. Making LLMs even more accessible with bitsandbytes, 4-bit quantization and QLoRA
+        </a>
+        
+        <a href="deploy-llms-with-hugging-face-inference-endpoints-174296.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174296. Deploy LLMs with Hugging Face Inference Endpoints
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>

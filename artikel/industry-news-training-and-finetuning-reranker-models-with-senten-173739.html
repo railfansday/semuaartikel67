@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry News: Training and Finetuning Reranker Models with Sentence Transformers</title>
+    <meta name="description" content="Sources indicate that sentence Transformers is a Python library for using and training embedding and reranker models for a wide range of applications, such">
+    <link rel="canonical" href="https://railfansday.github.io/semuaartikel67/artikel/industry-news-training-and-finetuning-reranker-models-with-senten-173739.html">
+    <meta property="og:title" content="Industry News: Training and Finetuning Reranker Models with Sentence Transformers">
+    <meta property="og:description" content="Sources indicate that sentence Transformers is a Python library for using and training embedding and reranker models for a wide range of applications, such">
+    <meta property="og:image" content="https://huggingface.co/blog/assets/train-sentence-transformers/st-hf-thumbnail.png">
+    <meta property="og:url" content="https://railfansday.github.io/semuaartikel67/artikel/industry-news-training-and-finetuning-reranker-models-with-senten-173739.html">
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Industry News: Training and Finetuning Reranker Models with Sentence Transformers", "image": ["https://huggingface.co/blog/assets/train-sentence-transformers/st-hf-thumbnail.png"], "datePublished": "2025-03-26T00:00:00", "dateModified": "2026-11-28T01:04:38.867391", "author": {"@type": "Person", "name": "Global News Desk Editor"}, "publisher": {"@type": "NewsMediaOrganization", "name": "Global News Desk", "logo": {"@type": "ImageObject", "url": "https://railfansday.github.io/semuaartikel67/favicon.ico"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://railfansday.github.io/semuaartikel67/artikel/industry-news-training-and-finetuning-reranker-models-with-senten-173739.html"}}</script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+        }
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .article-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .cat-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            line-height: 1.35;
+            margin: 10px 0 14px 0;
+        }
+        .meta-line {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .ctrl-btn {
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .article-wrapper { border-radius: 0; padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-wrapper">
+        <div class="top-nav">
+            <a href="../index.html" class="back-link">&larr; Back to Portal Home</a>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="cat-badge">General</span>
+                <span class="cat-badge" style="background:#fef3c7; color:#d97706;">⚖️ Neutral</span>
+                <button class="ctrl-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+            </div>
+        </div>
+        <h1>Industry News: Training and Finetuning Reranker Models with Sentence Transformers</h1>
+        <div class="meta-line">🌐 Source: <strong>Hugging Face</strong> &bull; 📅 26 Mar 2025 &bull; ⏱️ 13 min read (2517 words, 📚 Deep Dive)</div>
+        
+        <div class="tldr-box" style="background: rgba(37, 99, 235, 0.08); border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 18px 0;">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #2563eb; font-size: 14px;">💡 Key Takeaways</div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;"><li style='margin-bottom:6px;'>Sources indicate that sentence Transformers is a Python library for using and training embedding and reranker models for a wide range of applications, such as retrieval augmented generation, semantic search, semantic textual similarity, paraphrase mining, and more.</li><li style='margin-bottom:6px;'>Finetuning reranker models involves several components: datasets, loss functions, training arguments, evaluators, and the trainer class itself.</li><li style='margin-bottom:6px;'>Sources indicate that lastly, in the Evaluation section, I'll show you that my small finetuned tomaarsen/reranker-ModernBERT-base-gooaq-bce reranker model that I trained alongside this blogpost easily outperforms the 13 most commonly used public reranker models on my evaluation dataset.</li></ul>
+        </div>
+        
+        
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0 18px 0; padding:10px 14px; border:1px solid var(--border, #e2e8f0); border-radius:8px; font-size:13px;">
+            <strong style="color:var(--text-muted, #64748b);">📑 Quick Jump:</strong>
+            <a href="#sec-start-173739"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">1. Overview</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-mid-173739"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">2. Key Details</a>
+            <span style="color:var(--text-muted, #64748b);">•</span>
+            <a href="#sec-end-173739"  style="color:var(--primary, #2563eb); text-decoration:none; font-weight:600;">3. Closing Notes</a>
+        </div>
+        
+<div style="text-align:center; margin-bottom:20px;"><img alt="Industry News: Training and Finetuning Reranker Models with Sentence Transformers" loading="lazy" src="https://huggingface.co/blog/assets/train-sentence-transformers/st-hf-thumbnail.png" style="max-width:100%; height:auto; border-radius:8px;"/></div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+<div class="article-body" style="line-height: 1.8;">
+<p id="sec-start-173739">Sources indicate that sentence Transformers is a Python library for using and training embedding and reranker models for a wide range of applications, such as retrieval augmented generation, semantic search, semantic textual similarity, paraphrase mining, and more. In this blogpost, I'll show you how to use it to finetune a reranker model (also known as a cross-encoder) that beats all existing options on exactly your data. This method can also train extremely strong new reranker models from scratch.</p>
+<p>Finetuning reranker models involves several components: datasets, loss functions, training arguments, evaluators, and the trainer class itself. I'll have a look at each of these components, accompanied by practical examples of how they can be used for finetuning strong reranker models.</p>
+<p>Sources indicate that lastly, in the Evaluation section, I'll show you that my small finetuned tomaarsen/reranker-ModernBERT-base-gooaq-bce reranker model that I trained alongside this blogpost easily outperforms the 13 most commonly used public reranker models on my evaluation dataset. It even beats models that are 4x bigger.</p>
+<p>Repeating the recipe with a bigger base model results in tomaarsen/reranker-ModernBERT-large-gooaq-bce, a reranker model that blows all existing general-purpose reranker models out of the water on my data.</p>
+<p>If you're interested in finetuning embedding models instead, then consider reading through my prior Training and Finetuning Embedding Models with Sentence Transformers blogpost as well.</p>
+<p>Sources indicate that reranker models, often implemented using Cross Encoder architectures, are designed to evaluate the relevance between pairs of texts (e.g., a query and a document, or two sentences). Unlike Sentence Transformers (a.k.a. bi-encoders, embedding models), which independently embed each text into vectors and compute similarity via a distance metric, Cross Encoder process the paired texts together through a shared neural network, resulting in one output score. By letting the two texts attend to each other, Cross Encoder models can outperform embedding models.</p>
+<p>However, this strength comes with a trade-off: Cross Encoder models are slower as they process every possible pair of texts (e.g., 10 queries with 500 candidate documents requires 5,000 computations instead of 510 for embedding models). This makes them less efficient for large-scale initial retrieval but ideal for reranking: refining the top-k results first identified by faster Sentence Transformer models. The strongest search systems commonly use this 2-stage "retrieve and rerank" approach.</p>
+<p>Throughout this blogpost, I'll use "reranker model" and "Cross Encoder model" interchangeably.</p>
+<p>Reranker models are often tasked with a challenging problem:.</p>
+<p>Which of these kkk highly-related documents answers the query the best?</p>
+<p>According to recent reports, general-purpose reranker models are trained to perform adequately on this exact question in a wide range of domains and topics, preventing them from reaching their maximum potential in your specific domain. Through finetuning, the model can learn to focus exclusively on the domain and/or language that matters to you.</p>
+<p>In the Evaluation section end of this blogpost, I'll show that training a model on your domain can outperform any general-purpose reranker model, even if those baselines are much bigger. Don't underestimate the power of finetuning on your domain!</p>
+<p>Training reranker models involves the following components:.</p>
+<p>Let's take a closer look at each component.</p>
+<p>The CrossEncoderTrainer uses datasets.Dataset or datasets.DatasetDict instances for training and evaluation. You can load data from the Hugging Face Datasets Hub or use your local data in whatever format you prefer (e.g. CSV, JSON, Parquet, Arrow, or SQL).</p>
+<p>According to recent reports, note: Lots of public datasets that work out of the box with Sentence Transformers have been tagged with sentence-transformers on the Hugging Face Hub, so you can easily find them on https://huggingface.co/datasets?other=sentence-transformers. Consider browsing through these to find ready-to-go datasets that might be useful for your tasks, domains, or languages.</p>
+<p>You can use the load_dataset function to load data from datasets in the Hugging Face Hub.</p>
+<p>According to recent reports, some datasets, like nthakur/swim-ir-monolingual, have multiple subsets with different data formats. You need to specify the subset name along with the dataset name, e.g. dataset = load_dataset("nthakur/swim-ir-monolingual", "de", split="train").</p>
+<p>You can also use load_dataset for loading local data in certain file formats:.</p>
+<p>You can use datasets.Dataset.from_dict if your local data requires pre-processing. This allows you to initialize your dataset with a dictionary of lists:.</p>
+<p>Each key in the dictionary becomes a column in the resulting dataset.</p>
+<p>In a recent development, it is vital that your dataset format matches your loss function (or that you choose a loss function that matches your dataset format and model). Verifying whether a dataset format and model work with a loss function involves three steps:.</p>
+<p>For example, given a dataset with columns ["text1", "text2", "label"] where the "label" column has float similarity score ranging from 0 to 1 and a model outputting 1 label, we can use it with BinaryCrossEntropyLoss because:.</p>
+<p>Be sure to re-order your dataset columns with Dataset.select_columns if your columns are not ordered correctly. For example, if your dataset has ["good_answer", "bad_answer", "question"] as columns, then this dataset can technically be used with a loss that requires (anchor, positive, negative) triplets, but the good_answer column will be taken as the anchor, bad_answer as the positive, and question as the negative.</p>
+<p>In a recent development, additionally, if your dataset has extraneous columns (e.g. sample_id, metadata, source, type), you should remove these with Dataset.remove_columns as they will be used as inputs otherwise. You can also use Dataset.select_columns to keep only the desired columns.</p>
+<p>According to recent reports, the success of training reranker models often depends on the quality of the negatives, i.e. the passages for which the query-negative score should be low. Negatives can be divided into two types:.</p>
+<p>Industry observers note that the strongest CrossEncoder models are generally trained to recognize hard negatives, and so it's valuable to be able to "mine" hard negatives to train with. Sentence Transformers supports a strong mine_hard_negatives function that can assist, given a dataset of query-answer pairs:.</p>
+<p>Loss functions help evaluate a model's performance on a set of data and direct the training process. The right loss function for your task depends on the data you have and what you're trying to achieve. You can find a full list of available loss functions in the Loss Overview.</p>
+<p>Most loss functions are easy to set up - you just need to provide the CrossEncoder model you're training:.</p>
+<p>Industry observers note that you can customize the training process using the CrossEncoderTrainingArguments class. This class lets you adjust parameters that can impact training speed and help you understand what's happening during training.</p>
+<p>For more information on the most useful training arguments, check out the Cross Encoder &gt; Training Overview &gt; Training Arguments. It's worth reading to get the most out of your training.</p>
+<p>Here's an example of how to set up CrossEncoderTrainingArguments:.</p>
+<p>To track your model's performance during training, you can pass an eval_dataset to the CrossEncoderTrainer. However, you might want more detailed metrics beyond just the evaluation loss. That's where evaluators can help you assess your model's performance using specific metrics at various stages of training. You can use an evaluation dataset, an evaluator, both, or neither, depending on your needs. The evaluation strategy and frequency are controlled by the eval_strategy and eval_steps Training Arguments.</p>
+<p>Sentence Transformers includes the following built-in evaluators:.</p>
+<p id="sec-mid-173739">You can also use SequentialEvaluator to join multiple evaluators into one, which can then be passed to the CrossEncoderTrainer. You can also just pass a list of evaluators to the trainer.</p>
+<p>Sometimes you don't have the required evaluation data to prepare one of these evaluators on your own, but you still want to track how well the model performs on some common benchmarks. In that case, you can use these evaluators with data from Hugging Face.</p>
+<p>The STS Benchmark (a.k.a. STSb) is a commonly used benchmarking dataset to measure the model's understanding of semantic textual similarity of short texts like "A man is feeding a mouse to a snake.".</p>
+<p>Feel free to browse the sentence-transformers/stsb dataset on Hugging Face.</p>
+<p>Preparing data for CrossEncoderRerankingEvaluator can be difficult as you need negatives in addition to your query-positive data.</p>
+<p>It has been revealed that the mine_hard_negatives function has a convenient include_positives parameter, which can be set to True to also mine for the positive texts. When supplied as documents (which have to be 1. ranked and 2. contain positives) to CrossEncoderRerankingEvaluator, the evaluator will not just evaluate the reranking performance of the CrossEncoder, but also the original rankings by the embedding model used for mining.</p>
+<p>Note that by default, if you are using CrossEncoderRerankingEvaluator with documents, the evaluator will rerank with all positives, even if they are not in the documents. This is useful for getting a stronger signal out of your evaluator, but does give a slightly unrealistic performance. After all, the maximum performance is now 100, whereas normally its bounded by whether the first-stage retriever actually retrieved the positives.</p>
+<p>It has been revealed that you can enable the realistic behaviour by setting always_rerank_positives=False when initializing CrossEncoderRerankingEvaluator. Repeating the same script with this realistic two-stage performance results in::.</p>
+<p>Industry observers note that the CrossEncoderTrainer is where all previous components come together. We only have to specify the trainer with the model, training arguments (optional), training dataset, evaluation dataset (optional), loss function, evaluator (optional) and we can start training. Let’s have a look at a script where all of these components come together:.</p>
+<p>According to recent reports, in this example I'm finetuning from answerdotai/ModernBERT-base, a base model that is not yet a Cross Encoder model. This generally requires more training data than finetuning an existing reranker model like Alibaba-NLP/gte-multilingual-reranker-base. I'm using 99k query-answer pairs from the GooAQ dataset, after which I mine hard negatives using the sentence-transformers/static-retrieval-mrl-en-v1 embedding model. This results in 578k labeled pairs: 99k positive pairs (i.e. label=1) and 479k negative pairs (i.e. label=0).</p>
+<p>I use the BinaryCrossEntropyLoss, which is well suited for these labeled pairs. I also set up 2 forms of evaluation: CrossEncoderNanoBEIREvaluator which evaluates against the NanoBEIR benchmark and CrossEncoderRerankingEvaluator which evaluates the performance of reranking the top 30 results from the aforementioned static embedding model. Afterwards, I define a fairly standard set of hyperparameters, including learning rates, warmup ratios, bf16, loading the best model at the end, and some debugging parameters. Lastly, I run the trainer, perform post-training evaluation, and save the model both locally and on the Hugging Face Hub.</p>
+<p>After running this script, the tomaarsen/reranker-ModernBERT-base-gooaq-bce model was uploaded for me. See the upcoming Evaluation section with evidence that this model outperformed 13 commonly used open-source alternatives, including much bigger models. I also ran the model with answerdotai/ModernBERT-large as the base model, resulting in tomaarsen/reranker-ModernBERT-large-gooaq-bce.</p>
+<p>Industry observers note that evaluation results are automatically stored in the generated model card upon saving a model, alongside the base model, language, license, evaluation results, training &amp; evaluation dataset info, hyperparameters, training logs, and more. Without any effort, your uploaded models should contain all the information that your potential consumers would need to determine whether your model is suitable for them.</p>
+<p>The CrossEncoder trainer supports various transformers.TrainerCallback subclasses, including:.</p>
+<p>These are automatically used without you having to specify anything, as long as the required dependency is installed.</p>
+<p>Refer to the Transformers Callbacks documentation for more information on these callbacks and how to create your own.</p>
+<p>Typically, top-performing general-purpose models are trained on multiple datasets simultaneously. However, this approach can be challenging due to the varying formats of each dataset. Fortunately, the CrossEncoderTrainer allows you to train on multiple datasets without requiring a uniform format. Additionally, it provides the flexibility to apply different loss functions to each dataset. Here are the steps to train with multiple datasets at once:.</p>
+<p>Industry observers note that each training/evaluation batch will only contain samples from one of the datasets. The order in which batches are sampled from the multiple datasets is defined by the MultiDatasetBatchSamplers enum, which can be passed to the CrossEncoderTrainingArguments via multi_dataset_batch_sampler. Valid options are:.</p>
+<p>Cross Encoder models have their own unique quirks, so here’s some tips to help you out:.</p>
+<p>CrossEncoder models overfit rather swiftly, so it’s recommended to use an evaluator like CrossEncoderNanoBEIREvaluator or CrossEncoderRerankingEvaluator together with the load_best_model_at_end and metric_for_best_model training arguments to load the model with the best evaluation performance after training.</p>
+<p>CrossEncoders are particularly receptive to strong hard negatives (mine_hard_negatives). They teach the model to be very strict, useful e.g. when distinguishing between passages that answer a question or passages that relate to a question.</p>
+<p>Don’t underestimate BinaryCrossEntropyLoss, it remains a very strong option despite being simpler than learning-to-rank (LambdaLoss, ListNetLoss) or in-batch negatives (CachedMultipleNegativesRankingLoss, MultipleNegativesRankingLoss) losses, and its data is easy to prepare, especially using mine_hard_negatives.</p>
+<p>Industry observers note that I ran a reranking evaluation of my model from the Trainer section against several baselines on the GooAQ development set with both always_rerank_positives=False and with always_rerank_positives=True in the reranking evaluator. These represent the realistic (only rerank what the retriever found) and evaluation (rerank all positives, even if the retriever didn't find it) formats, respectively.</p>
+<p>As a reminder, I used the extremely efficient sentence-transformers/static-retrieval-mrl-en-v1 static embedding model to retrieve the top 30 for reranking.</p>
+<p>Recent findings suggest that which uses the rerank subset from my tomaarsen/gooaq-reranker-blogpost-datasets dataset. This dataset contains:.</p>
+<p>Recent findings suggest that with just 99k out of 3 million training pairs from the gooaq dataset and just 30 minutes of training on my RTX 3090, my small 150M tomaarsen/reranker-ModernBERT-base-gooaq-bce was able to handily outperform every single &lt;1B parameter general-purpose reranker. The larger tomaarsen/reranker-ModernBERT-large-gooaq-bce took less than an hour to train, and is in a league of its own with a massive 79.42 NDCG@10 in the realistic setting. The GooAQ training and evaluation dataset aligns very well with what these baselines were trained for, so the difference should be even larger when training for a more niche domain.</p>
+<p>It has been revealed that note that this does not mean that tomaarsen/reranker-ModernBERT-large-gooaq-bce is the strongest model here on all domains: It's simply the strongest in our domain. This is totally fine, as we just need this reranker to work well on our data.</p>
+<p>Sources indicate that don't underestimate the power of finetuning reranker models on your domain. You can improve both the search performance and the latency of your search stack by finetuning a (small) reranker!</p>
+<p>Recent findings suggest that these pages have training examples with explanations as well as links to training scripts code. You can use them to get familiar with the reranker training loop:.</p>
+<p>For further learning, you may also want to explore the following resources on Sentence Transformers:.</p>
+<p>And here is an advanced page that might interest you:.</p>
+<p>For training other Sentence Transformers model types, or techniques that pair with a reranker:.</p>
+<p>Industry observers note that @tomaarsen ,kindly let us know how to to carryout finetuning qlora-peft combinations? It helps a lot.</p>
+<p id="sec-end-173739">The distinction between reranking retrieved candidates and injecting all positives is especially helpful. We saw the same evaluation problem in our own BM25 + semantic-judgment experiment: the raw-verse reranking result is conditional on the gold verse being in the five-candidate pool, while the separate 160-query structured-record set had full top-5 recall. Our write-up is here: https://huggingface.co/blog/ironbcc/bm25-seb-rag-retrieval (I'm an author). Would you recommend reporting both conditional reranker quality and end-to-end recall in model cards for domain fine-tunes?</p>
+<p style="margin-top: 25px;">
+<a href="https://huggingface.co/blog/train-reranker" rel="nofollow noopener" style="color: #0d6efd; text-decoration: none; font-weight: bold;" target="_blank">
+                        → Read original article
+                    </a>
+</p>
+</div>
+<div style="text-align:center; margin:20px 0;">
+<script type="text/javascript">
+        atOptions = {
+            'key' : 'f9e40eb3b3cd05f1038aac7b36b33ad2',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+<script src="https://upholdbrilliancerecast.com/f9e40eb3b3cd05f1038aac7b36b33ad2/invoke.js" type="text/javascript"></script>
+</div>
+
+        
+    <div style="margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border, #e2e8f0);">
+        <h3 style="font-size: 16px; margin: 0 0 12px 0; color: var(--text-main, #1e293b);">🔗 Related Articles</h3>
+        
+        <a href="training-and-finetuning-multimodal-embedding-reranker-models-with-162787.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162787. Training and Finetuning Multimodal Embedding & Reranker Models with Sentence Transformers
+        </a>
+        
+        <a href="breaking-training-and-finetuning-embedding-models-with-sentence-t-174124.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #174124. Breaking: Training and Finetuning Embedding Models with Sentence Transformers
+        </a>
+        
+        <a href="latest-update-training-and-finetuning-sparse-embedding-models-wit-173565.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #173565. Latest Update: Training and Finetuning Sparse Embedding Models with Sentence Transformers
+        </a>
+        
+        <a href="training-and-finetuning-multi-vector-embedding-models-with-senten-162455.html" style="display:block; width:100%; box-sizing:border-box; text-align:left; text-decoration:none; background:transparent; border:1px solid var(--border, #e2e8f0); padding:10px 14px; border-radius:8px; margin-bottom:8px; color:var(--text-main, #1e293b); font-size:14px; font-weight:600; transition:0.2s;">
+            📰 #162455. Training and Finetuning Multi-Vector Embedding Models with Sentence Transformers
+        </a>
+        
+    </div>
+    
+    </div>
+</body>
+</html>
